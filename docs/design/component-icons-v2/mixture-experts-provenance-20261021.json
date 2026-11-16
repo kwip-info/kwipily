@@ -1,0 +1,9 @@
+{
+  "tool": "image_gen",
+  "component": "mixture_experts",
+  "asset": "Sources/KwipMLApp/Resources/ComponentIcons/mixture-experts-v1.png",
+  "sha256": "4729d6027a44fd0c29e6869a004719ad2b9b5485fd257c2757a157160ab10a00",
+  "original": "/Users/developer/.codex/generated_images/01a12669-15e3-7932-9dd1-bb1b8a95f263/exec-444ff3a5-32c0-4844-af33-4652f135ab37.png",
+  "promptSummary": "Original transparent Kwip ML component icon: rose/burgundy hexagonal frame, one input branching to independent expert paths and recombining, one muted path, bold flat geometry with no text, gradients or backdrop.",
+  "note": "Prompt summary records the visual constraints, not a claimed verbatim prompt. Original pixels copied unchanged and inspected before app integration."
+}

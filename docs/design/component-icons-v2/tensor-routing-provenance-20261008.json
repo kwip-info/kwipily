@@ -1,0 +1,37 @@
+{
+  "date": "2026-10-08",
+  "tool": "built-in image_gen",
+  "reference": "Sources/KwipMLApp/Resources/ComponentIcons/permute-v2.png",
+  "alphaPreserved": true,
+  "postGenerationImageEditing": false,
+  "assets": [
+    {
+      "id": "split",
+      "source": "/Users/developer/.codex/generated_images/01a10a07-829a-7e73-a566-105746b4f45f/exec-9b49d085-592c-40f2-9779-0d88497ebc3b.png",
+      "prompt": "Generate one production icon for KwipML's tensor-layout component family. Reference image is style reference only; preserve the same muted lavender and deep plum two-color palette, centered thin sharp-corner horizontal rectangular outline, subtle glassy flat fills, clear chunky geometry readable at24px, transparent exterior AND transparent frame interior. No text, labels, letters, digits, background, drop shadow, gradients outside glyph or tiny ornamental detail. Output square PNG with frame occupying roughly82%width and58%height, generous transparent margins. Create a NEW distinct glyph, not the reference routing glyph. Semantic glyph: One input bar on left divides by clean Y branching into three separated horizontal slices on right. The slices have visibly unequal lengths, representing explicit sections.",
+      "destination": "Sources/KwipMLApp/Resources/ComponentIcons/split-v2.png",
+      "sha256": "59762f295df3634e45f29843b57b22a61762a1a0306987ecbea5b1de6531878b"
+    },
+    {
+      "id": "chunk",
+      "source": "/Users/developer/.codex/generated_images/01a10a07-829a-7e73-a566-105746b4f45f/exec-bd2ad355-1d6c-4bfe-adda-b15f3d8c6cc9.png",
+      "prompt": "Generate one production icon for KwipML's tensor-layout component family. Reference image is style reference only; preserve the same muted lavender and deep plum two-color palette, centered thin sharp-corner horizontal rectangular outline, subtle glassy flat fills, clear chunky geometry readable at24px, transparent exterior AND transparent frame interior. No text, labels, letters, digits, background, drop shadow, gradients outside glyph or tiny ornamental detail. Output square PNG with frame occupying roughly82%width and58%height, generous transparent margins. Create a NEW distinct glyph, not the reference routing glyph. Semantic glyph: One input strip on left branches to three stacked equal-width rectangular pieces on right; a fourth small final piece suggests the uneven remainder. Keep only three large pieces and one small remainder so legible.",
+      "destination": "Sources/KwipMLApp/Resources/ComponentIcons/chunk-v2.png",
+      "sha256": "08404bf80dc6886f07740951dec6a887228ac95f5a1e829dc82a7f213ef8927a"
+    },
+    {
+      "id": "gather",
+      "source": "/Users/developer/.codex/generated_images/01a10a07-829a-7e73-a566-105746b4f45f/exec-7fbfd1c2-9d20-4c92-b74b-4c25e4dc2785.png",
+      "prompt": "Generate one production icon for KwipML's tensor-layout component family. Reference image is style reference only; preserve the same muted lavender and deep plum two-color palette, centered thin sharp-corner horizontal rectangular outline, subtle glassy flat fills, clear chunky geometry readable at24px, transparent exterior AND transparent frame interior. No text, labels, letters, digits, background, drop shadow, gradients outside glyph or tiny ornamental detail. Output square PNG with frame occupying roughly82%width and58%height, generous transparent margins. Create a NEW distinct glyph, not the reference routing glyph. Semantic glyph: A3by3 array of nine little solid square cells with three selected cells in deeperplum, clean arrow toward a short3cell column on right. Represents picking specified positions, not generic filtering.",
+      "destination": "Sources/KwipMLApp/Resources/ComponentIcons/gather-v2.png",
+      "sha256": "c3192dba71899bc59d8f8f7049f7e96f6c328cd7ed1d7968117ae0e9c0c42c4a"
+    },
+    {
+      "id": "einsum",
+      "source": "/Users/developer/.codex/generated_images/01a10a07-829a-7e73-a566-105746b4f45f/exec-df45066d-ea51-421d-b638-5b3f7360a6fd.png",
+      "prompt": "Generate one production icon for KwipML's tensor-layout component family. Reference image is style reference only; preserve the same muted lavender and deep plum two-color palette, centered thin sharp-corner horizontal rectangular outline, subtle glassy flat fills, clear chunky geometry readable at24px, transparent exterior AND transparent frame interior. No text, labels, letters, digits, background, drop shadow, gradients outside glyph or tiny ornamental detail. Output square PNG with frame occupying roughly82%width and58%height, generous transparent margins. Create a NEW distinct glyph, not the reference routing glyph. Semantic glyph: Two small rectangular array grids crossing/composing with one clean centered multiplication-style cross and an output grid on right. Geometric algebra glyph, no mathematical text or sigma, large simplified forms.",
+      "destination": "Sources/KwipMLApp/Resources/ComponentIcons/einsum-v2.png",
+      "sha256": "a9acfe5d7871c6bbf5f1d467df0696cabf041b5d47289ae1dcb422cb1a390d72"
+    }
+  ]
+}

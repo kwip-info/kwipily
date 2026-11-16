@@ -1,0 +1,103 @@
+{
+  "date": "2026-10-08",
+  "family": "Attention",
+  "reference": "Sources/KwipMLApp/Resources/ComponentIcons/linear-v2.png",
+  "assets": [
+    {
+      "componentID": "multihead_attention",
+      "source": "/Users/developer/.codex/generated_images/01a10a07-829a-7e73-a566-105746b4f45f/exec-531988c5-582e-4f55-a0b4-44ffd3d7ce1e.png",
+      "destination": "Sources/KwipMLApp/Resources/ComponentIcons/multihead_attention-v2.png",
+      "prompt": "Use case: logo-brand. Create one original KwipML component icon bitmap, no text. Reference image is style reference only: match its exact regular wide hexagonal frame, flat berry burgundy fill and rose-pink broad border, clean flat rose-pink glyph, centered front-on silhouette, generous transparent margin. Subject for this distinct icon: Three parallel small groups of branching connections, each joining two source dots into one result dot. Clear three-comparison-group motif. Strong bold geometry that remains legible at 32 pixels. Keep the two-color rose/berry family palette. One hexagonal framed icon only. No letters, numbers, labels, gradients, lighting, shadows, perspective, extra badges or background. Genuine transparent outside the hexagon.",
+      "tool": "built-in image_gen",
+      "visuallyReviewed": true,
+      "sha256": "68db0f6c5b0f2be9c8d99ba8a4630263176a5d62552a29e768181447199b87a5",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "componentID": "transformer",
+      "source": "/Users/developer/.codex/generated_images/01a10a07-829a-7e73-a566-105746b4f45f/exec-f26dee82-60d1-41a3-ab93-d5084390f0b2.png",
+      "destination": "Sources/KwipMLApp/Resources/ComponentIcons/transformer-v2.png",
+      "prompt": "Use case: logo-brand. Create one original KwipML component icon bitmap, no text. Reference image is style reference only: match its exact regular wide hexagonal frame, flat berry burgundy fill and rose-pink broad border, clean flat rose-pink glyph, centered front-on silhouette, generous transparent margin. Subject for this distinct icon: Two narrow vertically stacked block towers side by side, linked by one horizontal cross connection between towers; one source tower and one output tower. Strong bold geometry that remains legible at 32 pixels. Keep the two-color rose/berry family palette. One hexagonal framed icon only. No letters, numbers, labels, gradients, lighting, shadows, perspective, extra badges or background. Genuine transparent outside the hexagon.",
+      "tool": "built-in image_gen",
+      "visuallyReviewed": true,
+      "sha256": "e3a547e2dac1a1ce7730e1dfd1ff85ca0835be1a2fc4ed2423a4a9f6f6b09448",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "componentID": "transformer_encoder",
+      "source": "/Users/developer/.codex/generated_images/01a10a07-829a-7e73-a566-105746b4f45f/exec-6057afa3-c6d7-4114-8372-27e4056b42d2.png",
+      "destination": "Sources/KwipMLApp/Resources/ComponentIcons/transformer_encoder-v2.png",
+      "prompt": "Use case: logo-brand. Create one original KwipML component icon bitmap, no text. Reference image is style reference only: match its exact regular wide hexagonal frame, flat berry burgundy fill and rose-pink broad border, clean flat rose-pink glyph, centered front-on silhouette, generous transparent margin. Subject for this distinct icon: A single three-block vertical tower, with a clean U-shaped return connection beside it to symbolize comparing within a sequence. Strong bold geometry that remains legible at 32 pixels. Keep the two-color rose/berry family palette. One hexagonal framed icon only. No letters, numbers, labels, gradients, lighting, shadows, perspective, extra badges or background. Genuine transparent outside the hexagon.",
+      "tool": "built-in image_gen",
+      "visuallyReviewed": true,
+      "sha256": "bf1de0664835c99793a9f55f273192ae997fb7cb321fce6191bea746fea23b4c",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "componentID": "transformer_decoder",
+      "source": "/Users/developer/.codex/generated_images/01a10a07-829a-7e73-a566-105746b4f45f/exec-2ad4455d-3851-474e-a98c-8da2d29bbd61.png",
+      "destination": "Sources/KwipMLApp/Resources/ComponentIcons/transformer_decoder-v2.png",
+      "prompt": "Use case: logo-brand. Create one original KwipML component icon bitmap, no text. Reference image is style reference only: match its exact regular wide hexagonal frame, flat berry burgundy fill and rose-pink broad border, clean flat rose-pink glyph, centered front-on silhouette, generous transparent margin. Subject for this distinct icon: A single three-block vertical tower with a separate source dot at left connected into its middle block, and a small return connection on right. Strong bold geometry that remains legible at 32 pixels. Keep the two-color rose/berry family palette. One hexagonal framed icon only. No letters, numbers, labels, gradients, lighting, shadows, perspective, extra badges or background. Genuine transparent outside the hexagon.",
+      "tool": "built-in image_gen",
+      "visuallyReviewed": true,
+      "sha256": "8c44a5a156fd62c16edacfe3db7d9902ac40b79c31fd28a3a4af3eaa9bd4d5ff",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "componentID": "scaled_dot_product_attention",
+      "source": "/Users/developer/.codex/generated_images/01a10a07-829a-7e73-a566-105746b4f45f/exec-bd904f3c-ff25-4901-8386-2bbe85f7a74c.png",
+      "destination": "Sources/KwipMLApp/Resources/ComponentIcons/scaled_dot_product_attention-v2.png",
+      "prompt": "Use case: logo-brand. Create one original KwipML component icon bitmap, no text. Reference image is style reference only: match its exact regular wide hexagonal frame, flat berry burgundy fill and rose-pink broad border, clean flat rose-pink glyph, centered front-on silhouette, generous transparent margin. Subject for this distinct icon: Two small three-dot source rows converging through one central comparison diamond into one larger result dot; simple similarity-to-mixture motif. Strong bold geometry that remains legible at 32 pixels. Keep the two-color rose/berry family palette. One hexagonal framed icon only. No letters, numbers, labels, gradients, lighting, shadows, perspective, extra badges or background. Genuine transparent outside the hexagon.",
+      "tool": "built-in image_gen",
+      "visuallyReviewed": true,
+      "sha256": "e35e0c08feee79f224eb433f62290d5517476bec2d311d98a6e87bac24a7ff73",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "componentID": "attention_mask",
+      "source": "/Users/developer/.codex/generated_images/01a10a07-829a-7e73-a566-105746b4f45f/exec-5e3915b3-1169-49ff-8f0f-b1ae61b3045f.png",
+      "destination": "Sources/KwipMLApp/Resources/ComponentIcons/attention_mask-v2.png",
+      "prompt": "Use case: logo-brand. Create one original KwipML component icon bitmap, no text. Reference image is style reference only: match its exact regular wide hexagonal frame, flat berry burgundy fill and rose-pink broad border, clean flat rose-pink glyph, centered front-on silhouette, generous transparent margin. Subject for this distinct icon: A simple three-by-three matrix of thick square cells, two cells visibly crossed out or filled in contrasting deep burgundy, remaining cells rose outlines; blocked connections motif. Strong bold geometry that remains legible at 32 pixels. Keep the two-color rose/berry family palette. One hexagonal framed icon only. No letters, numbers, labels, gradients, lighting, shadows, perspective, extra badges or background. Genuine transparent outside the hexagon.",
+      "tool": "built-in image_gen",
+      "visuallyReviewed": true,
+      "sha256": "2293f0340a8b71d53efdecaade600367f1fc4a8a1c59a37b56d4d1518caa6707",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ]
+    }
+  ]
+}

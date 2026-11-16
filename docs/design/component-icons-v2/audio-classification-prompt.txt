@@ -1,0 +1,4 @@
+Generated with the built-in image generation tool, 2026-10-21.
+Selected output copied into Sources/KwipMLApp/Resources/ComponentIcons/data-classify-audio-v1.png.
+
+Create one square transparent-background native app component icon for Kwip ML Classify audio. Bold teal/aqua clean linework with pale cyan flat fills, matching a technical canvas component family. Simple flat vector-like raster, no text, no letters, no shadows, no rounded background slab. A thin square teal outer frame inset 10%; inside, a short waveform on the left branches via three clean paths into three small rectangular label tags on the right. Communicate multi-label audio classification. Readable at 32px, generous negative space, no success checkmark. True alpha transparency outside and inside the frame.

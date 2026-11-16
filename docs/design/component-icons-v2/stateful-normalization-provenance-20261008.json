@@ -1,0 +1,50 @@
+{
+  "generatedOn": "2026-10-08",
+  "records": [
+    {
+      "id": "batch_norm1d",
+      "source": "/Users/developer/.codex/generated_images/01a10a07-829a-7e73-a566-105746b4f45f/exec-08ad21ca-d83b-42e2-a584-1b5ac57fccfc.png",
+      "destination": "Sources/KwipMLApp/Resources/ComponentIcons/batch_norm1d-v2.png",
+      "prompt": "Use case: logo-brand. Generate ONE production component icon for KwipML. Reference image is a STYLE reference only. Match muted mauve frame and deep dusty-plum glyph, sharp chamfered octagonal outline occupying82percent of square canvas, transparent exterior AND transparent frame interior, restrained flat glassy fills, bold simple geometry readable at24px. Create a distinct normalization glyph: three horizontal rows each with one large centered dot, a slim vertical link joins the rows to represent shared channel statistics across observations. Use only two thematic colors, no text, letters, digits, captions, background, shadows, tiny details or ornamental texture. Preserve generous transparent margins. Do not reproduce reference sliders.",
+      "alphaPreserved": true,
+      "editing": "None; original generated PNG copied unchanged",
+      "sha256": "4e0089cfb6d3a84eeaa2b9ffc6d558b2403fccbb3aa58b9cd871ff50238ceedd"
+    },
+    {
+      "id": "batch_norm2d",
+      "source": "/Users/developer/.codex/generated_images/01a10a07-829a-7e73-a566-105746b4f45f/exec-80283915-99c2-4a79-9a4c-991fddb4b5d2.png",
+      "destination": "Sources/KwipMLApp/Resources/ComponentIcons/batch_norm2d-v2.png",
+      "prompt": "Use case: logo-brand. Generate ONE production component icon for KwipML. Reference image is a STYLE reference only. Match muted mauve frame and deep dusty-plum glyph, sharp chamfered octagonal outline occupying82percent of square canvas, transparent exterior AND transparent frame interior, restrained flat glassy fills, bold simple geometry readable at24px. Create a distinct normalization glyph: three simplified square grids stacked vertically, one vertical line joins their centers to represent shared channel statistics across image observations. Use only two thematic colors, no text, letters, digits, captions, background, shadows, tiny details or ornamental texture. Preserve generous transparent margins. Do not reproduce reference sliders.",
+      "alphaPreserved": true,
+      "editing": "None; original generated PNG copied unchanged",
+      "sha256": "c412e31ad80d3319e34a1f6cd12fe6ca3d73b2244e20fa7af5d0f31bd68da2b8"
+    },
+    {
+      "id": "instance_norm1d",
+      "source": "/Users/developer/.codex/generated_images/01a10a07-829a-7e73-a566-105746b4f45f/exec-05b9ab81-6074-4cd2-93a9-c2c03f95eca7.png",
+      "destination": "Sources/KwipMLApp/Resources/ComponentIcons/instance_norm1d-v2.png",
+      "prompt": "Use case: logo-brand. Generate ONE production component icon for KwipML. Reference image is a STYLE reference only. Match muted mauve frame and deep dusty-plum glyph, sharp chamfered octagonal outline occupying82percent of square canvas, transparent exterior AND transparent frame interior, restrained flat glassy fills, bold simple geometry readable at24px. Create a distinct normalization glyph: three horizontal rows each containing one centered dot, each row separated with its own small bracket, representing separate normalization per observation. Use only two thematic colors, no text, letters, digits, captions, background, shadows, tiny details or ornamental texture. Preserve generous transparent margins. Do not reproduce reference sliders.",
+      "alphaPreserved": true,
+      "editing": "None; original generated PNG copied unchanged",
+      "sha256": "62e5754dc3908d67f51f52d98278e8468b5c888e27fa2f088613b9083c944197"
+    },
+    {
+      "id": "instance_norm2d",
+      "source": "/Users/developer/.codex/generated_images/01a10a07-829a-7e73-a566-105746b4f45f/exec-6dedf5c6-62fc-4a2d-88dd-5e5616da2d57.png",
+      "destination": "Sources/KwipMLApp/Resources/ComponentIcons/instance_norm2d-v2.png",
+      "prompt": "Use case: logo-brand. Generate ONE production component icon for KwipML. Reference image is a STYLE reference only. Match muted mauve frame and deep dusty-plum glyph, sharp chamfered octagonal outline occupying82percent of square canvas, transparent exterior AND transparent frame interior, restrained flat glassy fills, bold simple geometry readable at24px. Create a distinct normalization glyph: two square grids side by side each containing one centered large dot and its own enclosing inner bracket, representing independent image-channel statistics. Use only two thematic colors, no text, letters, digits, captions, background, shadows, tiny details or ornamental texture. Preserve generous transparent margins. Do not reproduce reference sliders.",
+      "alphaPreserved": true,
+      "editing": "None; original generated PNG copied unchanged",
+      "sha256": "d146b136f4de1089249bcbbb59a2042ad48414529ee59680be05a0bf9cce6b41"
+    },
+    {
+      "id": "group_norm",
+      "source": "/Users/developer/.codex/generated_images/01a10a07-829a-7e73-a566-105746b4f45f/exec-c2e502e6-c3e5-4372-b464-97e93fb776a3.png",
+      "destination": "Sources/KwipMLApp/Resources/ComponentIcons/group_norm-v2.png",
+      "prompt": "Use case: logo-brand. Generate ONE production component icon for KwipML. Reference image is a STYLE reference only. Match muted mauve frame and deep dusty-plum glyph, sharp chamfered octagonal outline occupying82percent of square canvas, transparent exterior AND transparent frame interior, restrained flat glassy fills, bold simple geometry readable at24px. Create a distinct normalization glyph: four broad vertical bars in two clearly separated pairs, a simple horizontal bracket under each pair, representing channel groups. Use only two thematic colors, no text, letters, digits, captions, background, shadows, tiny details or ornamental texture. Preserve generous transparent margins. Do not reproduce reference sliders.",
+      "alphaPreserved": true,
+      "editing": "None; original generated PNG copied unchanged",
+      "sha256": "388d85b5ec2f93d364d784a2c604cda3e39a4836a1d35512da4b3f68c09c70e0"
+    }
+  ]
+}

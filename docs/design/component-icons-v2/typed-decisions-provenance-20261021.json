@@ -1,0 +1,8 @@
+{
+  "tool": "built-in image_gen",
+  "source": "/Users/developer/.codex/generated_images/01a12669-15e3-7932-9dd1-bb1b8a95f263/exec-2921bfd8-2f81-4d89-8f9b-8a7f06ba3d64.png",
+  "sha256": "0b4a0669a9ad0c86afacc76c69f5ea74cdc7de44a8dcf2f9fa2afee6a9fc3515",
+  "asset": "Sources/KwipMLApp/Resources/ComponentIcons/data-decide-v1.png",
+  "purpose": "Generic typed decisions; actual shared data-family art reference",
+  "prompt": "Use case: ui-mockup. Create one final square transparent-background Kwip ML canvas component icon for the new generic Decide tool. Match the attached existing icon's technical teal/aqua line family and thin inset square frame, pale cyan flat fills, generous negative space, readable at32px. Replace the waveform with a simple document/table on the left feeding three rectangular option rows on the right through a small central decision diamond. One option row may have a slightly stronger teal border, but no checkmark or success claim. It means typed decisions over records, not conversational text generation. Flat vector-like raster. True alpha transparency outside AND inside the frame. No background slab, text, letters, words, rounded cards, shadows, glow or gradients. Keep the shape simple and bold enough to be recognizable beside existing tools."
+}

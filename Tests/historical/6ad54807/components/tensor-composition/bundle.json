@@ -1,0 +1,369 @@
+{
+  "schemaVersion": 1,
+  "id": "kwip.tensor-composition",
+  "version": 1,
+  "backend": "pytorch",
+  "components": [
+    {
+      "definition": {
+        "id": "concat",
+        "title": "Concatenate",
+        "category": "Merge",
+        "inputs": [
+          "a",
+          "b"
+        ],
+        "outputs": [
+          "out"
+        ],
+        "fields": [
+          {
+            "key": "dim",
+            "title": "Join direction",
+            "kind": "integer",
+            "defaultValue": -1,
+            "min": -8,
+            "max": 7
+          }
+        ]
+      },
+      "published": true,
+      "configurationVersion": 2,
+      "adapterID": "kwip.runner.graph-v2.concat",
+      "shapeRuleID": "kwip.shape.concat.v1",
+      "presentation": {
+        "theme": "blue",
+        "icon": "concat-v2",
+        "shortTitle": "Concatenate",
+        "purpose": "Join two arrays along one sample direction."
+      },
+      "outputConditions": {},
+      "sources": {
+        "native": "Sources/KwipMLCore/TensorCompositionConfiguration.swift",
+        "worker": "runner/tensor_composition_configuration.py",
+        "tests": "runner/tests/test_tensor_composition_engine.py",
+        "evidence": "docs/production/TORCH_TENSOR_COMPOSITION_CLOSURE.md"
+      },
+      "runtimeContract": {
+        "version": {
+          "major": 1,
+          "minor": 0,
+          "patch": 0
+        },
+        "adapterID": "kwip.runner.graph-v2.concat",
+        "graphSchemaVersions": [
+          1,
+          2
+        ],
+        "maximumRank": 8,
+        "preservesBatch": true,
+        "graphDTypes": [
+          "float32",
+          "int64"
+        ],
+        "maximumTensorElements": 100000000,
+        "inputCount": 2,
+        "axisMinimum": -8,
+        "axisMaximum": 7,
+        "excludesBatch": true,
+        "inputOrder": [
+          "a",
+          "b"
+        ]
+      },
+      "learning": {
+        "contentVersion": 1,
+        "updatedAt": "2026-10-08",
+        "exampleID": "prepared-concat-classifier",
+        "sourceResource": "workflow-observations",
+        "title": "Explore Concatenate in a classifier",
+        "subtitle": "Join two arrays along one sample direction.",
+        "disclosureTitle": "How the sample directions work",
+        "formula": "Join two arrays along one sample direction.",
+        "paragraphs": [
+          "A tensor is an array with named directions. A sample is one observation; a batch is a group of observations. Keep the observation direction first. Join direction selects where to attach B after A; the other sizes must match.",
+          "This block has two ordered sources, A and B. To join more sources, connect another Concatenate block after this one. A negative direction counts backward from the last direction; −1 means the last direction.",
+          "Open the example and inspect the output table. In the measured lesson, compare joined values and how a small change in either source affects the result."
+        ],
+        "buttonTitle": "Open Concatenate example",
+        "exampleSource": "Sources/KwipMLCore/TensorCompositionWorkflowExample.swift",
+        "lessonIDs": [
+          "assessment.concat-sample-axis"
+        ]
+      }
+    },
+    {
+      "definition": {
+        "id": "add",
+        "title": "Add",
+        "category": "Merge",
+        "inputs": [
+          "a",
+          "b"
+        ],
+        "outputs": [
+          "out"
+        ],
+        "fields": [
+          {
+            "key": "alpha",
+            "title": "Second source multiplier",
+            "kind": "number",
+            "defaultValue": 1,
+            "min": -3.4028234663852886e+38,
+            "max": 3.4028234663852886e+38
+          },
+          {
+            "key": "sample_broadcast",
+            "title": "Reuse sample directions of size 1",
+            "kind": "boolean",
+            "defaultValue": false
+          }
+        ]
+      },
+      "published": true,
+      "configurationVersion": 2,
+      "adapterID": "kwip.runner.graph-v2.add",
+      "shapeRuleID": "kwip.shape.add.v1",
+      "presentation": {
+        "theme": "blue",
+        "icon": "add-v2",
+        "shortTitle": "Add",
+        "purpose": "Combine two arrays with control over the second source."
+      },
+      "outputConditions": {},
+      "sources": {
+        "native": "Sources/KwipMLCore/TensorCompositionConfiguration.swift",
+        "worker": "runner/tensor_composition_configuration.py",
+        "tests": "runner/tests/test_tensor_composition_engine.py",
+        "evidence": "docs/production/TORCH_TENSOR_COMPOSITION_CLOSURE.md"
+      },
+      "runtimeContract": {
+        "version": {
+          "major": 1,
+          "minor": 0,
+          "patch": 0
+        },
+        "adapterID": "kwip.runner.graph-v2.add",
+        "graphSchemaVersions": [
+          1,
+          2
+        ],
+        "maximumRank": 8,
+        "preservesBatch": true,
+        "graphDTypes": [
+          "float32",
+          "int64"
+        ],
+        "maximumTensorElements": 100000000,
+        "inputCount": 2,
+        "alphaMinimum": -3.4028234663852886e+38,
+        "alphaMaximum": 3.4028234663852886e+38,
+        "sampleBroadcastModes": [
+          false,
+          true
+        ],
+        "broadcastBatch": false,
+        "integerAlpha": 1,
+        "integerBroadcast": false
+      },
+      "learning": {
+        "contentVersion": 1,
+        "updatedAt": "2026-10-08",
+        "exampleID": "prepared-add-classifier",
+        "sourceResource": "workflow-observations",
+        "title": "Explore Add in a classifier",
+        "subtitle": "Combine two arrays with control over the second source.",
+        "disclosureTitle": "How the sample directions work",
+        "formula": "Combine two arrays with control over the second source.",
+        "paragraphs": [
+          "A tensor is an array with named directions. A sample is one observation; a batch is a group of observations. Each output value adds a value from A to a scaled value from B. Second source multiplier controls that scale; a negative multiplier subtracts.",
+          "By default both arrays must have the same shape. Reuse sample directions of size 1 lets a smaller sample repeat across matching directions; this is called broadcasting. Observation groups must still match and never repeat.",
+          "The block has two sources. Inspect their shapes and output table in the example, then practice predicting how changing each source affects the combined result. Whole-number arrays support the original equal-shape addition with multiplier 1 only."
+        ],
+        "buttonTitle": "Open Add example",
+        "exampleSource": "Sources/KwipMLCore/TensorCompositionWorkflowExample.swift",
+        "lessonIDs": [
+          "assessment.add-shared-pattern"
+        ]
+      }
+    },
+    {
+      "definition": {
+        "id": "stack",
+        "title": "Stack",
+        "category": "Merge",
+        "inputs": [
+          "a",
+          "b"
+        ],
+        "outputs": [
+          "out"
+        ],
+        "fields": [
+          {
+            "key": "dim",
+            "title": "New direction",
+            "kind": "integer",
+            "defaultValue": -1,
+            "min": -8,
+            "max": 7
+          }
+        ]
+      },
+      "published": true,
+      "configurationVersion": 2,
+      "adapterID": "kwip.runner.graph-v2.stack",
+      "shapeRuleID": "kwip.shape.stack.v1",
+      "presentation": {
+        "theme": "blue",
+        "icon": "stack-v2",
+        "shortTitle": "Stack",
+        "purpose": "Place two arrays along a new sample direction."
+      },
+      "outputConditions": {},
+      "sources": {
+        "native": "Sources/KwipMLCore/TensorCompositionConfiguration.swift",
+        "worker": "runner/tensor_composition_configuration.py",
+        "tests": "runner/tests/test_tensor_composition_engine.py",
+        "evidence": "docs/production/TORCH_TENSOR_COMPOSITION_CLOSURE.md"
+      },
+      "runtimeContract": {
+        "version": {
+          "major": 1,
+          "minor": 0,
+          "patch": 0
+        },
+        "adapterID": "kwip.runner.graph-v2.stack",
+        "graphSchemaVersions": [
+          2
+        ],
+        "maximumRank": 8,
+        "preservesBatch": true,
+        "graphDTypes": [
+          "float32",
+          "int64"
+        ],
+        "maximumTensorElements": 100000000,
+        "inputCount": 2,
+        "axisMinimum": -8,
+        "axisMaximum": 7,
+        "excludesBatch": true,
+        "inputOrder": [
+          "a",
+          "b"
+        ],
+        "maximumInputRank": 7,
+        "newAxisSize": 2
+      },
+      "learning": {
+        "contentVersion": 1,
+        "updatedAt": "2026-10-08",
+        "exampleID": "prepared-stack-classifier",
+        "sourceResource": "workflow-observations",
+        "title": "Explore Stack in a classifier",
+        "subtitle": "Place two arrays along a new sample direction.",
+        "disclosureTitle": "How the sample directions work",
+        "formula": "Place two arrays along a new sample direction.",
+        "paragraphs": [
+          "A tensor is an array with named directions. A sample is one observation; a batch is a group of observations. Stack keeps two equally shaped samples separate along a new direction of size 2.",
+          "This block has two ordered sources, A and B. New direction selects where their new shared direction appears. Keep observations first. A negative direction counts backward in the resulting array; −1 places the new direction last.",
+          "Inspect the example output table to find both source values, then use the measured lesson to predict their positions and the effect of small changes. Stack creates a direction; Concatenate extends an existing one."
+        ],
+        "buttonTitle": "Open Stack example",
+        "exampleSource": "Sources/KwipMLCore/TensorCompositionWorkflowExample.swift",
+        "lessonIDs": [
+          "assessment.stack-new-direction"
+        ]
+      }
+    },
+    {
+      "definition": {
+        "id": "permute",
+        "title": "Permute",
+        "category": "Tensor layout",
+        "inputs": [
+          "in"
+        ],
+        "outputs": [
+          "out"
+        ],
+        "fields": [
+          {
+            "key": "dims",
+            "title": "Direction order · observations first",
+            "kind": "integerList",
+            "defaultValue": [
+              0,
+              2,
+              1
+            ],
+            "min": -8,
+            "max": 7,
+            "minItems": 2,
+            "maxItems": 8
+          }
+        ]
+      },
+      "published": true,
+      "configurationVersion": 2,
+      "adapterID": "kwip.runner.graph-v2.permute",
+      "shapeRuleID": "kwip.shape.permute.v1",
+      "presentation": {
+        "theme": "violet",
+        "icon": "permute-v2",
+        "shortTitle": "Permute",
+        "purpose": "Reorder sample directions while keeping observations first."
+      },
+      "outputConditions": {},
+      "sources": {
+        "native": "Sources/KwipMLCore/TensorCompositionConfiguration.swift",
+        "worker": "runner/tensor_composition_configuration.py",
+        "tests": "runner/tests/test_tensor_composition_engine.py",
+        "evidence": "docs/production/TORCH_TENSOR_COMPOSITION_CLOSURE.md"
+      },
+      "runtimeContract": {
+        "version": {
+          "major": 1,
+          "minor": 0,
+          "patch": 0
+        },
+        "adapterID": "kwip.runner.graph-v2.permute",
+        "graphSchemaVersions": [
+          2
+        ],
+        "maximumRank": 8,
+        "preservesBatch": true,
+        "graphDTypes": [
+          "float32",
+          "int64"
+        ],
+        "maximumTensorElements": 100000000,
+        "inputCount": 1,
+        "axisOrderMinimumItems": 2,
+        "axisOrderMaximumItems": 8,
+        "batchAxisFirst": true
+      },
+      "learning": {
+        "contentVersion": 1,
+        "updatedAt": "2026-10-08",
+        "exampleID": "prepared-permute-classifier",
+        "sourceResource": "workflow-observations",
+        "title": "Explore Permute in a classifier",
+        "subtitle": "Reorder sample directions while keeping observations first.",
+        "disclosureTitle": "How the sample directions work",
+        "formula": "Reorder sample directions while keeping observations first.",
+        "paragraphs": [
+          "A tensor is an array with named directions. A sample is one observation; a batch is a group of observations. Direction order lists the existing directions in their new order. Direction 0 contains observations and must stay first.",
+          "Include each direction exactly once. For example, [0, 2, 1] exchanges the two sample directions. This moves values to match the new directions; it does not simply rename the array shape.",
+          "Open the example and inspect the reordered values. The measured lesson checks their positions and traces how a small change in the source reaches the output. A negative direction counts backward from the last direction."
+        ],
+        "buttonTitle": "Open Permute example",
+        "exampleSource": "Sources/KwipMLCore/TensorCompositionWorkflowExample.swift",
+        "lessonIDs": [
+          "assessment.permute-sample-order"
+        ]
+      }
+    }
+  ]
+}

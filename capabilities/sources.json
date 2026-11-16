@@ -1,0 +1,38 @@
+[
+  {
+    "framework": "pytorch",
+    "source_url": "https://docs.pytorch.org/docs/2.14/objects.inv",
+    "captured_on": "2026-10-05",
+    "declared_documentation_version": "2.14",
+    "raw_snapshot": "capabilities/snapshots/pytorch.inv",
+    "raw_sha256": "021a9908fed68dc53daf1a52b0f43fbd1719a7eb35beb03ab2d798b214c0fe31",
+    "inventory_file": "capabilities/inventories/v1/pytorch.json",
+    "symbol_count": 9066,
+    "parser": "capabilities/capture_inventory.py",
+    "notes": "Captured documentation surface, not a claim of complete runtime API enumeration or implementation."
+  },
+  {
+    "framework": "sklearn",
+    "source_url": "https://scikit-learn.org/1.9/objects.inv",
+    "captured_on": "2026-10-05",
+    "declared_documentation_version": "1.9",
+    "raw_snapshot": "capabilities/snapshots/sklearn.inv",
+    "raw_sha256": "dc83a914bda5d7c2b600d8fe93880ac2159e2721d6824c7e0d2a731752e60ef3",
+    "inventory_file": "capabilities/inventories/v1/sklearn.json",
+    "symbol_count": 3254,
+    "parser": "capabilities/capture_inventory.py",
+    "notes": "Captured documentation surface, not a claim of complete runtime API enumeration or implementation."
+  },
+  {
+    "framework": "tensorflow",
+    "source_url": "https://www.tensorflow.org/api_docs/python/tf/keras/layers",
+    "captured_on": "2026-10-05",
+    "declared_documentation_version": "2.16.1",
+    "raw_snapshot": "capabilities/snapshots/tensorflow-layers.html",
+    "raw_sha256": "fa57f60f3453cd572c46aa1791937075684d2b57b2c8e1efd33bd63a86aa9b7a",
+    "inventory_file": "capabilities/inventories/v1/tensorflow.json",
+    "symbol_count": 4823,
+    "parser": "capabilities/capture_inventory.py",
+    "notes": "Captured documentation surface, not a claim of complete runtime API enumeration or implementation."
+  }
+]

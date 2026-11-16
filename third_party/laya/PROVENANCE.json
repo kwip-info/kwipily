@@ -1,0 +1,24 @@
+{
+  "source": "https://github.com/NandhaKishorM/laya",
+  "revision": "6f0496f797dc7127265d62e1543a62de507d943c",
+  "sourceFile": "laya/common.py",
+  "sourceSHA256": "8cb7b9530134dcd5d4392c6c13d1a3d26672a5d4d5097507a01345533a9bc52b",
+  "retained": [
+    "DecisionModel",
+    "_DynamicMultiheadAttention",
+    "_autocast_enabled",
+    "_encode_question_text",
+    "_resolve_noul_labels",
+    "build_head",
+    "build_sequence",
+    "collate_items",
+    "encode_text",
+    "parallel_layout",
+    "parallel_option_masks",
+    "render_criterion",
+    "render_options",
+    "serialize_state"
+  ],
+  "changes": "Selected source definitions with minimal explicit imports/constants; no network-capable helpers retained. Algorithm bodies unchanged.",
+  "license": "Apache-2.0"
+}

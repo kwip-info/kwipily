@@ -1,0 +1,4834 @@
+{
+  "schemaVersion": 2,
+  "components": [
+    {
+      "id": "input",
+      "title": "Input",
+      "category": "Data",
+      "inputs": [],
+      "outputs": [
+        "out"
+      ],
+      "fields": [
+        {
+          "key": "features",
+          "title": "Features",
+          "defaultValue": 2,
+          "min": 1,
+          "max": 512,
+          "kind": "integer"
+        }
+      ]
+    },
+    {
+      "id": "output",
+      "title": "Output",
+      "category": "Data",
+      "inputs": [
+        "in"
+      ],
+      "outputs": [],
+      "fields": []
+    },
+    {
+      "id": "depthwise_conv2d",
+      "title": "Depthwise Conv2d",
+      "category": "Layers",
+      "inputs": [
+        "in"
+      ],
+      "outputs": [
+        "out"
+      ],
+      "fields": [
+        {
+          "key": "in_channels",
+          "title": "Input channels",
+          "kind": "integer",
+          "defaultValue": 2,
+          "min": 1,
+          "max": 512
+        },
+        {
+          "key": "channel_multiplier",
+          "title": "Filters per input channel",
+          "kind": "integer",
+          "defaultValue": 1,
+          "min": 1,
+          "max": 512
+        },
+        {
+          "key": "kernel_size",
+          "title": "Kernel [height, width]",
+          "kind": "integerList",
+          "defaultValue": [
+            3,
+            3
+          ],
+          "min": 1,
+          "max": 4096,
+          "minItems": 2,
+          "maxItems": 2
+        },
+        {
+          "key": "stride",
+          "title": "Stride [height, width]",
+          "kind": "integerList",
+          "defaultValue": [
+            1,
+            1
+          ],
+          "min": 1,
+          "max": 4096,
+          "minItems": 2,
+          "maxItems": 2
+        },
+        {
+          "key": "dilation",
+          "title": "Dilation [height, width]",
+          "kind": "integerList",
+          "defaultValue": [
+            1,
+            1
+          ],
+          "min": 1,
+          "max": 4096,
+          "minItems": 2,
+          "maxItems": 2
+        },
+        {
+          "key": "bias",
+          "title": "Learn bias",
+          "kind": "boolean",
+          "defaultValue": true
+        },
+        {
+          "key": "padding_policy",
+          "title": "Padding policy",
+          "kind": "choice",
+          "defaultValue": "explicit",
+          "choices": [
+            {
+              "value": "explicit",
+              "title": "Explicit amount"
+            },
+            {
+              "value": "valid",
+              "title": "Valid · no padding"
+            },
+            {
+              "value": "same",
+              "title": "Same spatial size"
+            }
+          ]
+        },
+        {
+          "key": "padding",
+          "title": "Padding [height, width]",
+          "kind": "integerList",
+          "defaultValue": [
+            0,
+            0
+          ],
+          "min": 0,
+          "max": 4096,
+          "minItems": 2,
+          "maxItems": 2
+        },
+        {
+          "key": "padding_mode",
+          "title": "Padding mode",
+          "kind": "choice",
+          "defaultValue": "zeros",
+          "choices": [
+            {
+              "value": "zeros",
+              "title": "Zeros"
+            },
+            {
+              "value": "reflect",
+              "title": "Reflect"
+            },
+            {
+              "value": "replicate",
+              "title": "Replicate"
+            },
+            {
+              "value": "circular",
+              "title": "Circular"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "max_pool1d",
+      "title": "MaxPool1d",
+      "category": "Pooling",
+      "inputs": [
+        "in"
+      ],
+      "outputs": [
+        "out",
+        "indices"
+      ],
+      "fields": [
+        {
+          "key": "kernel_size",
+          "title": "Window length",
+          "kind": "integer",
+          "defaultValue": 2,
+          "min": 1,
+          "max": 4096
+        },
+        {
+          "key": "stride",
+          "title": "Stride · empty follows window",
+          "kind": "integer",
+          "defaultValue": null,
+          "min": 1,
+          "max": 4096,
+          "allowsNull": true
+        },
+        {
+          "key": "padding",
+          "title": "Padding per side",
+          "kind": "integer",
+          "defaultValue": 0,
+          "min": 0,
+          "max": 2048
+        },
+        {
+          "key": "dilation",
+          "title": "Window dilation",
+          "kind": "integer",
+          "defaultValue": 1,
+          "min": 1,
+          "max": 4096
+        },
+        {
+          "key": "ceil_mode",
+          "title": "Include partial final window",
+          "kind": "boolean",
+          "defaultValue": false
+        },
+        {
+          "key": "return_indices",
+          "title": "Expose winning indices",
+          "kind": "boolean",
+          "defaultValue": false
+        }
+      ]
+    },
+    {
+      "id": "max_pool2d",
+      "title": "MaxPool2d",
+      "category": "Pooling",
+      "inputs": [
+        "in"
+      ],
+      "outputs": [
+        "out",
+        "indices"
+      ],
+      "fields": [
+        {
+          "key": "kernel_size",
+          "title": "Window [height, width]",
+          "kind": "integerList",
+          "defaultValue": [
+            2,
+            2
+          ],
+          "min": 1,
+          "max": 4096,
+          "minItems": 2,
+          "maxItems": 2
+        },
+        {
+          "key": "stride",
+          "title": "Stride [height, width] · empty follows window",
+          "kind": "integerList",
+          "defaultValue": null,
+          "min": 1,
+          "max": 4096,
+          "allowsNull": true,
+          "minItems": 2,
+          "maxItems": 2
+        },
+        {
+          "key": "padding",
+          "title": "Padding [height, width]",
+          "kind": "integerList",
+          "defaultValue": [
+            0,
+            0
+          ],
+          "min": 0,
+          "max": 2048,
+          "minItems": 2,
+          "maxItems": 2
+        },
+        {
+          "key": "dilation",
+          "title": "Dilation [height, width]",
+          "kind": "integerList",
+          "defaultValue": [
+            1,
+            1
+          ],
+          "min": 1,
+          "max": 4096,
+          "minItems": 2,
+          "maxItems": 2
+        },
+        {
+          "key": "ceil_mode",
+          "title": "Include partial final window",
+          "kind": "boolean",
+          "defaultValue": false
+        },
+        {
+          "key": "return_indices",
+          "title": "Expose winning indices",
+          "kind": "boolean",
+          "defaultValue": false
+        }
+      ]
+    },
+    {
+      "id": "max_pool3d",
+      "title": "MaxPool3d",
+      "category": "Pooling",
+      "inputs": [
+        "in"
+      ],
+      "outputs": [
+        "out",
+        "indices"
+      ],
+      "fields": [
+        {
+          "key": "kernel_size",
+          "title": "Window [depth, height, width]",
+          "kind": "integerList",
+          "defaultValue": [
+            2,
+            2,
+            2
+          ],
+          "min": 1,
+          "max": 4096,
+          "minItems": 3,
+          "maxItems": 3
+        },
+        {
+          "key": "stride",
+          "title": "Stride [depth, height, width] · empty follows window",
+          "kind": "integerList",
+          "defaultValue": null,
+          "min": 1,
+          "max": 4096,
+          "allowsNull": true,
+          "minItems": 3,
+          "maxItems": 3
+        },
+        {
+          "key": "padding",
+          "title": "Padding [depth, height, width]",
+          "kind": "integerList",
+          "defaultValue": [
+            0,
+            0,
+            0
+          ],
+          "min": 0,
+          "max": 2048,
+          "minItems": 3,
+          "maxItems": 3
+        },
+        {
+          "key": "dilation",
+          "title": "Dilation [depth, height, width]",
+          "kind": "integerList",
+          "defaultValue": [
+            1,
+            1,
+            1
+          ],
+          "min": 1,
+          "max": 4096,
+          "minItems": 3,
+          "maxItems": 3
+        },
+        {
+          "key": "ceil_mode",
+          "title": "Include partial final window",
+          "kind": "boolean",
+          "defaultValue": false
+        },
+        {
+          "key": "return_indices",
+          "title": "Expose winning indices",
+          "kind": "boolean",
+          "defaultValue": false
+        }
+      ]
+    },
+    {
+      "id": "avg_pool1d",
+      "title": "AvgPool1d",
+      "category": "Pooling",
+      "inputs": [
+        "in"
+      ],
+      "outputs": [
+        "out"
+      ],
+      "fields": [
+        {
+          "key": "kernel_size",
+          "title": "Window length",
+          "kind": "integer",
+          "defaultValue": 2,
+          "min": 1,
+          "max": 4096
+        },
+        {
+          "key": "stride",
+          "title": "Stride · empty follows window",
+          "kind": "integer",
+          "defaultValue": null,
+          "min": 1,
+          "max": 4096,
+          "allowsNull": true
+        },
+        {
+          "key": "padding",
+          "title": "Padding per side",
+          "kind": "integer",
+          "defaultValue": 0,
+          "min": 0,
+          "max": 2048
+        },
+        {
+          "key": "ceil_mode",
+          "title": "Include partial final window",
+          "kind": "boolean",
+          "defaultValue": false
+        },
+        {
+          "key": "count_include_pad",
+          "title": "Include padding in average divisor",
+          "kind": "boolean",
+          "defaultValue": true
+        }
+      ]
+    },
+    {
+      "id": "avg_pool2d",
+      "title": "AvgPool2d",
+      "category": "Pooling",
+      "inputs": [
+        "in"
+      ],
+      "outputs": [
+        "out"
+      ],
+      "fields": [
+        {
+          "key": "kernel_size",
+          "title": "Window [height, width]",
+          "kind": "integerList",
+          "defaultValue": [
+            2,
+            2
+          ],
+          "min": 1,
+          "max": 4096,
+          "minItems": 2,
+          "maxItems": 2
+        },
+        {
+          "key": "stride",
+          "title": "Stride [height, width] · empty follows window",
+          "kind": "integerList",
+          "defaultValue": null,
+          "min": 1,
+          "max": 4096,
+          "allowsNull": true,
+          "minItems": 2,
+          "maxItems": 2
+        },
+        {
+          "key": "padding",
+          "title": "Padding [height, width]",
+          "kind": "integerList",
+          "defaultValue": [
+            0,
+            0
+          ],
+          "min": 0,
+          "max": 2048,
+          "minItems": 2,
+          "maxItems": 2
+        },
+        {
+          "key": "ceil_mode",
+          "title": "Include partial final window",
+          "kind": "boolean",
+          "defaultValue": false
+        },
+        {
+          "key": "count_include_pad",
+          "title": "Include padding in average divisor",
+          "kind": "boolean",
+          "defaultValue": true
+        },
+        {
+          "key": "divisor_override",
+          "title": "Custom divisor · empty uses window count",
+          "kind": "integer",
+          "defaultValue": null,
+          "min": -2147483647,
+          "max": 2147483647,
+          "allowsNull": true,
+          "enabledValue": 1
+        }
+      ]
+    },
+    {
+      "id": "adaptive_avg_pool1d",
+      "title": "AdaptiveAvgPool1d",
+      "category": "Pooling",
+      "inputs": [
+        "in"
+      ],
+      "outputs": [
+        "out"
+      ],
+      "fields": [
+        {
+          "key": "output_size",
+          "title": "Output length",
+          "kind": "integer",
+          "defaultValue": 2,
+          "min": 1,
+          "max": 4096
+        }
+      ]
+    },
+    {
+      "id": "adaptive_avg_pool2d",
+      "title": "AdaptiveAvgPool2d",
+      "category": "Pooling",
+      "inputs": [
+        "in"
+      ],
+      "outputs": [
+        "out"
+      ],
+      "fields": [
+        {
+          "key": "output_height",
+          "title": "Output height · empty keeps input",
+          "kind": "integer",
+          "defaultValue": 2,
+          "min": 1,
+          "max": 4096,
+          "allowsNull": true
+        },
+        {
+          "key": "output_width",
+          "title": "Output width · empty keeps input",
+          "kind": "integer",
+          "defaultValue": 2,
+          "min": 1,
+          "max": 4096,
+          "allowsNull": true
+        }
+      ]
+    },
+    {
+      "id": "adaptive_max_pool2d",
+      "title": "AdaptiveMaxPool2d",
+      "category": "Pooling",
+      "inputs": [
+        "in"
+      ],
+      "outputs": [
+        "out",
+        "indices"
+      ],
+      "fields": [
+        {
+          "key": "output_height",
+          "title": "Output height · empty keeps input",
+          "kind": "integer",
+          "defaultValue": 2,
+          "min": 1,
+          "max": 4096,
+          "allowsNull": true
+        },
+        {
+          "key": "output_width",
+          "title": "Output width · empty keeps input",
+          "kind": "integer",
+          "defaultValue": 2,
+          "min": 1,
+          "max": 4096,
+          "allowsNull": true
+        },
+        {
+          "key": "return_indices",
+          "title": "Expose winning indices",
+          "kind": "boolean",
+          "defaultValue": false
+        }
+      ]
+    },
+    {
+      "id": "sigmoid",
+      "title": "Sigmoid",
+      "category": "Activations",
+      "inputs": [
+        "in"
+      ],
+      "outputs": [
+        "out"
+      ],
+      "fields": []
+    },
+    {
+      "id": "tanh",
+      "title": "Tanh",
+      "category": "Activations",
+      "inputs": [
+        "in"
+      ],
+      "outputs": [
+        "out"
+      ],
+      "fields": []
+    },
+    {
+      "id": "relu",
+      "title": "ReLU",
+      "category": "Activations",
+      "inputs": [
+        "in"
+      ],
+      "outputs": [
+        "out"
+      ],
+      "fields": []
+    },
+    {
+      "id": "gelu",
+      "title": "GELU",
+      "category": "Activations",
+      "inputs": [
+        "in"
+      ],
+      "outputs": [
+        "out"
+      ],
+      "fields": [
+        {
+          "key": "approximate_tanh",
+          "title": "Tanh approximation",
+          "kind": "boolean",
+          "defaultValue": false
+        }
+      ]
+    },
+    {
+      "id": "softmax",
+      "title": "Softmax",
+      "category": "Activations",
+      "inputs": [
+        "in"
+      ],
+      "outputs": [
+        "out"
+      ],
+      "fields": [
+        {
+          "key": "dim",
+          "title": "Normalization axis",
+          "kind": "integer",
+          "defaultValue": -1,
+          "min": -8,
+          "max": 7
+        }
+      ]
+    },
+    {
+      "id": "silu",
+      "title": "SiLU",
+      "category": "Activations",
+      "inputs": [
+        "in"
+      ],
+      "outputs": [
+        "out"
+      ],
+      "fields": []
+    },
+    {
+      "id": "leaky_relu",
+      "title": "LeakyReLU",
+      "category": "Activations",
+      "inputs": [
+        "in"
+      ],
+      "outputs": [
+        "out"
+      ],
+      "fields": [
+        {
+          "key": "negative_slope",
+          "title": "Negative slope",
+          "kind": "number",
+          "defaultValue": 0.01,
+          "min": -3.4028234663852886e+38,
+          "max": 3.4028234663852886e+38
+        }
+      ]
+    },
+    {
+      "id": "elu",
+      "title": "ELU",
+      "category": "Activations",
+      "inputs": [
+        "in"
+      ],
+      "outputs": [
+        "out"
+      ],
+      "fields": [
+        {
+          "key": "alpha",
+          "title": "Alpha",
+          "kind": "number",
+          "defaultValue": 1,
+          "min": -3.4028234663852886e+38,
+          "max": 3.4028234663852886e+38
+        }
+      ]
+    },
+    {
+      "id": "prelu",
+      "title": "PReLU",
+      "category": "Activations",
+      "inputs": [
+        "in"
+      ],
+      "outputs": [
+        "out"
+      ],
+      "fields": [
+        {
+          "key": "num_parameters",
+          "title": "Slope count",
+          "kind": "integer",
+          "defaultValue": 1,
+          "min": 1,
+          "max": 4096
+        },
+        {
+          "key": "init",
+          "title": "Initial slope",
+          "kind": "number",
+          "defaultValue": 0.25,
+          "min": -3.4028234663852886e+38,
+          "max": 3.4028234663852886e+38
+        }
+      ]
+    },
+    {
+      "id": "log_softmax",
+      "title": "LogSoftmax",
+      "category": "Activations",
+      "inputs": [
+        "in"
+      ],
+      "outputs": [
+        "out"
+      ],
+      "fields": [
+        {
+          "key": "dim",
+          "title": "Normalization direction",
+          "kind": "integer",
+          "defaultValue": -1,
+          "min": -8,
+          "max": 7
+        }
+      ]
+    },
+    {
+      "id": "dropout",
+      "title": "Dropout",
+      "category": "Activations",
+      "inputs": [
+        "in"
+      ],
+      "outputs": [
+        "out"
+      ],
+      "fields": [
+        {
+          "key": "p",
+          "title": "Drop probability",
+          "kind": "number",
+          "defaultValue": 0.5,
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    {
+      "id": "layer_norm",
+      "title": "Layer normalization",
+      "category": "Normalization",
+      "inputs": [
+        "in"
+      ],
+      "outputs": [
+        "out"
+      ],
+      "fields": [
+        {
+          "key": "normalized_shape",
+          "title": "Trailing sample dimensions",
+          "kind": "integerList",
+          "defaultValue": [
+            2
+          ],
+          "min": 1,
+          "max": 100000000,
+          "minItems": 1,
+          "maxItems": 7
+        },
+        {
+          "key": "eps",
+          "title": "Epsilon",
+          "kind": "number",
+          "defaultValue": 1e-05,
+          "min": 1.1754943508222875e-38,
+          "max": 3.4028234663852886e+38
+        },
+        {
+          "key": "elementwise_affine",
+          "title": "Learn elementwise scale",
+          "kind": "boolean",
+          "defaultValue": true
+        },
+        {
+          "key": "bias",
+          "title": "Learn elementwise bias",
+          "kind": "boolean",
+          "defaultValue": true
+        }
+      ]
+    },
+    {
+      "id": "batch_norm1d",
+      "title": "BatchNorm1d",
+      "category": "Normalization",
+      "inputs": [
+        "in"
+      ],
+      "outputs": [
+        "out"
+      ],
+      "fields": [
+        {
+          "key": "num_features",
+          "title": "Channels",
+          "kind": "integer",
+          "defaultValue": 2,
+          "min": 1,
+          "max": 512
+        },
+        {
+          "key": "eps",
+          "title": "Safety value",
+          "kind": "number",
+          "defaultValue": 1e-05,
+          "min": 1.1754943508222875e-38,
+          "max": 3.4028234663852886e+38
+        },
+        {
+          "key": "averaging",
+          "title": "Averaging method",
+          "kind": "choice",
+          "defaultValue": "moving",
+          "choices": [
+            {
+              "value": "moving",
+              "title": "Moving summary"
+            },
+            {
+              "value": "cumulative",
+              "title": "Cumulative summary"
+            }
+          ]
+        },
+        {
+          "key": "momentum",
+          "title": "Running-stat update weight",
+          "kind": "number",
+          "defaultValue": 0.1,
+          "min": 0,
+          "max": 1
+        },
+        {
+          "key": "affine",
+          "title": "Learn scale and shift",
+          "kind": "boolean",
+          "defaultValue": true
+        },
+        {
+          "key": "bias",
+          "title": "Learn shift",
+          "kind": "boolean",
+          "defaultValue": true
+        },
+        {
+          "key": "track_running_stats",
+          "title": "Track running statistics",
+          "kind": "boolean",
+          "defaultValue": true
+        }
+      ]
+    },
+    {
+      "id": "batch_norm2d",
+      "title": "BatchNorm2d",
+      "category": "Normalization",
+      "inputs": [
+        "in"
+      ],
+      "outputs": [
+        "out"
+      ],
+      "fields": [
+        {
+          "key": "num_features",
+          "title": "Channels",
+          "kind": "integer",
+          "defaultValue": 2,
+          "min": 1,
+          "max": 512
+        },
+        {
+          "key": "eps",
+          "title": "Safety value",
+          "kind": "number",
+          "defaultValue": 1e-05,
+          "min": 1.1754943508222875e-38,
+          "max": 3.4028234663852886e+38
+        },
+        {
+          "key": "averaging",
+          "title": "Averaging method",
+          "kind": "choice",
+          "defaultValue": "moving",
+          "choices": [
+            {
+              "value": "moving",
+              "title": "Moving summary"
+            },
+            {
+              "value": "cumulative",
+              "title": "Cumulative summary"
+            }
+          ]
+        },
+        {
+          "key": "momentum",
+          "title": "Running-stat update weight",
+          "kind": "number",
+          "defaultValue": 0.1,
+          "min": 0,
+          "max": 1
+        },
+        {
+          "key": "affine",
+          "title": "Learn scale and shift",
+          "kind": "boolean",
+          "defaultValue": true
+        },
+        {
+          "key": "bias",
+          "title": "Learn shift",
+          "kind": "boolean",
+          "defaultValue": true
+        },
+        {
+          "key": "track_running_stats",
+          "title": "Track running statistics",
+          "kind": "boolean",
+          "defaultValue": true
+        }
+      ]
+    },
+    {
+      "id": "instance_norm1d",
+      "title": "InstanceNorm1d",
+      "category": "Normalization",
+      "inputs": [
+        "in"
+      ],
+      "outputs": [
+        "out"
+      ],
+      "fields": [
+        {
+          "key": "num_features",
+          "title": "Channels",
+          "kind": "integer",
+          "defaultValue": 2,
+          "min": 1,
+          "max": 512
+        },
+        {
+          "key": "eps",
+          "title": "Safety value",
+          "kind": "number",
+          "defaultValue": 1e-05,
+          "min": 1.1754943508222875e-38,
+          "max": 3.4028234663852886e+38
+        },
+        {
+          "key": "momentum",
+          "title": "Running-stat update weight",
+          "kind": "number",
+          "defaultValue": 0.1,
+          "min": 0,
+          "max": 1
+        },
+        {
+          "key": "affine",
+          "title": "Learn scale and shift",
+          "kind": "boolean",
+          "defaultValue": false
+        },
+        {
+          "key": "bias",
+          "title": "Learn shift",
+          "kind": "boolean",
+          "defaultValue": true
+        },
+        {
+          "key": "track_running_stats",
+          "title": "Track running statistics",
+          "kind": "boolean",
+          "defaultValue": false
+        }
+      ]
+    },
+    {
+      "id": "instance_norm2d",
+      "title": "InstanceNorm2d",
+      "category": "Normalization",
+      "inputs": [
+        "in"
+      ],
+      "outputs": [
+        "out"
+      ],
+      "fields": [
+        {
+          "key": "num_features",
+          "title": "Channels",
+          "kind": "integer",
+          "defaultValue": 2,
+          "min": 1,
+          "max": 512
+        },
+        {
+          "key": "eps",
+          "title": "Safety value",
+          "kind": "number",
+          "defaultValue": 1e-05,
+          "min": 1.1754943508222875e-38,
+          "max": 3.4028234663852886e+38
+        },
+        {
+          "key": "momentum",
+          "title": "Running-stat update weight",
+          "kind": "number",
+          "defaultValue": 0.1,
+          "min": 0,
+          "max": 1
+        },
+        {
+          "key": "affine",
+          "title": "Learn scale and shift",
+          "kind": "boolean",
+          "defaultValue": false
+        },
+        {
+          "key": "bias",
+          "title": "Learn shift",
+          "kind": "boolean",
+          "defaultValue": true
+        },
+        {
+          "key": "track_running_stats",
+          "title": "Track running statistics",
+          "kind": "boolean",
+          "defaultValue": false
+        }
+      ]
+    },
+    {
+      "id": "group_norm",
+      "title": "GroupNorm",
+      "category": "Normalization",
+      "inputs": [
+        "in"
+      ],
+      "outputs": [
+        "out"
+      ],
+      "fields": [
+        {
+          "key": "num_channels",
+          "title": "Channels",
+          "kind": "integer",
+          "defaultValue": 2,
+          "min": 1,
+          "max": 512
+        },
+        {
+          "key": "num_groups",
+          "title": "Channel groups",
+          "kind": "integer",
+          "defaultValue": 1,
+          "min": 1,
+          "max": 512
+        },
+        {
+          "key": "eps",
+          "title": "Safety value",
+          "kind": "number",
+          "defaultValue": 1e-05,
+          "min": 1.1754943508222875e-38,
+          "max": 3.4028234663852886e+38
+        },
+        {
+          "key": "affine",
+          "title": "Learn scale and shift",
+          "kind": "boolean",
+          "defaultValue": true
+        },
+        {
+          "key": "bias",
+          "title": "Learn shift",
+          "kind": "boolean",
+          "defaultValue": true
+        }
+      ]
+    },
+    {
+      "id": "linear",
+      "title": "Linear",
+      "category": "Layers",
+      "inputs": [
+        "in"
+      ],
+      "outputs": [
+        "out"
+      ],
+      "fields": [
+        {
+          "key": "in_features",
+          "title": "Input features",
+          "defaultValue": 2,
+          "min": 1,
+          "max": 512,
+          "kind": "integer"
+        },
+        {
+          "key": "out_features",
+          "title": "Output features",
+          "defaultValue": 8,
+          "min": 1,
+          "max": 512,
+          "kind": "integer"
+        },
+        {
+          "key": "bias",
+          "title": "Bias",
+          "kind": "boolean",
+          "defaultValue": true
+        }
+      ]
+    },
+    {
+      "id": "bilinear",
+      "title": "Bilinear",
+      "category": "Layers",
+      "inputs": [
+        "a",
+        "b"
+      ],
+      "outputs": [
+        "out"
+      ],
+      "fields": [
+        {
+          "key": "in1_features",
+          "title": "First input features",
+          "defaultValue": 2,
+          "min": 1,
+          "max": 512,
+          "kind": "integer"
+        },
+        {
+          "key": "in2_features",
+          "title": "Second input features",
+          "defaultValue": 2,
+          "min": 1,
+          "max": 512,
+          "kind": "integer"
+        },
+        {
+          "key": "out_features",
+          "title": "Output features",
+          "defaultValue": 2,
+          "min": 1,
+          "max": 512,
+          "kind": "integer"
+        },
+        {
+          "key": "bias",
+          "title": "Learn bias",
+          "defaultValue": true,
+          "kind": "boolean"
+        }
+      ]
+    },
+    {
+      "id": "lazy_linear",
+      "title": "Lazy Linear",
+      "category": "Layers",
+      "inputs": [
+        "in"
+      ],
+      "outputs": [
+        "out"
+      ],
+      "fields": [
+        {
+          "key": "out_features",
+          "title": "Output features",
+          "kind": "integer",
+          "defaultValue": 2,
+          "min": 1,
+          "max": 512
+        },
+        {
+          "key": "bias",
+          "title": "Learn bias",
+          "kind": "boolean",
+          "defaultValue": true
+        }
+      ]
+    },
+    {
+      "id": "reshape",
+      "title": "Reshape",
+      "category": "Tensor layout",
+      "inputs": [
+        "in"
+      ],
+      "outputs": [
+        "out"
+      ],
+      "fields": [
+        {
+          "key": "shape",
+          "title": "Sample dimensions",
+          "kind": "integerList",
+          "defaultValue": [
+            -1
+          ],
+          "min": -1,
+          "max": 100000000,
+          "minItems": 1,
+          "maxItems": 7
+        }
+      ]
+    },
+    {
+      "id": "transpose",
+      "title": "Transpose",
+      "category": "Tensor layout",
+      "inputs": [
+        "in"
+      ],
+      "outputs": [
+        "out"
+      ],
+      "fields": [
+        {
+          "key": "dim0",
+          "title": "First axis",
+          "kind": "integer",
+          "defaultValue": 1,
+          "min": -8,
+          "max": 7
+        },
+        {
+          "key": "dim1",
+          "title": "Second axis",
+          "kind": "integer",
+          "defaultValue": 2,
+          "min": -8,
+          "max": 7
+        }
+      ]
+    },
+    {
+      "id": "flatten",
+      "title": "Flatten",
+      "category": "Tensor layout",
+      "inputs": [
+        "in"
+      ],
+      "outputs": [
+        "out"
+      ],
+      "fields": [
+        {
+          "key": "start_dim",
+          "title": "First axis",
+          "kind": "integer",
+          "defaultValue": 1,
+          "min": -8,
+          "max": 7
+        },
+        {
+          "key": "end_dim",
+          "title": "Last axis",
+          "kind": "integer",
+          "defaultValue": -1,
+          "min": -8,
+          "max": 7
+        }
+      ]
+    },
+    {
+      "id": "matmul",
+      "title": "Matrix multiply",
+      "category": "Tensor math",
+      "inputs": [
+        "a",
+        "b"
+      ],
+      "outputs": [
+        "out"
+      ],
+      "fields": []
+    },
+    {
+      "id": "embedding",
+      "title": "Embedding",
+      "category": "Embeddings",
+      "inputs": [
+        "in"
+      ],
+      "outputs": [
+        "out"
+      ],
+      "fields": [
+        {
+          "key": "num_embeddings",
+          "title": "Table rows",
+          "kind": "integer",
+          "defaultValue": 16,
+          "min": 1,
+          "max": 100000000
+        },
+        {
+          "key": "embedding_dim",
+          "title": "Vector dimensions",
+          "kind": "integer",
+          "defaultValue": 8,
+          "min": 1,
+          "max": 4096
+        },
+        {
+          "key": "padding_idx",
+          "title": "Padding row",
+          "kind": "integer",
+          "defaultValue": null,
+          "min": -100000000,
+          "max": 99999999,
+          "allowsNull": true
+        },
+        {
+          "key": "max_norm",
+          "title": "Maximum norm",
+          "kind": "number",
+          "defaultValue": null,
+          "min": 1.1754943508222875e-38,
+          "max": 3.4028234663852886e+38,
+          "allowsNull": true
+        },
+        {
+          "key": "norm_type",
+          "title": "Norm order",
+          "kind": "number",
+          "defaultValue": 2,
+          "min": 1.1754943508222875e-38,
+          "max": 3.4028234663852886e+38
+        },
+        {
+          "key": "scale_grad_by_freq",
+          "title": "Scale gradients by frequency",
+          "kind": "boolean",
+          "defaultValue": false
+        },
+        {
+          "key": "sparse",
+          "title": "Sparse gradients",
+          "kind": "boolean",
+          "defaultValue": false
+        },
+        {
+          "key": "freeze",
+          "title": "Freeze learned weights",
+          "kind": "boolean",
+          "defaultValue": false
+        }
+      ]
+    },
+    {
+      "id": "index_input",
+      "title": "Integer input",
+      "category": "Boundaries",
+      "inputs": [],
+      "outputs": [
+        "out"
+      ],
+      "fields": [
+        {
+          "key": "shape",
+          "title": "Sample dimensions",
+          "kind": "integerList",
+          "defaultValue": [
+            2
+          ],
+          "min": 1,
+          "max": 100000000,
+          "minItems": 1,
+          "maxItems": 7
+        }
+      ]
+    },
+    {
+      "id": "conv1d",
+      "title": "Conv1d",
+      "category": "Layers",
+      "inputs": [
+        "in"
+      ],
+      "outputs": [
+        "out"
+      ],
+      "fields": [
+        {
+          "key": "in_channels",
+          "title": "Input channels",
+          "kind": "integer",
+          "defaultValue": 2,
+          "min": 1,
+          "max": 512
+        },
+        {
+          "key": "out_channels",
+          "title": "Output channels",
+          "kind": "integer",
+          "defaultValue": 2,
+          "min": 1,
+          "max": 512
+        },
+        {
+          "key": "kernel_size",
+          "title": "Kernel size",
+          "kind": "integer",
+          "defaultValue": 3,
+          "min": 1,
+          "max": 4096
+        },
+        {
+          "key": "stride",
+          "title": "Stride",
+          "kind": "integer",
+          "defaultValue": 1,
+          "min": 1,
+          "max": 4096
+        },
+        {
+          "key": "dilation",
+          "title": "Dilation",
+          "kind": "integer",
+          "defaultValue": 1,
+          "min": 1,
+          "max": 4096
+        },
+        {
+          "key": "groups",
+          "title": "Groups",
+          "kind": "integer",
+          "defaultValue": 1,
+          "min": 1,
+          "max": 512
+        },
+        {
+          "key": "bias",
+          "title": "Learn bias",
+          "kind": "boolean",
+          "defaultValue": true
+        },
+        {
+          "key": "padding_policy",
+          "title": "Padding policy",
+          "kind": "choice",
+          "defaultValue": "explicit",
+          "choices": [
+            {
+              "value": "explicit",
+              "title": "Explicit amount"
+            },
+            {
+              "value": "valid",
+              "title": "Valid · no padding"
+            },
+            {
+              "value": "same",
+              "title": "Same length"
+            }
+          ]
+        },
+        {
+          "key": "padding",
+          "title": "Padding per side",
+          "kind": "integer",
+          "defaultValue": 0,
+          "min": 0,
+          "max": 4096
+        },
+        {
+          "key": "padding_mode",
+          "title": "Padding mode",
+          "kind": "choice",
+          "defaultValue": "zeros",
+          "choices": [
+            {
+              "value": "zeros",
+              "title": "Zeros"
+            },
+            {
+              "value": "reflect",
+              "title": "Reflect"
+            },
+            {
+              "value": "replicate",
+              "title": "Replicate"
+            },
+            {
+              "value": "circular",
+              "title": "Circular"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conv2d",
+      "title": "Conv2d",
+      "category": "Layers",
+      "inputs": [
+        "in"
+      ],
+      "outputs": [
+        "out"
+      ],
+      "fields": [
+        {
+          "key": "in_channels",
+          "title": "Input channels",
+          "kind": "integer",
+          "defaultValue": 2,
+          "min": 1,
+          "max": 512
+        },
+        {
+          "key": "out_channels",
+          "title": "Output channels",
+          "kind": "integer",
+          "defaultValue": 2,
+          "min": 1,
+          "max": 512
+        },
+        {
+          "key": "kernel_size",
+          "title": "Kernel [height, width]",
+          "kind": "integerList",
+          "defaultValue": [
+            3,
+            3
+          ],
+          "min": 1,
+          "max": 4096,
+          "minItems": 2,
+          "maxItems": 2
+        },
+        {
+          "key": "stride",
+          "title": "Stride [height, width]",
+          "kind": "integerList",
+          "defaultValue": [
+            1,
+            1
+          ],
+          "min": 1,
+          "max": 4096,
+          "minItems": 2,
+          "maxItems": 2
+        },
+        {
+          "key": "dilation",
+          "title": "Dilation [height, width]",
+          "kind": "integerList",
+          "defaultValue": [
+            1,
+            1
+          ],
+          "min": 1,
+          "max": 4096,
+          "minItems": 2,
+          "maxItems": 2
+        },
+        {
+          "key": "groups",
+          "title": "Groups",
+          "kind": "integer",
+          "defaultValue": 1,
+          "min": 1,
+          "max": 512
+        },
+        {
+          "key": "bias",
+          "title": "Learn bias",
+          "kind": "boolean",
+          "defaultValue": true
+        },
+        {
+          "key": "padding_policy",
+          "title": "Padding policy",
+          "kind": "choice",
+          "defaultValue": "explicit",
+          "choices": [
+            {
+              "value": "explicit",
+              "title": "Explicit amount"
+            },
+            {
+              "value": "valid",
+              "title": "Valid · no padding"
+            },
+            {
+              "value": "same",
+              "title": "Same spatial size"
+            }
+          ]
+        },
+        {
+          "key": "padding",
+          "title": "Padding [height, width]",
+          "kind": "integerList",
+          "defaultValue": [
+            0,
+            0
+          ],
+          "min": 0,
+          "max": 4096,
+          "minItems": 2,
+          "maxItems": 2
+        },
+        {
+          "key": "padding_mode",
+          "title": "Padding mode",
+          "kind": "choice",
+          "defaultValue": "zeros",
+          "choices": [
+            {
+              "value": "zeros",
+              "title": "Zeros"
+            },
+            {
+              "value": "reflect",
+              "title": "Reflect"
+            },
+            {
+              "value": "replicate",
+              "title": "Replicate"
+            },
+            {
+              "value": "circular",
+              "title": "Circular"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conv3d",
+      "title": "Conv3d",
+      "category": "Layers",
+      "inputs": [
+        "in"
+      ],
+      "outputs": [
+        "out"
+      ],
+      "fields": [
+        {
+          "key": "in_channels",
+          "title": "Input channels",
+          "kind": "integer",
+          "defaultValue": 2,
+          "min": 1,
+          "max": 512
+        },
+        {
+          "key": "out_channels",
+          "title": "Output channels",
+          "kind": "integer",
+          "defaultValue": 2,
+          "min": 1,
+          "max": 512
+        },
+        {
+          "key": "kernel_size",
+          "title": "Kernel [depth, height, width]",
+          "kind": "integerList",
+          "defaultValue": [
+            3,
+            3,
+            3
+          ],
+          "min": 1,
+          "max": 4096,
+          "minItems": 3,
+          "maxItems": 3
+        },
+        {
+          "key": "stride",
+          "title": "Stride [depth, height, width]",
+          "kind": "integerList",
+          "defaultValue": [
+            1,
+            1,
+            1
+          ],
+          "min": 1,
+          "max": 4096,
+          "minItems": 3,
+          "maxItems": 3
+        },
+        {
+          "key": "dilation",
+          "title": "Dilation [depth, height, width]",
+          "kind": "integerList",
+          "defaultValue": [
+            1,
+            1,
+            1
+          ],
+          "min": 1,
+          "max": 4096,
+          "minItems": 3,
+          "maxItems": 3
+        },
+        {
+          "key": "groups",
+          "title": "Groups",
+          "kind": "integer",
+          "defaultValue": 1,
+          "min": 1,
+          "max": 512
+        },
+        {
+          "key": "bias",
+          "title": "Learn bias",
+          "kind": "boolean",
+          "defaultValue": true
+        },
+        {
+          "key": "padding_policy",
+          "title": "Padding policy",
+          "kind": "choice",
+          "defaultValue": "explicit",
+          "choices": [
+            {
+              "value": "explicit",
+              "title": "Explicit amount"
+            },
+            {
+              "value": "valid",
+              "title": "Valid · no padding"
+            },
+            {
+              "value": "same",
+              "title": "Same spatial size"
+            }
+          ]
+        },
+        {
+          "key": "padding",
+          "title": "Padding [depth, height, width]",
+          "kind": "integerList",
+          "defaultValue": [
+            0,
+            0,
+            0
+          ],
+          "min": 0,
+          "max": 4096,
+          "minItems": 3,
+          "maxItems": 3
+        },
+        {
+          "key": "padding_mode",
+          "title": "Padding mode",
+          "kind": "choice",
+          "defaultValue": "zeros",
+          "choices": [
+            {
+              "value": "zeros",
+              "title": "Zeros"
+            },
+            {
+              "value": "reflect",
+              "title": "Reflect"
+            },
+            {
+              "value": "replicate",
+              "title": "Replicate"
+            },
+            {
+              "value": "circular",
+              "title": "Circular"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conv_transpose1d",
+      "title": "ConvTranspose1d",
+      "category": "Layers",
+      "inputs": [
+        "in"
+      ],
+      "outputs": [
+        "out"
+      ],
+      "fields": [
+        {
+          "key": "in_channels",
+          "title": "Input channels",
+          "kind": "integer",
+          "defaultValue": 2,
+          "min": 1,
+          "max": 512
+        },
+        {
+          "key": "out_channels",
+          "title": "Output channels",
+          "kind": "integer",
+          "defaultValue": 2,
+          "min": 1,
+          "max": 512
+        },
+        {
+          "key": "kernel_size",
+          "title": "Kernel size",
+          "kind": "integer",
+          "defaultValue": 3,
+          "min": 1,
+          "max": 4096
+        },
+        {
+          "key": "stride",
+          "title": "Stride",
+          "kind": "integer",
+          "defaultValue": 1,
+          "min": 1,
+          "max": 4096
+        },
+        {
+          "key": "padding",
+          "title": "Padding · reduce output extent",
+          "kind": "integer",
+          "defaultValue": 0,
+          "min": 0,
+          "max": 4096
+        },
+        {
+          "key": "output_padding",
+          "title": "Output padding · extent adjustment",
+          "kind": "integer",
+          "defaultValue": 0,
+          "min": 0,
+          "max": 4096
+        },
+        {
+          "key": "dilation",
+          "title": "Dilation",
+          "kind": "integer",
+          "defaultValue": 1,
+          "min": 1,
+          "max": 4096
+        },
+        {
+          "key": "groups",
+          "title": "Groups",
+          "kind": "integer",
+          "defaultValue": 1,
+          "min": 1,
+          "max": 512
+        },
+        {
+          "key": "bias",
+          "title": "Learn bias",
+          "kind": "boolean",
+          "defaultValue": true
+        }
+      ]
+    },
+    {
+      "id": "conv_transpose2d",
+      "title": "ConvTranspose2d",
+      "category": "Layers",
+      "inputs": [
+        "in"
+      ],
+      "outputs": [
+        "out"
+      ],
+      "fields": [
+        {
+          "key": "in_channels",
+          "title": "Input channels",
+          "kind": "integer",
+          "defaultValue": 2,
+          "min": 1,
+          "max": 512
+        },
+        {
+          "key": "out_channels",
+          "title": "Output channels",
+          "kind": "integer",
+          "defaultValue": 2,
+          "min": 1,
+          "max": 512
+        },
+        {
+          "key": "kernel_size",
+          "title": "Kernel [height, width]",
+          "kind": "integerList",
+          "defaultValue": [
+            3,
+            3
+          ],
+          "min": 1,
+          "max": 4096,
+          "minItems": 2,
+          "maxItems": 2
+        },
+        {
+          "key": "stride",
+          "title": "Stride [height, width]",
+          "kind": "integerList",
+          "defaultValue": [
+            1,
+            1
+          ],
+          "min": 1,
+          "max": 4096,
+          "minItems": 2,
+          "maxItems": 2
+        },
+        {
+          "key": "padding",
+          "title": "Padding [height, width] · reduce extent",
+          "kind": "integerList",
+          "defaultValue": [
+            0,
+            0
+          ],
+          "min": 0,
+          "max": 4096,
+          "minItems": 2,
+          "maxItems": 2
+        },
+        {
+          "key": "output_padding",
+          "title": "Output padding [height, width] · extent adjustment",
+          "kind": "integerList",
+          "defaultValue": [
+            0,
+            0
+          ],
+          "min": 0,
+          "max": 4096,
+          "minItems": 2,
+          "maxItems": 2
+        },
+        {
+          "key": "dilation",
+          "title": "Dilation [height, width]",
+          "kind": "integerList",
+          "defaultValue": [
+            1,
+            1
+          ],
+          "min": 1,
+          "max": 4096,
+          "minItems": 2,
+          "maxItems": 2
+        },
+        {
+          "key": "groups",
+          "title": "Groups",
+          "kind": "integer",
+          "defaultValue": 1,
+          "min": 1,
+          "max": 512
+        },
+        {
+          "key": "bias",
+          "title": "Learn bias",
+          "kind": "boolean",
+          "defaultValue": true
+        }
+      ]
+    },
+    {
+      "id": "conv_transpose3d",
+      "title": "ConvTranspose3d",
+      "category": "Layers",
+      "inputs": [
+        "in"
+      ],
+      "outputs": [
+        "out"
+      ],
+      "fields": [
+        {
+          "key": "in_channels",
+          "title": "Input channels",
+          "kind": "integer",
+          "defaultValue": 2,
+          "min": 1,
+          "max": 512
+        },
+        {
+          "key": "out_channels",
+          "title": "Output channels",
+          "kind": "integer",
+          "defaultValue": 2,
+          "min": 1,
+          "max": 512
+        },
+        {
+          "key": "kernel_size",
+          "title": "Kernel [depth, height, width]",
+          "kind": "integerList",
+          "defaultValue": [
+            3,
+            3,
+            3
+          ],
+          "min": 1,
+          "max": 4096,
+          "minItems": 3,
+          "maxItems": 3
+        },
+        {
+          "key": "stride",
+          "title": "Stride [depth, height, width]",
+          "kind": "integerList",
+          "defaultValue": [
+            1,
+            1,
+            1
+          ],
+          "min": 1,
+          "max": 4096,
+          "minItems": 3,
+          "maxItems": 3
+        },
+        {
+          "key": "padding",
+          "title": "Padding [depth, height, width] · reduce extent",
+          "kind": "integerList",
+          "defaultValue": [
+            0,
+            0,
+            0
+          ],
+          "min": 0,
+          "max": 4096,
+          "minItems": 3,
+          "maxItems": 3
+        },
+        {
+          "key": "output_padding",
+          "title": "Output padding [depth, height, width] · extent adjustment",
+          "kind": "integerList",
+          "defaultValue": [
+            0,
+            0,
+            0
+          ],
+          "min": 0,
+          "max": 4096,
+          "minItems": 3,
+          "maxItems": 3
+        },
+        {
+          "key": "dilation",
+          "title": "Dilation [depth, height, width]",
+          "kind": "integerList",
+          "defaultValue": [
+            1,
+            1,
+            1
+          ],
+          "min": 1,
+          "max": 4096,
+          "minItems": 3,
+          "maxItems": 3
+        },
+        {
+          "key": "groups",
+          "title": "Groups",
+          "kind": "integer",
+          "defaultValue": 1,
+          "min": 1,
+          "max": 512
+        },
+        {
+          "key": "bias",
+          "title": "Learn bias",
+          "kind": "boolean",
+          "defaultValue": true
+        }
+      ]
+    },
+    {
+      "id": "concat",
+      "title": "Concatenate",
+      "category": "Merge",
+      "inputs": [
+        "a",
+        "b"
+      ],
+      "outputs": [
+        "out"
+      ],
+      "fields": [
+        {
+          "key": "dim",
+          "title": "Join direction",
+          "kind": "integer",
+          "defaultValue": -1,
+          "min": -8,
+          "max": 7
+        }
+      ]
+    },
+    {
+      "id": "add",
+      "title": "Add",
+      "category": "Merge",
+      "inputs": [
+        "a",
+        "b"
+      ],
+      "outputs": [
+        "out"
+      ],
+      "fields": [
+        {
+          "key": "alpha",
+          "title": "Second source multiplier",
+          "kind": "number",
+          "defaultValue": 1,
+          "min": -3.4028234663852886e+38,
+          "max": 3.4028234663852886e+38
+        },
+        {
+          "key": "sample_broadcast",
+          "title": "Reuse sample directions of size 1",
+          "kind": "boolean",
+          "defaultValue": false
+        }
+      ]
+    },
+    {
+      "id": "stack",
+      "title": "Stack",
+      "category": "Merge",
+      "inputs": [
+        "a",
+        "b"
+      ],
+      "outputs": [
+        "out"
+      ],
+      "fields": [
+        {
+          "key": "dim",
+          "title": "New direction",
+          "kind": "integer",
+          "defaultValue": -1,
+          "min": -8,
+          "max": 7
+        }
+      ]
+    },
+    {
+      "id": "permute",
+      "title": "Permute",
+      "category": "Tensor layout",
+      "inputs": [
+        "in"
+      ],
+      "outputs": [
+        "out"
+      ],
+      "fields": [
+        {
+          "key": "dims",
+          "title": "Direction order · observations first",
+          "kind": "integerList",
+          "defaultValue": [
+            0,
+            2,
+            1
+          ],
+          "min": -8,
+          "max": 7,
+          "minItems": 2,
+          "maxItems": 8
+        }
+      ]
+    },
+    {
+      "id": "split",
+      "title": "Split",
+      "category": "Tensor layout",
+      "inputs": [
+        "in"
+      ],
+      "outputs": [
+        "part0",
+        "part1",
+        "part2",
+        "part3",
+        "part4",
+        "part5",
+        "part6",
+        "part7"
+      ],
+      "fields": [
+        {
+          "key": "mode",
+          "title": "Split mode",
+          "kind": "choice",
+          "defaultValue": "size",
+          "choices": [
+            {
+              "value": "size",
+              "title": "Equal-sized parts"
+            },
+            {
+              "value": "sections",
+              "title": "Chosen section sizes"
+            }
+          ]
+        },
+        {
+          "key": "dim",
+          "title": "Sample direction",
+          "kind": "integer",
+          "defaultValue": -1,
+          "min": -8,
+          "max": 7
+        },
+        {
+          "key": "split_size",
+          "title": "Split size",
+          "kind": "integer",
+          "defaultValue": 2,
+          "min": 1,
+          "max": 100000000
+        },
+        {
+          "key": "sections",
+          "title": "Section sizes",
+          "kind": "integerList",
+          "defaultValue": [
+            1,
+            1
+          ],
+          "min": 1,
+          "max": 100000000,
+          "minItems": 1,
+          "maxItems": 8
+        }
+      ]
+    },
+    {
+      "id": "chunk",
+      "title": "Chunk",
+      "category": "Tensor layout",
+      "inputs": [
+        "in"
+      ],
+      "outputs": [
+        "part0",
+        "part1",
+        "part2",
+        "part3",
+        "part4",
+        "part5",
+        "part6",
+        "part7"
+      ],
+      "fields": [
+        {
+          "key": "chunks",
+          "title": "Requested parts",
+          "kind": "integer",
+          "defaultValue": 2,
+          "min": 1,
+          "max": 8
+        },
+        {
+          "key": "dim",
+          "title": "Sample direction",
+          "kind": "integer",
+          "defaultValue": -1,
+          "min": -8,
+          "max": 7
+        }
+      ]
+    },
+    {
+      "id": "gather",
+      "title": "Gather",
+      "category": "Tensor layout",
+      "inputs": [
+        "source",
+        "indices"
+      ],
+      "outputs": [
+        "out"
+      ],
+      "fields": [
+        {
+          "key": "dim",
+          "title": "Sample direction",
+          "kind": "integer",
+          "defaultValue": -1,
+          "min": -8,
+          "max": 7
+        }
+      ]
+    },
+    {
+      "id": "einsum",
+      "title": "Einsum",
+      "category": "Tensor layout",
+      "inputs": [
+        "a",
+        "b"
+      ],
+      "outputs": [
+        "out"
+      ],
+      "fields": [
+        {
+          "key": "pattern",
+          "title": "Arrangement preset",
+          "kind": "choice",
+          "defaultValue": "multiply",
+          "choices": [
+            {
+              "value": "multiply",
+              "title": "Combine tables"
+            },
+            {
+              "value": "outer",
+              "title": "Pair each value"
+            },
+            {
+              "value": "diagonal",
+              "title": "Read a diagonal"
+            },
+            {
+              "value": "reorder",
+              "title": "Swap sample directions"
+            },
+            {
+              "value": "custom",
+              "title": "Custom notation"
+            }
+          ]
+        },
+        {
+          "key": "equation",
+          "title": "Custom notation",
+          "kind": "text",
+          "defaultValue": "nab,nbc->nac",
+          "minItems": 1,
+          "maxItems": 128
+        }
+      ]
+    },
+    {
+      "id": "unfold",
+      "title": "Unfold",
+      "category": "Tensor layout",
+      "inputs": [
+        "in"
+      ],
+      "outputs": [
+        "out"
+      ],
+      "fields": [
+        {
+          "key": "kernel_size",
+          "title": "Patch size",
+          "kind": "integerList",
+          "defaultValue": [
+            2,
+            2
+          ],
+          "min": 1,
+          "max": 4096,
+          "minItems": 2,
+          "maxItems": 2
+        },
+        {
+          "key": "stride",
+          "title": "Spacing between patches",
+          "kind": "integerList",
+          "defaultValue": [
+            1,
+            1
+          ],
+          "min": 1,
+          "max": 4096,
+          "minItems": 2,
+          "maxItems": 2
+        },
+        {
+          "key": "dilation",
+          "title": "Spacing within a patch",
+          "kind": "integerList",
+          "defaultValue": [
+            1,
+            1
+          ],
+          "min": 1,
+          "max": 4096,
+          "minItems": 2,
+          "maxItems": 2
+        },
+        {
+          "key": "padding",
+          "title": "Zero padding",
+          "kind": "integerList",
+          "defaultValue": [
+            0,
+            0
+          ],
+          "min": 0,
+          "max": 4096,
+          "minItems": 2,
+          "maxItems": 2
+        }
+      ]
+    },
+    {
+      "id": "fold",
+      "title": "Fold",
+      "category": "Tensor layout",
+      "inputs": [
+        "in"
+      ],
+      "outputs": [
+        "out"
+      ],
+      "fields": [
+        {
+          "key": "kernel_size",
+          "title": "Patch size",
+          "kind": "integerList",
+          "defaultValue": [
+            2,
+            2
+          ],
+          "min": 1,
+          "max": 4096,
+          "minItems": 2,
+          "maxItems": 2
+        },
+        {
+          "key": "stride",
+          "title": "Spacing between patches",
+          "kind": "integerList",
+          "defaultValue": [
+            1,
+            1
+          ],
+          "min": 1,
+          "max": 4096,
+          "minItems": 2,
+          "maxItems": 2
+        },
+        {
+          "key": "dilation",
+          "title": "Spacing within a patch",
+          "kind": "integerList",
+          "defaultValue": [
+            1,
+            1
+          ],
+          "min": 1,
+          "max": 4096,
+          "minItems": 2,
+          "maxItems": 2
+        },
+        {
+          "key": "padding",
+          "title": "Zero padding",
+          "kind": "integerList",
+          "defaultValue": [
+            0,
+            0
+          ],
+          "min": 0,
+          "max": 4096,
+          "minItems": 2,
+          "maxItems": 2
+        },
+        {
+          "key": "output_size",
+          "title": "Output grid size",
+          "kind": "integerList",
+          "defaultValue": [
+            2,
+            2
+          ],
+          "min": 1,
+          "max": 4096,
+          "minItems": 2,
+          "maxItems": 2
+        }
+      ]
+    },
+    {
+      "id": "optimizer_sgd",
+      "title": "SGD",
+      "category": "Training",
+      "inputs": [],
+      "outputs": [
+        "out"
+      ],
+      "fields": [
+        {
+          "key": "lr",
+          "title": "Learning rate",
+          "kind": "number",
+          "defaultValue": 0.001,
+          "min": 0,
+          "max": 3.4028234663852886e+38
+        },
+        {
+          "key": "momentum",
+          "title": "Momentum",
+          "kind": "number",
+          "defaultValue": 0.0,
+          "min": 0,
+          "max": 1.0
+        },
+        {
+          "key": "dampening",
+          "title": "Momentum dampening",
+          "kind": "number",
+          "defaultValue": 0.0,
+          "min": 0,
+          "max": 1.0
+        },
+        {
+          "key": "weight_decay",
+          "title": "Weight decay",
+          "kind": "number",
+          "defaultValue": 0.0,
+          "min": 0,
+          "max": 3.4028234663852886e+38
+        },
+        {
+          "key": "nesterov",
+          "title": "Look ahead",
+          "kind": "boolean",
+          "defaultValue": false
+        },
+        {
+          "key": "maximize",
+          "title": "Maximize objective",
+          "kind": "boolean",
+          "defaultValue": false
+        }
+      ]
+    },
+    {
+      "id": "optimizer_adam",
+      "title": "Adam",
+      "category": "Training",
+      "inputs": [],
+      "outputs": [
+        "out"
+      ],
+      "fields": [
+        {
+          "key": "lr",
+          "title": "Learning rate",
+          "kind": "number",
+          "defaultValue": 0.001,
+          "min": 0,
+          "max": 3.4028234663852886e+38
+        },
+        {
+          "key": "beta1",
+          "title": "First running average",
+          "kind": "number",
+          "defaultValue": 0.9,
+          "min": 0,
+          "max": 0.9999999403953552
+        },
+        {
+          "key": "beta2",
+          "title": "Second running average",
+          "kind": "number",
+          "defaultValue": 0.999,
+          "min": 0,
+          "max": 0.9999999403953552
+        },
+        {
+          "key": "eps",
+          "title": "Stability amount",
+          "kind": "number",
+          "defaultValue": 1e-08,
+          "min": 1.1754943508222875e-38,
+          "max": 3.4028234663852886e+38
+        },
+        {
+          "key": "weight_decay",
+          "title": "Weight decay",
+          "kind": "number",
+          "defaultValue": 0.0,
+          "min": 0,
+          "max": 3.4028234663852886e+38
+        },
+        {
+          "key": "amsgrad",
+          "title": "Keep largest squared average",
+          "kind": "boolean",
+          "defaultValue": false
+        },
+        {
+          "key": "decoupled_weight_decay",
+          "title": "Separate weight decay",
+          "kind": "boolean",
+          "defaultValue": false
+        },
+        {
+          "key": "maximize",
+          "title": "Maximize objective",
+          "kind": "boolean",
+          "defaultValue": false
+        }
+      ]
+    },
+    {
+      "id": "optimizer_adamw",
+      "title": "AdamW",
+      "category": "Training",
+      "inputs": [],
+      "outputs": [
+        "out"
+      ],
+      "fields": [
+        {
+          "key": "lr",
+          "title": "Learning rate",
+          "kind": "number",
+          "defaultValue": 0.001,
+          "min": 0,
+          "max": 3.4028234663852886e+38
+        },
+        {
+          "key": "beta1",
+          "title": "First running average",
+          "kind": "number",
+          "defaultValue": 0.9,
+          "min": 0,
+          "max": 0.9999999403953552
+        },
+        {
+          "key": "beta2",
+          "title": "Second running average",
+          "kind": "number",
+          "defaultValue": 0.999,
+          "min": 0,
+          "max": 0.9999999403953552
+        },
+        {
+          "key": "eps",
+          "title": "Stability amount",
+          "kind": "number",
+          "defaultValue": 1e-08,
+          "min": 1.1754943508222875e-38,
+          "max": 3.4028234663852886e+38
+        },
+        {
+          "key": "weight_decay",
+          "title": "Weight decay",
+          "kind": "number",
+          "defaultValue": 0.01,
+          "min": 0,
+          "max": 3.4028234663852886e+38
+        },
+        {
+          "key": "amsgrad",
+          "title": "Keep largest squared average",
+          "kind": "boolean",
+          "defaultValue": false
+        },
+        {
+          "key": "maximize",
+          "title": "Maximize objective",
+          "kind": "boolean",
+          "defaultValue": false
+        }
+      ]
+    },
+    {
+      "id": "optimizer_rmsprop",
+      "title": "RMSprop",
+      "category": "Training",
+      "inputs": [],
+      "outputs": [
+        "out"
+      ],
+      "fields": [
+        {
+          "key": "lr",
+          "title": "Learning rate",
+          "kind": "number",
+          "defaultValue": 0.01,
+          "min": 0,
+          "max": 3.4028234663852886e+38
+        },
+        {
+          "key": "alpha",
+          "title": "Squared-average memory",
+          "kind": "number",
+          "defaultValue": 0.99,
+          "min": 0,
+          "max": 1.0
+        },
+        {
+          "key": "eps",
+          "title": "Stability amount",
+          "kind": "number",
+          "defaultValue": 1e-08,
+          "min": 1.1754943508222875e-38,
+          "max": 3.4028234663852886e+38
+        },
+        {
+          "key": "weight_decay",
+          "title": "Weight decay",
+          "kind": "number",
+          "defaultValue": 0.0,
+          "min": 0,
+          "max": 3.4028234663852886e+38
+        },
+        {
+          "key": "momentum",
+          "title": "Momentum",
+          "kind": "number",
+          "defaultValue": 0.0,
+          "min": 0,
+          "max": 1.0
+        },
+        {
+          "key": "centered",
+          "title": "Center the squared average",
+          "kind": "boolean",
+          "defaultValue": false
+        },
+        {
+          "key": "maximize",
+          "title": "Maximize objective",
+          "kind": "boolean",
+          "defaultValue": false
+        }
+      ]
+    },
+    {
+      "id": "optimizer_adagrad",
+      "title": "Adagrad",
+      "category": "Training",
+      "inputs": [],
+      "outputs": [
+        "out"
+      ],
+      "fields": [
+        {
+          "key": "lr",
+          "title": "Learning rate",
+          "kind": "number",
+          "defaultValue": 0.01,
+          "min": 0,
+          "max": 3.4028234663852886e+38
+        },
+        {
+          "key": "lr_decay",
+          "title": "Learning-rate decay",
+          "kind": "number",
+          "defaultValue": 0.0,
+          "min": 0,
+          "max": 3.4028234663852886e+38
+        },
+        {
+          "key": "weight_decay",
+          "title": "Weight decay",
+          "kind": "number",
+          "defaultValue": 0.0,
+          "min": 0,
+          "max": 3.4028234663852886e+38
+        },
+        {
+          "key": "initial_accumulator_value",
+          "title": "Starting accumulated squares",
+          "kind": "number",
+          "defaultValue": 0.0,
+          "min": 0,
+          "max": 3.4028234663852886e+38
+        },
+        {
+          "key": "eps",
+          "title": "Stability amount",
+          "kind": "number",
+          "defaultValue": 1e-10,
+          "min": 1.1754943508222875e-38,
+          "max": 3.4028234663852886e+38
+        },
+        {
+          "key": "maximize",
+          "title": "Maximize objective",
+          "kind": "boolean",
+          "defaultValue": false
+        }
+      ]
+    },
+    {
+      "id": "scheduler_step_lr",
+      "title": "StepLR",
+      "category": "Training",
+      "inputs": [],
+      "outputs": [
+        "out"
+      ],
+      "fields": [
+        {
+          "key": "step_size",
+          "title": "Passes between reductions",
+          "kind": "integer",
+          "defaultValue": 2,
+          "min": 1,
+          "max": 10000
+        },
+        {
+          "key": "gamma",
+          "title": "Rate multiplier",
+          "kind": "number",
+          "defaultValue": 0.1,
+          "min": 0,
+          "max": 3.4028234663852886e+38
+        }
+      ]
+    },
+    {
+      "id": "scheduler_cosine_annealing_lr",
+      "title": "CosineAnnealingLR",
+      "category": "Training",
+      "inputs": [],
+      "outputs": [
+        "out"
+      ],
+      "fields": [
+        {
+          "key": "T_max",
+          "title": "Passes to minimum",
+          "kind": "integer",
+          "defaultValue": 10,
+          "min": 1,
+          "max": 10000
+        },
+        {
+          "key": "eta_min",
+          "title": "Minimum learning rate",
+          "kind": "number",
+          "defaultValue": 0.0,
+          "min": 0,
+          "max": 3.4028234663852886e+38
+        }
+      ]
+    },
+    {
+      "id": "scheduler_reduce_on_plateau",
+      "title": "ReduceLROnPlateau",
+      "category": "Training",
+      "inputs": [],
+      "outputs": [
+        "out"
+      ],
+      "fields": [
+        {
+          "key": "metric",
+          "title": "Measure to watch",
+          "kind": "choice",
+          "defaultValue": "validation_loss",
+          "choices": [
+            {
+              "value": "validation_loss",
+              "title": "Validation loss"
+            },
+            {
+              "value": "validation_accuracy",
+              "title": "Validation accuracy"
+            }
+          ]
+        },
+        {
+          "key": "mode",
+          "title": "Improvement direction",
+          "kind": "choice",
+          "defaultValue": "min",
+          "choices": [
+            {
+              "value": "min",
+              "title": "Smaller is better"
+            },
+            {
+              "value": "max",
+              "title": "Larger is better"
+            }
+          ]
+        },
+        {
+          "key": "factor",
+          "title": "Reduction multiplier",
+          "kind": "number",
+          "defaultValue": 0.1,
+          "min": 0,
+          "max": 1
+        },
+        {
+          "key": "patience",
+          "title": "Passes to wait",
+          "kind": "integer",
+          "defaultValue": 10,
+          "min": 0,
+          "max": 10000
+        },
+        {
+          "key": "threshold",
+          "title": "Required improvement",
+          "kind": "number",
+          "defaultValue": 0.0001,
+          "min": 0,
+          "max": 3.4028234663852886e+38
+        },
+        {
+          "key": "threshold_mode",
+          "title": "Improvement comparison",
+          "kind": "choice",
+          "defaultValue": "rel",
+          "choices": [
+            {
+              "value": "rel",
+              "title": "Relative change"
+            },
+            {
+              "value": "abs",
+              "title": "Absolute change"
+            }
+          ]
+        },
+        {
+          "key": "cooldown",
+          "title": "Recovery passes",
+          "kind": "integer",
+          "defaultValue": 0,
+          "min": 0,
+          "max": 10000
+        },
+        {
+          "key": "min_lr",
+          "title": "Minimum learning rate",
+          "kind": "number",
+          "defaultValue": 0.0,
+          "min": 0,
+          "max": 3.4028234663852886e+38
+        },
+        {
+          "key": "eps",
+          "title": "Smallest rate change",
+          "kind": "number",
+          "defaultValue": 1e-08,
+          "min": 0,
+          "max": 3.4028234663852886e+38
+        }
+      ]
+    },
+    {
+      "id": "scheduler_one_cycle_lr",
+      "title": "OneCycleLR",
+      "category": "Training",
+      "inputs": [],
+      "outputs": [
+        "out"
+      ],
+      "fields": [
+        {
+          "key": "max_lr",
+          "title": "Peak learning rate",
+          "kind": "number",
+          "defaultValue": 0.1,
+          "min": 0,
+          "max": 3.4028234663852886e+38
+        },
+        {
+          "key": "planned_total_batches",
+          "title": "Planned total batches",
+          "kind": "integer",
+          "defaultValue": 10,
+          "min": 3,
+          "max": 10000
+        },
+        {
+          "key": "pct_start",
+          "title": "Rising portion",
+          "kind": "number",
+          "defaultValue": 0.3,
+          "min": 1.1754943508222875e-38,
+          "max": 1
+        },
+        {
+          "key": "anneal_strategy",
+          "title": "Curve shape",
+          "kind": "choice",
+          "defaultValue": "cos",
+          "choices": [
+            {
+              "value": "cos",
+              "title": "Smooth cosine"
+            },
+            {
+              "value": "linear",
+              "title": "Straight lines"
+            }
+          ]
+        },
+        {
+          "key": "cycle_momentum",
+          "title": "Vary remembered movement",
+          "kind": "boolean",
+          "defaultValue": true
+        },
+        {
+          "key": "base_momentum",
+          "title": "Minimum remembered movement",
+          "kind": "number",
+          "defaultValue": 0.85,
+          "min": 0,
+          "max": 1
+        },
+        {
+          "key": "max_momentum",
+          "title": "Maximum remembered movement",
+          "kind": "number",
+          "defaultValue": 0.95,
+          "min": 0,
+          "max": 1
+        },
+        {
+          "key": "div_factor",
+          "title": "Starting rate divisor",
+          "kind": "number",
+          "defaultValue": 25.0,
+          "min": 1.1754943508222875e-38,
+          "max": 3.4028234663852886e+38
+        },
+        {
+          "key": "final_div_factor",
+          "title": "Final rate divisor",
+          "kind": "number",
+          "defaultValue": 10000.0,
+          "min": 1.1754943508222875e-38,
+          "max": 3.4028234663852886e+38
+        },
+        {
+          "key": "three_phase",
+          "title": "Use three phases",
+          "kind": "boolean",
+          "defaultValue": false
+        }
+      ]
+    },
+    {
+      "id": "scheduler_linear_lr",
+      "title": "LinearLR",
+      "category": "Training",
+      "inputs": [],
+      "outputs": [
+        "out"
+      ],
+      "fields": [
+        {
+          "key": "start_factor",
+          "title": "Starting rate fraction",
+          "kind": "number",
+          "defaultValue": 0.3333333333333333,
+          "min": 1.1754943508222875e-38,
+          "max": 1
+        },
+        {
+          "key": "end_factor",
+          "title": "Ending rate fraction",
+          "kind": "number",
+          "defaultValue": 1.0,
+          "min": 1.1754943508222875e-38,
+          "max": 1
+        },
+        {
+          "key": "total_iters",
+          "title": "Passes to ending fraction",
+          "kind": "integer",
+          "defaultValue": 5,
+          "min": 1,
+          "max": 10000
+        }
+      ]
+    },
+    {
+      "id": "rnn",
+      "title": "RNN",
+      "category": "Layers",
+      "inputs": [
+        "in",
+        "hidden"
+      ],
+      "outputs": [
+        "out",
+        "hidden"
+      ],
+      "fields": [
+        {
+          "key": "input_size",
+          "title": "Input width",
+          "kind": "integer",
+          "defaultValue": 2,
+          "min": 1,
+          "max": 4096
+        },
+        {
+          "key": "hidden_size",
+          "title": "Hidden width",
+          "kind": "integer",
+          "defaultValue": 2,
+          "min": 1,
+          "max": 512
+        },
+        {
+          "key": "bias",
+          "title": "Use bias",
+          "kind": "boolean",
+          "defaultValue": true
+        },
+        {
+          "key": "state_mode",
+          "title": "Starting state",
+          "kind": "choice",
+          "defaultValue": "zero",
+          "choices": [
+            {
+              "value": "zero",
+              "title": "Start from zeros"
+            },
+            {
+              "value": "supplied",
+              "title": "Use state connections"
+            }
+          ]
+        },
+        {
+          "key": "num_layers",
+          "title": "Layer count",
+          "kind": "integer",
+          "defaultValue": 1,
+          "min": 1,
+          "max": 8
+        },
+        {
+          "key": "bidirectional",
+          "title": "Reverse direction too",
+          "kind": "boolean",
+          "defaultValue": false
+        },
+        {
+          "key": "dropout",
+          "title": "Between-layer dropout",
+          "kind": "number",
+          "defaultValue": 0,
+          "min": 0,
+          "max": 1
+        },
+        {
+          "key": "nonlinearity",
+          "title": "Behavior",
+          "kind": "choice",
+          "defaultValue": "tanh",
+          "choices": [
+            {
+              "value": "tanh",
+              "title": "Smooth bounded response"
+            },
+            {
+              "value": "relu",
+              "title": "Keep positive values"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lstm",
+      "title": "LSTM",
+      "category": "Layers",
+      "inputs": [
+        "in",
+        "hidden",
+        "cell"
+      ],
+      "outputs": [
+        "out",
+        "hidden",
+        "cell"
+      ],
+      "fields": [
+        {
+          "key": "input_size",
+          "title": "Input width",
+          "kind": "integer",
+          "defaultValue": 2,
+          "min": 1,
+          "max": 4096
+        },
+        {
+          "key": "hidden_size",
+          "title": "Hidden width",
+          "kind": "integer",
+          "defaultValue": 2,
+          "min": 1,
+          "max": 512
+        },
+        {
+          "key": "bias",
+          "title": "Use bias",
+          "kind": "boolean",
+          "defaultValue": true
+        },
+        {
+          "key": "state_mode",
+          "title": "Starting state",
+          "kind": "choice",
+          "defaultValue": "zero",
+          "choices": [
+            {
+              "value": "zero",
+              "title": "Start from zeros"
+            },
+            {
+              "value": "supplied",
+              "title": "Use state connections"
+            }
+          ]
+        },
+        {
+          "key": "num_layers",
+          "title": "Layer count",
+          "kind": "integer",
+          "defaultValue": 1,
+          "min": 1,
+          "max": 8
+        },
+        {
+          "key": "bidirectional",
+          "title": "Reverse direction too",
+          "kind": "boolean",
+          "defaultValue": false
+        },
+        {
+          "key": "dropout",
+          "title": "Between-layer dropout",
+          "kind": "number",
+          "defaultValue": 0,
+          "min": 0,
+          "max": 1
+        },
+        {
+          "key": "proj_size",
+          "title": "Projected hidden width",
+          "kind": "integer",
+          "defaultValue": 0,
+          "min": 0,
+          "max": 511
+        }
+      ]
+    },
+    {
+      "id": "gru",
+      "title": "GRU",
+      "category": "Layers",
+      "inputs": [
+        "in",
+        "hidden"
+      ],
+      "outputs": [
+        "out",
+        "hidden"
+      ],
+      "fields": [
+        {
+          "key": "input_size",
+          "title": "Input width",
+          "kind": "integer",
+          "defaultValue": 2,
+          "min": 1,
+          "max": 4096
+        },
+        {
+          "key": "hidden_size",
+          "title": "Hidden width",
+          "kind": "integer",
+          "defaultValue": 2,
+          "min": 1,
+          "max": 512
+        },
+        {
+          "key": "bias",
+          "title": "Use bias",
+          "kind": "boolean",
+          "defaultValue": true
+        },
+        {
+          "key": "state_mode",
+          "title": "Starting state",
+          "kind": "choice",
+          "defaultValue": "zero",
+          "choices": [
+            {
+              "value": "zero",
+              "title": "Start from zeros"
+            },
+            {
+              "value": "supplied",
+              "title": "Use state connections"
+            }
+          ]
+        },
+        {
+          "key": "num_layers",
+          "title": "Layer count",
+          "kind": "integer",
+          "defaultValue": 1,
+          "min": 1,
+          "max": 8
+        },
+        {
+          "key": "bidirectional",
+          "title": "Reverse direction too",
+          "kind": "boolean",
+          "defaultValue": false
+        },
+        {
+          "key": "dropout",
+          "title": "Between-layer dropout",
+          "kind": "number",
+          "defaultValue": 0,
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    {
+      "id": "rnn_cell",
+      "title": "RNN Cell",
+      "category": "Layers",
+      "inputs": [
+        "in",
+        "hidden"
+      ],
+      "outputs": [
+        "out",
+        "hidden"
+      ],
+      "fields": [
+        {
+          "key": "input_size",
+          "title": "Input width",
+          "kind": "integer",
+          "defaultValue": 2,
+          "min": 1,
+          "max": 4096
+        },
+        {
+          "key": "hidden_size",
+          "title": "Hidden width",
+          "kind": "integer",
+          "defaultValue": 2,
+          "min": 1,
+          "max": 512
+        },
+        {
+          "key": "bias",
+          "title": "Use bias",
+          "kind": "boolean",
+          "defaultValue": true
+        },
+        {
+          "key": "state_mode",
+          "title": "Starting state",
+          "kind": "choice",
+          "defaultValue": "zero",
+          "choices": [
+            {
+              "value": "zero",
+              "title": "Start from zeros"
+            },
+            {
+              "value": "supplied",
+              "title": "Use state connections"
+            }
+          ]
+        },
+        {
+          "key": "nonlinearity",
+          "title": "Behavior",
+          "kind": "choice",
+          "defaultValue": "tanh",
+          "choices": [
+            {
+              "value": "tanh",
+              "title": "Smooth bounded response"
+            },
+            {
+              "value": "relu",
+              "title": "Keep positive values"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lstm_cell",
+      "title": "LSTM Cell",
+      "category": "Layers",
+      "inputs": [
+        "in",
+        "hidden",
+        "cell"
+      ],
+      "outputs": [
+        "out",
+        "hidden",
+        "cell"
+      ],
+      "fields": [
+        {
+          "key": "input_size",
+          "title": "Input width",
+          "kind": "integer",
+          "defaultValue": 2,
+          "min": 1,
+          "max": 4096
+        },
+        {
+          "key": "hidden_size",
+          "title": "Hidden width",
+          "kind": "integer",
+          "defaultValue": 2,
+          "min": 1,
+          "max": 512
+        },
+        {
+          "key": "bias",
+          "title": "Use bias",
+          "kind": "boolean",
+          "defaultValue": true
+        },
+        {
+          "key": "state_mode",
+          "title": "Starting state",
+          "kind": "choice",
+          "defaultValue": "zero",
+          "choices": [
+            {
+              "value": "zero",
+              "title": "Start from zeros"
+            },
+            {
+              "value": "supplied",
+              "title": "Use state connections"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gru_cell",
+      "title": "GRU Cell",
+      "category": "Layers",
+      "inputs": [
+        "in",
+        "hidden"
+      ],
+      "outputs": [
+        "out",
+        "hidden"
+      ],
+      "fields": [
+        {
+          "key": "input_size",
+          "title": "Input width",
+          "kind": "integer",
+          "defaultValue": 2,
+          "min": 1,
+          "max": 4096
+        },
+        {
+          "key": "hidden_size",
+          "title": "Hidden width",
+          "kind": "integer",
+          "defaultValue": 2,
+          "min": 1,
+          "max": 512
+        },
+        {
+          "key": "bias",
+          "title": "Use bias",
+          "kind": "boolean",
+          "defaultValue": true
+        },
+        {
+          "key": "state_mode",
+          "title": "Starting state",
+          "kind": "choice",
+          "defaultValue": "zero",
+          "choices": [
+            {
+              "value": "zero",
+              "title": "Start from zeros"
+            },
+            {
+              "value": "supplied",
+              "title": "Use state connections"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "multihead_attention",
+      "title": "Multihead attention",
+      "category": "Attention",
+      "inputs": [
+        "query",
+        "key",
+        "value",
+        "attn_mask",
+        "key_padding_mask"
+      ],
+      "outputs": [
+        "out",
+        "weights"
+      ],
+      "fields": [
+        {
+          "key": "embed_dim",
+          "title": "Model value count",
+          "kind": "integer",
+          "defaultValue": 4,
+          "min": 1,
+          "max": 512
+        },
+        {
+          "key": "num_heads",
+          "title": "Comparison groups",
+          "kind": "integer",
+          "defaultValue": 2,
+          "min": 1,
+          "max": 32
+        },
+        {
+          "key": "kdim",
+          "title": "Key value count",
+          "kind": "integer",
+          "defaultValue": null,
+          "min": 1,
+          "max": 4096,
+          "allowsNull": true,
+          "enabledValue": 4
+        },
+        {
+          "key": "vdim",
+          "title": "Value value count",
+          "kind": "integer",
+          "defaultValue": null,
+          "min": 1,
+          "max": 4096,
+          "allowsNull": true,
+          "enabledValue": 4
+        },
+        {
+          "key": "dropout",
+          "title": "Drop probability",
+          "kind": "number",
+          "defaultValue": 0,
+          "min": 0,
+          "max": 1
+        },
+        {
+          "key": "bias",
+          "title": "Learned offsets",
+          "kind": "boolean",
+          "defaultValue": true
+        },
+        {
+          "key": "add_bias_kv",
+          "title": "Add learned source position",
+          "kind": "boolean",
+          "defaultValue": false
+        },
+        {
+          "key": "add_zero_attn",
+          "title": "Add empty source position",
+          "kind": "boolean",
+          "defaultValue": false
+        },
+        {
+          "key": "return_weights",
+          "title": "Show connection weights",
+          "kind": "boolean",
+          "defaultValue": true
+        },
+        {
+          "key": "average_weights",
+          "title": "Combine group weights",
+          "kind": "boolean",
+          "defaultValue": true
+        },
+        {
+          "key": "attention_mask_mode",
+          "title": "Blocked connections",
+          "kind": "choice",
+          "defaultValue": "none",
+          "choices": [
+            {
+              "value": "none",
+              "title": "Allow all"
+            },
+            {
+              "value": "causal",
+              "title": "Earlier positions only"
+            },
+            {
+              "value": "supplied",
+              "title": "Use mask connection"
+            }
+          ]
+        },
+        {
+          "key": "padding_mask_mode",
+          "title": "Blocked source positions",
+          "kind": "choice",
+          "defaultValue": "none",
+          "choices": [
+            {
+              "value": "none",
+              "title": "Allow all"
+            },
+            {
+              "value": "supplied",
+              "title": "Use mask connection"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "transformer",
+      "title": "Transformer",
+      "category": "Attention",
+      "inputs": [
+        "source",
+        "target",
+        "src_mask",
+        "tgt_mask",
+        "memory_mask",
+        "src_key_padding_mask",
+        "tgt_key_padding_mask",
+        "memory_key_padding_mask"
+      ],
+      "outputs": [
+        "out"
+      ],
+      "fields": [
+        {
+          "key": "d_model",
+          "title": "Model value count",
+          "kind": "integer",
+          "defaultValue": 4,
+          "min": 1,
+          "max": 512
+        },
+        {
+          "key": "nhead",
+          "title": "Comparison groups",
+          "kind": "integer",
+          "defaultValue": 2,
+          "min": 1,
+          "max": 32
+        },
+        {
+          "key": "dim_feedforward",
+          "title": "Inner value count",
+          "kind": "integer",
+          "defaultValue": 8,
+          "min": 1,
+          "max": 4096
+        },
+        {
+          "key": "dropout",
+          "title": "Drop probability",
+          "kind": "number",
+          "defaultValue": 0,
+          "min": 0,
+          "max": 1
+        },
+        {
+          "key": "bias",
+          "title": "Learned offsets",
+          "kind": "boolean",
+          "defaultValue": true
+        },
+        {
+          "key": "activation",
+          "title": "Inner behavior",
+          "kind": "choice",
+          "defaultValue": "relu",
+          "choices": [
+            {
+              "value": "relu",
+              "title": "Keep positive values"
+            },
+            {
+              "value": "gelu",
+              "title": "Smooth positive preference"
+            }
+          ]
+        },
+        {
+          "key": "layer_norm_eps",
+          "title": "Normalization safety",
+          "kind": "number",
+          "defaultValue": 1e-05,
+          "min": 1.401298464324817e-45,
+          "max": 3.4028234663852886e+38
+        },
+        {
+          "key": "norm_first",
+          "title": "Normalize before comparisons",
+          "kind": "boolean",
+          "defaultValue": false
+        },
+        {
+          "key": "num_encoder_layers",
+          "title": "Source layers",
+          "kind": "integer",
+          "defaultValue": 1,
+          "min": 1,
+          "max": 8
+        },
+        {
+          "key": "num_decoder_layers",
+          "title": "Requested sequence layers",
+          "kind": "integer",
+          "defaultValue": 1,
+          "min": 1,
+          "max": 8
+        },
+        {
+          "key": "source_mask_mode",
+          "title": "Source blocked connections",
+          "kind": "choice",
+          "defaultValue": "none",
+          "choices": [
+            {
+              "value": "none",
+              "title": "Allow all"
+            },
+            {
+              "value": "causal",
+              "title": "Earlier positions only"
+            },
+            {
+              "value": "supplied",
+              "title": "Use mask connection"
+            }
+          ]
+        },
+        {
+          "key": "target_mask_mode",
+          "title": "Requested blocked connections",
+          "kind": "choice",
+          "defaultValue": "none",
+          "choices": [
+            {
+              "value": "none",
+              "title": "Allow all"
+            },
+            {
+              "value": "causal",
+              "title": "Earlier positions only"
+            },
+            {
+              "value": "supplied",
+              "title": "Use mask connection"
+            }
+          ]
+        },
+        {
+          "key": "memory_mask_mode",
+          "title": "Memory blocked connections",
+          "kind": "choice",
+          "defaultValue": "none",
+          "choices": [
+            {
+              "value": "none",
+              "title": "Allow all"
+            },
+            {
+              "value": "supplied",
+              "title": "Use mask connection"
+            }
+          ]
+        },
+        {
+          "key": "source_padding_mode",
+          "title": "Blocked source positions",
+          "kind": "choice",
+          "defaultValue": "none",
+          "choices": [
+            {
+              "value": "none",
+              "title": "Allow all"
+            },
+            {
+              "value": "supplied",
+              "title": "Use mask connection"
+            }
+          ]
+        },
+        {
+          "key": "target_padding_mode",
+          "title": "Blocked requested positions",
+          "kind": "choice",
+          "defaultValue": "none",
+          "choices": [
+            {
+              "value": "none",
+              "title": "Allow all"
+            },
+            {
+              "value": "supplied",
+              "title": "Use mask connection"
+            }
+          ]
+        },
+        {
+          "key": "memory_padding_mode",
+          "title": "Blocked memory positions",
+          "kind": "choice",
+          "defaultValue": "none",
+          "choices": [
+            {
+              "value": "none",
+              "title": "Allow all"
+            },
+            {
+              "value": "supplied",
+              "title": "Use mask connection"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "transformer_encoder",
+      "title": "Transformer encoder",
+      "category": "Attention",
+      "inputs": [
+        "in",
+        "mask",
+        "src_key_padding_mask"
+      ],
+      "outputs": [
+        "out"
+      ],
+      "fields": [
+        {
+          "key": "d_model",
+          "title": "Model value count",
+          "kind": "integer",
+          "defaultValue": 4,
+          "min": 1,
+          "max": 512
+        },
+        {
+          "key": "nhead",
+          "title": "Comparison groups",
+          "kind": "integer",
+          "defaultValue": 2,
+          "min": 1,
+          "max": 32
+        },
+        {
+          "key": "dim_feedforward",
+          "title": "Inner value count",
+          "kind": "integer",
+          "defaultValue": 8,
+          "min": 1,
+          "max": 4096
+        },
+        {
+          "key": "dropout",
+          "title": "Drop probability",
+          "kind": "number",
+          "defaultValue": 0,
+          "min": 0,
+          "max": 1
+        },
+        {
+          "key": "bias",
+          "title": "Learned offsets",
+          "kind": "boolean",
+          "defaultValue": true
+        },
+        {
+          "key": "activation",
+          "title": "Inner behavior",
+          "kind": "choice",
+          "defaultValue": "relu",
+          "choices": [
+            {
+              "value": "relu",
+              "title": "Keep positive values"
+            },
+            {
+              "value": "gelu",
+              "title": "Smooth positive preference"
+            }
+          ]
+        },
+        {
+          "key": "layer_norm_eps",
+          "title": "Normalization safety",
+          "kind": "number",
+          "defaultValue": 1e-05,
+          "min": 1.401298464324817e-45,
+          "max": 3.4028234663852886e+38
+        },
+        {
+          "key": "norm_first",
+          "title": "Normalize before comparisons",
+          "kind": "boolean",
+          "defaultValue": false
+        },
+        {
+          "key": "num_layers",
+          "title": "Sequence layers",
+          "kind": "integer",
+          "defaultValue": 1,
+          "min": 1,
+          "max": 8
+        },
+        {
+          "key": "final_norm",
+          "title": "Normalize final result",
+          "kind": "boolean",
+          "defaultValue": false
+        },
+        {
+          "key": "mask_mode",
+          "title": "Blocked connections",
+          "kind": "choice",
+          "defaultValue": "none",
+          "choices": [
+            {
+              "value": "none",
+              "title": "Allow all"
+            },
+            {
+              "value": "causal",
+              "title": "Earlier positions only"
+            },
+            {
+              "value": "supplied",
+              "title": "Use mask connection"
+            }
+          ]
+        },
+        {
+          "key": "padding_mask_mode",
+          "title": "Blocked source positions",
+          "kind": "choice",
+          "defaultValue": "none",
+          "choices": [
+            {
+              "value": "none",
+              "title": "Allow all"
+            },
+            {
+              "value": "supplied",
+              "title": "Use mask connection"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "transformer_decoder",
+      "title": "Transformer decoder",
+      "category": "Attention",
+      "inputs": [
+        "target",
+        "memory",
+        "tgt_mask",
+        "memory_mask",
+        "tgt_key_padding_mask",
+        "memory_key_padding_mask"
+      ],
+      "outputs": [
+        "out"
+      ],
+      "fields": [
+        {
+          "key": "d_model",
+          "title": "Model value count",
+          "kind": "integer",
+          "defaultValue": 4,
+          "min": 1,
+          "max": 512
+        },
+        {
+          "key": "nhead",
+          "title": "Comparison groups",
+          "kind": "integer",
+          "defaultValue": 2,
+          "min": 1,
+          "max": 32
+        },
+        {
+          "key": "dim_feedforward",
+          "title": "Inner value count",
+          "kind": "integer",
+          "defaultValue": 8,
+          "min": 1,
+          "max": 4096
+        },
+        {
+          "key": "dropout",
+          "title": "Drop probability",
+          "kind": "number",
+          "defaultValue": 0,
+          "min": 0,
+          "max": 1
+        },
+        {
+          "key": "bias",
+          "title": "Learned offsets",
+          "kind": "boolean",
+          "defaultValue": true
+        },
+        {
+          "key": "activation",
+          "title": "Inner behavior",
+          "kind": "choice",
+          "defaultValue": "relu",
+          "choices": [
+            {
+              "value": "relu",
+              "title": "Keep positive values"
+            },
+            {
+              "value": "gelu",
+              "title": "Smooth positive preference"
+            }
+          ]
+        },
+        {
+          "key": "layer_norm_eps",
+          "title": "Normalization safety",
+          "kind": "number",
+          "defaultValue": 1e-05,
+          "min": 1.401298464324817e-45,
+          "max": 3.4028234663852886e+38
+        },
+        {
+          "key": "norm_first",
+          "title": "Normalize before comparisons",
+          "kind": "boolean",
+          "defaultValue": false
+        },
+        {
+          "key": "num_layers",
+          "title": "Sequence layers",
+          "kind": "integer",
+          "defaultValue": 1,
+          "min": 1,
+          "max": 8
+        },
+        {
+          "key": "final_norm",
+          "title": "Normalize final result",
+          "kind": "boolean",
+          "defaultValue": false
+        },
+        {
+          "key": "target_mask_mode",
+          "title": "Requested blocked connections",
+          "kind": "choice",
+          "defaultValue": "none",
+          "choices": [
+            {
+              "value": "none",
+              "title": "Allow all"
+            },
+            {
+              "value": "causal",
+              "title": "Earlier positions only"
+            },
+            {
+              "value": "supplied",
+              "title": "Use mask connection"
+            }
+          ]
+        },
+        {
+          "key": "memory_mask_mode",
+          "title": "Memory blocked connections",
+          "kind": "choice",
+          "defaultValue": "none",
+          "choices": [
+            {
+              "value": "none",
+              "title": "Allow all"
+            },
+            {
+              "value": "supplied",
+              "title": "Use mask connection"
+            }
+          ]
+        },
+        {
+          "key": "target_padding_mode",
+          "title": "Blocked requested positions",
+          "kind": "choice",
+          "defaultValue": "none",
+          "choices": [
+            {
+              "value": "none",
+              "title": "Allow all"
+            },
+            {
+              "value": "supplied",
+              "title": "Use mask connection"
+            }
+          ]
+        },
+        {
+          "key": "memory_padding_mode",
+          "title": "Blocked memory positions",
+          "kind": "choice",
+          "defaultValue": "none",
+          "choices": [
+            {
+              "value": "none",
+              "title": "Allow all"
+            },
+            {
+              "value": "supplied",
+              "title": "Use mask connection"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scaled_dot_product_attention",
+      "title": "Scaled dot-product attention",
+      "category": "Attention",
+      "inputs": [
+        "query",
+        "key",
+        "value",
+        "mask"
+      ],
+      "outputs": [
+        "out"
+      ],
+      "fields": [
+        {
+          "key": "dropout",
+          "title": "Drop probability",
+          "kind": "number",
+          "defaultValue": 0,
+          "min": 0,
+          "max": 1
+        },
+        {
+          "key": "scale",
+          "title": "Similarity scale",
+          "kind": "number",
+          "defaultValue": null,
+          "min": 1.401298464324817e-45,
+          "max": 3.4028234663852886e+38,
+          "allowsNull": true,
+          "enabledValue": 1
+        },
+        {
+          "key": "mask_mode",
+          "title": "Blocked connections",
+          "kind": "choice",
+          "defaultValue": "none",
+          "choices": [
+            {
+              "value": "none",
+              "title": "Allow all"
+            },
+            {
+              "value": "causal",
+              "title": "Earlier positions only"
+            },
+            {
+              "value": "supplied",
+              "title": "Use mask connection"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "attention_mask",
+      "title": "Attention mask",
+      "category": "Attention",
+      "inputs": [
+        "query",
+        "key"
+      ],
+      "outputs": [
+        "mask",
+        "padding"
+      ],
+      "fields": [
+        {
+          "key": "mode",
+          "title": "Blocked connection mode",
+          "kind": "choice",
+          "defaultValue": "none",
+          "choices": [
+            {
+              "value": "none",
+              "title": "Allow all"
+            },
+            {
+              "value": "causal",
+              "title": "Earlier positions only"
+            },
+            {
+              "value": "blocked",
+              "title": "Choose blocked connections"
+            }
+          ]
+        },
+        {
+          "key": "blocked_queries",
+          "title": "Blocked query positions",
+          "kind": "integerList",
+          "defaultValue": [],
+          "min": 0,
+          "max": 4095,
+          "minItems": 0,
+          "maxItems": 4096
+        },
+        {
+          "key": "blocked_keys",
+          "title": "Blocked key positions",
+          "kind": "integerList",
+          "defaultValue": [],
+          "min": 0,
+          "max": 4095,
+          "minItems": 0,
+          "maxItems": 4096
+        },
+        {
+          "key": "padding_keys",
+          "title": "Blocked source positions",
+          "kind": "integerList",
+          "defaultValue": [],
+          "min": 0,
+          "max": 4095,
+          "minItems": 0,
+          "maxItems": 4096
+        }
+      ]
+    },
+    {
+      "id": "loss_cross_entropy",
+      "title": "CrossEntropyLoss",
+      "category": "Training",
+      "inputs": [],
+      "outputs": [
+        "out"
+      ],
+      "fields": [
+        {
+          "key": "reduction",
+          "title": "Combine scores",
+          "kind": "choice",
+          "defaultValue": "mean",
+          "choices": [
+            {
+              "value": "none",
+              "title": "Keep individual scores"
+            },
+            {
+              "value": "mean",
+              "title": "Mean"
+            },
+            {
+              "value": "sum",
+              "title": "Sum"
+            }
+          ]
+        },
+        {
+          "key": "target_mode",
+          "title": "Desired class format",
+          "kind": "choice",
+          "defaultValue": "class_indices",
+          "choices": [
+            {
+              "value": "class_indices",
+              "title": "Chosen class positions"
+            },
+            {
+              "value": "probabilities",
+              "title": "Class distributions"
+            }
+          ]
+        },
+        {
+          "key": "class_axis",
+          "title": "Class direction",
+          "kind": "integer",
+          "defaultValue": -1,
+          "min": -7,
+          "max": 7
+        },
+        {
+          "key": "class_weights",
+          "title": "Class importance",
+          "kind": "numberList",
+          "defaultValue": [],
+          "min": 0,
+          "max": 3.4028234663852886e+38,
+          "minItems": 0,
+          "maxItems": 512
+        },
+        {
+          "key": "ignore_index",
+          "title": "Ignore class",
+          "kind": "integer",
+          "defaultValue": -100,
+          "min": -2147483648,
+          "max": 2147483647
+        },
+        {
+          "key": "label_smoothing",
+          "title": "Smoothing share",
+          "kind": "number",
+          "defaultValue": 0.0,
+          "min": 0,
+          "max": 1
+        }
+      ]
+    },
+    {
+      "id": "loss_bce_with_logits",
+      "title": "BCEWithLogitsLoss",
+      "category": "Training",
+      "inputs": [],
+      "outputs": [
+        "out"
+      ],
+      "fields": [
+        {
+          "key": "reduction",
+          "title": "Combine scores",
+          "kind": "choice",
+          "defaultValue": "mean",
+          "choices": [
+            {
+              "value": "none",
+              "title": "Keep individual scores"
+            },
+            {
+              "value": "mean",
+              "title": "Mean"
+            },
+            {
+              "value": "sum",
+              "title": "Sum"
+            }
+          ]
+        },
+        {
+          "key": "weight_mode",
+          "title": "Element importance source",
+          "kind": "choice",
+          "defaultValue": "none",
+          "choices": [
+            {
+              "value": "none",
+              "title": "No extra importance"
+            },
+            {
+              "value": "configured",
+              "title": "Configured values"
+            },
+            {
+              "value": "mapped",
+              "title": "Data connection"
+            }
+          ]
+        },
+        {
+          "key": "weight_shape",
+          "title": "Element importance shape",
+          "kind": "integerList",
+          "defaultValue": [],
+          "min": 1,
+          "max": 4096,
+          "minItems": 0,
+          "maxItems": 7
+        },
+        {
+          "key": "weight_values",
+          "title": "Element importance values",
+          "kind": "numberList",
+          "defaultValue": [],
+          "min": 0,
+          "max": 3.4028234663852886e+38,
+          "minItems": 0,
+          "maxItems": 4096
+        },
+        {
+          "key": "pos_weight_mode",
+          "title": "Positive-label importance source",
+          "kind": "choice",
+          "defaultValue": "none",
+          "choices": [
+            {
+              "value": "none",
+              "title": "No extra importance"
+            },
+            {
+              "value": "configured",
+              "title": "Configured values"
+            },
+            {
+              "value": "mapped",
+              "title": "Data connection"
+            }
+          ]
+        },
+        {
+          "key": "pos_weight_shape",
+          "title": "Positive-label importance shape",
+          "kind": "integerList",
+          "defaultValue": [],
+          "min": 1,
+          "max": 4096,
+          "minItems": 0,
+          "maxItems": 7
+        },
+        {
+          "key": "pos_weight_values",
+          "title": "Positive-label importance values",
+          "kind": "numberList",
+          "defaultValue": [],
+          "min": 0,
+          "max": 3.4028234663852886e+38,
+          "minItems": 0,
+          "maxItems": 4096
+        }
+      ]
+    },
+    {
+      "id": "loss_mse",
+      "title": "MSELoss",
+      "category": "Training",
+      "inputs": [],
+      "outputs": [
+        "out"
+      ],
+      "fields": [
+        {
+          "key": "reduction",
+          "title": "Combine scores",
+          "kind": "choice",
+          "defaultValue": "mean",
+          "choices": [
+            {
+              "value": "none",
+              "title": "Keep individual scores"
+            },
+            {
+              "value": "mean",
+              "title": "Mean"
+            },
+            {
+              "value": "sum",
+              "title": "Sum"
+            }
+          ]
+        },
+        {
+          "key": "target_broadcast",
+          "title": "Reuse target directions of size 1",
+          "kind": "boolean",
+          "defaultValue": false
+        }
+      ]
+    },
+    {
+      "id": "loss_l1",
+      "title": "L1Loss",
+      "category": "Training",
+      "inputs": [],
+      "outputs": [
+        "out"
+      ],
+      "fields": [
+        {
+          "key": "reduction",
+          "title": "Combine scores",
+          "kind": "choice",
+          "defaultValue": "mean",
+          "choices": [
+            {
+              "value": "none",
+              "title": "Keep individual scores"
+            },
+            {
+              "value": "mean",
+              "title": "Mean"
+            },
+            {
+              "value": "sum",
+              "title": "Sum"
+            }
+          ]
+        },
+        {
+          "key": "target_broadcast",
+          "title": "Reuse target directions of size 1",
+          "kind": "boolean",
+          "defaultValue": false
+        }
+      ]
+    },
+    {
+      "id": "loss_nll",
+      "title": "NLLLoss",
+      "category": "Training",
+      "inputs": [],
+      "outputs": [
+        "out"
+      ],
+      "fields": [
+        {
+          "key": "reduction",
+          "title": "Combine scores",
+          "kind": "choice",
+          "defaultValue": "mean",
+          "choices": [
+            {
+              "value": "none",
+              "title": "Keep individual scores"
+            },
+            {
+              "value": "mean",
+              "title": "Mean"
+            },
+            {
+              "value": "sum",
+              "title": "Sum"
+            }
+          ]
+        },
+        {
+          "key": "class_axis",
+          "title": "Class direction",
+          "kind": "integer",
+          "defaultValue": -1,
+          "min": -7,
+          "max": 7
+        },
+        {
+          "key": "class_weights",
+          "title": "Class importance",
+          "kind": "numberList",
+          "defaultValue": [],
+          "min": 0,
+          "max": 3.4028234663852886e+38,
+          "minItems": 0,
+          "maxItems": 512
+        },
+        {
+          "key": "ignore_index",
+          "title": "Ignore class",
+          "kind": "integer",
+          "defaultValue": -100,
+          "min": -2147483648,
+          "max": 2147483647
+        }
+      ]
+    },
+    {
+      "id": "loss_kl_div",
+      "title": "KLDivLoss",
+      "category": "Training",
+      "inputs": [],
+      "outputs": [
+        "out"
+      ],
+      "fields": [
+        {
+          "key": "reduction",
+          "title": "Combine scores",
+          "kind": "choice",
+          "defaultValue": "mean",
+          "choices": [
+            {
+              "value": "none",
+              "title": "Keep individual scores"
+            },
+            {
+              "value": "mean",
+              "title": "Mean"
+            },
+            {
+              "value": "sum",
+              "title": "Sum"
+            },
+            {
+              "value": "batchmean",
+              "title": "Total per observation"
+            }
+          ]
+        },
+        {
+          "key": "log_target",
+          "title": "Targets are log-probabilities",
+          "kind": "boolean",
+          "defaultValue": false
+        }
+      ]
+    },
+    {
+      "id": "loss_ctc",
+      "title": "CTCLoss",
+      "category": "Training",
+      "inputs": [],
+      "outputs": [
+        "out"
+      ],
+      "fields": [
+        {
+          "key": "reduction",
+          "title": "Combine scores",
+          "kind": "choice",
+          "defaultValue": "mean",
+          "choices": [
+            {
+              "value": "none",
+              "title": "Keep individual scores"
+            },
+            {
+              "value": "mean",
+              "title": "Mean"
+            },
+            {
+              "value": "sum",
+              "title": "Sum"
+            }
+          ]
+        },
+        {
+          "key": "blank",
+          "title": "Blank class",
+          "kind": "integer",
+          "defaultValue": 0,
+          "min": 0,
+          "max": 511
+        },
+        {
+          "key": "zero_infinity",
+          "title": "Mask impossible alignments",
+          "kind": "boolean",
+          "defaultValue": false
+        },
+        {
+          "key": "target_layout",
+          "title": "Target sequence layout",
+          "kind": "choice",
+          "defaultValue": "padded",
+          "choices": [
+            {
+              "value": "padded",
+              "title": "Padded rows"
+            },
+            {
+              "value": "packed",
+              "title": "Packed active labels"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "loss_triplet_margin",
+      "title": "TripletMarginLoss",
+      "category": "Training",
+      "inputs": [],
+      "outputs": [
+        "out"
+      ],
+      "fields": [
+        {
+          "key": "reduction",
+          "title": "Combine scores",
+          "kind": "choice",
+          "defaultValue": "mean",
+          "choices": [
+            {
+              "value": "none",
+              "title": "Keep individual scores"
+            },
+            {
+              "value": "mean",
+              "title": "Mean"
+            },
+            {
+              "value": "sum",
+              "title": "Sum"
+            }
+          ]
+        },
+        {
+          "key": "margin",
+          "title": "Required distance gap",
+          "kind": "number",
+          "defaultValue": 1.0,
+          "min": 1.401298464324817e-45,
+          "max": 3.4028234663852886e+38
+        },
+        {
+          "key": "p",
+          "title": "Distance power",
+          "kind": "number",
+          "defaultValue": 2.0,
+          "min": 1.401298464324817e-45,
+          "max": 16
+        },
+        {
+          "key": "eps",
+          "title": "Distance cushion",
+          "kind": "number",
+          "defaultValue": 1e-06,
+          "min": 0,
+          "max": 3.4028234663852886e+38
+        },
+        {
+          "key": "swap",
+          "title": "Compare matching example with nonmatch too",
+          "kind": "boolean",
+          "defaultValue": false
+        }
+      ]
+    },
+    {
+      "id": "initialization",
+      "title": "Starting settings",
+      "category": "Training",
+      "inputs": [],
+      "outputs": [
+        "out"
+      ],
+      "fields": []
+    }
+  ]
+}

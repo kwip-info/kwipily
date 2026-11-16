@@ -1,0 +1,4 @@
+person_id,address,record
+001,123 Main St|New York|10001,1220231250.50
+002,"""456 | Oak Ave""|Los Angeles|90001",3420220987.00
+003,789 Pine Rd|Chicago|60601,5620210043.20

@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "adapterID": "kwip.runner.product-execution.v1",
+  "runtimeVersion": "2.14.1",
+  "graphSchemaVersions": [
+    1,
+    2
+  ],
+  "tensor": {
+    "rank": 2,
+    "dtype": "float32",
+    "layout": "denseStrided",
+    "noncontiguous": true,
+    "minimumBatch": 1,
+    "preservesRows": true
+  },
+  "supportedDevices": [
+    "cpu",
+    "mps"
+  ],
+  "availableDevices": [
+    "cpu",
+    "mps"
+  ],
+  "biasModes": [
+    false,
+    true
+  ],
+  "task": {
+    "kind": "binaryClassification",
+    "inputFeatures": 2,
+    "outputFeatures": 2
+  },
+  "limits": {
+    "nodes": 128,
+    "edges": 256,
+    "parameters": 2000000,
+    "configuredWidth": 512,
+    "intermediateWidth": 4096
+  },
+  "operations": {
+    "inference": "boundedGraph",
+    "training": "experimentOwnedAdam",
+    "exactResume": "cpuEpochBoundary",
+    "fineTune": "weightsOnlyFreshOptimizer",
+    "export": "pythonSourceRawTorch"
+  },
+  "finiteChecks": [
+    "sourcePartitions",
+    "initialParameters",
+    "publicForwardInputsOutputs",
+    "inspectedStages",
+    "validationLogitsAndLoss",
+    "trainingLoss"
+  ],
+  "rawModelSemantics": "pytorch"
+}

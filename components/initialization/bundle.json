@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "kind": "trainingControl",
+  "id": "kwip.initialization",
+  "version": 1,
+  "backend": "pytorch",
+  "components": [
+    {
+      "definition": {
+        "id": "initialization",
+        "title": "Starting settings",
+        "category": "Training",
+        "inputs": [],
+        "outputs": [
+          "out"
+        ],
+        "fields": []
+      },
+      "published": true,
+      "configurationVersion": 1,
+      "adapterID": "kwip.runner.initialization",
+      "coverageID": "pytorch.torch.nn.init.xavier_uniform_",
+      "editorExtension": "initializationOwnersV1",
+      "modes": [
+        "xavier-uniform",
+        "seeded-repeat",
+        "kaiming-uniform",
+        "normal",
+        "zeros"
+      ],
+      "presentation": {
+        "theme": "green",
+        "icon": "initialization-v1",
+        "shortTitle": "Starting settings",
+        "purpose": "Choose repeatable starting numbers for specific learned arrays before a fresh training run."
+      },
+      "sources": {
+        "native": "Sources/KwipMLCore/InitializationConfiguration.swift",
+        "worker": "runner/initialization.py",
+        "tests": "runner/tests/test_initialization.py",
+        "evidence": "docs/production/TORCH_INITIALIZATION_CONTRACT_20261009.md"
+      },
+      "runtimeContract": {
+        "version": {
+          "major": 1,
+          "minor": 0,
+          "patch": 0
+        },
+        "adapterID": "kwip.runner.initialization",
+        "recipeSchemaVersions": [
+          1
+        ],
+        "configurationVersions": [
+          1
+        ],
+        "algorithms": [
+          "xavier_uniform",
+          "kaiming_uniform",
+          "normal",
+          "zeros"
+        ],
+        "seedMinimum": 0,
+        "seedMaximum": 9223372036854775807,
+        "seedDerivation": "kwip.initialization.owner-seed.v1",
+        "generatorPlacement": "cpu-float32",
+        "devices": [
+          "cpu",
+          "mps"
+        ],
+        "parameterDTypes": [
+          "float32"
+        ],
+        "maximumRecipeBytes": 32768,
+        "maximumRules": 128,
+        "maximumModelParameters": 200000,
+        "ownerPolicy": "expandedNodeRelativeNativeParameter",
+        "ownerOrder": "nodeThenParameter",
+        "aliasPolicy": "rejectDuplicateParameterIdentity",
+        "fanPolicy": "nativeStoredDimensions",
+        "applicationTiming": "freshAfterLazyBeforeOptimizer",
+        "restoredWeights": "preserve",
+        "candidateCommit": "validateAllBeforeCopy",
+        "preservesParameterIdentity": true,
+        "initializesBuffers": false,
+        "standaloneHelperMaximumBytes": 131072
+      },
+      "learning": {
+        "contentVersion": 1,
+        "updatedAt": "2026-10-09",
+        "lessonIDs": [
+          "assessment.initialization-starting-values",
+          "assessment.initialization-starting-spread"
+        ],
+        "exampleIDs": [
+          "prepared-initialization-starting-values",
+          "prepared-initialization-starting-spread"
+        ],
+        "sources": [
+          "Sources/KwipMLCore/InitializationLearningTask.swift",
+          "Sources/KwipMLCore/InitializationLearningConfiguration.swift",
+          "Sources/KwipMLCore/InitializationLearningSubmission.swift",
+          "Sources/KwipMLCore/InitializationLessonReference.swift",
+          "Sources/KwipMLCore/InitializationLearningExamples.swift",
+          "Sources/KwipMLCore/InitializationCapabilityBridge.swift",
+          "runner/learning_initialization.py",
+          "runner/tests/test_learning_initialization.py",
+          "Tests/KwipMLAppTests/InitializationLearningIntegrationTests.swift",
+          "Tests/KwipMLAppTests/InitializationLearningRuntimeTests.swift",
+          "docs/production/TORCH_INITIALIZATION_APP_LEARNING_20261009.md"
+        ],
+        "paragraphs": [
+          "Learned settings are the numbers training adjusts. Choose starting values for specific weights or bias arrays in the supplied model. A seed repeats the same random starting choices without changing the training random stream.",
+          "Normal chooses values around a center with a chosen spread; Zeros makes selected values zero. Xavier and Kaiming choose a spread from incoming or outgoing connection counts. The typed owner selector uses actual model arrays, with no code or handwritten answers.",
+          "Connect Starting settings and Supplied SGD to Train. Compare measured differences from an independent reference for starting arrays, predictions, the first adjustment, repeated draws and saved-weight reuse. Zero difference means match; these checks do not claim prediction quality or full training continuation."
+        ]
+      }
+    }
+  ]
+}

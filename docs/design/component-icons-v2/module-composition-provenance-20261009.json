@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "created": "2026-10-09",
+  "palette": [
+    "#B78DA7",
+    "#79536E"
+  ],
+  "notes": "Original generated transparent PNG bytes copied without image editing. Existing approved graph Block art unchanged. App resource/catalog registration implemented; native optical acceptance pending.",
+  "assets": [
+    {
+      "id": "composition-sequence-v1",
+      "kind": "sequential",
+      "path": "docs/design/component-icons-v2/composition-sequence-v1.png",
+      "sha256": "cb41f75374830bcbe77454d9b462160c515d6a4a226be2184d537d40ec13c6e4",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "generator": "image_gen.imagegen",
+      "transparentBackground": true,
+      "alphaCheck": "RGBA8 noninterlaced; transparent top-left pixel",
+      "concept": "Three connected steps with directional arrows",
+      "reference": "Sources/KwipMLApp/Resources/ComponentIcons/block-v2.png",
+      "referenceSHA256": "a70a1d184d4b889ccff9f3a6a5e19dadacbcbd208c23254d31cc5ec48a1a7407",
+      "sourceFilename": "exec-fcf5ac0d-b1b8-41ef-81c3-719d20c5ba8a.png",
+      "status": "registered-in-source-native-optical-check-pending",
+      "resourcePath": "Sources/KwipMLApp/Resources/ComponentIcons/composition-sequence-v1.png"
+    },
+    {
+      "id": "composition-ordered-v1",
+      "kind": "orderedList",
+      "path": "docs/design/component-icons-v2/composition-ordered-v1.png",
+      "sha256": "559a89770b3cae4f52bbb2e06ae991cfed24d4b4c8eb1056c2b92c5ddc263f04",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "generator": "image_gen.imagegen",
+      "transparentBackground": true,
+      "alphaCheck": "RGBA8 noninterlaced; transparent top-left pixel",
+      "concept": "Ordered rack with separate index squares; no sequence arrows",
+      "reference": "Sources/KwipMLApp/Resources/ComponentIcons/block-v2.png",
+      "referenceSHA256": "a70a1d184d4b889ccff9f3a6a5e19dadacbcbd208c23254d31cc5ec48a1a7407",
+      "sourceFilename": "exec-e7a3b497-3f59-4a6e-bdc6-7f31a3ec57e8.png",
+      "status": "registered-in-source-native-optical-check-pending",
+      "resourcePath": "Sources/KwipMLApp/Resources/ComponentIcons/composition-ordered-v1.png"
+    },
+    {
+      "id": "composition-named-v1",
+      "kind": "namedMap",
+      "path": "docs/design/component-icons-v2/composition-named-v1.png",
+      "sha256": "005941894c555cfcdd729ff7b9cc25c3a0fcea3e381a7e9cfb890622376f9851",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "generator": "image_gen.imagegen",
+      "transparentBackground": true,
+      "alphaCheck": "RGBA8 noninterlaced; transparent top-left pixel",
+      "concept": "Named rack using distinct geometric name tokens",
+      "reference": "Sources/KwipMLApp/Resources/ComponentIcons/block-v2.png",
+      "referenceSHA256": "a70a1d184d4b889ccff9f3a6a5e19dadacbcbd208c23254d31cc5ec48a1a7407",
+      "sourceFilename": "exec-7da30bd5-ae45-495c-b4c1-568005396891.png",
+      "status": "registered-in-source-native-optical-check-pending",
+      "resourcePath": "Sources/KwipMLApp/Resources/ComponentIcons/composition-named-v1.png"
+    }
+  ],
+  "nativeReview": {
+    "status": "representative-native-optical-check-passed",
+    "receipt": "docs/production/TORCH_COMPOSITION_NATIVE_20261009.md",
+    "candidateSource": "53e4eb2",
+    "scope": "Three distinct generated container icons visible in actual paired lesson canvas; exhaustive light/dark/accessibility matrix remains final UAT."
+  }
+}

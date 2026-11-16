@@ -1,0 +1,675 @@
+{
+  "definitions": [],
+  "drafts": [],
+  "edges": [
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "source"
+        },
+        "port": "table"
+      },
+      "id": "C6D4B5A8-EFAE-4B27-AF1F-B5D6AD87B5F3",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "cancel"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "source"
+        },
+        "port": "table"
+      },
+      "id": "96362183-B418-45CF-ACE1-11794CA4BE52",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "trim"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "trim"
+        },
+        "port": "table"
+      },
+      "id": "490ED585-CECB-4764-8940-78B268608BA7",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "missing"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "cancel"
+        },
+        "port": "matching"
+      },
+      "id": "B7042C9A-8A03-445E-8AA1-6CC129A4B3AA",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "cancelout"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "cancelout"
+        },
+        "port": "table"
+      },
+      "id": "D01A51E5-67C7-407B-8261-DCC095FCE997",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "cancelview"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "missing"
+        },
+        "port": "matching"
+      },
+      "id": "3B6C0007-B64A-45BB-8AB6-D584623C2707",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "missingout"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "missingout"
+        },
+        "port": "table"
+      },
+      "id": "C47ECACC-55C0-47B4-AB4B-3B971E2FABA3",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "missingview"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "invalidout"
+        },
+        "port": "table"
+      },
+      "id": "F644AF4B-98DA-464F-A0E8-F88E0EDEE722",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "invalidview"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "source"
+        },
+        "port": "table"
+      },
+      "id": "6C422BDD-113C-4515-8E80-863ACE819DC7",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "numericCopies"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "numericCopies"
+        },
+        "port": "table"
+      },
+      "id": "A2390538-1EE4-4252-8A67-B51C1B56CE8E",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "numericCast"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "numericCast"
+        },
+        "port": "table"
+      },
+      "id": "4407FF01-D5EA-4B47-A8C9-0DC4FA187D27",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "invalid"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "invalid"
+        },
+        "port": "matching"
+      },
+      "id": "BA69AE07-D97B-4A28-9AF3-7724DD1757D4",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "invalidout"
+        },
+        "port": "table"
+      }
+    }
+  ],
+  "kind": "workflowProject",
+  "name": "Review sales exceptions",
+  "nodes": [
+    {
+      "address": {
+        "domain": "data",
+        "localID": "source"
+      },
+      "name": "Sales records",
+      "payload": {
+        "config": {
+          "commentPrefix": "",
+          "emptyField": "text",
+          "encoding": "utf-8-sig",
+          "format": "csv",
+          "headerMode": "firstRecord",
+          "ignoreErrors": false,
+          "inferSchema": false,
+          "nullMarkers": [],
+          "parserProfile": "polars",
+          "quoteChar": "\"",
+          "schemaOverrides": {
+            "Country": "String",
+            "CustomerID": "String",
+            "Description": "String",
+            "InvoiceDate": "String",
+            "InvoiceNo": "String",
+            "Quantity": "String",
+            "SourceRowID": "String",
+            "StockCode": "String",
+            "UnitPrice": "String"
+          },
+          "separator": ",",
+          "skipBlankRecords": false,
+          "skipLines": 0,
+          "skipRecords": 0,
+          "skipRowsAfterHeader": 0,
+          "tryParseDates": false
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.sourceCSV"
+      },
+      "x": 0,
+      "y": 180
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "trim"
+      },
+      "name": "Check customer whitespace · preserve original fields",
+      "payload": {
+        "config": {
+          "operations": [
+            {
+              "expression": "trim([CustomerID])",
+              "id": "customer-review-text",
+              "nullPolicy": "preserve",
+              "outputs": [
+                {
+                  "dtype": "string",
+                  "name": "__review_customer_trimmed",
+                  "write": "new"
+                }
+              ]
+            }
+          ]
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.formula"
+      },
+      "x": 300,
+      "y": 350
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "cancel"
+      },
+      "name": "Cancellation review · invoice starts C after whitespace",
+      "payload": {
+        "config": {
+          "column": "InvoiceNo",
+          "conditions": [],
+          "expression": "",
+          "flags": [
+            "ignoreCase"
+          ],
+          "match": "all",
+          "matchMode": "search",
+          "mode": "pattern",
+          "nullPolicy": "nonmatching",
+          "pattern": "^\\s*C"
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.filterRows"
+      },
+      "x": 600,
+      "y": 0
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "missing"
+      },
+      "name": "Missing customer review · null or blank",
+      "payload": {
+        "config": {
+          "column": "feature",
+          "conditions": [
+            {
+              "caseSensitive": true,
+              "column": "__review_customer_trimmed",
+              "comparison": "isMissing",
+              "value": null
+            },
+            {
+              "caseSensitive": true,
+              "column": "__review_customer_trimmed",
+              "comparison": "eq",
+              "value": ""
+            }
+          ],
+          "expression": "[feature] > 0",
+          "flags": [],
+          "match": "any",
+          "matchMode": "search",
+          "mode": "simple",
+          "nullPolicy": "nonmatching",
+          "pattern": ".+"
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.filterRows"
+      },
+      "x": 600,
+      "y": 350
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "cancelout"
+      },
+      "name": "Cancellation report",
+      "payload": {
+        "config": {
+          "columns": [
+            "SourceRowID",
+            "InvoiceNo",
+            "StockCode",
+            "Description",
+            "Quantity",
+            "InvoiceDate",
+            "UnitPrice",
+            "CustomerID",
+            "Country"
+          ],
+          "destination": "file",
+          "filename": "sales-exceptions-cancelout.csv",
+          "format": "csv",
+          "overwrite": false,
+          "separator": ","
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.outputDelimited"
+      },
+      "x": 900,
+      "y": 0
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "cancelview"
+      },
+      "name": "View cancellation review",
+      "payload": {
+        "config": {},
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.view"
+      },
+      "x": 1200,
+      "y": 0
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "missingout"
+      },
+      "name": "Missing customer report",
+      "payload": {
+        "config": {
+          "columns": [
+            "SourceRowID",
+            "InvoiceNo",
+            "StockCode",
+            "Description",
+            "Quantity",
+            "InvoiceDate",
+            "UnitPrice",
+            "CustomerID",
+            "Country"
+          ],
+          "destination": "file",
+          "filename": "sales-exceptions-missingout.csv",
+          "format": "csv",
+          "overwrite": false,
+          "separator": ","
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.outputDelimited"
+      },
+      "x": 900,
+      "y": 350
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "missingview"
+      },
+      "name": "View missing customer review",
+      "payload": {
+        "config": {},
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.view"
+      },
+      "x": 1200,
+      "y": 350
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "invalidout"
+      },
+      "name": "Invalid value report",
+      "payload": {
+        "config": {
+          "columns": [
+            "SourceRowID",
+            "InvoiceNo",
+            "StockCode",
+            "Description",
+            "Quantity",
+            "InvoiceDate",
+            "UnitPrice",
+            "CustomerID",
+            "Country"
+          ],
+          "destination": "file",
+          "filename": "sales-exceptions-invalidout.csv",
+          "format": "csv",
+          "overwrite": false,
+          "separator": ","
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.outputDelimited"
+      },
+      "x": 900,
+      "y": 700
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "invalidview"
+      },
+      "name": "View invalid value review",
+      "payload": {
+        "config": {},
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.view"
+      },
+      "x": 1200,
+      "y": 700
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "numericCopies"
+      },
+      "name": "Copy quantity and price for review · originals unchanged",
+      "payload": {
+        "config": {
+          "operations": [
+            {
+              "expression": "[Quantity]",
+              "id": "numeric-copy-0",
+              "nullPolicy": "preserve",
+              "outputs": [
+                {
+                  "dtype": "string",
+                  "name": "__review_quantity_number",
+                  "write": "new"
+                }
+              ]
+            },
+            {
+              "expression": "[UnitPrice]",
+              "id": "numeric-copy-1",
+              "nullPolicy": "preserve",
+              "outputs": [
+                {
+                  "dtype": "string",
+                  "name": "__review_unit_price_number",
+                  "write": "new"
+                }
+              ]
+            }
+          ]
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.formula"
+      },
+      "x": 240,
+      "y": 700
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "numericCast"
+      },
+      "name": "Read numeric helpers · failed casts become missing",
+      "payload": {
+        "config": {
+          "castFailure": "null",
+          "missingPolicy": "preserve",
+          "newColumns": "keep",
+          "rows": [
+            {
+              "included": true,
+              "outputName": "SourceRowID",
+              "source": "SourceRowID",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "InvoiceNo",
+              "source": "InvoiceNo",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "StockCode",
+              "source": "StockCode",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "Description",
+              "source": "Description",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "Quantity",
+              "source": "Quantity",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "InvoiceDate",
+              "source": "InvoiceDate",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "UnitPrice",
+              "source": "UnitPrice",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "CustomerID",
+              "source": "CustomerID",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "Country",
+              "source": "Country",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "__review_quantity_number",
+              "source": "__review_quantity_number",
+              "targetType": "float64"
+            },
+            {
+              "included": true,
+              "outputName": "__review_unit_price_number",
+              "source": "__review_unit_price_number",
+              "targetType": "float64"
+            }
+          ],
+          "trimText": true
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.columns"
+      },
+      "x": 450,
+      "y": 700
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "invalid"
+      },
+      "name": "Invalid value review · either missing or nonpositive helper",
+      "payload": {
+        "config": {
+          "column": "feature",
+          "conditions": [
+            {
+              "caseSensitive": true,
+              "column": "__review_quantity_number",
+              "comparison": "isMissing",
+              "value": null
+            },
+            {
+              "caseSensitive": true,
+              "column": "__review_quantity_number",
+              "comparison": "le",
+              "value": 0
+            },
+            {
+              "caseSensitive": true,
+              "column": "__review_unit_price_number",
+              "comparison": "isMissing",
+              "value": null
+            },
+            {
+              "caseSensitive": true,
+              "column": "__review_unit_price_number",
+              "comparison": "le",
+              "value": 0
+            }
+          ],
+          "expression": "[feature] > 0",
+          "flags": [],
+          "match": "any",
+          "matchMode": "search",
+          "mode": "simple",
+          "nullPolicy": "nonmatching",
+          "pattern": ".+"
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.filterRows"
+      },
+      "x": 680,
+      "y": 700
+    }
+  ],
+  "projectID": "00000000-0000-0000-0000-000000000000",
+  "revision": 0,
+  "schemaVersion": 1
+}

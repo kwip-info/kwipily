@@ -1,0 +1,1169 @@
+{
+  "schemaVersion": 1,
+  "id": "kwip.losses",
+  "version": 1,
+  "backend": "pytorch",
+  "components": [
+    {
+      "definition": {
+        "id": "loss_cross_entropy",
+        "title": "CrossEntropyLoss",
+        "category": "Training",
+        "inputs": [],
+        "outputs": [
+          "out"
+        ],
+        "fields": [
+          {
+            "key": "reduction",
+            "title": "Combine scores",
+            "kind": "choice",
+            "defaultValue": "mean",
+            "choices": [
+              {
+                "value": "none",
+                "title": "Keep individual scores"
+              },
+              {
+                "value": "mean",
+                "title": "Mean"
+              },
+              {
+                "value": "sum",
+                "title": "Sum"
+              }
+            ]
+          },
+          {
+            "key": "target_mode",
+            "title": "Desired class format",
+            "kind": "choice",
+            "defaultValue": "class_indices",
+            "choices": [
+              {
+                "value": "class_indices",
+                "title": "Chosen class positions"
+              },
+              {
+                "value": "probabilities",
+                "title": "Class distributions"
+              }
+            ]
+          },
+          {
+            "key": "class_axis",
+            "title": "Class direction",
+            "kind": "integer",
+            "defaultValue": -1,
+            "min": -7,
+            "max": 7
+          },
+          {
+            "key": "class_weights",
+            "title": "Class importance",
+            "kind": "numberList",
+            "defaultValue": [],
+            "min": 0,
+            "max": 3.4028234663852886e+38,
+            "minItems": 0,
+            "maxItems": 512
+          },
+          {
+            "key": "ignore_index",
+            "title": "Ignore class",
+            "kind": "integer",
+            "defaultValue": -100,
+            "min": -2147483648,
+            "max": 2147483647
+          },
+          {
+            "key": "label_smoothing",
+            "title": "Smoothing share",
+            "kind": "number",
+            "defaultValue": 0.0,
+            "min": 0,
+            "max": 1
+          }
+        ]
+      },
+      "published": true,
+      "configurationVersion": 1,
+      "adapterID": "kwip.runner.objective.loss_cross_entropy",
+      "shapeRuleID": "kwip.recipe.loss_cross_entropy.v1",
+      "presentation": {
+        "theme": "green",
+        "icon": "loss_cross_entropy-v2",
+        "shortTitle": "CrossEntropy",
+        "purpose": "Compare class scores with a chosen class or a desired class distribution."
+      },
+      "outputConditions": {},
+      "sources": {
+        "native": "Sources/KwipMLCore/LossConfiguration.swift",
+        "worker": "runner/loss_configuration.py",
+        "tests": "runner/tests/test_loss_objectives.py",
+        "evidence": "docs/production/TORCH_LOSS_CLOSURE.md"
+      },
+      "runtimeContract": {
+        "version": "1.0.0",
+        "adapterID": "kwip.runner.objective.loss_cross_entropy",
+        "recipeSchemaVersions": [
+          1
+        ],
+        "configurationVersion": 1,
+        "predictionDTypes": [
+          "float32"
+        ],
+        "devices": [
+          "cpu",
+          "mps"
+        ],
+        "predictionRanks": [
+          2,
+          8
+        ],
+        "sampleDimensionMaximum": 4096,
+        "classMinimum": 2,
+        "classMaximum": 512,
+        "classAxisMinimum": -7,
+        "classAxisMaximum": 7,
+        "excludesBatchClassAxis": true,
+        "reductions": [
+          "none",
+          "mean",
+          "sum"
+        ],
+        "scalarizations": [
+          "mean",
+          "sum"
+        ],
+        "targetRoles": [
+          "target"
+        ],
+        "maximumTensorElements": 100000000,
+        "maximumWorkElements": 100000000,
+        "recipeMaximumBytes": 32768,
+        "fixedWeights": "buffers",
+        "mappedWeights": "preparedData",
+        "batchBroadcast": false
+      },
+      "learning": {
+        "contentVersion": 1,
+        "updatedAt": "2026-10-08",
+        "exampleID": "prepared-cross-entropy-classifier",
+        "sourceResource": "loss-cross-entropy-observations",
+        "title": "Choose one class",
+        "subtitle": "Compare three class scores with the desired class.",
+        "disclosureTitle": "How the desired outcome and score connect",
+        "formula": "Compare three class scores with the desired class.",
+        "paragraphs": [
+          "A loss is a score for how far a produced result is from its desired outcome. Connect the recipe to Train\u2019s objective input. The recipe controls scoring; the model blocks still control the produced values.",
+          "Class positions start at 0. The example gives the middle class more importance and reserves a small share for every choice, so the desired answer is less absolute.",
+          "Open the example to inspect the source, explicit column types, held-out split, target-role mapping and model connections. A batch is a group of observations; an epoch is one complete pass through the training observations. This example uses three epochs and keeps one quarter aside for evaluation.",
+          "Mean averages scores and Sum adds them. Keeping individual scores preserves the score table before Train combines it using its selected rule. Inspect the training and held-out scores separately. Class accuracy is available only when a desired class supports that measure; numeric and sequence scores are not presented as classification accuracy.",
+          "A gradient describes how a small change affects the combined score. The matching visual lesson lets you build the scoring connections and inspect this input influence without writing code or calculating derivatives. CPU checkpoint continuation restores the scoring configuration and fixed importance values; weights-only fine-tuning starts fresh training memory."
+        ],
+        "buttonTitle": "Open CrossEntropyLoss example",
+        "exampleSource": "Sources/KwipMLCore/WorkflowLossExamples.swift",
+        "lessonIDs": [
+          "assessment.cross-entropy-class-choice"
+        ]
+      }
+    },
+    {
+      "definition": {
+        "id": "loss_bce_with_logits",
+        "title": "BCEWithLogitsLoss",
+        "category": "Training",
+        "inputs": [],
+        "outputs": [
+          "out"
+        ],
+        "fields": [
+          {
+            "key": "reduction",
+            "title": "Combine scores",
+            "kind": "choice",
+            "defaultValue": "mean",
+            "choices": [
+              {
+                "value": "none",
+                "title": "Keep individual scores"
+              },
+              {
+                "value": "mean",
+                "title": "Mean"
+              },
+              {
+                "value": "sum",
+                "title": "Sum"
+              }
+            ]
+          },
+          {
+            "key": "weight_mode",
+            "title": "Element importance source",
+            "kind": "choice",
+            "defaultValue": "none",
+            "choices": [
+              {
+                "value": "none",
+                "title": "No extra importance"
+              },
+              {
+                "value": "configured",
+                "title": "Configured values"
+              },
+              {
+                "value": "mapped",
+                "title": "Data connection"
+              }
+            ]
+          },
+          {
+            "key": "weight_shape",
+            "title": "Element importance shape",
+            "kind": "integerList",
+            "defaultValue": [],
+            "min": 1,
+            "max": 4096,
+            "minItems": 0,
+            "maxItems": 7
+          },
+          {
+            "key": "weight_values",
+            "title": "Element importance values",
+            "kind": "numberList",
+            "defaultValue": [],
+            "min": 0,
+            "max": 3.4028234663852886e+38,
+            "minItems": 0,
+            "maxItems": 4096
+          },
+          {
+            "key": "pos_weight_mode",
+            "title": "Positive-label importance source",
+            "kind": "choice",
+            "defaultValue": "none",
+            "choices": [
+              {
+                "value": "none",
+                "title": "No extra importance"
+              },
+              {
+                "value": "configured",
+                "title": "Configured values"
+              },
+              {
+                "value": "mapped",
+                "title": "Data connection"
+              }
+            ]
+          },
+          {
+            "key": "pos_weight_shape",
+            "title": "Positive-label importance shape",
+            "kind": "integerList",
+            "defaultValue": [],
+            "min": 1,
+            "max": 4096,
+            "minItems": 0,
+            "maxItems": 7
+          },
+          {
+            "key": "pos_weight_values",
+            "title": "Positive-label importance values",
+            "kind": "numberList",
+            "defaultValue": [],
+            "min": 0,
+            "max": 3.4028234663852886e+38,
+            "minItems": 0,
+            "maxItems": 4096
+          }
+        ]
+      },
+      "published": true,
+      "configurationVersion": 1,
+      "adapterID": "kwip.runner.objective.loss_bce_with_logits",
+      "shapeRuleID": "kwip.recipe.loss_bce_with_logits.v1",
+      "presentation": {
+        "theme": "green",
+        "icon": "loss_bce_with_logits-v2",
+        "shortTitle": "BCEWithLogits",
+        "purpose": "Compare independent label scores with desired yes/no proportions."
+      },
+      "outputConditions": {},
+      "sources": {
+        "native": "Sources/KwipMLCore/LossConfiguration.swift",
+        "worker": "runner/loss_configuration.py",
+        "tests": "runner/tests/test_loss_objectives.py",
+        "evidence": "docs/production/TORCH_LOSS_CLOSURE.md"
+      },
+      "runtimeContract": {
+        "version": "1.0.0",
+        "adapterID": "kwip.runner.objective.loss_bce_with_logits",
+        "recipeSchemaVersions": [
+          1
+        ],
+        "configurationVersion": 1,
+        "predictionDTypes": [
+          "float32"
+        ],
+        "devices": [
+          "cpu",
+          "mps"
+        ],
+        "predictionRanks": [
+          2,
+          8
+        ],
+        "sampleDimensionMaximum": 4096,
+        "classMinimum": 2,
+        "classMaximum": 512,
+        "classAxisMinimum": -7,
+        "classAxisMaximum": 7,
+        "excludesBatchClassAxis": true,
+        "reductions": [
+          "none",
+          "mean",
+          "sum"
+        ],
+        "scalarizations": [
+          "mean",
+          "sum"
+        ],
+        "targetRoles": [
+          "target",
+          "weight",
+          "pos_weight"
+        ],
+        "maximumTensorElements": 100000000,
+        "maximumWorkElements": 100000000,
+        "recipeMaximumBytes": 32768,
+        "fixedWeights": "buffers",
+        "mappedWeights": "preparedData",
+        "batchBroadcast": false
+      },
+      "learning": {
+        "contentVersion": 1,
+        "updatedAt": "2026-10-08",
+        "exampleID": "prepared-bce-multilabel",
+        "sourceResource": "loss-bce-observations",
+        "title": "Judge independent labels",
+        "subtitle": "Two desired labels can both be true.",
+        "disclosureTitle": "How the desired outcome and score connect",
+        "formula": "Two desired labels can both be true.",
+        "paragraphs": [
+          "A loss is a score for how far a produced result is from its desired outcome. Connect the recipe to Train\u2019s objective input. The recipe controls scoring; the model blocks still control the produced values.",
+          "A desired label is represented by a share from 0 to 1. The example supplies importance for each element from table columns and sets extra importance for positive labels. Keeping individual scores preserves the score table before Train combines it.",
+          "Open the example to inspect the source, explicit column types, held-out split, target-role mapping and model connections. A batch is a group of observations; an epoch is one complete pass through the training observations. This example uses three epochs and keeps one quarter aside for evaluation.",
+          "Mean averages scores and Sum adds them. Keeping individual scores preserves the score table before Train combines it using its selected rule. Inspect the training and held-out scores separately. Class accuracy is available only when a desired class supports that measure; numeric and sequence scores are not presented as classification accuracy.",
+          "A gradient describes how a small change affects the combined score. The matching visual lesson lets you build the scoring connections and inspect this input influence without writing code or calculating derivatives. CPU checkpoint continuation restores the scoring configuration and fixed importance values; weights-only fine-tuning starts fresh training memory."
+        ],
+        "buttonTitle": "Open BCEWithLogitsLoss example",
+        "exampleSource": "Sources/KwipMLCore/WorkflowLossExamples.swift",
+        "lessonIDs": [
+          "assessment.bce-independent-labels"
+        ]
+      }
+    },
+    {
+      "definition": {
+        "id": "loss_mse",
+        "title": "MSELoss",
+        "category": "Training",
+        "inputs": [],
+        "outputs": [
+          "out"
+        ],
+        "fields": [
+          {
+            "key": "reduction",
+            "title": "Combine scores",
+            "kind": "choice",
+            "defaultValue": "mean",
+            "choices": [
+              {
+                "value": "none",
+                "title": "Keep individual scores"
+              },
+              {
+                "value": "mean",
+                "title": "Mean"
+              },
+              {
+                "value": "sum",
+                "title": "Sum"
+              }
+            ]
+          },
+          {
+            "key": "target_broadcast",
+            "title": "Reuse target directions of size 1",
+            "kind": "boolean",
+            "defaultValue": false
+          }
+        ]
+      },
+      "published": true,
+      "configurationVersion": 1,
+      "adapterID": "kwip.runner.objective.loss_mse",
+      "shapeRuleID": "kwip.recipe.loss_mse.v1",
+      "presentation": {
+        "theme": "green",
+        "icon": "loss_mse-v2",
+        "shortTitle": "MSE",
+        "purpose": "Compare predicted numbers with targets using squared errors."
+      },
+      "outputConditions": {},
+      "sources": {
+        "native": "Sources/KwipMLCore/LossConfiguration.swift",
+        "worker": "runner/loss_configuration.py",
+        "tests": "runner/tests/test_loss_objectives.py",
+        "evidence": "docs/production/TORCH_LOSS_CLOSURE.md"
+      },
+      "runtimeContract": {
+        "version": "1.0.0",
+        "adapterID": "kwip.runner.objective.loss_mse",
+        "recipeSchemaVersions": [
+          1
+        ],
+        "configurationVersion": 1,
+        "predictionDTypes": [
+          "float32"
+        ],
+        "devices": [
+          "cpu",
+          "mps"
+        ],
+        "predictionRanks": [
+          2,
+          8
+        ],
+        "sampleDimensionMaximum": 4096,
+        "classMinimum": 2,
+        "classMaximum": 512,
+        "classAxisMinimum": -7,
+        "classAxisMaximum": 7,
+        "excludesBatchClassAxis": true,
+        "reductions": [
+          "none",
+          "mean",
+          "sum"
+        ],
+        "scalarizations": [
+          "mean",
+          "sum"
+        ],
+        "targetRoles": [
+          "target"
+        ],
+        "maximumTensorElements": 100000000,
+        "maximumWorkElements": 100000000,
+        "recipeMaximumBytes": 32768,
+        "fixedWeights": "buffers",
+        "mappedWeights": "preparedData",
+        "batchBroadcast": false
+      },
+      "learning": {
+        "contentVersion": 1,
+        "updatedAt": "2026-10-08",
+        "exampleID": "prepared-mse-regression",
+        "sourceResource": "loss-mse-observations",
+        "title": "Predict a numeric value",
+        "subtitle": "Give larger mistakes more importance.",
+        "disclosureTitle": "How the desired outcome and score connect",
+        "formula": "Give larger mistakes more importance.",
+        "paragraphs": [
+          "A loss is a score for how far a produced result is from its desired outcome. Connect the recipe to Train\u2019s objective input. The recipe controls scoring; the model blocks still control the produced values.",
+          "Squared error multiplies a difference by itself, so a mistake twice as large counts four times as much. This example explicitly reuses one desired value across two produced values within each observation and adds their scores.",
+          "Open the example to inspect the source, explicit column types, held-out split, target-role mapping and model connections. A batch is a group of observations; an epoch is one complete pass through the training observations. This example uses three epochs and keeps one quarter aside for evaluation.",
+          "Mean averages scores and Sum adds them. Keeping individual scores preserves the score table before Train combines it using its selected rule. Inspect the training and held-out scores separately. Class accuracy is available only when a desired class supports that measure; numeric and sequence scores are not presented as classification accuracy.",
+          "A gradient describes how a small change affects the combined score. The matching visual lesson lets you build the scoring connections and inspect this input influence without writing code or calculating derivatives. CPU checkpoint continuation restores the scoring configuration and fixed importance values; weights-only fine-tuning starts fresh training memory."
+        ],
+        "buttonTitle": "Open MSELoss example",
+        "exampleSource": "Sources/KwipMLCore/WorkflowLossExamples.swift",
+        "lessonIDs": [
+          "assessment.mse-error-size"
+        ]
+      }
+    },
+    {
+      "definition": {
+        "id": "loss_l1",
+        "title": "L1Loss",
+        "category": "Training",
+        "inputs": [],
+        "outputs": [
+          "out"
+        ],
+        "fields": [
+          {
+            "key": "reduction",
+            "title": "Combine scores",
+            "kind": "choice",
+            "defaultValue": "mean",
+            "choices": [
+              {
+                "value": "none",
+                "title": "Keep individual scores"
+              },
+              {
+                "value": "mean",
+                "title": "Mean"
+              },
+              {
+                "value": "sum",
+                "title": "Sum"
+              }
+            ]
+          },
+          {
+            "key": "target_broadcast",
+            "title": "Reuse target directions of size 1",
+            "kind": "boolean",
+            "defaultValue": false
+          }
+        ]
+      },
+      "published": true,
+      "configurationVersion": 1,
+      "adapterID": "kwip.runner.objective.loss_l1",
+      "shapeRuleID": "kwip.recipe.loss_l1.v1",
+      "presentation": {
+        "theme": "green",
+        "icon": "loss_l1-v2",
+        "shortTitle": "L1",
+        "purpose": "Compare predicted numbers with targets using absolute errors."
+      },
+      "outputConditions": {},
+      "sources": {
+        "native": "Sources/KwipMLCore/LossConfiguration.swift",
+        "worker": "runner/loss_configuration.py",
+        "tests": "runner/tests/test_loss_objectives.py",
+        "evidence": "docs/production/TORCH_LOSS_CLOSURE.md"
+      },
+      "runtimeContract": {
+        "version": "1.0.0",
+        "adapterID": "kwip.runner.objective.loss_l1",
+        "recipeSchemaVersions": [
+          1
+        ],
+        "configurationVersion": 1,
+        "predictionDTypes": [
+          "float32"
+        ],
+        "devices": [
+          "cpu",
+          "mps"
+        ],
+        "predictionRanks": [
+          2,
+          8
+        ],
+        "sampleDimensionMaximum": 4096,
+        "classMinimum": 2,
+        "classMaximum": 512,
+        "classAxisMinimum": -7,
+        "classAxisMaximum": 7,
+        "excludesBatchClassAxis": true,
+        "reductions": [
+          "none",
+          "mean",
+          "sum"
+        ],
+        "scalarizations": [
+          "mean",
+          "sum"
+        ],
+        "targetRoles": [
+          "target"
+        ],
+        "maximumTensorElements": 100000000,
+        "maximumWorkElements": 100000000,
+        "recipeMaximumBytes": 32768,
+        "fixedWeights": "buffers",
+        "mappedWeights": "preparedData",
+        "batchBroadcast": false
+      },
+      "learning": {
+        "contentVersion": 1,
+        "updatedAt": "2026-10-08",
+        "exampleID": "prepared-l1-regression",
+        "sourceResource": "loss-l1-observations",
+        "title": "Measure numeric distance",
+        "subtitle": "Compare two produced values with their desired values.",
+        "disclosureTitle": "How the desired outcome and score connect",
+        "formula": "Compare two produced values with their desired values.",
+        "paragraphs": [
+          "A loss is a score for how far a produced result is from its desired outcome. Connect the recipe to Train\u2019s objective input. The recipe controls scoring; the model blocks still control the produced values.",
+          "Absolute error is the distance between a produced and desired value without a negative sign. A mistake twice as large counts twice as much. Individual scores remain available before Train combines them.",
+          "Open the example to inspect the source, explicit column types, held-out split, target-role mapping and model connections. A batch is a group of observations; an epoch is one complete pass through the training observations. This example uses three epochs and keeps one quarter aside for evaluation.",
+          "Mean averages scores and Sum adds them. Keeping individual scores preserves the score table before Train combines it using its selected rule. Inspect the training and held-out scores separately. Class accuracy is available only when a desired class supports that measure; numeric and sequence scores are not presented as classification accuracy.",
+          "A gradient describes how a small change affects the combined score. The matching visual lesson lets you build the scoring connections and inspect this input influence without writing code or calculating derivatives. CPU checkpoint continuation restores the scoring configuration and fixed importance values; weights-only fine-tuning starts fresh training memory."
+        ],
+        "buttonTitle": "Open L1Loss example",
+        "exampleSource": "Sources/KwipMLCore/WorkflowLossExamples.swift",
+        "lessonIDs": [
+          "assessment.l1-absolute-error"
+        ]
+      }
+    },
+    {
+      "definition": {
+        "id": "loss_nll",
+        "title": "NLLLoss",
+        "category": "Training",
+        "inputs": [],
+        "outputs": [
+          "out"
+        ],
+        "fields": [
+          {
+            "key": "reduction",
+            "title": "Combine scores",
+            "kind": "choice",
+            "defaultValue": "mean",
+            "choices": [
+              {
+                "value": "none",
+                "title": "Keep individual scores"
+              },
+              {
+                "value": "mean",
+                "title": "Mean"
+              },
+              {
+                "value": "sum",
+                "title": "Sum"
+              }
+            ]
+          },
+          {
+            "key": "class_axis",
+            "title": "Class direction",
+            "kind": "integer",
+            "defaultValue": -1,
+            "min": -7,
+            "max": 7
+          },
+          {
+            "key": "class_weights",
+            "title": "Class importance",
+            "kind": "numberList",
+            "defaultValue": [],
+            "min": 0,
+            "max": 3.4028234663852886e+38,
+            "minItems": 0,
+            "maxItems": 512
+          },
+          {
+            "key": "ignore_index",
+            "title": "Ignore class",
+            "kind": "integer",
+            "defaultValue": -100,
+            "min": -2147483648,
+            "max": 2147483647
+          }
+        ]
+      },
+      "published": true,
+      "configurationVersion": 1,
+      "adapterID": "kwip.runner.objective.loss_nll",
+      "shapeRuleID": "kwip.recipe.loss_nll.v1",
+      "presentation": {
+        "theme": "green",
+        "icon": "loss_nll-v2",
+        "shortTitle": "NLL",
+        "purpose": "Compare class log-probabilities with chosen classes."
+      },
+      "outputConditions": {},
+      "sources": {
+        "native": "Sources/KwipMLCore/LossConfiguration.swift",
+        "worker": "runner/loss_configuration.py",
+        "tests": "runner/tests/test_loss_objectives.py",
+        "evidence": "docs/production/TORCH_LOSS_CLOSURE.md"
+      },
+      "runtimeContract": {
+        "version": "1.0.0",
+        "adapterID": "kwip.runner.objective.loss_nll",
+        "recipeSchemaVersions": [
+          1
+        ],
+        "configurationVersion": 1,
+        "predictionDTypes": [
+          "float32"
+        ],
+        "devices": [
+          "cpu",
+          "mps"
+        ],
+        "predictionRanks": [
+          2,
+          8
+        ],
+        "sampleDimensionMaximum": 4096,
+        "classMinimum": 2,
+        "classMaximum": 512,
+        "classAxisMinimum": -7,
+        "classAxisMaximum": 7,
+        "excludesBatchClassAxis": true,
+        "reductions": [
+          "none",
+          "mean",
+          "sum"
+        ],
+        "scalarizations": [
+          "mean",
+          "sum"
+        ],
+        "targetRoles": [
+          "target"
+        ],
+        "maximumTensorElements": 100000000,
+        "maximumWorkElements": 100000000,
+        "recipeMaximumBytes": 32768,
+        "fixedWeights": "buffers",
+        "mappedWeights": "preparedData",
+        "batchBroadcast": false
+      },
+      "learning": {
+        "contentVersion": 1,
+        "updatedAt": "2026-10-08",
+        "exampleID": "prepared-nll-classifier",
+        "sourceResource": "loss-nll-observations",
+        "title": "Use prepared class probabilities",
+        "subtitle": "Visibly prepare probabilities before scoring the chosen class.",
+        "disclosureTitle": "How the desired outcome and score connect",
+        "formula": "Visibly prepare probabilities before scoring the chosen class.",
+        "paragraphs": [
+          "A loss is a score for how far a produced result is from its desired outcome. Connect the recipe to Train\u2019s objective input. The recipe controls scoring; the model blocks still control the produced values.",
+          "A log-probability is a logarithmic representation of a probability. The visible LogSoftmax block converts three scores to that format. The scoring recipe uses the desired class and does not repeat that conversion invisibly.",
+          "Open the example to inspect the source, explicit column types, held-out split, target-role mapping and model connections. A batch is a group of observations; an epoch is one complete pass through the training observations. This example uses three epochs and keeps one quarter aside for evaluation.",
+          "Mean averages scores and Sum adds them. Keeping individual scores preserves the score table before Train combines it using its selected rule. Inspect the training and held-out scores separately. Class accuracy is available only when a desired class supports that measure; numeric and sequence scores are not presented as classification accuracy.",
+          "A gradient describes how a small change affects the combined score. The matching visual lesson lets you build the scoring connections and inspect this input influence without writing code or calculating derivatives. CPU checkpoint continuation restores the scoring configuration and fixed importance values; weights-only fine-tuning starts fresh training memory."
+        ],
+        "buttonTitle": "Open NLLLoss example",
+        "exampleSource": "Sources/KwipMLCore/WorkflowLossExamples.swift",
+        "lessonIDs": [
+          "assessment.nll-log-probability-choice"
+        ]
+      }
+    },
+    {
+      "definition": {
+        "id": "loss_kl_div",
+        "title": "KLDivLoss",
+        "category": "Training",
+        "inputs": [],
+        "outputs": [
+          "out"
+        ],
+        "fields": [
+          {
+            "key": "reduction",
+            "title": "Combine scores",
+            "kind": "choice",
+            "defaultValue": "mean",
+            "choices": [
+              {
+                "value": "none",
+                "title": "Keep individual scores"
+              },
+              {
+                "value": "mean",
+                "title": "Mean"
+              },
+              {
+                "value": "sum",
+                "title": "Sum"
+              },
+              {
+                "value": "batchmean",
+                "title": "Total per observation"
+              }
+            ]
+          },
+          {
+            "key": "log_target",
+            "title": "Targets are log-probabilities",
+            "kind": "boolean",
+            "defaultValue": false
+          }
+        ]
+      },
+      "published": true,
+      "configurationVersion": 1,
+      "adapterID": "kwip.runner.objective.loss_kl_div",
+      "shapeRuleID": "kwip.recipe.loss_kl_div.v1",
+      "presentation": {
+        "theme": "green",
+        "icon": "loss_kl_div-v2",
+        "shortTitle": "KLDiv",
+        "purpose": "Compare one probability distribution with another."
+      },
+      "outputConditions": {},
+      "sources": {
+        "native": "Sources/KwipMLCore/LossConfiguration.swift",
+        "worker": "runner/loss_configuration.py",
+        "tests": "runner/tests/test_loss_objectives.py",
+        "evidence": "docs/production/TORCH_LOSS_CLOSURE.md"
+      },
+      "runtimeContract": {
+        "version": "1.0.0",
+        "adapterID": "kwip.runner.objective.loss_kl_div",
+        "recipeSchemaVersions": [
+          1
+        ],
+        "configurationVersion": 1,
+        "predictionDTypes": [
+          "float32"
+        ],
+        "devices": [
+          "cpu",
+          "mps"
+        ],
+        "predictionRanks": [
+          2,
+          8
+        ],
+        "sampleDimensionMaximum": 4096,
+        "classMinimum": 2,
+        "classMaximum": 512,
+        "classAxisMinimum": -7,
+        "classAxisMaximum": 7,
+        "excludesBatchClassAxis": true,
+        "reductions": [
+          "none",
+          "mean",
+          "sum",
+          "batchmean"
+        ],
+        "scalarizations": [
+          "mean",
+          "sum"
+        ],
+        "targetRoles": [
+          "target"
+        ],
+        "maximumTensorElements": 100000000,
+        "maximumWorkElements": 100000000,
+        "recipeMaximumBytes": 32768,
+        "fixedWeights": "buffers",
+        "mappedWeights": "preparedData",
+        "batchBroadcast": false
+      },
+      "learning": {
+        "contentVersion": 1,
+        "updatedAt": "2026-10-08",
+        "exampleID": "prepared-kl-distribution",
+        "sourceResource": "loss-kl-observations",
+        "title": "Compare desired shares",
+        "subtitle": "Compare distributions over three possible answers.",
+        "disclosureTitle": "How the desired outcome and score connect",
+        "formula": "Compare distributions over three possible answers.",
+        "paragraphs": [
+          "A loss is a score for how far a produced result is from its desired outcome. Connect the recipe to Train\u2019s objective input. The recipe controls scoring; the model blocks still control the produced values.",
+          "A distribution gives a share to every possible answer. The table supplies desired shares in logarithmic form, and LogSoftmax visibly prepares produced shares. Total per observation adds class contributions before averaging observations.",
+          "Open the example to inspect the source, explicit column types, held-out split, target-role mapping and model connections. A batch is a group of observations; an epoch is one complete pass through the training observations. This example uses three epochs and keeps one quarter aside for evaluation.",
+          "Mean averages scores and Sum adds them. Keeping individual scores preserves the score table before Train combines it using its selected rule. Inspect the training and held-out scores separately. Class accuracy is available only when a desired class supports that measure; numeric and sequence scores are not presented as classification accuracy.",
+          "A gradient describes how a small change affects the combined score. The matching visual lesson lets you build the scoring connections and inspect this input influence without writing code or calculating derivatives. CPU checkpoint continuation restores the scoring configuration and fixed importance values; weights-only fine-tuning starts fresh training memory."
+        ],
+        "buttonTitle": "Open KLDivLoss example",
+        "exampleSource": "Sources/KwipMLCore/WorkflowLossExamples.swift",
+        "lessonIDs": [
+          "assessment.kl-distribution-comparison"
+        ]
+      }
+    },
+    {
+      "definition": {
+        "id": "loss_ctc",
+        "title": "CTCLoss",
+        "category": "Training",
+        "inputs": [],
+        "outputs": [
+          "out"
+        ],
+        "fields": [
+          {
+            "key": "reduction",
+            "title": "Combine scores",
+            "kind": "choice",
+            "defaultValue": "mean",
+            "choices": [
+              {
+                "value": "none",
+                "title": "Keep individual scores"
+              },
+              {
+                "value": "mean",
+                "title": "Mean"
+              },
+              {
+                "value": "sum",
+                "title": "Sum"
+              }
+            ]
+          },
+          {
+            "key": "blank",
+            "title": "Blank class",
+            "kind": "integer",
+            "defaultValue": 0,
+            "min": 0,
+            "max": 511
+          },
+          {
+            "key": "zero_infinity",
+            "title": "Mask impossible alignments",
+            "kind": "boolean",
+            "defaultValue": false
+          },
+          {
+            "key": "target_layout",
+            "title": "Target sequence layout",
+            "kind": "choice",
+            "defaultValue": "padded",
+            "choices": [
+              {
+                "value": "padded",
+                "title": "Padded rows"
+              },
+              {
+                "value": "packed",
+                "title": "Packed active labels"
+              }
+            ]
+          }
+        ]
+      },
+      "published": true,
+      "configurationVersion": 1,
+      "adapterID": "kwip.runner.objective.loss_ctc",
+      "shapeRuleID": "kwip.recipe.loss_ctc.v1",
+      "presentation": {
+        "theme": "green",
+        "icon": "loss_ctc-v2",
+        "shortTitle": "CTC",
+        "purpose": "Compare time-position class scores with a shorter ordered label sequence."
+      },
+      "outputConditions": {},
+      "sources": {
+        "native": "Sources/KwipMLCore/LossConfiguration.swift",
+        "worker": "runner/loss_configuration.py",
+        "tests": "runner/tests/test_loss_objectives.py",
+        "evidence": "docs/production/TORCH_LOSS_CLOSURE.md"
+      },
+      "runtimeContract": {
+        "version": "1.0.0",
+        "adapterID": "kwip.runner.objective.loss_ctc",
+        "recipeSchemaVersions": [
+          1
+        ],
+        "configurationVersion": 1,
+        "predictionDTypes": [
+          "float32"
+        ],
+        "devices": [
+          "cpu",
+          "mps"
+        ],
+        "predictionRanks": [
+          2,
+          8
+        ],
+        "sampleDimensionMaximum": 4096,
+        "classMinimum": 2,
+        "classMaximum": 512,
+        "classAxisMinimum": -7,
+        "classAxisMaximum": 7,
+        "excludesBatchClassAxis": true,
+        "reductions": [
+          "none",
+          "mean",
+          "sum"
+        ],
+        "scalarizations": [
+          "mean",
+          "sum"
+        ],
+        "targetRoles": [
+          "target",
+          "input_lengths",
+          "target_lengths"
+        ],
+        "maximumTensorElements": 100000000,
+        "maximumWorkElements": 100000000,
+        "recipeMaximumBytes": 32768,
+        "fixedWeights": "buffers",
+        "mappedWeights": "preparedData",
+        "batchBroadcast": false
+      },
+      "learning": {
+        "contentVersion": 1,
+        "updatedAt": "2026-10-08",
+        "exampleID": "prepared-ctc-sequence",
+        "sourceResource": "loss-ctc-observations",
+        "title": "Match a short sequence",
+        "subtitle": "Match desired labels without assigning their time positions.",
+        "disclosureTitle": "How the desired outcome and score connect",
+        "formula": "Match desired labels without assigning their time positions.",
+        "paragraphs": [
+          "A loss is a score for how far a produced result is from its desired outcome. Connect the recipe to Train\u2019s objective input. The recipe controls scoring; the model blocks still control the produced values.",
+          "Blank means no new label. Repeated labels merge unless separated by blank. The table supplies two desired labels, three active input positions and exact integer lengths. Packed targets are formed from each actual batch; impossible alignments are explicitly masked.",
+          "Open the example to inspect the source, explicit column types, held-out split, target-role mapping and model connections. A batch is a group of observations; an epoch is one complete pass through the training observations. This example uses three epochs and keeps one quarter aside for evaluation.",
+          "Mean averages scores and Sum adds them. Keeping individual scores preserves the score table before Train combines it using its selected rule. Inspect the training and held-out scores separately. Class accuracy is available only when a desired class supports that measure; numeric and sequence scores are not presented as classification accuracy.",
+          "A gradient describes how a small change affects the combined score. The matching visual lesson lets you build the scoring connections and inspect this input influence without writing code or calculating derivatives. CPU checkpoint continuation restores the scoring configuration and fixed importance values; weights-only fine-tuning starts fresh training memory."
+        ],
+        "buttonTitle": "Open CTCLoss example",
+        "exampleSource": "Sources/KwipMLCore/WorkflowLossExamples.swift",
+        "lessonIDs": [
+          "assessment.ctc-sequence-alignment"
+        ]
+      }
+    },
+    {
+      "definition": {
+        "id": "loss_triplet_margin",
+        "title": "TripletMarginLoss",
+        "category": "Training",
+        "inputs": [],
+        "outputs": [
+          "out"
+        ],
+        "fields": [
+          {
+            "key": "reduction",
+            "title": "Combine scores",
+            "kind": "choice",
+            "defaultValue": "mean",
+            "choices": [
+              {
+                "value": "none",
+                "title": "Keep individual scores"
+              },
+              {
+                "value": "mean",
+                "title": "Mean"
+              },
+              {
+                "value": "sum",
+                "title": "Sum"
+              }
+            ]
+          },
+          {
+            "key": "margin",
+            "title": "Required distance gap",
+            "kind": "number",
+            "defaultValue": 1.0,
+            "min": 1.401298464324817e-45,
+            "max": 3.4028234663852886e+38
+          },
+          {
+            "key": "p",
+            "title": "Distance power",
+            "kind": "number",
+            "defaultValue": 2.0,
+            "min": 1.401298464324817e-45,
+            "max": 16
+          },
+          {
+            "key": "eps",
+            "title": "Distance cushion",
+            "kind": "number",
+            "defaultValue": 1e-06,
+            "min": 0,
+            "max": 3.4028234663852886e+38
+          },
+          {
+            "key": "swap",
+            "title": "Compare matching example with nonmatch too",
+            "kind": "boolean",
+            "defaultValue": false
+          }
+        ]
+      },
+      "published": true,
+      "configurationVersion": 1,
+      "adapterID": "kwip.runner.objective.loss_triplet_margin",
+      "shapeRuleID": "kwip.recipe.loss_triplet_margin.v1",
+      "presentation": {
+        "theme": "green",
+        "icon": "loss_triplet_margin-v2",
+        "shortTitle": "TripletMargin",
+        "purpose": "Keep a matching example closer than a nonmatching example."
+      },
+      "outputConditions": {},
+      "sources": {
+        "native": "Sources/KwipMLCore/LossConfiguration.swift",
+        "worker": "runner/loss_configuration.py",
+        "tests": "runner/tests/test_loss_objectives.py",
+        "evidence": "docs/production/TORCH_LOSS_CLOSURE.md"
+      },
+      "runtimeContract": {
+        "version": "1.0.0",
+        "adapterID": "kwip.runner.objective.loss_triplet_margin",
+        "recipeSchemaVersions": [
+          1
+        ],
+        "configurationVersion": 1,
+        "predictionDTypes": [
+          "float32"
+        ],
+        "devices": [
+          "cpu",
+          "mps"
+        ],
+        "predictionRanks": [
+          2,
+          8
+        ],
+        "sampleDimensionMaximum": 4096,
+        "classMinimum": 2,
+        "classMaximum": 512,
+        "classAxisMinimum": -7,
+        "classAxisMaximum": 7,
+        "excludesBatchClassAxis": true,
+        "reductions": [
+          "none",
+          "mean",
+          "sum"
+        ],
+        "scalarizations": [
+          "mean",
+          "sum"
+        ],
+        "targetRoles": [],
+        "maximumTensorElements": 100000000,
+        "maximumWorkElements": 100000000,
+        "recipeMaximumBytes": 32768,
+        "fixedWeights": "buffers",
+        "mappedWeights": "preparedData",
+        "batchBroadcast": false
+      },
+      "learning": {
+        "contentVersion": 1,
+        "updatedAt": "2026-10-08",
+        "exampleID": "prepared-triplet-distance",
+        "sourceResource": "loss-triplet-observations",
+        "title": "Bring matching examples closer",
+        "subtitle": "Compare an anchor with a matching and a nonmatching example.",
+        "disclosureTitle": "How the desired outcome and score connect",
+        "formula": "Compare an anchor with a matching and a nonmatching example.",
+        "paragraphs": [
+          "A loss is a score for how far a produced result is from its desired outcome. Connect the recipe to Train\u2019s objective input. The recipe controls scoring; the model blocks still control the produced values.",
+          "An anchor is the example being compared. Three ordered input groups use one shared layer to produce comparison coordinates. The matching example should be closer than the nonmatch by the required distance gap. No separate target column is invented.",
+          "Open the example to inspect the source, explicit column types, held-out split, target-role mapping and model connections. A batch is a group of observations; an epoch is one complete pass through the training observations. This example uses three epochs and keeps one quarter aside for evaluation.",
+          "Mean averages scores and Sum adds them. Keeping individual scores preserves the score table before Train combines it using its selected rule. Inspect the training and held-out scores separately. Class accuracy is available only when a desired class supports that measure; numeric and sequence scores are not presented as classification accuracy.",
+          "A gradient describes how a small change affects the combined score. The matching visual lesson lets you build the scoring connections and inspect this input influence without writing code or calculating derivatives. CPU checkpoint continuation restores the scoring configuration and fixed importance values; weights-only fine-tuning starts fresh training memory."
+        ],
+        "buttonTitle": "Open TripletMarginLoss example",
+        "exampleSource": "Sources/KwipMLCore/WorkflowLossExamples.swift",
+        "lessonIDs": [
+          "assessment.triplet-relative-distance"
+        ]
+      }
+    }
+  ]
+}

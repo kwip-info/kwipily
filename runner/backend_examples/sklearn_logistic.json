@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "backendID": "sklearn",
+  "title": "Prepared observations → logistic classifier",
+  "contentVersion": "1.0.0",
+  "updatedAt": "2026-10-07",
+  "configuration": {
+    "C": 1.0,
+    "maxIterations": 200,
+    "tolerance": 0.0001,
+    "fitIntercept": true
+  },
+  "preparationExample": "examples/dataflow/scaler.json",
+  "sourceExample": "examples/dataflow/observations.csv",
+  "sourceNode": "source",
+  "trainingNode": "training",
+  "trainingPort": "table",
+  "validationNode": "heldout",
+  "validationPort": "table",
+  "featureColumns": [
+    "feature",
+    "second"
+  ],
+  "targetColumn": "group",
+  "lessonResource": "Sources/KwipMLCore/Resources/sklearn-foundation-learning.json"
+}

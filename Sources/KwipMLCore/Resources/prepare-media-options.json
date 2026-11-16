@@ -1,0 +1,187 @@
+{
+  "schemaVersion": 1,
+  "defaults": {
+    "kind": "image",
+    "inputColumn": "image_content",
+    "outputColumn": "prepared",
+    "sampleFormat": "preserve",
+    "layout": "HWC",
+    "color": "preserve",
+    "alpha": "preserve",
+    "matte": [
+      0,
+      0,
+      0
+    ],
+    "sizeMode": "preserve",
+    "width": 224,
+    "height": 224,
+    "interpolation": "bilinear",
+    "scaling": "none",
+    "channels": "preserve",
+    "channelIndex": 0,
+    "targetRate": 0,
+    "windowSamples": 0,
+    "hopSamples": 0,
+    "tail": "drop",
+    "filterRadius": 16,
+    "maskConvention": "valid",
+    "outputMode": "tensor",
+    "cropEnabled": false,
+    "cropX": 0,
+    "cropY": 0,
+    "cropWidth": 224,
+    "cropHeight": 224,
+    "rotation": 0,
+    "representation": "samples",
+    "fftSize": 400,
+    "spectralHop": 160,
+    "window": "hann",
+    "center": true,
+    "melBands": 80,
+    "minimumHz": 0,
+    "maximumHz": 0,
+    "logFloorDB": -80
+  },
+  "choices": {
+    "kind": [
+      "image",
+      "audio"
+    ],
+    "sampleFormat": [
+      "preserve",
+      "float32"
+    ],
+    "layout": [
+      "HWC",
+      "CHW"
+    ],
+    "color": [
+      "preserve",
+      "RGB",
+      "L"
+    ],
+    "alpha": [
+      "preserve",
+      "drop",
+      "composite"
+    ],
+    "sizeMode": [
+      "preserve",
+      "resize",
+      "fitPad",
+      "crop"
+    ],
+    "interpolation": [
+      "nearest",
+      "bilinear",
+      "bicubic"
+    ],
+    "scaling": [
+      "none",
+      "unit"
+    ],
+    "channels": [
+      "preserve",
+      "select",
+      "mono"
+    ],
+    "tail": [
+      "drop",
+      "pad"
+    ],
+    "maskConvention": [
+      "valid",
+      "blocked"
+    ],
+    "outputMode": [
+      "tensor",
+      "image"
+    ],
+    "representation": [
+      "samples",
+      "magnitude",
+      "power",
+      "logMel"
+    ],
+    "window": [
+      "hann",
+      "hamming",
+      "rectangular"
+    ]
+  },
+  "integerBounds": {
+    "width": [
+      1,
+      16384
+    ],
+    "height": [
+      1,
+      16384
+    ],
+    "channelIndex": [
+      0,
+      65535
+    ],
+    "targetRate": [
+      0,
+      768000
+    ],
+    "windowSamples": [
+      0,
+      6000000
+    ],
+    "hopSamples": [
+      0,
+      6000000
+    ],
+    "filterRadius": [
+      8,
+      64
+    ],
+    "cropX": [
+      0,
+      16384
+    ],
+    "cropY": [
+      0,
+      16384
+    ],
+    "cropWidth": [
+      1,
+      16384
+    ],
+    "cropHeight": [
+      1,
+      16384
+    ],
+    "rotation": [
+      0,
+      270
+    ],
+    "fftSize": [
+      16,
+      4096
+    ],
+    "spectralHop": [
+      1,
+      4096
+    ],
+    "melBands": [
+      8,
+      256
+    ],
+    "minimumHz": [
+      0,
+      384000
+    ],
+    "maximumHz": [
+      0,
+      384000
+    ],
+    "logFloorDB": [
+      -120,
+      -1
+    ]
+  }
+}

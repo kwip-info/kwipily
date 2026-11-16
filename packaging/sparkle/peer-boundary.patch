@@ -1,0 +1,144 @@
+diff --git a/Autoupdate/AppInstaller.m b/Autoupdate/AppInstaller.m
+index 0416eb9..f614e20 100644
+--- a/Autoupdate/AppInstaller.m
++++ b/Autoupdate/AppInstaller.m
+@@ -143,9 +143,8 @@ - (BOOL)listener:(NSXPCListener *)__unused listener shouldAcceptNewConnection:(N
+         BOOL connectionCodeSigningValidationSkipped = NO;
+     #endif
+         
+-        // It's safe to allow any connections once stage 1 installation is complete and appcast data has been received.
+-        // This is to allow general updaters to resume the installation.
+-        if (!_performedStage1Installation || !_receivedAppcastItemData) {
++        // KWIP: require exact trusted peers during every installation stage.
++        {
+             BOOL passesValidation;
+             NSError *validationError = nil;
+             SUValidateConnectionStatus status = [SUCodeSigningVerifier validateConnection:newConnection error:&validationError];
+diff --git a/Autoupdate/SUCodeSigningVerifier.m b/Autoupdate/SUCodeSigningVerifier.m
+index 777dc35..954e499 100644
+--- a/Autoupdate/SUCodeSigningVerifier.m
++++ b/Autoupdate/SUCodeSigningVerifier.m
+@@ -444,15 +444,16 @@ + (BOOL)codeSignatureIsValidAtDownloadURL:(NSURL *)downloadURL andMatchesDevelop
+ 
+ + (SUValidateConnectionStatus)validateConnection:(NSXPCConnection *)connection error:(NSError * __autoreleasing *)error
+ {
+-    // Check if code signing requirement is required
++    // KWIP direct build: a same-team Python worker must not use updater helpers.
++    // Unsigned clients and ad-hoc helper builds fail closed.
+     NSString *hostTeamIdentifier = [self teamIdentifierFromMainExecutable];
+-    if (hostTeamIdentifier == nil) {
+-        return SUValidateConnectionStatusSetNoRequirementSuccess;
++    if (![hostTeamIdentifier isEqualToString:@"MT68X9Z6NQ"]) {
++        return SUValidateConnectionStatusCodeSigningRequirementFailure;
+     }
+-    
+-    // Build the default team ID signing requirement
+-    NSString *codeSigningRequirement = [NSString stringWithFormat:@"(anchor apple generic and certificate leaf[subject.OU] = \"%@\")", hostTeamIdentifier];
+-    
++    NSString *codeSigningRequirement = [NSString stringWithFormat:
++        @"anchor apple generic and certificate leaf[subject.OU] = \"MT68X9Z6NQ\" and (identifier \"info.kwip.KwipML\" or identifier \"%@\" or identifier \"%@\" or identifier \"%@\" or identifier \"org.sparkle-project.Sparkle.Autoupdate\")",
++        @SPARKLE_INSTALLER_PROGRESS_TOOL_BUNDLE_ID, @INSTALLER_CONNECTION_BUNDLE_ID, @INSTALLER_STATUS_BUNDLE_ID];
++
+     if (@available(macOS 13.0, *)) {
+         [connection setCodeSigningRequirement:codeSigningRequirement];
+         
+diff --git a/Autoupdate/StatusInfo.m b/Autoupdate/StatusInfo.m
+index d2e208a..82f2045 100644
+--- a/Autoupdate/StatusInfo.m
++++ b/Autoupdate/StatusInfo.m
+@@ -51,6 +51,13 @@ - (void)invalidate
+ 
+ - (BOOL)listener:(NSXPCListener *)__unused listener shouldAcceptNewConnection:(NSXPCConnection *)newConnection
+ {
++    // KWIP: status helper peers are fixed; this source is also linked into Updater.
++    if (@available(macOS 13.0, *)) {
++        [newConnection setCodeSigningRequirement:@"anchor apple generic and certificate leaf[subject.OU] = \"MT68X9Z6NQ\" and (identifier \"info.kwip.KwipML\" or identifier \"org.sparkle-project.Sparkle.Updater\" or identifier \"info.kwip.KwipML.Sparkle.InstallerStatus\" or identifier \"org.sparkle-project.Sparkle.Autoupdate\")"];
++    } else {
++        [newConnection invalidate];
++        return NO;
++    }
+     newConnection.exportedInterface = [NSXPCInterface interfaceWithProtocol:@protocol(SUStatusInfoProtocol)];
+     newConnection.exportedObject = self;
+     
+diff --git a/Downloader/SPUDownloader.m b/Downloader/SPUDownloader.m
+index fccc851..9f4ff5b 100644
+--- a/Downloader/SPUDownloader.m
++++ b/Downloader/SPUDownloader.m
+@@ -80,8 +80,13 @@ - (void)startDownloadWithRequest:(NSURLRequest *)request SPU_OBJC_DIRECT
+         return;
+     }
+     
++    // KWIP: session credentials/cookies/cache must not persist or broaden request authority.
++    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration ephemeralSessionConfiguration];
++    configuration.HTTPCookieStorage = nil;
++    configuration.URLCredentialStorage = nil;
++    configuration.URLCache = nil;
+     _downloadSession = [NSURLSession
+-        sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]
++        sessionWithConfiguration:configuration
+         delegate:self
+         delegateQueue:[NSOperationQueue mainQueue]];
+     
+@@ -192,7 +197,7 @@ static bool SPUValidateStatusCodeAndFailIfInvalid(NSURLResponse * _Nullable resp
+ {
+     NSInteger statusCode = [response isKindOfClass:[NSHTTPURLResponse class]] ? ((NSHTTPURLResponse *)response).statusCode : 200;
+     
+-    if ((statusCode < 200) || (statusCode >= 400))
++    if (statusCode != 200 && statusCode != 206)
+     {
+         NSString *message = [NSString stringWithFormat:@"A network error occurred while downloading %@. %@ (%ld)", url.absoluteString, [NSHTTPURLResponse localizedStringForStatusCode:statusCode], (long)statusCode];
+         NSError *error = [NSError errorWithDomain:SUSparkleErrorDomain code:SUDownloadError userInfo:@{ NSLocalizedDescriptionKey: message }];
+@@ -241,6 +246,15 @@ - (void)temporaryDownloadDidFinishWithData:(NSData * _Nullable)data response:(NS
+     [self _cleanup];
+ }
+ 
++// KWIP: fixed appcast/installer origins never redirect. Refuse before a second request.
++- (void)URLSession:(NSURLSession *)__unused session task:(NSURLSessionTask *)__unused task
++ willPerformHTTPRedirection:(NSHTTPURLResponse *)__unused response
++ newRequest:(NSURLRequest *)__unused request
++ completionHandler:(void (^)(NSURLRequest * _Nullable))completionHandler
++{
++    completionHandler(nil);
++}
++
+ - (void)URLSession:(NSURLSession *)__unused session downloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location
+ {
+     if (!SPUValidateStatusCodeAndFailIfInvalid(downloadTask.response, downloadTask.originalRequest.URL, _delegate)) {
+diff --git a/InstallerConnection/main.m b/InstallerConnection/main.m
+index b28b148..8da259d 100644
+--- a/InstallerConnection/main.m
++++ b/InstallerConnection/main.m
+@@ -21,6 +21,14 @@ @implementation ServiceDelegate
+ - (BOOL)listener:(NSXPCListener *)__unused listener shouldAcceptNewConnection:(NSXPCConnection *)newConnection {
+     // This method is where the NSXPCListener configures, accepts, and resumes a new incoming NSXPCConnection.
+     
++    // KWIP: only the signed parent may reach these unsandboxed bridge services.
++    if (@available(macOS 13.0, *)) {
++        [newConnection setCodeSigningRequirement:@"anchor apple generic and certificate leaf[subject.OU] = \"MT68X9Z6NQ\" and identifier \"info.kwip.KwipML\""];
++    } else {
++        [newConnection invalidate];
++        return NO;
++    }
++
+     // Configure the connection.
+     // First, set the interface that the exported object implements.
+     newConnection.exportedInterface = [NSXPCInterface interfaceWithProtocol:@protocol(SUInstallerConnectionProtocol)];
+diff --git a/InstallerStatus/main.m b/InstallerStatus/main.m
+index 4c1c6cd..b7a20ce 100644
+--- a/InstallerStatus/main.m
++++ b/InstallerStatus/main.m
+@@ -20,6 +20,14 @@ @implementation ServiceDelegate
+ - (BOOL)listener:(NSXPCListener *)__unused listener shouldAcceptNewConnection:(NSXPCConnection *)newConnection {
+     // This method is where the NSXPCListener configures, accepts, and resumes a new incoming NSXPCConnection.
+     
++    // KWIP: only the signed parent may reach these unsandboxed bridge services.
++    if (@available(macOS 13.0, *)) {
++        [newConnection setCodeSigningRequirement:@"anchor apple generic and certificate leaf[subject.OU] = \"MT68X9Z6NQ\" and identifier \"info.kwip.KwipML\""];
++    } else {
++        [newConnection invalidate];
++        return NO;
++    }
++
+     // Configure the connection.
+     // First, set the interface that the exported object implements.
+     newConnection.exportedInterface = [NSXPCInterface interfaceWithProtocol:@protocol(SUInstallerStatusProtocol)];

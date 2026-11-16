@@ -1,0 +1,147 @@
+{
+  "ocr": {
+    "fixtures": {
+      "KWIPML_TEST_OCR_PACK": {
+        "kind": "directory",
+        "requiredFiles": [
+          "craft_mlt_25k.zip",
+          "english_g2.zip"
+        ]
+      },
+      "KWIPML_TEST_OCR_CLASSIFICATION": {
+        "kind": "directory",
+        "requiredFiles": [
+          "labels.csv",
+          "unseen.csv"
+        ]
+      }
+    },
+    "python": [
+      "runner/tests/test_ocr.py::test_actual_safe_offline_english_inference_without_reader_download_or_pickle"
+    ],
+    "pythonCases": [
+      "test_actual_safe_offline_english_inference_without_reader_download_or_pickle"
+    ],
+    "swift": [
+      "OCRWorkflowTests/testRealCapturedOCRWorkerProducesCompleteSharedTablesAndHistory",
+      "OCRClassificationWorkflowTests/testRealScannedDocumentsFitSaveReloadPredictAndHistory"
+    ]
+  },
+  "speech": {
+    "fixtures": {
+      "KWIPML_WHISPER_FIXTURE": {
+        "kind": "directory",
+        "requiredFiles": [
+          "config.json",
+          "model.safetensors"
+        ],
+        "qualifiedPins": {
+          "config.json": "ffdccec4f3211f4c63310f2b7098f309fe70f3952cedc5e4d11e43f5b2379b98",
+          "generation_config.json": "a5d5325911f16e74001a72fa13d6e208eee51548f994646de1f4b4cc8b35b512",
+          "preprocessor_config.json": "9b5cd03a36fbb8a627c64d98a5b5b126ead95a77720723944487311f0110b666",
+          "normalizer.json": "bf1c507dc8724ca9cf9903640dacfb69dae2f00edee4f21ceba106a7392f26dd",
+          "tokenizer.json": "27fc476bfe7f17299480be2273fc0608e4d5a99aba2ab5dec5374b4482d1a566",
+          "tokenizer_config.json": "2a4c4281cf9f51ac6ccc406fdc711a087afe6530f671fa7b80953edc498275ce",
+          "special_tokens_map.json": "e67ae3a0aaa99abcd9f187138e12db1f65c16a14761c50ef10eef2c174a7a691",
+          "added_tokens.json": "9715fd2243b6f06a5858b5e32950d2853f73dd5bc201aafcf76f5082a2d8acd1",
+          "vocab.json": "8f680bba319e01a653d2e8a5dbc17a9157179e0576e6ce74ce0c06356c6e24f9",
+          "merges.txt": "2df2990a395e35e8dfbc7511e08c12d56018d8d04691e0133e5d63b21e154dc6",
+          "README.md": "57a3bbbbf1e79369e4d1ced790812a1723b43a256c1b43fc70cc2f3339ae9881",
+          "model.safetensors": "7ebd0e69e78190ffe1438491fa05cc1f5c1aa3a4c4db3bc1723adbb551ea2395"
+        },
+        "provenance": {
+          "repository": "openai/whisper-tiny",
+          "revision": "169d4a4341b33bc18d8881c4b69c2e104e1cc0af"
+        }
+      },
+      "KWIPML_SPEECH_WAV": {
+        "kind": "file",
+        "requiredFiles": [
+          "."
+        ]
+      }
+    },
+    "python": [
+      "runner/tests/test_speech_integration.py"
+    ],
+    "pythonCases": [
+      "test_real_offline_speech_complete_graph_and_source_removed_history[True]",
+      "test_real_offline_speech_complete_graph_and_source_removed_history[False]",
+      "test_real_whisper_chunk_offsets_and_token_allowance_not_terminal_token_guess"
+    ]
+  },
+  "audio-classification": {
+    "fixtures": {
+      "KWIPML_AST_FIXTURE": {
+        "kind": "directory",
+        "requiredFiles": [
+          "config.json",
+          "model.safetensors"
+        ],
+        "qualifiedPins": {
+          "config.json": "a93d525511d77e8ecc933d09674b85099815bbbb417c228a4edd655e252fb9ff",
+          "preprocessor_config.json": "8d04ba5a9c6fca5d39d0de2b1fd05ecf79deb589fbba279728bbebac39934231",
+          "README.md": "dbc8ce1fc5abd1635d073640d8cb032901bfe264a5e06507f363f10a6112cfc8",
+          "model.safetensors": "ae0c1e2ad4e1381d851fa9bf298ba13ebc9c5a914cdee2dbe427a6583869924d"
+        },
+        "provenance": {
+          "repository": "MIT/ast-finetuned-audioset-10-10-0.4593",
+          "revision": "f826b80d28226b62986cc218e5cec390b1096902"
+        }
+      },
+      "KWIPML_AUDIO_CLASSIFICATION_WAV": {
+        "kind": "file",
+        "requiredFiles": [
+          "."
+        ]
+      }
+    },
+    "python": [
+      "runner/tests/test_audio_classification_integration.py"
+    ],
+    "pythonCases": [
+      "test_real_ast_complete_tables_export_and_source_removed_history[True]",
+      "test_real_ast_complete_tables_export_and_source_removed_history[False]"
+    ],
+    "swift": [
+      "AudioClassificationIntegrationTests/testRealCapturedModelWholeFlowAndColdHistory"
+    ]
+  },
+  "laya": {
+    "fixtures": {
+      "KWIPML_TEST_LAYA_FOLDER": {
+        "kind": "directory",
+        "requiredFiles": [
+          "model.safetensors",
+          "rl_agent_config.json",
+          "encoder/config.json",
+          "tokenizer/tokenizer.json"
+        ],
+        "qualifiedPins": {
+          "model.safetensors": "4fa56de72383a9d3efa9cfa78955733c81b9fc8067a587ca4beb82c78107a24e"
+        }
+      }
+    },
+    "swift": [
+      "TypedDecisionIntegrationTests/testRealOwnedWorkerTrainDecideSaveReloadWithCaptureOff"
+    ]
+  },
+  "causal-fine-tuning": {
+    "fixtures": {
+      "KWIPML_TEST_MODEL_FOLDER": {
+        "kind": "directory",
+        "requiredFiles": [
+          "config.json",
+          "model.safetensors"
+        ]
+      }
+    },
+    "swift": [
+      "FineTuningIntegrationTests/testActualPreparedTextTrainGenerationSaveAndHistoryWithCaptureOff",
+      "FineTuningIntegrationTests/testSelectedLayersCaptureMetricsAndRequiredPredictionRows",
+      "FineTuningIntegrationTests/testLoRAAdapterMergeExportAndGeneration",
+      "FineTuningIntegrationTests/testCompleteOwnedTablesAboveEightMBSurviveCaptureOffAndHistory",
+      "FineTuningIntegrationTests/testCancellationPublishesFinalStatusAndPreservesBaseBeforeReturningIdle"
+    ]
+  }
+}

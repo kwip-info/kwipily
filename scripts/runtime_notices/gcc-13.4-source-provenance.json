@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "status": "verifiedSupplierAndCorrespondingSourceMaterials",
+  "scipyVersion": "1.17.0",
+  "wheel": "scipy-1.17.0-cp313-cp313-macosx_14_0_arm64.whl",
+  "wheelSHA256": "9fad7d3578c877d606b1150135c2639e9de9cecd3705caa37b66862977cc3e72",
+  "scipyCommit": "8c75ae75176236f233824e9a0483c26a69e6dfec",
+  "officialWheelJob": "https://github.com/scipy/scipy/actions/runs/20882318173/job/60000436643",
+  "supplierBottleSHA256": "06a7bdccc074fedca6ebe1cd078fc8081e6df2502baccb8530bc42714e8af702",
+  "supplierBottleBytes": 127208213,
+  "normalization": "Temporary copies only: remove code signatures, set common @rpath install ID, set common @loader_path sibling dependencies, remove LC_RPATH. Compare entire remaining bytes. No executable code omission.",
+  "nativeLibraries": [
+    {
+      "archiveMember": "gcc@13/13.4.0/lib/gcc/13/libgcc_s.1.1.dylib",
+      "sha256": "9df083bf633732f95a3c53cc61cb8f44bdbdb16b4d147aae60cae8525a2d22c8",
+      "uuid": "CC460BEA-9872-3F83-8668-C69259E63B43",
+      "normalizedSupplierSHA256": "61505ade1a4197775bfab0d618596a4908e6b782ac648fb5ef47f61a5523b024",
+      "normalizedInstalledSHA256": "61505ade1a4197775bfab0d618596a4908e6b782ac648fb5ef47f61a5523b024",
+      "normalizedBytes": 163664,
+      "completeNormalizedBytesEqual": true
+    },
+    {
+      "archiveMember": "gcc@13/13.4.0/lib/gcc/13/libgfortran.5.dylib",
+      "sha256": "a3888b8fe3531f773c69a8dc2cf6740fd533ef79f6a5683ebfc16bb07e166aae",
+      "uuid": "18BCCF8F-B816-387F-BAAB-97018C5046CB",
+      "normalizedSupplierSHA256": "8a26ae08a27646d225c0ea343190bad7c4db6f472bf1ace4f88cfe0958db4c8e",
+      "normalizedInstalledSHA256": "8a26ae08a27646d225c0ea343190bad7c4db6f472bf1ace4f88cfe0958db4c8e",
+      "normalizedBytes": 1868672,
+      "completeNormalizedBytesEqual": true
+    },
+    {
+      "archiveMember": "gcc@13/13.4.0/lib/gcc/13/libquadmath.0.dylib",
+      "sha256": "de25f325a043f3889d232485ca09b1be7ecf350d389fd3b7a1097c17908c562f",
+      "uuid": "13842585-89B5-3A2B-9482-99F7B4DDE5BD",
+      "normalizedSupplierSHA256": "9afc4bcbcb90f4af4e7ed2d0ae46b602247f2f7153203325c180477c7373106a",
+      "normalizedInstalledSHA256": "9afc4bcbcb90f4af4e7ed2d0ae46b602247f2f7153203325c180477c7373106a",
+      "normalizedBytes": 343024,
+      "completeNormalizedBytesEqual": true
+    }
+  ],
+  "sourceMaterials": [
+    {
+      "file": "gcc-13.4.0.tar.xz",
+      "sourceURL": "https://ftp.gnu.org/gnu/gcc/gcc-13.4.0/gcc-13.4.0.tar.xz",
+      "sha256": "9c4ce6dbb040568fdc545588ac03c5cbc95a8dbf0c7aa490170843afb59ca8f5",
+      "bytes": 88530720
+    },
+    {
+      "file": "gcc-13.4.0-darwin.diff",
+      "sourceURL": "https://raw.githubusercontent.com/Homebrew/formula-patches/8bbfd6c920e63f6ed1bf143771bfbfed0a3aaa1d/gcc/gcc-13.4.0.diff",
+      "sha256": "60b22ae7f5f78b41e12c51d8c6e99ba933a7e124454fe8cdbff7200505167949",
+      "bytes": 590233
+    },
+    {
+      "file": "gcc@13.rb",
+      "sourceURL": "https://ghcr.io/v2/homebrew/core/gcc/13/blobs/sha256:06a7bdccc074fedca6ebe1cd078fc8081e6df2502baccb8530bc42714e8af702",
+      "sourceMember": "gcc@13/13.4.0/.brew/gcc@13.rb",
+      "sha256": "bf3b8854527ca631f9746eed71354674c27ffe4eee789f3def15e43ede2ecb21",
+      "bytes": 8809
+    },
+    {
+      "file": "scipy-wheel-workflow.yml",
+      "sourceURL": "https://raw.githubusercontent.com/scipy/scipy/8c75ae75176236f233824e9a0483c26a69e6dfec/.github/workflows/wheels.yml",
+      "sha256": "70d8235813f64100feb8f3c3ef4eb9e339e84e831940363ec795a048ae625852",
+      "bytes": 11847
+    },
+    {
+      "file": "runner-image-20260105.md",
+      "sourceURL": "https://raw.githubusercontent.com/actions/runner-images/1932eb5b1a45b0778ed8d71b97bc0bc691478c60/images/macos/macos-14-arm64-Readme.md",
+      "sha256": "b8eaf908c5332cc7551a23d11d548e41716218148a832ebec344740b96beb377",
+      "bytes": 25251
+    }
+  ],
+  "replacementRuntimeVerified": false,
+  "companyRedistributionApproval": false
+}

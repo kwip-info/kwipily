@@ -1,0 +1,221 @@
+{
+  "schemaVersion": 1,
+  "kind": "trainingControl",
+  "id": "kwip.gradient-controls",
+  "version": 1,
+  "backend": "pytorch",
+  "components": [
+    {
+      "definition": {
+        "id": "gradient_policy",
+        "title": "Gradient policy",
+        "category": "Training",
+        "inputs": [],
+        "outputs": [
+          "out"
+        ],
+        "fields": [
+          {
+            "key": "accumulation_steps",
+            "title": "Small groups per update",
+            "kind": "integer",
+            "defaultValue": 1,
+            "min": 1,
+            "max": 32
+          },
+          {
+            "key": "gradient_scale",
+            "title": "Combine changes",
+            "kind": "choice",
+            "defaultValue": "mean",
+            "choices": [
+              {
+                "value": "mean",
+                "title": "Mean"
+              },
+              {
+                "value": "sum",
+                "title": "Sum"
+              }
+            ]
+          }
+        ]
+      },
+      "published": true,
+      "configurationVersion": 1,
+      "adapterID": "kwip.runner.gradient_policy",
+      "coverageID": "pytorch.torch.autograd.grad",
+      "editorExtension": "gradientRequestsV1",
+      "modes": [
+        "requested-gradients",
+        "reset-gradients",
+        "accumulated-gradients"
+      ],
+      "presentation": {
+        "theme": "green",
+        "icon": "gradient-policy-v1",
+        "shortTitle": "Gradient policy",
+        "purpose": "Select how small changes affect a result and combine small training groups before an update."
+      },
+      "sources": {
+        "native": "Sources/KwipMLCore/GradientPolicyConfiguration.swift",
+        "worker": "runner/gradient_policy.py",
+        "tests": "runner/tests/test_gradient_policy.py",
+        "evidence": "docs/production/TORCH_GRADIENT_CONTRACT_20261009.md"
+      },
+      "runtimeContract": {
+        "version": "1.0.0",
+        "adapterID": "kwip.runner.gradient_policy",
+        "recipeSchemaVersion": 1,
+        "configurationVersion": 1,
+        "devices": [
+          "cpu",
+          "mps"
+        ],
+        "dtype": "float32",
+        "derivativeOrder": 1,
+        "derivativeLayout": "dense",
+        "accumulationMinimum": 1,
+        "accumulationMaximum": 32,
+        "requestMaximum": 32,
+        "uniqueTargetMaximum": 32,
+        "derivativeElementMaximum": 65536,
+        "upstreamElementMaximum": 65536,
+        "rowCountMaximum": 32,
+        "recipeByteMaximum": 32768,
+        "derivativeArtifactByteMaximum": 8388608,
+        "analysisPhase": "finalSnapshotEvaluation",
+        "capturePermission": "derivativeCapture.values",
+        "unavailableCauses": [
+          "integerInput",
+          "frozenParameter",
+          "disconnected",
+          "recordingDisabled",
+          "sparseGradient"
+        ],
+        "nativeBackwardFailure": "refuseWithoutFallback",
+        "reset": "windowStart",
+        "partialWindow": "flush",
+        "objectiveScaling": "exactWindowNumeratorDenominator",
+        "oneCycleCadence": "optimizerUpdate",
+        "continuation": "cpuEpochBoundaryExactMPSWeightsOnly"
+      },
+      "learning": {
+        "contentVersion": 1,
+        "updatedAt": "2026-10-09",
+        "lessonIDs": [
+          "assessment.gradient-selected-influence",
+          "assessment.gradient-combine-small-groups"
+        ],
+        "exampleIDs": [
+          "prepared-gradient-selected-influence",
+          "prepared-gradient-combine-small-groups"
+        ],
+        "sources": [
+          "Sources/KwipMLCore/GradientLearningTask.swift",
+          "Sources/KwipMLCore/GradientLearningSubmission.swift",
+          "Sources/KwipMLCore/GradientLessonReference.swift",
+          "Sources/KwipMLCore/GradientLearningExamples.swift",
+          "Sources/KwipMLCore/GradientWorkflowExamples.swift",
+          "runner/learning_gradients.py",
+          "runner/tests/test_learning_gradients.py",
+          "Tests/KwipMLAppTests/GradientLearningAppIntegrationTests.swift",
+          "docs/production/TORCH_GRADIENT_APP_LEARNING_20261009.md"
+        ],
+        "paragraphs": [
+          "Ask how a small change to an input or learned setting changes a selected result. A gradient measures that influence; a zero influence and an unavailable measurement mean different things.",
+          "Combine several small observation groups before one training adjustment. Mean weights observations fairly, including a short final group. Reset removes earlier accumulated gradients before the next adjustment.",
+          "Connect both policy recipes and supplied SGD to Train. The checker measures real execution against an independent reference. Private assessment keeps its measured tables hidden."
+        ]
+      }
+    },
+    {
+      "definition": {
+        "id": "trainability",
+        "title": "Trainability",
+        "category": "Training",
+        "inputs": [],
+        "outputs": [
+          "out"
+        ],
+        "fields": []
+      },
+      "published": true,
+      "configurationVersion": 1,
+      "adapterID": "kwip.runner.trainability",
+      "coverageID": "pytorch.torch.no_grad",
+      "editorExtension": "trainabilityOwnersV1",
+      "modes": [
+        "frozen-inference",
+        "explicit-trainability-transition",
+        "unavailable-gradient-capture"
+      ],
+      "presentation": {
+        "theme": "green",
+        "icon": "trainability-v1",
+        "shortTitle": "Trainability",
+        "purpose": "Choose which learned settings stay fixed and which can change in the next training run."
+      },
+      "sources": {
+        "native": "Sources/KwipMLCore/TrainabilityConfiguration.swift",
+        "worker": "runner/trainability.py",
+        "tests": "runner/tests/test_trainability.py",
+        "evidence": "docs/production/TORCH_GRADIENT_CONTRACT_20261009.md"
+      },
+      "runtimeContract": {
+        "version": "1.0.0",
+        "adapterID": "kwip.runner.trainability",
+        "recipeSchemaVersion": 1,
+        "configurationVersion": 1,
+        "devices": [
+          "cpu",
+          "mps"
+        ],
+        "dtype": "float32",
+        "ownerMaximum": 128,
+        "recipeByteMaximum": 32768,
+        "ownerModes": [
+          "inherit",
+          "trainable",
+          "frozen"
+        ],
+        "ownerResolution": "materializedExpandedNodeNativeParameter",
+        "application": "beforeOptimizerOwnership",
+        "moduleMode": "existingTrainEvalTransitions",
+        "frozenInference": "evaluationNoGrad",
+        "inputDerivativesThroughFrozenParameters": true,
+        "emptyTrainingOwnership": "refuse",
+        "transition": "freshOrFineTuneFreshOptimizer",
+        "exactResume": "identicalPolicyAndOrderedOwnership"
+      },
+      "learning": {
+        "contentVersion": 1,
+        "updatedAt": "2026-10-09",
+        "lessonIDs": [
+          "assessment.trainability-keep-settings",
+          "assessment.trainability-next-run"
+        ],
+        "exampleIDs": [
+          "prepared-trainability-keep-settings",
+          "prepared-trainability-next-run"
+        ],
+        "sources": [
+          "Sources/KwipMLCore/GradientLearningTask.swift",
+          "Sources/KwipMLCore/GradientLearningSubmission.swift",
+          "Sources/KwipMLCore/GradientLessonReference.swift",
+          "Sources/KwipMLCore/GradientLearningExamples.swift",
+          "Sources/KwipMLCore/GradientWorkflowExamples.swift",
+          "runner/learning_gradients.py",
+          "runner/tests/test_learning_gradients.py",
+          "Tests/KwipMLAppTests/GradientLearningAppIntegrationTests.swift",
+          "docs/production/TORCH_GRADIENT_APP_LEARNING_20261009.md"
+        ],
+        "paragraphs": [
+          "Keep selected learned arrays fixed while other arrays learn. Inherit keeps the model\u2019s original flag; Frozen prevents parameter adjustments; Trainable allows them.",
+          "Frozen settings do not put a model in evaluation mode or disable influence through it. The next-run exercise loads a real saved parent and creates fresh optimizer memory under the selected flags.",
+          "Choose actual named weights or bias arrays using the structured controls. Check the measured owner inventory, learned changes and unchanged parent; private assessment does not expose its comparison tables."
+        ]
+      }
+    }
+  ]
+}

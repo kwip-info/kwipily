@@ -1,0 +1,14 @@
+order_id,quantity,price,notes
+A01,2,12.5,"first, order"
+A02,1,5.75,
+A03,3,2.25,"quote ""inside"""
+A04,4,10.0,Unicode café
+A05,2,1.125,"two
+lines"
+A06,5,8.5,=2+3
+A07,1,99.99,plain
+A08,8,0.5,eight
+A09,3,4.25,beyond preview
+A10,2,7.75,ten
+A11,1,6.5,eleven
+A12,6,3.125,last row

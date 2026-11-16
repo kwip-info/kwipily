@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-09",
+  "tool": "built-in image_gen",
+  "reference": "Sources/KwipMLApp/Resources/ComponentIcons/run-setup-v2.png",
+  "assets": [
+    {
+      "assetID": "gradient-policy-v1",
+      "source": "/Users/developer/.codex/generated_images/01a10a07-829a-7e73-a566-105746b4f45f/exec-5b0c037e-133b-44de-9b0a-45a7e3055a2d.png",
+      "destination": "docs/design/gradient-control-icons-v1/gradient-policy-v1.png",
+      "prompt": "Create one original KwipML GRADIENT POLICY component icon, using attached run-setup icon only as style reference. Match its broad pale olive clipped-corner square/octagonal outer frame and darker muted olive interior glyph, with the same centered optical footprint. Interior glyph: three small evenly spaced sharp square tiles converging via short simple paths into one larger central square, with one compact downward arrow below that square. This communicates combining small observation groups into one update and selecting what changes a result. Bold flat clean geometry, legible at24/32pixels. Two solid olive colors only. Genuine transparent background outside and inside open regions. No text, letters, mathematical symbols, numbers, glow, gradient, shadow, perspective, texture, badges or sparkle. Generous negative space inside frame; do not copy sliders. Final original raster artwork for native macOS visual ML canvas.",
+      "sha256": "944f02d2fb730ccd28052bcd57b675656524ca4bef87f9872bb697052a095661",
+      "review": "Original image visually reviewed: olive clipped frame; gradient merge arrow / lock and adjustment tiles. Native registration pending."
+    },
+    {
+      "assetID": "trainability-v1",
+      "source": "/Users/developer/.codex/generated_images/01a10a07-829a-7e73-a566-105746b4f45f/exec-3c2a658c-8719-4ca1-9e20-b828c21e612f.png",
+      "destination": "docs/design/gradient-control-icons-v1/trainability-v1.png",
+      "prompt": "Create one original KwipML TRAINABILITY component icon using attached run-setup icon only as style reference. Match broad pale olive clipped-corner square/octagonal outer frame, centered optical footprint, darker muted olive inner glyph. Replace sliders with two equal sharp square learned-setting tiles side by side. Left tile contains a small simple closed padlock silhouette. Right tile contains a simple upward adjustment arrow. Communicate keeping some learned values fixed while letting others learn. Flat bold clean geometry, very legible at24/32pixels; two solid olive colors only. Genuine transparent background outside and in all open regions. No text, letters, numbers, shadows, gradients, glow, texture, perspective, decorative badges or sparkle. Generous negative space between glyph and frame. Final original raster artwork for native macOS visual machine learning canvas.",
+      "sha256": "3e7ebe9a25da4d738a94a384e1220a0abe70d5f32158a0a17d25fd63810c6e2d",
+      "review": "Original image visually reviewed: olive clipped frame; gradient merge arrow / lock and adjustment tiles. Native registration pending."
+    }
+  ]
+}

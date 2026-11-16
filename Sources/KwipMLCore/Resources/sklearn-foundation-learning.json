@@ -1,0 +1,21 @@
+{
+  "objective": "Explain how an affine score becomes a binary probability and why preprocessing fits only training rows.",
+  "formula": "z = Xw + b; P(y=1|X) = sigmoid(z)",
+  "steps": [
+    "Inspect source columns and the split. Row identities in training and validation must not overlap.",
+    "Fit the scaler on training rows and apply that same state to both partitions. Validation does not influence fitted preprocessing.",
+    "Fit logistic regression: X is an N×2 matrix, w is a length-2 coefficient vector, b is an optional scalar. Each row produces one decision score.",
+    "The sigmoid maps the score to a probability. Positive scores predict class 1; zero and negative scores predict class 0. A large score is confidence, not proof of correctness.",
+    "Inspect validation accuracy and log loss together. Confident wrong predictions can have a large loss even when accuracy looks acceptable.",
+    "Change C while keeping the prepared split fixed. Smaller C strengthens L2 regularization; there is no minibatch size or initialization seed for this deterministic full-batch lbfgs configuration.",
+    "Reload state.json and compare probabilities. Portable inference expects already-prepared feature values in the same order; it does not silently apply the scaler."
+  ],
+  "exercise": "Compute z and sigmoid(z) for one held-out row using saved coefficients. Explain the class prediction and compare it with the recorded decision score.",
+  "assessment": "Starter reading and runnable example only; no scored mastery receipt.",
+  "limits": "Binary dense CPU classifier; no partial fitting, warm restart, GPU, shared autograd, or framework-wide coverage. A convergence warning remains visible in the run record.",
+  "schemaVersion": 1,
+  "id": "sklearn.logistic-foundation",
+  "title": "A linear boundary",
+  "contentVersion": "1.0.0",
+  "reviewedAt": "2026-10-07"
+}

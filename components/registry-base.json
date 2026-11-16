@@ -1,0 +1,351 @@
+{
+  "schemaVersion": 2,
+  "components": [
+    {
+      "id": "input",
+      "title": "Input",
+      "category": "Data",
+      "inputs": [],
+      "outputs": [
+        "out"
+      ],
+      "fields": [
+        {
+          "key": "features",
+          "title": "Features",
+          "defaultValue": 2,
+          "min": 1,
+          "max": 512,
+          "kind": "integer"
+        }
+      ],
+      "configurationAlternatives": {
+        "tensor": [
+          {
+            "key": "shape",
+            "title": "Sample dimensions",
+            "kind": "integerList",
+            "defaultValue": [
+              1,
+              2,
+              2
+            ],
+            "min": 1,
+            "max": 100000000,
+            "minItems": 1,
+            "maxItems": 7
+          }
+        ]
+      }
+    },
+    {
+      "id": "output",
+      "title": "Model Output",
+      "category": "Boundaries",
+      "inputs": [
+        "in"
+      ],
+      "outputs": [],
+      "fields": []
+    },
+    {
+      "id": "depthwise_conv2d",
+      "title": "Depthwise Conv2d",
+      "category": "Layers",
+      "inputs": [
+        "in"
+      ],
+      "outputs": [
+        "out"
+      ],
+      "fields": [
+        {
+          "key": "in_channels",
+          "title": "Input channels",
+          "kind": "integer",
+          "defaultValue": 2,
+          "min": 1,
+          "max": 512
+        },
+        {
+          "key": "channel_multiplier",
+          "title": "Filters per input channel",
+          "kind": "integer",
+          "defaultValue": 1,
+          "min": 1,
+          "max": 512
+        },
+        {
+          "key": "kernel_size",
+          "title": "Kernel [height, width]",
+          "kind": "integerList",
+          "defaultValue": [
+            3,
+            3
+          ],
+          "min": 1,
+          "max": 4096,
+          "minItems": 2,
+          "maxItems": 2
+        },
+        {
+          "key": "stride",
+          "title": "Stride [height, width]",
+          "kind": "integerList",
+          "defaultValue": [
+            1,
+            1
+          ],
+          "min": 1,
+          "max": 4096,
+          "minItems": 2,
+          "maxItems": 2
+        },
+        {
+          "key": "dilation",
+          "title": "Dilation [height, width]",
+          "kind": "integerList",
+          "defaultValue": [
+            1,
+            1
+          ],
+          "min": 1,
+          "max": 4096,
+          "minItems": 2,
+          "maxItems": 2
+        },
+        {
+          "key": "bias",
+          "title": "Learn bias",
+          "kind": "boolean",
+          "defaultValue": true
+        },
+        {
+          "key": "padding_policy",
+          "title": "Padding policy",
+          "kind": "choice",
+          "defaultValue": "explicit",
+          "choices": [
+            {
+              "value": "explicit",
+              "title": "Explicit amount"
+            },
+            {
+              "value": "valid",
+              "title": "Valid \u00b7 no padding"
+            },
+            {
+              "value": "same",
+              "title": "Same spatial size"
+            }
+          ]
+        },
+        {
+          "key": "padding",
+          "title": "Padding [height, width]",
+          "kind": "integerList",
+          "defaultValue": [
+            0,
+            0
+          ],
+          "min": 0,
+          "max": 4096,
+          "minItems": 2,
+          "maxItems": 2
+        },
+        {
+          "key": "padding_mode",
+          "title": "Padding mode",
+          "kind": "choice",
+          "defaultValue": "zeros",
+          "choices": [
+            {
+              "value": "zeros",
+              "title": "Zeros"
+            },
+            {
+              "value": "reflect",
+              "title": "Reflect"
+            },
+            {
+              "value": "replicate",
+              "title": "Replicate"
+            },
+            {
+              "value": "circular",
+              "title": "Circular"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mixture_experts",
+      "title": "Mixture of experts",
+      "category": "Layers",
+      "inputs": [
+        "in",
+        "mask"
+      ],
+      "outputs": [
+        "out"
+      ],
+      "fields": [
+        {
+          "key": "version",
+          "title": "Version",
+          "defaultValue": 1,
+          "kind": "integer",
+          "min": 1,
+          "max": 1
+        },
+        {
+          "key": "input_features",
+          "title": "Input features",
+          "defaultValue": 2,
+          "kind": "integer",
+          "min": 1,
+          "max": 512
+        },
+        {
+          "key": "output_features",
+          "title": "Output features",
+          "defaultValue": 2,
+          "kind": "integer",
+          "min": 1,
+          "max": 512
+        },
+        {
+          "key": "expert_count",
+          "title": "Expert count",
+          "defaultValue": 4,
+          "kind": "integer",
+          "min": 2,
+          "max": 4
+        },
+        {
+          "key": "top_k",
+          "title": "Top k",
+          "defaultValue": 2,
+          "kind": "integer",
+          "min": 1,
+          "max": 4
+        },
+        {
+          "key": "temperature",
+          "title": "Temperature",
+          "defaultValue": 1.0,
+          "kind": "number",
+          "min": 0.0001,
+          "max": 100
+        },
+        {
+          "key": "weighting",
+          "title": "Weighting",
+          "defaultValue": "normalized",
+          "kind": "choice",
+          "choices": [
+            {
+              "value": "normalized",
+              "title": "Normalized"
+            },
+            {
+              "value": "probability",
+              "title": "Probability"
+            }
+          ]
+        },
+        {
+          "key": "balance_coefficient",
+          "title": "Balance coefficient",
+          "defaultValue": 0.01,
+          "kind": "number",
+          "min": 0,
+          "max": 10
+        },
+        {
+          "key": "z_coefficient",
+          "title": "Z coefficient",
+          "defaultValue": 0.001,
+          "kind": "number",
+          "min": 0,
+          "max": 10
+        },
+        {
+          "key": "capture",
+          "title": "Capture",
+          "defaultValue": "aggregate",
+          "kind": "choice",
+          "choices": [
+            {
+              "value": "off",
+              "title": "Off"
+            },
+            {
+              "value": "aggregate",
+              "title": "Aggregate"
+            },
+            {
+              "value": "sample",
+              "title": "Sample"
+            }
+          ]
+        },
+        {
+          "key": "sample_limit",
+          "title": "Sample limit",
+          "defaultValue": 128,
+          "kind": "integer",
+          "min": 0,
+          "max": 1024
+        },
+        {
+          "key": "mask",
+          "title": "Mask",
+          "defaultValue": false,
+          "kind": "boolean"
+        },
+        {
+          "key": "router",
+          "title": "Router",
+          "defaultValue": "{\"schemaVersion\":2,\"nodes\":[{\"id\":\"input\",\"type\":\"input\",\"config\":{\"features\":2}},{\"id\":\"gate\",\"type\":\"linear\",\"config\":{\"in_features\":2,\"out_features\":4,\"bias\":true}},{\"id\":\"output\",\"type\":\"output\",\"config\":{}}],\"edges\":[{\"id\":\"edge0\",\"source\":\"input\",\"sourcePort\":\"out\",\"target\":\"gate\",\"targetPort\":\"in\"},{\"id\":\"edge1\",\"source\":\"gate\",\"sourcePort\":\"out\",\"target\":\"output\",\"targetPort\":\"in\"}]}",
+          "kind": "text",
+          "minItems": 1,
+          "maxItems": 4096
+        },
+        {
+          "key": "expert_1",
+          "title": "Expert 1",
+          "defaultValue": "{\"id\":\"expert_a\",\"name\":\"Expert A\",\"trainable\":true,\"graph\":{\"schemaVersion\":2,\"nodes\":[{\"id\":\"input\",\"type\":\"input\",\"config\":{\"features\":2}},{\"id\":\"hidden\",\"type\":\"linear\",\"config\":{\"in_features\":2,\"out_features\":8,\"bias\":true}},{\"id\":\"activation\",\"type\":\"gelu\",\"config\":{\"approximate_tanh\":false}},{\"id\":\"gate\",\"type\":\"linear\",\"config\":{\"in_features\":8,\"out_features\":2,\"bias\":true}},{\"id\":\"output\",\"type\":\"output\",\"config\":{}}],\"edges\":[{\"id\":\"edge0\",\"source\":\"input\",\"sourcePort\":\"out\",\"target\":\"hidden\",\"targetPort\":\"in\"},{\"id\":\"edge1\",\"source\":\"hidden\",\"sourcePort\":\"out\",\"target\":\"activation\",\"targetPort\":\"in\"},{\"id\":\"edge2\",\"source\":\"activation\",\"sourcePort\":\"out\",\"target\":\"gate\",\"targetPort\":\"in\"},{\"id\":\"edge3\",\"source\":\"gate\",\"sourcePort\":\"out\",\"target\":\"output\",\"targetPort\":\"in\"}]}}",
+          "kind": "text",
+          "minItems": 1,
+          "maxItems": 4096
+        },
+        {
+          "key": "expert_2",
+          "title": "Expert 2",
+          "defaultValue": "{\"id\":\"expert_b\",\"name\":\"Expert B\",\"trainable\":true,\"graph\":{\"schemaVersion\":2,\"nodes\":[{\"id\":\"input\",\"type\":\"input\",\"config\":{\"features\":2}},{\"id\":\"hidden\",\"type\":\"linear\",\"config\":{\"in_features\":2,\"out_features\":8,\"bias\":true}},{\"id\":\"activation\",\"type\":\"gelu\",\"config\":{\"approximate_tanh\":false}},{\"id\":\"gate\",\"type\":\"linear\",\"config\":{\"in_features\":8,\"out_features\":2,\"bias\":true}},{\"id\":\"output\",\"type\":\"output\",\"config\":{}}],\"edges\":[{\"id\":\"edge0\",\"source\":\"input\",\"sourcePort\":\"out\",\"target\":\"hidden\",\"targetPort\":\"in\"},{\"id\":\"edge1\",\"source\":\"hidden\",\"sourcePort\":\"out\",\"target\":\"activation\",\"targetPort\":\"in\"},{\"id\":\"edge2\",\"source\":\"activation\",\"sourcePort\":\"out\",\"target\":\"gate\",\"targetPort\":\"in\"},{\"id\":\"edge3\",\"source\":\"gate\",\"sourcePort\":\"out\",\"target\":\"output\",\"targetPort\":\"in\"}]}}",
+          "kind": "text",
+          "minItems": 1,
+          "maxItems": 4096
+        },
+        {
+          "key": "expert_3",
+          "title": "Expert 3",
+          "defaultValue": "{\"id\":\"expert_c\",\"name\":\"Expert C\",\"trainable\":true,\"graph\":{\"schemaVersion\":2,\"nodes\":[{\"id\":\"input\",\"type\":\"input\",\"config\":{\"features\":2}},{\"id\":\"hidden\",\"type\":\"linear\",\"config\":{\"in_features\":2,\"out_features\":8,\"bias\":true}},{\"id\":\"activation\",\"type\":\"gelu\",\"config\":{\"approximate_tanh\":false}},{\"id\":\"gate\",\"type\":\"linear\",\"config\":{\"in_features\":8,\"out_features\":2,\"bias\":true}},{\"id\":\"output\",\"type\":\"output\",\"config\":{}}],\"edges\":[{\"id\":\"edge0\",\"source\":\"input\",\"sourcePort\":\"out\",\"target\":\"hidden\",\"targetPort\":\"in\"},{\"id\":\"edge1\",\"source\":\"hidden\",\"sourcePort\":\"out\",\"target\":\"activation\",\"targetPort\":\"in\"},{\"id\":\"edge2\",\"source\":\"activation\",\"sourcePort\":\"out\",\"target\":\"gate\",\"targetPort\":\"in\"},{\"id\":\"edge3\",\"source\":\"gate\",\"sourcePort\":\"out\",\"target\":\"output\",\"targetPort\":\"in\"}]}}",
+          "kind": "text",
+          "minItems": 1,
+          "maxItems": 4096
+        },
+        {
+          "key": "expert_4",
+          "title": "Expert 4",
+          "defaultValue": "{\"id\":\"expert_d\",\"name\":\"Expert D\",\"trainable\":true,\"graph\":{\"schemaVersion\":2,\"nodes\":[{\"id\":\"input\",\"type\":\"input\",\"config\":{\"features\":2}},{\"id\":\"hidden\",\"type\":\"linear\",\"config\":{\"in_features\":2,\"out_features\":8,\"bias\":true}},{\"id\":\"activation\",\"type\":\"gelu\",\"config\":{\"approximate_tanh\":false}},{\"id\":\"gate\",\"type\":\"linear\",\"config\":{\"in_features\":8,\"out_features\":2,\"bias\":true}},{\"id\":\"output\",\"type\":\"output\",\"config\":{}}],\"edges\":[{\"id\":\"edge0\",\"source\":\"input\",\"sourcePort\":\"out\",\"target\":\"hidden\",\"targetPort\":\"in\"},{\"id\":\"edge1\",\"source\":\"hidden\",\"sourcePort\":\"out\",\"target\":\"activation\",\"targetPort\":\"in\"},{\"id\":\"edge2\",\"source\":\"activation\",\"sourcePort\":\"out\",\"target\":\"gate\",\"targetPort\":\"in\"},{\"id\":\"edge3\",\"source\":\"gate\",\"sourcePort\":\"out\",\"target\":\"output\",\"targetPort\":\"in\"}]}}",
+          "kind": "text",
+          "minItems": 1,
+          "maxItems": 4096
+        }
+      ]
+    }
+  ]
+}

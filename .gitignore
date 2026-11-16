@@ -1,0 +1,16 @@
+.DS_Store
+.build/
+.venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+.local/
+*.app/
+.env*
+*.p12
+*.pfx
+*.mobileprovision
+*.provisionprofile
+*.xcarchive/
+*.dSYM/
+*.pkg

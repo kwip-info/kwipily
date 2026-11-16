@@ -1,0 +1,411 @@
+{
+  "graph": {
+    "schemaVersion": 1,
+    "nodes": [
+      {
+        "id": "rules",
+        "operator": "kwip.data.gameRules",
+        "config": {
+          "definition": {
+            "version": 1,
+            "name": "Take-away",
+            "parameters": {},
+            "state": {
+              "remaining": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 21,
+                "initial": 21
+              },
+              "to_move": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 1,
+                "initial": 0
+              }
+            },
+            "actions": {
+              "take": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 3
+              }
+            },
+            "currentPlayer": "state.to_move",
+            "legal": "action.take <= state.remaining",
+            "transitions": [
+              {
+                "name": "Take objects",
+                "when": "True",
+                "updates": {
+                  "remaining": "state.remaining - action.take",
+                  "to_move": "1 - state.to_move"
+                }
+              }
+            ],
+            "terminal": [
+              {
+                "name": "Last object",
+                "when": "state.remaining == 0",
+                "winner": "1 - state.to_move"
+              }
+            ],
+            "observations": [
+              "state.remaining / 21"
+            ],
+            "reward": "0 if not outcome.terminal or outcome.winner == None else (1 if outcome.winner == player else -1)",
+            "invariants": [],
+            "tests": [
+              {
+                "name": "Take 3 from 5",
+                "state": {
+                  "remaining": 5,
+                  "to_move": 0
+                },
+                "actions": [
+                  {
+                    "take": 3
+                  }
+                ],
+                "expect": {
+                  "state": {
+                    "remaining": 2,
+                    "to_move": 1
+                  },
+                  "terminal": false
+                }
+              },
+              {
+                "name": "Too many objects",
+                "state": {
+                  "remaining": 2,
+                  "to_move": 0
+                },
+                "actions": [
+                  {
+                    "take": 3
+                  }
+                ],
+                "expectError": "illegal",
+                "expect": {
+                  "state": {
+                    "remaining": 2,
+                    "to_move": 0
+                  }
+                }
+              },
+              {
+                "name": "Last object wins",
+                "state": {
+                  "remaining": 1,
+                  "to_move": 1
+                },
+                "actions": [
+                  {
+                    "take": 1
+                  }
+                ],
+                "expect": {
+                  "terminal": true,
+                  "winner": 1,
+                  "rewards": [
+                    -1,
+                    1
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "edges": []
+  },
+  "event": {
+    "event": "dataflowPreview",
+    "nodeID": "rules",
+    "outputs": {
+      "summary": {
+        "kind": "table",
+        "preview": {
+          "columns": [
+            {
+              "name": "definition",
+              "dtype": "string",
+              "nullable": false
+            },
+            {
+              "name": "passed",
+              "dtype": "int64",
+              "nullable": false
+            },
+            {
+              "name": "failed",
+              "dtype": "int64",
+              "nullable": false
+            },
+            {
+              "name": "moves",
+              "dtype": "int64",
+              "nullable": false
+            }
+          ],
+          "rows": [
+            [
+              "953cc7ded97122eaa7be946caf951f2ddf85ec98849cacc88309ec9664d47072",
+              3,
+              0,
+              3
+            ]
+          ],
+          "rowCount": 1,
+          "partition": "unassigned",
+          "dataVersion": "e5a72d09317a8e8d74cbde97ec4d5b183f2287c8ee9242f0693ba42d64d45d80",
+          "diagnostics": [],
+          "diagnosticCount": 0
+        },
+        "lineage": {
+          "role": "unassigned",
+          "sourceDigest": "953cc7ded97122eaa7be946caf951f2ddf85ec98849cacc88309ec9664d47072",
+          "membershipDigest": "bf3a9e07fc6e53b32c94a0583128e4d16e7ca219d7b1b31f330a5f261c04c83f",
+          "dataVersion": "e5a72d09317a8e8d74cbde97ec4d5b183f2287c8ee9242f0693ba42d64d45d80",
+          "partitionDigest": "",
+          "fittedStateDigests": []
+        }
+      },
+      "tests": {
+        "kind": "table",
+        "preview": {
+          "columns": [
+            {
+              "name": "test",
+              "dtype": "string",
+              "nullable": false
+            },
+            {
+              "name": "status",
+              "dtype": "string",
+              "nullable": false
+            },
+            {
+              "name": "detail",
+              "dtype": "string",
+              "nullable": false
+            },
+            {
+              "name": "moves",
+              "dtype": "int64",
+              "nullable": false
+            },
+            {
+              "name": "definition",
+              "dtype": "string",
+              "nullable": false
+            }
+          ],
+          "rows": [
+            [
+              "Take 3 from 5",
+              "passed",
+              "Expectations matched.",
+              1,
+              "953cc7ded97122eaa7be946caf951f2ddf85ec98849cacc88309ec9664d47072"
+            ],
+            [
+              "Too many objects",
+              "passed",
+              "illegal action: predicate refused the move.",
+              1,
+              "953cc7ded97122eaa7be946caf951f2ddf85ec98849cacc88309ec9664d47072"
+            ],
+            [
+              "Last object wins",
+              "passed",
+              "Expectations matched.",
+              1,
+              "953cc7ded97122eaa7be946caf951f2ddf85ec98849cacc88309ec9664d47072"
+            ]
+          ],
+          "rowCount": 3,
+          "partition": "unassigned",
+          "dataVersion": "96fa62ff0ffb1c782bc64b71d2e2abb3b750d4a9b68a83ca4f6a0557fe3c7e74",
+          "diagnostics": [],
+          "diagnosticCount": 0
+        },
+        "lineage": {
+          "role": "unassigned",
+          "sourceDigest": "953cc7ded97122eaa7be946caf951f2ddf85ec98849cacc88309ec9664d47072",
+          "membershipDigest": "5277f3d9522959898dd4fd85a2ff2c9273a58a32b7c395024bd4c5f1d9ff2382",
+          "dataVersion": "96fa62ff0ffb1c782bc64b71d2e2abb3b750d4a9b68a83ca4f6a0557fe3c7e74",
+          "partitionDigest": "",
+          "fittedStateDigests": []
+        }
+      },
+      "trace": {
+        "kind": "table",
+        "preview": {
+          "columns": [
+            {
+              "name": "test",
+              "dtype": "string",
+              "nullable": false
+            },
+            {
+              "name": "move",
+              "dtype": "int64",
+              "nullable": false
+            },
+            {
+              "name": "before",
+              "dtype": "string",
+              "nullable": false
+            },
+            {
+              "name": "action",
+              "dtype": "string",
+              "nullable": false
+            },
+            {
+              "name": "after",
+              "dtype": "string",
+              "nullable": false
+            },
+            {
+              "name": "status",
+              "dtype": "string",
+              "nullable": false
+            },
+            {
+              "name": "rule",
+              "dtype": "string",
+              "nullable": false
+            },
+            {
+              "name": "terminal",
+              "dtype": "bool",
+              "nullable": false
+            },
+            {
+              "name": "winner",
+              "dtype": "string",
+              "nullable": false
+            },
+            {
+              "name": "rewards",
+              "dtype": "string",
+              "nullable": false
+            }
+          ],
+          "rows": [
+            [
+              "Take 3 from 5",
+              1,
+              "{\"remaining\":5,\"to_move\":0}",
+              "{\"take\":3}",
+              "{\"remaining\":2,\"to_move\":1}",
+              "applied",
+              "Take objects",
+              false,
+              "null",
+              "[0,0]"
+            ],
+            [
+              "Too many objects",
+              1,
+              "{\"remaining\":2,\"to_move\":0}",
+              "{\"take\":3}",
+              "{\"remaining\":2,\"to_move\":0}",
+              "refused",
+              "illegal action: predicate refused the move.",
+              false,
+              "null",
+              "[]"
+            ],
+            [
+              "Last object wins",
+              1,
+              "{\"remaining\":1,\"to_move\":1}",
+              "{\"take\":1}",
+              "{\"remaining\":0,\"to_move\":0}",
+              "applied",
+              "Take objects",
+              true,
+              "1",
+              "[-1,1]"
+            ]
+          ],
+          "rowCount": 3,
+          "partition": "unassigned",
+          "dataVersion": "f59aefb3adde7159cb72f2ff5d48bdc9c4f7a33179340db5ab78bd376412541a",
+          "diagnostics": [],
+          "diagnosticCount": 0
+        },
+        "lineage": {
+          "role": "unassigned",
+          "sourceDigest": "953cc7ded97122eaa7be946caf951f2ddf85ec98849cacc88309ec9664d47072",
+          "membershipDigest": "43361e24c6e4b435c4822e379ea2fac5fa3dbe9d16c9624ff8740e4e694feb44",
+          "dataVersion": "f59aefb3adde7159cb72f2ff5d48bdc9c4f7a33179340db5ab78bd376412541a",
+          "partitionDigest": "",
+          "fittedStateDigests": []
+        }
+      },
+      "definition": {
+        "kind": "table",
+        "preview": {
+          "columns": [
+            {
+              "name": "schema",
+              "dtype": "string",
+              "nullable": false
+            },
+            {
+              "name": "sha256",
+              "dtype": "string",
+              "nullable": false
+            },
+            {
+              "name": "json",
+              "dtype": "string",
+              "nullable": false
+            }
+          ],
+          "rows": [
+            [
+              "kwip.game-definition.v1",
+              "953cc7ded97122eaa7be946caf951f2ddf85ec98849cacc88309ec9664d47072",
+              "{\"actions\":{\"take\":{\"maximum\":3,\"minimum\":1,\"type\":\"integer\"}},\"currentPlayer\":\"state.to_move\",\"invariants\":[],\"legal\":\"action.take <= state.remaining\",\"name\":\"Take-away\",\"observations\":[\"state.remain"
+            ]
+          ],
+          "rowCount": 1,
+          "partition": "unassigned",
+          "dataVersion": "5c4db3dee1ec596df49b323c35284fcd02d4cdb828d94c91f18433e6b192940b",
+          "diagnostics": [],
+          "diagnosticCount": 0
+        },
+        "lineage": {
+          "role": "unassigned",
+          "sourceDigest": "953cc7ded97122eaa7be946caf951f2ddf85ec98849cacc88309ec9664d47072",
+          "membershipDigest": "6fb9f531fc191577abb815922aa06738c6eb12fc34ae11b23af49fd73c9f274c",
+          "dataVersion": "5c4db3dee1ec596df49b323c35284fcd02d4cdb828d94c91f18433e6b192940b",
+          "partitionDigest": "",
+          "fittedStateDigests": []
+        }
+      }
+    },
+    "execution": {
+      "nodeID": "rules",
+      "cacheKey": "9230411af7a2a7989c06c3fc743c53e50a1bdd35ed1dd5c48197a9f3370c0a2b",
+      "status": "executed",
+      "reason": "disabled"
+    },
+    "coverage": {
+      "completeness": "complete",
+      "rowCounts": {
+        "summary": 1,
+        "tests": 3,
+        "trace": 3,
+        "definition": 1
+      }
+    }
+  }
+}

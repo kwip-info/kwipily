@@ -1,0 +1,14 @@
+{
+  "date": "2026-10-09",
+  "tool": "built-in image_gen",
+  "assetID": "initialization-v1",
+  "source": "/Users/developer/.codex/generated_images/01a10a07-829a-7e73-a566-105746b4f45f/exec-3693bdd4-a2d8-4e92-8b3f-2f937cf1d490.png",
+  "destination": "docs/design/initialization-icons-v1/initialization-v1.png",
+  "registeredResource": "Sources/KwipMLApp/Resources/ComponentIcons/initialization-v1.png",
+  "reference": "Sources/KwipMLApp/Resources/ComponentIcons/run-setup-v2.png",
+  "sha256": "a9cedb8b5221ed2730b8fbdee327d7fe5dd646ed1803117ac35ad4c5ce8be897",
+  "resourceSHA256": "a9cedb8b5221ed2730b8fbdee327d7fe5dd646ed1803117ac35ad4c5ce8be897",
+  "prompt": "Create one original KwipML parameter INITIALIZATION component icon using the attached run-setup icon only as style reference. Preserve its broad pale olive clipped-corner square/octagonal outer frame, centered optical footprint and darker muted olive inner glyph. Replace the sliders with a clean 2 by 2 arrangement of four learned-value tiles of visibly different filled heights, and one compact downward placement arrow centered above the tiles. Communicate choosing the starting values of learned settings. Very simple bold flat geometry legible at 24 and 32 pixels. Only two solid olive colors matching the reference; genuinely transparent background outside and inside all open regions. No text, letters, numbers, code, shadows, gradients, glow, perspective, texture, extra badges or decorative sparkles. Sharp square tile edges. Generous negative space between glyph and frame. This is final original raster artwork for a native macOS visual machine learning canvas.",
+  "review": "Visually reviewed original output: olive clipped outer frame, downward placement arrow and four tiles with distinct fill heights. Family optical footprint matches reference; native palette/canvas integration pending.",
+  "status": "generated-and-visually-reviewed; native integration pending"
+}

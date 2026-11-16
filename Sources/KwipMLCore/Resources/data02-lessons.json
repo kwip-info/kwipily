@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "family": "data-engineering",
+  "lessons": [
+    {
+      "id": "data02-expression",
+      "title": "Choose rows using two conditions",
+      "objective": "Suppose an order needs at least two items and each item must cost at least 10 to enter a review queue. One condition alone is not enough.\n\nThe supplied canvas reads eight synthetic orders, uses Columns to convert quantity and unit_price into numbers, then sends them through Filter. Its Matching and Nonmatching outputs retain the accepted and rejected orders separately. No classifier is trained.",
+      "terms": "- **Expression:** a written rule over column values.\n- **AND:** both conditions must be true.\n- **OR:** either condition can be true.\n- **Null:** a missing cell, different from zero.\n- **Branch:** a separate output connection.",
+      "steps": [
+        "1. Select Columns and inspect quantity and unit_price.\n2. Follow its table into Filter.\n\nNumeric comparisons need numeric values; a text value that looks like a number is not an automatic conversion.",
+        "1. Select Filter and inspect Expression mode.\n2. Read [quantity] >= 2 AND [unit_price] >= 10.\n3. Explain what each comparison accepts before combining them.\n\nSquare brackets identify an input column.",
+        "1. Predict the accepted order IDs. A01 has quantity 2 and unit_price 12.5; A03 has quantity 4 and unit_price 5.\n2. Run Flow.\n3. Inspect the Matching and Nonmatching tables and compare their IDs with your prediction.",
+        "1. Change AND to OR, Apply and run again.\n2. Compare both branches with the previous result.\n3. Restore AND, Apply and rerun.\n\nOR accepts either condition; it does not require both.",
+        "Inspect the missing-value policy. An unknown final comparison with Error refuses a result. Use an explicit missing-value condition or policy rather than treating a missing value as zero.\n\nExplain which branch a quantity-zero order would enter and why zero is different from missing."
+      ],
+      "inspect": "Matching contains A01, A04 and A07. Nonmatching contains A02, A03, A05, A06 and A08. Together they contain all eight original orders, without duplication. A rejected order has not been deleted from its separate output.",
+      "operators": [
+        "kwip.data.sourceCSV",
+        "kwip.data.columns",
+        "kwip.data.filterRows"
+      ],
+      "exampleIDs": [
+        "data02-expression"
+      ],
+      "operatorID": "kwip.data.filterRows",
+      "graph": "data02-expression.json",
+      "source": "data02-observations.csv",
+      "sourceNode": "source",
+      "reading": "data02-expression.md",
+      "mode": "guidedPractice",
+      "isAssessed": false,
+      "contentVersion": 4,
+      "authoredAt": "2026-10-18",
+      "disclosure": "Editable guided practice, not a scored assessment. Opening or running this example does not award completion. Inspect actual output; sample results describe these eight synthetic orders only.",
+      "prediction": "A01 has quantity 2 and price 12.5. A03 has quantity 4 but price 5. Which of those satisfies both conditions?",
+      "limits": "Arithmetic and comparisons use typed values, not automatic conversion. Use Columns first. Rules are bounded to 4096 characters and the documented operators; arbitrary functions and code are unsupported. Null comparisons stay unknown until handled explicitly."
+    },
+    {
+      "id": "data02-calculate",
+      "title": "Create an order total",
+      "objective": "Add a new column by multiplying quantity by unit price, while keeping every original order.",
+      "terms": "**Calculated column:** a new value made from existing columns in the same row. **Whole number:** an integer such as 2. **Decimal number:** a number such as 12.5. **Replace:** deliberately overwrite a column rather than add another.",
+      "steps": [
+        "Open Create an order total. Follow the source into Columns: quantity is a whole number and unit price is a decimal number.",
+        "Select Formula. Its operation grid creates order_total using [quantity] * [unit_price], with type float64 and Write set to New column.",
+        "Predict the totals for Ana and Bo: 2 × 12.5 and 1 × 80. Apply the controls and Run Flow.",
+        "Inspect the table output. Confirm all eight order IDs remain in the original order and order_total appears alongside the original columns.",
+        "Try naming the output quantity with Write set to New column. The collision is refused. Choose a new name or explicitly choose Replace existing column, then restore order_total."
+      ],
+      "inspect": "The totals in order are 25, 80, 20, 60, 10, 0, 60 and 6. A zero quantity produces a zero total; a missing quantity would require an explicit policy instead.",
+      "operators": [
+        "kwip.data.sourceCSV",
+        "kwip.data.columns",
+        "kwip.data.formula"
+      ],
+      "exampleIDs": [
+        "data02-calculate"
+      ],
+      "operatorID": "kwip.data.formula",
+      "graph": "data02-calculate.json",
+      "source": "data02-observations.csv",
+      "sourceNode": "source",
+      "reading": "data02-calculate.md",
+      "mode": "guidedPractice",
+      "isAssessed": false,
+      "contentVersion": 3,
+      "authoredAt": "2026-10-14",
+      "disclosure": "Editable guided practice, not a scored assessment. Opening or running this example does not award completion. Inspect actual output; sample results describe these eight synthetic orders only.",
+      "prediction": "The total is quantity × unit price. A larger unit price does not always mean a larger order total. Compare A01 with A07 before running.",
+      "limits": "The expression must produce the chosen output type. Numbers must remain finite and within the supported range. Missing values can be preserved explicitly; preserving them does not invent a total. No row grouping or cross-row totals are implied."
+    },
+    {
+      "id": "data02-regex-match",
+      "title": "Separate email-shaped text",
+      "objective": "Before sending contact data to another step, you may want to separate text that resembles an email address from text that does not.\n\nThe supplied canvas reads eight synthetic orders and routes them through Filter. The email column contains plausible addresses, invalid text and one missing cell. Matching and Nonmatching keep both groups available. This simple pattern checks text shape; it cannot establish that an address exists or belongs to anyone.",
+      "terms": "- **Regex:** a pattern describing characters and repetition.\n- **Full match:** the entire cell must fit.\n- **Search:** a matching part anywhere in the cell is enough.\n- **Missing:** no text value is present.",
+      "steps": [
+        "1. Select Filter and open Configuration.\n2. Find Text pattern mode, the email column and Full matching.\n3. Follow both Matching and Nonmatching outputs.\n\nThe supplied pattern is already configured; inspect it before changing anything.",
+        "Compare an ordinary address-shaped value with invalid and the missing email in A05. Predict which should match the whole pattern.\n\nA missing cell needs its own explicit policy; it is not an empty address that can be silently validated.",
+        "1. Keep the missing-cell policy set to Nonmatching.\n2. Run Flow.\n3. Inspect both captured tables and compare the order IDs, not just the counts.",
+        "1. Confirm six matching orders: A01, A02, A04, A06, A07 and A08.\n2. Confirm A03 and A05 in Nonmatching.\n3. Check that the two branches together cover the original eight orders once.",
+        "For an optional extension, save a copy of the source and add extra text around an address-shaped value. Select that copied source explicitly in Table Input. Compare Full with Search, applying and running each.\n\nSearch can find a matching substring even when the entire cell is unsuitable. Restore the supplied example with Start fresh if you want to continue from the original data."
+      ],
+      "inspect": "Six orders match: A01, A02, A04, A06, A07 and A08. A03 and A05 are nonmatching. This simple pattern is an exercise, not a complete internet email validator.",
+      "operators": [
+        "kwip.data.sourceCSV",
+        "kwip.data.columns",
+        "kwip.data.filterRows"
+      ],
+      "exampleIDs": [
+        "data02-regex-match"
+      ],
+      "operatorID": "kwip.data.filterRows",
+      "graph": "data02-regex-match.json",
+      "source": "data02-observations.csv",
+      "sourceNode": "source",
+      "reading": "data02-regex-match.md",
+      "mode": "guidedPractice",
+      "isAssessed": false,
+      "contentVersion": 4,
+      "authoredAt": "2026-10-18",
+      "disclosure": "Editable guided practice, not a scored assessment. Opening or running this example does not award completion. Inspect actual output; sample results describe these eight synthetic orders only.",
+      "prediction": "Six cells look like email addresses, one says invalid and one is missing. What should the missing-value policy do?",
+      "limits": "Patterns run in an isolated supervised worker with time, input and output limits. Expensive patterns are refused with guidance; cancellation stops the worker. The app never silently rewrites a pattern to make it succeed."
+    },
+    {
+      "id": "data02-regex-extract",
+      "title": "Extract a domain into its own column",
+      "objective": "Keep each order and add the text after @ as a new email_domain column.",
+      "terms": "**Capture group:** a named part of a regex pattern whose text can be copied out. **Domain:** the part after @ in this example. **No match:** the pattern did not find the requested part; it is not a made-up empty domain.",
+      "steps": [
+        "Open Extract a domain into its own column. Select Formula, using Extract groups and the email column.",
+        "Select Formula. Choose the Extract groups guided editor. Its email pattern names the domain capture; the output grid writes that capture to a new email_domain text column.",
+        "Keep no-match as null and missing input as preserve. Predict A01, A03 and A05: a domain, no matching text, and a missing input. Run Flow.",
+        "Inspect the original email beside email_domain. Confirm all eight original order IDs remain. A capture changes columns, not the number of orders.",
+        "Try a capture name absent from the pattern. The app should explain the missing group. Restore domain; choose a unique output name unless replacing a column is deliberate."
+      ],
+      "inspect": "Domains are example.com, example.org, null, north.example, null, example.com, example.org and example.com. The first match is used per row. Both unmatched and missing input are represented honestly as missing outputs under these chosen policies.",
+      "operators": [
+        "kwip.data.sourceCSV",
+        "kwip.data.columns",
+        "kwip.data.formula"
+      ],
+      "exampleIDs": [
+        "data02-regex-extract"
+      ],
+      "operatorID": "kwip.data.formula",
+      "graph": "data02-regex-extract.json",
+      "source": "data02-observations.csv",
+      "sourceNode": "source",
+      "reading": "data02-regex-extract.md",
+      "mode": "guidedPractice",
+      "isAssessed": false,
+      "contentVersion": 3,
+      "authoredAt": "2026-10-14",
+      "disclosure": "Editable guided practice, not a scored assessment. Opening or running this example does not award completion. Inspect actual output; sample results describe these eight synthetic orders only.",
+      "prediction": "ANA@example.com should yield example.com. The word invalid has no @. What output should it receive under the chosen no-match policy?",
+      "limits": "Named and numbered groups are supported; group 0 means the whole match. One match is extracted per original row, with at most32 selected groups. The tool does not expand one row into many matches."
+    },
+    {
+      "id": "data02-regex-replace",
+      "title": "Make repeated spaces consistent",
+      "objective": "Collapse runs of spaces in notes into one space while keeping the original note for comparison.",
+      "terms": "**Replacement:** text put in place of a matching part. **First:** change only the first match. **All:** change every match in a cell. **Preserve:** keep a missing cell missing.",
+      "steps": [
+        "Open Make repeated spaces consistent. Select Formula, using Replace text and the note column.",
+        "Select Formula. Choose the Replace text guided editor. Replace runs of spaces in note with one space, replace All matches, and write a new clean_note text column.",
+        "Keep clean_note with Write set to New column, so note stays visible. Predict how paid followed by three spaces then today will change. Run Flow.",
+        "Inspect note and clean_note side by side. paid   today becomes paid today; waiting  review becomes waiting review. The order IDs and row count remain unchanged.",
+        "Notice A08 still has a leading and trailing space. Collapsing repeated spaces is different from trimming edges. Do not assume a tool performed a cleanup you did not configure."
+      ],
+      "inspect": "The clean notes are paid today, waiting review, paid, paid yesterday, missing email, refunded, paid and \" paid \". The final quoted spaces are intentionally retained.",
+      "operators": [
+        "kwip.data.sourceCSV",
+        "kwip.data.columns",
+        "kwip.data.formula"
+      ],
+      "exampleIDs": [
+        "data02-regex-replace"
+      ],
+      "operatorID": "kwip.data.formula",
+      "graph": "data02-regex-replace.json",
+      "source": "data02-observations.csv",
+      "sourceNode": "source",
+      "reading": "data02-regex-replace.md",
+      "mode": "guidedPractice",
+      "isAssessed": false,
+      "contentVersion": 3,
+      "authoredAt": "2026-10-14",
+      "disclosure": "Editable guided practice, not a scored assessment. Opening or running this example does not award completion. Inspect actual output; sample results describe these eight synthetic orders only.",
+      "prediction": "Changing three spaces to one is a text change. Will a single leading space disappear when the replacement is also one space?",
+      "limits": "First/all and explicit column replacement are configurable. Replacement group references must exist. Result strings and whole-table work have enforced budgets; oversized or too-slow results are refused rather than partially accepted."
+    },
+    {
+      "id": "data02-output",
+      "title": "Save the complete selected table",
+      "objective": "Write selected columns from all eight orders into a new semicolon-separated file in a folder you explicitly allow.",
+      "terms": "**Delimited file:** a text table whose columns are separated by a chosen character. **Destination:** the folder you choose for the saved file. **Overwrite:** replace a file already there. **Preview:** a small on-screen sample, not the whole exported table.",
+      "steps": [
+        "Open Save the complete selected table. Inspect the source and Columns output before saving anything.",
+        "Select Table Output. Choose an allowed destination folder, filename prepared-orders.csv, semicolon separator, and columns order_id, quantity, unit_price in that order.",
+        "Leave overwrite off. Run Flow. An explicit destination grant is required; opening the example alone does not save a file.",
+        "Inspect the saved-output result: full row count, column order, filename and status. Open the written file and confirm its header and eight data rows.",
+        "Run again without changing the filename. The existing file should be preserved and the run should explain the refusal. Choose another filename, or consciously enable overwrite. Cancellation before preparation publication preserves existing files; later training failure may leave a completed preparation write."
+      ],
+      "inspect": "The file has three columns and eight complete data rows, plus its header. Its first data row is A01;2;12.5. Semicolons separate fields. The source contains eight rows here; for a larger source, a small preview does not limit the full selected output.",
+      "operators": [
+        "kwip.data.sourceCSV",
+        "kwip.data.columns",
+        "kwip.data.outputDelimited"
+      ],
+      "exampleIDs": [
+        "data02-output"
+      ],
+      "operatorID": "kwip.data.outputDelimited",
+      "graph": "data02-output.json",
+      "source": "data02-observations.csv",
+      "sourceNode": "source",
+      "reading": "data02-output.md",
+      "mode": "guidedPractice",
+      "isAssessed": false,
+      "contentVersion": 3,
+      "authoredAt": "2026-10-14",
+      "disclosure": "Editable guided practice, not a scored assessment. Opening or running this example does not award completion. Inspect actual output; sample results describe these eight synthetic orders only.",
+      "prediction": "The preview shows at most eight rows. The output component writes all rows on its connected table/partition. How will you verify the complete count when your table is larger?",
+      "limits": "Destination grants remain local and private. Complete table writes support CSV/TSV, typed Parquet, JSON/NDJSON and Excel .xlsx. Stop protects existing files; replacement is atomic and Excel replaces the whole workbook. Images require a new copied-assets bundle and verified relative references. Portable replay requires explicit destination bindings. History viewing never writes again; a successful preparation write may remain after later training failure."
+    }
+  ],
+  "sharedGuidance": [
+    {
+      "id": "data02-source-preview",
+      "title": "Check what the source actually read",
+      "objective": "Confirm a file’s separator, columns and sampled values before building downstream rules.",
+      "terms": "**Separator:** the character between fields. **Header:** the first row containing column names. **Sample:** a limited set shown for inspection; it does not automatically describe every source row.",
+      "steps": [
+        "Select the source. Review the chosen file and permission summary; a displayed filename is not a substitute for write/read access.",
+        "Choose the CSV separator and header options to match the file. Table Input supports an explicit delimiter and configurable header interpretation; inspect the resulting column names.",
+        "Refresh the preview after changing the file or interpretation. Compare columns, types and actual cells, and read whether the count is sampled, total, or unknown.",
+        "Apply deliberate changes and rerun. Previous observed metadata must become stale when source bytes or interpretation change."
+      ],
+      "inspect": "A source preview is evidence of the rows actually sampled under the stated budget. A later failed run cannot establish a new successful complete source result."
+    },
+    {
+      "id": "data02-column-mapping",
+      "title": "Choose, order and rename columns deliberately",
+      "objective": "Keep column choices and names consistent across the flow.",
+      "terms": "**Schema:** column names and value types. **Mapping:** matching an input column to the place that uses it. **Draft:** an edit not applied yet.",
+      "steps": [
+        "Select Columns. Use the column table to choose which columns remain, their order and any downstream names.",
+        "Choose a unique nonblank new name. Renaming a column changes its label, not its values or row identity.",
+        "Apply the whole edit; inspect the downstream schema. If a saved mapping still names the old column, repair it explicitly rather than assuming the app guessed a replacement.",
+        "Try a draft, collapse the inspector, then reopen it. Draft controls should be preserved until Apply or Revert; Undo should restore an applied edit."
+      ],
+      "inspect": "Compare exact ordered names before and after the operation. A numerical cast changes value type; renaming alone does not turn text into numbers."
+    },
+    {
+      "id": "data02-observed-metadata",
+      "title": "Read metadata with its source and freshness",
+      "objective": "Tell declared column information from values observed during a particular run.",
+      "terms": "**Metadata:** information about the table, such as names, types and row counts. **Observed:** measured from a stage actually reached. **Stale:** measured before the current graph or source changed.",
+      "steps": [
+        "Select an input or output and inspect its column information. Read the originating node and port as well as the names.",
+        "Distinguish projected schema from observed metadata. A projected schema predicts structure; it does not prove that a run visited the stage.",
+        "After a later step fails or is cancelled, inspect earlier reached stages. Their bounded observations can remain available with a partial label. Unvisited stages have no newly observed result.",
+        "Change a source or graph control. Check the freshness label before reusing a column choice; a stale observation must not silently replace the current draft or mark the failed run complete."
+      ],
+      "inspect": "A retained partial observation is useful evidence for repair. It is not a completed preparation archive, a successful run, or permission to evaluate a protected partition."
+    }
+  ]
+}

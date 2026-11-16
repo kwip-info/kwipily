@@ -1,0 +1,12 @@
+diff --git a/Downloader/Info.plist b/Downloader/Info.plist
+--- a/Downloader/Info.plist
++++ b/Downloader/Info.plist
+@@ -22,6 +22,8 @@
+ 	<string>${CURRENT_PROJECT_VERSION}</string>
+ 	<key>NSAppTransportSecurity</key>
+ 	<dict>
++		<key>NSAllowsLocalNetworking</key>
++		<true/>
+ 		<key>NSAllowsArbitraryLoads</key>
+ 		<false/>
+ 	</dict>

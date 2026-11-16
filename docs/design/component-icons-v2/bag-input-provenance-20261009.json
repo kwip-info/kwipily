@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "component": "bag_input",
+  "status": "generated; authored bundle registered and resource copied unchanged; native palette/canvas inspection pending",
+  "createdOn": "2026-10-09",
+  "generator": "image_gen.imagegen",
+  "sourceFile": "/Users/developer/.codex/generated_images/01a10a07-829a-7e73-a566-105746b4f45f/exec-debf7d6c-f9c5-42ab-ba47-93b2255d9277.png",
+  "asset": "bag-input-v1.png",
+  "sha256": "ec079864d36b0285c4ff214b87931a1acfaddd4ae22993750ee0fae00280b09f",
+  "transparentBackground": true,
+  "reference": "Sources/KwipMLApp/Resources/ComponentIcons/index_input-v2.png",
+  "concept": "Two bracketed rows of three item cells, each with its own output arrow, in a sharp taupe boundary-family frame. Distinguishes grouped source observations from learned EmbeddingBag reduction.",
+  "colors": [
+    "#B7A895",
+    "#84735F"
+  ],
+  "inspection": "Original generated RGBA retained. Sampled colored fringe pixels have alpha1/255; tool display exaggerates these near-transparent pixels. No manual image edits. Native light/dark palette/canvas legibility remains unverified."
+}

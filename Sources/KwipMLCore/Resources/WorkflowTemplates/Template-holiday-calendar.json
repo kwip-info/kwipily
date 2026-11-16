@@ -1,0 +1,678 @@
+{
+  "definitions": [],
+  "drafts": [],
+  "edges": [
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "planning-spine"
+        },
+        "port": "table"
+      },
+      "id": "C2A7DCEC-1D7B-4E58-A0BE-38B31D46356F",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "calendar-join"
+        },
+        "port": "left"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "planning-spine"
+        },
+        "port": "table"
+      },
+      "id": "1B193726-5C6F-4091-BDAA-586F1751F4C0",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "spine-view"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "calendar-join"
+        },
+        "port": "table"
+      },
+      "id": "B2A8A9E9-5FDE-45AE-A029-5A2BE21D2C10",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "calendar-view"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "calendar-join"
+        },
+        "port": "table"
+      },
+      "id": "B62DE42F-B1C1-45CC-AC0A-AA38E939E663",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "calendar-export"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "govuk-england-and-wales"
+        },
+        "port": "table"
+      },
+      "id": "58FE810B-9EB4-4904-9A96-708CF249BE2A",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "region-england-and-wales"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "govuk-scotland"
+        },
+        "port": "table"
+      },
+      "id": "F293EB4F-6BA8-4A6B-B663-792BD37F993F",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "region-scotland"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "govuk-northern-ireland"
+        },
+        "port": "table"
+      },
+      "id": "EDB12F46-0AA5-4A6C-B2BA-1792C4EEEBA6",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "region-northern-ireland"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "region-england-and-wales"
+        },
+        "port": "table"
+      },
+      "id": "499EA9EE-BF0A-462E-AE4D-33D0312494EE",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "all-region-holidays"
+        },
+        "port": "table1"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "region-scotland"
+        },
+        "port": "table"
+      },
+      "id": "636C5A8B-4C88-4AA7-A082-4918E4111077",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "all-region-holidays"
+        },
+        "port": "table2"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "region-northern-ireland"
+        },
+        "port": "table"
+      },
+      "id": "805A5B35-04C0-4918-A856-1E9442764ADE",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "all-region-holidays"
+        },
+        "port": "table3"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "all-region-holidays"
+        },
+        "port": "table"
+      },
+      "id": "01A4B674-6587-48AA-AC99-88DC32433B0E",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "calendar-join"
+        },
+        "port": "right"
+      }
+    }
+  ],
+  "kind": "workflowProject",
+  "name": "Join regional holidays to planning dates",
+  "nodes": [
+    {
+      "address": {
+        "domain": "data",
+        "localID": "planning-spine"
+      },
+      "name": "Planning dates",
+      "payload": {
+        "config": {
+          "commentPrefix": "",
+          "emptyField": "text",
+          "encoding": "utf-8-sig",
+          "format": "csv",
+          "headerMode": "firstRecord",
+          "nullMarkers": [],
+          "parserProfile": "polars",
+          "quoteChar": "\"",
+          "schemaOverrides": {
+            "date": "String",
+            "region": "String"
+          },
+          "separator": ",",
+          "skipLines": 0,
+          "skipRecords": 0,
+          "skipRowsAfterHeader": 0,
+          "tryParseDates": false
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.sourceCSV"
+      },
+      "x": 0,
+      "y": 0
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "calendar-join"
+      },
+      "name": "Holiday calendar · region/date · left many-to-one",
+      "payload": {
+        "config": {
+          "cardinality": "manyToOne",
+          "leftKeys": [
+            "region",
+            "date"
+          ],
+          "leftPrefix": "planning_",
+          "maxRows": 100000,
+          "mode": "left",
+          "newColumns": "drop",
+          "nullPolicy": "neverMatch",
+          "outputColumns": [
+            {
+              "included": true,
+              "name": "region",
+              "side": "left",
+              "source": "region"
+            },
+            {
+              "included": true,
+              "name": "date",
+              "side": "left",
+              "source": "date"
+            },
+            {
+              "included": true,
+              "name": "holiday_title",
+              "side": "right",
+              "source": "title"
+            },
+            {
+              "included": true,
+              "name": "holiday_notes",
+              "side": "right",
+              "source": "notes"
+            }
+          ],
+          "rightKeys": [
+            "region",
+            "date"
+          ],
+          "rightPrefix": "holiday_"
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.join"
+      },
+      "x": 350,
+      "y": 0
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "spine-view"
+      },
+      "name": "Planning input · inspect supplied regions and dates",
+      "payload": {
+        "config": {},
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.view"
+      },
+      "x": 350,
+      "y": 250
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "calendar-view"
+      },
+      "name": "Holiday calendar · review region/date matches",
+      "payload": {
+        "config": {},
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.view"
+      },
+      "x": 700,
+      "y": 0
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "calendar-export"
+      },
+      "name": "Holiday planning report",
+      "payload": {
+        "config": {
+          "columns": [],
+          "destination": "file",
+          "filename": "holiday-calendar-calendar-export.csv",
+          "format": "csv",
+          "overwrite": false,
+          "separator": ","
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.outputDelimited"
+      },
+      "x": 700,
+      "y": 250
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "govuk-england-and-wales"
+      },
+      "name": "GOV.UK · england-and-wales · native connection required",
+      "payload": {
+        "config": {
+          "format": "api",
+          "options": {
+            "allowLoopback": false,
+            "arrayPath": "",
+            "auth": "none",
+            "batchRows": 100,
+            "constants": [],
+            "credentialHeader": "X-API-Key",
+            "cursorParameter": "cursor",
+            "cursorPath": "/next_cursor",
+            "delivery": "row",
+            "direction": "input",
+            "headers": {},
+            "idempotencyHeader": "",
+            "kind": "api",
+            "mapping": [
+              {
+                "source": "/title",
+                "target": "title",
+                "type": "string"
+              },
+              {
+                "source": "/date",
+                "target": "date",
+                "type": "string"
+              },
+              {
+                "source": "/notes",
+                "target": "notes",
+                "type": "string"
+              },
+              {
+                "source": "/bunting",
+                "target": "bunting",
+                "type": "bool"
+              }
+            ],
+            "maximumBytes": 2000000,
+            "maximumPages": 1,
+            "maximumRequests": 1,
+            "maximumRows": 10000,
+            "method": "GET",
+            "missing": "error",
+            "nextPath": "/next",
+            "pageParameter": "page",
+            "pageSize": 100,
+            "pageStart": 1,
+            "pagination": "none",
+            "query": {},
+            "recordsPath": "/england-and-wales/events",
+            "requestTimeout": 30,
+            "requestsPerSecond": 1,
+            "responsePath": "",
+            "retries": 0,
+            "schemaVersion": 1,
+            "timeoutSeconds": 40,
+            "url": "https://www.gov.uk/bank-holidays.json"
+          }
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.sourceCSV"
+      },
+      "x": 0,
+      "y": 500
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "region-england-and-wales"
+      },
+      "name": "Formula",
+      "payload": {
+        "config": {
+          "operations": [
+            {
+              "expression": "\"england-and-wales\"",
+              "id": "source-region",
+              "nullPolicy": "error",
+              "outputs": [
+                {
+                  "dtype": "string",
+                  "name": "region",
+                  "write": "new"
+                }
+              ]
+            }
+          ]
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.formula"
+      },
+      "x": 350,
+      "y": 500
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "govuk-scotland"
+      },
+      "name": "GOV.UK · scotland · native connection required",
+      "payload": {
+        "config": {
+          "format": "api",
+          "options": {
+            "allowLoopback": false,
+            "arrayPath": "",
+            "auth": "none",
+            "batchRows": 100,
+            "constants": [],
+            "credentialHeader": "X-API-Key",
+            "cursorParameter": "cursor",
+            "cursorPath": "/next_cursor",
+            "delivery": "row",
+            "direction": "input",
+            "headers": {},
+            "idempotencyHeader": "",
+            "kind": "api",
+            "mapping": [
+              {
+                "source": "/title",
+                "target": "title",
+                "type": "string"
+              },
+              {
+                "source": "/date",
+                "target": "date",
+                "type": "string"
+              },
+              {
+                "source": "/notes",
+                "target": "notes",
+                "type": "string"
+              },
+              {
+                "source": "/bunting",
+                "target": "bunting",
+                "type": "bool"
+              }
+            ],
+            "maximumBytes": 2000000,
+            "maximumPages": 1,
+            "maximumRequests": 1,
+            "maximumRows": 10000,
+            "method": "GET",
+            "missing": "error",
+            "nextPath": "/next",
+            "pageParameter": "page",
+            "pageSize": 100,
+            "pageStart": 1,
+            "pagination": "none",
+            "query": {},
+            "recordsPath": "/scotland/events",
+            "requestTimeout": 30,
+            "requestsPerSecond": 1,
+            "responsePath": "",
+            "retries": 0,
+            "schemaVersion": 1,
+            "timeoutSeconds": 40,
+            "url": "https://www.gov.uk/bank-holidays.json"
+          }
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.sourceCSV"
+      },
+      "x": 0,
+      "y": 750
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "region-scotland"
+      },
+      "name": "Formula",
+      "payload": {
+        "config": {
+          "operations": [
+            {
+              "expression": "\"scotland\"",
+              "id": "source-region",
+              "nullPolicy": "error",
+              "outputs": [
+                {
+                  "dtype": "string",
+                  "name": "region",
+                  "write": "new"
+                }
+              ]
+            }
+          ]
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.formula"
+      },
+      "x": 350,
+      "y": 750
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "govuk-northern-ireland"
+      },
+      "name": "GOV.UK · northern-ireland · native connection required",
+      "payload": {
+        "config": {
+          "format": "api",
+          "options": {
+            "allowLoopback": false,
+            "arrayPath": "",
+            "auth": "none",
+            "batchRows": 100,
+            "constants": [],
+            "credentialHeader": "X-API-Key",
+            "cursorParameter": "cursor",
+            "cursorPath": "/next_cursor",
+            "delivery": "row",
+            "direction": "input",
+            "headers": {},
+            "idempotencyHeader": "",
+            "kind": "api",
+            "mapping": [
+              {
+                "source": "/title",
+                "target": "title",
+                "type": "string"
+              },
+              {
+                "source": "/date",
+                "target": "date",
+                "type": "string"
+              },
+              {
+                "source": "/notes",
+                "target": "notes",
+                "type": "string"
+              },
+              {
+                "source": "/bunting",
+                "target": "bunting",
+                "type": "bool"
+              }
+            ],
+            "maximumBytes": 2000000,
+            "maximumPages": 1,
+            "maximumRequests": 1,
+            "maximumRows": 10000,
+            "method": "GET",
+            "missing": "error",
+            "nextPath": "/next",
+            "pageParameter": "page",
+            "pageSize": 100,
+            "pageStart": 1,
+            "pagination": "none",
+            "query": {},
+            "recordsPath": "/northern-ireland/events",
+            "requestTimeout": 30,
+            "requestsPerSecond": 1,
+            "responsePath": "",
+            "retries": 0,
+            "schemaVersion": 1,
+            "timeoutSeconds": 40,
+            "url": "https://www.gov.uk/bank-holidays.json"
+          }
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.sourceCSV"
+      },
+      "x": 0,
+      "y": 1000
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "region-northern-ireland"
+      },
+      "name": "Formula",
+      "payload": {
+        "config": {
+          "operations": [
+            {
+              "expression": "\"northern-ireland\"",
+              "id": "source-region",
+              "nullPolicy": "error",
+              "outputs": [
+                {
+                  "dtype": "string",
+                  "name": "region",
+                  "write": "new"
+                }
+              ]
+            }
+          ]
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.formula"
+      },
+      "x": 350,
+      "y": 1000
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "all-region-holidays"
+      },
+      "name": "All regions · verify matching source snapshot/version",
+      "payload": {
+        "config": {
+          "coverage": "exact",
+          "inputs": [
+            "table1",
+            "table2",
+            "table3"
+          ],
+          "match": "name",
+          "sourceColumn": "",
+          "typePolicy": "strict"
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.union"
+      },
+      "x": 700,
+      "y": 600
+    }
+  ],
+  "projectID": "00000000-0000-0000-0000-000000000000",
+  "revision": 0,
+  "schemaVersion": 1
+}

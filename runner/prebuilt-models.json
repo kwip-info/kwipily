@@ -1,0 +1,363 @@
+{
+  "logistic": {
+    "title": "Logistic regression",
+    "task": "classification",
+    "predict": true,
+    "fields": [
+      {
+        "key": "C",
+        "title": "Inverse regularization C",
+        "kind": "number",
+        "default": 1,
+        "minimum": 1e-08,
+        "maximum": 100000000.0
+      },
+      {
+        "key": "maxIterations",
+        "title": "Maximum iterations",
+        "kind": "integer",
+        "default": 200,
+        "minimum": 1,
+        "maximum": 10000
+      },
+      {
+        "key": "tolerance",
+        "title": "Convergence tolerance",
+        "kind": "number",
+        "default": 0.0001,
+        "minimum": 1e-12,
+        "maximum": 1
+      },
+      {
+        "key": "fitIntercept",
+        "title": "Fit intercept",
+        "kind": "bool",
+        "default": true
+      }
+    ]
+  },
+  "randomForestClassifier": {
+    "title": "Random forest classifier",
+    "task": "classification",
+    "predict": true,
+    "fields": [
+      {
+        "key": "trees",
+        "title": "Trees",
+        "kind": "integer",
+        "default": 100,
+        "minimum": 1,
+        "maximum": 300
+      },
+      {
+        "key": "maxDepth",
+        "title": "Maximum tree depth",
+        "kind": "integer",
+        "default": 8,
+        "minimum": 1,
+        "maximum": 20
+      },
+      {
+        "key": "minSamplesLeaf",
+        "title": "Minimum rows per leaf",
+        "kind": "integer",
+        "default": 1,
+        "minimum": 1,
+        "maximum": 1000
+      },
+      {
+        "key": "seed",
+        "title": "Random seed",
+        "kind": "integer",
+        "default": 42,
+        "minimum": 0,
+        "maximum": 2147483647
+      }
+    ]
+  },
+  "ridge": {
+    "title": "Ridge",
+    "task": "regression",
+    "predict": true,
+    "fields": [
+      {
+        "key": "alpha",
+        "title": "Regularization strength",
+        "kind": "number",
+        "default": 1,
+        "minimum": 1e-08,
+        "maximum": 100000000.0
+      },
+      {
+        "key": "fitIntercept",
+        "title": "Fit intercept",
+        "kind": "bool",
+        "default": true
+      }
+    ]
+  },
+  "elasticNet": {
+    "title": "Elastic Net",
+    "task": "regression",
+    "predict": true,
+    "fields": [
+      {
+        "key": "alpha",
+        "title": "Regularization strength",
+        "kind": "number",
+        "default": 1,
+        "minimum": 1e-08,
+        "maximum": 100000000.0
+      },
+      {
+        "key": "l1Ratio",
+        "title": "L1 ratio",
+        "kind": "number",
+        "default": 0.5,
+        "minimum": 0,
+        "maximum": 1
+      },
+      {
+        "key": "maxIterations",
+        "title": "Maximum iterations",
+        "kind": "integer",
+        "default": 200,
+        "minimum": 1,
+        "maximum": 10000
+      },
+      {
+        "key": "tolerance",
+        "title": "Convergence tolerance",
+        "kind": "number",
+        "default": 0.0001,
+        "minimum": 1e-12,
+        "maximum": 1
+      },
+      {
+        "key": "fitIntercept",
+        "title": "Fit intercept",
+        "kind": "bool",
+        "default": true
+      }
+    ]
+  },
+  "randomForestRegressor": {
+    "title": "Random forest regressor",
+    "task": "regression",
+    "predict": true,
+    "fields": [
+      {
+        "key": "trees",
+        "title": "Trees",
+        "kind": "integer",
+        "default": 100,
+        "minimum": 1,
+        "maximum": 300
+      },
+      {
+        "key": "maxDepth",
+        "title": "Maximum tree depth",
+        "kind": "integer",
+        "default": 8,
+        "minimum": 1,
+        "maximum": 20
+      },
+      {
+        "key": "minSamplesLeaf",
+        "title": "Minimum rows per leaf",
+        "kind": "integer",
+        "default": 1,
+        "minimum": 1,
+        "maximum": 1000
+      },
+      {
+        "key": "seed",
+        "title": "Random seed",
+        "kind": "integer",
+        "default": 42,
+        "minimum": 0,
+        "maximum": 2147483647
+      }
+    ]
+  },
+  "kmeans": {
+    "title": "K-means",
+    "task": "clustering",
+    "predict": true,
+    "fields": [
+      {
+        "key": "clusters",
+        "title": "Clusters / components",
+        "kind": "integer",
+        "default": 4,
+        "minimum": 2,
+        "maximum": 32
+      },
+      {
+        "key": "initializations",
+        "title": "Initializations",
+        "kind": "integer",
+        "default": 10,
+        "minimum": 1,
+        "maximum": 50
+      },
+      {
+        "key": "maxIterations",
+        "title": "Maximum iterations",
+        "kind": "integer",
+        "default": 200,
+        "minimum": 1,
+        "maximum": 10000
+      },
+      {
+        "key": "tolerance",
+        "title": "Convergence tolerance",
+        "kind": "number",
+        "default": 0.0001,
+        "minimum": 1e-12,
+        "maximum": 1
+      },
+      {
+        "key": "seed",
+        "title": "Random seed",
+        "kind": "integer",
+        "default": 42,
+        "minimum": 0,
+        "maximum": 2147483647
+      }
+    ]
+  },
+  "miniBatchKmeans": {
+    "title": "Mini-batch K-means",
+    "task": "clustering",
+    "predict": true,
+    "fields": [
+      {
+        "key": "clusters",
+        "title": "Clusters / components",
+        "kind": "integer",
+        "default": 4,
+        "minimum": 2,
+        "maximum": 32
+      },
+      {
+        "key": "initializations",
+        "title": "Initializations",
+        "kind": "integer",
+        "default": 10,
+        "minimum": 1,
+        "maximum": 50
+      },
+      {
+        "key": "maxIterations",
+        "title": "Maximum iterations",
+        "kind": "integer",
+        "default": 200,
+        "minimum": 1,
+        "maximum": 10000
+      },
+      {
+        "key": "tolerance",
+        "title": "Convergence tolerance",
+        "kind": "number",
+        "default": 0.0001,
+        "minimum": 1e-12,
+        "maximum": 1
+      },
+      {
+        "key": "batchSize",
+        "title": "Mini-batch size",
+        "kind": "integer",
+        "default": 1024,
+        "minimum": 1,
+        "maximum": 16384
+      },
+      {
+        "key": "seed",
+        "title": "Random seed",
+        "kind": "integer",
+        "default": 42,
+        "minimum": 0,
+        "maximum": 2147483647
+      }
+    ]
+  },
+  "gaussianMixture": {
+    "title": "Gaussian mixture \u00b7 diagonal covariance",
+    "task": "clustering",
+    "predict": true,
+    "fields": [
+      {
+        "key": "clusters",
+        "title": "Clusters / components",
+        "kind": "integer",
+        "default": 4,
+        "minimum": 2,
+        "maximum": 32
+      },
+      {
+        "key": "initializations",
+        "title": "Initializations",
+        "kind": "integer",
+        "default": 10,
+        "minimum": 1,
+        "maximum": 50
+      },
+      {
+        "key": "maxIterations",
+        "title": "Maximum iterations",
+        "kind": "integer",
+        "default": 200,
+        "minimum": 1,
+        "maximum": 10000
+      },
+      {
+        "key": "tolerance",
+        "title": "Convergence tolerance",
+        "kind": "number",
+        "default": 0.0001,
+        "minimum": 1e-12,
+        "maximum": 1
+      },
+      {
+        "key": "regCovar",
+        "title": "Covariance regularization",
+        "kind": "number",
+        "default": 1e-06,
+        "minimum": 1e-12,
+        "maximum": 1
+      },
+      {
+        "key": "seed",
+        "title": "Random seed",
+        "kind": "integer",
+        "default": 42,
+        "minimum": 0,
+        "maximum": 2147483647
+      }
+    ]
+  },
+  "dbscan": {
+    "title": "DBSCAN \u00b7 fit-only analysis",
+    "task": "clustering",
+    "predict": false,
+    "fields": [
+      {
+        "key": "eps",
+        "title": "Neighborhood radius",
+        "kind": "number",
+        "default": 0.5,
+        "minimum": 1e-08,
+        "maximum": 1000000.0
+      },
+      {
+        "key": "minSamples",
+        "title": "Minimum neighbors",
+        "kind": "integer",
+        "default": 5,
+        "minimum": 1,
+        "maximum": 10000
+      }
+    ]
+  }
+}

@@ -1,0 +1,53 @@
+test_changed_evidence_is_not_current (test_coverage_report.CoverageTests.test_changed_evidence_is_not_current) ... ok
+test_complete_evidence_counts_one_unit_not_alias (test_coverage_report.CoverageTests.test_complete_evidence_counts_one_unit_not_alias) ... ok
+test_display_rounding_cannot_pass_release_threshold (test_coverage_report.CoverageTests.test_display_rounding_cannot_pass_release_threshold) ... ERROR
+test_draft_denominator_withholds_percentage_and_release (test_coverage_report.CoverageTests.test_draft_denominator_withholds_percentage_and_release) ... ok
+test_empty_denominator_is_unknown_not_hundred_percent (test_coverage_report.CoverageTests.test_empty_denominator_is_unknown_not_hundred_percent) ... ok
+test_every_evidence_dimension_is_required (test_coverage_report.CoverageTests.test_every_evidence_dimension_is_required) ... ok
+test_evidence_cannot_escape_repository (test_coverage_report.CoverageTests.test_evidence_cannot_escape_repository) ... ok
+test_evidence_scope_must_match_modes (test_coverage_report.CoverageTests.test_evidence_scope_must_match_modes) ... ok
+test_existing_file_does_not_prove_verification (test_coverage_report.CoverageTests.test_existing_file_does_not_prove_verification) ... ok
+test_frozen_catalog_requires_approval_record (test_coverage_report.CoverageTests.test_frozen_catalog_requires_approval_record) ... ok
+test_inventory_integrity_and_dispositions_required (test_coverage_report.CoverageTests.test_inventory_integrity_and_dispositions_required) ... ok
+test_missing_evidence_is_not_current (test_coverage_report.CoverageTests.test_missing_evidence_is_not_current) ... ok
+test_missing_mandatory_family_fails_even_at_hundred_percent (test_coverage_report.CoverageTests.test_missing_mandatory_family_fails_even_at_hundred_percent) ... ok
+test_proposed_modes_cannot_be_complete (test_coverage_report.CoverageTests.test_proposed_modes_cannot_be_complete) ... FAIL
+test_reject_alias_as_extra_operation (test_coverage_report.CoverageTests.test_reject_alias_as_extra_operation) ... ok
+test_reject_duplicate_capability_identity (test_coverage_report.CoverageTests.test_reject_duplicate_capability_identity) ... ok
+test_reject_same_api_and_modes_under_different_id (test_coverage_report.CoverageTests.test_reject_same_api_and_modes_under_different_id) ... ok
+test_selected_unit_requires_reciprocal_inventory_mapping (test_coverage_report.CoverageTests.test_selected_unit_requires_reciprocal_inventory_mapping) ... FAIL
+test_unbounded_or_unverified_configuration_not_complete (test_coverage_report.CoverageTests.test_unbounded_or_unverified_configuration_not_complete) ... ok
+test_unexplained_exclusion_rejected (test_coverage_report.CoverageTests.test_unexplained_exclusion_rejected) ... ok
+test_unverified_backend_matrix_not_complete (test_coverage_report.CoverageTests.test_unverified_backend_matrix_not_complete) ... ok
+
+======================================================================
+ERROR: test_display_rounding_cannot_pass_release_threshold (test_coverage_report.CoverageTests.test_display_rounding_cannot_pass_release_threshold)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/developer/KWIP/products/developer/kwipml/capabilities/tests/test_coverage_report.py", line 149, in test_display_rounding_cannot_pass_release_threshold
+    self.assertFalse(coverage.meets_threshold(89999,100000,90))
+                     ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'coverage_report' has no attribute 'meets_threshold'
+
+======================================================================
+FAIL: test_proposed_modes_cannot_be_complete (test_coverage_report.CoverageTests.test_proposed_modes_cannot_be_complete)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/developer/KWIP/products/developer/kwipml/capabilities/tests/test_coverage_report.py", line 141, in test_proposed_modes_cannot_be_complete
+    self.assertEqual(self.report()["complete_count"],0)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 1 != 0
+
+======================================================================
+FAIL: test_selected_unit_requires_reciprocal_inventory_mapping (test_coverage_report.CoverageTests.test_selected_unit_requires_reciprocal_inventory_mapping)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/developer/KWIP/products/developer/kwipml/capabilities/tests/test_coverage_report.py", line 146, in test_selected_unit_requires_reciprocal_inventory_mapping
+    with self.assertRaises(ValueError):self.report()
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 21 tests in 0.018s
+
+FAILED (failures=2, errors=1)

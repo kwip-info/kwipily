@@ -1,0 +1,1101 @@
+{
+  "schemaVersion": 1,
+  "id": "kwip.pooling",
+  "version": 1,
+  "backend": "pytorch",
+  "components": [
+    {
+      "definition": {
+        "id": "max_pool1d",
+        "title": "MaxPool1d",
+        "category": "Pooling",
+        "inputs": [
+          "in"
+        ],
+        "outputs": [
+          "out",
+          "indices"
+        ],
+        "fields": [
+          {
+            "key": "kernel_size",
+            "title": "Window length",
+            "kind": "integer",
+            "defaultValue": 2,
+            "min": 1,
+            "max": 4096
+          },
+          {
+            "key": "stride",
+            "title": "Stride \u00b7 empty follows window",
+            "kind": "integer",
+            "defaultValue": null,
+            "min": 1,
+            "max": 4096,
+            "allowsNull": true
+          },
+          {
+            "key": "padding",
+            "title": "Padding per side",
+            "kind": "integer",
+            "defaultValue": 0,
+            "min": 0,
+            "max": 2048
+          },
+          {
+            "key": "dilation",
+            "title": "Window dilation",
+            "kind": "integer",
+            "defaultValue": 1,
+            "min": 1,
+            "max": 4096
+          },
+          {
+            "key": "ceil_mode",
+            "title": "Include partial final window",
+            "kind": "boolean",
+            "defaultValue": false
+          },
+          {
+            "key": "return_indices",
+            "title": "Expose winning indices",
+            "kind": "boolean",
+            "defaultValue": false
+          }
+        ]
+      },
+      "published": true,
+      "configurationVersion": 2,
+      "adapterID": "kwip.runner.graph-v2.max_pool1d",
+      "shapeRuleID": "kwip.shape.max_pool1d.v1",
+      "presentation": {
+        "theme": "green",
+        "icon": "max_pool1d-v2",
+        "shortTitle": "Max pool 1D",
+        "purpose": "Select local maxima along each channel. Configure the window, stride, padding, dilation and ceiling mode; optionally inspect winning integer positions. No learned weights."
+      },
+      "outputConditions": {
+        "indices": "return_indices"
+      },
+      "sources": {
+        "native": "Sources/KwipMLCore/MaxPool1dComponent.swift",
+        "worker": "runner/maxpool1d_configuration.py",
+        "tests": "runner/tests/test_maxpool1d_graph.py",
+        "evidence": "docs/production/TORCH_MAXPOOL1D.md"
+      },
+      "runtimeContract": {
+        "version": {
+          "major": 1,
+          "minor": 0,
+          "patch": 0
+        },
+        "adapterID": "kwip.runner.graph-v2.max_pool1d",
+        "graphSchemaVersions": [
+          2
+        ],
+        "sampleRank": 2,
+        "preservesBatch": true,
+        "graphDTypes": [
+          "float32"
+        ],
+        "channelMinimum": 1,
+        "channelMaximum": 512,
+        "lengthMinimum": 1,
+        "lengthMaximum": 4096,
+        "kernelMinimum": 1,
+        "kernelMaximum": 4096,
+        "strideMinimum": 1,
+        "strideMaximum": 4096,
+        "dilationMinimum": 1,
+        "dilationMaximum": 4096,
+        "paddingMinimum": 0,
+        "paddingMaximum": 2048,
+        "paddingKernelDivisor": 2,
+        "nullStrideFollowsKernel": true,
+        "ceilModes": [
+          false,
+          true
+        ],
+        "returnIndicesModes": [
+          false,
+          true
+        ],
+        "outputDTypes": {
+          "out": "float32",
+          "indices": "int64"
+        }
+      },
+      "learning": {
+        "contentVersion": 2,
+        "updatedAt": "2026-10-08",
+        "exampleID": "prepared-maxpool1d-classifier",
+        "sourceResource": "workflow-observations",
+        "title": "Local maxima, winning positions and gradients",
+        "subtitle": "Select the largest value in each sliding window. Inspect values and integer positions separately, then see how gradients flow back to the selected inputs.",
+        "disclosureTitle": "Understand selection, output geometry and information loss",
+        "formula": "y[n,c,j] = max\u2096 x[n,c,j\u00b7S \u2212 P + k\u00b7D],  k = 0\u2026K\u22121",
+        "paragraphs": [
+          "K is window length, S stride, P padding and D dilation. Padding acts as negative infinity, so padding does not replace negative values with zero. Channels and observations remain independent. An empty stride follows K; an explicit stride remains fixed when K changes.",
+          "Floor mode: Lout = floor((L + 2P \u2212 D(K\u22121) \u2212 1)/S) + 1. Ceiling mode rounds upward, then removes a final window whose start lies entirely in right padding. The example uses L=7, K=3, S=2, P=1, D=1: both modes produce four positions. Try L=6 to see ceiling mode add a partial final window.",
+          "For one channel [\u22123,2,1,4,4,\u22121,3], the example produces [2,4,4,3] with zero-based indices [1,3,3,6]. Indices identify original positions within that channel, not positions within a window or flattened batch. Equal maxima select the first winning position in this example. They are int64 values without gradients, not a floating feature stream.",
+          "For fixed winners, pooling acts like a sparse selection matrix A: y=Ax and the backward pass computes A\u1d40g. For a sum of these four outputs, the input gradient is [0,1,0,2,0,0,1]. Overlapping windows accumulate contributions at position 3. Winner changes make the full mapping nonlinear; ties are nondifferentiable, and autograd follows the selected winner rather than distributing the gradient evenly.",
+          "Pooling has no trainable parameters, but gradients still train the upstream projection. The flow maps two measurements to fourteen learned features, reshapes to [N,2,7], pools to [N,2,4], applies ReLU, flattens to eight features and learns two class scores. It contains 60 learned parameters. These positions are constructed tabular features, not a measured time series.",
+          "Pooling discards nonwinning values. Indices help locate winners but cannot reconstruct discarded inputs. Dilation plus padding can also create a window with no valid sampled input; a geometrically valid shape can therefore produce nonfinite values, which the runner rejects. Adjust the window, padding or dilation when that diagnostic appears.",
+          "Try changing stride or window length and predict the new shape before running. Update the classifier\u2019s input width if the flattened size changes. Toggle winning indices and inspect the Results ports. Saved History samples follow the run\u2019s capture policy; disabling capture keeps shape/type metadata but omits values and positions."
+        ],
+        "buttonTitle": "Open pooling example",
+        "exampleSource": "Sources/KwipMLCore/MaxPool1dWorkflowExample.swift",
+        "lessonIDs": [
+          "assessment.max-pool1d-windows"
+        ]
+      }
+    },
+    {
+      "definition": {
+        "id": "max_pool2d",
+        "title": "MaxPool2d",
+        "category": "Pooling",
+        "inputs": [
+          "in"
+        ],
+        "outputs": [
+          "out",
+          "indices"
+        ],
+        "fields": [
+          {
+            "key": "kernel_size",
+            "title": "Window [height, width]",
+            "kind": "integerList",
+            "defaultValue": [
+              2,
+              2
+            ],
+            "min": 1,
+            "max": 4096,
+            "minItems": 2,
+            "maxItems": 2
+          },
+          {
+            "key": "stride",
+            "title": "Stride [height, width] \u00b7 empty follows window",
+            "kind": "integerList",
+            "defaultValue": null,
+            "min": 1,
+            "max": 4096,
+            "allowsNull": true,
+            "minItems": 2,
+            "maxItems": 2
+          },
+          {
+            "key": "padding",
+            "title": "Padding [height, width]",
+            "kind": "integerList",
+            "defaultValue": [
+              0,
+              0
+            ],
+            "min": 0,
+            "max": 2048,
+            "minItems": 2,
+            "maxItems": 2
+          },
+          {
+            "key": "dilation",
+            "title": "Dilation [height, width]",
+            "kind": "integerList",
+            "defaultValue": [
+              1,
+              1
+            ],
+            "min": 1,
+            "max": 4096,
+            "minItems": 2,
+            "maxItems": 2
+          },
+          {
+            "key": "ceil_mode",
+            "title": "Include partial final window",
+            "kind": "boolean",
+            "defaultValue": false
+          },
+          {
+            "key": "return_indices",
+            "title": "Expose winning indices",
+            "kind": "boolean",
+            "defaultValue": false
+          }
+        ]
+      },
+      "published": true,
+      "configurationVersion": 2,
+      "adapterID": "kwip.runner.graph-v2.max_pool2d",
+      "shapeRuleID": "kwip.shape.max_pool2d.v1",
+      "presentation": {
+        "theme": "green",
+        "icon": "max_pool2d-v2",
+        "shortTitle": "Max pool 2D",
+        "purpose": "Select maxima over spatial windows in each channel. Configure paired height/width settings and inspect flattened winning positions. No learned weights."
+      },
+      "outputConditions": {
+        "indices": "return_indices"
+      },
+      "sources": {
+        "native": "Sources/KwipMLCore/MaxPool2dComponent.swift",
+        "worker": "runner/maxpool2d_configuration.py",
+        "tests": "runner/tests/test_maxpool2d_graph.py",
+        "evidence": "docs/production/TORCH_MAXPOOL2D.md"
+      },
+      "runtimeContract": {
+        "version": {
+          "major": 1,
+          "minor": 0,
+          "patch": 0
+        },
+        "adapterID": "kwip.runner.graph-v2.max_pool2d",
+        "graphSchemaVersions": [
+          2
+        ],
+        "sampleRank": 3,
+        "preservesBatch": true,
+        "graphDTypes": [
+          "float32"
+        ],
+        "channelMinimum": 1,
+        "channelMaximum": 512,
+        "spatialMinimum": 1,
+        "spatialMaximum": 4096,
+        "spatialAxes": [
+          "height",
+          "width"
+        ],
+        "indicesMeaning": "flattenedSpatialPosition",
+        "kernelMinimum": 1,
+        "kernelMaximum": 4096,
+        "strideMinimum": 1,
+        "strideMaximum": 4096,
+        "dilationMinimum": 1,
+        "dilationMaximum": 4096,
+        "paddingMinimum": 0,
+        "paddingMaximum": 2048,
+        "paddingKernelDivisor": 2,
+        "nullStrideFollowsKernel": true,
+        "ceilModes": [
+          false,
+          true
+        ],
+        "returnIndicesModes": [
+          false,
+          true
+        ],
+        "outputDTypes": {
+          "out": "float32",
+          "indices": "int64"
+        }
+      },
+      "learning": {
+        "contentVersion": 2,
+        "updatedAt": "2026-10-08",
+        "exampleID": "prepared-maxpool2d-classifier",
+        "sourceResource": "workflow-observations",
+        "title": "Spatial selection and flattened winning positions",
+        "subtitle": "Slide a rectangular window over each channel. Predict the output shape, inspect winners and trace their gradients back to the input grid.",
+        "disclosureTitle": "Understand rectangular windows and the backward selection map",
+        "formula": "y[n,c,i,j] = max\u2090,\u1d66 x[n,c,i\u00b7S\u2095\u2212P\u2095+a\u00b7D\u2095,j\u00b7S\ud835\udccc\u2212P\ud835\udccc+b\u00b7D\ud835\udccc]",
+        "paragraphs": [
+          "All spatial settings are [height, width] pairs. K is the window size, S the stride, P padding on each side and D spacing within a window. Null stride follows K on each axis. Explicit stride stays fixed when K changes. Neither channels nor observations are pooled together.",
+          "For either spatial axis L, floor mode gives floor((L+2P\u2212D(K\u22121)\u22121)/S)+1. Ceiling mode rounds upward, then removes a final window starting entirely in bottom or right padding. Padding acts as negative infinity, so negative measurements stay negative rather than competing with artificial zeros.",
+          "Take rows [1,3,2,0], [4,5,5,1], [0,2,6,3]. A 2\u00d72 window with stride 1 and no padding produces rows [5,5,5], [5,6,6]. The zero-based winning indices are [5,5,6], [5,10,10]. An index is row\u00d7inputWidth+column within one channel: 10 means row 2, column 2. It is not a window offset, output coordinate or flattened batch index.",
+          "For fixed winners, flatten the spatial plane and write y=Ax, where each row of A selects one input position. Backpropagation is A\u1d40g. Summing the six example outputs gives gradient 3 at input index 5, 1 at index 6 and 2 at index 10; other entries receive zero. Overlapping windows add contributions. Ties are nondifferentiable; autograd follows the selected winner rather than dividing its gradient among equal values.",
+          "The runnable flow projects two measurements to 40 learned features, reshapes to [N,2,4,5], uses window [2,3] and stride [1,2] to produce [N,2,3,2], then flattens 12 responses and learns two class scores. It has 146 learned parameters. Pooling itself has none. This is a constructed feature grid, not an image dataset or an assertion that adjacent tabular features are naturally spatial.",
+          "Indices are int64 and have no gradient. They locate winners but cannot recover discarded values. Dilation and padding can leave a window with no real sampled input; the runner refuses the resulting nonfinite capture. Adjust those settings when this occurs. Saved samples respect capture settings, including omission of values and positions.",
+          "Try unequal strides, predict each output dimension and adjust the final classifier width when needed. Compare runs with the same data split and seeds to isolate the architecture change. Inspect values and indices separately in Results and reopen their saved samples in History."
+        ],
+        "buttonTitle": "Open spatial pooling example",
+        "exampleSource": "Sources/KwipMLCore/MaxPool2dWorkflowExample.swift",
+        "lessonIDs": [
+          "assessment.max-pool2d-windows"
+        ]
+      }
+    },
+    {
+      "definition": {
+        "id": "max_pool3d",
+        "title": "MaxPool3d",
+        "category": "Pooling",
+        "inputs": [
+          "in"
+        ],
+        "outputs": [
+          "out",
+          "indices"
+        ],
+        "fields": [
+          {
+            "key": "kernel_size",
+            "title": "Window [depth, height, width]",
+            "kind": "integerList",
+            "defaultValue": [
+              2,
+              2,
+              2
+            ],
+            "min": 1,
+            "max": 4096,
+            "minItems": 3,
+            "maxItems": 3
+          },
+          {
+            "key": "stride",
+            "title": "Stride [depth, height, width] \u00b7 empty follows window",
+            "kind": "integerList",
+            "defaultValue": null,
+            "min": 1,
+            "max": 4096,
+            "allowsNull": true,
+            "minItems": 3,
+            "maxItems": 3
+          },
+          {
+            "key": "padding",
+            "title": "Padding [depth, height, width]",
+            "kind": "integerList",
+            "defaultValue": [
+              0,
+              0,
+              0
+            ],
+            "min": 0,
+            "max": 2048,
+            "minItems": 3,
+            "maxItems": 3
+          },
+          {
+            "key": "dilation",
+            "title": "Dilation [depth, height, width]",
+            "kind": "integerList",
+            "defaultValue": [
+              1,
+              1,
+              1
+            ],
+            "min": 1,
+            "max": 4096,
+            "minItems": 3,
+            "maxItems": 3
+          },
+          {
+            "key": "ceil_mode",
+            "title": "Include partial final window",
+            "kind": "boolean",
+            "defaultValue": false
+          },
+          {
+            "key": "return_indices",
+            "title": "Expose winning indices",
+            "kind": "boolean",
+            "defaultValue": false
+          }
+        ]
+      },
+      "published": true,
+      "configurationVersion": 2,
+      "adapterID": "kwip.runner.graph-v2.max_pool3d",
+      "shapeRuleID": "kwip.shape.max_pool3d.v1",
+      "presentation": {
+        "theme": "green",
+        "icon": "max_pool3d-v2",
+        "shortTitle": "Max pool 3D",
+        "purpose": "Select maxima over volume windows in each channel. Configure depth/height/width settings and inspect flattened winning positions. No learned weights."
+      },
+      "outputConditions": {
+        "indices": "return_indices"
+      },
+      "sources": {
+        "native": "Sources/KwipMLCore/MaxPool3dComponent.swift",
+        "worker": "runner/maxpool3d_configuration.py",
+        "tests": "runner/tests/test_maxpool3d_graph.py",
+        "evidence": "docs/production/TORCH_MAXPOOL3D.md"
+      },
+      "runtimeContract": {
+        "version": {
+          "major": 1,
+          "minor": 0,
+          "patch": 0
+        },
+        "adapterID": "kwip.runner.graph-v2.max_pool3d",
+        "graphSchemaVersions": [
+          2
+        ],
+        "sampleRank": 4,
+        "preservesBatch": true,
+        "graphDTypes": [
+          "float32"
+        ],
+        "channelMinimum": 1,
+        "channelMaximum": 512,
+        "spatialMinimum": 1,
+        "spatialMaximum": 4096,
+        "spatialAxes": [
+          "depth",
+          "height",
+          "width"
+        ],
+        "indicesMeaning": "flattenedSpatialPosition",
+        "kernelMinimum": 1,
+        "kernelMaximum": 4096,
+        "strideMinimum": 1,
+        "strideMaximum": 4096,
+        "dilationMinimum": 1,
+        "dilationMaximum": 4096,
+        "paddingMinimum": 0,
+        "paddingMaximum": 2048,
+        "paddingKernelDivisor": 2,
+        "nullStrideFollowsKernel": true,
+        "ceilModes": [
+          false,
+          true
+        ],
+        "returnIndicesModes": [
+          false,
+          true
+        ],
+        "outputDTypes": {
+          "out": "float32",
+          "indices": "int64"
+        }
+      },
+      "learning": {
+        "contentVersion": 2,
+        "updatedAt": "2026-10-08",
+        "exampleID": "prepared-maxpool3d-classifier",
+        "sourceResource": "workflow-observations",
+        "title": "Volume selection across depth, height and width",
+        "subtitle": "Slide a three-dimensional window within each channel. Predict each output axis, decode winning locations and follow gradients through the selected volume coordinates.",
+        "disclosureTitle": "Understand volume windows, flattened indices and backward selection",
+        "formula": "y[n,c,z,i,j] = max\u2090,\u1d66,\ud835\udcb8 x[n,c,z\u00b7S\ud835\udcb9\u2212P\ud835\udcb9+a\u00b7D\ud835\udcb9,i\u00b7S\u2095\u2212P\u2095+b\u00b7D\u2095,j\u00b7S\ud835\udccc\u2212P\ud835\udccc+c\u00b7D\ud835\udccc]",
+        "paragraphs": [
+          "All spatial settings use [depth, height, width] triples. K is window size, S stride, P padding on each side and D spacing within a window. Null stride follows K on all three axes. An explicit stride remains fixed when K changes. Channels and observations remain independent.",
+          "Apply Lout=floor((L+2P\u2212D(K\u22121)\u22121)/S)+1 separately to depth, height and width. Ceiling mode rounds upward, then removes a final window that starts entirely in far-side padding. Padding behaves as negative infinity, so negative inputs do not compete with artificial zeros.",
+          "For a volume with depth 3, height 3 and width 4 containing values 0 through 35 in depth-row-column order, use a [2,2,2] window and stride [1,1,1]. The output shape is [2,2,3]. Its first depth plane contains rows [17,18,19] and [21,22,23]; the second contains [29,30,31] and [33,34,35]. Those numbers are also the winning indices for this particular input.",
+          "Flattened index q means z\u00b7inputHeight\u00b7inputWidth + row\u00b7inputWidth + column within one channel. Recover z by integer division by H\u00b7W, row from (q mod H\u00b7W) divided by W, and column from q mod W. In the worked volume, index 22 is depth 1, row 2, column 2. Indices do not include the batch or channel offset.",
+          "For fixed winners, flatten the volume and write y=Ax, where each row of A selects one input coordinate. The backward pass is A\u1d40g. Summing the worked outputs gives gradient 1 at each of their twelve winning positions and 0 elsewhere. Other inputs can make overlapping windows select the same position; their gradients then add. Winner changes make the full operation nonlinear, and ties are nondifferentiable: autograd follows the selected winner.",
+          "The runnable example projects two measurements into 120 learned features and reshapes to [N,2,3,4,5]. Window [2,2,3] and stride [1,1,2] produce [N,2,2,3,2], which flattens to 24 responses before two class scores. The two linear layers contain 410 learned parameters; pooling contains none. This constructed feature volume is not a measured medical scan, video or claim that tabular neighbors are naturally spatial.",
+          "Indices are int64 without gradients and cannot reconstruct discarded values. Dilation and padding can leave a window with no real sampled input; nonfinite captured output is refused. Adjust the window geometry when this occurs. Capture settings control whether values and winning positions are saved.",
+          "Try unequal strides and predict all three output dimensions before running. Update the classifier input width if the flattened size changes. Keep data splits and seeds fixed for architectural comparisons; inspect values and indices separately in bottom Results and saved History."
+        ],
+        "buttonTitle": "Open volume pooling example",
+        "exampleSource": "Sources/KwipMLCore/MaxPool3dWorkflowExample.swift",
+        "lessonIDs": [
+          "assessment.max-pool3d-windows"
+        ]
+      }
+    },
+    {
+      "definition": {
+        "id": "avg_pool1d",
+        "title": "AvgPool1d",
+        "category": "Pooling",
+        "inputs": [
+          "in"
+        ],
+        "outputs": [
+          "out"
+        ],
+        "fields": [
+          {
+            "key": "kernel_size",
+            "title": "Window length",
+            "kind": "integer",
+            "defaultValue": 2,
+            "min": 1,
+            "max": 4096
+          },
+          {
+            "key": "stride",
+            "title": "Stride \u00b7 empty follows window",
+            "kind": "integer",
+            "defaultValue": null,
+            "min": 1,
+            "max": 4096,
+            "allowsNull": true
+          },
+          {
+            "key": "padding",
+            "title": "Padding per side",
+            "kind": "integer",
+            "defaultValue": 0,
+            "min": 0,
+            "max": 2048
+          },
+          {
+            "key": "ceil_mode",
+            "title": "Include partial final window",
+            "kind": "boolean",
+            "defaultValue": false
+          },
+          {
+            "key": "count_include_pad",
+            "title": "Include padding in average divisor",
+            "kind": "boolean",
+            "defaultValue": true
+          }
+        ]
+      },
+      "published": true,
+      "configurationVersion": 2,
+      "adapterID": "kwip.runner.graph-v2.avg_pool1d",
+      "shapeRuleID": "kwip.shape.avg_pool1d.v1",
+      "presentation": {
+        "theme": "green",
+        "icon": "avg_pool1d-v2",
+        "shortTitle": "Average 1D",
+        "purpose": "Average neighboring positions independently in each channel; padding controls the divisor."
+      },
+      "outputConditions": {},
+      "sources": {
+        "native": "Sources/KwipMLCore/AvgPool1dComponent.swift",
+        "worker": "runner/avgpool1d_configuration.py",
+        "tests": "runner/tests/test_avgpool1d_graph.py",
+        "evidence": "docs/production/TORCH_AVGPOOL1D.md"
+      },
+      "runtimeContract": {
+        "version": {
+          "major": 1,
+          "minor": 0,
+          "patch": 0
+        },
+        "adapterID": "kwip.runner.graph-v2.avg_pool1d",
+        "graphSchemaVersions": [
+          2
+        ],
+        "sampleRank": 2,
+        "preservesBatch": true,
+        "graphDTypes": [
+          "float32"
+        ],
+        "channelMinimum": 1,
+        "channelMaximum": 512,
+        "lengthMinimum": 1,
+        "lengthMaximum": 4096,
+        "kernelMinimum": 1,
+        "kernelMaximum": 4096,
+        "strideMinimum": 1,
+        "strideMaximum": 4096,
+        "paddingMinimum": 0,
+        "paddingMaximum": 2048,
+        "paddingKernelDivisor": 2,
+        "nullStrideFollowsKernel": true,
+        "ceilModes": [
+          false,
+          true
+        ],
+        "countIncludePadModes": [
+          false,
+          true
+        ],
+        "outputDTypes": {
+          "out": "float32"
+        }
+      },
+      "learning": {
+        "contentVersion": 2,
+        "updatedAt": "2026-10-08",
+        "exampleID": "prepared-avgpool1d-classifier",
+        "sourceResource": "workflow-observations",
+        "title": "Average windows and gradients",
+        "subtitle": "Explore local means, padding divisors and overlapping gradients.",
+        "disclosureTitle": "How average pooling works",
+        "formula": "y[j] = sum(x[i] in window j) / divisor[j]",
+        "paragraphs": [
+          "Average pooling combines neighboring positions separately in each channel. The batch and channels are preserved; window, stride, padding and ceiling mode determine output length. Empty stride follows the window length.",
+          "For input [2, 4, 6, 8], window 3, stride 2, padding 1 and ceiling enabled, windows contain [2,4], [4,6,8] and [8]. Including configured padding gives divisors [3,3,2] and outputs [2,6,4]. Excluding padding gives divisors [2,3,1] and outputs [3,6,8]. Extra space caused only by ceiling is never included in the divisor.",
+          "For a sum of outputs, including padding gives input gradients [1/3,2/3,1/3,5/6]. Each window distributes its upstream gradient equally across real contributors using its divisor; overlapping windows add contributions.",
+          "This operation owns no learned weights or running statistics. Training and inference use the same calculation. Its output is a floating tensor; it does not expose winning indices.",
+          "The example constructs feature positions from two tabular inputs. It demonstrates tensor wiring and is not a claim that arbitrary table columns form a time series. The native graph supports float32 CPU and Apple GPU execution; standalone PyTorch exports preserve the authored operation.",
+          "Open the example, compare count include pad modes, inspect intermediate values in Results and follow the generated code. This worked example is not a graded mastery assessment."
+        ],
+        "buttonTitle": "Open averaging example",
+        "exampleSource": "Sources/KwipMLCore/AvgPool1dWorkflowExample.swift",
+        "lessonIDs": [
+          "assessment.avg-pool1d-windows"
+        ]
+      }
+    },
+    {
+      "definition": {
+        "id": "avg_pool2d",
+        "title": "AvgPool2d",
+        "category": "Pooling",
+        "inputs": [
+          "in"
+        ],
+        "outputs": [
+          "out"
+        ],
+        "fields": [
+          {
+            "key": "kernel_size",
+            "title": "Window [height, width]",
+            "kind": "integerList",
+            "defaultValue": [
+              2,
+              2
+            ],
+            "min": 1,
+            "max": 4096,
+            "minItems": 2,
+            "maxItems": 2
+          },
+          {
+            "key": "stride",
+            "title": "Stride [height, width] \u00b7 empty follows window",
+            "kind": "integerList",
+            "defaultValue": null,
+            "min": 1,
+            "max": 4096,
+            "allowsNull": true,
+            "minItems": 2,
+            "maxItems": 2
+          },
+          {
+            "key": "padding",
+            "title": "Padding [height, width]",
+            "kind": "integerList",
+            "defaultValue": [
+              0,
+              0
+            ],
+            "min": 0,
+            "max": 2048,
+            "minItems": 2,
+            "maxItems": 2
+          },
+          {
+            "key": "ceil_mode",
+            "title": "Include partial final window",
+            "kind": "boolean",
+            "defaultValue": false
+          },
+          {
+            "key": "count_include_pad",
+            "title": "Include padding in average divisor",
+            "kind": "boolean",
+            "defaultValue": true
+          },
+          {
+            "key": "divisor_override",
+            "title": "Custom divisor \u00b7 empty uses window count",
+            "kind": "integer",
+            "defaultValue": null,
+            "min": -2147483647,
+            "max": 2147483647,
+            "allowsNull": true,
+            "enabledValue": 1
+          }
+        ]
+      },
+      "published": true,
+      "configurationVersion": 2,
+      "adapterID": "kwip.runner.graph-v2.avg_pool2d",
+      "shapeRuleID": "kwip.shape.avg_pool2d.v1",
+      "presentation": {
+        "theme": "green",
+        "icon": "avg_pool2d-v2",
+        "shortTitle": "Average 2D",
+        "purpose": "Average neighboring cells in each channel. Configure rectangular windows, spacing, padding and an optional custom divisor; inspect values and input influence without learned weights."
+      },
+      "outputConditions": {},
+      "sources": {
+        "native": "Sources/KwipMLCore/AvgPool2dConfiguration.swift",
+        "worker": "runner/avgpool2d_configuration.py",
+        "tests": "runner/tests/test_adaptive_pooling_engine.py",
+        "evidence": "docs/production/TORCH_ADAPTIVE_POOLING_AUTHORING_20261008.md"
+      },
+      "runtimeContract": {
+        "version": {
+          "major": 1,
+          "minor": 0,
+          "patch": 0
+        },
+        "adapterID": "kwip.runner.graph-v2.avg_pool2d",
+        "graphSchemaVersions": [
+          2
+        ],
+        "sampleRank": 3,
+        "preservesBatch": true,
+        "graphDTypes": [
+          "float32"
+        ],
+        "channelMinimum": 1,
+        "channelMaximum": 512,
+        "spatialMinimum": 1,
+        "spatialMaximum": 4096,
+        "spatialAxes": [
+          "height",
+          "width"
+        ],
+        "kernelMinimum": 1,
+        "kernelMaximum": 4096,
+        "strideMinimum": 1,
+        "strideMaximum": 4096,
+        "paddingMinimum": 0,
+        "paddingMaximum": 2048,
+        "paddingKernelDivisor": 2,
+        "nullStrideFollowsKernel": true,
+        "ceilModes": [
+          false,
+          true
+        ],
+        "outputDTypes": {
+          "out": "float32"
+        },
+        "countIncludePadModes": [
+          false,
+          true
+        ],
+        "divisorOverrideMinimum": -2147483647,
+        "divisorOverrideMaximum": 2147483647,
+        "divisorOverrideExcludesZero": true,
+        "nullDivisorFollowsWindow": true
+      },
+      "learning": {
+        "contentVersion": 1,
+        "updatedAt": "2026-10-08",
+        "exampleID": "prepared-avgpool2d-classifier",
+        "sourceResource": "workflow-observations",
+        "title": "Average 2D: values, influence and shape",
+        "subtitle": "Average neighboring cells in each channel. Configure rectangular windows, spacing, padding and an optional custom divisor; inspect values and input influence without learned weights.",
+        "disclosureTitle": "Understand regions and what changes the result",
+        "formula": "Result = sum of contributing cells / divisor",
+        "paragraphs": [
+          "Start with a small grid of measurements. A window is the rectangle of neighboring cells combined into one result. Stride is how far that rectangle moves before the next result. Height and width are configured separately; each observation and channel is handled independently.",
+          "Padding adds space around the grid. Include padding counts those added spaces in the average divisor, the number used to divide the sum. Exclude padding counts only real cells. The partial final window option can include an extra edge region; space beyond the configured padding never adds to its divisor.",
+          "Leave Custom divisor empty to use the window count. When enabled, the nonzero whole number replaces that count: 1 keeps the sum and a negative value reverses its sign. Changing the divisor changes the result, so it should be a deliberate experiment rather than a repair for an incorrectly shaped grid.",
+          "Input influence describes how a small change to one cell changes the result. Each real cell in a window gets an equal share using that window\u2019s divisor. A cell appearing in several windows contributes to each, so its shares add.",
+          "The runnable example builds a feature grid from two table columns, averages local regions, then predicts a class. It teaches wiring; it does not claim neighboring table columns represent physical neighbors. If an edit changes the final feature count, adjust the next layer\u2019s input width. Pooling has no learned weights of its own.",
+          "Practice by wiring Input \u2192 AvgPool2d \u2192 Model Output on the lesson canvas. Compare the actual values, the input influence and the reported shape. The assessment checks these separately; opening the runnable example alone does not establish mastery."
+        ],
+        "buttonTitle": "Open average 2d example",
+        "exampleSource": "Sources/KwipMLCore/AdaptivePoolingWorkflowExample.swift",
+        "lessonIDs": [
+          "assessment.avg-pool2d-windows"
+        ]
+      }
+    },
+    {
+      "definition": {
+        "id": "adaptive_avg_pool1d",
+        "title": "AdaptiveAvgPool1d",
+        "category": "Pooling",
+        "inputs": [
+          "in"
+        ],
+        "outputs": [
+          "out"
+        ],
+        "fields": [
+          {
+            "key": "output_size",
+            "title": "Output length",
+            "kind": "integer",
+            "defaultValue": 2,
+            "min": 1,
+            "max": 4096
+          }
+        ]
+      },
+      "published": true,
+      "configurationVersion": 2,
+      "adapterID": "kwip.runner.graph-v2.adaptive_avg_pool1d",
+      "shapeRuleID": "kwip.shape.adaptive_avg_pool1d.v1",
+      "presentation": {
+        "theme": "green",
+        "icon": "adaptive_avg_pool1d-v2",
+        "shortTitle": "Adaptive average 1D",
+        "purpose": "Choose an output length and let the block divide each channel into averaging regions. Inspect overlap and how each input contributes, without mixing observations or channels."
+      },
+      "outputConditions": {},
+      "sources": {
+        "native": "Sources/KwipMLCore/AdaptivePoolingConfiguration.swift",
+        "worker": "runner/adaptive_pooling_configuration.py",
+        "tests": "runner/tests/test_adaptive_pooling_engine.py",
+        "evidence": "docs/production/TORCH_ADAPTIVE_POOLING_AUTHORING_20261008.md"
+      },
+      "runtimeContract": {
+        "version": {
+          "major": 1,
+          "minor": 0,
+          "patch": 0
+        },
+        "adapterID": "kwip.runner.graph-v2.adaptive_avg_pool1d",
+        "graphSchemaVersions": [
+          2
+        ],
+        "sampleRank": 2,
+        "preservesBatch": true,
+        "graphDTypes": [
+          "float32"
+        ],
+        "channelMinimum": 1,
+        "channelMaximum": 512,
+        "spatialMinimum": 1,
+        "spatialMaximum": 4096,
+        "spatialAxes": [
+          "length"
+        ],
+        "outputSizeMinimum": 1,
+        "outputSizeMaximum": 4096,
+        "nullOutputKeepsInputAxis": false,
+        "outputDTypes": {
+          "out": "float32"
+        },
+        "outputElementMaximum": 100000000
+      },
+      "learning": {
+        "contentVersion": 1,
+        "updatedAt": "2026-10-08",
+        "exampleID": "prepared-adaptiveavgpool1d-classifier",
+        "sourceResource": "workflow-observations",
+        "title": "Adaptive average 1D: values, influence and shape",
+        "subtitle": "Choose an output length and let the block divide each channel into averaging regions. Inspect overlap and how each input contributes, without mixing observations or channels.",
+        "disclosureTitle": "Understand regions and what changes the result",
+        "formula": "Result = sum of contributing cells / divisor",
+        "paragraphs": [
+          "Start with a line of measurements in one channel. Set the output length: this is how many average results you want. Adaptive means the block chooses regions from the input length and your requested output length, rather than asking you to specify a moving window.",
+          "Each output takes the average of its assigned region. Regions cover the full input, but they can overlap when the lengths do not divide evenly. Requesting more outputs than inputs is allowed; it creates overlapping regions and does not recover new information.",
+          "Input influence describes how a small change to one measurement changes the results. Each region shares its contribution equally among its real inputs. An input shared by several regions receives several shares. Observations and channels remain separate.",
+          "Changing output length changes the number of features passed to the next block. Inspect the output shape and update a later layer\u2019s input width if needed. This block owns no learned weights; training can still change the earlier layer that supplies its inputs.",
+          "Practice by wiring Input \u2192 AdaptiveAvgPool1d \u2192 Model Output. The lesson checks the measured averages, input influence and shape separately. The runnable table example demonstrates a constructed feature sequence, not a claim that unrelated columns form a measured time series."
+        ],
+        "buttonTitle": "Open adaptive average 1d example",
+        "exampleSource": "Sources/KwipMLCore/AdaptivePoolingWorkflowExample.swift",
+        "lessonIDs": [
+          "assessment.adaptive-avg-pool1d-bins"
+        ]
+      }
+    },
+    {
+      "definition": {
+        "id": "adaptive_avg_pool2d",
+        "title": "AdaptiveAvgPool2d",
+        "category": "Pooling",
+        "inputs": [
+          "in"
+        ],
+        "outputs": [
+          "out"
+        ],
+        "fields": [
+          {
+            "key": "output_height",
+            "title": "Output height \u00b7 empty keeps input",
+            "kind": "integer",
+            "defaultValue": 2,
+            "min": 1,
+            "max": 4096,
+            "allowsNull": true
+          },
+          {
+            "key": "output_width",
+            "title": "Output width \u00b7 empty keeps input",
+            "kind": "integer",
+            "defaultValue": 2,
+            "min": 1,
+            "max": 4096,
+            "allowsNull": true
+          }
+        ]
+      },
+      "published": true,
+      "configurationVersion": 2,
+      "adapterID": "kwip.runner.graph-v2.adaptive_avg_pool2d",
+      "shapeRuleID": "kwip.shape.adaptive_avg_pool2d.v1",
+      "presentation": {
+        "theme": "green",
+        "icon": "adaptive_avg_pool2d-v2",
+        "shortTitle": "Adaptive average 2D",
+        "purpose": "Choose output height and width and average the matching regions within each channel. Keep either input dimension unchanged by leaving that output control empty."
+      },
+      "outputConditions": {},
+      "sources": {
+        "native": "Sources/KwipMLCore/AdaptivePoolingConfiguration.swift",
+        "worker": "runner/adaptive_pooling_configuration.py",
+        "tests": "runner/tests/test_adaptive_pooling_engine.py",
+        "evidence": "docs/production/TORCH_ADAPTIVE_POOLING_AUTHORING_20261008.md"
+      },
+      "runtimeContract": {
+        "version": {
+          "major": 1,
+          "minor": 0,
+          "patch": 0
+        },
+        "adapterID": "kwip.runner.graph-v2.adaptive_avg_pool2d",
+        "graphSchemaVersions": [
+          2
+        ],
+        "sampleRank": 3,
+        "preservesBatch": true,
+        "graphDTypes": [
+          "float32"
+        ],
+        "channelMinimum": 1,
+        "channelMaximum": 512,
+        "spatialMinimum": 1,
+        "spatialMaximum": 4096,
+        "spatialAxes": [
+          "height",
+          "width"
+        ],
+        "outputSizeMinimum": 1,
+        "outputSizeMaximum": 4096,
+        "nullOutputKeepsInputAxis": true,
+        "outputDTypes": {
+          "out": "float32"
+        },
+        "outputElementMaximum": 100000000
+      },
+      "learning": {
+        "contentVersion": 1,
+        "updatedAt": "2026-10-08",
+        "exampleID": "prepared-adaptiveavgpool2d-classifier",
+        "sourceResource": "workflow-observations",
+        "title": "Adaptive average 2D: values, influence and shape",
+        "subtitle": "Choose output height and width and average the matching regions within each channel. Keep either input dimension unchanged by leaving that output control empty.",
+        "disclosureTitle": "Understand regions and what changes the result",
+        "formula": "Result = sum of contributing cells / divisor",
+        "paragraphs": [
+          "Start with a small grid of values. Choose the output height and width: these are the rows and columns you want after averaging. Adaptive means the block chooses matching input regions for that output grid. Leave either control empty to keep that input dimension.",
+          "Each output cell is the average of its assigned rectangle. Regions can overlap when input and output sizes do not divide evenly. Choosing a larger output size repeats or overlaps available information; it does not invent new measurements.",
+          "Input influence describes how a small change to one cell affects the results. Every real cell in a rectangle shares equally in its average. A cell present in several rectangles collects contributions from all of them. Channels and observations are never averaged together.",
+          "Inspect both output dimensions before connecting a later layer. Changing the grid changes the flattened feature count, so a later layer may need a different input width. The block has no learned weights or running averages; training and inference use the same rule.",
+          "Practice by wiring Input \u2192 AdaptiveAvgPool2d \u2192 Model Output and comparing values, input influence and shape. The runnable example constructs a feature grid from table columns to teach connections, rather than claiming the columns are naturally arranged as an image."
+        ],
+        "buttonTitle": "Open adaptive average 2d example",
+        "exampleSource": "Sources/KwipMLCore/AdaptivePoolingWorkflowExample.swift",
+        "lessonIDs": [
+          "assessment.adaptive-avg-pool2d-bins"
+        ]
+      }
+    },
+    {
+      "definition": {
+        "id": "adaptive_max_pool2d",
+        "title": "AdaptiveMaxPool2d",
+        "category": "Pooling",
+        "inputs": [
+          "in"
+        ],
+        "outputs": [
+          "out",
+          "indices"
+        ],
+        "fields": [
+          {
+            "key": "output_height",
+            "title": "Output height \u00b7 empty keeps input",
+            "kind": "integer",
+            "defaultValue": 2,
+            "min": 1,
+            "max": 4096,
+            "allowsNull": true
+          },
+          {
+            "key": "output_width",
+            "title": "Output width \u00b7 empty keeps input",
+            "kind": "integer",
+            "defaultValue": 2,
+            "min": 1,
+            "max": 4096,
+            "allowsNull": true
+          },
+          {
+            "key": "return_indices",
+            "title": "Expose winning indices",
+            "kind": "boolean",
+            "defaultValue": false
+          }
+        ]
+      },
+      "published": true,
+      "configurationVersion": 2,
+      "adapterID": "kwip.runner.graph-v2.adaptive_max_pool2d",
+      "shapeRuleID": "kwip.shape.adaptive_max_pool2d.v1",
+      "presentation": {
+        "theme": "green",
+        "icon": "adaptive_max_pool2d-v2",
+        "shortTitle": "Adaptive max 2D",
+        "purpose": "Choose output height and width and keep the largest value in each matching region. Optionally expose integer winning positions; keep either dimension by leaving its control empty."
+      },
+      "outputConditions": {
+        "indices": "return_indices"
+      },
+      "sources": {
+        "native": "Sources/KwipMLCore/AdaptivePoolingConfiguration.swift",
+        "worker": "runner/adaptive_pooling_configuration.py",
+        "tests": "runner/tests/test_adaptive_pooling_engine.py",
+        "evidence": "docs/production/TORCH_ADAPTIVE_POOLING_AUTHORING_20261008.md"
+      },
+      "runtimeContract": {
+        "version": {
+          "major": 1,
+          "minor": 0,
+          "patch": 0
+        },
+        "adapterID": "kwip.runner.graph-v2.adaptive_max_pool2d",
+        "graphSchemaVersions": [
+          2
+        ],
+        "sampleRank": 3,
+        "preservesBatch": true,
+        "graphDTypes": [
+          "float32"
+        ],
+        "channelMinimum": 1,
+        "channelMaximum": 512,
+        "spatialMinimum": 1,
+        "spatialMaximum": 4096,
+        "spatialAxes": [
+          "height",
+          "width"
+        ],
+        "outputSizeMinimum": 1,
+        "outputSizeMaximum": 4096,
+        "nullOutputKeepsInputAxis": true,
+        "outputDTypes": {
+          "out": "float32",
+          "indices": "int64"
+        },
+        "outputElementMaximum": 100000000,
+        "returnIndicesModes": [
+          false,
+          true
+        ],
+        "indicesMeaning": "flattenedSpatialPosition"
+      },
+      "learning": {
+        "contentVersion": 1,
+        "updatedAt": "2026-10-08",
+        "exampleID": "prepared-adaptivemaxpool2d-classifier",
+        "sourceResource": "workflow-observations",
+        "title": "Adaptive max 2D: values, influence and shape",
+        "subtitle": "Choose output height and width and keep the largest value in each matching region. Optionally expose integer winning positions; keep either dimension by leaving its control empty.",
+        "disclosureTitle": "Understand regions and what changes the result",
+        "formula": "Result = largest contributing cell; position = first winning input",
+        "paragraphs": [
+          "Start with a small grid of values. Choose the output height and width and the block assigns an input rectangle to every output cell. It keeps the largest value in each rectangle. Leave either size control empty to preserve that input dimension.",
+          "Rectangles can overlap when input and output sizes do not divide evenly. One input cell can therefore win several times. Choosing more output cells than input cells is allowed, but it repeats available information rather than recovering discarded values.",
+          "Expose winning indices opens a separate integer output. An index is a position number counted from zero across the original grid, row by row, within one channel. It is not the winning value and must not be connected as a floating feature. Equal largest values choose the first position in the rectangle.",
+          "Input influence describes which cells affect the chosen values. Each result gives its contribution to its selected cell; a cell that wins several rectangles receives their added contributions. Other cells receive none. The integer positions themselves have no input influence.",
+          "Inspect the output shape after editing size controls and update a later layer\u2019s input width if the flattened feature count changes. Max pooling has no learned weights, and winning positions cannot reconstruct the values discarded by selection.",
+          "Practice by wiring Input \u2192 AdaptiveMaxPool2d \u2192 Model Output. The lesson checks values, input influence and shape separately and can inspect integer winners. The runnable example uses a constructed feature grid from table data, not a measured image."
+        ],
+        "buttonTitle": "Open adaptive max 2d example",
+        "exampleSource": "Sources/KwipMLCore/AdaptivePoolingWorkflowExample.swift",
+        "lessonIDs": [
+          "assessment.adaptive-max-pool2d-bins"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,114 @@
+{
+  "entryID": "affine-composition",
+  "title": "Compose affine maps",
+  "chapter": "Foundations",
+  "type": "Construction",
+  "assessmentID": "assessment.affine-composition",
+  "scopeLabel": "Assessment · public values unchanged",
+  "baselineHash": "2cf9095416877a63dac13ecea0a04ee987af2ce4bc49b9723e131ec2c5d55613",
+  "summary": "Understand the supplied maps, build a matching calculation, and submit it to the independent assessment checker.",
+  "scope": "First Affine assessment only. Three primary rail sections and five task/reference sections. Wording proposal; task identity, map constants, allowed components, grading and saved receipts remain unchanged.",
+  "reviewNote": "This is the first Affine construction assessment. Supplied map values are public and unchanged. No combined weight/bias solution or private fixture values are included. Dynamic checker outcomes and exact criteria remain runtime-driven. Native checks wait until Foundations is finished.",
+  "sourceChecks": [
+    "The Foundations Affine launcher starts Compose affine maps in Assessment mode, identity assessment.affine-composition.",
+    "Its supplied canvas has two unconnected nodes: Input (two features) and Result. The learner adds the connecting construction.",
+    "First map and Second map values are read directly from AffineReference.swift; only those public maps are shown. No combined solution is calculated.",
+    "Parameters exposes the explicit Weight matrix and Bias editors. Initialize zeros is an existing action when values are absent.",
+    "The rail provides Submit assessment, readiness, cancellation, current/previous feedback and actual saved-receipt state. These are not authored success labels.",
+    "This proposal changes presentation only. The checker, hidden fixtures, tolerances, allowed tool set, task/content versions and historical receipts stay unchanged; other Affine assessments remain pending."
+  ],
+  "publicMaps": [
+    {
+      "name": "First map",
+      "weight": [
+        [
+          2,
+          -1
+        ],
+        [
+          0.5,
+          3
+        ]
+      ],
+      "bias": [
+        1,
+        -2
+      ]
+    },
+    {
+      "name": "Second map",
+      "weight": [
+        [
+          1,
+          2
+        ],
+        [
+          -2,
+          1
+        ]
+      ],
+      "bias": [
+        0.25,
+        1
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "id": "goal",
+      "title": "Meet the assessment",
+      "text": "An affine map combines input numbers using fixed weights, then adds fixed offsets called biases. A Linear layer performs this calculation. Knowing how two such maps combine can help you simplify a model or check that two implementations do the same work.\n\nIn this assessment, each observation has two numbers. Your construction must return the same two output numbers as applying First map and then Second map. The supplied weight and offset tables describe those two maps; they are the specification, not the completed combined answer.\n\nThe canvas starts with two unconnected blocks:\n- Input supplies two features per observation. The checker provides the actual test values.\n- Result is the output boundary. It must receive the two final values in the correct order.\n\nYou will add the connecting layers and enter their weights and biases yourself. One equivalent Linear map or several affine Linear maps can satisfy the task. The checker compares behavior on additional inputs; it does not require particular block names or positions.",
+      "kind": "explanation",
+      "group": "Assessment rail · 3 sections"
+    },
+    {
+      "id": "try.0",
+      "title": "Build your construction",
+      "text": "1. Open Task, supplied values & hints in the lesson rail. Read First map and Second map, including both weight tables and both offset tables.\n2. Decide how to represent the required calculation. Keep the input and final output at two features each. If you use multiple Linear layers, the output width of one must match the input width of the next.\n3. Drag the allowed components onto the canvas. Connect Input through your construction to Result. Select each Linear layer and use Parameters to set its input/output sizes, Weight matrix and Bias. If explicit parameters are not yet initialized, choose Initialize zeros, then enter your intended values; zeros alone are not a solution.\n4. Finish any pending numeric edits before submitting. Check every row, column and offset against the map your layer is meant to perform.\n\nYou are supplying a fixed calculation. The checker will evaluate the entered numbers; it will not train them toward the answer.",
+      "kind": "canvasAction",
+      "group": "Assessment rail · 3 sections"
+    },
+    {
+      "id": "inspect",
+      "title": "Submit and read the feedback",
+      "text": "Choose Submit assessment in Check your construction. The checker supplies additional two-feature observations and compares your outputs with the required calculation. Your construction must preserve the number of observations and return two features for each one.\n\nRead Assessment feedback after the check finishes:\n- If the construction does not match, review the connection order, feature widths, weight-table orientation and biases before trying again.\n- If execution cannot start or is cancelled, resolve that condition before treating it as a result about your construction.\n- A passing result counts toward completion only when its receipt is saved. After edits, a previous result describes the earlier construction; submit again to check the new one.\n\nSaving the lesson keeps your attempt. It does not itself demonstrate that the calculation is correct.",
+      "kind": "observation",
+      "group": "Assessment rail · 3 sections"
+    },
+    {
+      "id": "reference.goal",
+      "title": "The required behavior",
+      "text": "For every two-feature observation, reproduce First map followed by Second map. Keep the two final output features in their original order.\n\nYou may choose an equivalent arrangement of the allowed components. Names, layout and the number of Linear layers are not the target of the assessment; the resulting calculation is.",
+      "kind": "explanation",
+      "group": "Task reference · 5 sections"
+    },
+    {
+      "id": "reference.workflow",
+      "title": "Work on the canvas",
+      "text": "Drag components from the allowed toolbar onto the canvas. A port is a connection point: connect a block's output to the next block's input.\n\nSelect a block and use Parameters to set its sizes and explicit numbers. For Linear, each weight-table row produces one output feature and each column receives one input feature. Bias adds one offset to each output. The parameter editor numbers rows and columns from 0.\n\nKeep the Input-to-Result path connected and finish pending numeric fields. Use Submit assessment in the rail when you are ready; this Construction uses the assessment checker rather than an ordinary training run.",
+      "kind": "canvasAction",
+      "group": "Task reference · 5 sections"
+    },
+    {
+      "id": "reference.maps",
+      "title": "Read the supplied maps",
+      "text": "These are the original maps, applied in order. Each has two input features and two output features. A weight-table row tells you how to combine the two inputs for one output; its matching offset is added afterward.\n\n**First map**\n- Weight row 0: [2, -1]\n- Weight row 1: [0.5, 3]\n- Offsets: [1, -2]\n\n**Second map**\n- Weight row 0: [1, 2]\n- Weight row 1: [-2, 1]\n- Offsets: [0.25, 1]\n\nThe second map receives the first map's outputs. If you replace the chain with one equivalent layer, work out both the combined weights and the combined offsets. Copying or adding the two offset lists without considering the second map's calculation can change the result.",
+      "kind": "visual",
+      "group": "Task reference · 5 sections"
+    },
+    {
+      "id": "reference.criteria",
+      "title": "What completion means",
+      "text": "The checker compares your connected calculation with the required transformation on independent inputs. Match the output values, preserve feature order and return the requested shape. Equivalent valid arrangements are accepted.\n\nSubmit assessment checks this construction. Completion requires a passing assessment result with a saved receipt. Opening the lesson, reading the steps or saving a draft does not satisfy that requirement. Exact checker criteria and resource limits remain available in Optional · exact checks and limits.",
+      "kind": "observation",
+      "group": "Task reference · 5 sections"
+    },
+    {
+      "id": "reference.notation",
+      "title": "Optional · read the notation",
+      "text": "x is one observation's two input values. W₁ is the first weight table and b₁ its offsets. W₂ and b₂ belong to the second map. y is the final output.\n\ny = W₂(W₁x + b₁) + b₂\n\nRead from the inside out: combine x using W₁, add b₁, then use that result as the input to the second map. The equation describes the supplied task; it is not a table of combined parameter values.\n\nFor a group of observations, shape [4, 2] means four observations with two features each. A 2 × 2 weight table describes output features by input features; it does not describe the number of observations. The app's batch formula uses a transpose to apply those same weights to observations stored as rows.",
+      "kind": "detail",
+      "group": "Task reference · 5 sections"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-09",
+  "assets": [
+    {
+      "path": "docs/design/data-loading-export-icons-v1/dataset-v1.png",
+      "sha256": "44357152e24bdef37c0d5052f5774f70e0928b8308d4b1071115a54bf90ce879",
+      "reference": "docs/design/gradient-control-icons-v1/gradient-policy-v1.png",
+      "prompt": "Create one original Dataset tool icon for KwipML matching this reference's clean flat restrained olive/sage two-color macOS machine-learning canvas icon family. Reference is style only, replace center subject with three horizontal aligned data rows, each with a small left index marker and two rectangular cells, communicating numbered observations kept together. Keep chamfered octagonal sage outline frame, center olive glyph, transparent interior and outside. Large bold crisp simple glyph legible at 36 pixels. No words letters numbers gradients shadows glow texture or checkerboard. One icon centered with same margin and visual weight as reference, genuine alpha transparency.",
+      "generator": "built-in image_gen",
+      "source": "/Users/developer/.codex/generated_images/01a10a07-829a-7e73-a566-105746b4f45f/exec-e5f9a519-0c37-4180-9a17-9f093611816d.png",
+      "inspected": true,
+      "transparentBackground": true
+    },
+    {
+      "path": "docs/design/data-loading-export-icons-v1/data-loader-v1.png",
+      "sha256": "b0b04b3141c4b12f5d45878c8dda7d4bd92bb6495de89196a2577fd601df359f",
+      "reference": "docs/design/gradient-control-icons-v1/gradient-policy-v1.png",
+      "prompt": "Create one original DataLoader tool icon for KwipML matching reference style: clean flat olive/sage two-color canvas tool, chamfered octagonal thin sage outline, bold olive center glyph. Reference style only. New center subject: three compact separate data rows entering a clearly bracketed single stacked batch via a simple short right-facing arrow. Extremely simple geometry readable at 36px, balanced spacious composition. Genuine transparent background outside and inside outline. Same visual weight/margins as reference. No words letters numbers shadows glow gradients texture or checkerboard. One standalone icon.",
+      "generator": "built-in image_gen",
+      "source": "/Users/developer/.codex/generated_images/01a10a07-829a-7e73-a566-105746b4f45f/exec-1ca137c1-b11e-43c1-b518-b76ce17475d3.png",
+      "inspected": true,
+      "transparentBackground": true
+    },
+    {
+      "path": "docs/design/data-loading-export-icons-v1/program-export-v1.png",
+      "sha256": "f0e1a725f90064c6b743beef89be7da026569f14b735afd5bbe145f07c41f89d",
+      "reference": "docs/design/lifecycle-icons-v1/checkpoint-save-restore-v1.png",
+      "prompt": "Generate one original KwipML inference-program export icon in this reference icon family. Reference style only: flat chamfered octagonal turquoise outline and restrained teal/cyan two-color bold glyph, genuine transparent interior/exterior. Replace center glyph with simple document outline containing three linked computation blocks and one small outward right-pointing export arrow. Communicate saving the computation rather than a weights/database stack. Crisp elegant large geometric glyph legible at36pixels. Same margins/frame/weight as reference. No words text letters numbers glow shadows gradients texture or checkerboard. One centered standalone tool icon.",
+      "generator": "built-in image_gen",
+      "source": "/Users/developer/.codex/generated_images/01a10a07-829a-7e73-a566-105746b4f45f/exec-7fe5025a-bb91-444d-aa41-00563f80ed14.png",
+      "inspected": true,
+      "transparentBackground": true
+    }
+  ]
+}

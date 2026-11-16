@@ -1,0 +1,33 @@
+[
+  {
+    "file": "gcc-13.4.0.tar.xz",
+    "sourceURL": "https://ftp.gnu.org/gnu/gcc/gcc-13.4.0/gcc-13.4.0.tar.xz",
+    "sha256": "9c4ce6dbb040568fdc545588ac03c5cbc95a8dbf0c7aa490170843afb59ca8f5",
+    "bytes": 88530720
+  },
+  {
+    "file": "gcc-13.4.0-darwin.diff",
+    "sourceURL": "https://raw.githubusercontent.com/Homebrew/formula-patches/8bbfd6c920e63f6ed1bf143771bfbfed0a3aaa1d/gcc/gcc-13.4.0.diff",
+    "sha256": "60b22ae7f5f78b41e12c51d8c6e99ba933a7e124454fe8cdbff7200505167949",
+    "bytes": 590233
+  },
+  {
+    "file": "gcc@13.rb",
+    "sourceURL": "ghcr.io/v2/homebrew/core/gcc/13/blobs/sha256:06a7bdccc074fedca6ebe1cd078fc8081e6df2502baccb8530bc42714e8af702",
+    "sourceMember": "gcc@13/13.4.0/.brew/gcc@13.rb",
+    "sha256": "bf3b8854527ca631f9746eed71354674c27ffe4eee789f3def15e43ede2ecb21",
+    "bytes": 8809
+  },
+  {
+    "file": "scipy-wheel-workflow.yml",
+    "sourceURL": "https://raw.githubusercontent.com/scipy/scipy/8c75ae75176236f233824e9a0483c26a69e6dfec/.github/workflows/wheels.yml",
+    "sha256": "70d8235813f64100feb8f3c3ef4eb9e339e84e831940363ec795a048ae625852",
+    "bytes": 11847
+  },
+  {
+    "file": "runner-image-20260105.md",
+    "sourceURL": "https://raw.githubusercontent.com/actions/runner-images/1932eb5b1a45b0778ed8d71b97bc0bc691478c60/images/macos/macos-14-arm64-Readme.md",
+    "sha256": "b8eaf908c5332cc7551a23d11d548e41716218148a832ebec344740b96beb377",
+    "bytes": 25251
+  }
+]

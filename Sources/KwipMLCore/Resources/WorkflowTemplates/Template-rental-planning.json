@@ -1,0 +1,662 @@
+{
+  "definitions": [],
+  "drafts": [],
+  "edges": [
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "hour"
+        },
+        "port": "table"
+      },
+      "id": "3DDEF3A1-7E2B-4E70-BC86-3AE8FE8FC329",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "join"
+        },
+        "port": "left"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "day"
+        },
+        "port": "table"
+      },
+      "id": "CD3D524C-4EAD-47FF-B38F-463CA5598849",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "join"
+        },
+        "port": "right"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "join"
+        },
+        "port": "table"
+      },
+      "id": "E08EE3C0-4FBA-4209-B457-3A8EB3B8DACB",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "summary"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "summary"
+        },
+        "port": "table"
+      },
+      "id": "98D928E8-6E5F-47B0-AF9C-A68A17E456FC",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "ordered"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "ordered"
+        },
+        "port": "table"
+      },
+      "id": "D358C066-D6AD-45B5-B0E0-778ED3E79385",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "types"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "ordered"
+        },
+        "port": "table"
+      },
+      "id": "0F868E2E-4A93-41B6-AE2A-690BB89326C6",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "wide"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "ordered"
+        },
+        "port": "table"
+      },
+      "id": "00CF69FD-DAF3-4A5F-AA09-589B56181E4A",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "summaryView"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "ordered"
+        },
+        "port": "table"
+      },
+      "id": "F62007BE-72A7-4607-8FA8-93D85DAB0938",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "summaryExport"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "types"
+        },
+        "port": "table"
+      },
+      "id": "51F6A803-EAC2-49F9-800A-248CAE94CF57",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "typesView"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "types"
+        },
+        "port": "table"
+      },
+      "id": "A1AC4BE2-93E4-46D8-8AA4-F0063DC81A72",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "typesExport"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "wide"
+        },
+        "port": "table"
+      },
+      "id": "D230D7C1-4000-410A-98BD-C86CF6762684",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "wideView"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "wide"
+        },
+        "port": "table"
+      },
+      "id": "BD78B154-C54C-4F30-930F-0C676D898B51",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "wideExport"
+        },
+        "port": "table"
+      }
+    }
+  ],
+  "kind": "workflowProject",
+  "name": "Compare rental activity",
+  "nodes": [
+    {
+      "address": {
+        "domain": "data",
+        "localID": "hour"
+      },
+      "name": "Hourly rentals",
+      "payload": {
+        "config": {
+          "commentPrefix": "",
+          "emptyField": "text",
+          "encoding": "utf-8-sig",
+          "format": "csv",
+          "headerMode": "firstRecord",
+          "ignoreErrors": false,
+          "missingColumns": "raise",
+          "nullMarkers": [],
+          "parserProfile": "polars",
+          "quoteChar": "\"",
+          "schemaOverrides": {
+            "casual": "Int64",
+            "cnt": "Int64",
+            "dteday": "String",
+            "hr": "Int64",
+            "registered": "Int64",
+            "weekday": "Int64"
+          },
+          "separator": ",",
+          "skipLines": 0,
+          "skipRecords": 0,
+          "skipRowsAfterHeader": 0,
+          "tryParseDates": false
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.sourceCSV"
+      },
+      "x": 0,
+      "y": 0
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "day"
+      },
+      "name": "Daily calendar",
+      "payload": {
+        "config": {
+          "commentPrefix": "",
+          "emptyField": "text",
+          "encoding": "utf-8-sig",
+          "format": "csv",
+          "headerMode": "firstRecord",
+          "ignoreErrors": false,
+          "missingColumns": "raise",
+          "nullMarkers": [],
+          "parserProfile": "polars",
+          "quoteChar": "\"",
+          "schemaOverrides": {
+            "dteday": "String",
+            "weekday": "Int64"
+          },
+          "separator": ",",
+          "skipLines": 0,
+          "skipRecords": 0,
+          "skipRowsAfterHeader": 0,
+          "tryParseDates": false
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.sourceCSV"
+      },
+      "x": 0,
+      "y": 300
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "join"
+      },
+      "name": "Enrich by dteday · left many-to-one · exclude daily counts",
+      "payload": {
+        "config": {
+          "cardinality": "manyToOne",
+          "leftKeys": [
+            "dteday"
+          ],
+          "leftPrefix": "hour_",
+          "maxRows": 100000,
+          "mode": "left",
+          "newColumns": "drop",
+          "nullPolicy": "error",
+          "outputColumns": [
+            {
+              "included": true,
+              "name": "date_YYYY_MM_DD",
+              "side": "left",
+              "source": "dteday"
+            },
+            {
+              "included": true,
+              "name": "hour_00_to_23",
+              "side": "left",
+              "source": "hr"
+            },
+            {
+              "included": true,
+              "name": "casual",
+              "side": "left",
+              "source": "casual"
+            },
+            {
+              "included": true,
+              "name": "registered",
+              "side": "left",
+              "source": "registered"
+            },
+            {
+              "included": true,
+              "name": "recorded_rentals",
+              "side": "left",
+              "source": "cnt"
+            },
+            {
+              "included": true,
+              "name": "weekday_UCI_Sunday0_Monday1_Tuesday2_Wednesday3_Thursday4_Friday5_Saturday6",
+              "side": "right",
+              "source": "weekday"
+            },
+            {
+              "included": true,
+              "name": "calendar_holiday",
+              "side": "right",
+              "source": "holiday"
+            },
+            {
+              "included": true,
+              "name": "calendar_workingday",
+              "side": "right",
+              "source": "workingday"
+            },
+            {
+              "included": true,
+              "name": "calendar_season",
+              "side": "right",
+              "source": "season"
+            },
+            {
+              "included": true,
+              "name": "calendar_yr",
+              "side": "right",
+              "source": "yr"
+            },
+            {
+              "included": true,
+              "name": "calendar_mnth",
+              "side": "right",
+              "source": "mnth"
+            }
+          ],
+          "rightKeys": [
+            "dteday"
+          ],
+          "rightPrefix": "day_"
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.join"
+      },
+      "x": 300,
+      "y": 100
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "summary"
+      },
+      "name": "Historical totals and represented source hours · no forecast",
+      "payload": {
+        "config": {
+          "aggregations": [
+            {
+              "op": "countRows",
+              "output": "source_hours"
+            },
+            {
+              "column": "recorded_rentals",
+              "nullPolicy": "propagate",
+              "op": "sum",
+              "output": "recorded_rentals"
+            },
+            {
+              "column": "casual",
+              "nullPolicy": "propagate",
+              "op": "sum",
+              "output": "casual"
+            },
+            {
+              "column": "registered",
+              "nullPolicy": "propagate",
+              "op": "sum",
+              "output": "registered"
+            }
+          ],
+          "groupBy": [
+            "weekday_UCI_Sunday0_Monday1_Tuesday2_Wednesday3_Thursday4_Friday5_Saturday6",
+            "hour_00_to_23"
+          ],
+          "maxRows": 100000,
+          "nullKeys": "group"
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.aggregate"
+      },
+      "x": 600,
+      "y": 100
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "ordered"
+      },
+      "name": "Weekday Sunday0–Saturday6 then hour 0–23",
+      "payload": {
+        "config": {
+          "keys": [
+            {
+              "column": "weekday_UCI_Sunday0_Monday1_Tuesday2_Wednesday3_Thursday4_Friday5_Saturday6",
+              "comparison": "exact",
+              "direction": "ascending",
+              "missing": "last"
+            },
+            {
+              "column": "hour_00_to_23",
+              "comparison": "exact",
+              "direction": "ascending",
+              "missing": "last"
+            }
+          ]
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.sort"
+      },
+      "x": 900,
+      "y": 100
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "types"
+      },
+      "name": "Casual versus registered · inspectable long table",
+      "payload": {
+        "config": {
+          "columnKey": "",
+          "columnOrder": "firstSeen",
+          "duplicates": "stop",
+          "fieldName": "rental_type",
+          "fillValue": null,
+          "idColumns": [
+            "weekday_UCI_Sunday0_Monday1_Tuesday2_Wednesday3_Thursday4_Friday5_Saturday6",
+            "hour_00_to_23",
+            "source_hours"
+          ],
+          "maxColumns": 128,
+          "missingCombinations": "missing",
+          "missingValues": "keep",
+          "mode": "long",
+          "nullColumnNames": "stop",
+          "nullLabel": "missing",
+          "rowKeys": [],
+          "typePolicy": "strict",
+          "valueColumns": [
+            "casual",
+            "registered"
+          ],
+          "valueName": "recorded_rentals",
+          "values": []
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.reshapeTable"
+      },
+      "x": 1200,
+      "y": 300
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "wide"
+      },
+      "name": "Weekday by hour · totals and source hours · absent cells missing",
+      "payload": {
+        "config": {
+          "columnKey": "hour_00_to_23",
+          "columnOrder": "sorted",
+          "duplicates": "stop",
+          "fieldName": "field",
+          "fillValue": null,
+          "idColumns": [],
+          "maxColumns": 128,
+          "missingCombinations": "missing",
+          "missingValues": "keep",
+          "mode": "wide",
+          "nullColumnNames": "stop",
+          "nullLabel": "missing",
+          "rowKeys": [
+            "weekday_UCI_Sunday0_Monday1_Tuesday2_Wednesday3_Thursday4_Friday5_Saturday6"
+          ],
+          "typePolicy": "strict",
+          "valueColumns": [],
+          "valueName": "value",
+          "values": [
+            {
+              "aggregation": "first",
+              "column": "recorded_rentals",
+              "nullPolicy": "propagate",
+              "prefix": "rentals_"
+            },
+            {
+              "aggregation": "first",
+              "column": "source_hours",
+              "nullPolicy": "propagate",
+              "prefix": "source_hours_"
+            }
+          ]
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.reshapeTable"
+      },
+      "x": 1200,
+      "y": 600
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "summaryView"
+      },
+      "name": "summary · historical recorded demand",
+      "payload": {
+        "config": {},
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.view"
+      },
+      "x": 1500,
+      "y": 0
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "summaryExport"
+      },
+      "name": "Activity summary report",
+      "payload": {
+        "config": {
+          "columns": [],
+          "destination": "file",
+          "filename": "rental-planning-summaryExport.csv",
+          "format": "csv",
+          "overwrite": false,
+          "separator": ","
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.outputDelimited"
+      },
+      "x": 1800,
+      "y": 0
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "typesView"
+      },
+      "name": "types · historical recorded demand",
+      "payload": {
+        "config": {},
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.view"
+      },
+      "x": 1500,
+      "y": 300
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "typesExport"
+      },
+      "name": "Rental types report",
+      "payload": {
+        "config": {
+          "columns": [],
+          "destination": "file",
+          "filename": "rental-planning-typesExport.csv",
+          "format": "csv",
+          "overwrite": false,
+          "separator": ","
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.outputDelimited"
+      },
+      "x": 1800,
+      "y": 300
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "wideView"
+      },
+      "name": "wide · historical recorded demand",
+      "payload": {
+        "config": {},
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.view"
+      },
+      "x": 1500,
+      "y": 600
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "wideExport"
+      },
+      "name": "Hourly comparison report",
+      "payload": {
+        "config": {
+          "columns": [],
+          "destination": "file",
+          "filename": "rental-planning-wideExport.csv",
+          "format": "csv",
+          "overwrite": false,
+          "separator": ","
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.outputDelimited"
+      },
+      "x": 1800,
+      "y": 600
+    }
+  ],
+  "projectID": "00000000-0000-0000-0000-000000000000",
+  "revision": 0,
+  "schemaVersion": 1
+}

@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "component": "kwip.data.view",
+  "asset": "data-view-v1.png",
+  "source": "Built-in image generation, referencing the accepted Table Input icon; reviewed locally and copied to native Resources.",
+  "sha256": "444cbb977cfc611aa59d2f9b7b13ebd88a8eaead37b6459a92b02ab67d484607",
+  "prompt": "Transparent teal table/grid and integrated magnifying glass, matching Table Input frame, chunky geometry and subtle two-tone shading; no text/glow/background.",
+  "release": false
+}

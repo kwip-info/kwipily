@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "component": "EmbeddingBag",
+  "status": "generated; pending bundle integration and acceptance",
+  "createdOn": "2026-10-09",
+  "generator": "image_gen.imagegen",
+  "sourceFile": "/Users/developer/.codex/generated_images/01a10a07-829a-7e73-a566-105746b4f45f/exec-80913da7-c981-4611-84a6-9aed2cfc483b.png",
+  "asset": "embedding-bag-v1.png",
+  "sha256": "ad5de9056c16b1c14d412d41c37f85984b52b61132e4c25b44fea35a62a74d78",
+  "transparentBackground": true,
+  "reference": "Sources/KwipMLApp/Resources/ComponentIcons/embedding-v2.png",
+  "prompt": "Use case: logo-brand. Asset: one transparent PNG component icon for KwipML, the native visual machine-learning canvas. Image 1 is STYLE REFERENCE ONLY: keep the lavender/purple two-color family, substantial clean hexagonal outline, centered compact geometry, flat sharp professional tool-icon appearance, and transparent background. Create a NEW EmbeddingBag icon: three small purple lookup-item squares grouped at upper left flow along three clean paths converging into a single wider two-cell result row at lower right, expressing combining multiple looked-up vectors into one group result. One continuous clean hexagonal frame, same apparent stroke weight and scale as reference. Colors only lavender #B59ACA and dark purple #755391; very restrained glassy tonal variation permitted inside shapes. Plenty of clean transparent space between frame, symbols and arrow paths. Optimize legibility at 32\u201348 pixels: very few large shapes, no fine grid, no texture. NO letters, numbers, captions, formula, plus signs, shadows, extra badges, white marks, gradients outside shapes or checkerboard. Genuine alpha transparency both outside frame and inside empty regions. Single centered complete icon, square composition, generous outer margin; do not crop any part. Preserve the reference's family identity but make convergence/group reduction clearly different from ordinary Embedding's branching arrows. Do not copy the reference's stray pixel artifacts."
+}

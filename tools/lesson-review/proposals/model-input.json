@@ -1,0 +1,43 @@
+{
+  "entryID": "model-input",
+  "title": "Where tensors enter the model",
+  "chapter": "Foundations",
+  "type": "Practice",
+  "baselineHash": "0c36f62b3ef72dbfe10d581096427b9058399b2ad7c56382fef9d45473b0080c",
+  "summary": "Introduce the actual text-prediction canvas, explain token IDs and shapes, then follow the named input into the model.",
+  "scope": "Wording proposal. Canvas, starter data, stable step IDs and unscored behavior stay unchanged.",
+  "sourceChecks": [
+    "The library launcher opens TextGenerationPracticeExample, which uses SequenceTrainingPracticeExample.",
+    "The supplied sequence length is 3; tokens maps input_ids to model/input using int64.",
+    "The model uses a character vocabulary, Embedding and a pointwise prediction head. It does not compare the whole context like attention.",
+    "Inspector labels checked in source. Native interactions will be checked at the Foundations build checkpoint.",
+    "The input retains the label Category pair in the starter. Native source admission consolidates Model definition into model/output, labeled Token predictions."
+  ],
+  "reviewNote": "This Foundations entry currently opens a text-generation canvas. The proposal explains that existing example; it does not replace it with a new starter graph.",
+  "steps": [
+    {
+      "id": "boundary",
+      "kind": "explanation",
+      "title": "Meet the canvas",
+      "text": "This canvas teaches a small model which character is likely to follow another character. It uses short patterns such as ababa and babab rather than a book, so you can follow the numbers without needing a large dataset. This is a simple character-prediction model, not a large language model.\n\nThe canvas has two connected parts:\n- The data path reads the short texts, reserves rows for validation, converts characters into whole-number IDs, and arranges those IDs into examples.\n- The model path starts at [Category pair](kwip-node://model/input), the Model input block. This starter retains that label even though each example now has three positions. [Token embeddings](kwip-node://model/lookup) turns each ID into a small set of numbers the model can learn. [Next-token logits](kwip-node://model/head) produces a score for each possible next character.\n- [Learn next-token transitions](kwip-node://control/train) adjusts the model using the prepared examples. [Continue a prompt](kwip-node://control/generate) uses the trained model to produce a short continuation.\n\nModel input is the starting point of the model path. The file has already been read and prepared before its numbers arrive here."
+    },
+    {
+      "id": "meaning",
+      "kind": "explanation",
+      "title": "Read the input shape",
+      "text": "A token is one piece of text. In this example, one character is one token. The tokenizer assigns each character an ID: a whole number used to look it up. An ID identifies a character; it is not a measurement of how important that character is.\n\nEach prepared example contains three token IDs. Its sample shape is [3]: one direction with three positions. When four examples are processed together, their tensor has shape [4, 3]:\n- 4 is the number of examples in the batch, or group processed together.\n- 3 is the number of token positions in each example.\n\nWith a batch of one, the shape is [1, 3]. The batch size changes; each example still has three positions. Integer indices uses int64, a format for whole numbers. Floating values uses float32, a format for decimal measurements. Token embeddings needs the integer IDs so it can look up the right learned vector for each character."
+    },
+    {
+      "id": "follow",
+      "kind": "canvasAction",
+      "title": "Follow the named input",
+      "text": "1. Click [Category pair](kwip-node://model/input), the Model input block, to bring it into view. Select it and inspect Configuration. Keep Integer indices and the supplied three-position sample shape for this example.\n2. Follow its tensor connection into [Token embeddings](kwip-node://model/lookup). The values arriving here are token IDs; the values leaving it are learned decimal-valued vectors.\n3. Select [Token predictions](kwip-node://model/output), the Model definition block, and inspect Model inputs. The input is named tokens. Then select [Learn next-token transitions](kwip-node://control/train) and open Data mapping: input_ids supplies that named input. Keep these bindings unchanged.\n4. Run Flow. After it finishes, inspect the output connections from Model input and Token embeddings in Results. Compare the integer IDs with the learned vectors. Results shows captured values from the run, so an unavailable capture is not evidence of an empty input.\n\nThe name tokens connects the model's declared input to Train's data mapping. It is separate from the name of the table column, input_ids."
+    },
+    {
+      "id": "reflect",
+      "kind": "question",
+      "title": "Check your understanding",
+      "text": "A batch contains four examples with three token IDs each. How would you read its shape [4, 3]? What stays the same if the next batch contains one example?\n\nWhich part of the workflow reads and prepares the text? Which block marks where the prepared numbers enter the model? Why does Token embeddings need whole-number IDs rather than decimal measurements?\n\nUse the canvas and captured connections to explain your answer. This is an unscored practice; opening or running it does not award assessment completion."
+    }
+  ]
+}

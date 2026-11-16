@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "features": {
+    "exports": {
+      "boundary": "filesystem-publication",
+      "resources": [
+        "cpu",
+        "filesystem",
+        "native-ui"
+      ],
+      "requiredEnvironment": [
+        "KWIPML_TEST_DEVELOPMENT_ROOT"
+      ],
+      "python": [
+        "scripts/tests/test_model_destination_parent_authority.py"
+      ],
+      "swift": [
+        "WorkflowPrivateModelDestinationsTests",
+        "WorkflowTrainedExportTests",
+        "WorkflowCodePackageTests",
+        "WorkflowExportStorageLifetimeTests"
+      ],
+      "nativeCases": [
+        "export-model-paired",
+        "export-trained-package",
+        "export-evaluation-replay",
+        "export-program-package",
+        "export-code-package",
+        "history-replay-offline"
+      ]
+    },
+    "release-process": {
+      "boundary": "artifact-and-provider-state",
+      "resources": [
+        "cpu",
+        "filesystem"
+      ],
+      "requiredEnvironment": [],
+      "python": [
+        "scripts/tests/test_release_candidate.py",
+        "scripts/runtime_tests/test_direct_release.py",
+        "scripts/tests/test_packaged_boundary.py",
+        "scripts/tests/test_verification_boundaries.py"
+      ],
+      "swift": [],
+      "nativeCases": [
+        "launch-resources"
+      ]
+    },
+    "export-contracts": {
+      "boundary": "filesystem-contracts",
+      "resources": [
+        "cpu",
+        "filesystem"
+      ],
+      "requiredEnvironment": [],
+      "python": [
+        "scripts/tests/test_model_destination_parent_authority.py"
+      ],
+      "swift": [
+        "WorkflowPrivateModelDestinationsTests",
+        "WorkflowCodePackageTests",
+        "WorkflowExportStorageLifetimeTests",
+        "WorkflowTrainedExportTests/testCancelledPublicationDoesNotCreateDestinationOrTemporarySibling",
+        "WorkflowTrainedExportTests/testPackageFolderNameCannotEscapeSelectedDestination"
+      ],
+      "nativeCases": [
+        "export-model-paired",
+        "export-trained-package",
+        "export-evaluation-replay",
+        "export-program-package",
+        "export-code-package",
+        "history-replay-offline"
+      ]
+    },
+    "export-integration": {
+      "boundary": "actual-worker-export",
+      "resources": [
+        "cpu",
+        "worker",
+        "filesystem"
+      ],
+      "requiredEnvironment": [
+        "KWIPML_TEST_DEVELOPMENT_ROOT"
+      ],
+      "python": [],
+      "swift": [
+        "WorkflowTrainedExportTests/testActualTrainedPackageIsPortableAndDoesNotCopySourceRows"
+      ],
+      "nativeCases": [
+        "export-model-paired",
+        "export-trained-package",
+        "export-evaluation-replay",
+        "export-program-package",
+        "export-code-package",
+        "history-replay-offline"
+      ]
+    }
+  },
+  "unknownPolicy": "unclassified; never excluded from complete qualification",
+  "completeQualification": "scripts/verify_local.sh",
+  "distributionAcceptance": "Actual authenticated previous-release update and automatic full-installer fallback remain separate.",
+  "partitions": {
+    "exports": [
+      "export-contracts",
+      "export-integration"
+    ]
+  }
+}

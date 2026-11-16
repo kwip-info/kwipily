@@ -1,0 +1,8 @@
+request,customer,priority,region
+U1,Straße,1,West
+U2,STRASSE,2,West
+U3,straße,3,West
+U4,,1,North
+U5,,2,North
+U6,zeta,4,East
+U7,Straße,5,East

@@ -1,0 +1,141 @@
+{
+  "schemaVersion": 1,
+  "capabilityID": "pytorch.torch.nn.Linear",
+  "evidenceRevision": "2026-10-05-numerical-partial-1",
+  "status": "partial",
+  "catalogVersion": "0.1.0",
+  "implementation": {
+    "gitCommit": "2d05d89ff0fe81070624f567f471c072ac7cf472",
+    "sourceFiles": [
+      {
+        "path": "runner/engine.py",
+        "sha256": "e23170bc622182cd34679b53ed8abafca9f3937821c98132dc07237b9780232e",
+        "gitCommit": "2d05d89ff0fe81070624f567f471c072ac7cf472"
+      },
+      {
+        "path": "runner/product_execution.py",
+        "sha256": "ba12fe1a9f9904e03e3a944c50522dae9cee01fabcf61efaa15038ac3e11e512",
+        "gitCommit": "2d05d89ff0fe81070624f567f471c072ac7cf472"
+      },
+      {
+        "path": "runner/graph_semantics.py",
+        "sha256": "6ca588b4378261522fad63cb586ecc030299e3d5398bed5fc3ab413fde6a219d",
+        "gitCommit": "2d05d89ff0fe81070624f567f471c072ac7cf472"
+      },
+      {
+        "path": "runner/data.py",
+        "sha256": "f662297cb7e599196b73c0c67b56f23bc750653304525c2430bb94fe65800574",
+        "gitCommit": "2d05d89ff0fe81070624f567f471c072ac7cf472"
+      },
+      {
+        "path": "Sources/KwipMLCore/Resources/components.json",
+        "sha256": "b7f3e3724347be2fa9cfd6e774a37f7e10e015ef490bf898d0a9a657820d13ae",
+        "gitCommit": "2d05d89ff0fe81070624f567f471c072ac7cf472"
+      }
+    ]
+  },
+  "acceptanceScope": {
+    "path": "docs/capability/LINEAR_ACCEPTANCE.md",
+    "sha256": "6c1a664e2f08e3d184188e1293012df20ba2b0a482f1df6fc2ad1f9d6cd4c2dd",
+    "gitCommit": "2d05d89ff0fe81070624f567f471c072ac7cf472"
+  },
+  "contracts": {
+    "registry": {
+      "path": "Sources/KwipMLCore/Resources/components.json",
+      "sha256": "b7f3e3724347be2fa9cfd6e774a37f7e10e015ef490bf898d0a9a657820d13ae",
+      "gitCommit": "2d05d89ff0fe81070624f567f471c072ac7cf472"
+    },
+    "executionDescriptor": {
+      "path": "capabilities/evidence/linear/2026-10-05/execution-contract.json",
+      "sha256": "bcc6f005d03d5372cf2fa602a98e2829ac00fa30a2a739ec465fa8723d69e949"
+    }
+  },
+  "environment": {
+    "python": "3.13.6",
+    "torch": "2.14.1",
+    "macOS": "26.6",
+    "architecture": "arm64",
+    "availableDevices": [
+      "cpu",
+      "mps"
+    ]
+  },
+  "upstream": {
+    "documentationVersion": "2.14",
+    "alignmentStatus": "partial"
+  },
+  "observations": [
+    {
+      "id": "linear-forward-backward-32",
+      "kind": "automated",
+      "modes": [
+        "inference",
+        "training"
+      ],
+      "dimensions": [
+        "execution"
+      ],
+      "cases": [
+        "cpu-1x1-biasFalse-batch1",
+        "cpu-1x1-biasFalse-batch7",
+        "cpu-1x1-biasTrue-batch1",
+        "cpu-1x1-biasTrue-batch7",
+        "cpu-2x3-biasFalse-batch1",
+        "cpu-2x3-biasFalse-batch7",
+        "cpu-2x3-biasTrue-batch1",
+        "cpu-2x3-biasTrue-batch7",
+        "cpu-3x2-biasFalse-batch1",
+        "cpu-3x2-biasFalse-batch7",
+        "cpu-3x2-biasTrue-batch1",
+        "cpu-3x2-biasTrue-batch7",
+        "cpu-512x512-biasFalse-batch1",
+        "cpu-512x512-biasFalse-batch7",
+        "cpu-512x512-biasTrue-batch1",
+        "cpu-512x512-biasTrue-batch7",
+        "mps-1x1-biasFalse-batch1",
+        "mps-1x1-biasFalse-batch7",
+        "mps-1x1-biasTrue-batch1",
+        "mps-1x1-biasTrue-batch7",
+        "mps-2x3-biasFalse-batch1",
+        "mps-2x3-biasFalse-batch7",
+        "mps-2x3-biasTrue-batch1",
+        "mps-2x3-biasTrue-batch7",
+        "mps-3x2-biasFalse-batch1",
+        "mps-3x2-biasFalse-batch7",
+        "mps-3x2-biasTrue-batch1",
+        "mps-3x2-biasTrue-batch7",
+        "mps-512x512-biasFalse-batch1",
+        "mps-512x512-biasFalse-batch7",
+        "mps-512x512-biasTrue-batch1",
+        "mps-512x512-biasTrue-batch7"
+      ],
+      "outcome": "passed",
+      "commandOrProcedure": "Retained 32-case report from runner.tests.test_linear_acceptance_matrix.measure across CPU/MPS, widths, bias and batches. Original dirty checkout provenance resolved by exact production content hashes; no numerical rerun during manifest assembly. Training mode evidence is backward differentiation only, not optimizer/checkpoint lifecycle acceptance.",
+      "implementationRevision": "2d05d89ff0fe81070624f567f471c072ac7cf472",
+      "evidenceFiles": [
+        {
+          "path": "capabilities/evidence/linear/2026-10-05/numerical-report.json",
+          "sha256": "fa2c7a592636b887b760ddd828cbce5ca9ec48e1b92ad45eb896d6dc8e74d653"
+        },
+        {
+          "path": "runner/tests/test_linear_acceptance_matrix.py",
+          "sha256": "9f72c4d81d3c88af11dcc2afcaecfe53f96115117972dfe1226035de4e7a347c",
+          "gitCommit": "946a54d935e3e3806e78b9f8d8319f7ee827a545"
+        }
+      ]
+    }
+  ],
+  "openRequirements": [
+    "Catalog denominator and operation-mode scope remain proposed; no acceptance or coverage credit.",
+    "Official documentation 2.14 versus runtime 2.14.1 patch alignment remains partial and unreviewed for complete API coverage.",
+    "Independent review must assess numerical oracle adequacy, limited conditioning and full required parameter/device/domain cases.",
+    "Training optimizer, evaluation, export, checkpoint/resume, cache, cancellation and artifact lifecycle evidence require separately reviewed observations.",
+    "Native UI persistence, both bias modes and curriculum/assessment workflows require independently bound candidate evidence.",
+    "Diagnostics, failure handling and remaining ten-dimension capability evidence are incomplete.",
+    "The separate 40-test pytest observation is not included because no exact retained test log is bound here; this manifest records only the 32-case numerical artifact.",
+    "No clean-machine, CUDA, arbitrary-rank, mixed-precision or framework-wide support is established."
+  ],
+  "review": {
+    "status": "pending"
+  }
+}

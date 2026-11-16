@@ -1,0 +1,122 @@
+test_changed_evidence_is_not_current (test_coverage_report.CoverageTests.test_changed_evidence_is_not_current) ... ok
+test_complete_evidence_counts_one_unit_not_alias (test_coverage_report.CoverageTests.test_complete_evidence_counts_one_unit_not_alias) ... FAIL
+test_draft_denominator_withholds_percentage_and_release (test_coverage_report.CoverageTests.test_draft_denominator_withholds_percentage_and_release) ... FAIL
+test_empty_denominator_is_unknown_not_hundred_percent (test_coverage_report.CoverageTests.test_empty_denominator_is_unknown_not_hundred_percent) ... FAIL
+test_every_evidence_dimension_is_required (test_coverage_report.CoverageTests.test_every_evidence_dimension_is_required) ... ok
+test_evidence_cannot_escape_repository (test_coverage_report.CoverageTests.test_evidence_cannot_escape_repository) ... FAIL
+test_evidence_scope_must_match_modes (test_coverage_report.CoverageTests.test_evidence_scope_must_match_modes) ... ok
+test_existing_file_does_not_prove_verification (test_coverage_report.CoverageTests.test_existing_file_does_not_prove_verification) ... ok
+test_frozen_catalog_requires_approval_record (test_coverage_report.CoverageTests.test_frozen_catalog_requires_approval_record) ... FAIL
+test_inventory_integrity_and_dispositions_required (test_coverage_report.CoverageTests.test_inventory_integrity_and_dispositions_required) ... FAIL
+test_missing_evidence_is_not_current (test_coverage_report.CoverageTests.test_missing_evidence_is_not_current) ... ok
+test_missing_mandatory_family_fails_even_at_hundred_percent (test_coverage_report.CoverageTests.test_missing_mandatory_family_fails_even_at_hundred_percent) ... FAIL
+test_reject_alias_as_extra_operation (test_coverage_report.CoverageTests.test_reject_alias_as_extra_operation) ... FAIL
+test_reject_duplicate_capability_identity (test_coverage_report.CoverageTests.test_reject_duplicate_capability_identity) ... FAIL
+test_reject_same_api_and_modes_under_different_id (test_coverage_report.CoverageTests.test_reject_same_api_and_modes_under_different_id) ... FAIL
+test_unbounded_or_unverified_configuration_not_complete (test_coverage_report.CoverageTests.test_unbounded_or_unverified_configuration_not_complete) ... ok
+test_unexplained_exclusion_rejected (test_coverage_report.CoverageTests.test_unexplained_exclusion_rejected) ... FAIL
+test_unverified_backend_matrix_not_complete (test_coverage_report.CoverageTests.test_unverified_backend_matrix_not_complete) ... ok
+
+======================================================================
+FAIL: test_complete_evidence_counts_one_unit_not_alias (test_coverage_report.CoverageTests.test_complete_evidence_counts_one_unit_not_alias)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/developer/KWIP/products/developer/kwipml/capabilities/tests/test_coverage_report.py", line 46, in test_complete_evidence_counts_one_unit_not_alias
+    self.assertEqual(r["capability_count"],1)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 1
+
+======================================================================
+FAIL: test_draft_denominator_withholds_percentage_and_release (test_coverage_report.CoverageTests.test_draft_denominator_withholds_percentage_and_release)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/developer/KWIP/products/developer/kwipml/capabilities/tests/test_coverage_report.py", line 85, in test_draft_denominator_withholds_percentage_and_release
+    self.assertIsNone(r["capability_percent"])
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0.0 is not None
+
+======================================================================
+FAIL: test_empty_denominator_is_unknown_not_hundred_percent (test_coverage_report.CoverageTests.test_empty_denominator_is_unknown_not_hundred_percent)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/developer/KWIP/products/developer/kwipml/capabilities/tests/test_coverage_report.py", line 95, in test_empty_denominator_is_unknown_not_hundred_percent
+    self.assertIsNone(r["capability_percent"])
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0.0 is not None
+
+======================================================================
+FAIL: test_evidence_cannot_escape_repository (test_coverage_report.CoverageTests.test_evidence_cannot_escape_repository)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/developer/KWIP/products/developer/kwipml/capabilities/tests/test_coverage_report.py", line 120, in test_evidence_cannot_escape_repository
+    with self.assertRaises(ValueError):self.report()
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_frozen_catalog_requires_approval_record (test_coverage_report.CoverageTests.test_frozen_catalog_requires_approval_record)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/developer/KWIP/products/developer/kwipml/capabilities/tests/test_coverage_report.py", line 137, in test_frozen_catalog_requires_approval_record
+    with self.assertRaises(ValueError):self.report()
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_inventory_integrity_and_dispositions_required (test_coverage_report.CoverageTests.test_inventory_integrity_and_dispositions_required)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/developer/KWIP/products/developer/kwipml/capabilities/tests/test_coverage_report.py", line 128, in test_inventory_integrity_and_dispositions_required
+    with self.assertRaises(ValueError):self.report()
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_missing_mandatory_family_fails_even_at_hundred_percent (test_coverage_report.CoverageTests.test_missing_mandatory_family_fails_even_at_hundred_percent)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/developer/KWIP/products/developer/kwipml/capabilities/tests/test_coverage_report.py", line 101, in test_missing_mandatory_family_fails_even_at_hundred_percent
+    self.assertEqual(r["capability_percent"],100.0)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0.0 != 100.0
+
+======================================================================
+FAIL: test_reject_alias_as_extra_operation (test_coverage_report.CoverageTests.test_reject_alias_as_extra_operation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/developer/KWIP/products/developer/kwipml/capabilities/tests/test_coverage_report.py", line 111, in test_reject_alias_as_extra_operation
+    with self.assertRaises(ValueError):self.report()
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_reject_duplicate_capability_identity (test_coverage_report.CoverageTests.test_reject_duplicate_capability_identity)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/developer/KWIP/products/developer/kwipml/capabilities/tests/test_coverage_report.py", line 106, in test_reject_duplicate_capability_identity
+    with self.assertRaises(ValueError):self.report()
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_reject_same_api_and_modes_under_different_id (test_coverage_report.CoverageTests.test_reject_same_api_and_modes_under_different_id)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/developer/KWIP/products/developer/kwipml/capabilities/tests/test_coverage_report.py", line 116, in test_reject_same_api_and_modes_under_different_id
+    with self.assertRaises(ValueError):self.report()
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_unexplained_exclusion_rejected (test_coverage_report.CoverageTests.test_unexplained_exclusion_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/developer/KWIP/products/developer/kwipml/capabilities/tests/test_coverage_report.py", line 133, in test_unexplained_exclusion_rejected
+    with self.assertRaises(ValueError):self.report()
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 18 tests in 0.007s
+
+FAILED (failures=11)

@@ -1,0 +1,26 @@
+import Foundation
+
+/// Exact channels-first convolution and preallocation contract.
+public struct DepthwiseConv2dRuntimeCapability: Equatable {
+    private init() {}
+    public static func decode(_ data: Data) throws -> Self {
+        guard data.count <= 4096 else { throw GraphConfigurationError("DepthwiseConv2d capability exceeds 4096 bytes.") }
+        let expected: JSONValue = .object([
+            "version": .object(["major": 1, "minor": 0, "patch": 0]), "adapterID": .string("kwip.runner.graph-v2.depthwise_conv2d"),
+            "graphSchemaVersions": .array([2]), "sampleRank": 3, "preservesBatch": true, "graphDTypes": .array([.string("float32")]),
+            "spatialParameterLength": 2, "maximumSampleElements": 100_000_000, "maximumPaddedSampleElements": 100_000_000,
+            "channelMinimum": 1, "channelMaximum": 512, "lengthMinimum": 1, "lengthMaximum": 4096,
+            "kernelMinimum": 1, "kernelMaximum": 4096, "strideMinimum": 1, "strideMaximum": 4096,
+            "dilationMinimum": 1, "dilationMaximum": 4096, "channelMultiplierMinimum": 1, "channelMultiplierMaximum": 512, "outputChannelMaximum": 512,
+            "groupsRule": .string("inputChannels"), "outputChannelsRule": .string("inputChannelsTimesMultiplier"),
+            "configurationKeys": .array(["in_channels", "channel_multiplier", "kernel_size", "stride", "dilation", "bias", "padding_policy", "padding", "padding_mode"].map { .string($0) }),
+            "paddingMinimum": 0, "paddingMaximum": 4096, "maximumParameters": 2_000_000, "maximumMultiplyAdds": 128_000_000,
+            "paddingPolicies": .array([.string("explicit"), .string("valid"), .string("same")]),
+            "paddingModes": .array([.string("zeros"), .string("reflect"), .string("replicate"), .string("circular")]), "biasModes": .array([false, true])
+        ])
+        guard try JSONDecoder().decode(JSONValue.self, from: data) == expected else {
+            throw GraphConfigurationError("DepthwiseConv2d capability differs from the reviewed shape, padding, dtype or allocation limits.")
+        }
+        return Self()
+    }
+}

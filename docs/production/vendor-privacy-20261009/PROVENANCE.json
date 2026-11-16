@@ -1,0 +1,121 @@
+{
+  "retrieved": "2026-10-09",
+  "method": "System curl with normal TLS validation; immutable upstream commit URLs; raw byte copies, plist parse only",
+  "packaged": false,
+  "artifacts": [
+    {
+      "name": "abseil-20250814.0",
+      "repository": "abseil/abseil-cpp",
+      "commit": "987c57f325f7fa8472fa84e1f885f7534d391b0d",
+      "artifacts": [
+        {
+          "path": "docs/production/vendor-privacy-20261009/abseil-20250814.0/PrivacyInfo.xcprivacy",
+          "source": "https://raw.githubusercontent.com/abseil/abseil-cpp/987c57f325f7fa8472fa84e1f885f7534d391b0d/PrivacyInfo.xcprivacy",
+          "bytes": 381,
+          "sha256": "f232217ae9edf2ab6a541a28eff50cfe05303c2b4756fff95cca72eccbc3b898"
+        },
+        {
+          "path": "docs/production/vendor-privacy-20261009/abseil-20250814.0/LICENSE.upstream",
+          "source": "https://raw.githubusercontent.com/abseil/abseil-cpp/987c57f325f7fa8472fa84e1f885f7534d391b0d/LICENSE",
+          "bytes": 11361,
+          "sha256": "c79a7fea0e3cac04cd43f20e7b648e5a0ff8fa5344e644b0ee09ca1162b62747"
+        }
+      ]
+    },
+    {
+      "name": "protobuf-7.36.2",
+      "repository": "protocolbuffers/protobuf",
+      "commit": "2c74169b34066ceb8ddb6b882fcb3fb32d737a55",
+      "artifacts": [
+        {
+          "path": "docs/production/vendor-privacy-20261009/protobuf-7.36.2/PrivacyInfo.xcprivacy",
+          "source": "https://raw.githubusercontent.com/protocolbuffers/protobuf/2c74169b34066ceb8ddb6b882fcb3fb32d737a55/PrivacyInfo.xcprivacy",
+          "bytes": 373,
+          "sha256": "521eb6ef8430773e5c010e1838fe9dd8fa5d62b7b76d1cea8d7d8daadcb144e2"
+        },
+        {
+          "path": "docs/production/vendor-privacy-20261009/protobuf-7.36.2/LICENSE.upstream",
+          "source": "https://raw.githubusercontent.com/protocolbuffers/protobuf/2c74169b34066ceb8ddb6b882fcb3fb32d737a55/LICENSE",
+          "bytes": 1732,
+          "sha256": "6e5e117324afd944dcf67f36cf329843bc1a92229a8cd9bb573d7a83130fea7d"
+        }
+      ]
+    },
+    {
+      "name": "grpc-1.84.0",
+      "repository": "grpc/grpc",
+      "commit": "3252a89f10d8e92997862167ca7d095ecda85973",
+      "artifacts": [
+        {
+          "path": "docs/production/vendor-privacy-20261009/grpc-1.84.0/PrivacyInfo.xcprivacy",
+          "source": "https://raw.githubusercontent.com/grpc/grpc/3252a89f10d8e92997862167ca7d095ecda85973/src/objective-c/PrivacyInfo.xcprivacy",
+          "bytes": 599,
+          "sha256": "03b2c70833a331a2b1efd11ff168ed02a8eadfd5e7d1fbf30eecc7509a4aea47"
+        },
+        {
+          "path": "docs/production/vendor-privacy-20261009/grpc-1.84.0/LICENSE.upstream",
+          "source": "https://raw.githubusercontent.com/grpc/grpc/3252a89f10d8e92997862167ca7d095ecda85973/LICENSE",
+          "bytes": 30191,
+          "sha256": "58c86a3f2b5cca0ebdf9ed3e7f4e6dc38e3b38796d8c3dc92064c62a4e39d0dd"
+        }
+      ]
+    },
+    {
+      "name": "openssl-3.0.16",
+      "repository": "openssl/openssl",
+      "commit": "fa1e5dfb142bb1c26c3c38a10aafa7a095df52e5",
+      "artifacts": [
+        {
+          "path": "docs/production/vendor-privacy-20261009/openssl-3.0.16/PrivacyInfo.xcprivacy",
+          "source": "https://raw.githubusercontent.com/openssl/openssl/fa1e5dfb142bb1c26c3c38a10aafa7a095df52e5/os-dep/Apple/PrivacyInfo.xcprivacy",
+          "bytes": 599,
+          "sha256": "aff9c890e7b9527243a47c281ba3658c37f1f9d676d63e02b2e36ba38c2af3ee"
+        },
+        {
+          "path": "docs/production/vendor-privacy-20261009/openssl-3.0.16/LICENSE.upstream",
+          "source": "https://raw.githubusercontent.com/openssl/openssl/fa1e5dfb142bb1c26c3c38a10aafa7a095df52e5/LICENSE.txt",
+          "bytes": 10175,
+          "sha256": "7d5450cb2d142651b8afa315b5f238efc805dad827d91ba367d8516bc9d49e7a"
+        }
+      ]
+    },
+    {
+      "name": "boringssl-grpc-submodule",
+      "repository": "google/boringssl",
+      "commit": "2b44a3701a4788e1ef866ddc7f143060a3d196c9",
+      "artifacts": [
+        {
+          "path": "docs/production/vendor-privacy-20261009/boringssl-grpc-submodule/PrivacyInfo.xcprivacy",
+          "source": "https://raw.githubusercontent.com/google/boringssl/2b44a3701a4788e1ef866ddc7f143060a3d196c9/PrivacyInfo.xcprivacy",
+          "bytes": 567,
+          "sha256": "c1dab677ae2f679965dca3326fd86e7557fe1c38b44fffa8b9926ff1ef0b26c2"
+        },
+        {
+          "path": "docs/production/vendor-privacy-20261009/boringssl-grpc-submodule/LICENSE.upstream",
+          "source": "https://raw.githubusercontent.com/google/boringssl/2b44a3701a4788e1ef866ddc7f143060a3d196c9/LICENSE",
+          "bytes": 13115,
+          "sha256": "827c8d8fc207c2392794eef9e00fe246f9f61fdcc132556c275be3dd8c3cd97f"
+        }
+      ]
+    },
+    {
+      "name": "protobuf-tensorflow-v31.1",
+      "repository": "protocolbuffers/protobuf",
+      "commit": "74211c0dfc2777318ab53c2cd2c317a2ef9012de",
+      "artifacts": [
+        {
+          "path": "docs/production/vendor-privacy-20261009/protobuf-tensorflow-v31.1/PrivacyInfo.xcprivacy",
+          "source": "https://raw.githubusercontent.com/protocolbuffers/protobuf/74211c0dfc2777318ab53c2cd2c317a2ef9012de/PrivacyInfo.xcprivacy",
+          "bytes": 373,
+          "sha256": "521eb6ef8430773e5c010e1838fe9dd8fa5d62b7b76d1cea8d7d8daadcb144e2"
+        },
+        {
+          "path": "docs/production/vendor-privacy-20261009/protobuf-tensorflow-v31.1/LICENSE.upstream",
+          "source": "https://raw.githubusercontent.com/protocolbuffers/protobuf/74211c0dfc2777318ab53c2cd2c317a2ef9012de/LICENSE",
+          "bytes": 1732,
+          "sha256": "6e5e117324afd944dcf67f36cf329843bc1a92229a8cd9bb573d7a83130fea7d"
+        }
+      ]
+    }
+  ]
+}

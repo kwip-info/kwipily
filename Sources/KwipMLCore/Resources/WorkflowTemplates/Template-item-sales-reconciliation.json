@@ -1,0 +1,5918 @@
+{
+  "definitions": [],
+  "drafts": [],
+  "edges": [
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "intake"
+        },
+        "port": "table"
+      },
+      "id": "D26751FD-626C-4056-827C-8006EE90916A",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "reason-0-filter"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "reason-0-filter"
+        },
+        "port": "matching"
+      },
+      "id": "998B5AB2-A752-425C-9D80-F6E5D907AA3B",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "reason-0-label"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "reason-0-label"
+        },
+        "port": "table"
+      },
+      "id": "9D542A20-4A7D-479B-85D6-9B882BCA6F79",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "reason-0-columns"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "intake"
+        },
+        "port": "table"
+      },
+      "id": "86E0E09C-BFC8-47C2-9EFD-667AAE566204",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "reason-1-filter"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "reason-1-filter"
+        },
+        "port": "matching"
+      },
+      "id": "DA018985-840C-4B33-A774-DAB0122D4FD9",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "reason-1-label"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "reason-1-label"
+        },
+        "port": "table"
+      },
+      "id": "57236685-6C80-4B4B-B324-2299F18ADD19",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "reason-1-columns"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "intake"
+        },
+        "port": "table"
+      },
+      "id": "5C445AC8-169A-4A8E-B4BF-D59904488F8C",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "reason-2-filter"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "reason-2-filter"
+        },
+        "port": "matching"
+      },
+      "id": "C54DA0F1-9F68-4023-A245-558F7F836C8F",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "reason-2-label"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "reason-2-label"
+        },
+        "port": "table"
+      },
+      "id": "58528171-9A06-4F2D-B419-8FC9D4867917",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "reason-2-columns"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "intake"
+        },
+        "port": "table"
+      },
+      "id": "3AB576EC-82EE-45B5-83BB-0E55C238E7B3",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "reason-3-filter"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "reason-3-filter"
+        },
+        "port": "matching"
+      },
+      "id": "C8267289-B4B8-4257-A8A6-EC8D7633C190",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "reason-3-label"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "reason-3-label"
+        },
+        "port": "table"
+      },
+      "id": "C98BC231-0397-4375-8F13-915A671E17A2",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "reason-3-columns"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "intake"
+        },
+        "port": "table"
+      },
+      "id": "8384BC5D-DA23-4EE8-8A70-D9E07D9EB263",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "reason-4-filter"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "reason-4-filter"
+        },
+        "port": "matching"
+      },
+      "id": "3D2A47EC-9512-47C5-ABDD-80371900BDB9",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "reason-4-label"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "reason-4-label"
+        },
+        "port": "table"
+      },
+      "id": "058E3EBB-75B6-4BD0-92DF-25FFF2AB0E72",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "reason-4-columns"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "intake"
+        },
+        "port": "table"
+      },
+      "id": "57841370-ED4C-45FB-9508-CB5F086E18DC",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "reason-5-filter"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "reason-5-filter"
+        },
+        "port": "matching"
+      },
+      "id": "F441D8A4-22F9-4FDE-9FDE-9E7865D97D92",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "reason-5-label"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "reason-5-label"
+        },
+        "port": "table"
+      },
+      "id": "E335D089-927F-41A7-BC05-52EA021DC219",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "reason-5-columns"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "intake"
+        },
+        "port": "table"
+      },
+      "id": "EA21B3DC-7831-4086-BE23-905AE9F6F40C",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "reason-6-filter"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "reason-6-filter"
+        },
+        "port": "matching"
+      },
+      "id": "D69947A5-EFBF-4EDF-B578-61C646B25523",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "reason-6-label"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "reason-6-label"
+        },
+        "port": "table"
+      },
+      "id": "2FCB5334-23E8-474D-9E7E-42D7A3C78D1F",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "reason-6-columns"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "intake"
+        },
+        "port": "table"
+      },
+      "id": "1BABE715-C2F8-4625-9182-CB513AE7BA76",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "reason-7-filter"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "reason-7-filter"
+        },
+        "port": "matching"
+      },
+      "id": "F062DBBC-DCA3-44AB-8BE6-71F6D9255DB2",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "reason-7-label"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "reason-7-label"
+        },
+        "port": "table"
+      },
+      "id": "123B68A9-7E53-43DC-A328-DF52064E60E6",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "reason-7-columns"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "reason-0-columns"
+        },
+        "port": "table"
+      },
+      "id": "01A2C04B-543E-4C43-89EF-FEBA67138D56",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "all-reasons"
+        },
+        "port": "table1"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "reason-1-columns"
+        },
+        "port": "table"
+      },
+      "id": "A766E3C7-DC33-47D4-A882-765D95DD6A78",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "all-reasons"
+        },
+        "port": "table2"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "reason-2-columns"
+        },
+        "port": "table"
+      },
+      "id": "4DCDEF60-1416-4BFD-901A-7A084FBE9FB3",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "all-reasons"
+        },
+        "port": "table3"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "reason-3-columns"
+        },
+        "port": "table"
+      },
+      "id": "CA61FB5A-2EEF-471E-A27D-47A188218AAE",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "all-reasons"
+        },
+        "port": "table4"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "reason-4-columns"
+        },
+        "port": "table"
+      },
+      "id": "99D0B595-9BF8-4F67-8D15-05F8CF884839",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "all-reasons"
+        },
+        "port": "table5"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "reason-5-columns"
+        },
+        "port": "table"
+      },
+      "id": "ADC1CAD0-16FF-44C8-AE6F-C03D9FF8A0CF",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "all-reasons"
+        },
+        "port": "table6"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "reason-6-columns"
+        },
+        "port": "table"
+      },
+      "id": "2E95E90F-0E82-45EF-BCEC-D38FF4755A2F",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "all-reasons"
+        },
+        "port": "table7"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "reason-7-columns"
+        },
+        "port": "table"
+      },
+      "id": "AB786DCB-CE3D-4A23-B52F-D4AA8D3C5A81",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "all-reasons"
+        },
+        "port": "table8"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "all-reasons"
+        },
+        "port": "table"
+      },
+      "id": "8D2D73A3-F31E-4530-A649-D3BB8E9A230F",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "ordered-reasons"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "ordered-reasons"
+        },
+        "port": "table"
+      },
+      "id": "41FCBB80-F3FB-4BEC-A0DB-56E62E1F9157",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "reasons-per-source"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "intake"
+        },
+        "port": "table"
+      },
+      "id": "E0EDEB2C-924F-4272-B104-F743E62A0528",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "source-with-reasons"
+        },
+        "port": "left"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "reasons-per-source"
+        },
+        "port": "table"
+      },
+      "id": "611C36BA-DF89-4DA7-B230-565AF500294B",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "source-with-reasons"
+        },
+        "port": "right"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "source-with-reasons"
+        },
+        "port": "table"
+      },
+      "id": "32D92657-5C39-4EAA-AACD-5BBDB484D874",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "admitted"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "source-with-reasons"
+        },
+        "port": "table"
+      },
+      "id": "37DD0638-E994-41F9-9393-EC4F5F7E0B41",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "exceptions"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "admitted"
+        },
+        "port": "matching"
+      },
+      "id": "E3314938-61BB-4283-AEA8-C99F08D57BAD",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "admitted-columns"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "admitted-columns"
+        },
+        "port": "table"
+      },
+      "id": "B0300990-B368-4FBA-BF26-C5DE1C2D4A4A",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "admitted-amount"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "admitted-amount"
+        },
+        "port": "table"
+      },
+      "id": "37376977-11AF-4D03-AE84-54D4532E0453",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "purchase"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "admitted-amount"
+        },
+        "port": "table"
+      },
+      "id": "C7B5B4AF-DF27-4C07-9A87-215B1E31115B",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "cancellation"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "purchase"
+        },
+        "port": "matching"
+      },
+      "id": "BE09E627-8CC8-46A9-B3BC-2E1C8366E19C",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "purchase-disposition"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "purchase-disposition"
+        },
+        "port": "table"
+      },
+      "id": "56D8E7CF-6A11-4BEC-9064-E6A2EC584066",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "purchase-ledger"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "purchase"
+        },
+        "port": "matching"
+      },
+      "id": "03FF7850-0E13-48B7-B403-347A31D3E21D",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "purchase-metrics"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "purchase-metrics"
+        },
+        "port": "table"
+      },
+      "id": "37874A7D-23B1-4F76-BDAF-9BF50D983437",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "purchase-metric-columns"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "cancellation"
+        },
+        "port": "matching"
+      },
+      "id": "11283E73-1336-47FA-850E-CFFA81F9D24C",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "cancellation-disposition"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "cancellation-disposition"
+        },
+        "port": "table"
+      },
+      "id": "3D8A663A-9135-4130-832F-A3B42A5E685D",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "cancellation-ledger"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "cancellation"
+        },
+        "port": "matching"
+      },
+      "id": "30797DCC-B4D8-49C2-81AE-58D1C549DA15",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "cancellation-metrics"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "cancellation-metrics"
+        },
+        "port": "table"
+      },
+      "id": "962AE6F1-CEF1-4868-A333-EDD22FEBAFA9",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "cancellation-metric-columns"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "exceptions"
+        },
+        "port": "matching"
+      },
+      "id": "22B7B4F4-534A-4C72-881D-BF97AA85A71C",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "exception-disposition"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "exception-disposition"
+        },
+        "port": "table"
+      },
+      "id": "E785D089-8AF0-433D-AD43-B66755E9D338",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "exception-ledger"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "purchase-ledger"
+        },
+        "port": "table"
+      },
+      "id": "EF818188-C14A-4F97-8048-EA3876193600",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "all-dispositions"
+        },
+        "port": "table1"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "cancellation-ledger"
+        },
+        "port": "table"
+      },
+      "id": "B067A559-BC7E-49F7-9C1C-E95ECD97662B",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "all-dispositions"
+        },
+        "port": "table2"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "exception-ledger"
+        },
+        "port": "table"
+      },
+      "id": "3170618F-3F11-46C8-A131-B5DBF7E3DCCF",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "all-dispositions"
+        },
+        "port": "table3"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "all-dispositions"
+        },
+        "port": "table"
+      },
+      "id": "1B41F0DF-86C5-4FFA-829F-D84E7F674829",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "ledger-source-order"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "ledger-source-order"
+        },
+        "port": "table"
+      },
+      "id": "519BAFBD-ADF9-4D64-9D7F-62AE6246B664",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "ledger-export"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "purchase-metric-columns"
+        },
+        "port": "table"
+      },
+      "id": "CBE31733-7B48-48DD-9218-3C0B241C124F",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "admitted-metrics"
+        },
+        "port": "table1"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "cancellation-metric-columns"
+        },
+        "port": "table"
+      },
+      "id": "EC20C47A-EEA9-414A-B2C2-80E811BCA8B9",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "admitted-metrics"
+        },
+        "port": "table2"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "admitted-metrics"
+        },
+        "port": "table"
+      },
+      "id": "0F03B5C3-A092-4A86-BFE3-84E028CD62EC",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "monthly-base"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "admitted-amount"
+        },
+        "port": "table"
+      },
+      "id": "AFA1A5EE-5010-4E0C-8546-48F766EFD672",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "zero-price-admitted"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "zero-price-admitted"
+        },
+        "port": "matching"
+      },
+      "id": "734E3DBA-8E11-4584-ABB9-3FB207B45F6C",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "zero-price-count"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "monthly-base"
+        },
+        "port": "table"
+      },
+      "id": "889FDBB7-E9DB-4014-AA92-0215589A68DD",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "zero-price-monthly"
+        },
+        "port": "left"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "zero-price-count"
+        },
+        "port": "table"
+      },
+      "id": "E330818F-35EC-478A-B9B4-5F1FB3785278",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "zero-price-monthly"
+        },
+        "port": "right"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "zero-price-monthly"
+        },
+        "port": "table"
+      },
+      "id": "82B89F86-CAC5-453E-B7F6-B17BA152BC77",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "zero-price-fill"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "admitted-amount"
+        },
+        "port": "table"
+      },
+      "id": "20231EB2-C2E9-4A44-AF82-BD1BE0381D49",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "missing-customer-admitted"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "missing-customer-admitted"
+        },
+        "port": "matching"
+      },
+      "id": "E3C73714-2C92-4116-87F6-D05B3758A8AD",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "missing-customer-count"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "zero-price-fill"
+        },
+        "port": "table"
+      },
+      "id": "2A85A804-95B3-4E7B-B14C-26A1C08D0CC3",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "missing-customer-monthly"
+        },
+        "port": "left"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "missing-customer-count"
+        },
+        "port": "table"
+      },
+      "id": "88CB25DC-D237-450B-AC99-6F4985AB262E",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "missing-customer-monthly"
+        },
+        "port": "right"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "missing-customer-monthly"
+        },
+        "port": "table"
+      },
+      "id": "FEC4209C-E779-40D8-90DB-2C0C777A1690",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "missing-customer-fill"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "missing-customer-fill"
+        },
+        "port": "table"
+      },
+      "id": "48C8484B-C7DF-44CD-953C-BBB2A1313A20",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "monthly-report"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "monthly-report"
+        },
+        "port": "table"
+      },
+      "id": "6D45C3FF-0E8F-40FF-B92E-85C2736342C5",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "monthly-order"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "monthly-order"
+        },
+        "port": "table"
+      },
+      "id": "664FF32C-5ABC-4B83-BA46-42852032067F",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "monthly-export"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "distinct-input-months"
+        },
+        "port": "table"
+      },
+      "id": "879EB090-B9C1-430F-9BBA-CF0B278A96EA",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "month-contract"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "month-contract"
+        },
+        "port": "table"
+      },
+      "id": "D2AC65BE-3E98-490A-A6C8-47E7759E3492",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "require-two-months"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "monthly-order"
+        },
+        "port": "table"
+      },
+      "id": "B5379AA6-A7B3-4628-A07E-202E58104EA2",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "monthly-batch-key"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "monthly-batch-key"
+        },
+        "port": "table"
+      },
+      "id": "CAD90543-855F-4035-A582-9EDA1431DE59",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "monthly-with-period"
+        },
+        "port": "left"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "require-two-months"
+        },
+        "port": "table"
+      },
+      "id": "AAEECDD7-6540-44DF-960A-786A3E2A6766",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "monthly-with-period"
+        },
+        "port": "right"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "monthly-with-period"
+        },
+        "port": "table"
+      },
+      "id": "FBFBD71C-064A-4AF4-8709-432369197479",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "earlier-month"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "earlier-month"
+        },
+        "port": "matching"
+      },
+      "id": "F4526D2A-5507-45C7-8F4E-678A005C9DFB",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "earlier-present"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "earlier-present"
+        },
+        "port": "table"
+      },
+      "id": "4882E98C-2A65-42C6-A1AF-637E0B10862B",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "earlier-comparison"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "monthly-with-period"
+        },
+        "port": "table"
+      },
+      "id": "BF214825-AB6C-4C76-8CED-DA7F2C1E5AFB",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "later-month"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "later-month"
+        },
+        "port": "matching"
+      },
+      "id": "A5C4087A-1E8E-4BBE-B636-1A954EDF341E",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "later-present"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "later-present"
+        },
+        "port": "table"
+      },
+      "id": "DCB334E6-F1E0-4B5F-BFED-D6F7434F123F",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "later-comparison"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "earlier-comparison"
+        },
+        "port": "table"
+      },
+      "id": "F572A29A-DA71-494F-BBFA-977EB387A4A3",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "item-union-across-months"
+        },
+        "port": "left"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "later-comparison"
+        },
+        "port": "table"
+      },
+      "id": "EACF3BE5-E904-4DC8-B114-9EEEE7A8215E",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "item-union-across-months"
+        },
+        "port": "right"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "item-union-across-months"
+        },
+        "port": "table"
+      },
+      "id": "C8EADD2B-98DB-4D14-99CA-CF399150DCA8",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "comparison-missing-and-change"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "comparison-missing-and-change"
+        },
+        "port": "table"
+      },
+      "id": "C0BC8B5C-FA1F-43F2-99F1-FA6FCD470ADE",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "comparison-report"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "comparison-report"
+        },
+        "port": "table"
+      },
+      "id": "3A16615D-8393-49D0-A38D-456EF64E82E8",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "comparison-order"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "comparison-order"
+        },
+        "port": "table"
+      },
+      "id": "C830BEC7-9252-42DA-AE30-60A6DE60053F",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "comparison-export"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "source-batch-key"
+        },
+        "port": "table"
+      },
+      "id": "B9E39F78-4148-49A6-B24F-40ECDBDBF857",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "require-valid-batch"
+        },
+        "port": "left"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "require-two-months"
+        },
+        "port": "table"
+      },
+      "id": "FF21F007-872B-4CB4-B548-839F5A229406",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "require-valid-batch"
+        },
+        "port": "right"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "require-valid-batch"
+        },
+        "port": "table"
+      },
+      "id": "632D84D3-A178-4027-AFC4-7E77280E6F7F",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "intake"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "source"
+        },
+        "port": "table"
+      },
+      "id": "41B4ECD7-8698-4D3D-9629-4E0013BA1F25",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "invoice-month"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "invoice-month"
+        },
+        "port": "table"
+      },
+      "id": "E1E07BA5-29F7-46CA-A39C-76028D746189",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "distinct-input-months"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "invoice-month"
+        },
+        "port": "table"
+      },
+      "id": "5BC13A18-75CF-48EA-AAAE-AF28BBACD285",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "source-batch-key"
+        },
+        "port": "table"
+      }
+    }
+  ],
+  "kind": "workflowProject",
+  "name": "Reconcile two months of item sales",
+  "nodes": [
+    {
+      "address": {
+        "domain": "data",
+        "localID": "source"
+      },
+      "name": "Item-code sales records \u00b7 exactly two calendar months",
+      "payload": {
+        "config": {
+          "commentPrefix": "",
+          "emptyField": "text",
+          "encoding": "utf-8-sig",
+          "headerMode": "firstRecord",
+          "nullMarkers": [],
+          "parserProfile": "polars",
+          "quoteChar": "\"",
+          "separator": ",",
+          "skipLines": 0,
+          "skipRecords": 0,
+          "skipRowsAfterHeader": 0,
+          "format": "csv",
+          "schemaOverrides": {
+            "SourceRowID": "String",
+            "InvoiceNo": "String",
+            "StockCode": "String",
+            "Description": "String",
+            "Quantity": "String",
+            "InvoiceDate": "String",
+            "UnitPrice": "String",
+            "CustomerID": "String",
+            "Country": "String"
+          },
+          "inferSchema": false
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.sourceCSV"
+      },
+      "x": 0,
+      "y": 0
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "intake"
+      },
+      "name": "intake",
+      "payload": {
+        "config": {
+          "operations": [
+            {
+              "expression": "decimal_parse([Quantity])",
+              "id": "Q",
+              "nullPolicy": "preserve",
+              "outputs": [
+                {
+                  "dtype": "string",
+                  "name": "Q",
+                  "write": "new"
+                }
+              ]
+            },
+            {
+              "expression": "decimal_parse([UnitPrice])",
+              "id": "P",
+              "nullPolicy": "preserve",
+              "outputs": [
+                {
+                  "dtype": "string",
+                  "name": "P",
+                  "write": "new"
+                }
+              ]
+            },
+            {
+              "expression": "decimal_is_finite([Quantity])",
+              "id": "QFinite",
+              "nullPolicy": "preserve",
+              "outputs": [
+                {
+                  "dtype": "bool",
+                  "name": "QFinite",
+                  "write": "new"
+                }
+              ]
+            },
+            {
+              "expression": "decimal_is_finite([UnitPrice])",
+              "id": "PFinite",
+              "nullPolicy": "preserve",
+              "outputs": [
+                {
+                  "dtype": "bool",
+                  "name": "PFinite",
+                  "write": "new"
+                }
+              ]
+            },
+            {
+              "expression": "decimal_is_integer([Quantity])",
+              "id": "QInteger",
+              "nullPolicy": "preserve",
+              "outputs": [
+                {
+                  "dtype": "bool",
+                  "name": "QInteger",
+                  "write": "new"
+                }
+              ]
+            },
+            {
+              "expression": "coalesce(decimal_compare([Q], \"0\"), 0)",
+              "id": "QSign",
+              "nullPolicy": "preserve",
+              "outputs": [
+                {
+                  "dtype": "int64",
+                  "name": "QSign",
+                  "write": "new"
+                }
+              ]
+            },
+            {
+              "expression": "coalesce(decimal_compare([P], \"0\"), 0)",
+              "id": "PSign",
+              "nullPolicy": "preserve",
+              "outputs": [
+                {
+                  "dtype": "int64",
+                  "name": "PSign",
+                  "write": "new"
+                }
+              ]
+            },
+            {
+              "expression": "regex_match(trim([InvoiceNo]), \"^C\", \"search\", \"ignoreCase\")",
+              "id": "Credit",
+              "nullPolicy": "preserve",
+              "outputs": [
+                {
+                  "dtype": "bool",
+                  "name": "Credit",
+                  "write": "new"
+                }
+              ]
+            },
+            {
+              "expression": "length(trim([InvoiceNo])) = 0",
+              "id": "MissingInvoice",
+              "nullPolicy": "preserve",
+              "outputs": [
+                {
+                  "dtype": "bool",
+                  "name": "MissingInvoice",
+                  "write": "new"
+                }
+              ]
+            },
+            {
+              "expression": "length(trim([StockCode])) = 0",
+              "id": "MissingCode",
+              "nullPolicy": "preserve",
+              "outputs": [
+                {
+                  "dtype": "bool",
+                  "name": "MissingCode",
+                  "write": "new"
+                }
+              ]
+            },
+            {
+              "expression": "length(trim([CustomerID])) = 0",
+              "id": "MissingCustomer",
+              "nullPolicy": "preserve",
+              "outputs": [
+                {
+                  "dtype": "bool",
+                  "name": "MissingCustomer",
+                  "write": "new"
+                }
+              ]
+            }
+          ]
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.formula"
+      },
+      "x": 290,
+      "y": 0
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "reason-0-filter"
+      },
+      "name": "reason 0 filter",
+      "payload": {
+        "config": {
+          "column": "feature",
+          "conditions": [
+            {
+              "caseSensitive": true,
+              "column": "feature",
+              "comparison": "gt",
+              "value": 0
+            }
+          ],
+          "expression": "[MissingInvoice]",
+          "flags": [],
+          "match": "all",
+          "matchMode": "search",
+          "mode": "expression",
+          "nullPolicy": "error",
+          "pattern": ".+"
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.filterRows"
+      },
+      "x": 580,
+      "y": 0
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "reason-0-label"
+      },
+      "name": "reason 0 label",
+      "payload": {
+        "config": {
+          "operations": [
+            {
+              "expression": "\"missing_invoice\"",
+              "id": "ReasonCode",
+              "nullPolicy": "preserve",
+              "outputs": [
+                {
+                  "dtype": "string",
+                  "name": "ReasonCode",
+                  "write": "new"
+                }
+              ]
+            },
+            {
+              "expression": "0",
+              "id": "ReasonOrder",
+              "nullPolicy": "preserve",
+              "outputs": [
+                {
+                  "dtype": "int64",
+                  "name": "ReasonOrder",
+                  "write": "new"
+                }
+              ]
+            }
+          ]
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.formula"
+      },
+      "x": 870,
+      "y": 0
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "reason-0-columns"
+      },
+      "name": "reason 0 columns",
+      "payload": {
+        "config": {
+          "castFailure": "error",
+          "missingPolicy": "preserve",
+          "newColumns": "drop",
+          "rows": [
+            {
+              "included": true,
+              "outputName": "SourceRowID",
+              "source": "SourceRowID",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "ReasonCode",
+              "source": "ReasonCode",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "ReasonOrder",
+              "source": "ReasonOrder",
+              "targetType": "keep"
+            }
+          ],
+          "trimText": false
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.columns"
+      },
+      "x": 1160,
+      "y": 0
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "reason-1-filter"
+      },
+      "name": "reason 1 filter",
+      "payload": {
+        "config": {
+          "column": "feature",
+          "conditions": [
+            {
+              "caseSensitive": true,
+              "column": "feature",
+              "comparison": "gt",
+              "value": 0
+            }
+          ],
+          "expression": "[MissingCode]",
+          "flags": [],
+          "match": "all",
+          "matchMode": "search",
+          "mode": "expression",
+          "nullPolicy": "error",
+          "pattern": ".+"
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.filterRows"
+      },
+      "x": 1450,
+      "y": 0
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "reason-1-label"
+      },
+      "name": "reason 1 label",
+      "payload": {
+        "config": {
+          "operations": [
+            {
+              "expression": "\"missing_stock_code\"",
+              "id": "ReasonCode",
+              "nullPolicy": "preserve",
+              "outputs": [
+                {
+                  "dtype": "string",
+                  "name": "ReasonCode",
+                  "write": "new"
+                }
+              ]
+            },
+            {
+              "expression": "1",
+              "id": "ReasonOrder",
+              "nullPolicy": "preserve",
+              "outputs": [
+                {
+                  "dtype": "int64",
+                  "name": "ReasonOrder",
+                  "write": "new"
+                }
+              ]
+            }
+          ]
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.formula"
+      },
+      "x": 1740,
+      "y": 0
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "reason-1-columns"
+      },
+      "name": "reason 1 columns",
+      "payload": {
+        "config": {
+          "castFailure": "error",
+          "missingPolicy": "preserve",
+          "newColumns": "drop",
+          "rows": [
+            {
+              "included": true,
+              "outputName": "SourceRowID",
+              "source": "SourceRowID",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "ReasonCode",
+              "source": "ReasonCode",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "ReasonOrder",
+              "source": "ReasonOrder",
+              "targetType": "keep"
+            }
+          ],
+          "trimText": false
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.columns"
+      },
+      "x": 2030,
+      "y": 0
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "reason-2-filter"
+      },
+      "name": "reason 2 filter",
+      "payload": {
+        "config": {
+          "column": "feature",
+          "conditions": [
+            {
+              "caseSensitive": true,
+              "column": "feature",
+              "comparison": "gt",
+              "value": 0
+            }
+          ],
+          "expression": "NOT [QFinite]",
+          "flags": [],
+          "match": "all",
+          "matchMode": "search",
+          "mode": "expression",
+          "nullPolicy": "error",
+          "pattern": ".+"
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.filterRows"
+      },
+      "x": 0,
+      "y": 210
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "reason-2-label"
+      },
+      "name": "reason 2 label",
+      "payload": {
+        "config": {
+          "operations": [
+            {
+              "expression": "\"invalid_quantity\"",
+              "id": "ReasonCode",
+              "nullPolicy": "preserve",
+              "outputs": [
+                {
+                  "dtype": "string",
+                  "name": "ReasonCode",
+                  "write": "new"
+                }
+              ]
+            },
+            {
+              "expression": "2",
+              "id": "ReasonOrder",
+              "nullPolicy": "preserve",
+              "outputs": [
+                {
+                  "dtype": "int64",
+                  "name": "ReasonOrder",
+                  "write": "new"
+                }
+              ]
+            }
+          ]
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.formula"
+      },
+      "x": 290,
+      "y": 210
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "reason-2-columns"
+      },
+      "name": "reason 2 columns",
+      "payload": {
+        "config": {
+          "castFailure": "error",
+          "missingPolicy": "preserve",
+          "newColumns": "drop",
+          "rows": [
+            {
+              "included": true,
+              "outputName": "SourceRowID",
+              "source": "SourceRowID",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "ReasonCode",
+              "source": "ReasonCode",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "ReasonOrder",
+              "source": "ReasonOrder",
+              "targetType": "keep"
+            }
+          ],
+          "trimText": false
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.columns"
+      },
+      "x": 580,
+      "y": 210
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "reason-3-filter"
+      },
+      "name": "reason 3 filter",
+      "payload": {
+        "config": {
+          "column": "feature",
+          "conditions": [
+            {
+              "caseSensitive": true,
+              "column": "feature",
+              "comparison": "gt",
+              "value": 0
+            }
+          ],
+          "expression": "[QFinite] AND NOT [QInteger]",
+          "flags": [],
+          "match": "all",
+          "matchMode": "search",
+          "mode": "expression",
+          "nullPolicy": "error",
+          "pattern": ".+"
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.filterRows"
+      },
+      "x": 870,
+      "y": 210
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "reason-3-label"
+      },
+      "name": "reason 3 label",
+      "payload": {
+        "config": {
+          "operations": [
+            {
+              "expression": "\"fractional_quantity\"",
+              "id": "ReasonCode",
+              "nullPolicy": "preserve",
+              "outputs": [
+                {
+                  "dtype": "string",
+                  "name": "ReasonCode",
+                  "write": "new"
+                }
+              ]
+            },
+            {
+              "expression": "3",
+              "id": "ReasonOrder",
+              "nullPolicy": "preserve",
+              "outputs": [
+                {
+                  "dtype": "int64",
+                  "name": "ReasonOrder",
+                  "write": "new"
+                }
+              ]
+            }
+          ]
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.formula"
+      },
+      "x": 1160,
+      "y": 210
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "reason-3-columns"
+      },
+      "name": "reason 3 columns",
+      "payload": {
+        "config": {
+          "castFailure": "error",
+          "missingPolicy": "preserve",
+          "newColumns": "drop",
+          "rows": [
+            {
+              "included": true,
+              "outputName": "SourceRowID",
+              "source": "SourceRowID",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "ReasonCode",
+              "source": "ReasonCode",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "ReasonOrder",
+              "source": "ReasonOrder",
+              "targetType": "keep"
+            }
+          ],
+          "trimText": false
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.columns"
+      },
+      "x": 1450,
+      "y": 210
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "reason-4-filter"
+      },
+      "name": "reason 4 filter",
+      "payload": {
+        "config": {
+          "column": "feature",
+          "conditions": [
+            {
+              "caseSensitive": true,
+              "column": "feature",
+              "comparison": "gt",
+              "value": 0
+            }
+          ],
+          "expression": "[QFinite] AND [QInteger] AND [QSign] = 0",
+          "flags": [],
+          "match": "all",
+          "matchMode": "search",
+          "mode": "expression",
+          "nullPolicy": "error",
+          "pattern": ".+"
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.filterRows"
+      },
+      "x": 1740,
+      "y": 210
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "reason-4-label"
+      },
+      "name": "reason 4 label",
+      "payload": {
+        "config": {
+          "operations": [
+            {
+              "expression": "\"zero_quantity\"",
+              "id": "ReasonCode",
+              "nullPolicy": "preserve",
+              "outputs": [
+                {
+                  "dtype": "string",
+                  "name": "ReasonCode",
+                  "write": "new"
+                }
+              ]
+            },
+            {
+              "expression": "4",
+              "id": "ReasonOrder",
+              "nullPolicy": "preserve",
+              "outputs": [
+                {
+                  "dtype": "int64",
+                  "name": "ReasonOrder",
+                  "write": "new"
+                }
+              ]
+            }
+          ]
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.formula"
+      },
+      "x": 2030,
+      "y": 210
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "reason-4-columns"
+      },
+      "name": "reason 4 columns",
+      "payload": {
+        "config": {
+          "castFailure": "error",
+          "missingPolicy": "preserve",
+          "newColumns": "drop",
+          "rows": [
+            {
+              "included": true,
+              "outputName": "SourceRowID",
+              "source": "SourceRowID",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "ReasonCode",
+              "source": "ReasonCode",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "ReasonOrder",
+              "source": "ReasonOrder",
+              "targetType": "keep"
+            }
+          ],
+          "trimText": false
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.columns"
+      },
+      "x": 0,
+      "y": 420
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "reason-5-filter"
+      },
+      "name": "reason 5 filter",
+      "payload": {
+        "config": {
+          "column": "feature",
+          "conditions": [
+            {
+              "caseSensitive": true,
+              "column": "feature",
+              "comparison": "gt",
+              "value": 0
+            }
+          ],
+          "expression": "NOT [PFinite]",
+          "flags": [],
+          "match": "all",
+          "matchMode": "search",
+          "mode": "expression",
+          "nullPolicy": "error",
+          "pattern": ".+"
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.filterRows"
+      },
+      "x": 290,
+      "y": 420
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "reason-5-label"
+      },
+      "name": "reason 5 label",
+      "payload": {
+        "config": {
+          "operations": [
+            {
+              "expression": "\"invalid_price\"",
+              "id": "ReasonCode",
+              "nullPolicy": "preserve",
+              "outputs": [
+                {
+                  "dtype": "string",
+                  "name": "ReasonCode",
+                  "write": "new"
+                }
+              ]
+            },
+            {
+              "expression": "5",
+              "id": "ReasonOrder",
+              "nullPolicy": "preserve",
+              "outputs": [
+                {
+                  "dtype": "int64",
+                  "name": "ReasonOrder",
+                  "write": "new"
+                }
+              ]
+            }
+          ]
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.formula"
+      },
+      "x": 580,
+      "y": 420
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "reason-5-columns"
+      },
+      "name": "reason 5 columns",
+      "payload": {
+        "config": {
+          "castFailure": "error",
+          "missingPolicy": "preserve",
+          "newColumns": "drop",
+          "rows": [
+            {
+              "included": true,
+              "outputName": "SourceRowID",
+              "source": "SourceRowID",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "ReasonCode",
+              "source": "ReasonCode",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "ReasonOrder",
+              "source": "ReasonOrder",
+              "targetType": "keep"
+            }
+          ],
+          "trimText": false
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.columns"
+      },
+      "x": 870,
+      "y": 420
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "reason-6-filter"
+      },
+      "name": "reason 6 filter",
+      "payload": {
+        "config": {
+          "column": "feature",
+          "conditions": [
+            {
+              "caseSensitive": true,
+              "column": "feature",
+              "comparison": "gt",
+              "value": 0
+            }
+          ],
+          "expression": "[PFinite] AND [PSign] < 0",
+          "flags": [],
+          "match": "all",
+          "matchMode": "search",
+          "mode": "expression",
+          "nullPolicy": "error",
+          "pattern": ".+"
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.filterRows"
+      },
+      "x": 1160,
+      "y": 420
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "reason-6-label"
+      },
+      "name": "reason 6 label",
+      "payload": {
+        "config": {
+          "operations": [
+            {
+              "expression": "\"negative_price\"",
+              "id": "ReasonCode",
+              "nullPolicy": "preserve",
+              "outputs": [
+                {
+                  "dtype": "string",
+                  "name": "ReasonCode",
+                  "write": "new"
+                }
+              ]
+            },
+            {
+              "expression": "6",
+              "id": "ReasonOrder",
+              "nullPolicy": "preserve",
+              "outputs": [
+                {
+                  "dtype": "int64",
+                  "name": "ReasonOrder",
+                  "write": "new"
+                }
+              ]
+            }
+          ]
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.formula"
+      },
+      "x": 1450,
+      "y": 420
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "reason-6-columns"
+      },
+      "name": "reason 6 columns",
+      "payload": {
+        "config": {
+          "castFailure": "error",
+          "missingPolicy": "preserve",
+          "newColumns": "drop",
+          "rows": [
+            {
+              "included": true,
+              "outputName": "SourceRowID",
+              "source": "SourceRowID",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "ReasonCode",
+              "source": "ReasonCode",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "ReasonOrder",
+              "source": "ReasonOrder",
+              "targetType": "keep"
+            }
+          ],
+          "trimText": false
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.columns"
+      },
+      "x": 1740,
+      "y": 420
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "reason-7-filter"
+      },
+      "name": "reason 7 filter",
+      "payload": {
+        "config": {
+          "column": "feature",
+          "conditions": [
+            {
+              "caseSensitive": true,
+              "column": "feature",
+              "comparison": "gt",
+              "value": 0
+            }
+          ],
+          "expression": "[QFinite] AND (([Credit] AND [QSign] > 0) OR (NOT [Credit] AND [QSign] < 0))",
+          "flags": [],
+          "match": "all",
+          "matchMode": "search",
+          "mode": "expression",
+          "nullPolicy": "error",
+          "pattern": ".+"
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.filterRows"
+      },
+      "x": 2030,
+      "y": 420
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "reason-7-label"
+      },
+      "name": "reason 7 label",
+      "payload": {
+        "config": {
+          "operations": [
+            {
+              "expression": "\"invoice_quantity_sign_conflict\"",
+              "id": "ReasonCode",
+              "nullPolicy": "preserve",
+              "outputs": [
+                {
+                  "dtype": "string",
+                  "name": "ReasonCode",
+                  "write": "new"
+                }
+              ]
+            },
+            {
+              "expression": "7",
+              "id": "ReasonOrder",
+              "nullPolicy": "preserve",
+              "outputs": [
+                {
+                  "dtype": "int64",
+                  "name": "ReasonOrder",
+                  "write": "new"
+                }
+              ]
+            }
+          ]
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.formula"
+      },
+      "x": 0,
+      "y": 630
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "reason-7-columns"
+      },
+      "name": "reason 7 columns",
+      "payload": {
+        "config": {
+          "castFailure": "error",
+          "missingPolicy": "preserve",
+          "newColumns": "drop",
+          "rows": [
+            {
+              "included": true,
+              "outputName": "SourceRowID",
+              "source": "SourceRowID",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "ReasonCode",
+              "source": "ReasonCode",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "ReasonOrder",
+              "source": "ReasonOrder",
+              "targetType": "keep"
+            }
+          ],
+          "trimText": false
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.columns"
+      },
+      "x": 290,
+      "y": 630
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "all-reasons"
+      },
+      "name": "all reasons",
+      "payload": {
+        "config": {
+          "coverage": "exact",
+          "inputs": [
+            "table1",
+            "table2",
+            "table3",
+            "table4",
+            "table5",
+            "table6",
+            "table7",
+            "table8"
+          ],
+          "match": "name",
+          "sourceColumn": "",
+          "typePolicy": "strict"
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.union"
+      },
+      "x": 580,
+      "y": 630
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "ordered-reasons"
+      },
+      "name": "ordered reasons",
+      "payload": {
+        "config": {
+          "keys": [
+            {
+              "column": "SourceRowID",
+              "comparison": "exact",
+              "direction": "ascending",
+              "missing": "last"
+            },
+            {
+              "column": "ReasonOrder",
+              "comparison": "exact",
+              "direction": "ascending",
+              "missing": "last"
+            }
+          ]
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.sort"
+      },
+      "x": 870,
+      "y": 630
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "reasons-per-source"
+      },
+      "name": "reasons per source",
+      "payload": {
+        "config": {
+          "aggregations": [
+            {
+              "column": "ReasonCode",
+              "distinct": false,
+              "nullPolicy": "error",
+              "op": "joinText",
+              "output": "Reason",
+              "separator": "|",
+              "skipEmpty": false
+            }
+          ],
+          "groupBy": [
+            "SourceRowID"
+          ],
+          "maxRows": 100000,
+          "nullKeys": "group"
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.aggregate"
+      },
+      "x": 1160,
+      "y": 630
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "source-with-reasons"
+      },
+      "name": "source with reasons",
+      "payload": {
+        "config": {
+          "cardinality": "manyToOne",
+          "leftKeys": [
+            "SourceRowID"
+          ],
+          "leftPrefix": "left_",
+          "maxRows": 100000,
+          "mode": "left",
+          "newColumns": "drop",
+          "nullPolicy": "error",
+          "outputColumns": [
+            {
+              "included": true,
+              "name": "SourceRowID",
+              "side": "left",
+              "source": "SourceRowID"
+            },
+            {
+              "included": true,
+              "name": "InvoiceNo",
+              "side": "left",
+              "source": "InvoiceNo"
+            },
+            {
+              "included": true,
+              "name": "StockCode",
+              "side": "left",
+              "source": "StockCode"
+            },
+            {
+              "included": true,
+              "name": "Description",
+              "side": "left",
+              "source": "Description"
+            },
+            {
+              "included": true,
+              "name": "Quantity",
+              "side": "left",
+              "source": "Quantity"
+            },
+            {
+              "included": true,
+              "name": "InvoiceDate",
+              "side": "left",
+              "source": "InvoiceDate"
+            },
+            {
+              "included": true,
+              "name": "UnitPrice",
+              "side": "left",
+              "source": "UnitPrice"
+            },
+            {
+              "included": true,
+              "name": "CustomerID",
+              "side": "left",
+              "source": "CustomerID"
+            },
+            {
+              "included": true,
+              "name": "Country",
+              "side": "left",
+              "source": "Country"
+            },
+            {
+              "included": true,
+              "name": "Month",
+              "side": "left",
+              "source": "Month"
+            },
+            {
+              "included": true,
+              "name": "Q",
+              "side": "left",
+              "source": "Q"
+            },
+            {
+              "included": true,
+              "name": "P",
+              "side": "left",
+              "source": "P"
+            },
+            {
+              "included": true,
+              "name": "QFinite",
+              "side": "left",
+              "source": "QFinite"
+            },
+            {
+              "included": true,
+              "name": "PFinite",
+              "side": "left",
+              "source": "PFinite"
+            },
+            {
+              "included": true,
+              "name": "QInteger",
+              "side": "left",
+              "source": "QInteger"
+            },
+            {
+              "included": true,
+              "name": "QSign",
+              "side": "left",
+              "source": "QSign"
+            },
+            {
+              "included": true,
+              "name": "PSign",
+              "side": "left",
+              "source": "PSign"
+            },
+            {
+              "included": true,
+              "name": "Credit",
+              "side": "left",
+              "source": "Credit"
+            },
+            {
+              "included": true,
+              "name": "MissingInvoice",
+              "side": "left",
+              "source": "MissingInvoice"
+            },
+            {
+              "included": true,
+              "name": "MissingCode",
+              "side": "left",
+              "source": "MissingCode"
+            },
+            {
+              "included": true,
+              "name": "MissingCustomer",
+              "side": "left",
+              "source": "MissingCustomer"
+            },
+            {
+              "included": true,
+              "name": "Reason",
+              "side": "right",
+              "source": "Reason"
+            }
+          ],
+          "rightKeys": [
+            "SourceRowID"
+          ],
+          "rightPrefix": "right_"
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.join"
+      },
+      "x": 1450,
+      "y": 630
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "admitted"
+      },
+      "name": "admitted",
+      "payload": {
+        "config": {
+          "column": "feature",
+          "conditions": [
+            {
+              "caseSensitive": true,
+              "column": "feature",
+              "comparison": "gt",
+              "value": 0
+            }
+          ],
+          "expression": "[Reason] IS NULL",
+          "flags": [],
+          "match": "all",
+          "matchMode": "search",
+          "mode": "expression",
+          "nullPolicy": "error",
+          "pattern": ".+"
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.filterRows"
+      },
+      "x": 1740,
+      "y": 630
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "exceptions"
+      },
+      "name": "exceptions",
+      "payload": {
+        "config": {
+          "column": "feature",
+          "conditions": [
+            {
+              "caseSensitive": true,
+              "column": "feature",
+              "comparison": "gt",
+              "value": 0
+            }
+          ],
+          "expression": "[Reason] IS NOT NULL",
+          "flags": [],
+          "match": "all",
+          "matchMode": "search",
+          "mode": "expression",
+          "nullPolicy": "error",
+          "pattern": ".+"
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.filterRows"
+      },
+      "x": 2030,
+      "y": 630
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "admitted-columns"
+      },
+      "name": "admitted columns",
+      "payload": {
+        "config": {
+          "castFailure": "error",
+          "missingPolicy": "preserve",
+          "newColumns": "drop",
+          "rows": [
+            {
+              "included": true,
+              "outputName": "SourceRowID",
+              "source": "SourceRowID",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "InvoiceNo",
+              "source": "InvoiceNo",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "StockCode",
+              "source": "StockCode",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "Description",
+              "source": "Description",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "Quantity",
+              "source": "Quantity",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "InvoiceDate",
+              "source": "InvoiceDate",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "UnitPrice",
+              "source": "UnitPrice",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "CustomerID",
+              "source": "CustomerID",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "Country",
+              "source": "Country",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "Month",
+              "source": "Month",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "Q",
+              "source": "Q",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "P",
+              "source": "P",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "QFinite",
+              "source": "QFinite",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "PFinite",
+              "source": "PFinite",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "QInteger",
+              "source": "QInteger",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "QSign",
+              "source": "QSign",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "PSign",
+              "source": "PSign",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "Credit",
+              "source": "Credit",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "MissingInvoice",
+              "source": "MissingInvoice",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "MissingCode",
+              "source": "MissingCode",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "MissingCustomer",
+              "source": "MissingCustomer",
+              "targetType": "keep"
+            }
+          ],
+          "trimText": false
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.columns"
+      },
+      "x": 0,
+      "y": 840
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "admitted-amount"
+      },
+      "name": "admitted amount",
+      "payload": {
+        "config": {
+          "operations": [
+            {
+              "expression": "decimal_multiply([Q], [P])",
+              "id": "SignedRecordedValueGBP",
+              "nullPolicy": "preserve",
+              "outputs": [
+                {
+                  "dtype": "string",
+                  "name": "SignedRecordedValueGBP",
+                  "write": "new"
+                }
+              ]
+            },
+            {
+              "expression": "\"\"",
+              "id": "Reason",
+              "nullPolicy": "preserve",
+              "outputs": [
+                {
+                  "dtype": "string",
+                  "name": "Reason",
+                  "write": "new"
+                }
+              ]
+            }
+          ]
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.formula"
+      },
+      "x": 290,
+      "y": 840
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "purchase"
+      },
+      "name": "purchase",
+      "payload": {
+        "config": {
+          "column": "feature",
+          "conditions": [
+            {
+              "caseSensitive": true,
+              "column": "feature",
+              "comparison": "gt",
+              "value": 0
+            }
+          ],
+          "expression": "NOT [Credit]",
+          "flags": [],
+          "match": "all",
+          "matchMode": "search",
+          "mode": "expression",
+          "nullPolicy": "error",
+          "pattern": ".+"
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.filterRows"
+      },
+      "x": 580,
+      "y": 840
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "cancellation"
+      },
+      "name": "cancellation",
+      "payload": {
+        "config": {
+          "column": "feature",
+          "conditions": [
+            {
+              "caseSensitive": true,
+              "column": "feature",
+              "comparison": "gt",
+              "value": 0
+            }
+          ],
+          "expression": "[Credit]",
+          "flags": [],
+          "match": "all",
+          "matchMode": "search",
+          "mode": "expression",
+          "nullPolicy": "error",
+          "pattern": ".+"
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.filterRows"
+      },
+      "x": 870,
+      "y": 840
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "purchase-disposition"
+      },
+      "name": "purchase disposition",
+      "payload": {
+        "config": {
+          "operations": [
+            {
+              "expression": "\"purchase\"",
+              "id": "Disposition",
+              "nullPolicy": "preserve",
+              "outputs": [
+                {
+                  "dtype": "string",
+                  "name": "Disposition",
+                  "write": "new"
+                }
+              ]
+            }
+          ]
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.formula"
+      },
+      "x": 1160,
+      "y": 840
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "purchase-ledger"
+      },
+      "name": "purchase ledger",
+      "payload": {
+        "config": {
+          "castFailure": "error",
+          "missingPolicy": "preserve",
+          "newColumns": "drop",
+          "rows": [
+            {
+              "included": true,
+              "outputName": "SourceRowID",
+              "source": "SourceRowID",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "InvoiceNo",
+              "source": "InvoiceNo",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "StockCode",
+              "source": "StockCode",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "Description",
+              "source": "Description",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "Quantity",
+              "source": "Quantity",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "InvoiceDate",
+              "source": "InvoiceDate",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "UnitPrice",
+              "source": "UnitPrice",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "CustomerID",
+              "source": "CustomerID",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "Country",
+              "source": "Country",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "Month",
+              "source": "Month",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "Disposition",
+              "source": "Disposition",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "Reason",
+              "source": "Reason",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "SignedRecordedValueGBP",
+              "source": "SignedRecordedValueGBP",
+              "targetType": "keep"
+            }
+          ],
+          "trimText": false
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.columns"
+      },
+      "x": 1450,
+      "y": 840
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "purchase-metrics"
+      },
+      "name": "purchase metrics",
+      "payload": {
+        "config": {
+          "operations": [
+            {
+              "expression": "1",
+              "id": "PurchaseRows",
+              "nullPolicy": "preserve",
+              "outputs": [
+                {
+                  "dtype": "int64",
+                  "name": "PurchaseRows",
+                  "write": "new"
+                }
+              ]
+            },
+            {
+              "expression": "0",
+              "id": "CancellationRows",
+              "nullPolicy": "preserve",
+              "outputs": [
+                {
+                  "dtype": "int64",
+                  "name": "CancellationRows",
+                  "write": "new"
+                }
+              ]
+            },
+            {
+              "expression": "[Q]",
+              "id": "GrossPurchaseQuantity",
+              "nullPolicy": "preserve",
+              "outputs": [
+                {
+                  "dtype": "string",
+                  "name": "GrossPurchaseQuantity",
+                  "write": "new"
+                }
+              ]
+            },
+            {
+              "expression": "\"0\"",
+              "id": "CancelledQuantity",
+              "nullPolicy": "preserve",
+              "outputs": [
+                {
+                  "dtype": "string",
+                  "name": "CancelledQuantity",
+                  "write": "new"
+                }
+              ]
+            },
+            {
+              "expression": "[Q]",
+              "id": "NetQuantity",
+              "nullPolicy": "preserve",
+              "outputs": [
+                {
+                  "dtype": "string",
+                  "name": "NetQuantity",
+                  "write": "new"
+                }
+              ]
+            },
+            {
+              "expression": "[SignedRecordedValueGBP]",
+              "id": "GrossRecordedPurchasesGBP",
+              "nullPolicy": "preserve",
+              "outputs": [
+                {
+                  "dtype": "string",
+                  "name": "GrossRecordedPurchasesGBP",
+                  "write": "new"
+                }
+              ]
+            },
+            {
+              "expression": "\"0\"",
+              "id": "RecordedCancellationsGBP",
+              "nullPolicy": "preserve",
+              "outputs": [
+                {
+                  "dtype": "string",
+                  "name": "RecordedCancellationsGBP",
+                  "write": "new"
+                }
+              ]
+            },
+            {
+              "expression": "[SignedRecordedValueGBP]",
+              "id": "NetRecordedValueGBP",
+              "nullPolicy": "preserve",
+              "outputs": [
+                {
+                  "dtype": "string",
+                  "name": "NetRecordedValueGBP",
+                  "write": "new"
+                }
+              ]
+            }
+          ]
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.formula"
+      },
+      "x": 1740,
+      "y": 840
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "purchase-metric-columns"
+      },
+      "name": "purchase metric columns",
+      "payload": {
+        "config": {
+          "castFailure": "error",
+          "missingPolicy": "preserve",
+          "newColumns": "drop",
+          "rows": [
+            {
+              "included": true,
+              "outputName": "Month",
+              "source": "Month",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "StockCode",
+              "source": "StockCode",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "PurchaseRows",
+              "source": "PurchaseRows",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "CancellationRows",
+              "source": "CancellationRows",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "GrossPurchaseQuantity",
+              "source": "GrossPurchaseQuantity",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "CancelledQuantity",
+              "source": "CancelledQuantity",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "NetQuantity",
+              "source": "NetQuantity",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "GrossRecordedPurchasesGBP",
+              "source": "GrossRecordedPurchasesGBP",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "RecordedCancellationsGBP",
+              "source": "RecordedCancellationsGBP",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "NetRecordedValueGBP",
+              "source": "NetRecordedValueGBP",
+              "targetType": "keep"
+            }
+          ],
+          "trimText": false
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.columns"
+      },
+      "x": 2030,
+      "y": 840
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "cancellation-disposition"
+      },
+      "name": "cancellation disposition",
+      "payload": {
+        "config": {
+          "operations": [
+            {
+              "expression": "\"cancellation\"",
+              "id": "Disposition",
+              "nullPolicy": "preserve",
+              "outputs": [
+                {
+                  "dtype": "string",
+                  "name": "Disposition",
+                  "write": "new"
+                }
+              ]
+            }
+          ]
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.formula"
+      },
+      "x": 0,
+      "y": 1050
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "cancellation-ledger"
+      },
+      "name": "cancellation ledger",
+      "payload": {
+        "config": {
+          "castFailure": "error",
+          "missingPolicy": "preserve",
+          "newColumns": "drop",
+          "rows": [
+            {
+              "included": true,
+              "outputName": "SourceRowID",
+              "source": "SourceRowID",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "InvoiceNo",
+              "source": "InvoiceNo",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "StockCode",
+              "source": "StockCode",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "Description",
+              "source": "Description",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "Quantity",
+              "source": "Quantity",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "InvoiceDate",
+              "source": "InvoiceDate",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "UnitPrice",
+              "source": "UnitPrice",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "CustomerID",
+              "source": "CustomerID",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "Country",
+              "source": "Country",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "Month",
+              "source": "Month",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "Disposition",
+              "source": "Disposition",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "Reason",
+              "source": "Reason",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "SignedRecordedValueGBP",
+              "source": "SignedRecordedValueGBP",
+              "targetType": "keep"
+            }
+          ],
+          "trimText": false
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.columns"
+      },
+      "x": 290,
+      "y": 1050
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "cancellation-metrics"
+      },
+      "name": "cancellation metrics",
+      "payload": {
+        "config": {
+          "operations": [
+            {
+              "expression": "0",
+              "id": "PurchaseRows",
+              "nullPolicy": "preserve",
+              "outputs": [
+                {
+                  "dtype": "int64",
+                  "name": "PurchaseRows",
+                  "write": "new"
+                }
+              ]
+            },
+            {
+              "expression": "1",
+              "id": "CancellationRows",
+              "nullPolicy": "preserve",
+              "outputs": [
+                {
+                  "dtype": "int64",
+                  "name": "CancellationRows",
+                  "write": "new"
+                }
+              ]
+            },
+            {
+              "expression": "\"0\"",
+              "id": "GrossPurchaseQuantity",
+              "nullPolicy": "preserve",
+              "outputs": [
+                {
+                  "dtype": "string",
+                  "name": "GrossPurchaseQuantity",
+                  "write": "new"
+                }
+              ]
+            },
+            {
+              "expression": "decimal_abs([Q])",
+              "id": "CancelledQuantity",
+              "nullPolicy": "preserve",
+              "outputs": [
+                {
+                  "dtype": "string",
+                  "name": "CancelledQuantity",
+                  "write": "new"
+                }
+              ]
+            },
+            {
+              "expression": "[Q]",
+              "id": "NetQuantity",
+              "nullPolicy": "preserve",
+              "outputs": [
+                {
+                  "dtype": "string",
+                  "name": "NetQuantity",
+                  "write": "new"
+                }
+              ]
+            },
+            {
+              "expression": "\"0\"",
+              "id": "GrossRecordedPurchasesGBP",
+              "nullPolicy": "preserve",
+              "outputs": [
+                {
+                  "dtype": "string",
+                  "name": "GrossRecordedPurchasesGBP",
+                  "write": "new"
+                }
+              ]
+            },
+            {
+              "expression": "decimal_abs([SignedRecordedValueGBP])",
+              "id": "RecordedCancellationsGBP",
+              "nullPolicy": "preserve",
+              "outputs": [
+                {
+                  "dtype": "string",
+                  "name": "RecordedCancellationsGBP",
+                  "write": "new"
+                }
+              ]
+            },
+            {
+              "expression": "[SignedRecordedValueGBP]",
+              "id": "NetRecordedValueGBP",
+              "nullPolicy": "preserve",
+              "outputs": [
+                {
+                  "dtype": "string",
+                  "name": "NetRecordedValueGBP",
+                  "write": "new"
+                }
+              ]
+            }
+          ]
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.formula"
+      },
+      "x": 580,
+      "y": 1050
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "cancellation-metric-columns"
+      },
+      "name": "cancellation metric columns",
+      "payload": {
+        "config": {
+          "castFailure": "error",
+          "missingPolicy": "preserve",
+          "newColumns": "drop",
+          "rows": [
+            {
+              "included": true,
+              "outputName": "Month",
+              "source": "Month",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "StockCode",
+              "source": "StockCode",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "PurchaseRows",
+              "source": "PurchaseRows",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "CancellationRows",
+              "source": "CancellationRows",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "GrossPurchaseQuantity",
+              "source": "GrossPurchaseQuantity",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "CancelledQuantity",
+              "source": "CancelledQuantity",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "NetQuantity",
+              "source": "NetQuantity",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "GrossRecordedPurchasesGBP",
+              "source": "GrossRecordedPurchasesGBP",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "RecordedCancellationsGBP",
+              "source": "RecordedCancellationsGBP",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "NetRecordedValueGBP",
+              "source": "NetRecordedValueGBP",
+              "targetType": "keep"
+            }
+          ],
+          "trimText": false
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.columns"
+      },
+      "x": 870,
+      "y": 1050
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "exception-disposition"
+      },
+      "name": "exception disposition",
+      "payload": {
+        "config": {
+          "operations": [
+            {
+              "expression": "\"exception\"",
+              "id": "Disposition",
+              "nullPolicy": "preserve",
+              "outputs": [
+                {
+                  "dtype": "string",
+                  "name": "Disposition",
+                  "write": "new"
+                }
+              ]
+            },
+            {
+              "expression": "\"\"",
+              "id": "SignedRecordedValueGBP",
+              "nullPolicy": "preserve",
+              "outputs": [
+                {
+                  "dtype": "string",
+                  "name": "SignedRecordedValueGBP",
+                  "write": "new"
+                }
+              ]
+            }
+          ]
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.formula"
+      },
+      "x": 1160,
+      "y": 1050
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "exception-ledger"
+      },
+      "name": "exception ledger",
+      "payload": {
+        "config": {
+          "castFailure": "error",
+          "missingPolicy": "preserve",
+          "newColumns": "drop",
+          "rows": [
+            {
+              "included": true,
+              "outputName": "SourceRowID",
+              "source": "SourceRowID",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "InvoiceNo",
+              "source": "InvoiceNo",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "StockCode",
+              "source": "StockCode",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "Description",
+              "source": "Description",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "Quantity",
+              "source": "Quantity",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "InvoiceDate",
+              "source": "InvoiceDate",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "UnitPrice",
+              "source": "UnitPrice",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "CustomerID",
+              "source": "CustomerID",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "Country",
+              "source": "Country",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "Month",
+              "source": "Month",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "Disposition",
+              "source": "Disposition",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "Reason",
+              "source": "Reason",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "SignedRecordedValueGBP",
+              "source": "SignedRecordedValueGBP",
+              "targetType": "keep"
+            }
+          ],
+          "trimText": false
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.columns"
+      },
+      "x": 1450,
+      "y": 1050
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "all-dispositions"
+      },
+      "name": "all dispositions",
+      "payload": {
+        "config": {
+          "coverage": "exact",
+          "inputs": [
+            "table1",
+            "table2",
+            "table3"
+          ],
+          "match": "name",
+          "sourceColumn": "",
+          "typePolicy": "strict"
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.union"
+      },
+      "x": 1740,
+      "y": 1050
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "ledger-source-order"
+      },
+      "name": "ledger source order",
+      "payload": {
+        "config": {
+          "keys": [
+            {
+              "column": "SourceRowID",
+              "comparison": "exact",
+              "direction": "ascending",
+              "missing": "last"
+            }
+          ]
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.sort"
+      },
+      "x": 2030,
+      "y": 1050
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "ledger-export"
+      },
+      "name": "Every source row and disposition",
+      "payload": {
+        "config": {
+          "columns": [
+            "SourceRowID",
+            "InvoiceNo",
+            "StockCode",
+            "Description",
+            "Quantity",
+            "InvoiceDate",
+            "UnitPrice",
+            "CustomerID",
+            "Country",
+            "Month",
+            "Disposition",
+            "Reason",
+            "SignedRecordedValueGBP"
+          ],
+          "destination": "file",
+          "filename": "row-dispositions.csv",
+          "format": "csv",
+          "overwrite": false,
+          "separator": ","
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.outputDelimited"
+      },
+      "x": 0,
+      "y": 1260
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "admitted-metrics"
+      },
+      "name": "admitted metrics",
+      "payload": {
+        "config": {
+          "coverage": "exact",
+          "inputs": [
+            "table1",
+            "table2"
+          ],
+          "match": "name",
+          "sourceColumn": "",
+          "typePolicy": "strict"
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.union"
+      },
+      "x": 290,
+      "y": 1260
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "monthly-base"
+      },
+      "name": "monthly base",
+      "payload": {
+        "config": {
+          "aggregations": [
+            {
+              "column": "PurchaseRows",
+              "nullPolicy": "error",
+              "op": "sum",
+              "output": "PurchaseRows"
+            },
+            {
+              "column": "CancellationRows",
+              "nullPolicy": "error",
+              "op": "sum",
+              "output": "CancellationRows"
+            },
+            {
+              "column": "GrossPurchaseQuantity",
+              "nullPolicy": "error",
+              "op": "sumDecimal",
+              "output": "GrossPurchaseQuantity"
+            },
+            {
+              "column": "CancelledQuantity",
+              "nullPolicy": "error",
+              "op": "sumDecimal",
+              "output": "CancelledQuantity"
+            },
+            {
+              "column": "NetQuantity",
+              "nullPolicy": "error",
+              "op": "sumDecimal",
+              "output": "NetQuantity"
+            },
+            {
+              "column": "GrossRecordedPurchasesGBP",
+              "nullPolicy": "error",
+              "op": "sumDecimal",
+              "output": "GrossRecordedPurchasesGBP"
+            },
+            {
+              "column": "RecordedCancellationsGBP",
+              "nullPolicy": "error",
+              "op": "sumDecimal",
+              "output": "RecordedCancellationsGBP"
+            },
+            {
+              "column": "NetRecordedValueGBP",
+              "nullPolicy": "error",
+              "op": "sumDecimal",
+              "output": "NetRecordedValueGBP"
+            }
+          ],
+          "groupBy": [
+            "Month",
+            "StockCode"
+          ],
+          "maxRows": 100000,
+          "nullKeys": "group"
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.aggregate"
+      },
+      "x": 580,
+      "y": 1260
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "zero-price-admitted"
+      },
+      "name": "zero price admitted",
+      "payload": {
+        "config": {
+          "column": "feature",
+          "conditions": [
+            {
+              "caseSensitive": true,
+              "column": "feature",
+              "comparison": "gt",
+              "value": 0
+            }
+          ],
+          "expression": "[PSign] = 0",
+          "flags": [],
+          "match": "all",
+          "matchMode": "search",
+          "mode": "expression",
+          "nullPolicy": "error",
+          "pattern": ".+"
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.filterRows"
+      },
+      "x": 870,
+      "y": 1260
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "zero-price-count"
+      },
+      "name": "zero price count",
+      "payload": {
+        "config": {
+          "aggregations": [
+            {
+              "op": "countRows",
+              "output": "ZeroPriceRowsRaw"
+            }
+          ],
+          "groupBy": [
+            "Month",
+            "StockCode"
+          ],
+          "maxRows": 100000,
+          "nullKeys": "group"
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.aggregate"
+      },
+      "x": 1160,
+      "y": 1260
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "zero-price-monthly"
+      },
+      "name": "zero price monthly",
+      "payload": {
+        "config": {
+          "cardinality": "manyToOne",
+          "leftKeys": [
+            "Month",
+            "StockCode"
+          ],
+          "leftPrefix": "left_",
+          "maxRows": 100000,
+          "mode": "left",
+          "newColumns": "drop",
+          "nullPolicy": "error",
+          "outputColumns": [
+            {
+              "included": true,
+              "name": "Month",
+              "side": "left",
+              "source": "Month"
+            },
+            {
+              "included": true,
+              "name": "StockCode",
+              "side": "left",
+              "source": "StockCode"
+            },
+            {
+              "included": true,
+              "name": "PurchaseRows",
+              "side": "left",
+              "source": "PurchaseRows"
+            },
+            {
+              "included": true,
+              "name": "CancellationRows",
+              "side": "left",
+              "source": "CancellationRows"
+            },
+            {
+              "included": true,
+              "name": "GrossPurchaseQuantity",
+              "side": "left",
+              "source": "GrossPurchaseQuantity"
+            },
+            {
+              "included": true,
+              "name": "CancelledQuantity",
+              "side": "left",
+              "source": "CancelledQuantity"
+            },
+            {
+              "included": true,
+              "name": "NetQuantity",
+              "side": "left",
+              "source": "NetQuantity"
+            },
+            {
+              "included": true,
+              "name": "GrossRecordedPurchasesGBP",
+              "side": "left",
+              "source": "GrossRecordedPurchasesGBP"
+            },
+            {
+              "included": true,
+              "name": "RecordedCancellationsGBP",
+              "side": "left",
+              "source": "RecordedCancellationsGBP"
+            },
+            {
+              "included": true,
+              "name": "NetRecordedValueGBP",
+              "side": "left",
+              "source": "NetRecordedValueGBP"
+            },
+            {
+              "included": true,
+              "name": "ZeroPriceRowsRaw",
+              "side": "right",
+              "source": "ZeroPriceRowsRaw"
+            }
+          ],
+          "rightKeys": [
+            "Month",
+            "StockCode"
+          ],
+          "rightPrefix": "right_"
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.join"
+      },
+      "x": 1450,
+      "y": 1260
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "zero-price-fill"
+      },
+      "name": "zero price fill",
+      "payload": {
+        "config": {
+          "operations": [
+            {
+              "expression": "coalesce([ZeroPriceRowsRaw], 0)",
+              "id": "ZeroPriceRows",
+              "nullPolicy": "preserve",
+              "outputs": [
+                {
+                  "dtype": "int64",
+                  "name": "ZeroPriceRows",
+                  "write": "new"
+                }
+              ]
+            }
+          ]
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.formula"
+      },
+      "x": 1740,
+      "y": 1260
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "missing-customer-admitted"
+      },
+      "name": "missing customer admitted",
+      "payload": {
+        "config": {
+          "column": "feature",
+          "conditions": [
+            {
+              "caseSensitive": true,
+              "column": "feature",
+              "comparison": "gt",
+              "value": 0
+            }
+          ],
+          "expression": "[MissingCustomer]",
+          "flags": [],
+          "match": "all",
+          "matchMode": "search",
+          "mode": "expression",
+          "nullPolicy": "error",
+          "pattern": ".+"
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.filterRows"
+      },
+      "x": 2030,
+      "y": 1260
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "missing-customer-count"
+      },
+      "name": "missing customer count",
+      "payload": {
+        "config": {
+          "aggregations": [
+            {
+              "op": "countRows",
+              "output": "MissingCustomerRowsRaw"
+            }
+          ],
+          "groupBy": [
+            "Month",
+            "StockCode"
+          ],
+          "maxRows": 100000,
+          "nullKeys": "group"
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.aggregate"
+      },
+      "x": 0,
+      "y": 1470
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "missing-customer-monthly"
+      },
+      "name": "missing customer monthly",
+      "payload": {
+        "config": {
+          "cardinality": "manyToOne",
+          "leftKeys": [
+            "Month",
+            "StockCode"
+          ],
+          "leftPrefix": "left_",
+          "maxRows": 100000,
+          "mode": "left",
+          "newColumns": "drop",
+          "nullPolicy": "error",
+          "outputColumns": [
+            {
+              "included": true,
+              "name": "Month",
+              "side": "left",
+              "source": "Month"
+            },
+            {
+              "included": true,
+              "name": "StockCode",
+              "side": "left",
+              "source": "StockCode"
+            },
+            {
+              "included": true,
+              "name": "PurchaseRows",
+              "side": "left",
+              "source": "PurchaseRows"
+            },
+            {
+              "included": true,
+              "name": "CancellationRows",
+              "side": "left",
+              "source": "CancellationRows"
+            },
+            {
+              "included": true,
+              "name": "GrossPurchaseQuantity",
+              "side": "left",
+              "source": "GrossPurchaseQuantity"
+            },
+            {
+              "included": true,
+              "name": "CancelledQuantity",
+              "side": "left",
+              "source": "CancelledQuantity"
+            },
+            {
+              "included": true,
+              "name": "NetQuantity",
+              "side": "left",
+              "source": "NetQuantity"
+            },
+            {
+              "included": true,
+              "name": "GrossRecordedPurchasesGBP",
+              "side": "left",
+              "source": "GrossRecordedPurchasesGBP"
+            },
+            {
+              "included": true,
+              "name": "RecordedCancellationsGBP",
+              "side": "left",
+              "source": "RecordedCancellationsGBP"
+            },
+            {
+              "included": true,
+              "name": "NetRecordedValueGBP",
+              "side": "left",
+              "source": "NetRecordedValueGBP"
+            },
+            {
+              "included": true,
+              "name": "ZeroPriceRowsRaw",
+              "side": "left",
+              "source": "ZeroPriceRowsRaw"
+            },
+            {
+              "included": true,
+              "name": "ZeroPriceRows",
+              "side": "left",
+              "source": "ZeroPriceRows"
+            },
+            {
+              "included": true,
+              "name": "MissingCustomerRowsRaw",
+              "side": "right",
+              "source": "MissingCustomerRowsRaw"
+            }
+          ],
+          "rightKeys": [
+            "Month",
+            "StockCode"
+          ],
+          "rightPrefix": "right_"
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.join"
+      },
+      "x": 290,
+      "y": 1470
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "missing-customer-fill"
+      },
+      "name": "missing customer fill",
+      "payload": {
+        "config": {
+          "operations": [
+            {
+              "expression": "coalesce([MissingCustomerRowsRaw], 0)",
+              "id": "MissingCustomerRows",
+              "nullPolicy": "preserve",
+              "outputs": [
+                {
+                  "dtype": "int64",
+                  "name": "MissingCustomerRows",
+                  "write": "new"
+                }
+              ]
+            }
+          ]
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.formula"
+      },
+      "x": 580,
+      "y": 1470
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "monthly-report"
+      },
+      "name": "monthly report",
+      "payload": {
+        "config": {
+          "castFailure": "error",
+          "missingPolicy": "preserve",
+          "newColumns": "drop",
+          "rows": [
+            {
+              "included": true,
+              "outputName": "Month",
+              "source": "Month",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "StockCode",
+              "source": "StockCode",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "PurchaseRows",
+              "source": "PurchaseRows",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "CancellationRows",
+              "source": "CancellationRows",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "GrossPurchaseQuantity",
+              "source": "GrossPurchaseQuantity",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "CancelledQuantity",
+              "source": "CancelledQuantity",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "NetQuantity",
+              "source": "NetQuantity",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "ZeroPriceRows",
+              "source": "ZeroPriceRows",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "MissingCustomerRows",
+              "source": "MissingCustomerRows",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "GrossRecordedPurchasesGBP",
+              "source": "GrossRecordedPurchasesGBP",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "RecordedCancellationsGBP",
+              "source": "RecordedCancellationsGBP",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "NetRecordedValueGBP",
+              "source": "NetRecordedValueGBP",
+              "targetType": "keep"
+            }
+          ],
+          "trimText": false
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.columns"
+      },
+      "x": 870,
+      "y": 1470
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "monthly-order"
+      },
+      "name": "monthly order",
+      "payload": {
+        "config": {
+          "keys": [
+            {
+              "column": "Month",
+              "comparison": "exact",
+              "direction": "ascending",
+              "missing": "last"
+            },
+            {
+              "column": "StockCode",
+              "comparison": "exact",
+              "direction": "ascending",
+              "missing": "last"
+            }
+          ]
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.sort"
+      },
+      "x": 1160,
+      "y": 1470
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "monthly-export"
+      },
+      "name": "Monthly item totals",
+      "payload": {
+        "config": {
+          "columns": [
+            "Month",
+            "StockCode",
+            "PurchaseRows",
+            "CancellationRows",
+            "GrossPurchaseQuantity",
+            "CancelledQuantity",
+            "NetQuantity",
+            "ZeroPriceRows",
+            "MissingCustomerRows",
+            "GrossRecordedPurchasesGBP",
+            "RecordedCancellationsGBP",
+            "NetRecordedValueGBP"
+          ],
+          "destination": "file",
+          "filename": "monthly-item-totals.csv",
+          "format": "csv",
+          "overwrite": false,
+          "separator": ","
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.outputDelimited"
+      },
+      "x": 1450,
+      "y": 1470
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "distinct-input-months"
+      },
+      "name": "distinct input months",
+      "payload": {
+        "config": {
+          "aggregations": [
+            {
+              "op": "countRows",
+              "output": "RowsInMonth"
+            }
+          ],
+          "groupBy": [
+            "Month"
+          ],
+          "maxRows": 100000,
+          "nullKeys": "group"
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.aggregate"
+      },
+      "x": 1740,
+      "y": 1470
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "month-contract"
+      },
+      "name": "month contract",
+      "payload": {
+        "config": {
+          "aggregations": [
+            {
+              "column": "Month",
+              "nullPolicy": "error",
+              "op": "min",
+              "output": "MinimumMonth"
+            },
+            {
+              "column": "Month",
+              "nullPolicy": "error",
+              "op": "max",
+              "output": "MaximumMonth"
+            },
+            {
+              "op": "countRows",
+              "output": "MonthCount"
+            }
+          ],
+          "groupBy": [],
+          "maxRows": 100000,
+          "nullKeys": "group"
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.aggregate"
+      },
+      "x": 2030,
+      "y": 1470
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "require-two-months"
+      },
+      "name": "require two months",
+      "payload": {
+        "config": {
+          "operations": [
+            {
+              "expression": "require([MonthCount] = 2, [MinimumMonth])",
+              "id": "EarlierMonth",
+              "nullPolicy": "preserve",
+              "outputs": [
+                {
+                  "dtype": "string",
+                  "name": "EarlierMonth",
+                  "write": "new"
+                }
+              ]
+            },
+            {
+              "expression": "require([MonthCount] = 2, [MaximumMonth])",
+              "id": "LaterMonth",
+              "nullPolicy": "preserve",
+              "outputs": [
+                {
+                  "dtype": "string",
+                  "name": "LaterMonth",
+                  "write": "new"
+                }
+              ]
+            },
+            {
+              "expression": "1",
+              "id": "BatchKey",
+              "nullPolicy": "preserve",
+              "outputs": [
+                {
+                  "dtype": "int64",
+                  "name": "BatchKey",
+                  "write": "new"
+                }
+              ]
+            }
+          ]
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.formula"
+      },
+      "x": 0,
+      "y": 1680
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "monthly-batch-key"
+      },
+      "name": "monthly batch key",
+      "payload": {
+        "config": {
+          "operations": [
+            {
+              "expression": "1",
+              "id": "BatchKey",
+              "nullPolicy": "preserve",
+              "outputs": [
+                {
+                  "dtype": "int64",
+                  "name": "BatchKey",
+                  "write": "new"
+                }
+              ]
+            }
+          ]
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.formula"
+      },
+      "x": 290,
+      "y": 1680
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "monthly-with-period"
+      },
+      "name": "monthly with period",
+      "payload": {
+        "config": {
+          "cardinality": "manyToOne",
+          "leftKeys": [
+            "BatchKey"
+          ],
+          "leftPrefix": "left_",
+          "maxRows": 100000,
+          "mode": "left",
+          "newColumns": "drop",
+          "nullPolicy": "error",
+          "outputColumns": [
+            {
+              "included": true,
+              "name": "Month",
+              "side": "left",
+              "source": "Month"
+            },
+            {
+              "included": true,
+              "name": "StockCode",
+              "side": "left",
+              "source": "StockCode"
+            },
+            {
+              "included": true,
+              "name": "PurchaseRows",
+              "side": "left",
+              "source": "PurchaseRows"
+            },
+            {
+              "included": true,
+              "name": "CancellationRows",
+              "side": "left",
+              "source": "CancellationRows"
+            },
+            {
+              "included": true,
+              "name": "GrossPurchaseQuantity",
+              "side": "left",
+              "source": "GrossPurchaseQuantity"
+            },
+            {
+              "included": true,
+              "name": "CancelledQuantity",
+              "side": "left",
+              "source": "CancelledQuantity"
+            },
+            {
+              "included": true,
+              "name": "NetQuantity",
+              "side": "left",
+              "source": "NetQuantity"
+            },
+            {
+              "included": true,
+              "name": "ZeroPriceRows",
+              "side": "left",
+              "source": "ZeroPriceRows"
+            },
+            {
+              "included": true,
+              "name": "MissingCustomerRows",
+              "side": "left",
+              "source": "MissingCustomerRows"
+            },
+            {
+              "included": true,
+              "name": "GrossRecordedPurchasesGBP",
+              "side": "left",
+              "source": "GrossRecordedPurchasesGBP"
+            },
+            {
+              "included": true,
+              "name": "RecordedCancellationsGBP",
+              "side": "left",
+              "source": "RecordedCancellationsGBP"
+            },
+            {
+              "included": true,
+              "name": "NetRecordedValueGBP",
+              "side": "left",
+              "source": "NetRecordedValueGBP"
+            },
+            {
+              "included": true,
+              "name": "BatchKey",
+              "side": "left",
+              "source": "BatchKey"
+            },
+            {
+              "included": true,
+              "name": "EarlierMonth",
+              "side": "right",
+              "source": "EarlierMonth"
+            },
+            {
+              "included": true,
+              "name": "LaterMonth",
+              "side": "right",
+              "source": "LaterMonth"
+            }
+          ],
+          "rightKeys": [
+            "BatchKey"
+          ],
+          "rightPrefix": "right_"
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.join"
+      },
+      "x": 580,
+      "y": 1680
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "earlier-month"
+      },
+      "name": "earlier month",
+      "payload": {
+        "config": {
+          "column": "feature",
+          "conditions": [
+            {
+              "caseSensitive": true,
+              "column": "feature",
+              "comparison": "gt",
+              "value": 0
+            }
+          ],
+          "expression": "[Month] = [EarlierMonth]",
+          "flags": [],
+          "match": "all",
+          "matchMode": "search",
+          "mode": "expression",
+          "nullPolicy": "error",
+          "pattern": ".+"
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.filterRows"
+      },
+      "x": 870,
+      "y": 1680
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "earlier-present"
+      },
+      "name": "earlier present",
+      "payload": {
+        "config": {
+          "operations": [
+            {
+              "expression": "true",
+              "id": "EarlierPresent",
+              "nullPolicy": "preserve",
+              "outputs": [
+                {
+                  "dtype": "bool",
+                  "name": "EarlierPresent",
+                  "write": "new"
+                }
+              ]
+            }
+          ]
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.formula"
+      },
+      "x": 1160,
+      "y": 1680
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "earlier-comparison"
+      },
+      "name": "earlier comparison",
+      "payload": {
+        "config": {
+          "castFailure": "error",
+          "missingPolicy": "preserve",
+          "newColumns": "drop",
+          "rows": [
+            {
+              "included": true,
+              "outputName": "StockCode",
+              "source": "StockCode",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "EarlierEarlierMonth",
+              "source": "EarlierMonth",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "EarlierLaterMonth",
+              "source": "LaterMonth",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "EarlierPresent",
+              "source": "EarlierPresent",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "EarlierNetQuantity",
+              "source": "NetQuantity",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "EarlierNetRecordedValueGBP",
+              "source": "NetRecordedValueGBP",
+              "targetType": "keep"
+            }
+          ],
+          "trimText": false
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.columns"
+      },
+      "x": 1450,
+      "y": 1680
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "later-month"
+      },
+      "name": "later month",
+      "payload": {
+        "config": {
+          "column": "feature",
+          "conditions": [
+            {
+              "caseSensitive": true,
+              "column": "feature",
+              "comparison": "gt",
+              "value": 0
+            }
+          ],
+          "expression": "[Month] = [LaterMonth]",
+          "flags": [],
+          "match": "all",
+          "matchMode": "search",
+          "mode": "expression",
+          "nullPolicy": "error",
+          "pattern": ".+"
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.filterRows"
+      },
+      "x": 1740,
+      "y": 1680
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "later-present"
+      },
+      "name": "later present",
+      "payload": {
+        "config": {
+          "operations": [
+            {
+              "expression": "true",
+              "id": "LaterPresent",
+              "nullPolicy": "preserve",
+              "outputs": [
+                {
+                  "dtype": "bool",
+                  "name": "LaterPresent",
+                  "write": "new"
+                }
+              ]
+            }
+          ]
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.formula"
+      },
+      "x": 2030,
+      "y": 1680
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "later-comparison"
+      },
+      "name": "later comparison",
+      "payload": {
+        "config": {
+          "castFailure": "error",
+          "missingPolicy": "preserve",
+          "newColumns": "drop",
+          "rows": [
+            {
+              "included": true,
+              "outputName": "StockCode",
+              "source": "StockCode",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "LaterEarlierMonth",
+              "source": "EarlierMonth",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "LaterLaterMonth",
+              "source": "LaterMonth",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "LaterPresent",
+              "source": "LaterPresent",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "LaterNetQuantity",
+              "source": "NetQuantity",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "LaterNetRecordedValueGBP",
+              "source": "NetRecordedValueGBP",
+              "targetType": "keep"
+            }
+          ],
+          "trimText": false
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.columns"
+      },
+      "x": 0,
+      "y": 1890
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "item-union-across-months"
+      },
+      "name": "item union across months",
+      "payload": {
+        "config": {
+          "cardinality": "oneToOne",
+          "leftKeys": [
+            "StockCode"
+          ],
+          "leftPrefix": "left_",
+          "maxRows": 100000,
+          "mode": "full",
+          "newColumns": "drop",
+          "nullPolicy": "error",
+          "outputColumns": [
+            {
+              "included": true,
+              "name": "EarlierCode",
+              "side": "left",
+              "source": "StockCode"
+            },
+            {
+              "included": true,
+              "name": "EarlierEarlierMonth",
+              "side": "left",
+              "source": "EarlierEarlierMonth"
+            },
+            {
+              "included": true,
+              "name": "EarlierLaterMonth",
+              "side": "left",
+              "source": "EarlierLaterMonth"
+            },
+            {
+              "included": true,
+              "name": "EarlierPresent",
+              "side": "left",
+              "source": "EarlierPresent"
+            },
+            {
+              "included": true,
+              "name": "EarlierNetQuantity",
+              "side": "left",
+              "source": "EarlierNetQuantity"
+            },
+            {
+              "included": true,
+              "name": "EarlierNetRecordedValueGBP",
+              "side": "left",
+              "source": "EarlierNetRecordedValueGBP"
+            },
+            {
+              "included": true,
+              "name": "LaterCode",
+              "side": "right",
+              "source": "StockCode"
+            },
+            {
+              "included": true,
+              "name": "LaterEarlierMonth",
+              "side": "right",
+              "source": "LaterEarlierMonth"
+            },
+            {
+              "included": true,
+              "name": "LaterLaterMonth",
+              "side": "right",
+              "source": "LaterLaterMonth"
+            },
+            {
+              "included": true,
+              "name": "LaterPresent",
+              "side": "right",
+              "source": "LaterPresent"
+            },
+            {
+              "included": true,
+              "name": "LaterNetQuantity",
+              "side": "right",
+              "source": "LaterNetQuantity"
+            },
+            {
+              "included": true,
+              "name": "LaterNetRecordedValueGBP",
+              "side": "right",
+              "source": "LaterNetRecordedValueGBP"
+            }
+          ],
+          "rightKeys": [
+            "StockCode"
+          ],
+          "rightPrefix": "right_"
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.join"
+      },
+      "x": 290,
+      "y": 1890
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "comparison-missing-and-change"
+      },
+      "name": "comparison missing and change",
+      "payload": {
+        "config": {
+          "operations": [
+            {
+              "expression": "coalesce([EarlierCode], [LaterCode])",
+              "id": "StockCode",
+              "nullPolicy": "preserve",
+              "outputs": [
+                {
+                  "dtype": "string",
+                  "name": "StockCode",
+                  "write": "new"
+                }
+              ]
+            },
+            {
+              "expression": "coalesce([EarlierEarlierMonth], [LaterEarlierMonth])",
+              "id": "EarlierMonth",
+              "nullPolicy": "preserve",
+              "outputs": [
+                {
+                  "dtype": "string",
+                  "name": "EarlierMonth",
+                  "write": "new"
+                }
+              ]
+            },
+            {
+              "expression": "coalesce([EarlierLaterMonth], [LaterLaterMonth])",
+              "id": "LaterMonth",
+              "nullPolicy": "preserve",
+              "outputs": [
+                {
+                  "dtype": "string",
+                  "name": "LaterMonth",
+                  "write": "new"
+                }
+              ]
+            },
+            {
+              "expression": "coalesce([EarlierPresent], false)",
+              "id": "EarlierPresentFilled",
+              "nullPolicy": "preserve",
+              "outputs": [
+                {
+                  "dtype": "bool",
+                  "name": "EarlierPresentFilled",
+                  "write": "new"
+                }
+              ]
+            },
+            {
+              "expression": "coalesce([EarlierNetQuantity], \"0\")",
+              "id": "EarlierNetQuantityFilled",
+              "nullPolicy": "preserve",
+              "outputs": [
+                {
+                  "dtype": "string",
+                  "name": "EarlierNetQuantityFilled",
+                  "write": "new"
+                }
+              ]
+            },
+            {
+              "expression": "coalesce([EarlierNetRecordedValueGBP], \"0\")",
+              "id": "EarlierNetRecordedValueGBPFilled",
+              "nullPolicy": "preserve",
+              "outputs": [
+                {
+                  "dtype": "string",
+                  "name": "EarlierNetRecordedValueGBPFilled",
+                  "write": "new"
+                }
+              ]
+            },
+            {
+              "expression": "coalesce([LaterPresent], false)",
+              "id": "LaterPresentFilled",
+              "nullPolicy": "preserve",
+              "outputs": [
+                {
+                  "dtype": "bool",
+                  "name": "LaterPresentFilled",
+                  "write": "new"
+                }
+              ]
+            },
+            {
+              "expression": "coalesce([LaterNetQuantity], \"0\")",
+              "id": "LaterNetQuantityFilled",
+              "nullPolicy": "preserve",
+              "outputs": [
+                {
+                  "dtype": "string",
+                  "name": "LaterNetQuantityFilled",
+                  "write": "new"
+                }
+              ]
+            },
+            {
+              "expression": "coalesce([LaterNetRecordedValueGBP], \"0\")",
+              "id": "LaterNetRecordedValueGBPFilled",
+              "nullPolicy": "preserve",
+              "outputs": [
+                {
+                  "dtype": "string",
+                  "name": "LaterNetRecordedValueGBPFilled",
+                  "write": "new"
+                }
+              ]
+            },
+            {
+              "expression": "decimal_subtract([LaterNetQuantityFilled], [EarlierNetQuantityFilled])",
+              "id": "NetQuantityChange",
+              "nullPolicy": "preserve",
+              "outputs": [
+                {
+                  "dtype": "string",
+                  "name": "NetQuantityChange",
+                  "write": "new"
+                }
+              ]
+            },
+            {
+              "expression": "decimal_subtract([LaterNetRecordedValueGBPFilled], [EarlierNetRecordedValueGBPFilled])",
+              "id": "NetRecordedValueChangeGBP",
+              "nullPolicy": "preserve",
+              "outputs": [
+                {
+                  "dtype": "string",
+                  "name": "NetRecordedValueChangeGBP",
+                  "write": "new"
+                }
+              ]
+            }
+          ]
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.formula"
+      },
+      "x": 580,
+      "y": 1890
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "comparison-report"
+      },
+      "name": "comparison report",
+      "payload": {
+        "config": {
+          "castFailure": "error",
+          "missingPolicy": "preserve",
+          "newColumns": "drop",
+          "rows": [
+            {
+              "included": true,
+              "outputName": "StockCode",
+              "source": "StockCode",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "EarlierMonth",
+              "source": "EarlierMonth",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "LaterMonth",
+              "source": "LaterMonth",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "EarlierPresent",
+              "source": "EarlierPresentFilled",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "LaterPresent",
+              "source": "LaterPresentFilled",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "EarlierNetQuantity",
+              "source": "EarlierNetQuantityFilled",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "LaterNetQuantity",
+              "source": "LaterNetQuantityFilled",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "NetQuantityChange",
+              "source": "NetQuantityChange",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "EarlierNetRecordedValueGBP",
+              "source": "EarlierNetRecordedValueGBPFilled",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "LaterNetRecordedValueGBP",
+              "source": "LaterNetRecordedValueGBPFilled",
+              "targetType": "keep"
+            },
+            {
+              "included": true,
+              "outputName": "NetRecordedValueChangeGBP",
+              "source": "NetRecordedValueChangeGBP",
+              "targetType": "keep"
+            }
+          ],
+          "trimText": false
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.columns"
+      },
+      "x": 870,
+      "y": 1890
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "comparison-order"
+      },
+      "name": "comparison order",
+      "payload": {
+        "config": {
+          "keys": [
+            {
+              "column": "StockCode",
+              "comparison": "exact",
+              "direction": "ascending",
+              "missing": "last"
+            }
+          ]
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.sort"
+      },
+      "x": 1160,
+      "y": 1890
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "comparison-export"
+      },
+      "name": "Item comparison between months",
+      "payload": {
+        "config": {
+          "columns": [
+            "StockCode",
+            "EarlierMonth",
+            "LaterMonth",
+            "EarlierPresent",
+            "LaterPresent",
+            "EarlierNetQuantity",
+            "LaterNetQuantity",
+            "NetQuantityChange",
+            "EarlierNetRecordedValueGBP",
+            "LaterNetRecordedValueGBP",
+            "NetRecordedValueChangeGBP"
+          ],
+          "destination": "file",
+          "filename": "item-month-comparison.csv",
+          "format": "csv",
+          "overwrite": false,
+          "separator": ","
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.outputDelimited"
+      },
+      "x": 1450,
+      "y": 1890
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "source-batch-key"
+      },
+      "name": "source batch key",
+      "payload": {
+        "config": {
+          "operations": [
+            {
+              "expression": "1",
+              "id": "BatchKey",
+              "nullPolicy": "error",
+              "outputs": [
+                {
+                  "dtype": "int64",
+                  "name": "BatchKey",
+                  "write": "new"
+                }
+              ]
+            }
+          ]
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.formula"
+      },
+      "x": -580.7634681996811,
+      "y": -0.013336634098521927
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "require-valid-batch"
+      },
+      "name": "require valid batch",
+      "payload": {
+        "config": {
+          "cardinality": "manyToOne",
+          "leftKeys": [
+            "BatchKey"
+          ],
+          "leftPrefix": "left_",
+          "maxRows": 100000,
+          "mode": "inner",
+          "newColumns": "drop",
+          "nullPolicy": "error",
+          "outputColumns": [
+            {
+              "included": true,
+              "name": "SourceRowID",
+              "side": "left",
+              "source": "SourceRowID"
+            },
+            {
+              "included": true,
+              "name": "InvoiceNo",
+              "side": "left",
+              "source": "InvoiceNo"
+            },
+            {
+              "included": true,
+              "name": "StockCode",
+              "side": "left",
+              "source": "StockCode"
+            },
+            {
+              "included": true,
+              "name": "Description",
+              "side": "left",
+              "source": "Description"
+            },
+            {
+              "included": true,
+              "name": "Quantity",
+              "side": "left",
+              "source": "Quantity"
+            },
+            {
+              "included": true,
+              "name": "InvoiceDate",
+              "side": "left",
+              "source": "InvoiceDate"
+            },
+            {
+              "included": true,
+              "name": "UnitPrice",
+              "side": "left",
+              "source": "UnitPrice"
+            },
+            {
+              "included": true,
+              "name": "CustomerID",
+              "side": "left",
+              "source": "CustomerID"
+            },
+            {
+              "included": true,
+              "name": "Country",
+              "side": "left",
+              "source": "Country"
+            },
+            {
+              "included": true,
+              "name": "Month",
+              "side": "left",
+              "source": "Month"
+            }
+          ],
+          "rightKeys": [
+            "BatchKey"
+          ],
+          "rightPrefix": "right_"
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.join"
+      },
+      "x": -300,
+      "y": 0
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "invoice-month"
+      },
+      "name": "Calendar month from original invoice date",
+      "payload": {
+        "config": {
+          "operations": [
+            {
+              "expression": "regex_extract([InvoiceDate], \"^([0-9]{4}-[0-9]{2})-[0-9]{2} \", \"search\", \"error\", \"\", \"1\")",
+              "id": "Month",
+              "nullPolicy": "error",
+              "outputs": [
+                {
+                  "dtype": "string",
+                  "name": "Month",
+                  "write": "new"
+                }
+              ]
+            }
+          ]
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.formula"
+      },
+      "x": -900,
+      "y": 0
+    }
+  ],
+  "projectID": "253613DD-59B9-4D81-AD34-B48B2FE3DC57",
+  "revision": 0,
+  "schemaVersion": 1
+}

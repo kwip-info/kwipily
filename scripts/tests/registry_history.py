@@ -1,0 +1,114 @@
+"""Narrow copy-only projections keep frozen runtime history checks meaningful."""
+import copy
+from functools import lru_cache
+
+
+def historical_output_presentation(rows):
+    result=copy.deepcopy(rows)
+    for row in result:
+        if row.get('id')=='input' and 'configurationAlternatives' in row:
+            assert row['configurationAlternatives'] == {'tensor': [{'key':'shape','title':'Sample dimensions','kind':'integerList','defaultValue':[1,2,2],'min':1,'max':100000000,'minItems':1,'maxItems':7}]}
+            del row['configurationAlternatives']
+        if row.get('id')=='output':
+            assert (row.get('title'),row.get('category')) in (('Output','Data'),('Model Output','Boundaries'))
+            row['title']='Output'
+            row['category']='Data'
+        changes = consolidation_definition_copy().get(row.get('id'))
+        if changes:
+            for field in row.get('fields', []):
+                titles = changes['fields'].get(field['key'])
+                if titles:
+                    assert field['title'] in titles
+                    field['title'] = titles[0]
+                for choice in field.get('choices', []):
+                    titles = changes['choices'].get(field['key'], {}).get(str(choice['value']))
+                    if titles:
+                        assert choice['title'] in titles
+                        choice['title'] = titles[0]
+            if changes['category']:
+                assert row['category'] in changes['category']
+                row['category'] = changes['category'][0]
+    return result
+
+
+POOLING_HISTORY_PATH='Sources/KwipMLCore/BundledPoolingComponents.generated.swift'
+POOLING_MODEL_OUTPUT_ARROWS=(
+    'Input → AvgPool2d → Model Output',
+    'Input → AdaptiveAvgPool1d → Model Output',
+    'Input → AdaptiveAvgPool2d → Model Output',
+    'Input → AdaptiveMaxPool2d → Model Output',
+)
+
+def historical_pooling_output_prose(text):
+    import json
+    from pathlib import Path
+    import scripts.component_bundles as bundles
+    source=json.loads((Path(__file__).resolve().parents[2]/'components/pooling/bundle.json').read_text())
+    assert bundles.render_swift(source,'pooling')==text
+    original_digest=bundles.manifest_digest(source)
+    encoded=json.dumps(source,ensure_ascii=False)
+    for arrow in POOLING_MODEL_OUTPUT_ARROWS:
+        assert encoded.count(arrow)==1
+        encoded=encoded.replace(arrow,arrow.replace('Model Output','Output'))
+    historical_digest=bundles.manifest_digest(json.loads(encoded))
+    for arrow in POOLING_MODEL_OUTPUT_ARROWS:
+        assert text.count(arrow)==1
+        text=text.replace(arrow,arrow.replace('Model Output','Output'))
+    marker='public static let manifestDigest = \"'+original_digest+'\"'
+    assert text.count(marker)==1
+    return text.replace(marker,'public static let manifestDigest = \"'+historical_digest+'\"')
+
+
+# Only these reviewed families changed inspector/lesson copy during consolidation.
+# A full non-copy contract comparison precedes every historical rendering.
+CONSOLIDATION_COPY_FAMILIES = (
+    'attention', 'normalization', 'embeddings', 'spatial-patches', 'tensor-composition',
+    'tensor-layout', 'tensor-math', 'tensor-routing',
+)
+
+def historical_consolidation_copy(outputs):
+    import json
+    import subprocess
+    from pathlib import Path
+    import scripts.component_bundles as bundles
+    root = Path(__file__).resolve().parents[2]
+    result = dict(outputs)
+    for family in CONSOLIDATION_COPY_FAMILIES:
+        path = 'components/' + family + '/bundle.json'
+        current = json.loads((root / path).read_text())
+        previous = json.loads((root / 'Tests/historical/6ad54807' / path).read_bytes())
+        # Additive text-model primitives do not belong to this frozen historical cohort.
+        additions={'attention': {'rotary_position'}, 'normalization': {'rms_norm'}}.get(family,set())
+        previous_ids={row['definition']['id'] for row in previous['components']}
+        current_ids={row['definition']['id'] for row in current['components']}
+        assert current_ids == previous_ids | additions, family + ': unexpected identity change'
+        if family=='normalization':
+            assert (previous['version'],current['version'])==(1,2)
+        def contracts(source):
+            value = copy.deepcopy(source)
+            if family=='normalization': value['version']=previous['version']
+            value['components']=[row for row in value['components'] if row['definition']['id'] in previous_ids]
+            for row in value['components']:
+                row.pop('learning', None)
+                row.pop('presentation', None)
+                if 'definition' in row:
+                    row['definition'] = historical_output_presentation([row['definition']])[0]
+            return value
+        assert contracts(current) == contracts(previous), family + ': non-presentation contract changed'
+        # Locate by exact generated bytes, never overwrite unrelated or already-projected files.
+        generated = bundles.render_swift(current, family)
+        for target, text in list(result.items()):
+            if text == generated:
+                result[target] = bundles.render_swift(previous, family)
+        if family=='attention':
+            generated=bundles.render_attention_adapters(current)
+            for target,text in list(result.items()):
+                if text==generated: result[target]=bundles.render_attention_adapters(previous)
+    return result
+
+
+@lru_cache(maxsize=1)
+def consolidation_definition_copy():
+    import json
+    from pathlib import Path
+    return json.loads((Path(__file__).with_name('consolidation_copy.json')).read_text())

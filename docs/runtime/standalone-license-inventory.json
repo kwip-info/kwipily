@@ -1,0 +1,352 @@
+{
+  "schemaVersion": 1,
+  "archiveSHA256": "f169b076da928b34ceff3578438fe68b65ef8009cae64fbc7150515a0e61d007",
+  "pythonVersion": "3.13.6",
+  "targetTriple": "aarch64-apple-darwin",
+  "pythonLicenses": [
+    "Python-2.0",
+    "CNRI-Python"
+  ],
+  "extensions": {
+    "_bz2": [
+      {
+        "license_paths": [
+          "licenses/LICENSE.bzip2.txt"
+        ],
+        "license_public_domain": false,
+        "licenses": [
+          "bzip2-1.0.6"
+        ],
+        "links": [
+          {
+            "name": "bz2",
+            "path_static": "build/lib/libbz2.a"
+          }
+        ]
+      }
+    ],
+    "_ctypes": [
+      {
+        "license_paths": [
+          "licenses/LICENSE.libffi.txt"
+        ],
+        "license_public_domain": false,
+        "licenses": [
+          "MIT"
+        ],
+        "links": [
+          {
+            "name": "dl",
+            "system": true
+          },
+          {
+            "name": "ffi",
+            "path_static": "build/lib/libffi.a"
+          }
+        ]
+      }
+    ],
+    "_curses": [
+      {
+        "license_paths": [
+          "licenses/LICENSE.ncurses.txt"
+        ],
+        "license_public_domain": false,
+        "licenses": [
+          "X11"
+        ],
+        "links": [
+          {
+            "name": "ncurses",
+            "system": true
+          }
+        ]
+      }
+    ],
+    "_curses_panel": [
+      {
+        "license_paths": [
+          "licenses/LICENSE.ncurses.txt"
+        ],
+        "license_public_domain": false,
+        "licenses": [
+          "X11"
+        ],
+        "links": [
+          {
+            "name": "ncurses",
+            "system": true
+          },
+          {
+            "name": "panel",
+            "system": true
+          }
+        ]
+      }
+    ],
+    "_decimal": [
+      {
+        "license_paths": [
+          "licenses/LICENSE.mpdecimal.txt"
+        ],
+        "license_public_domain": false,
+        "licenses": [
+          "BSD-2-Clause"
+        ],
+        "links": [
+          {
+            "name": "mpdec",
+            "path_static": "build/lib/libmpdec.a"
+          }
+        ]
+      }
+    ],
+    "_elementtree": [
+      {
+        "license_paths": [
+          "licenses/LICENSE.expat.txt"
+        ],
+        "license_public_domain": false,
+        "licenses": [
+          "MIT"
+        ],
+        "links": [
+          {
+            "name": "expat",
+            "path_static": "build/lib/libexpat.a"
+          }
+        ]
+      }
+    ],
+    "_hashlib": [
+      {
+        "license_paths": [
+          "licenses/LICENSE.openssl-1.1.txt",
+          "licenses/LICENSE.openssl-3.txt"
+        ],
+        "license_public_domain": false,
+        "licenses": [
+          "Apache-2.0",
+          "OpenSSL"
+        ],
+        "links": [
+          {
+            "name": "crypto",
+            "path_static": "build/lib/libcrypto.a"
+          }
+        ]
+      }
+    ],
+    "_lzma": [
+      {
+        "license_paths": [
+          "licenses/LICENSE.liblzma.txt"
+        ],
+        "license_public_domain": true,
+        "licenses": [],
+        "links": [
+          {
+            "name": "lzma",
+            "path_static": "build/lib/liblzma.a"
+          }
+        ]
+      }
+    ],
+    "_sqlite3": [
+      {
+        "license_paths": [
+          "licenses/LICENSE.sqlite.txt"
+        ],
+        "license_public_domain": true,
+        "licenses": [],
+        "links": [
+          {
+            "name": "sqlite3",
+            "path_static": "build/lib/libsqlite3.a"
+          }
+        ]
+      }
+    ],
+    "_ssl": [
+      {
+        "license_paths": [
+          "licenses/LICENSE.openssl-1.1.txt",
+          "licenses/LICENSE.openssl-3.txt"
+        ],
+        "license_public_domain": false,
+        "licenses": [
+          "Apache-2.0",
+          "OpenSSL"
+        ],
+        "links": [
+          {
+            "name": "crypto",
+            "path_static": "build/lib/libcrypto.a"
+          },
+          {
+            "name": "ssl",
+            "path_static": "build/lib/libssl.a"
+          }
+        ]
+      }
+    ],
+    "_tkinter": [
+      {
+        "license_paths": [
+          "licenses/LICENSE.tcl.txt"
+        ],
+        "license_public_domain": false,
+        "licenses": [
+          "TCL"
+        ],
+        "links": [
+          {
+            "name": "tcl8.6",
+            "system": true
+          },
+          {
+            "name": "tk8.6",
+            "system": true
+          }
+        ]
+      }
+    ],
+    "_uuid": [
+      {
+        "license_paths": [
+          "licenses/LICENSE.libuuid.txt"
+        ],
+        "license_public_domain": false,
+        "licenses": [
+          "BSD-3-Clause"
+        ],
+        "links": [
+          {
+            "name": "uuid",
+            "path_static": "build/lib/libuuid.a"
+          }
+        ]
+      }
+    ],
+    "pyexpat": [
+      {
+        "license_paths": [
+          "licenses/LICENSE.expat.txt"
+        ],
+        "license_public_domain": false,
+        "licenses": [
+          "MIT"
+        ],
+        "links": [
+          {
+            "name": "expat",
+            "path_static": "build/lib/libexpat.a"
+          }
+        ]
+      }
+    ],
+    "readline": [
+      {
+        "license_paths": [
+          "licenses/LICENSE.libedit.txt",
+          "licenses/LICENSE.ncurses.txt"
+        ],
+        "license_public_domain": false,
+        "licenses": [
+          "BSD-3-Clause",
+          "X11"
+        ],
+        "links": [
+          {
+            "name": "edit",
+            "system": true
+          },
+          {
+            "name": "ncurses",
+            "system": true
+          }
+        ]
+      }
+    ],
+    "zlib": [
+      {
+        "license_paths": [
+          "licenses/LICENSE.zlib-ng.txt",
+          "licenses/LICENSE.zlib.txt"
+        ],
+        "license_public_domain": false,
+        "licenses": [
+          "Zlib"
+        ],
+        "links": [
+          {
+            "name": "z",
+            "system": true
+          }
+        ]
+      }
+    ]
+  },
+  "notices": [
+    {
+      "path": "licenses/LICENSE.bzip2.txt",
+      "sha256": "1f38bbc7caacafd65169276d759c0d88c991b753b643ce35d0e45ea1971dd441"
+    },
+    {
+      "path": "licenses/LICENSE.cpython.txt",
+      "sha256": "86e61415828a8b5b06ec8d024e6f086ce155a8b85fd0c419c0ba4dc004e74fdd"
+    },
+    {
+      "path": "licenses/LICENSE.expat.txt",
+      "sha256": "122f2c27000472a201d337b9b31f7eb2b52d091b02857061a8880371612d9534"
+    },
+    {
+      "path": "licenses/LICENSE.libedit.txt",
+      "sha256": "29cea33c32bbc9785142386377915612a2fa786482c46843383384aded2e09b1"
+    },
+    {
+      "path": "licenses/LICENSE.libffi.txt",
+      "sha256": "deaf3a42effb551a5b140fa9afefed183a27f1341c6d1bf430d106a5e6931fc0"
+    },
+    {
+      "path": "licenses/LICENSE.liblzma.txt",
+      "sha256": "828d5b508798d6a95c1c08ce5eee517a84ed1bda14eac58c440b6bce2c5cf1ca"
+    },
+    {
+      "path": "licenses/LICENSE.libuuid.txt",
+      "sha256": "122ee1f7e258f2c3c0e538a75c037684f420454bf3850ddc74ce750bbf5fe86b"
+    },
+    {
+      "path": "licenses/LICENSE.mpdecimal.txt",
+      "sha256": "669512af7219f58be03a398766d7c9da11a3b3df9d3f05cb74c5ceca25c8da3b"
+    },
+    {
+      "path": "licenses/LICENSE.ncurses.txt",
+      "sha256": "87a4c4442337b8968ef956031c406b74f9cb7149b7ba87311bdaba534816201c"
+    },
+    {
+      "path": "licenses/LICENSE.openssl-1.1.txt",
+      "sha256": "9c04cce50c4989d5601dd8b07f6ab922c40388b66ac736c9007cb1ed9d9dd560"
+    },
+    {
+      "path": "licenses/LICENSE.openssl-3.txt",
+      "sha256": "7d5450cb2d142651b8afa315b5f238efc805dad827d91ba367d8516bc9d49e7a"
+    },
+    {
+      "path": "licenses/LICENSE.sqlite.txt",
+      "sha256": "38bef3d28b24f145ea293bd3b6eb4b20396982abc8303128fb493986ea5bc719"
+    },
+    {
+      "path": "licenses/LICENSE.tcl.txt",
+      "sha256": "c0a69a2bfd757361ec7e6143973b103c90409316b49e9c88db26ad6388e79f16"
+    },
+    {
+      "path": "licenses/LICENSE.zlib.txt",
+      "sha256": "818922b2620f12801a12bf78e399644a30990e66824abd8ca8ec24d451d6f92c"
+    }
+  ],
+  "missingReferencedNotices": [
+    "licenses/LICENSE.zlib-ng.txt"
+  ],
+  "redistributionReviewComplete": false
+}

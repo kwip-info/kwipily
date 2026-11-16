@@ -1,0 +1,8 @@
+{
+  "date": "2026-10-21",
+  "tool": "built-in image_gen",
+  "prompt": "game-session-prompt.txt",
+  "asset": "Sources/KwipMLApp/Resources/ComponentIcons/game-session-v1.png",
+  "sha256": "c84be62c512374d6a9f273067b0edf2838db4b19f1df50bdc6d7b95d4cad05dc",
+  "review": "Visually inspected transparent teal family icon, paired policy clusters and episode ticks, no board renderer or success badge."
+}

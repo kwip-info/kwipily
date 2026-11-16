@@ -1,0 +1,110 @@
+{
+  "version": 1,
+  "name": "Take-away",
+  "parameters": {},
+  "state": {
+    "remaining": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 21,
+      "initial": 21
+    },
+    "to_move": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 1,
+      "initial": 0
+    }
+  },
+  "actions": {
+    "take": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 3
+    }
+  },
+  "currentPlayer": "state.to_move",
+  "legal": "action.take <= state.remaining",
+  "transitions": [
+    {
+      "name": "Take objects",
+      "when": "True",
+      "updates": {
+        "remaining": "state.remaining - action.take",
+        "to_move": "1 - state.to_move"
+      }
+    }
+  ],
+  "terminal": [
+    {
+      "name": "Last object",
+      "when": "state.remaining == 0",
+      "winner": "1 - state.to_move"
+    }
+  ],
+  "observations": [
+    "state.remaining / 21"
+  ],
+  "reward": "0 if not outcome.terminal or outcome.winner == None else (1 if outcome.winner == player else -1)",
+  "invariants": [],
+  "tests": [
+    {
+      "name": "Take 3 from 5",
+      "state": {
+        "remaining": 5,
+        "to_move": 0
+      },
+      "actions": [
+        {
+          "take": 3
+        }
+      ],
+      "expect": {
+        "state": {
+          "remaining": 2,
+          "to_move": 1
+        },
+        "terminal": false
+      }
+    },
+    {
+      "name": "Too many objects",
+      "state": {
+        "remaining": 2,
+        "to_move": 0
+      },
+      "actions": [
+        {
+          "take": 3
+        }
+      ],
+      "expectError": "illegal",
+      "expect": {
+        "state": {
+          "remaining": 2,
+          "to_move": 0
+        }
+      }
+    },
+    {
+      "name": "Last object wins",
+      "state": {
+        "remaining": 1,
+        "to_move": 1
+      },
+      "actions": [
+        {
+          "take": 1
+        }
+      ],
+      "expect": {
+        "terminal": true,
+        "winner": 1,
+        "rewards": [
+          -1,
+          1
+        ]
+      }
+    }
+  ]
+}

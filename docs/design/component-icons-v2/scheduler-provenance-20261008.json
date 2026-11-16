@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "assets": [
+    {
+      "id": "scheduler_step_lr",
+      "prompt": "Use case: style-transfer. Asset type: one transparent KwipML macOS Training-family component icon. The attached AdamW icon is the exact family style reference, not the subject to repeat. Create a new scheduler_step_lr icon. Preserve its centered regular octagonal outlined frame, crisp flat line style, consistent visual weight and generous negative space. Pale muted olive border (#abb478) and darker olive interior symbol (#748445); no additional colors. Replace the interior artwork with a simple descending staircase with three flat treads joined by vertical drops, showing a rate lowered at fixed intervals. A single centered icon only, full icon comfortably within a square image with a transparent interior and transparent exterior. No letters, numbers, captions, axes labels, glow, gradients, texture, decorative specks, extra arrows, 3D depth, shadows or background panels. Clean precise closed octagonal border; symbol legible at 32px. Do not copy the two optimizer waves or downward arrow from the reference.",
+      "source": "/Users/developer/.codex/generated_images/01a10a07-829a-7e73-a566-105746b4f45f/exec-096f4985-1d6f-4b72-893c-9aa6872b3b57.png",
+      "destination": "Sources/KwipMLApp/Resources/ComponentIcons/scheduler_step_lr-v2.png",
+      "sha256": "224f58d6bd5791a77860197c779e08686ec2c3d38ca89e04f912c548c6c2ba4c",
+      "mode": "image_gen referenced-image transparent generation"
+    },
+    {
+      "id": "scheduler_cosine_annealing_lr",
+      "prompt": "Use case: style-transfer. Asset type: one transparent KwipML macOS Training-family component icon. The attached AdamW icon is the exact family style reference, not the subject to repeat. Create a new scheduler_cosine_annealing_lr icon. Preserve its centered regular octagonal outlined frame, crisp flat line style, consistent visual weight and generous negative space. Pale muted olive border (#abb478) and darker olive interior symbol (#748445); no additional colors. Replace the interior artwork with one smooth descending half-cosine curve that begins flat high at the left and eases flat low at the right. A single centered icon only, full icon comfortably within a square image with a transparent interior and transparent exterior. No letters, numbers, captions, axes labels, glow, gradients, texture, decorative specks, extra arrows, 3D depth, shadows or background panels. Clean precise closed octagonal border; symbol legible at 32px. Do not copy the two optimizer waves or downward arrow from the reference.",
+      "source": "/Users/developer/.codex/generated_images/01a10a07-829a-7e73-a566-105746b4f45f/exec-3345ac4b-0cf4-4c2b-bbb9-fb29e98362c7.png",
+      "destination": "Sources/KwipMLApp/Resources/ComponentIcons/scheduler_cosine_annealing_lr-v2.png",
+      "sha256": "bff5c4ec38f3efd4c0003b38606fe6bc0acfc0061aa7cf0b8d8abe8e4ff3f1ef",
+      "mode": "image_gen referenced-image transparent generation"
+    },
+    {
+      "id": "scheduler_reduce_on_plateau",
+      "prompt": "Use case: style-transfer. Asset type: one transparent KwipML macOS Training-family component icon. The attached AdamW icon is the exact family style reference, not the subject to repeat. Create a new scheduler_reduce_on_plateau icon. Preserve its centered regular octagonal outlined frame, crisp flat line style, consistent visual weight and generous negative space. Pale muted olive border (#abb478) and darker olive interior symbol (#748445); no additional colors. Replace the interior artwork with a horizontal row of three small observation dots above a flat line that then drops one level, with a small pause marker, showing wait then reduce. A single centered icon only, full icon comfortably within a square image with a transparent interior and transparent exterior. No letters, numbers, captions, axes labels, glow, gradients, texture, decorative specks, extra arrows, 3D depth, shadows or background panels. Clean precise closed octagonal border; symbol legible at 32px. Do not copy the two optimizer waves or downward arrow from the reference.",
+      "source": "/Users/developer/.codex/generated_images/01a10a07-829a-7e73-a566-105746b4f45f/exec-9495c671-2e46-46ab-861b-b4732280688e.png",
+      "destination": "Sources/KwipMLApp/Resources/ComponentIcons/scheduler_reduce_on_plateau-v2.png",
+      "sha256": "4e3818a86dc8eeeda29f525fb6aa4775e6ec80517d57196d6a1d4d7f45d3468b",
+      "mode": "image_gen referenced-image transparent generation"
+    },
+    {
+      "id": "scheduler_one_cycle_lr",
+      "prompt": "Use case: style-transfer. Asset type: one transparent KwipML macOS Training-family component icon. The attached AdamW icon is the exact family style reference, not the subject to repeat. Create a new scheduler_one_cycle_lr icon. Preserve its centered regular octagonal outlined frame, crisp flat line style, consistent visual weight and generous negative space. Pale muted olive border (#abb478) and darker olive interior symbol (#748445); no additional colors. Replace the interior artwork with one single rounded hill curve rising from a low left endpoint to a high middle peak and falling to a low right endpoint, showing one rise-and-fall cycle. A single centered icon only, full icon comfortably within a square image with a transparent interior and transparent exterior. No letters, numbers, captions, axes labels, glow, gradients, texture, decorative specks, extra arrows, 3D depth, shadows or background panels. Clean precise closed octagonal border; symbol legible at 32px. Do not copy the two optimizer waves or downward arrow from the reference.",
+      "source": "/Users/developer/.codex/generated_images/01a10a07-829a-7e73-a566-105746b4f45f/exec-63693cbc-65a5-44a7-84fd-df983cb39171.png",
+      "destination": "Sources/KwipMLApp/Resources/ComponentIcons/scheduler_one_cycle_lr-v2.png",
+      "sha256": "c30e115786fa7619bbf048f5519050992014f55cc5ea2895ecc84fdd8f9d1712",
+      "mode": "image_gen referenced-image transparent generation"
+    },
+    {
+      "id": "scheduler_linear_lr",
+      "prompt": "Use case: style-transfer. Asset type: one transparent KwipML macOS Training-family component icon. The attached AdamW icon is the exact family style reference, not the subject to repeat. Create a new scheduler_linear_lr icon. Preserve its centered regular octagonal outlined frame, crisp flat line style, consistent visual weight and generous negative space. Pale muted olive border (#abb478) and darker olive interior symbol (#748445); no additional colors. Replace the interior artwork with one straight diagonal rising line with three small square sample marks at equal intervals, showing a gradual linear warm-up. A single centered icon only, full icon comfortably within a square image with a transparent interior and transparent exterior. No letters, numbers, captions, axes labels, glow, gradients, texture, decorative specks, extra arrows, 3D depth, shadows or background panels. Clean precise closed octagonal border; symbol legible at 32px. Do not copy the two optimizer waves or downward arrow from the reference.",
+      "source": "/Users/developer/.codex/generated_images/01a10a07-829a-7e73-a566-105746b4f45f/exec-7379b9e2-e3d7-4d63-b21b-73ba8faad910.png",
+      "destination": "Sources/KwipMLApp/Resources/ComponentIcons/scheduler_linear_lr-v2.png",
+      "sha256": "02432ca4acc57a7cf2716193c00d686f3662d4aca655906d865011318e5b3b33",
+      "mode": "image_gen referenced-image transparent generation"
+    }
+  ]
+}

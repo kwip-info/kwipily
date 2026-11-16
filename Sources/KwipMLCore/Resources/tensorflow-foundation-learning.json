@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "id": "tensorflow.dense-foundation",
+  "contentVersion": "1.0.0",
+  "reviewedAt": "2026-10-07",
+  "backendID": "tensorflow",
+  "example": "tensorflow_classifier.json",
+  "title": "One classifier, two matrix products",
+  "summary": "Build a Dense–ReLU–Dense classifier and follow its inputs, logits, loss and saved weights.",
+  "prerequisites": [
+    "Matrix multiplication",
+    "Held-out validation"
+  ],
+  "steps": [
+    {
+      "title": "Preserve the split",
+      "body": "Run the bundled preparation. Fit mean and scale on training rows; transform held-out rows with that same state. The backend consumes those pinned ports without splitting again. Inspect the actual counts in the completed run."
+    },
+    {
+      "title": "Follow the dimensions",
+      "body": "For a batch of B rows, X has shape [B,2]. The first Keras kernel has shape [2,8] and bias [8]. H = ReLU(XK₁ + b₁), shape [B,8]. Logits Z = HK₂ + b₂, shape [B,2].",
+      "formula": "Z = ReLU(XK₁ + b₁)K₂ + b₂"
+    },
+    {
+      "title": "Count the trainable values",
+      "body": "First Dense: 2×8 + 8 = 24 values. Second Dense: 8×2 + 2 = 18 values. Total: 42. Keras stores the kernel as [input, output]; PyTorch Linear stores its weight as [output, input]. Transpose when translating weights."
+    },
+    {
+      "title": "Interpret the objective",
+      "body": "Sparse cross-entropy receives integer class labels and raw logits. Stable log-sum-exp converts the two logits to the log probability of the correct class. Do not add a softmax just to suppress large values; examine loss, inputs, gradients and learning rate first."
+    },
+    {
+      "title": "Run a controlled comparison",
+      "body": "Keep the preparation manifest fixed. Change only the initialization seed or learning rate. Compare held-out loss and accuracy; training improvement alone does not demonstrate generalization. Repeatedly tuning on validation can overfit that validation set."
+    },
+    {
+      "title": "Reuse the result",
+      "body": "The export has portable inference code, a graph and Keras HDF5 weights. Its inference expects already prepared float32 rows of width 2. The run separately archives the exact preparation and provenance. Weight reload is inference restoration; optimizer-state continuation is not implemented."
+    }
+  ],
+  "checks": [
+    {
+      "question": "What is the hidden tensor shape for 16 rows?",
+      "expected": "[16,8]"
+    },
+    {
+      "question": "How many parameters remain if both biases are disabled?",
+      "expected": "32"
+    },
+    {
+      "question": "For x=[1,2], K=[[1,0],[0,1]], b=[-2,1], what is ReLU(xK+b)?",
+      "expected": "[0,3]"
+    },
+    {
+      "question": "May the held-out rows determine the scaler mean?",
+      "expected": "No; that leaks held-out information into training."
+    }
+  ],
+  "assessmentMode": "reading-and-manual-checks",
+  "limitations": "Reading and manual checks; no automatically scored assessment receipt. CPU only. GPU, optimizer resume, arbitrary layers and custom code remain unsupported."
+}

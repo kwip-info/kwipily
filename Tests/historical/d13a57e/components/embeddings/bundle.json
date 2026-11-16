@@ -1,0 +1,230 @@
+{
+  "schemaVersion": 1,
+  "id": "kwip.embeddings",
+  "version": 1,
+  "backend": "pytorch",
+  "components": [
+    {
+      "definition": {
+        "id": "embedding",
+        "title": "Embedding",
+        "category": "Embeddings",
+        "inputs": [
+          "in"
+        ],
+        "outputs": [
+          "out"
+        ],
+        "fields": [
+          {
+            "key": "num_embeddings",
+            "title": "Table rows",
+            "kind": "integer",
+            "defaultValue": 16,
+            "min": 1,
+            "max": 100000000
+          },
+          {
+            "key": "embedding_dim",
+            "title": "Vector dimensions",
+            "kind": "integer",
+            "defaultValue": 8,
+            "min": 1,
+            "max": 4096
+          },
+          {
+            "key": "padding_idx",
+            "title": "Padding row",
+            "kind": "integer",
+            "defaultValue": null,
+            "min": -100000000,
+            "max": 99999999,
+            "allowsNull": true
+          },
+          {
+            "key": "max_norm",
+            "title": "Maximum norm",
+            "kind": "number",
+            "defaultValue": null,
+            "min": 1.1754943508222875e-38,
+            "max": 3.4028234663852886e+38,
+            "allowsNull": true
+          },
+          {
+            "key": "norm_type",
+            "title": "Norm order",
+            "kind": "number",
+            "defaultValue": 2,
+            "min": 1.1754943508222875e-38,
+            "max": 3.4028234663852886e+38
+          },
+          {
+            "key": "scale_grad_by_freq",
+            "title": "Scale gradients by frequency",
+            "kind": "boolean",
+            "defaultValue": false
+          },
+          {
+            "key": "sparse",
+            "title": "Sparse gradients",
+            "kind": "boolean",
+            "defaultValue": false
+          },
+          {
+            "key": "freeze",
+            "title": "Freeze learned weights",
+            "kind": "boolean",
+            "defaultValue": false
+          }
+        ]
+      },
+      "published": true,
+      "configurationVersion": 2,
+      "adapterID": "kwip.runner.graph-v2.embedding",
+      "shapeRuleID": "kwip.shape.embedding.v1",
+      "presentation": {
+        "theme": "purple",
+        "icon": "embedding-v2",
+        "shortTitle": "Embedding",
+        "purpose": "Select learned number rows using exact integer categories."
+      },
+      "outputConditions": {},
+      "sources": {
+        "native": "Sources/KwipMLCore/EmbeddingComponent.swift",
+        "worker": "runner/embedding.py",
+        "tests": "runner/tests/test_embedding_contract.py",
+        "evidence": "docs/production/TORCH_EMBEDDING_CLOSURE.md"
+      },
+      "runtimeContract": {
+        "version": {
+          "major": 1,
+          "minor": 0,
+          "patch": 0
+        },
+        "adapterID": "kwip.runner.graph-v2.embedding",
+        "graphSchemaVersions": [
+          2
+        ],
+        "inputDType": "int64",
+        "weightDType": "float32",
+        "maximumInputSampleRank": 6,
+        "maximumOutputRank": 8,
+        "maximumPreparedColumns": 128,
+        "maximumParameters": 2000000,
+        "preservesBatch": true,
+        "outOfRangePolicy": "reject",
+        "paddingGradient": "suppressed",
+        "frequencyScaling": true,
+        "frozenWeightsMayRenormalize": true,
+        "trainingOptimizer": "Adam",
+        "trainableSparseGradients": false,
+        "previewCacheSchemaForMaxNorm": 2,
+        "mpsMaxNormExecution": "cpuFallback"
+      },
+      "learning": {
+        "contentVersion": 1,
+        "updatedAt": "2026-10-08",
+        "exampleID": "prepared-embedding-classifier",
+        "sourceResource": "embedding-observations",
+        "title": "Explore Embedding in a categorical classifier",
+        "subtitle": "Use category numbers to select rows from a learned table.",
+        "disclosureTitle": "How category numbers become learned vectors",
+        "formula": "An integer selects a row of numbers from a table. Those numbers are a vector: a short list the model can learn.",
+        "paragraphs": [
+          "Supply whole-number categories through Integer input. Each number must name a valid table row; no rounding of decimal values is performed.",
+          "Embedding appends a vector direction to each selected category. Inspect the integer input and the output numbers after running the example.",
+          "Padding suppresses learning changes to one chosen row; repeated categories can share accumulated changes. Maximum norm limits selected row lengths and may change even frozen table rows. On Apple GPU that norm adjustment uses the documented CPU fallback.",
+          "The categorical example has its own data file and editable settings. The Embedding lab provides measured lookup, padding/frequency and forward weight-change exercises. Sparse learning with Adam is not supported."
+        ],
+        "buttonTitle": "Open categorical classifier example",
+        "exampleSource": "Sources/KwipMLCore/WorkflowExamples.swift"
+      }
+    },
+    {
+      "definition": {
+        "id": "index_input",
+        "title": "Integer input",
+        "category": "Boundaries",
+        "inputs": [],
+        "outputs": [
+          "out"
+        ],
+        "fields": [
+          {
+            "key": "shape",
+            "title": "Sample dimensions",
+            "kind": "integerList",
+            "defaultValue": [
+              2
+            ],
+            "min": 1,
+            "max": 100000000,
+            "minItems": 1,
+            "maxItems": 7
+          }
+        ]
+      },
+      "published": true,
+      "configurationVersion": 2,
+      "adapterID": "kwip.runner.graph-v2.index_input",
+      "shapeRuleID": "kwip.shape.index_input.v1",
+      "presentation": {
+        "theme": "taupe",
+        "icon": "index_input-v2",
+        "shortTitle": "Integer input",
+        "purpose": "Supply exact whole-number row selectors while keeping observations separate."
+      },
+      "outputConditions": {},
+      "sources": {
+        "native": "Sources/KwipMLCore/EmbeddingComponent.swift",
+        "worker": "runner/embedding.py",
+        "tests": "runner/tests/test_embedding_contract.py",
+        "evidence": "docs/production/TORCH_EMBEDDING_CLOSURE.md"
+      },
+      "runtimeContract": {
+        "version": {
+          "major": 1,
+          "minor": 0,
+          "patch": 0
+        },
+        "adapterID": "kwip.runner.graph-v2.embedding",
+        "graphSchemaVersions": [
+          2
+        ],
+        "inputDType": "int64",
+        "weightDType": "float32",
+        "maximumInputSampleRank": 6,
+        "maximumOutputRank": 8,
+        "maximumPreparedColumns": 128,
+        "maximumParameters": 2000000,
+        "preservesBatch": true,
+        "outOfRangePolicy": "reject",
+        "paddingGradient": "suppressed",
+        "frequencyScaling": true,
+        "frozenWeightsMayRenormalize": true,
+        "trainingOptimizer": "Adam",
+        "trainableSparseGradients": false,
+        "previewCacheSchemaForMaxNorm": 2,
+        "mpsMaxNormExecution": "cpuFallback"
+      },
+      "learning": {
+        "contentVersion": 1,
+        "updatedAt": "2026-10-08",
+        "exampleID": "prepared-embedding-classifier",
+        "sourceResource": "embedding-observations",
+        "title": "Explore Integer input in a categorical classifier",
+        "subtitle": "Use category numbers to select rows from a learned table.",
+        "disclosureTitle": "How category numbers become learned vectors",
+        "formula": "An integer selects a row of numbers from a table. Those numbers are a vector: a short list the model can learn.",
+        "paragraphs": [
+          "Supply whole-number categories through Integer input. Each number must name a valid table row; no rounding of decimal values is performed.",
+          "Embedding appends a vector direction to each selected category. Inspect the integer input and the output numbers after running the example.",
+          "Padding suppresses learning changes to one chosen row; repeated categories can share accumulated changes. Maximum norm limits selected row lengths and may change even frozen table rows. On Apple GPU that norm adjustment uses the documented CPU fallback.",
+          "The categorical example has its own data file and editable settings. The Embedding lab provides measured lookup, padding/frequency and forward weight-change exercises. Sparse learning with Adam is not supported."
+        ],
+        "buttonTitle": "Open categorical classifier example",
+        "exampleSource": "Sources/KwipMLCore/WorkflowExamples.swift"
+      }
+    }
+  ]
+}

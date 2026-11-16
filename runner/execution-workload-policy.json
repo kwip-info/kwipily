@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "integerMaximum": 9007199254740991,
+  "settings": [
+    {
+      "id": "scratchBytes",
+      "unit": "bytes",
+      "scope": "operation",
+      "minimum": 1
+    },
+    {
+      "id": "retainedBytes",
+      "unit": "bytes",
+      "scope": "operation",
+      "minimum": 1
+    },
+    {
+      "id": "tableRows",
+      "unit": "rows",
+      "scope": "operation",
+      "minimum": 1
+    },
+    {
+      "id": "tableCells",
+      "unit": "cells",
+      "scope": "operation",
+      "minimum": 1
+    },
+    {
+      "id": "tableColumns",
+      "unit": "columns",
+      "scope": "operation",
+      "minimum": 1
+    },
+    {
+      "id": "sourceBytes",
+      "unit": "bytes",
+      "scope": "operation",
+      "minimum": 1
+    },
+    {
+      "id": "collectionMembers",
+      "unit": "members",
+      "scope": "operation",
+      "minimum": 1
+    },
+    {
+      "id": "collectionBytes",
+      "unit": "bytes",
+      "scope": "operation",
+      "minimum": 1
+    },
+    {
+      "id": "collectionMemberBytes",
+      "unit": "bytes",
+      "scope": "operation",
+      "minimum": 1
+    },
+    {
+      "id": "planNodes",
+      "unit": "nodes",
+      "scope": "operation",
+      "minimum": 1
+    },
+    {
+      "id": "planEdges",
+      "unit": "edges",
+      "scope": "operation",
+      "minimum": 1
+    },
+    {
+      "id": "parallelTasks",
+      "unit": "tasks",
+      "scope": "operation",
+      "minimum": 1
+    }
+  ],
+  "presets": {
+    "legacy": {
+      "scratchBytes": 100000000,
+      "retainedBytes": 200000000,
+      "tableRows": 5000000,
+      "tableCells": 5000000,
+      "tableColumns": 128,
+      "sourceBytes": 268435456,
+      "collectionMembers": 1000,
+      "collectionBytes": 268435456,
+      "collectionMemberBytes": 67108864,
+      "planNodes": 128,
+      "planEdges": 256,
+      "parallelTasks": 1
+    },
+    "light": {
+      "scratchBytes": 536870912,
+      "retainedBytes": 536870912,
+      "tableRows": 5000000,
+      "tableCells": 10000000,
+      "tableColumns": 256,
+      "sourceBytes": 536870912,
+      "collectionMembers": 1000,
+      "collectionBytes": 536870912,
+      "collectionMemberBytes": 134217728,
+      "planNodes": 256,
+      "planEdges": 1024,
+      "parallelTasks": 2
+    },
+    "balanced": {
+      "scratchBytes": 2147483648,
+      "retainedBytes": 2147483648,
+      "tableRows": 25000000,
+      "tableCells": 100000000,
+      "tableColumns": 1024,
+      "sourceBytes": 2147483648,
+      "collectionMembers": 10000,
+      "collectionBytes": 2147483648,
+      "collectionMemberBytes": 536870912,
+      "planNodes": 1024,
+      "planEdges": 4096,
+      "parallelTasks": 4
+    },
+    "throughput": {
+      "scratchBytes": 8589934592,
+      "retainedBytes": 8589934592,
+      "tableRows": 100000000,
+      "tableCells": 500000000,
+      "tableColumns": 4096,
+      "sourceBytes": 8589934592,
+      "collectionMembers": 100000,
+      "collectionBytes": 8589934592,
+      "collectionMemberBytes": 2147483648,
+      "planNodes": 4096,
+      "planEdges": 16384,
+      "parallelTasks": 8
+    }
+  }
+}

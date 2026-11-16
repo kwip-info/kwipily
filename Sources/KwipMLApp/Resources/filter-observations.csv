@@ -1,0 +1,9 @@
+observation_id,amount,status,note
+A01,12.5,ready,priority north
+A02,7.25,hold,review south
+A03,18,READY,priority west
+A04,,ready,unknown amount
+A05,0,hold,review north
+A06,9.5,ready,priority south
+A07,21.75,hold,review west
+A08,10,ready,priority east

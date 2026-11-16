@@ -1,0 +1,465 @@
+{
+  "schemaVersion": 1,
+  "id": "kwip.tensor-routing",
+  "version": 1,
+  "backend": "pytorch",
+  "components": [
+    {
+      "definition": {
+        "id": "split",
+        "title": "Split",
+        "category": "Tensor layout",
+        "inputs": [
+          "in"
+        ],
+        "outputs": [
+          "part0",
+          "part1",
+          "part2",
+          "part3",
+          "part4",
+          "part5",
+          "part6",
+          "part7"
+        ],
+        "fields": [
+          {
+            "key": "mode",
+            "title": "Split mode",
+            "kind": "choice",
+            "defaultValue": "size",
+            "choices": [
+              {
+                "value": "size",
+                "title": "Equal-sized parts"
+              },
+              {
+                "value": "sections",
+                "title": "Chosen section sizes"
+              }
+            ]
+          },
+          {
+            "key": "dim",
+            "title": "Sample direction",
+            "kind": "integer",
+            "defaultValue": -1,
+            "min": -8,
+            "max": 7
+          },
+          {
+            "key": "split_size",
+            "title": "Split size",
+            "kind": "integer",
+            "defaultValue": 2,
+            "min": 1,
+            "max": 100000000
+          },
+          {
+            "key": "sections",
+            "title": "Section sizes",
+            "kind": "integerList",
+            "defaultValue": [
+              1,
+              1
+            ],
+            "min": 1,
+            "max": 100000000,
+            "minItems": 1,
+            "maxItems": 8
+          }
+        ]
+      },
+      "published": true,
+      "configurationVersion": 2,
+      "adapterID": "kwip.runner.graph-v2.split",
+      "shapeRuleID": "kwip.shape.split.v1",
+      "presentation": {
+        "theme": "violet",
+        "icon": "split-v2",
+        "shortTitle": "Split",
+        "purpose": "Separate an array into ordered parts with chosen sizes."
+      },
+      "outputConditions": {},
+      "sources": {
+        "native": "Sources/KwipMLCore/TensorRoutingConfiguration.swift",
+        "worker": "runner/tensor_routing_configuration.py",
+        "tests": "runner/tests/test_tensor_routing_runtime.py",
+        "evidence": "docs/production/TORCH_TENSOR_ROUTING_CLOSURE.md"
+      },
+      "runtimeContract": {
+        "version": {
+          "major": 1,
+          "minor": 0,
+          "patch": 0
+        },
+        "adapterID": "kwip.runner.graph-v2.split",
+        "graphSchemaVersions": [
+          2
+        ],
+        "maximumRank": 8,
+        "preservesBatch": true,
+        "graphDTypes": [
+          "float32"
+        ],
+        "maximumTensorElements": 100000000,
+        "parameterless": true,
+        "maximumOutputs": 8,
+        "outputPorts": [
+          "part0",
+          "part1",
+          "part2",
+          "part3",
+          "part4",
+          "part5",
+          "part6",
+          "part7"
+        ],
+        "axisMinimum": -8,
+        "axisMaximum": 7,
+        "excludesBatch": true,
+        "views": true,
+        "splitSizeMinimum": 1,
+        "splitSizeMaximum": 100000000,
+        "sectionCountMinimum": 1,
+        "sectionCountMaximum": 8
+      },
+      "learning": {
+        "contentVersion": 1,
+        "updatedAt": "2026-10-08",
+        "exampleID": "prepared-split-classifier",
+        "sourceResource": "workflow-observations",
+        "title": "Explore Split in a classifier",
+        "subtitle": "Separate an array into ordered parts with chosen sizes.",
+        "disclosureTitle": "How the sample directions work",
+        "formula": "Separate an array into ordered parts with chosen sizes.",
+        "paragraphs": [
+          "A tensor is an array with named directions. A sample is one observation; a batch is a group of observations. Sample direction selects where to cut each observation; the observation direction always stays separate. A negative direction counts backward; \u22121 means the last direction.",
+          "Choose Equal-sized parts to set Split size, or Chosen section sizes to enter each positive Section size in order. Chosen sizes must add up to the selected direction. Equal sizes may leave a smaller final part. The inactive setting resets to its default.",
+          "Each actual part has its own connector, named part0, part1 and onward in source order. At most eight parts are supported. A connector exists only when its part exists. If changed settings remove a connected part, repair the highlighted connection; it is never silently redirected.",
+          "Inspect the different part tables and reconnect them with Concatenate. In the two measured lessons, rebuild the requested order and check how a small source change affects the result."
+        ],
+        "buttonTitle": "Open Split example",
+        "exampleSource": "Sources/KwipMLCore/TensorRoutingWorkflowExample.swift",
+        "lessonIDs": [
+          "assessment.split-size-order",
+          "assessment.split-sections-order"
+        ]
+      }
+    },
+    {
+      "definition": {
+        "id": "chunk",
+        "title": "Chunk",
+        "category": "Tensor layout",
+        "inputs": [
+          "in"
+        ],
+        "outputs": [
+          "part0",
+          "part1",
+          "part2",
+          "part3",
+          "part4",
+          "part5",
+          "part6",
+          "part7"
+        ],
+        "fields": [
+          {
+            "key": "chunks",
+            "title": "Requested parts",
+            "kind": "integer",
+            "defaultValue": 2,
+            "min": 1,
+            "max": 8
+          },
+          {
+            "key": "dim",
+            "title": "Sample direction",
+            "kind": "integer",
+            "defaultValue": -1,
+            "min": -8,
+            "max": 7
+          }
+        ]
+      },
+      "published": true,
+      "configurationVersion": 2,
+      "adapterID": "kwip.runner.graph-v2.chunk",
+      "shapeRuleID": "kwip.shape.chunk.v1",
+      "presentation": {
+        "theme": "violet",
+        "icon": "chunk-v2",
+        "shortTitle": "Chunk",
+        "purpose": "Request ordered parts and inspect how many actually exist."
+      },
+      "outputConditions": {},
+      "sources": {
+        "native": "Sources/KwipMLCore/TensorRoutingConfiguration.swift",
+        "worker": "runner/tensor_routing_configuration.py",
+        "tests": "runner/tests/test_tensor_routing_runtime.py",
+        "evidence": "docs/production/TORCH_TENSOR_ROUTING_CLOSURE.md"
+      },
+      "runtimeContract": {
+        "version": {
+          "major": 1,
+          "minor": 0,
+          "patch": 0
+        },
+        "adapterID": "kwip.runner.graph-v2.chunk",
+        "graphSchemaVersions": [
+          2
+        ],
+        "maximumRank": 8,
+        "preservesBatch": true,
+        "graphDTypes": [
+          "float32"
+        ],
+        "maximumTensorElements": 100000000,
+        "parameterless": true,
+        "maximumOutputs": 8,
+        "outputPorts": [
+          "part0",
+          "part1",
+          "part2",
+          "part3",
+          "part4",
+          "part5",
+          "part6",
+          "part7"
+        ],
+        "axisMinimum": -8,
+        "axisMaximum": 7,
+        "excludesBatch": true,
+        "views": true,
+        "chunksMinimum": 1,
+        "chunksMaximum": 8,
+        "mayReturnFewer": true
+      },
+      "learning": {
+        "contentVersion": 1,
+        "updatedAt": "2026-10-08",
+        "exampleID": "prepared-chunk-classifier",
+        "sourceResource": "workflow-observations",
+        "title": "Explore Chunk in a classifier",
+        "subtitle": "Request ordered parts and inspect how many actually exist.",
+        "disclosureTitle": "How the sample directions work",
+        "formula": "Request ordered parts and inspect how many actually exist.",
+        "paragraphs": [
+          "An array holds values in named directions. A sample is one observation; a batch groups observations. Sample direction selects where to cut each sample, keeping observations separate. A negative direction counts from the end.",
+          "Requested parts is a request, not a promise. The block chooses equal widths rounded upward, so there may be fewer parts than requested. Thirteen positions divided with a request for six parts produce five parts; the last has one position. No empty parts are added.",
+          "Use the actual part connectors in source order. Each connector exposes its own table and shape. After changing a setting, repair any connection to a part that no longer exists. The lesson asks for the final existing part and measures values, shape and input influence."
+        ],
+        "buttonTitle": "Open Chunk example",
+        "exampleSource": "Sources/KwipMLCore/TensorRoutingWorkflowExample.swift",
+        "lessonIDs": [
+          "assessment.chunk-uneven-parts"
+        ]
+      }
+    },
+    {
+      "definition": {
+        "id": "gather",
+        "title": "Gather",
+        "category": "Tensor layout",
+        "inputs": [
+          "source",
+          "indices"
+        ],
+        "outputs": [
+          "out"
+        ],
+        "fields": [
+          {
+            "key": "dim",
+            "title": "Sample direction",
+            "kind": "integer",
+            "defaultValue": -1,
+            "min": -8,
+            "max": 7
+          }
+        ]
+      },
+      "published": true,
+      "configurationVersion": 2,
+      "adapterID": "kwip.runner.graph-v2.gather",
+      "shapeRuleID": "kwip.shape.gather.v1",
+      "presentation": {
+        "theme": "violet",
+        "icon": "gather-v2",
+        "shortTitle": "Gather",
+        "purpose": "Choose source values by their exact positions."
+      },
+      "outputConditions": {},
+      "sources": {
+        "native": "Sources/KwipMLCore/TensorRoutingConfiguration.swift",
+        "worker": "runner/tensor_routing_configuration.py",
+        "tests": "runner/tests/test_tensor_routing_runtime.py",
+        "evidence": "docs/production/TORCH_TENSOR_ROUTING_CLOSURE.md"
+      },
+      "runtimeContract": {
+        "version": {
+          "major": 1,
+          "minor": 0,
+          "patch": 0
+        },
+        "adapterID": "kwip.runner.graph-v2.gather",
+        "graphSchemaVersions": [
+          2
+        ],
+        "maximumRank": 8,
+        "preservesBatch": true,
+        "graphDTypes": [
+          "float32"
+        ],
+        "maximumTensorElements": 100000000,
+        "parameterless": true,
+        "axisMinimum": -8,
+        "axisMaximum": 7,
+        "excludesBatch": true,
+        "indicesDType": "int64",
+        "broadcast": false,
+        "negativeIndices": false,
+        "sparseGradient": false
+      },
+      "learning": {
+        "contentVersion": 1,
+        "updatedAt": "2026-10-08",
+        "exampleID": "prepared-gather-classifier",
+        "sourceResource": "workflow-observations",
+        "title": "Explore Gather in a classifier",
+        "subtitle": "Choose source values by their exact positions.",
+        "disclosureTitle": "How the sample directions work",
+        "formula": "Choose source values by their exact positions.",
+        "paragraphs": [
+          "An array is a table of values extended across named directions. Source carries measured values; Indices carries whole-number positions starting at zero. A sample is one observation; a batch groups observations. Both inputs keep the same observation count and number of directions.",
+          "Sample direction tells the block where each position applies. Other selector directions may be smaller than their source directions; they are not repeated automatically. Negative or out-of-range positions are refused.",
+          "Selecting the same source position several times repeats that value. Input influence means how a small source change affects the result; repeated selections add their influences together. Position numbers are choices, not trainable measurements, so they receive no influence values.",
+          "The example connects MaxPool1d winning positions to Gather. The lesson uses supplied position arrays and checks selected values and independent source influence. Private assessment positions and answers remain hidden."
+        ],
+        "buttonTitle": "Open Gather example",
+        "exampleSource": "Sources/KwipMLCore/TensorRoutingWorkflowExample.swift",
+        "lessonIDs": [
+          "assessment.gather-repeated-positions"
+        ]
+      }
+    },
+    {
+      "definition": {
+        "id": "einsum",
+        "title": "Einsum",
+        "category": "Tensor layout",
+        "inputs": [
+          "a",
+          "b"
+        ],
+        "outputs": [
+          "out"
+        ],
+        "fields": [
+          {
+            "key": "pattern",
+            "title": "Arrangement preset",
+            "kind": "choice",
+            "defaultValue": "multiply",
+            "choices": [
+              {
+                "value": "multiply",
+                "title": "Combine tables"
+              },
+              {
+                "value": "outer",
+                "title": "Pair each value"
+              },
+              {
+                "value": "diagonal",
+                "title": "Read a diagonal"
+              },
+              {
+                "value": "reorder",
+                "title": "Swap sample directions"
+              },
+              {
+                "value": "custom",
+                "title": "Custom notation"
+              }
+            ]
+          },
+          {
+            "key": "equation",
+            "title": "Custom notation",
+            "kind": "text",
+            "defaultValue": "nab,nbc->nac",
+            "minItems": 1,
+            "maxItems": 128
+          }
+        ]
+      },
+      "published": true,
+      "configurationVersion": 2,
+      "adapterID": "kwip.runner.graph-v2.einsum",
+      "shapeRuleID": "kwip.shape.einsum.v1",
+      "presentation": {
+        "theme": "violet",
+        "icon": "einsum-v2",
+        "shortTitle": "Einsum",
+        "purpose": "Combine or rearrange arrays using named arrangements."
+      },
+      "outputConditions": {},
+      "sources": {
+        "native": "Sources/KwipMLCore/TensorRoutingConfiguration.swift",
+        "worker": "runner/tensor_routing_configuration.py",
+        "tests": "runner/tests/test_tensor_routing_runtime.py",
+        "evidence": "docs/production/TORCH_TENSOR_ROUTING_CLOSURE.md"
+      },
+      "runtimeContract": {
+        "version": {
+          "major": 1,
+          "minor": 0,
+          "patch": 0
+        },
+        "adapterID": "kwip.runner.graph-v2.einsum",
+        "graphSchemaVersions": [
+          2
+        ],
+        "maximumRank": 8,
+        "preservesBatch": true,
+        "graphDTypes": [
+          "float32"
+        ],
+        "maximumTensorElements": 100000000,
+        "parameterless": true,
+        "maximumOperands": 2,
+        "equationMinimumCharacters": 1,
+        "equationMaximumCharacters": 128,
+        "asciiOnly": true,
+        "explicitOutput": true,
+        "reservedBatchLabel": "n",
+        "maximumContractionTerms": 100000000
+      },
+      "learning": {
+        "contentVersion": 1,
+        "updatedAt": "2026-10-08",
+        "exampleID": "prepared-einsum-classifier",
+        "sourceResource": "workflow-observations",
+        "title": "Explore Einsum in a classifier",
+        "subtitle": "Combine or rearrange arrays using named arrangements.",
+        "disclosureTitle": "How the sample directions work",
+        "formula": "Combine or rearrange arrays using named arrangements.",
+        "paragraphs": [
+          "An array has named directions; a sample is one observation and a batch is a group of observations. Arrangement preset offers familiar operations without entering notation: Combine tables, Pair each value, Read a diagonal, or Swap sample directions.",
+          "Combine tables uses sources A and B. Read a diagonal and Swap sample directions use only A. Configured connectors show the actual sources required by the chosen arrangement. For more than two sources, use another block; this block accepts at most two.",
+          "Advanced Custom notation names directions with ASCII letters and an explicit arrow showing the output. The letter n always names observations and stays first on both sides; it cannot be combined, repeated or moved. Matching sample letters match sizes or reuse a size-one direction; repeated letters inside one source select a diagonal.",
+          "Custom notation is a bounded description of array directions, never executable code. Spaces are allowed; implicit outputs and ellipses are not. Work is bounded before running. The measured lessons compare combined tables and a diagonal, including how small source changes affect each result."
+        ],
+        "buttonTitle": "Open Einsum example",
+        "exampleSource": "Sources/KwipMLCore/TensorRoutingWorkflowExample.swift",
+        "lessonIDs": [
+          "assessment.einsum-combine-tables",
+          "assessment.einsum-diagonal-view"
+        ]
+      }
+    }
+  ]
+}

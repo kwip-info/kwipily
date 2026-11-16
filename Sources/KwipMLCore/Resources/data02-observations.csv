@@ -1,0 +1,9 @@
+order_id,customer,email,quantity,unit_price,note
+A01,Ana,ANA@example.com,2,12.5,paid   today
+A02,Bo,bo@example.org,1,80,waiting  review
+A03,Cy,invalid,4,5,paid
+A04,Di,di@north.example,3,20,paid   yesterday
+A05,Ed,,1,10,missing email
+A06,Fi,fi@example.com,0,9,refunded
+A07,Gi,gi@example.org,2,30,paid
+A08,Hu,hu@example.com,1,6, paid 

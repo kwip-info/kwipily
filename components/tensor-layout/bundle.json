@@ -1,0 +1,253 @@
+{
+  "schemaVersion": 1,
+  "id": "kwip.tensor-layout",
+  "version": 1,
+  "backend": "pytorch",
+  "components": [
+    {
+      "definition": {
+        "id": "reshape",
+        "title": "Reshape",
+        "category": "Tensor layout",
+        "inputs": [
+          "in"
+        ],
+        "outputs": [
+          "out"
+        ],
+        "fields": [
+          {
+            "key": "shape",
+            "title": "Sample dimensions",
+            "kind": "integerList",
+            "defaultValue": [
+              -1
+            ],
+            "min": -1,
+            "max": 100000000,
+            "minItems": 1,
+            "maxItems": 7
+          }
+        ]
+      },
+      "published": true,
+      "configurationVersion": 2,
+      "adapterID": "kwip.runner.graph-v2.reshape",
+      "shapeRuleID": "kwip.shape.reshape.v1",
+      "presentation": {
+        "theme": "violet",
+        "icon": "reshape-v2",
+        "shortTitle": "Reshape",
+        "purpose": "Reorganize dimensions while keeping every number in reading order."
+      },
+      "outputConditions": {},
+      "sources": {
+        "native": "Sources/KwipMLCore/TensorLayoutComponent.swift",
+        "worker": "runner/tensor_layout.py",
+        "tests": "runner/tests/test_tensor_layout.py",
+        "evidence": "docs/production/TORCH_TENSOR_LAYOUT.md"
+      },
+      "runtimeContract": {
+        "version": {
+          "major": 1,
+          "minor": 0,
+          "patch": 0
+        },
+        "adapterID": "kwip.runner.graph-v2.tensor-layout",
+        "graphSchemaVersions": [
+          2
+        ],
+        "operations": [
+          "reshape",
+          "transpose",
+          "flatten"
+        ],
+        "maximumRank": 8,
+        "preservesBatch": true
+      },
+      "learning": {
+        "contentVersion": 2,
+        "updatedAt": "2026-10-15",
+        "exampleID": "prepared-tensor-layout-classifier",
+        "sourceResource": "workflow-observations",
+        "title": "Explore Reshape in a classifier",
+        "subtitle": "Reorganize dimensions while keeping every number in reading order.",
+        "disclosureTitle": "How Reshape changes an array",
+        "formula": "Reshape changes how numbers are grouped into rows and columns. It does not move numbers out of reading order or calculate new values.",
+        "paragraphs": [
+          "Add Reshape from Tensor layout, then choose Set dimensions. Each grid row describes one sample dimension; use Infer for at most one automatically calculated size. The batch N stays separate.",
+          "Use the arrows to order dimensions and Add dimension to extend the grid. Planned shape uses declared input metadata; it is not captured execution data. Apply only when the requested dimensions hold exactly the same values.",
+          "Choose Flatten axes on the same component to combine consecutive sample directions. The editable example and original Tensor layout lab exercises retain their saved Reshape and Flatten identities."
+        ],
+        "buttonTitle": "Open editable tensor-layout flow",
+        "exampleSource": "Sources/KwipMLCore/WorkflowExamples.swift"
+      }
+    },
+    {
+      "definition": {
+        "id": "transpose",
+        "title": "Transpose",
+        "category": "Tensor layout",
+        "inputs": [
+          "in"
+        ],
+        "outputs": [
+          "out"
+        ],
+        "fields": [
+          {
+            "key": "dim0",
+            "title": "First axis",
+            "kind": "integer",
+            "defaultValue": 1,
+            "min": -8,
+            "max": 7
+          },
+          {
+            "key": "dim1",
+            "title": "Second axis",
+            "kind": "integer",
+            "defaultValue": 2,
+            "min": -8,
+            "max": 7
+          }
+        ]
+      },
+      "published": true,
+      "configurationVersion": 2,
+      "adapterID": "kwip.runner.graph-v2.transpose",
+      "shapeRuleID": "kwip.shape.transpose.v1",
+      "presentation": {
+        "theme": "violet",
+        "icon": "transpose-v2",
+        "shortTitle": "Transpose",
+        "purpose": "Exchange two directions while preserving the matching values."
+      },
+      "outputConditions": {},
+      "sources": {
+        "native": "Sources/KwipMLCore/TensorLayoutComponent.swift",
+        "worker": "runner/tensor_layout.py",
+        "tests": "runner/tests/test_tensor_layout.py",
+        "evidence": "docs/production/TORCH_TENSOR_LAYOUT.md"
+      },
+      "runtimeContract": {
+        "version": {
+          "major": 1,
+          "minor": 0,
+          "patch": 0
+        },
+        "adapterID": "kwip.runner.graph-v2.tensor-layout",
+        "graphSchemaVersions": [
+          2
+        ],
+        "operations": [
+          "reshape",
+          "transpose",
+          "flatten"
+        ],
+        "maximumRank": 8,
+        "preservesBatch": true
+      },
+      "learning": {
+        "contentVersion": 2,
+        "updatedAt": "2026-10-15",
+        "exampleID": "prepared-tensor-layout-classifier",
+        "sourceResource": "workflow-observations",
+        "title": "Explore Transpose in a classifier",
+        "subtitle": "Exchange two directions while preserving the matching values.",
+        "disclosureTitle": "How Transpose changes an array",
+        "formula": "Transpose exchanges two directions in an array. For a table, rows become columns.",
+        "paragraphs": [
+          "Add Transpose and choose Swap axes. Select two sample axes; known input sizes appear beside their axis numbers. Negative axes count from the end, and batch N remains separate.",
+          "Apply swaps the two directions without changing the values. Planned shapes use declared metadata; Results shows captured tensors after execution.",
+          "Reorder axes is the same placement’s full-permutation mode. Original Transpose and Permute projects, examples and assessed lessons retain their identities."
+        ],
+        "buttonTitle": "Open editable tensor-layout flow",
+        "exampleSource": "Sources/KwipMLCore/WorkflowExamples.swift"
+      }
+    },
+    {
+      "definition": {
+        "id": "flatten",
+        "title": "Flatten",
+        "category": "Tensor layout",
+        "inputs": [
+          "in"
+        ],
+        "outputs": [
+          "out"
+        ],
+        "fields": [
+          {
+            "key": "start_dim",
+            "title": "First axis",
+            "kind": "integer",
+            "defaultValue": 1,
+            "min": -8,
+            "max": 7
+          },
+          {
+            "key": "end_dim",
+            "title": "Last axis",
+            "kind": "integer",
+            "defaultValue": -1,
+            "min": -8,
+            "max": 7
+          }
+        ]
+      },
+      "published": true,
+      "configurationVersion": 2,
+      "adapterID": "kwip.runner.graph-v2.flatten",
+      "shapeRuleID": "kwip.shape.flatten.v1",
+      "presentation": {
+        "theme": "violet",
+        "icon": "flatten-v2",
+        "shortTitle": "Flatten",
+        "purpose": "Combine consecutive directions into a longer row of values."
+      },
+      "outputConditions": {},
+      "sources": {
+        "native": "Sources/KwipMLCore/TensorLayoutComponent.swift",
+        "worker": "runner/tensor_layout.py",
+        "tests": "runner/tests/test_tensor_layout.py",
+        "evidence": "docs/production/TORCH_TENSOR_LAYOUT.md"
+      },
+      "runtimeContract": {
+        "version": {
+          "major": 1,
+          "minor": 0,
+          "patch": 0
+        },
+        "adapterID": "kwip.runner.graph-v2.tensor-layout",
+        "graphSchemaVersions": [
+          2
+        ],
+        "operations": [
+          "reshape",
+          "transpose",
+          "flatten"
+        ],
+        "maximumRank": 8,
+        "preservesBatch": true
+      },
+      "learning": {
+        "contentVersion": 2,
+        "updatedAt": "2026-10-15",
+        "exampleID": "prepared-tensor-layout-classifier",
+        "sourceResource": "workflow-observations",
+        "title": "Explore Flatten in a classifier",
+        "subtitle": "Combine consecutive directions into a longer row of values.",
+        "disclosureTitle": "How Flatten changes an array",
+        "formula": "Flatten joins a consecutive range of sample directions. It keeps the values in logical reading order.",
+        "paragraphs": [
+          "Add Reshape from Tensor layout and choose Flatten axes. Start axis and End axis choose the inclusive range to combine. Negative numbers count from the end; −1 remains the last sample axis as rank changes.",
+          "Keep batch N separate. Flatten can combine just part of a tensor; dimensions outside the selected range remain. Planned shape uses declared input metadata, while Results contains only captured values.",
+          "Original Flatten projects and lab exercises open in the same inspector without changing their behavior. Switch to Set dimensions only when you want an explicit ordered dimension grid, then Apply."
+        ],
+        "buttonTitle": "Open editable tensor-layout flow",
+        "exampleSource": "Sources/KwipMLCore/WorkflowExamples.swift"
+      }
+    }
+  ]
+}

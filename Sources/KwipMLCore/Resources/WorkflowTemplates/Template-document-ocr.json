@@ -1,0 +1,406 @@
+{
+  "definitions": [],
+  "drafts": [],
+  "edges": [
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "source"
+        },
+        "port": "table"
+      },
+      "id": "8FE06400-E6EA-4FB2-8043-DB9E89DEEB1D",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "pixels"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "pixels"
+        },
+        "port": "table"
+      },
+      "id": "23762EAD-BC90-482E-B13F-4EDB47AF9480",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "ocr"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "ocr"
+        },
+        "port": "documents"
+      },
+      "id": "F9056109-276E-40E2-9F3D-6B3C7BFC151F",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "documents-view"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "ocr"
+        },
+        "port": "regions"
+      },
+      "id": "181B70ED-1675-46AC-9BC8-CE7BBA71B969",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "regions-view"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "ocr"
+        },
+        "port": "documents"
+      },
+      "id": "502F67AB-F76D-4F88-81E3-4718F99D1B25",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "documents-csv"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "ocr"
+        },
+        "port": "regions"
+      },
+      "id": "18EFC407-BA3A-4446-8BC7-AC5FE1CE29E7",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "regions-csv"
+        },
+        "port": "table"
+      }
+    }
+  ],
+  "kind": "workflowProject",
+  "name": "Read printed documents",
+  "nodes": [
+    {
+      "address": {
+        "domain": "data",
+        "localID": "source"
+      },
+      "name": "Document images",
+      "payload": {
+        "config": {
+          "errorPolicy": "fail",
+          "excludePatterns": [],
+          "extensions": [
+            "png"
+          ],
+          "includeHidden": false,
+          "includePatterns": [
+            "**/*"
+          ],
+          "includeSubfolders": false,
+          "maxDepth": 32,
+          "maxFileBytes": 16777216,
+          "maxFiles": 3,
+          "maxTotalBytes": 50331648,
+          "metadataFields": [
+            "file_id",
+            "name",
+            "relative_path",
+            "extension",
+            "detected_type",
+            "byte_size"
+          ],
+          "readMode": "content",
+          "readers": {
+            "docx": {
+              "include_footers": false,
+              "include_headers": false,
+              "include_nested_tables": true,
+              "include_tables": true,
+              "separator": "\n\n",
+              "units": "file"
+            },
+            "image": {
+              "colorMode": "preserve",
+              "frameEnd": 0,
+              "frameStart": 0,
+              "frames": "first",
+              "layout": "HWC",
+              "orientation": "stored",
+              "palette": "expandRGBA"
+            },
+            "odt": {
+              "include_tables": true,
+              "separator": "\n\n",
+              "units": "file"
+            },
+            "pdf": {
+              "extraction_mode": "plain",
+              "layout_font_height_weight": 1,
+              "layout_scale_weight": 1.25,
+              "layout_space_vertically": true,
+              "layout_strip_rotated": true,
+              "maximumRenderPages": 20,
+              "orientations": [
+                0,
+                90,
+                180,
+                270
+              ],
+              "pages": [],
+              "renderDPI": 144,
+              "renderMode": "text",
+              "separator": "\n\n",
+              "space_width": 200,
+              "strict": false,
+              "units": "file"
+            },
+            "rtf": {
+              "encoding": "cp1252",
+              "errors": "strict",
+              "separator": "\n\n",
+              "units": "file"
+            },
+            "text": {
+              "encoding": "auto",
+              "errors": "strict",
+              "keep_empty_lines": true,
+              "newline": "preserve",
+              "units": "file"
+            }
+          },
+          "sourceMode": "directory",
+          "symlinks": "skip",
+          "unknownFiles": "error"
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.sourceFiles"
+      },
+      "x": 0,
+      "y": 0
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "pixels"
+      },
+      "name": "Prepare media",
+      "payload": {
+        "config": {
+          "alpha": "composite",
+          "center": true,
+          "channelIndex": 0,
+          "channels": "preserve",
+          "color": "RGB",
+          "cropEnabled": false,
+          "cropHeight": 224,
+          "cropWidth": 224,
+          "cropX": 0,
+          "cropY": 0,
+          "fftSize": 400,
+          "filterRadius": 16,
+          "height": 1025,
+          "hopSamples": 0,
+          "inputColumn": "image_content",
+          "interpolation": "bilinear",
+          "kind": "image",
+          "layout": "HWC",
+          "logFloorDB": -80,
+          "maskConvention": "valid",
+          "matte": [
+            1,
+            1,
+            1
+          ],
+          "maximumHz": 0,
+          "melBands": 80,
+          "minimumHz": 0,
+          "outputColumn": "ocr_image",
+          "outputMode": "image",
+          "representation": "samples",
+          "rotation": 0,
+          "sampleFormat": "preserve",
+          "scaling": "none",
+          "sizeMode": "preserve",
+          "spectralHop": 160,
+          "tail": "drop",
+          "targetRate": 0,
+          "width": 1025,
+          "window": "hann",
+          "windowSamples": 0
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.prepareMedia"
+      },
+      "x": 300,
+      "y": 0
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "ocr"
+      },
+      "name": "Extract text",
+      "payload": {
+        "config": {
+          "allowlist": "",
+          "beamWidth": 5,
+          "blocklist": "",
+          "canvasSize": 2200,
+          "decoder": "greedy",
+          "device": "cpu",
+          "groupBy": "file_id",
+          "heightThreshold": 0.5,
+          "inputColumn": "ocr_image",
+          "linkThreshold": 0.4,
+          "lowText": 0.4,
+          "magnification": 1,
+          "margin": 0.1,
+          "maximumCharacters": 100000,
+          "maximumRegions": 1000,
+          "minimumSize": 10,
+          "outputColumn": "document_text",
+          "pack": "english-printed-v1",
+          "pageColumn": "frame_index",
+          "reviewThreshold": 0.6,
+          "rotationCandidates": [],
+          "separator": "\n\n",
+          "slopeThreshold": 0.1,
+          "textThreshold": 0.7,
+          "widthThreshold": 0.5,
+          "ycenterThreshold": 0.5
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.extractText"
+      },
+      "x": 600,
+      "y": 0
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "documents-view"
+      },
+      "name": "View",
+      "payload": {
+        "config": {},
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.view"
+      },
+      "x": 900,
+      "y": -180
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "regions-view"
+      },
+      "name": "View",
+      "payload": {
+        "config": {},
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.view"
+      },
+      "x": 900,
+      "y": 180
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "documents-csv"
+      },
+      "name": "Document text report",
+      "payload": {
+        "config": {
+          "columns": [],
+          "destination": "file",
+          "filename": "document-ocr-documents-csv.csv",
+          "format": "csv",
+          "imagePolicy": "stop",
+          "overwrite": false,
+          "separator": ","
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.outputDelimited"
+      },
+      "x": 1200,
+      "y": -180
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "regions-csv"
+      },
+      "name": "Text-region report",
+      "payload": {
+        "config": {
+          "columns": [
+            "document_id",
+            "page",
+            "region",
+            "text",
+            "confidence",
+            "review",
+            "x0",
+            "y0",
+            "x1",
+            "y1",
+            "x2",
+            "y2",
+            "x3",
+            "y3",
+            "coordinate_space",
+            "ocr_pack"
+          ],
+          "destination": "file",
+          "filename": "document-ocr-regions-csv.csv",
+          "format": "csv",
+          "imagePolicy": "stop",
+          "overwrite": false,
+          "separator": ","
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.outputDelimited"
+      },
+      "x": 1200,
+      "y": 180
+    }
+  ],
+  "projectID": "00000000-0000-0000-0000-000000000000",
+  "revision": 0,
+  "schemaVersion": 1
+}

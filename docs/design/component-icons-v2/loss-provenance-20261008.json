@@ -1,0 +1,135 @@
+{
+  "date": "2026-10-08",
+  "family": "Losses",
+  "reference": "Sources/KwipMLApp/Resources/ComponentIcons/evaluate-test-v2.png",
+  "assets": [
+    {
+      "componentID": "loss_cross_entropy",
+      "source": "/Users/developer/.codex/generated_images/01a10a07-829a-7e73-a566-105746b4f45f/exec-c214375f-0a81-473d-944d-87bb9344248f.png",
+      "destination": "Sources/KwipMLApp/Resources/ComponentIcons/loss_cross_entropy-v2.png",
+      "prompt": "Use case: logo-brand. Create one original KwipML loss component icon bitmap. Use the provided evaluation icon ONLY as visual style reference. Match its sharp square outline with diagonally clipped top-right and bottom-left corners, broad pale teal border and bold darker muted teal glyph, centered front-on with generous transparent margin. New distinct subject: a simple bullseye made from two broad square concentric frames, with three compact class bars below and a small arrow pointing to the chosen center. Communicate choosing one correct class and measuring disagreement. Strong simple geometry readable at 32px. ONLY two teal colors. No text, letters, numbers, labels, gradients, lighting, shadows, perspective, badges or background. Do not reproduce the reference checkmark/bar-chart glyph. Genuine transparent outside and within open regions of the outline.",
+      "tool": "built-in image_gen",
+      "visuallyReviewed": true,
+      "sha256": "bfd8fad32b1cac03ac7b714e6b0acc99c6eb7da817c224f446cca3b04206991c",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "componentID": "loss_bce_with_logits",
+      "source": "/Users/developer/.codex/generated_images/01a10a07-829a-7e73-a566-105746b4f45f/exec-eac14750-e048-4e89-b157-05221a71ad6c.png",
+      "destination": "Sources/KwipMLApp/Resources/ComponentIcons/loss_bce_with_logits-v2.png",
+      "prompt": "Use case: logo-brand. Create one original KwipML loss component icon bitmap, no text. The provided evaluation icon is ONLY style reference. Match its sharp square outline with diagonally clipped top-right and bottom-left corners, broad pale teal border and bold darker muted teal glyph, centered front-on with generous transparent margin. New distinct subject: Two clean parallel rows of binary choices: each row has a small square at each end and one bold comparison pointer in between; first row favors the left square, second row favors the right square. Distinct separate yes/no decisions, no checkmark. Strong simple geometry readable at 32px. ONLY two teal colors. No text, letters, numbers, labels, gradients, lighting, shadows, perspective, badges or background. Do not reproduce the reference checkmark/bar-chart glyph. Genuine transparent outside and within open regions of the outline.",
+      "tool": "built-in image_gen",
+      "visuallyReviewed": true,
+      "sha256": "f39b960dcf2e7f562f3b2639beec9145a024948fda345d810fa346b1fbde10f0",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "componentID": "loss_mse",
+      "source": "/Users/developer/.codex/generated_images/01a10a07-829a-7e73-a566-105746b4f45f/exec-46475a06-98ff-4774-9952-bf36b391472d.png",
+      "destination": "Sources/KwipMLApp/Resources/ComponentIcons/loss_mse-v2.png",
+      "prompt": "Use case: logo-brand. Create one original KwipML loss component icon bitmap, no text. The provided evaluation icon is ONLY style reference. Match its sharp square outline with diagonally clipped top-right and bottom-left corners, broad pale teal border and bold darker muted teal glyph, centered front-on with generous transparent margin. New distinct subject: Two points separated diagonally, connected by a broad right-angle guide with a clearly filled square in the gap. Visualize a squared distance. Bold simple geometry, no plot labels. Strong simple geometry readable at 32px. ONLY two teal colors. No text, letters, numbers, labels, gradients, lighting, shadows, perspective, badges or background. Do not reproduce the reference checkmark/bar-chart glyph. Genuine transparent outside and within open regions of the outline.",
+      "tool": "built-in image_gen",
+      "visuallyReviewed": true,
+      "sha256": "f368f203f5a4d4dd8dcdaf33895aca400e1819dc63c18fc5c1ff0c06259a4afc",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "componentID": "loss_l1",
+      "source": "/Users/developer/.codex/generated_images/01a10a07-829a-7e73-a566-105746b4f45f/exec-58eac882-7d5d-4fa7-aebd-6bb3ece1fe7f.png",
+      "destination": "Sources/KwipMLApp/Resources/ComponentIcons/loss_l1-v2.png",
+      "prompt": "Use case: logo-brand. Create one original KwipML loss component icon bitmap, no text. The provided evaluation icon is ONLY style reference. Match its sharp square outline with diagonally clipped top-right and bottom-left corners, broad pale teal border and bold darker muted teal glyph, centered front-on with generous transparent margin. New distinct subject: Two solid square points on a horizontal baseline joined by a thick two-ended straight arrow, measuring absolute distance. Clearly distinct from squared-error icon; no inner square. Strong simple geometry readable at 32px. ONLY two teal colors. No text, letters, numbers, labels, gradients, lighting, shadows, perspective, badges or background. Do not reproduce the reference checkmark/bar-chart glyph. Genuine transparent outside and within open regions of the outline.",
+      "tool": "built-in image_gen",
+      "visuallyReviewed": true,
+      "sha256": "4632a80b9d7c79ce1ed8e38fe2c35015cba81664135112228879949d1f2a311d",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "componentID": "loss_nll",
+      "source": "/Users/developer/.codex/generated_images/01a10a07-829a-7e73-a566-105746b4f45f/exec-6c2006b8-89d5-4cbc-8517-b33c242deb95.png",
+      "destination": "Sources/KwipMLApp/Resources/ComponentIcons/loss_nll-v2.png",
+      "prompt": "Use case: logo-brand. Create one original KwipML loss component icon bitmap, no text. The provided evaluation icon is ONLY style reference. Match its sharp square outline with diagonally clipped top-right and bottom-left corners, broad pale teal border and bold darker muted teal glyph, centered front-on with generous transparent margin. New distinct subject: Three stair-step descending bars with one broad downward arrow alongside them. Visualize reducing penalty for an unlikely correct answer. No reference checkmark. Strong simple geometry readable at 32px. ONLY two teal colors. No text, letters, numbers, labels, gradients, lighting, shadows, perspective, badges or background. Do not reproduce the reference checkmark/bar-chart glyph. Genuine transparent outside and within open regions of the outline.",
+      "tool": "built-in image_gen",
+      "visuallyReviewed": true,
+      "sha256": "bbab8fd126362e7456b7440c7f1c0c3ef488f4a9f766bddec8f64d8f30c94b7d",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "componentID": "loss_kl_div",
+      "source": "/Users/developer/.codex/generated_images/01a10a07-829a-7e73-a566-105746b4f45f/exec-c31146e2-58eb-4c3a-9e43-43dd3d378bb6.png",
+      "destination": "Sources/KwipMLApp/Resources/ComponentIcons/loss_kl_div-v2.png",
+      "prompt": "Use case: logo-brand. Create one original KwipML loss component icon bitmap, no text. The provided evaluation icon is ONLY style reference. Match its sharp square outline with diagonally clipped top-right and bottom-left corners, broad pale teal border and bold darker muted teal glyph, centered front-on with generous transparent margin. New distinct subject: Two small facing distributions formed by three bold bars each: left bars rise and right bars fall, connected by a short central comparison arrow. Clearly two distributions. Strong simple geometry readable at 32px. ONLY two teal colors. No text, letters, numbers, labels, gradients, lighting, shadows, perspective, badges or background. Do not reproduce the reference checkmark/bar-chart glyph. Genuine transparent outside and within open regions of the outline.",
+      "tool": "built-in image_gen",
+      "visuallyReviewed": true,
+      "sha256": "6548d73473782f4b76809992ce197a243b4c4517864f980dd473fbb95f524059",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "componentID": "loss_ctc",
+      "source": "/Users/developer/.codex/generated_images/01a10a07-829a-7e73-a566-105746b4f45f/exec-defadc85-82c7-4ba0-9a23-e56d07a653df.png",
+      "destination": "Sources/KwipMLApp/Resources/ComponentIcons/loss_ctc-v2.png",
+      "prompt": "Use case: logo-brand. Create one original KwipML loss component icon bitmap, no text. The provided evaluation icon is ONLY style reference. Match its sharp square outline with diagonally clipped top-right and bottom-left corners, broad pale teal border and bold darker muted teal glyph, centered front-on with generous transparent margin. New distinct subject: Two horizontal timelines: top has five solid square positions with gaps, lower has three solid square positions; three short aligned connecting strokes join top positions to lower positions. Visualize sequence alignment with blank gaps. No tiny details. Strong simple geometry readable at 32px. ONLY two teal colors. No text, letters, numbers, labels, gradients, lighting, shadows, perspective, badges or background. Do not reproduce the reference checkmark/bar-chart glyph. Genuine transparent outside and within open regions of the outline.",
+      "tool": "built-in image_gen",
+      "visuallyReviewed": true,
+      "sha256": "d8c5c8a6707fddc54379d24ef6274207a592f5263f294a38387da110088a3167",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "componentID": "loss_triplet_margin",
+      "source": "/Users/developer/.codex/generated_images/01a10a07-829a-7e73-a566-105746b4f45f/exec-f1f89e9b-5ab7-4470-9f3d-5f370335125f.png",
+      "destination": "Sources/KwipMLApp/Resources/ComponentIcons/loss_triplet_margin-v2.png",
+      "prompt": "Use case: logo-brand. Create one original KwipML loss component icon bitmap, no text. The provided evaluation icon is ONLY style reference. Match its sharp square outline with diagonally clipped top-right and bottom-left corners, broad pale teal border and bold darker muted teal glyph, centered front-on with generous transparent margin. New distinct subject: Three solid square points forming a broad triangle: one left anchor, two right points; a short thick link connects anchor to upper near point and a long thick link connects anchor to lower far point. Visualize near/far relative distance; no letters. Strong simple geometry readable at 32px. ONLY two teal colors. No text, letters, numbers, labels, gradients, lighting, shadows, perspective, badges or background. Do not reproduce the reference checkmark/bar-chart glyph. Genuine transparent outside and within open regions of the outline.",
+      "tool": "built-in image_gen",
+      "visuallyReviewed": true,
+      "sha256": "12fb5f7d2b65acef177e660a3c9e0d25e32e75b72bc1f86eda5a21c7bf8570e5",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ]
+    }
+  ]
+}

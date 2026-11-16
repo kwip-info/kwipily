@@ -1,0 +1,303 @@
+{
+  "schemaVersion": 1,
+  "id": "kwip.spatial-patches",
+  "version": 1,
+  "backend": "pytorch",
+  "components": [
+    {
+      "definition": {
+        "id": "unfold",
+        "title": "Unfold",
+        "category": "Tensor layout",
+        "inputs": [
+          "in"
+        ],
+        "outputs": [
+          "out"
+        ],
+        "fields": [
+          {
+            "key": "kernel_size",
+            "title": "Patch size",
+            "kind": "integerList",
+            "defaultValue": [
+              2,
+              2
+            ],
+            "min": 1,
+            "max": 4096,
+            "minItems": 2,
+            "maxItems": 2
+          },
+          {
+            "key": "stride",
+            "title": "Spacing between patches",
+            "kind": "integerList",
+            "defaultValue": [
+              1,
+              1
+            ],
+            "min": 1,
+            "max": 4096,
+            "minItems": 2,
+            "maxItems": 2
+          },
+          {
+            "key": "dilation",
+            "title": "Spacing within a patch",
+            "kind": "integerList",
+            "defaultValue": [
+              1,
+              1
+            ],
+            "min": 1,
+            "max": 4096,
+            "minItems": 2,
+            "maxItems": 2
+          },
+          {
+            "key": "padding",
+            "title": "Zero padding",
+            "kind": "integerList",
+            "defaultValue": [
+              0,
+              0
+            ],
+            "min": 0,
+            "max": 4096,
+            "minItems": 2,
+            "maxItems": 2
+          }
+        ]
+      },
+      "published": true,
+      "configurationVersion": 2,
+      "adapterID": "kwip.runner.graph-v2.unfold",
+      "shapeRuleID": "kwip.shape.unfold.v1",
+      "presentation": {
+        "theme": "violet",
+        "icon": "unfold-v2",
+        "shortTitle": "Unfold",
+        "purpose": "Read small rectangles from parallel grids into ordered columns."
+      },
+      "outputConditions": {},
+      "sources": {
+        "native": "Sources/KwipMLCore/SpatialPatchConfiguration.swift",
+        "worker": "runner/spatial_patch_configuration.py",
+        "tests": "runner/tests/test_spatial_patch_runtime.py",
+        "evidence": "docs/production/TORCH_SPATIAL_PATCH_CLOSURE.md"
+      },
+      "runtimeContract": {
+        "version": {
+          "major": 1,
+          "minor": 0,
+          "patch": 0
+        },
+        "adapterID": "kwip.runner.graph-v2.unfold",
+        "graphSchemaVersions": [
+          2
+        ],
+        "preservesBatch": true,
+        "graphDTypes": [
+          "float32"
+        ],
+        "parameterless": true,
+        "inputSampleRank": 3,
+        "outputSampleRank": 2,
+        "channelMinimum": 1,
+        "channelMaximum": 512,
+        "spatialMinimum": 1,
+        "spatialMaximum": 4096,
+        "kernelMinimum": 1,
+        "kernelMaximum": 4096,
+        "strideMinimum": 1,
+        "strideMaximum": 4096,
+        "dilationMinimum": 1,
+        "dilationMaximum": 4096,
+        "paddingMinimum": 0,
+        "paddingMaximum": 4096,
+        "paddingMode": "zeros",
+        "maximumTensorElements": 100000000,
+        "maximumWorkElements": 100000000,
+        "packedOrder": "channelKernelHeightKernelWidth",
+        "windowOrder": "heightWidth"
+      },
+      "learning": {
+        "contentVersion": 1,
+        "updatedAt": "2026-10-08",
+        "exampleID": "prepared-unfold-classifier",
+        "sourceResource": "workflow-observations",
+        "title": "Explore Unfold in a classifier",
+        "subtitle": "Read small rectangles from parallel grids into ordered columns.",
+        "disclosureTitle": "How patch positions and overlaps work",
+        "formula": "Read small rectangles from parallel grids into ordered columns.",
+        "paragraphs": [
+          "An array is a table of numbers extended across named directions. Each observation contains channels, meaning parallel grids, with height and width. A batch is a group of independent observations. A patch is a small rectangle read from each grid.",
+          "Patch size chooses rectangle height and width. Spacing between patches moves each starting position; Spacing within a patch separates the positions read inside it. Zero padding adds a border of zeros, not extra measured values. Every control is a height/width pair.",
+          "The output is a table of columns. Each column represents one patch position, ordered top to bottom and left to right. Rows contain channel values, then positions within a patch in row/column order. Overlap repeats some original measurements in several columns.",
+          "Input influence means how a small source change affects a result. Repeated measurements add their influences; zero-padding entries contribute none. Two lessons compare ordinary overlaps and padded, spaced patches; identical output sizes need not imply identical values."
+        ],
+        "buttonTitle": "Open Unfold example",
+        "exampleSource": "Sources/KwipMLCore/SpatialPatchWorkflowExample.swift",
+        "lessonIDs": [
+          "assessment.unfold-overlapping-windows",
+          "assessment.unfold-padded-spaced-windows"
+        ]
+      }
+    },
+    {
+      "definition": {
+        "id": "fold",
+        "title": "Fold",
+        "category": "Tensor layout",
+        "inputs": [
+          "in"
+        ],
+        "outputs": [
+          "out"
+        ],
+        "fields": [
+          {
+            "key": "kernel_size",
+            "title": "Patch size",
+            "kind": "integerList",
+            "defaultValue": [
+              2,
+              2
+            ],
+            "min": 1,
+            "max": 4096,
+            "minItems": 2,
+            "maxItems": 2
+          },
+          {
+            "key": "stride",
+            "title": "Spacing between patches",
+            "kind": "integerList",
+            "defaultValue": [
+              1,
+              1
+            ],
+            "min": 1,
+            "max": 4096,
+            "minItems": 2,
+            "maxItems": 2
+          },
+          {
+            "key": "dilation",
+            "title": "Spacing within a patch",
+            "kind": "integerList",
+            "defaultValue": [
+              1,
+              1
+            ],
+            "min": 1,
+            "max": 4096,
+            "minItems": 2,
+            "maxItems": 2
+          },
+          {
+            "key": "padding",
+            "title": "Zero padding",
+            "kind": "integerList",
+            "defaultValue": [
+              0,
+              0
+            ],
+            "min": 0,
+            "max": 4096,
+            "minItems": 2,
+            "maxItems": 2
+          },
+          {
+            "key": "output_size",
+            "title": "Output grid size",
+            "kind": "integerList",
+            "defaultValue": [
+              2,
+              2
+            ],
+            "min": 1,
+            "max": 4096,
+            "minItems": 2,
+            "maxItems": 2
+          }
+        ]
+      },
+      "published": true,
+      "configurationVersion": 2,
+      "adapterID": "kwip.runner.graph-v2.fold",
+      "shapeRuleID": "kwip.shape.fold.v1",
+      "presentation": {
+        "theme": "violet",
+        "icon": "fold-v2",
+        "shortTitle": "Fold",
+        "purpose": "Add ordered rectangle contributions back into parallel grids."
+      },
+      "outputConditions": {},
+      "sources": {
+        "native": "Sources/KwipMLCore/SpatialPatchConfiguration.swift",
+        "worker": "runner/spatial_patch_configuration.py",
+        "tests": "runner/tests/test_spatial_patch_runtime.py",
+        "evidence": "docs/production/TORCH_SPATIAL_PATCH_CLOSURE.md"
+      },
+      "runtimeContract": {
+        "version": {
+          "major": 1,
+          "minor": 0,
+          "patch": 0
+        },
+        "adapterID": "kwip.runner.graph-v2.fold",
+        "graphSchemaVersions": [
+          2
+        ],
+        "preservesBatch": true,
+        "graphDTypes": [
+          "float32"
+        ],
+        "parameterless": true,
+        "inputSampleRank": 2,
+        "outputSampleRank": 3,
+        "channelMinimum": 1,
+        "channelMaximum": 512,
+        "spatialMinimum": 1,
+        "spatialMaximum": 4096,
+        "kernelMinimum": 1,
+        "kernelMaximum": 4096,
+        "strideMinimum": 1,
+        "strideMaximum": 4096,
+        "dilationMinimum": 1,
+        "dilationMaximum": 4096,
+        "paddingMinimum": 0,
+        "paddingMaximum": 4096,
+        "paddingMode": "zeros",
+        "maximumTensorElements": 100000000,
+        "maximumWorkElements": 100000000,
+        "overlapMode": "add",
+        "uncoveredValue": 0
+      },
+      "learning": {
+        "contentVersion": 1,
+        "updatedAt": "2026-10-08",
+        "exampleID": "prepared-fold-classifier",
+        "sourceResource": "workflow-observations",
+        "title": "Explore Fold in a classifier",
+        "subtitle": "Add ordered rectangle contributions back into parallel grids.",
+        "disclosureTitle": "How patch positions and overlaps work",
+        "formula": "Add ordered rectangle contributions back into parallel grids.",
+        "paragraphs": [
+          "An array is a table of numbers with named directions. Each observation begins with packed patch rows and patch-position columns. A batch groups independent observations. A patch is a small rectangle; channels are parallel grids.",
+          "Output grid size chooses the destination height and width. Patch size, Spacing between patches, Spacing within a patch and Zero padding determine where the supplied contributions belong. Packed rows must divide exactly by patch area, and the number of columns must match the output geometry.",
+          "When rectangles overlap, their contributions are added. Fold never averages or automatically divides by overlap counts, so it is not generally an inverse of Unfold. Grid positions that no patch covers stay zero. Entries belonging only to padding are ignored.",
+          "Input influence means how a small contribution changes the final grid. The measured lessons check overlapping addition and uncovered positions, including ignored border entries. Inspect the grid output rather than assuming it reproduces an earlier source."
+        ],
+        "buttonTitle": "Open Fold example",
+        "exampleSource": "Sources/KwipMLCore/SpatialPatchWorkflowExample.swift",
+        "lessonIDs": [
+          "assessment.fold-overlap-addition",
+          "assessment.fold-uncovered-positions"
+        ]
+      }
+    }
+  ]
+}

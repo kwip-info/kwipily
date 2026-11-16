@@ -1,0 +1,9 @@
+[
+ {"name":"table","options":{"table":"alternative"},"columns":["id","cohort","name","value"],"rows":[[99,"Z","other-table",99.5]]},
+ {"name":"columns","options":{"columns":["name","id"],"orderBy":["+id"]},"columns":["name","id"],"rows":[["alpha",1],["beta",2],["gamma",3],["delta",4]]},
+ {"name":"orderBy","options":{"columns":["id"],"orderBy":["+cohort","-id"]},"columns":["id"],"rows":[[2],[1],[4],[3]]},
+ {"name":"rowLimit","options":{"columns":["id"],"orderBy":["+id"],"rowLimit":2},"columns":["id"],"rows":[[1],[2]]},
+ {"name":"rowOffset","options":{"columns":["id"],"orderBy":["+id"],"rowOffset":2},"columns":["id"],"rows":[[3],[4]]},
+ {"name":"limitAndOffset","options":{"columns":["id"],"orderBy":["+id"],"rowLimit":1,"rowOffset":1},"columns":["id"],"rows":[[2]]},
+ {"name":"allColumnsZeroLimit","options":{"columns":[],"rowLimit":0,"orderBy":["+id"]},"columns":["id","cohort","name","value"],"rows":[[1,"A","alpha",1.5],[2,"A","beta",2.5],[3,"B","gamma",null],[4,"B","delta",4.5]]}
+]

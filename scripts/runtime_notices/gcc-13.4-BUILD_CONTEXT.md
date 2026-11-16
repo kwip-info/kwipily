@@ -1,0 +1,7 @@
+# Corresponding GCC runtime source materials
+
+These materials correspond to the GCC13.4.0 runtime libraries shipped by the verified Homebrew arm64 Sonoma bottle and subsequently bundled in SciPy1.17.0's macOS arm64 Accelerate wheel. SOURCE_PROVENANCE.json records the supplier archive, actual embedded recipe, source hashes and complete normalized native-byte comparisons.
+
+Extract gcc-13.4.0.tar.xz, then apply gcc-13.4.0-darwin.diff to that source tree using `patch -p1 < ../gcc-13.4.0-darwin.diff`. The actual supplier formula gcc@13.rb records configure/build arguments, Darwin alterations, dependencies and installation context; use its macOS branch. The retained SciPy wheel workflow records which supplier compiler/runtime was copied and its delocate handling. Runner-image context documents the available HomebrewGCC13.4 toolchain. Configure/build uses a compatible arm64macOS build environment, SDK and dependencies described by the recipe; this evidence does not promise bit-for-bit reproduction across different tools or systems.
+
+The full archive includes libgcc, libgfortran and libquadmath source, their build files, GPLv3, GCC Runtime Library Exception3.1 and LGPL2.1 text. The exact supplier Darwin patch is part of the source materials, not an optional unrelated update. Source materials are provided with the binary distribution; no future source offer or external hosting promise is made by this document. Applicability of signed-App-Store replacement mechanics and company terms are separately verified/approved.

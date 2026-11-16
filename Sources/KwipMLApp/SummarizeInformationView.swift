@@ -1,0 +1,14 @@
+import SwiftUI
+
+struct SummarizeInformationView:View {
+    var body:some View {
+        VStack(alignment:.leading,spacing:10) {
+            LessonRichText(text:"**Grouping** produces one row per combination of group values, in first-encounter order. Leave Group by empty for one global summary. Missing group keys can form a group, drop their rows, or stop the run. Images cannot be grouping or scalar summary columns.")
+            LessonRichText(text:"**Aggregations** choose a source, operation and output name. Counts return integers; Mean returns a number; Sum, Minimum and Maximum preserve the source type. Numeric operations require numeric columns; use Columns for casts. Group names and summary names must be unique. Search filters the editor, not execution. Select a summary to edit its missing-value policy. Grips/arrows set output order. Apply saves the draft as one undoable edit; Revert restores saved choices.")
+            LessonRichText(text:"**Join text** combines Text values in incoming row order. Newline inserts a real line break; other presets include comma, space and tab. Custom separators are literal text, so typing backslash-n does not insert a newline. Remove duplicate text keeps the first occurrence of each exact, case-sensitive value. Skip empty text excludes empty strings; whitespace is still text. No implicit trimming or scalar conversion occurs.")
+            LessonRichText(text:"**Sum exact decimal text** adds preserved decimal Text without passing through binary floating-point numbers. Use Formula’s decimal functions to validate and calculate exact text first. Invalid or nonfinite text stops the operation; missing values follow the selected policy. The result remains Text, with no automatic currency or cents rounding. Converting an already rounded Number to Text does not restore lost digits. Minimum/Maximum on ordinary Text remain lexical comparisons, not decimal comparisons.")
+            LessonRichText(text:"**Missing values** can be skipped, make the result missing, or stop the run. Skipping an entirely missing group returns missing, not zero or an empty string. Join text with only empty strings returns an empty string when they are skipped. Count rows counts every retained row; Count nonmissing counts present values, including empty text. Numeric sums refuse overflow.")
+            LessonRichText(text:"**Limits and provenance**: summarize before Partition or fitted preprocessing. Each output retains exact group-membership evidence. Current input/output limits are 100,000 rows, 128 output columns, five million output cells and 50 MB serialized output. Join text checks escaped size before allocating the combined value. Maximum output groups is a safety limit, not a sample. Results shows captured data; source changes require a new run. Existing Aggregate rows projects keep their original operations and grouping.")
+        }.font(.caption)
+    }
+}

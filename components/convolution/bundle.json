@@ -1,0 +1,1249 @@
+{
+  "schemaVersion": 1,
+  "id": "kwip.convolution",
+  "version": 1,
+  "backend": "pytorch",
+  "components": [
+    {
+      "definition": {
+        "id": "conv1d",
+        "title": "Conv1d",
+        "category": "Layers",
+        "inputs": [
+          "in"
+        ],
+        "outputs": [
+          "out"
+        ],
+        "fields": [
+          {
+            "key": "in_channels",
+            "title": "Input channels",
+            "kind": "integer",
+            "defaultValue": 2,
+            "min": 1,
+            "max": 512
+          },
+          {
+            "key": "out_channels",
+            "title": "Output channels",
+            "kind": "integer",
+            "defaultValue": 2,
+            "min": 1,
+            "max": 512
+          },
+          {
+            "key": "kernel_size",
+            "title": "Kernel size",
+            "kind": "integer",
+            "defaultValue": 3,
+            "min": 1,
+            "max": 4096
+          },
+          {
+            "key": "stride",
+            "title": "Stride",
+            "kind": "integer",
+            "defaultValue": 1,
+            "min": 1,
+            "max": 4096
+          },
+          {
+            "key": "dilation",
+            "title": "Dilation",
+            "kind": "integer",
+            "defaultValue": 1,
+            "min": 1,
+            "max": 4096
+          },
+          {
+            "key": "groups",
+            "title": "Groups",
+            "kind": "integer",
+            "defaultValue": 1,
+            "min": 1,
+            "max": 512
+          },
+          {
+            "key": "bias",
+            "title": "Learn bias",
+            "kind": "boolean",
+            "defaultValue": true
+          },
+          {
+            "key": "padding_policy",
+            "title": "Padding policy",
+            "kind": "choice",
+            "defaultValue": "explicit",
+            "choices": [
+              {
+                "value": "explicit",
+                "title": "Explicit amount"
+              },
+              {
+                "value": "valid",
+                "title": "Valid \u00b7 no padding"
+              },
+              {
+                "value": "same",
+                "title": "Same length"
+              }
+            ]
+          },
+          {
+            "key": "padding",
+            "title": "Padding per side",
+            "kind": "integer",
+            "defaultValue": 0,
+            "min": 0,
+            "max": 4096
+          },
+          {
+            "key": "padding_mode",
+            "title": "Padding mode",
+            "kind": "choice",
+            "defaultValue": "zeros",
+            "choices": [
+              {
+                "value": "zeros",
+                "title": "Zeros"
+              },
+              {
+                "value": "reflect",
+                "title": "Reflect"
+              },
+              {
+                "value": "replicate",
+                "title": "Replicate"
+              },
+              {
+                "value": "circular",
+                "title": "Circular"
+              }
+            ]
+          }
+        ]
+      },
+      "published": true,
+      "configurationVersion": 2,
+      "adapterID": "kwip.runner.graph-v2.conv1d",
+      "shapeRuleID": "kwip.shape.conv1d.v1",
+      "presentation": {
+        "theme": "rose",
+        "icon": "conv1d-v2",
+        "shortTitle": "Conv1d",
+        "purpose": "Move one shared small window through 1 spatial direction."
+      },
+      "outputConditions": {},
+      "sources": {
+        "native": "Sources/KwipMLCore/Conv1dComponent.swift",
+        "worker": "runner/conv1d_configuration.py",
+        "tests": "runner/tests/test_conv1d_graph.py",
+        "evidence": "docs/production/TORCH_CONV1D.md"
+      },
+      "runtimeContract": {
+        "version": {
+          "major": 1,
+          "minor": 0,
+          "patch": 0
+        },
+        "adapterID": "kwip.runner.graph-v2.conv1d",
+        "graphSchemaVersions": [
+          2
+        ],
+        "sampleRank": 2,
+        "preservesBatch": true,
+        "graphDTypes": [
+          "float32"
+        ],
+        "channelMinimum": 1,
+        "channelMaximum": 512,
+        "lengthMinimum": 1,
+        "lengthMaximum": 4096,
+        "kernelMinimum": 1,
+        "kernelMaximum": 4096,
+        "strideMinimum": 1,
+        "strideMaximum": 4096,
+        "dilationMinimum": 1,
+        "dilationMaximum": 4096,
+        "groupMinimum": 1,
+        "groupMaximum": 512,
+        "paddingMinimum": 0,
+        "paddingMaximum": 4096,
+        "maximumParameters": 2000000,
+        "maximumMultiplyAdds": 128000000,
+        "paddingPolicies": [
+          "explicit",
+          "valid",
+          "same"
+        ],
+        "paddingModes": [
+          "zeros",
+          "reflect",
+          "replicate",
+          "circular"
+        ],
+        "biasModes": [
+          false,
+          true
+        ]
+      },
+      "learning": {
+        "contentVersion": 1,
+        "updatedAt": "2026-10-08",
+        "exampleID": "prepared-conv1d-classifier",
+        "sourceResource": "workflow-observations",
+        "title": "Explore Conv1d in a classifier",
+        "subtitle": "Apply the same small window at each location in an array.",
+        "disclosureTitle": "How a shared window creates features",
+        "formula": "Multiply the values inside a small window by its learned weights, add the results, and move that same window to the next location.",
+        "paragraphs": [
+          "A channel is one set of measurements. Conv1d uses 1 spatial direction, with channels before that direction.",
+          "Kernel size controls the window size. Stride is the distance between positions; dilation spaces the values inside the window. Padding adds values around the edges according to the chosen policy and mode.",
+          "Inspect the input and output shapes, predict one local result, then run the editable classifier. The shared-kernel lesson checks values and how small input and weight changes affect the result.",
+          "Groups split channels into independent sets. Input and output channels must divide evenly into the group count. Bias adds a learned starting value per output channel. Settings stay within the documented allocation limits."
+        ],
+        "buttonTitle": "Open Conv1d classifier",
+        "exampleSource": "Sources/KwipMLCore/Conv1dWorkflowExample.swift"
+      }
+    },
+    {
+      "definition": {
+        "id": "conv2d",
+        "title": "Conv2d",
+        "category": "Layers",
+        "inputs": [
+          "in"
+        ],
+        "outputs": [
+          "out"
+        ],
+        "fields": [
+          {
+            "key": "in_channels",
+            "title": "Input channels",
+            "kind": "integer",
+            "defaultValue": 2,
+            "min": 1,
+            "max": 512
+          },
+          {
+            "key": "out_channels",
+            "title": "Output channels",
+            "kind": "integer",
+            "defaultValue": 2,
+            "min": 1,
+            "max": 512
+          },
+          {
+            "key": "kernel_size",
+            "title": "Kernel [height, width]",
+            "kind": "integerList",
+            "defaultValue": [
+              3,
+              3
+            ],
+            "min": 1,
+            "max": 4096,
+            "minItems": 2,
+            "maxItems": 2
+          },
+          {
+            "key": "stride",
+            "title": "Stride [height, width]",
+            "kind": "integerList",
+            "defaultValue": [
+              1,
+              1
+            ],
+            "min": 1,
+            "max": 4096,
+            "minItems": 2,
+            "maxItems": 2
+          },
+          {
+            "key": "dilation",
+            "title": "Dilation [height, width]",
+            "kind": "integerList",
+            "defaultValue": [
+              1,
+              1
+            ],
+            "min": 1,
+            "max": 4096,
+            "minItems": 2,
+            "maxItems": 2
+          },
+          {
+            "key": "groups",
+            "title": "Groups",
+            "kind": "integer",
+            "defaultValue": 1,
+            "min": 1,
+            "max": 512
+          },
+          {
+            "key": "bias",
+            "title": "Learn bias",
+            "kind": "boolean",
+            "defaultValue": true
+          },
+          {
+            "key": "padding_policy",
+            "title": "Padding policy",
+            "kind": "choice",
+            "defaultValue": "explicit",
+            "choices": [
+              {
+                "value": "explicit",
+                "title": "Explicit amount"
+              },
+              {
+                "value": "valid",
+                "title": "Valid \u00b7 no padding"
+              },
+              {
+                "value": "same",
+                "title": "Same spatial size"
+              }
+            ]
+          },
+          {
+            "key": "padding",
+            "title": "Padding [height, width]",
+            "kind": "integerList",
+            "defaultValue": [
+              0,
+              0
+            ],
+            "min": 0,
+            "max": 4096,
+            "minItems": 2,
+            "maxItems": 2
+          },
+          {
+            "key": "padding_mode",
+            "title": "Padding mode",
+            "kind": "choice",
+            "defaultValue": "zeros",
+            "choices": [
+              {
+                "value": "zeros",
+                "title": "Zeros"
+              },
+              {
+                "value": "reflect",
+                "title": "Reflect"
+              },
+              {
+                "value": "replicate",
+                "title": "Replicate"
+              },
+              {
+                "value": "circular",
+                "title": "Circular"
+              }
+            ]
+          }
+        ]
+      },
+      "published": true,
+      "configurationVersion": 2,
+      "adapterID": "kwip.runner.graph-v2.conv2d",
+      "shapeRuleID": "kwip.shape.conv2d.v1",
+      "presentation": {
+        "theme": "rose",
+        "icon": "conv2d-v2",
+        "shortTitle": "Conv2d",
+        "purpose": "Move one shared small window through 2 spatial directions."
+      },
+      "outputConditions": {},
+      "sources": {
+        "native": "Sources/KwipMLCore/Conv2dComponent.swift",
+        "worker": "runner/conv2d_configuration.py",
+        "tests": "runner/tests/test_conv2d_graph.py",
+        "evidence": "docs/production/TORCH_CONV2D.md"
+      },
+      "runtimeContract": {
+        "version": {
+          "major": 1,
+          "minor": 0,
+          "patch": 0
+        },
+        "adapterID": "kwip.runner.graph-v2.conv2d",
+        "graphSchemaVersions": [
+          2
+        ],
+        "sampleRank": 3,
+        "preservesBatch": true,
+        "graphDTypes": [
+          "float32"
+        ],
+        "channelMinimum": 1,
+        "channelMaximum": 512,
+        "lengthMinimum": 1,
+        "lengthMaximum": 4096,
+        "kernelMinimum": 1,
+        "kernelMaximum": 4096,
+        "strideMinimum": 1,
+        "strideMaximum": 4096,
+        "dilationMinimum": 1,
+        "dilationMaximum": 4096,
+        "groupMinimum": 1,
+        "groupMaximum": 512,
+        "paddingMinimum": 0,
+        "paddingMaximum": 4096,
+        "maximumParameters": 2000000,
+        "maximumMultiplyAdds": 128000000,
+        "paddingPolicies": [
+          "explicit",
+          "valid",
+          "same"
+        ],
+        "paddingModes": [
+          "zeros",
+          "reflect",
+          "replicate",
+          "circular"
+        ],
+        "biasModes": [
+          false,
+          true
+        ],
+        "spatialParameterLength": 2,
+        "maximumSampleElements": 100000000,
+        "maximumPaddedSampleElements": 100000000
+      },
+      "learning": {
+        "contentVersion": 1,
+        "updatedAt": "2026-10-08",
+        "exampleID": "prepared-conv2d-classifier",
+        "sourceResource": "workflow-observations",
+        "title": "Explore Conv2d in a classifier",
+        "subtitle": "Apply the same small window at each location in an array.",
+        "disclosureTitle": "How a shared window creates features",
+        "formula": "Multiply the values inside a small window by its learned weights, add the results, and move that same window to the next location.",
+        "paragraphs": [
+          "A channel is one set of measurements. Conv2d uses 2 spatial directions, with channels before those directions.",
+          "Kernel size controls the window size. Stride is the distance between positions; dilation spaces the values inside the window. Padding adds values around the edges according to the chosen policy and mode.",
+          "Inspect the input and output shapes, predict one local result, then run the editable classifier. The shared-kernel lesson checks values and how small input and weight changes affect the result.",
+          "Groups split channels into independent sets. Input and output channels must divide evenly into the group count. Bias adds a learned starting value per output channel. Settings stay within the documented allocation limits."
+        ],
+        "buttonTitle": "Open Conv2d classifier",
+        "exampleSource": "Sources/KwipMLCore/Conv2dWorkflowExample.swift"
+      }
+    },
+    {
+      "definition": {
+        "id": "conv3d",
+        "title": "Conv3d",
+        "category": "Layers",
+        "inputs": [
+          "in"
+        ],
+        "outputs": [
+          "out"
+        ],
+        "fields": [
+          {
+            "key": "in_channels",
+            "title": "Input channels",
+            "kind": "integer",
+            "defaultValue": 2,
+            "min": 1,
+            "max": 512
+          },
+          {
+            "key": "out_channels",
+            "title": "Output channels",
+            "kind": "integer",
+            "defaultValue": 2,
+            "min": 1,
+            "max": 512
+          },
+          {
+            "key": "kernel_size",
+            "title": "Kernel [depth, height, width]",
+            "kind": "integerList",
+            "defaultValue": [
+              3,
+              3,
+              3
+            ],
+            "min": 1,
+            "max": 4096,
+            "minItems": 3,
+            "maxItems": 3
+          },
+          {
+            "key": "stride",
+            "title": "Stride [depth, height, width]",
+            "kind": "integerList",
+            "defaultValue": [
+              1,
+              1,
+              1
+            ],
+            "min": 1,
+            "max": 4096,
+            "minItems": 3,
+            "maxItems": 3
+          },
+          {
+            "key": "dilation",
+            "title": "Dilation [depth, height, width]",
+            "kind": "integerList",
+            "defaultValue": [
+              1,
+              1,
+              1
+            ],
+            "min": 1,
+            "max": 4096,
+            "minItems": 3,
+            "maxItems": 3
+          },
+          {
+            "key": "groups",
+            "title": "Groups",
+            "kind": "integer",
+            "defaultValue": 1,
+            "min": 1,
+            "max": 512
+          },
+          {
+            "key": "bias",
+            "title": "Learn bias",
+            "kind": "boolean",
+            "defaultValue": true
+          },
+          {
+            "key": "padding_policy",
+            "title": "Padding policy",
+            "kind": "choice",
+            "defaultValue": "explicit",
+            "choices": [
+              {
+                "value": "explicit",
+                "title": "Explicit amount"
+              },
+              {
+                "value": "valid",
+                "title": "Valid \u00b7 no padding"
+              },
+              {
+                "value": "same",
+                "title": "Same spatial size"
+              }
+            ]
+          },
+          {
+            "key": "padding",
+            "title": "Padding [depth, height, width]",
+            "kind": "integerList",
+            "defaultValue": [
+              0,
+              0,
+              0
+            ],
+            "min": 0,
+            "max": 4096,
+            "minItems": 3,
+            "maxItems": 3
+          },
+          {
+            "key": "padding_mode",
+            "title": "Padding mode",
+            "kind": "choice",
+            "defaultValue": "zeros",
+            "choices": [
+              {
+                "value": "zeros",
+                "title": "Zeros"
+              },
+              {
+                "value": "reflect",
+                "title": "Reflect"
+              },
+              {
+                "value": "replicate",
+                "title": "Replicate"
+              },
+              {
+                "value": "circular",
+                "title": "Circular"
+              }
+            ]
+          }
+        ]
+      },
+      "published": true,
+      "configurationVersion": 2,
+      "adapterID": "kwip.runner.graph-v2.conv3d",
+      "shapeRuleID": "kwip.shape.conv3d.v1",
+      "presentation": {
+        "theme": "rose",
+        "icon": "conv3d-v2",
+        "shortTitle": "Conv3d",
+        "purpose": "Move one shared small window through 3 spatial directions."
+      },
+      "outputConditions": {},
+      "sources": {
+        "native": "Sources/KwipMLCore/Conv3dComponent.swift",
+        "worker": "runner/conv3d_configuration.py",
+        "tests": "runner/tests/test_conv3d_graph.py",
+        "evidence": "docs/production/TORCH_CONV3D.md"
+      },
+      "runtimeContract": {
+        "version": {
+          "major": 1,
+          "minor": 0,
+          "patch": 0
+        },
+        "adapterID": "kwip.runner.graph-v2.conv3d",
+        "graphSchemaVersions": [
+          2
+        ],
+        "sampleRank": 4,
+        "preservesBatch": true,
+        "graphDTypes": [
+          "float32"
+        ],
+        "channelMinimum": 1,
+        "channelMaximum": 512,
+        "lengthMinimum": 1,
+        "lengthMaximum": 4096,
+        "kernelMinimum": 1,
+        "kernelMaximum": 4096,
+        "strideMinimum": 1,
+        "strideMaximum": 4096,
+        "dilationMinimum": 1,
+        "dilationMaximum": 4096,
+        "groupMinimum": 1,
+        "groupMaximum": 512,
+        "paddingMinimum": 0,
+        "paddingMaximum": 4096,
+        "maximumParameters": 2000000,
+        "maximumMultiplyAdds": 128000000,
+        "paddingPolicies": [
+          "explicit",
+          "valid",
+          "same"
+        ],
+        "paddingModes": [
+          "zeros",
+          "reflect",
+          "replicate",
+          "circular"
+        ],
+        "biasModes": [
+          false,
+          true
+        ],
+        "spatialParameterLength": 3,
+        "maximumSampleElements": 100000000,
+        "maximumPaddedSampleElements": 100000000
+      },
+      "learning": {
+        "contentVersion": 1,
+        "updatedAt": "2026-10-08",
+        "exampleID": "prepared-conv3d-classifier",
+        "sourceResource": "workflow-observations",
+        "title": "Explore Conv3d in a classifier",
+        "subtitle": "Apply the same small window at each location in an array.",
+        "disclosureTitle": "How a shared window creates features",
+        "formula": "Multiply the values inside a small window by its learned weights, add the results, and move that same window to the next location.",
+        "paragraphs": [
+          "A channel is one set of measurements. Conv3d uses 3 spatial directions, with channels before those directions.",
+          "Kernel size controls the window size. Stride is the distance between positions; dilation spaces the values inside the window. Padding adds values around the edges according to the chosen policy and mode.",
+          "Inspect the input and output shapes, predict one local result, then run the editable classifier. The shared-kernel lesson checks values and how small input and weight changes affect the result.",
+          "Groups split channels into independent sets. Input and output channels must divide evenly into the group count. Bias adds a learned starting value per output channel. Settings stay within the documented allocation limits."
+        ],
+        "buttonTitle": "Open Conv3d classifier",
+        "exampleSource": "Sources/KwipMLCore/Conv3dWorkflowExample.swift"
+      }
+    },
+    {
+      "definition": {
+        "id": "conv_transpose1d",
+        "title": "ConvTranspose1d",
+        "category": "Layers",
+        "inputs": [
+          "in"
+        ],
+        "outputs": [
+          "out"
+        ],
+        "fields": [
+          {
+            "key": "in_channels",
+            "title": "Input channels",
+            "kind": "integer",
+            "defaultValue": 2,
+            "min": 1,
+            "max": 512
+          },
+          {
+            "key": "out_channels",
+            "title": "Output channels",
+            "kind": "integer",
+            "defaultValue": 2,
+            "min": 1,
+            "max": 512
+          },
+          {
+            "key": "kernel_size",
+            "title": "Kernel size",
+            "kind": "integer",
+            "defaultValue": 3,
+            "min": 1,
+            "max": 4096
+          },
+          {
+            "key": "stride",
+            "title": "Stride",
+            "kind": "integer",
+            "defaultValue": 1,
+            "min": 1,
+            "max": 4096
+          },
+          {
+            "key": "padding",
+            "title": "Padding \u00b7 reduce output extent",
+            "kind": "integer",
+            "defaultValue": 0,
+            "min": 0,
+            "max": 4096
+          },
+          {
+            "key": "output_padding",
+            "title": "Output padding \u00b7 extent adjustment",
+            "kind": "integer",
+            "defaultValue": 0,
+            "min": 0,
+            "max": 4096
+          },
+          {
+            "key": "dilation",
+            "title": "Dilation",
+            "kind": "integer",
+            "defaultValue": 1,
+            "min": 1,
+            "max": 4096
+          },
+          {
+            "key": "groups",
+            "title": "Groups",
+            "kind": "integer",
+            "defaultValue": 1,
+            "min": 1,
+            "max": 512
+          },
+          {
+            "key": "bias",
+            "title": "Learn bias",
+            "kind": "boolean",
+            "defaultValue": true
+          }
+        ]
+      },
+      "published": true,
+      "configurationVersion": 2,
+      "adapterID": "kwip.runner.graph-v2.conv_transpose1d",
+      "shapeRuleID": "kwip.shape.conv_transpose1d.v1",
+      "presentation": {
+        "theme": "rose",
+        "icon": "conv_transpose1d-v2",
+        "shortTitle": "ConvTranspose1d",
+        "purpose": "Spread each input through a shared learned window into a larger output array."
+      },
+      "outputConditions": {},
+      "sources": {
+        "native": "Sources/KwipMLCore/ConvTranspose1dComponent.swift",
+        "worker": "runner/conv_transpose1d_configuration.py",
+        "tests": "runner/tests/test_conv_transpose1d_graph.py",
+        "evidence": "docs/production/TORCH_CONV_TRANSPOSE1D.md"
+      },
+      "runtimeContract": {
+        "version": {
+          "major": 1,
+          "minor": 0,
+          "patch": 0
+        },
+        "adapterID": "kwip.runner.graph-v2.conv_transpose1d",
+        "graphSchemaVersions": [
+          2
+        ],
+        "sampleRank": 2,
+        "preservesBatch": true,
+        "graphDTypes": [
+          "float32"
+        ],
+        "channelMinimum": 1,
+        "channelMaximum": 512,
+        "lengthMinimum": 1,
+        "lengthMaximum": 4096,
+        "kernelMinimum": 1,
+        "kernelMaximum": 4096,
+        "strideMinimum": 1,
+        "strideMaximum": 4096,
+        "dilationMinimum": 1,
+        "dilationMaximum": 4096,
+        "groupMinimum": 1,
+        "groupMaximum": 512,
+        "paddingMinimum": 0,
+        "paddingMaximum": 4096,
+        "maximumParameters": 2000000,
+        "maximumMultiplyAdds": 128000000,
+        "biasModes": [
+          false,
+          true
+        ],
+        "spatialParameterKind": "scalar",
+        "maximumSampleElements": 100000000,
+        "maximumUncroppedSampleElements": 100000000,
+        "outputPaddingMinimum": 0,
+        "outputPaddingMaximum": 4096,
+        "configurationKeys": [
+          "in_channels",
+          "out_channels",
+          "kernel_size",
+          "stride",
+          "padding",
+          "output_padding",
+          "dilation",
+          "groups",
+          "bias"
+        ],
+        "paddingMode": "zeros",
+        "outputPaddingRule": "lessThanStrideOrDilation",
+        "supportsDynamicOutputSize": false
+      },
+      "learning": {
+        "contentVersion": 1,
+        "updatedAt": "2026-10-08",
+        "exampleID": "prepared-conv-transpose1d-classifier",
+        "sourceResource": "workflow-observations",
+        "title": "Explore ConvTranspose1d in a classifier",
+        "subtitle": "Spread input values through a shared window and inspect where they land.",
+        "disclosureTitle": "How a transposed shared window changes the output",
+        "formula": "Each input value contributes through the same learned window. Contributions that reach the same output position are added together.",
+        "paragraphs": [
+          "Transposed convolution can enlarge an array, but it is not an inverse that reconstructs the original input. Channels hold sets of measurements; the spatial directions describe locations.",
+          "Stride controls the spacing between input contributions; dilation spaces the window values. Padding reduces the output extent. Output padding adjusts the output size without adding a border of filled values.",
+          "Each output-padding value must be smaller than stride OR dilation in that direction. Only zero padding is supported; output size follows the configured settings rather than a separate dynamic size argument.",
+          "Open the editable classifier, inspect input and output tables, and change one setting at a time. The shared-kernel lesson measures values and how small input and weight changes affect results. Groups and bias retain the same channel and allocation rules."
+        ],
+        "buttonTitle": "Open ConvTranspose1d classifier",
+        "exampleSource": "Sources/KwipMLCore/ConvTranspose1dWorkflowExample.swift"
+      }
+    },
+    {
+      "definition": {
+        "id": "conv_transpose2d",
+        "title": "ConvTranspose2d",
+        "category": "Layers",
+        "inputs": [
+          "in"
+        ],
+        "outputs": [
+          "out"
+        ],
+        "fields": [
+          {
+            "key": "in_channels",
+            "title": "Input channels",
+            "kind": "integer",
+            "defaultValue": 2,
+            "min": 1,
+            "max": 512
+          },
+          {
+            "key": "out_channels",
+            "title": "Output channels",
+            "kind": "integer",
+            "defaultValue": 2,
+            "min": 1,
+            "max": 512
+          },
+          {
+            "key": "kernel_size",
+            "title": "Kernel [height, width]",
+            "kind": "integerList",
+            "defaultValue": [
+              3,
+              3
+            ],
+            "min": 1,
+            "max": 4096,
+            "minItems": 2,
+            "maxItems": 2
+          },
+          {
+            "key": "stride",
+            "title": "Stride [height, width]",
+            "kind": "integerList",
+            "defaultValue": [
+              1,
+              1
+            ],
+            "min": 1,
+            "max": 4096,
+            "minItems": 2,
+            "maxItems": 2
+          },
+          {
+            "key": "padding",
+            "title": "Padding [height, width] \u00b7 reduce extent",
+            "kind": "integerList",
+            "defaultValue": [
+              0,
+              0
+            ],
+            "min": 0,
+            "max": 4096,
+            "minItems": 2,
+            "maxItems": 2
+          },
+          {
+            "key": "output_padding",
+            "title": "Output padding [height, width] \u00b7 extent adjustment",
+            "kind": "integerList",
+            "defaultValue": [
+              0,
+              0
+            ],
+            "min": 0,
+            "max": 4096,
+            "minItems": 2,
+            "maxItems": 2
+          },
+          {
+            "key": "dilation",
+            "title": "Dilation [height, width]",
+            "kind": "integerList",
+            "defaultValue": [
+              1,
+              1
+            ],
+            "min": 1,
+            "max": 4096,
+            "minItems": 2,
+            "maxItems": 2
+          },
+          {
+            "key": "groups",
+            "title": "Groups",
+            "kind": "integer",
+            "defaultValue": 1,
+            "min": 1,
+            "max": 512
+          },
+          {
+            "key": "bias",
+            "title": "Learn bias",
+            "kind": "boolean",
+            "defaultValue": true
+          }
+        ]
+      },
+      "published": true,
+      "configurationVersion": 2,
+      "adapterID": "kwip.runner.graph-v2.conv_transpose2d",
+      "shapeRuleID": "kwip.shape.conv_transpose2d.v1",
+      "presentation": {
+        "theme": "rose",
+        "icon": "conv_transpose2d-v2",
+        "shortTitle": "ConvTranspose2d",
+        "purpose": "Spread each input through a shared learned window into a larger output array."
+      },
+      "outputConditions": {},
+      "sources": {
+        "native": "Sources/KwipMLCore/ConvTranspose2dComponent.swift",
+        "worker": "runner/conv_transpose2d_configuration.py",
+        "tests": "runner/tests/test_conv_transpose2d_graph.py",
+        "evidence": "docs/production/TORCH_CONV_TRANSPOSE2D.md"
+      },
+      "runtimeContract": {
+        "version": {
+          "major": 1,
+          "minor": 0,
+          "patch": 0
+        },
+        "adapterID": "kwip.runner.graph-v2.conv_transpose2d",
+        "graphSchemaVersions": [
+          2
+        ],
+        "sampleRank": 3,
+        "preservesBatch": true,
+        "graphDTypes": [
+          "float32"
+        ],
+        "channelMinimum": 1,
+        "channelMaximum": 512,
+        "lengthMinimum": 1,
+        "lengthMaximum": 4096,
+        "kernelMinimum": 1,
+        "kernelMaximum": 4096,
+        "strideMinimum": 1,
+        "strideMaximum": 4096,
+        "dilationMinimum": 1,
+        "dilationMaximum": 4096,
+        "groupMinimum": 1,
+        "groupMaximum": 512,
+        "paddingMinimum": 0,
+        "paddingMaximum": 4096,
+        "maximumParameters": 2000000,
+        "maximumMultiplyAdds": 128000000,
+        "biasModes": [
+          false,
+          true
+        ],
+        "spatialParameterLength": 2,
+        "maximumSampleElements": 100000000,
+        "spatialParameterKind": "pair",
+        "maximumUncroppedSampleElements": 100000000,
+        "outputPaddingMinimum": 0,
+        "outputPaddingMaximum": 4096,
+        "configurationKeys": [
+          "in_channels",
+          "out_channels",
+          "kernel_size",
+          "stride",
+          "padding",
+          "output_padding",
+          "dilation",
+          "groups",
+          "bias"
+        ],
+        "paddingMode": "zeros",
+        "outputPaddingRule": "lessThanStrideOrDilation",
+        "supportsDynamicOutputSize": false
+      },
+      "learning": {
+        "contentVersion": 1,
+        "updatedAt": "2026-10-08",
+        "exampleID": "prepared-conv-transpose2d-classifier",
+        "sourceResource": "workflow-observations",
+        "title": "Explore ConvTranspose2d in a classifier",
+        "subtitle": "Spread input values through a shared window and inspect where they land.",
+        "disclosureTitle": "How a transposed shared window changes the output",
+        "formula": "Each input value contributes through the same learned window. Contributions that reach the same output position are added together.",
+        "paragraphs": [
+          "Transposed convolution can enlarge an array, but it is not an inverse that reconstructs the original input. Channels hold sets of measurements; the spatial directions describe locations.",
+          "Stride controls the spacing between input contributions; dilation spaces the window values. Padding reduces the output extent. Output padding adjusts the output size without adding a border of filled values.",
+          "Each output-padding value must be smaller than stride OR dilation in that direction. Only zero padding is supported; output size follows the configured settings rather than a separate dynamic size argument.",
+          "Open the editable classifier, inspect input and output tables, and change one setting at a time. The shared-kernel lesson measures values and how small input and weight changes affect results. Groups and bias retain the same channel and allocation rules."
+        ],
+        "buttonTitle": "Open ConvTranspose2d classifier",
+        "exampleSource": "Sources/KwipMLCore/ConvTranspose2dWorkflowExample.swift"
+      }
+    },
+    {
+      "definition": {
+        "id": "conv_transpose3d",
+        "title": "ConvTranspose3d",
+        "category": "Layers",
+        "inputs": [
+          "in"
+        ],
+        "outputs": [
+          "out"
+        ],
+        "fields": [
+          {
+            "key": "in_channels",
+            "title": "Input channels",
+            "kind": "integer",
+            "defaultValue": 2,
+            "min": 1,
+            "max": 512
+          },
+          {
+            "key": "out_channels",
+            "title": "Output channels",
+            "kind": "integer",
+            "defaultValue": 2,
+            "min": 1,
+            "max": 512
+          },
+          {
+            "key": "kernel_size",
+            "title": "Kernel [depth, height, width]",
+            "kind": "integerList",
+            "defaultValue": [
+              3,
+              3,
+              3
+            ],
+            "min": 1,
+            "max": 4096,
+            "minItems": 3,
+            "maxItems": 3
+          },
+          {
+            "key": "stride",
+            "title": "Stride [depth, height, width]",
+            "kind": "integerList",
+            "defaultValue": [
+              1,
+              1,
+              1
+            ],
+            "min": 1,
+            "max": 4096,
+            "minItems": 3,
+            "maxItems": 3
+          },
+          {
+            "key": "padding",
+            "title": "Padding [depth, height, width] \u00b7 reduce extent",
+            "kind": "integerList",
+            "defaultValue": [
+              0,
+              0,
+              0
+            ],
+            "min": 0,
+            "max": 4096,
+            "minItems": 3,
+            "maxItems": 3
+          },
+          {
+            "key": "output_padding",
+            "title": "Output padding [depth, height, width] \u00b7 extent adjustment",
+            "kind": "integerList",
+            "defaultValue": [
+              0,
+              0,
+              0
+            ],
+            "min": 0,
+            "max": 4096,
+            "minItems": 3,
+            "maxItems": 3
+          },
+          {
+            "key": "dilation",
+            "title": "Dilation [depth, height, width]",
+            "kind": "integerList",
+            "defaultValue": [
+              1,
+              1,
+              1
+            ],
+            "min": 1,
+            "max": 4096,
+            "minItems": 3,
+            "maxItems": 3
+          },
+          {
+            "key": "groups",
+            "title": "Groups",
+            "kind": "integer",
+            "defaultValue": 1,
+            "min": 1,
+            "max": 512
+          },
+          {
+            "key": "bias",
+            "title": "Learn bias",
+            "kind": "boolean",
+            "defaultValue": true
+          }
+        ]
+      },
+      "published": true,
+      "configurationVersion": 2,
+      "adapterID": "kwip.runner.graph-v2.conv_transpose3d",
+      "shapeRuleID": "kwip.shape.conv_transpose3d.v1",
+      "presentation": {
+        "theme": "rose",
+        "icon": "conv_transpose3d-v2",
+        "shortTitle": "ConvTranspose3d",
+        "purpose": "Spread each input through a shared learned window into a larger output array."
+      },
+      "outputConditions": {},
+      "sources": {
+        "native": "Sources/KwipMLCore/ConvTranspose3dComponent.swift",
+        "worker": "runner/conv_transpose3d_configuration.py",
+        "tests": "runner/tests/test_conv_transpose3d_graph.py",
+        "evidence": "docs/production/TORCH_CONV_TRANSPOSE3D.md"
+      },
+      "runtimeContract": {
+        "version": {
+          "major": 1,
+          "minor": 0,
+          "patch": 0
+        },
+        "adapterID": "kwip.runner.graph-v2.conv_transpose3d",
+        "graphSchemaVersions": [
+          2
+        ],
+        "sampleRank": 4,
+        "preservesBatch": true,
+        "graphDTypes": [
+          "float32"
+        ],
+        "channelMinimum": 1,
+        "channelMaximum": 512,
+        "lengthMinimum": 1,
+        "lengthMaximum": 4096,
+        "kernelMinimum": 1,
+        "kernelMaximum": 4096,
+        "strideMinimum": 1,
+        "strideMaximum": 4096,
+        "dilationMinimum": 1,
+        "dilationMaximum": 4096,
+        "groupMinimum": 1,
+        "groupMaximum": 512,
+        "paddingMinimum": 0,
+        "paddingMaximum": 4096,
+        "maximumParameters": 2000000,
+        "maximumMultiplyAdds": 128000000,
+        "biasModes": [
+          false,
+          true
+        ],
+        "spatialParameterLength": 3,
+        "maximumSampleElements": 100000000,
+        "spatialParameterKind": "triple",
+        "maximumUncroppedSampleElements": 100000000,
+        "outputPaddingMinimum": 0,
+        "outputPaddingMaximum": 4096,
+        "configurationKeys": [
+          "in_channels",
+          "out_channels",
+          "kernel_size",
+          "stride",
+          "padding",
+          "output_padding",
+          "dilation",
+          "groups",
+          "bias"
+        ],
+        "paddingMode": "zeros",
+        "outputPaddingRule": "lessThanStrideOrDilation",
+        "supportsDynamicOutputSize": false
+      },
+      "learning": {
+        "contentVersion": 1,
+        "updatedAt": "2026-10-08",
+        "exampleID": "prepared-conv-transpose3d-classifier",
+        "sourceResource": "workflow-observations",
+        "title": "Explore ConvTranspose3d in a classifier",
+        "subtitle": "Spread input values through a shared window and inspect where they land.",
+        "disclosureTitle": "How a transposed shared window changes the output",
+        "formula": "Each input value contributes through the same learned window. Contributions that reach the same output position are added together.",
+        "paragraphs": [
+          "Transposed convolution can enlarge an array, but it is not an inverse that reconstructs the original input. Channels hold sets of measurements; the spatial directions describe locations.",
+          "Stride controls the spacing between input contributions; dilation spaces the window values. Padding reduces the output extent. Output padding adjusts the output size without adding a border of filled values.",
+          "Each output-padding value must be smaller than stride OR dilation in that direction. Only zero padding is supported; output size follows the configured settings rather than a separate dynamic size argument.",
+          "Open the editable classifier, inspect input and output tables, and change one setting at a time. The shared-kernel lesson measures values and how small input and weight changes affect results. Groups and bias retain the same channel and allocation rules."
+        ],
+        "buttonTitle": "Open ConvTranspose3d classifier",
+        "exampleSource": "Sources/KwipMLCore/ConvTranspose3dWorkflowExample.swift"
+      }
+    }
+  ]
+}

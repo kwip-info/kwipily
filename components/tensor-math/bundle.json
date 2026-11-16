@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "id": "kwip.tensor-math",
+  "version": 1,
+  "backend": "pytorch",
+  "components": [
+    {
+      "definition": {
+        "id": "matmul",
+        "title": "Matrix multiply",
+        "category": "Tensor math",
+        "inputs": [
+          "a",
+          "b"
+        ],
+        "outputs": [
+          "out"
+        ],
+        "fields": []
+      },
+      "published": true,
+      "configurationVersion": 2,
+      "adapterID": "kwip.runner.graph-v2.matrixMultiply",
+      "shapeRuleID": "kwip.shape.matmul.v1",
+      "presentation": {
+        "theme": "blue",
+        "icon": "matmul-v2",
+        "shortTitle": "Matrix multiply",
+        "purpose": "Combine rows from one array with columns from another."
+      },
+      "outputConditions": {},
+      "sources": {
+        "native": "Sources/KwipMLCore/MatrixMultiplyComponent.swift",
+        "worker": "runner/matrix_multiply.py",
+        "tests": "runner/tests/test_matrix_graph.py",
+        "evidence": "docs/production/TORCH_MATMUL_CLOSURE.md"
+      },
+      "runtimeContract": {
+        "version": {
+          "major": 1,
+          "minor": 0,
+          "patch": 0
+        },
+        "adapterID": "kwip.runner.graph-v2.matrixMultiply",
+        "graphSchemaVersions": [
+          2
+        ],
+        "maximumRank": 8,
+        "preservesBatch": true,
+        "minimumSampleRank": 2,
+        "sampleBroadcasting": true,
+        "maximumOutputElements": 100000000,
+        "graphDTypes": [
+          "float32"
+        ]
+      },
+      "learning": {
+        "contentVersion": 2,
+        "updatedAt": "2026-10-15",
+        "exampleID": "prepared-matrix-classifier",
+        "sourceResource": "workflow-observations",
+        "title": "Explore Matrix multiply in a classifier",
+        "subtitle": "Connect two arrays and check how their rows and columns combine.",
+        "disclosureTitle": "How two arrays combine",
+        "formula": "Each output value combines one row from A with one column from B: multiply matching entries, then add those products.",
+        "paragraphs": [
+          "Connect left operand A and right operand B. Their contraction dimensions must match; higher sample dimensions may broadcast under the existing contract. Observations remain separate.",
+          "Matrix multiply has no editable mathematics settings. Prepare dimensions explicitly with upstream tensor operations; Planned shapes shows both declared inputs and their product.",
+          "Results contains captured values after execution. Original contraction/broadcast lessons and exported programs retain their independent output and gradient checks."
+        ],
+        "buttonTitle": "Open Matrix multiply example",
+        "exampleSource": "Sources/KwipMLCore/MatrixExample.swift"
+      }
+    }
+  ]
+}

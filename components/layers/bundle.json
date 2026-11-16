@@ -1,0 +1,303 @@
+{
+  "schemaVersion": 1,
+  "id": "kwip.layers",
+  "version": 1,
+  "backend": "pytorch",
+  "components": [
+    {
+      "definition": {
+        "id": "linear",
+        "title": "Linear",
+        "category": "Layers",
+        "inputs": [
+          "in"
+        ],
+        "outputs": [
+          "out"
+        ],
+        "fields": [
+          {
+            "key": "in_features",
+            "title": "Input features",
+            "defaultValue": 2,
+            "min": 1,
+            "max": 512,
+            "kind": "integer"
+          },
+          {
+            "key": "out_features",
+            "title": "Output features",
+            "defaultValue": 8,
+            "min": 1,
+            "max": 512,
+            "kind": "integer"
+          },
+          {
+            "key": "bias",
+            "title": "Bias",
+            "kind": "boolean",
+            "defaultValue": true
+          }
+        ]
+      },
+      "published": true,
+      "configurationVersion": 2,
+      "adapterID": "kwip.runner.graph-v2.linear",
+      "shapeRuleID": "kwip.shape.linear.v1",
+      "presentation": {
+        "theme": "rose",
+        "icon": "linear-v2",
+        "shortTitle": "Linear",
+        "purpose": "Mix the last group of features using learned weights. An optional bias adds a learned offset; other array directions keep their order."
+      },
+      "outputConditions": {},
+      "sources": {
+        "native": "Sources/KwipMLCore/LinearComponent.swift",
+        "worker": "runner/graph_semantics.py",
+        "tests": "runner/tests/test_linear_acceptance_matrix.py",
+        "evidence": "docs/production/TORCH_LINEAR.md"
+      },
+      "runtimeContract": {
+        "version": {
+          "major": 1,
+          "minor": 2,
+          "patch": 0
+        },
+        "adapterID": "kwip.runner.graph-v2.linear",
+        "graphSchemaVersions": [
+          1,
+          2
+        ],
+        "maximumRank": 8,
+        "leadingAxesMinimum": 1,
+        "leadingAxesMaximum": 7,
+        "biasModes": [
+          false,
+          true
+        ],
+        "legacySchema1Bias": true,
+        "widthMinimum": 1,
+        "widthMaximum": 512,
+        "preservesBatch": true
+      },
+      "learning": {
+        "contentVersion": 1,
+        "updatedAt": "2026-10-08",
+        "exampleID": "prepared-parallel-classifier",
+        "sourceResource": "workflow-observations",
+        "title": "Explore learned feature mixing",
+        "subtitle": "Compare two branches that learn different combinations of the same observations.",
+        "disclosureTitle": "How Linear mixes features",
+        "formula": "Each output is a weighted sum of the input features, with an optional learned offset.",
+        "paragraphs": [
+          "Weights control how strongly each input contributes to an output. Bias means a separate offset added after that mix. Turn it off to keep a zero input at zero.",
+          "Input and output widths describe the last array direction. Earlier directions, including the batch of observations, keep their order and are processed separately.",
+          "Use the assessed affine lessons to construct a requested transformation, recover it from example tables and explore how small input or weight changes affect the result. Affine means a weighted mix with an offset.",
+          "The editable classifier combines two learned branches. Inspect its captured arrays, compare branches and export the trained weights; the untrained code view describes architecture only."
+        ],
+        "buttonTitle": "Open editable parallel flow",
+        "exampleSource": "Sources/KwipMLCore/WorkflowExamples.swift"
+      }
+    },
+    {
+      "definition": {
+        "id": "bilinear",
+        "title": "Bilinear",
+        "category": "Layers",
+        "inputs": [
+          "a",
+          "b"
+        ],
+        "outputs": [
+          "out"
+        ],
+        "fields": [
+          {
+            "key": "in1_features",
+            "title": "First input features",
+            "defaultValue": 2,
+            "min": 1,
+            "max": 512,
+            "kind": "integer"
+          },
+          {
+            "key": "in2_features",
+            "title": "Second input features",
+            "defaultValue": 2,
+            "min": 1,
+            "max": 512,
+            "kind": "integer"
+          },
+          {
+            "key": "out_features",
+            "title": "Output features",
+            "defaultValue": 2,
+            "min": 1,
+            "max": 512,
+            "kind": "integer"
+          },
+          {
+            "key": "bias",
+            "title": "Learn bias",
+            "defaultValue": true,
+            "kind": "boolean"
+          }
+        ]
+      },
+      "published": true,
+      "configurationVersion": 2,
+      "adapterID": "kwip.runner.graph-v2.bilinear",
+      "shapeRuleID": "kwip.shape.bilinear.v1",
+      "presentation": {
+        "theme": "rose",
+        "icon": "bilinear-v2",
+        "shortTitle": "Bilinear",
+        "purpose": "Learn how pairs of features from two connected inputs affect each output. Optional bias adds a learned offset; observations stay separate."
+      },
+      "outputConditions": {},
+      "sources": {
+        "native": "Sources/KwipMLCore/BilinearComponent.swift",
+        "worker": "runner/bilinear_configuration.py",
+        "tests": "runner/tests/test_bilinear_graph.py",
+        "evidence": "docs/production/TORCH_BILINEAR_CLOSURE.md"
+      },
+      "runtimeContract": {
+        "version": {
+          "major": 1,
+          "minor": 0,
+          "patch": 0
+        },
+        "adapterID": "kwip.runner.graph-v2.bilinear",
+        "graphSchemaVersions": [
+          2
+        ],
+        "maximumRank": 8,
+        "preservesBatch": true,
+        "minimumSampleRank": 1,
+        "sampleBroadcasting": false,
+        "maximumSampleElements": 100000000,
+        "maximumParameters": 2000000,
+        "featureMinimum": 1,
+        "featureMaximum": 512,
+        "biasModes": [
+          false,
+          true
+        ],
+        "graphDTypes": [
+          "float32"
+        ]
+      },
+      "learning": {
+        "contentVersion": 1,
+        "updatedAt": "2026-10-08",
+        "exampleID": "prepared-bilinear-classifier",
+        "sourceResource": "workflow-observations",
+        "title": "Explore Bilinear feature interactions",
+        "subtitle": "Combine two feature groups through learned pair interactions.",
+        "disclosureTitle": "How Bilinear combines two inputs",
+        "formula": "Multiply one feature from each input, weight their pair, then add all pairs and an optional offset.",
+        "paragraphs": [
+          "Bilinear uses two inputs. Unlike putting features side by side, it lets a pair of features affect the result together.",
+          "First input features and Second input features must match the final direction of their respective inputs. Output features chooses how many results each position produces.",
+          "Both inputs must have matching earlier directions; KwipML does not copy one observation across another. Learned weights are shared across these positions.",
+          "The two existing measured exercises supply weights explicitly so you can inspect their effect, with or without bias. The editable classifier trains its own weights."
+        ],
+        "buttonTitle": "Open editable Bilinear flow",
+        "exampleSource": "Sources/KwipMLCore/BilinearExample.swift"
+      }
+    },
+    {
+      "definition": {
+        "id": "lazy_linear",
+        "title": "Lazy Linear",
+        "category": "Layers",
+        "inputs": [
+          "in"
+        ],
+        "outputs": [
+          "out"
+        ],
+        "fields": [
+          {
+            "key": "out_features",
+            "title": "Output features",
+            "kind": "integer",
+            "defaultValue": 2,
+            "min": 1,
+            "max": 512
+          },
+          {
+            "key": "bias",
+            "title": "Learn bias",
+            "kind": "boolean",
+            "defaultValue": true
+          }
+        ]
+      },
+      "published": true,
+      "configurationVersion": 2,
+      "adapterID": "kwip.runner.graph-v2.lazy-linear",
+      "shapeRuleID": "kwip.shape.lazy-linear.v1",
+      "presentation": {
+        "theme": "rose",
+        "icon": "lazy_linear-v2",
+        "shortTitle": "Lazy Linear",
+        "purpose": "Infer the connected input width, then learn a weighted combination for each output. Configure output size and optional bias; other array directions keep their order."
+      },
+      "outputConditions": {},
+      "sources": {
+        "native": "Sources/KwipMLCore/LazyLinearComponent.swift",
+        "worker": "runner/lazy_linear_configuration.py",
+        "tests": "runner/tests/test_lazy_linear_graph.py",
+        "evidence": "docs/production/TORCH_LAZY_LINEAR.md"
+      },
+      "runtimeContract": {
+        "version": {
+          "major": 1,
+          "minor": 0,
+          "patch": 0
+        },
+        "adapterID": "kwip.runner.graph-v2.lazy-linear",
+        "graphSchemaVersions": [
+          2
+        ],
+        "maximumRank": 8,
+        "preservesBatch": true,
+        "minimumSampleRank": 1,
+        "maximumSampleElements": 100000000,
+        "maximumParameters": 2000000,
+        "inputFeatureMinimum": 1,
+        "inputFeatureMaximum": 4096,
+        "outputFeatureMinimum": 1,
+        "outputFeatureMaximum": 512,
+        "biasModes": [
+          false,
+          true
+        ],
+        "graphDTypes": [
+          "float32"
+        ],
+        "inputWidthInferred": true,
+        "materializationPolicy": "validatedShapeBeforeOptimizer"
+      },
+      "learning": {
+        "contentVersion": 1,
+        "updatedAt": "2026-10-08",
+        "exampleID": "prepared-lazy-linear-classifier",
+        "sourceResource": "workflow-observations",
+        "title": "Explore inferred-width Linear",
+        "subtitle": "Let the connected data set the input width, then choose output features.",
+        "disclosureTitle": "When Lazy Linear creates its weights",
+        "formula": "The same weighted combination as Linear; the input width is learned from the connection before training begins.",
+        "paragraphs": [
+          "Output features chooses how many results each position produces. The connected tensor supplies the input feature count, so there is no input-width setting.",
+          "KwipML validates shapes and creates the weights on the selected device before creating the optimizer, which updates weights during training. Eager layers initialize first; a same-seed eager model may begin with different weights.",
+          "Changing the connected width requires compatible new state. Existing trained weights do not silently resize.",
+          "The editable example shows shape inference, bias configuration and actual training. It is an exploration flow, not a separately graded exercise."
+        ],
+        "buttonTitle": "Open editable inferred-width flow",
+        "exampleSource": "Sources/KwipMLCore/LazyLinearWorkflowExample.swift"
+      }
+    }
+  ]
+}

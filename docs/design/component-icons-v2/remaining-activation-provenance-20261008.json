@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-08",
+  "records": [
+    {
+      "componentID": "prelu",
+      "prompt": "Create a single production UI component icon for KwipML. The attached image is STYLE REFERENCE ONLY, not an edit target. Match its thin circular outline, centered simple amber/gold line pictogram, clean flat macOS technical-tool style and generous transparent negative space. Muted warm amber and darker bronze only, consistent with this activation family. Genuine transparent background including inside the circle. No words, letters, labels, numerals, panel fill, grid, shadows, glow, speckles, bevel or 3D. Large readable simple strokes; occupy roughly 80% of square frame. Subject: a piecewise rising curve with a shallow left segment and steep right segment joined at one vertex; a tiny clean adjustment handle at the vertex suggests a learned adjustable negative slope. Distinct from the reference by this adjustment handle, yet equally spare.",
+      "source": "/Users/developer/.codex/generated_images/01a10a07-829a-7e73-a566-105746b4f45f/exec-4344d921-dd24-4653-b3cd-bab400528176.png",
+      "destination": "Sources/KwipMLApp/Resources/ComponentIcons/prelu-v2.png",
+      "referenceRole": "leaky_relu-v2.png: style reference only",
+      "tool": "built-in image_gen",
+      "transparentBackground": true,
+      "edited": false,
+      "sha256": "7e8ae5aa43be1b286049457b36ac4ce10c486a763499e10a55a81ccb463ebd76"
+    },
+    {
+      "componentID": "log_softmax",
+      "prompt": "Create a single production UI component icon for KwipML. The attached image is STYLE REFERENCE ONLY, not an edit target. Match its thin circular outline, centered simple amber/gold line pictogram, clean flat macOS technical-tool style and generous transparent negative space. Muted warm amber and darker bronze only, consistent with this activation family. Genuine transparent background including inside the circle. No words, letters, labels, numerals, panel fill, grid, shadows, glow, speckles, bevel or 3D. Large readable simple strokes; occupy roughly 80% of square frame. Subject: three simple vertical score stems entering a small central compression arrow and emerging as three shorter orderly bars, indicating compressed normalized score values. Use a very simple balanced glyph, not a busy diagram. Keep the circular family outline.",
+      "source": "/Users/developer/.codex/generated_images/01a10a07-829a-7e73-a566-105746b4f45f/exec-10acc4eb-5268-42a0-b30a-ddaddd1bacaf.png",
+      "destination": "Sources/KwipMLApp/Resources/ComponentIcons/log_softmax-v2.png",
+      "referenceRole": "leaky_relu-v2.png: style reference only",
+      "tool": "built-in image_gen",
+      "transparentBackground": true,
+      "edited": false,
+      "sha256": "c2e4e723d123d53f7a4ad7e836608c115bf235e0ca075e917c9d2e7db62fa1fe"
+    },
+    {
+      "componentID": "dropout",
+      "prompt": "Create a single production UI component icon for KwipML. The attached image is STYLE REFERENCE ONLY, not an edit target. Match its thin circular outline, centered simple amber/gold line pictogram, clean flat macOS technical-tool style and generous transparent negative space. Muted warm amber and darker bronze only, consistent with this activation family. Genuine transparent background including inside the circle. No words, letters, labels, numerals, panel fill, grid, shadows, glow, speckles, bevel or 3D. Large readable simple strokes; occupy roughly 80% of square frame. Subject: a sparse arrangement of six small filled/outline neural dots connected by just a few straight fine line paths; two positions are hollow/missing and disconnected, conveying temporarily dropped signals. Keep the circular family outline and avoid tiny details.",
+      "source": "/Users/developer/.codex/generated_images/01a10a07-829a-7e73-a566-105746b4f45f/exec-63e61c30-8b29-4662-8ead-005569d2743a.png",
+      "destination": "Sources/KwipMLApp/Resources/ComponentIcons/dropout-v2.png",
+      "referenceRole": "leaky_relu-v2.png: style reference only",
+      "tool": "built-in image_gen",
+      "transparentBackground": true,
+      "edited": false,
+      "sha256": "3a796d3df8ffe1cb963869f8994aa5d6a124d9ee4523d5e97db58e78bc9f5e7e"
+    }
+  ]
+}

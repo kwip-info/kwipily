@@ -1,0 +1,204 @@
+{
+  "version": 1,
+  "name": "Gravity placement",
+  "parameters": {
+    "rows": 6,
+    "cols": 7,
+    "connect": 4
+  },
+  "state": {
+    "board": {
+      "type": "array",
+      "length": 42,
+      "items": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 2
+      },
+      "initial": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "to_move": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 1,
+      "initial": 0
+    }
+  },
+  "actions": {
+    "column": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 6
+    }
+  },
+  "currentPlayer": "state.to_move",
+  "legal": "state.board[action.column] == 0",
+  "transitions": [
+    {
+      "name": "Place token",
+      "when": "True",
+      "updates": {
+        "board": "set_at(state.board, max([r for r in range(params.rows) if state.board[r * params.cols + action.column] == 0]) * params.cols + action.column, state.to_move + 1)",
+        "to_move": "1 - state.to_move"
+      }
+    }
+  ],
+  "terminal": [
+    {
+      "name": "Completed line",
+      "when": "(any([all([state.board[(r + k * 0) * params.cols + c + k * 1] == 2 - state.to_move for k in range(params.connect)]) for r in range(params.rows) for c in range(params.cols) if 0 <= r + (params.connect - 1) * 0 < params.rows and 0 <= c + (params.connect - 1) * 1 < params.cols]) or any([all([state.board[(r + k * 1) * params.cols + c + k * 0] == 2 - state.to_move for k in range(params.connect)]) for r in range(params.rows) for c in range(params.cols) if 0 <= r + (params.connect - 1) * 1 < params.rows and 0 <= c + (params.connect - 1) * 0 < params.cols]) or any([all([state.board[(r + k * 1) * params.cols + c + k * 1] == 2 - state.to_move for k in range(params.connect)]) for r in range(params.rows) for c in range(params.cols) if 0 <= r + (params.connect - 1) * 1 < params.rows and 0 <= c + (params.connect - 1) * 1 < params.cols]) or any([all([state.board[(r + k * 1) * params.cols + c + k * -1] == 2 - state.to_move for k in range(params.connect)]) for r in range(params.rows) for c in range(params.cols) if 0 <= r + (params.connect - 1) * 1 < params.rows and 0 <= c + (params.connect - 1) * -1 < params.cols]))",
+      "winner": "1 - state.to_move"
+    },
+    {
+      "name": "Full grid draw",
+      "when": "all([v != 0 for v in state.board]) and not (any([all([state.board[(r + k * 0) * params.cols + c + k * 1] == 2 - state.to_move for k in range(params.connect)]) for r in range(params.rows) for c in range(params.cols) if 0 <= r + (params.connect - 1) * 0 < params.rows and 0 <= c + (params.connect - 1) * 1 < params.cols]) or any([all([state.board[(r + k * 1) * params.cols + c + k * 0] == 2 - state.to_move for k in range(params.connect)]) for r in range(params.rows) for c in range(params.cols) if 0 <= r + (params.connect - 1) * 1 < params.rows and 0 <= c + (params.connect - 1) * 0 < params.cols]) or any([all([state.board[(r + k * 1) * params.cols + c + k * 1] == 2 - state.to_move for k in range(params.connect)]) for r in range(params.rows) for c in range(params.cols) if 0 <= r + (params.connect - 1) * 1 < params.rows and 0 <= c + (params.connect - 1) * 1 < params.cols]) or any([all([state.board[(r + k * 1) * params.cols + c + k * -1] == 2 - state.to_move for k in range(params.connect)]) for r in range(params.rows) for c in range(params.cols) if 0 <= r + (params.connect - 1) * 1 < params.rows and 0 <= c + (params.connect - 1) * -1 < params.cols]))",
+      "winner": "None"
+    }
+  ],
+  "observations": [
+    "1 if state.board[0] == player + 1 else -1 if state.board[0] != 0 else 0",
+    "1 if state.board[1] == player + 1 else -1 if state.board[1] != 0 else 0",
+    "1 if state.board[2] == player + 1 else -1 if state.board[2] != 0 else 0",
+    "1 if state.board[3] == player + 1 else -1 if state.board[3] != 0 else 0",
+    "1 if state.board[4] == player + 1 else -1 if state.board[4] != 0 else 0",
+    "1 if state.board[5] == player + 1 else -1 if state.board[5] != 0 else 0",
+    "1 if state.board[6] == player + 1 else -1 if state.board[6] != 0 else 0",
+    "1 if state.board[7] == player + 1 else -1 if state.board[7] != 0 else 0",
+    "1 if state.board[8] == player + 1 else -1 if state.board[8] != 0 else 0",
+    "1 if state.board[9] == player + 1 else -1 if state.board[9] != 0 else 0",
+    "1 if state.board[10] == player + 1 else -1 if state.board[10] != 0 else 0",
+    "1 if state.board[11] == player + 1 else -1 if state.board[11] != 0 else 0",
+    "1 if state.board[12] == player + 1 else -1 if state.board[12] != 0 else 0",
+    "1 if state.board[13] == player + 1 else -1 if state.board[13] != 0 else 0",
+    "1 if state.board[14] == player + 1 else -1 if state.board[14] != 0 else 0",
+    "1 if state.board[15] == player + 1 else -1 if state.board[15] != 0 else 0",
+    "1 if state.board[16] == player + 1 else -1 if state.board[16] != 0 else 0",
+    "1 if state.board[17] == player + 1 else -1 if state.board[17] != 0 else 0",
+    "1 if state.board[18] == player + 1 else -1 if state.board[18] != 0 else 0",
+    "1 if state.board[19] == player + 1 else -1 if state.board[19] != 0 else 0",
+    "1 if state.board[20] == player + 1 else -1 if state.board[20] != 0 else 0",
+    "1 if state.board[21] == player + 1 else -1 if state.board[21] != 0 else 0",
+    "1 if state.board[22] == player + 1 else -1 if state.board[22] != 0 else 0",
+    "1 if state.board[23] == player + 1 else -1 if state.board[23] != 0 else 0",
+    "1 if state.board[24] == player + 1 else -1 if state.board[24] != 0 else 0",
+    "1 if state.board[25] == player + 1 else -1 if state.board[25] != 0 else 0",
+    "1 if state.board[26] == player + 1 else -1 if state.board[26] != 0 else 0",
+    "1 if state.board[27] == player + 1 else -1 if state.board[27] != 0 else 0",
+    "1 if state.board[28] == player + 1 else -1 if state.board[28] != 0 else 0",
+    "1 if state.board[29] == player + 1 else -1 if state.board[29] != 0 else 0",
+    "1 if state.board[30] == player + 1 else -1 if state.board[30] != 0 else 0",
+    "1 if state.board[31] == player + 1 else -1 if state.board[31] != 0 else 0",
+    "1 if state.board[32] == player + 1 else -1 if state.board[32] != 0 else 0",
+    "1 if state.board[33] == player + 1 else -1 if state.board[33] != 0 else 0",
+    "1 if state.board[34] == player + 1 else -1 if state.board[34] != 0 else 0",
+    "1 if state.board[35] == player + 1 else -1 if state.board[35] != 0 else 0",
+    "1 if state.board[36] == player + 1 else -1 if state.board[36] != 0 else 0",
+    "1 if state.board[37] == player + 1 else -1 if state.board[37] != 0 else 0",
+    "1 if state.board[38] == player + 1 else -1 if state.board[38] != 0 else 0",
+    "1 if state.board[39] == player + 1 else -1 if state.board[39] != 0 else 0",
+    "1 if state.board[40] == player + 1 else -1 if state.board[40] != 0 else 0",
+    "1 if state.board[41] == player + 1 else -1 if state.board[41] != 0 else 0"
+  ],
+  "reward": "0 if not outcome.terminal or outcome.winner == None else (1 if outcome.winner == player else -1)",
+  "invariants": [
+    "abs(sum([1 if v == 1 else -1 if v == 2 else 0 for v in state.board])) <= 1"
+  ],
+  "tests": [
+    {
+      "name": "First move and turn",
+      "actions": [
+        {
+          "column": 0
+        }
+      ],
+      "expect": {
+        "state": {
+          "to_move": 1
+        },
+        "terminal": false
+      }
+    },
+    {
+      "name": "Complete a line",
+      "actions": [
+        {
+          "column": 0
+        },
+        {
+          "column": 1
+        },
+        {
+          "column": 0
+        },
+        {
+          "column": 1
+        },
+        {
+          "column": 0
+        },
+        {
+          "column": 1
+        },
+        {
+          "column": 0
+        }
+      ],
+      "expect": {
+        "terminal": true,
+        "winner": 0
+      }
+    },
+    {
+      "name": "Reject invalid action",
+      "actions": [
+        {
+          "column": 7
+        }
+      ],
+      "expectError": "illegal"
+    }
+  ]
+}

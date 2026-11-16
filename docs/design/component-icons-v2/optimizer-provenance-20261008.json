@@ -1,0 +1,42 @@
+{
+  "generator": "built-in image_gen",
+  "date": "2026-10-08",
+  "transparent": true,
+  "assets": [
+    {
+      "id": "optimizer_sgd",
+      "prompt": "Generate one polished KwipML macOS component icon, a standalone transparent-background PNG. Match the approved flat training-group icon language: a large precise chamfered octagon outline in pale muted olive #ADB983, a clean dark olive #68764B central mathematical/engineering pictogram. Frame and glyph only, transparent inside/outside, no text, letters, labels, numbers, gradients, shadows, background tile, decoration or secondary badges. Crisp bold geometry readable at 40px, generous balanced inset, centered square image. Central glyph: three ascending stairsteps and a simple forward arrow, representing measured momentum steps.",
+      "source": "/Users/developer/.codex/generated_images/01a10a07-829a-7e73-a566-105746b4f45f/exec-c6656bdd-71cc-4111-b759-1e5841b49aae.png",
+      "destination": "Sources/KwipMLApp/Resources/ComponentIcons/optimizer_sgd-v2.png",
+      "sha256": "f252d706957c07709b792dd505ca8b4644608cf66d7109c7a4629dfb5cb307e8"
+    },
+    {
+      "id": "optimizer_adam",
+      "prompt": "Generate one polished KwipML macOS component icon, a standalone transparent-background PNG. Match the approved flat training-group icon language: a large precise chamfered octagon outline in pale muted olive #ADB983, a clean dark olive #68764B central mathematical/engineering pictogram. Frame and glyph only, transparent inside/outside, no text, letters, labels, numbers, gradients, shadows, background tile, decoration or secondary badges. Crisp bold geometry readable at 40px, generous balanced inset, centered square image. Central glyph: two clean horizontal wave traces converging to one forward arrow, representing two running averages.",
+      "source": "/Users/developer/.codex/generated_images/01a10a07-829a-7e73-a566-105746b4f45f/exec-4b44b083-d1a4-4aea-a265-8ede60ff17d0.png",
+      "destination": "Sources/KwipMLApp/Resources/ComponentIcons/optimizer_adam-v2.png",
+      "sha256": "41c9d57f38cc453216d89170eaa5c9700aef6c2531702ab5cc6cc0d00ee1f8df"
+    },
+    {
+      "id": "optimizer_adamw",
+      "prompt": "Generate one polished KwipML macOS component icon, a standalone transparent-background PNG. Match the approved flat training-group icon language: a large precise chamfered octagon outline in pale muted olive #ADB983, a clean dark olive #68764B central mathematical/engineering pictogram. Frame and glyph only, transparent inside/outside, no text, letters, labels, numbers, gradients, shadows, background tile, decoration or secondary badges. Crisp bold geometry readable at 40px, generous balanced inset, centered square image. Central glyph: two clean running-average traces with a separate downward adjustment arrow beside them, representing separate weight decay.",
+      "source": "/Users/developer/.codex/generated_images/01a10a07-829a-7e73-a566-105746b4f45f/exec-07479e9d-9168-4860-ae2f-ee59a77f3b84.png",
+      "destination": "Sources/KwipMLApp/Resources/ComponentIcons/optimizer_adamw-v2.png",
+      "sha256": "04e41618a5824478c05958b09308ba96efc5b13935dc4622e7f6afe13c2d2961"
+    },
+    {
+      "id": "optimizer_rmsprop",
+      "prompt": "Generate one polished KwipML macOS component icon, a standalone transparent-background PNG. Match the approved flat training-group icon language: a large precise chamfered octagon outline in pale muted olive #ADB983, a clean dark olive #68764B central mathematical/engineering pictogram. Frame and glyph only, transparent inside/outside, no text, letters, labels, numbers, gradients, shadows, background tile, decoration or secondary badges. Crisp bold geometry readable at 40px, generous balanced inset, centered square image. Central glyph: three bars of differing heights with a balanced horizontal slider line above, representing squared-average memory.",
+      "source": "/Users/developer/.codex/generated_images/01a10a07-829a-7e73-a566-105746b4f45f/exec-70ef55f7-32ae-4103-a51f-568a8926e40e.png",
+      "destination": "Sources/KwipMLApp/Resources/ComponentIcons/optimizer_rmsprop-v2.png",
+      "sha256": "d7f3ecc98b81425fc9848ab13db1be342a9c4b9ce989fb0c3978c326b4b50791"
+    },
+    {
+      "id": "optimizer_adagrad",
+      "prompt": "Generate one polished KwipML macOS component icon, a standalone transparent-background PNG. Match the approved flat training-group icon language: a large precise chamfered octagon outline in pale muted olive #ADB983, a clean dark olive #68764B central mathematical/engineering pictogram. Frame and glyph only, transparent inside/outside, no text, letters, labels, numbers, gradients, shadows, background tile, decoration or secondary badges. Crisp bold geometry readable at 40px, generous balanced inset, centered square image. Central glyph: a compact stack of three horizontal tally bars with a decreasing-step arrow, representing accumulated squared changes.",
+      "source": "/Users/developer/.codex/generated_images/01a10a07-829a-7e73-a566-105746b4f45f/exec-93ab7efa-a521-4e1f-9395-8cef28fc2ee8.png",
+      "destination": "Sources/KwipMLApp/Resources/ComponentIcons/optimizer_adagrad-v2.png",
+      "sha256": "62ba263e18ac33850f8edf961db93d8b8cc1b3a8f1036b04cc21b3f24a5cac48"
+    }
+  ]
+}

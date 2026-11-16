@@ -1,0 +1,637 @@
+{
+  "fixtureVersion": 1,
+  "provenance": "Synthetic legacy dataflow fitted-state fixtures captured before executor retirement; no private user data.",
+  "states": {
+    "00ce5a1f8506c5b345be4d50fc37e70205de5e114d2a11a3ea6c709b305964cd": {
+      "columns": [
+        "x"
+      ],
+      "contentDigest": "2c6819e4e89f34cdce2d039966d37b0d650d112dfbef897db5207b9530fb614a",
+      "fitDataVersion": "4f3ebf677bc30eefc26d8b9bda3eaa79b07d9bdfc14874cb20272611f199b396",
+      "fitEvidence": {
+        "membershipDigest": "8bbf7e1a326a15bbee039c1bac2e6db35fb12d160f84746af72d0987b1b2daf6",
+        "observationIDs": [
+          "PRIVATE-ID-0",
+          "PRIVATE-ID-1"
+        ],
+        "role": "training",
+        "sourceDigest": "PRIVATE-SOURCE"
+      },
+      "graphDigest": "PRIVATE-GRAPH",
+      "inputFittedStateDigests": [],
+      "inputSchema": [
+        {
+          "dtype": "float64",
+          "name": "x",
+          "nullable": true
+        }
+      ],
+      "means": [
+        2.0
+      ],
+      "operator": "kwip.data.standardScalerFit",
+      "outputSchema": [
+        {
+          "dtype": "float64",
+          "name": "x",
+          "nullable": true
+        }
+      ],
+      "partitionDigest": "PRIVATE-PARTITION",
+      "scales": [
+        1.0
+      ],
+      "schemaVersion": 1
+    },
+    "03253b6604fdb9341d4a764356e5cdb9609aeefcf0a153e148ac0713073a15d1": {
+      "columns": [
+        "x"
+      ],
+      "configuration": {
+        "columns": [
+          "x"
+        ],
+        "emptyPolicy": "error",
+        "strategy": "mostFrequent",
+        "tiePolicy": "smallest"
+      },
+      "contentDigest": "06212f215a25e47ccca3a88d475c8f6bd3c398b126bbabd9e24f246b0f18d35f",
+      "emptyColumns": [],
+      "fillValues": [
+        9223372036854775807
+      ],
+      "fitDataVersion": "8d619b784119be41c8a5bdd0a19ebdca0b0fac6b5f20c1f49904414eeccad338",
+      "fitEvidence": {
+        "membershipDigest": "434933447891e7816bbea3ac5506a806d5530570f9d453e041c7f41751ff361e",
+        "observationIDs": [
+          "PRIVATE-ID-0",
+          "PRIVATE-ID-1",
+          "PRIVATE-ID-2"
+        ],
+        "role": "training",
+        "sourceDigest": "PRIVATE-SOURCE"
+      },
+      "graphDigest": "PRIVATE-GRAPH",
+      "inputFittedStateDigests": [],
+      "inputSchema": [
+        {
+          "dtype": "int64",
+          "name": "x",
+          "nullable": true
+        }
+      ],
+      "observedCounts": [
+        2
+      ],
+      "operator": "kwip.data.imputerFit",
+      "outputSchema": [
+        {
+          "dtype": "int64",
+          "name": "x",
+          "nullable": false
+        }
+      ],
+      "partitionDigest": "PRIVATE-PARTITION",
+      "schemaVersion": 1
+    },
+    "2b15003d53c20314fe7aa235472399ca783d18005fb6eb94dfa9c29004cdcaa9": {
+      "columns": [
+        "x"
+      ],
+      "configuration": {
+        "columns": [
+          "x"
+        ],
+        "emptyPolicy": "error",
+        "strategy": "median"
+      },
+      "contentDigest": "f034d1bd4d8cdedc76ecfc6d9686fea5ef62acb71158d62ca0489128cd808bbd",
+      "emptyColumns": [],
+      "fillValues": [
+        5.0
+      ],
+      "fitDataVersion": "adfbc7402f11c4d2a2f9a70026d086a65e70b365be0906e5f9c4a41d15cd42ec",
+      "fitEvidence": {
+        "membershipDigest": "434933447891e7816bbea3ac5506a806d5530570f9d453e041c7f41751ff361e",
+        "observationIDs": [
+          "PRIVATE-ID-0",
+          "PRIVATE-ID-1",
+          "PRIVATE-ID-2"
+        ],
+        "role": "training",
+        "sourceDigest": "PRIVATE-SOURCE"
+      },
+      "graphDigest": "PRIVATE-GRAPH",
+      "inputFittedStateDigests": [],
+      "inputSchema": [
+        {
+          "dtype": "int64",
+          "name": "x",
+          "nullable": true
+        }
+      ],
+      "observedCounts": [
+        2
+      ],
+      "operator": "kwip.data.imputerFit",
+      "outputSchema": [
+        {
+          "dtype": "float64",
+          "name": "x",
+          "nullable": false
+        }
+      ],
+      "partitionDigest": "PRIVATE-PARTITION",
+      "schemaVersion": 1
+    },
+    "7c943fb844d3fc702216b8ad02d4d2fd7e7dcc08185b03c8b09e0ddd4289a6f2": {
+      "columns": [
+        "x"
+      ],
+      "configuration": {
+        "columns": [
+          "x"
+        ],
+        "emptyPolicy": "error",
+        "strategy": "mostFrequent",
+        "tiePolicy": "smallest"
+      },
+      "contentDigest": "23e863cd31c769ad759dd1cc17eec7dd74be33e108a4c18a1b98d43943d1dd1c",
+      "emptyColumns": [],
+      "fillValues": [
+        1
+      ],
+      "fitDataVersion": "ed448616029bd3241ec05f290f14c74b9897c6ac2821729eb630a930253fb969",
+      "fitEvidence": {
+        "membershipDigest": "434933447891e7816bbea3ac5506a806d5530570f9d453e041c7f41751ff361e",
+        "observationIDs": [
+          "PRIVATE-ID-0",
+          "PRIVATE-ID-1",
+          "PRIVATE-ID-2"
+        ],
+        "role": "training",
+        "sourceDigest": "PRIVATE-SOURCE"
+      },
+      "graphDigest": "PRIVATE-GRAPH",
+      "inputFittedStateDigests": [],
+      "inputSchema": [
+        {
+          "dtype": "int64",
+          "name": "x",
+          "nullable": true
+        }
+      ],
+      "observedCounts": [
+        2
+      ],
+      "operator": "kwip.data.imputerFit",
+      "outputSchema": [
+        {
+          "dtype": "int64",
+          "name": "x",
+          "nullable": false
+        }
+      ],
+      "partitionDigest": "PRIVATE-PARTITION",
+      "schemaVersion": 1
+    },
+    "809f334ce92a8bcca612c8b5fa4d66771b4b4c4ba22768541911205a66887a78": {
+      "columns": [
+        "x"
+      ],
+      "configuration": {
+        "columns": [
+          "x"
+        ],
+        "emptyPolicy": "error",
+        "strategy": "mean"
+      },
+      "contentDigest": "8bb502725bf5f47668d367a2f1c841ec0662957c3749b3a580685bb34274004e",
+      "emptyColumns": [],
+      "fillValues": [
+        3.0
+      ],
+      "fitDataVersion": "27c960d192fa3b8af98d21c5df86846ae192d1dad756c154ad5488e0bcd953ed",
+      "fitEvidence": {
+        "membershipDigest": "434933447891e7816bbea3ac5506a806d5530570f9d453e041c7f41751ff361e",
+        "observationIDs": [
+          "PRIVATE-ID-0",
+          "PRIVATE-ID-1",
+          "PRIVATE-ID-2"
+        ],
+        "role": "training",
+        "sourceDigest": "PRIVATE-SOURCE"
+      },
+      "graphDigest": "PRIVATE-GRAPH",
+      "inputFittedStateDigests": [],
+      "inputSchema": [
+        {
+          "dtype": "int64",
+          "name": "x",
+          "nullable": true
+        }
+      ],
+      "observedCounts": [
+        2
+      ],
+      "operator": "kwip.data.imputerFit",
+      "outputSchema": [
+        {
+          "dtype": "float64",
+          "name": "x",
+          "nullable": false
+        }
+      ],
+      "partitionDigest": "PRIVATE-PARTITION",
+      "schemaVersion": 1
+    },
+    "b3375f956eb5871b189591b83c0fda9329bd17d181163e81634d38d2870b1049": {
+      "columns": [
+        "x"
+      ],
+      "contentDigest": "ca45a793f9cb33301921d4c79f0eb21844f1fb360f9831cd576b2c61c60ac4dc",
+      "fitDataVersion": "9b96f2bc1e41d302ac97809f2adfdf6baac3a271ddc59a563037006928a83cdb",
+      "fitEvidence": {
+        "membershipDigest": "8bbf7e1a326a15bbee039c1bac2e6db35fb12d160f84746af72d0987b1b2daf6",
+        "observationIDs": [
+          "PRIVATE-ID-0",
+          "PRIVATE-ID-1"
+        ],
+        "role": "training",
+        "sourceDigest": "PRIVATE-SOURCE"
+      },
+      "graphDigest": "PRIVATE-GRAPH",
+      "inputFittedStateDigests": [],
+      "inputSchema": [
+        {
+          "dtype": "int64",
+          "name": "x",
+          "nullable": true
+        }
+      ],
+      "means": [
+        2.0
+      ],
+      "operator": "kwip.data.standardScalerFit",
+      "outputSchema": [
+        {
+          "dtype": "float64",
+          "name": "x",
+          "nullable": true
+        }
+      ],
+      "partitionDigest": "PRIVATE-PARTITION",
+      "scales": [
+        1.0
+      ],
+      "schemaVersion": 1
+    },
+    "bd50a119e8e8a892ed770246d7298810b78dc405cd3500acf4ddd4f28e70ae00": {
+      "columns": [
+        "right",
+        "left"
+      ],
+      "configuration": {
+        "columns": [
+          "right",
+          "left"
+        ],
+        "emptyPolicy": "error",
+        "strategy": "mean"
+      },
+      "contentDigest": "5bf373883d9b1e742604d23a1fd7eeae9512d06f5ad7fad659c3045a192448a1",
+      "emptyColumns": [],
+      "fillValues": [
+        10.0,
+        3.0
+      ],
+      "fitDataVersion": "ca19481190943d39d67dc82fe71764dbb093a66b8d438b7b37a6542ff886c5bd",
+      "fitEvidence": {
+        "membershipDigest": "c6c7ba104f241fb3dd3ec1109233e0c331f078dc99bcf2b6499ebf36b280e597",
+        "observationIDs": [
+          "train:a",
+          "train:b"
+        ],
+        "role": "training",
+        "sourceDigest": "source"
+      },
+      "graphDigest": "graph",
+      "inputFittedStateDigests": [],
+      "inputSchema": [
+        {
+          "dtype": "int64",
+          "name": "left",
+          "nullable": true
+        },
+        {
+          "dtype": "string",
+          "name": "untouched",
+          "nullable": true
+        },
+        {
+          "dtype": "int64",
+          "name": "right",
+          "nullable": true
+        }
+      ],
+      "observedCounts": [
+        2,
+        2
+      ],
+      "operator": "kwip.data.imputerFit",
+      "outputSchema": [
+        {
+          "dtype": "float64",
+          "name": "left",
+          "nullable": false
+        },
+        {
+          "dtype": "string",
+          "name": "untouched",
+          "nullable": true
+        },
+        {
+          "dtype": "float64",
+          "name": "right",
+          "nullable": false
+        }
+      ],
+      "partitionDigest": "partition",
+      "schemaVersion": 1
+    },
+    "c179a956d5defa76f27d3474b139d150528186afc9949896d52d6a104706e2a6": {
+      "columns": [
+        "x"
+      ],
+      "configuration": {
+        "columns": [
+          "x"
+        ],
+        "maxCategories": 10,
+        "unknownPolicy": "ignore",
+        "vocabularyOrder": "firstSeen"
+      },
+      "contentDigest": "398430de72577a2fbb6e7436491c2511f3c9b1f194fd3abb37ae90d413194e4c",
+      "fitDataVersion": "5ac0aea2abe2dabffaac0c6b578ffaa1c6d72c81f77a93187dd8c8caa3187ef4",
+      "fitEvidence": {
+        "membershipDigest": "8bbf7e1a326a15bbee039c1bac2e6db35fb12d160f84746af72d0987b1b2daf6",
+        "observationIDs": [
+          "PRIVATE-ID-0",
+          "PRIVATE-ID-1"
+        ],
+        "role": "training",
+        "sourceDigest": "PRIVATE-SOURCE"
+      },
+      "graphDigest": "PRIVATE-GRAPH",
+      "inputFittedStateDigests": [],
+      "inputSchema": [
+        {
+          "dtype": "string",
+          "name": "x",
+          "nullable": true
+        }
+      ],
+      "operator": "kwip.data.oneHotEncoderFit",
+      "outputSchema": [
+        {
+          "displayLabel": "x = z",
+          "dtype": "float64",
+          "name": "onehot:[\"x\",\"z\"]",
+          "nullable": false
+        },
+        {
+          "displayLabel": "x = a",
+          "dtype": "float64",
+          "name": "onehot:[\"x\",\"a\"]",
+          "nullable": false
+        }
+      ],
+      "partitionDigest": "PRIVATE-PARTITION",
+      "schemaVersion": 1,
+      "vocabularies": [
+        [
+          "z",
+          "a"
+        ]
+      ]
+    },
+    "d22ae54274515f8fba5473daa12448009c076e9127d65f80f861011aa94aa449": {
+      "columns": [
+        "x"
+      ],
+      "configuration": {
+        "columns": [
+          "x"
+        ],
+        "emptyPolicy": "error",
+        "strategy": "mean"
+      },
+      "contentDigest": "9855a3323913aa39812d29149ed5291cfe987755393df46338954c28c07f1143",
+      "emptyColumns": [],
+      "fillValues": [
+        3.0
+      ],
+      "fitDataVersion": "019d30cd343cbf5f99fb1b173ee802e57fa54e8c850c12a4d05c9c0e09fe8041",
+      "fitEvidence": {
+        "membershipDigest": "434933447891e7816bbea3ac5506a806d5530570f9d453e041c7f41751ff361e",
+        "observationIDs": [
+          "PRIVATE-ID-0",
+          "PRIVATE-ID-1",
+          "PRIVATE-ID-2"
+        ],
+        "role": "training",
+        "sourceDigest": "PRIVATE-SOURCE"
+      },
+      "graphDigest": "PRIVATE-GRAPH",
+      "inputFittedStateDigests": [],
+      "inputSchema": [
+        {
+          "dtype": "float64",
+          "name": "x",
+          "nullable": true
+        }
+      ],
+      "observedCounts": [
+        2
+      ],
+      "operator": "kwip.data.imputerFit",
+      "outputSchema": [
+        {
+          "dtype": "float64",
+          "name": "x",
+          "nullable": false
+        }
+      ],
+      "partitionDigest": "PRIVATE-PARTITION",
+      "schemaVersion": 1
+    },
+    "d6b60acb039e05fa648926262ff3391172e4004a4acaca0ea41aabdc14713e10": {
+      "columns": [
+        "x"
+      ],
+      "configuration": {
+        "columns": [
+          "x"
+        ],
+        "emptyPolicy": "error",
+        "strategy": "mostFrequent",
+        "tiePolicy": "smallest"
+      },
+      "contentDigest": "304b0e026cb1bbe06bbc6b6417ba89f9b411c56baccb16316bb6b5ef515ee17a",
+      "emptyColumns": [],
+      "fillValues": [
+        "z"
+      ],
+      "fitDataVersion": "f3d8566991d76a1ea7187c873cfc2c96708251067222a5ae277dde499289c156",
+      "fitEvidence": {
+        "membershipDigest": "434933447891e7816bbea3ac5506a806d5530570f9d453e041c7f41751ff361e",
+        "observationIDs": [
+          "PRIVATE-ID-0",
+          "PRIVATE-ID-1",
+          "PRIVATE-ID-2"
+        ],
+        "role": "training",
+        "sourceDigest": "PRIVATE-SOURCE"
+      },
+      "graphDigest": "PRIVATE-GRAPH",
+      "inputFittedStateDigests": [],
+      "inputSchema": [
+        {
+          "dtype": "string",
+          "name": "x",
+          "nullable": true
+        }
+      ],
+      "observedCounts": [
+        2
+      ],
+      "operator": "kwip.data.imputerFit",
+      "outputSchema": [
+        {
+          "dtype": "string",
+          "name": "x",
+          "nullable": false
+        }
+      ],
+      "partitionDigest": "PRIVATE-PARTITION",
+      "schemaVersion": 1
+    },
+    "e638c95ad7ee613157807f8ff1be37a8f1c52b8b1a222e509c5799aad354e6c2": {
+      "columns": [
+        "x"
+      ],
+      "configuration": {
+        "columns": [
+          "x"
+        ],
+        "maxCategories": 10,
+        "unknownPolicy": "error",
+        "vocabularyOrder": "lexicographic"
+      },
+      "contentDigest": "8ad8f6690be30addab869bfe900eb31eed632c5ad42b377816df8103457aac76",
+      "fitDataVersion": "df512ec013cbcce5faa1d0ae49b4e1f30c56f4bb12da21f2a5835abbf25a4752",
+      "fitEvidence": {
+        "membershipDigest": "8bbf7e1a326a15bbee039c1bac2e6db35fb12d160f84746af72d0987b1b2daf6",
+        "observationIDs": [
+          "PRIVATE-ID-0",
+          "PRIVATE-ID-1"
+        ],
+        "role": "training",
+        "sourceDigest": "PRIVATE-SOURCE"
+      },
+      "graphDigest": "PRIVATE-GRAPH",
+      "inputFittedStateDigests": [],
+      "inputSchema": [
+        {
+          "dtype": "string",
+          "name": "x",
+          "nullable": true
+        }
+      ],
+      "operator": "kwip.data.oneHotEncoderFit",
+      "outputSchema": [
+        {
+          "displayLabel": "x = a",
+          "dtype": "float64",
+          "name": "onehot:[\"x\",\"a\"]",
+          "nullable": false
+        },
+        {
+          "displayLabel": "x = b",
+          "dtype": "float64",
+          "name": "onehot:[\"x\",\"b\"]",
+          "nullable": false
+        }
+      ],
+      "partitionDigest": "PRIVATE-PARTITION",
+      "schemaVersion": 1,
+      "vocabularies": [
+        [
+          "a",
+          "b"
+        ]
+      ]
+    },
+    "f1e0732ec141c6a3eafbe003e3b8a5bff457f19cfb5cbc0f7de9e213dd2cdeca": {
+      "columns": [
+        "x"
+      ],
+      "contentDigest": "cde95fcad79744a1ce6064ed3cbad60792bd64558f7c0df4b75c92e1cc029fb3",
+      "fitDataVersion": "18bb3086c145dd9c3392a453744fe3e6457bc0e9a1877fbfd7f6a58d23fe8a71",
+      "fitEvidence": {
+        "membershipDigest": "ae91e7757b3048d0bfc86bbea74d8803d9a9f291a130b24d609c5e0ef77d551c",
+        "observationIDs": [
+          "a",
+          "b"
+        ],
+        "role": "training",
+        "sourceDigest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "graphDigest": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "inputFittedStateDigests": [],
+      "inputSchema": [
+        {
+          "dtype": "float64",
+          "name": "x",
+          "nullable": false
+        },
+        {
+          "dtype": "datetime",
+          "name": "instant",
+          "nullable": false,
+          "temporal": {
+            "timezone": "America/New_York",
+            "unit": "microsecond",
+            "version": 1
+          }
+        }
+      ],
+      "means": [
+        2.0
+      ],
+      "operator": "kwip.data.standardScalerFit",
+      "outputSchema": [
+        {
+          "dtype": "float64",
+          "name": "x",
+          "nullable": false
+        },
+        {
+          "dtype": "datetime",
+          "name": "instant",
+          "nullable": false,
+          "temporal": {
+            "timezone": "America/New_York",
+            "unit": "microsecond",
+            "version": 1
+          }
+        }
+      ],
+      "partitionDigest": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "scales": [
+        1.0
+      ],
+      "schemaVersion": 1
+    }
+  }
+}

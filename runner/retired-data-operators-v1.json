@@ -1,0 +1,1403 @@
+{
+  "schemaVersion": 1,
+  "packageID": "kwip.data.builtin",
+  "operators": [
+    {
+      "id": "kwip.data.selectRename",
+      "version": {
+        "major": 1,
+        "minor": 0,
+        "patch": 0
+      },
+      "title": "Select and rename",
+      "backend": "portable",
+      "device": "host",
+      "inputs": [
+        {
+          "id": "table",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": 1
+        }
+      ],
+      "outputs": [
+        {
+          "id": "table",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": null
+        }
+      ],
+      "configSchema": {
+        "type": "object",
+        "properties": {
+          "columns": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200
+            },
+            "minItems": 1,
+            "maxItems": 128,
+            "uniqueItems": true
+          },
+          "rename": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200
+            }
+          }
+        },
+        "required": [
+          "columns",
+          "rename"
+        ],
+        "additionalProperties": false
+      },
+      "defaultConfig": {
+        "columns": [
+          "feature"
+        ],
+        "rename": {}
+      },
+      "fitBoundary": "notApplicable"
+    },
+    {
+      "id": "kwip.data.cast",
+      "version": {
+        "major": 1,
+        "minor": 0,
+        "patch": 0
+      },
+      "title": "Cast columns",
+      "backend": "portable",
+      "device": "host",
+      "inputs": [
+        {
+          "id": "table",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": 1
+        }
+      ],
+      "outputs": [
+        {
+          "id": "table",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": null
+        }
+      ],
+      "configSchema": {
+        "type": "object",
+        "properties": {
+          "columns": {
+            "type": "object",
+            "minProperties": 1,
+            "maxProperties": 128,
+            "additionalProperties": {
+              "type": "string",
+              "enum": [
+                "float64",
+                "int64",
+                "string",
+                "bool"
+              ]
+            }
+          },
+          "missingPolicy": {
+            "type": "string",
+            "enum": [
+              "error",
+              "preserve"
+            ],
+            "default": "error"
+          }
+        },
+        "required": [
+          "columns"
+        ],
+        "additionalProperties": false
+      },
+      "defaultConfig": {
+        "columns": {
+          "feature": "float64"
+        },
+        "missingPolicy": "error"
+      },
+      "fitBoundary": "notApplicable"
+    },
+    {
+      "id": "kwip.data.filter",
+      "version": {
+        "major": 1,
+        "minor": 0,
+        "patch": 0
+      },
+      "title": "Filter rows",
+      "backend": "portable",
+      "device": "host",
+      "inputs": [
+        {
+          "id": "table",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": 1
+        }
+      ],
+      "outputs": [
+        {
+          "id": "table",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": null
+        }
+      ],
+      "configSchema": {
+        "type": "object",
+        "properties": {
+          "column": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "comparison": {
+            "type": "string",
+            "enum": [
+              "eq",
+              "ne",
+              "lt",
+              "le",
+              "gt",
+              "ge"
+            ]
+          },
+          "value": {
+            "type": [
+              "string",
+              "number",
+              "boolean"
+            ]
+          }
+        },
+        "required": [
+          "column",
+          "comparison",
+          "value"
+        ],
+        "additionalProperties": false
+      },
+      "defaultConfig": {
+        "column": "feature",
+        "comparison": "ge",
+        "value": 0
+      },
+      "fitBoundary": "notApplicable"
+    },
+    {
+      "id": "kwip.data.missing",
+      "version": {
+        "major": 1,
+        "minor": 0,
+        "patch": 0
+      },
+      "title": "Missing values",
+      "backend": "portable",
+      "device": "host",
+      "inputs": [
+        {
+          "id": "table",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": 1
+        }
+      ],
+      "outputs": [
+        {
+          "id": "table",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": null
+        }
+      ],
+      "configSchema": {
+        "type": "object",
+        "properties": {
+          "columns": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200
+            },
+            "minItems": 1,
+            "maxItems": 128,
+            "uniqueItems": true
+          },
+          "policy": {
+            "type": "string",
+            "enum": [
+              "error",
+              "drop",
+              "fill"
+            ]
+          },
+          "value": {
+            "type": [
+              "string",
+              "number",
+              "boolean"
+            ]
+          }
+        },
+        "required": [
+          "columns",
+          "policy"
+        ],
+        "additionalProperties": false,
+        "oneOf": [
+          {
+            "properties": {
+              "policy": {
+                "const": "fill"
+              }
+            },
+            "required": [
+              "value"
+            ]
+          },
+          {
+            "properties": {
+              "policy": {
+                "enum": [
+                  "error",
+                  "drop"
+                ]
+              }
+            },
+            "not": {
+              "required": [
+                "value"
+              ]
+            }
+          }
+        ]
+      },
+      "defaultConfig": {
+        "columns": [
+          "feature"
+        ],
+        "policy": "error"
+      },
+      "fitBoundary": "notApplicable"
+    },
+    {
+      "id": "kwip.data.split",
+      "version": {
+        "major": 1,
+        "minor": 0,
+        "patch": 0
+      },
+      "title": "Partition data",
+      "backend": "portable",
+      "device": "host",
+      "inputs": [
+        {
+          "id": "table",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": 1
+        }
+      ],
+      "outputs": [
+        {
+          "id": "training",
+          "kind": "dataset",
+          "partition": "training",
+          "required": true,
+          "maximumConnections": null
+        },
+        {
+          "id": "validation",
+          "kind": "dataset",
+          "partition": "validation",
+          "required": true,
+          "maximumConnections": null
+        }
+      ],
+      "configSchema": {
+        "type": "object",
+        "properties": {
+          "seed": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 4294967295,
+            "default": 42
+          },
+          "validationPercent": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 50,
+            "default": 20
+          },
+          "stratifyColumn": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          }
+        },
+        "required": [
+          "seed",
+          "validationPercent"
+        ],
+        "additionalProperties": false
+      },
+      "defaultConfig": {
+        "seed": 42,
+        "validationPercent": 20
+      },
+      "fitBoundary": "notApplicable"
+    },
+    {
+      "id": "kwip.data.standardScalerFit",
+      "version": {
+        "major": 1,
+        "minor": 0,
+        "patch": 0
+      },
+      "title": "Fit standard scaler",
+      "backend": "portable",
+      "device": "host",
+      "inputs": [
+        {
+          "id": "training",
+          "kind": "dataset",
+          "partition": "training",
+          "required": true,
+          "maximumConnections": 1
+        }
+      ],
+      "outputs": [
+        {
+          "id": "state",
+          "kind": "state",
+          "stateKind": "fittedTransform",
+          "required": true,
+          "maximumConnections": null
+        }
+      ],
+      "configSchema": {
+        "type": "object",
+        "properties": {
+          "columns": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200
+            },
+            "minItems": 1,
+            "maxItems": 128,
+            "uniqueItems": true
+          }
+        },
+        "required": [
+          "columns"
+        ],
+        "additionalProperties": false
+      },
+      "defaultConfig": {
+        "columns": [
+          "feature"
+        ]
+      },
+      "fitBoundary": "trainingPartitionOnly"
+    },
+    {
+      "id": "kwip.data.transform",
+      "version": {
+        "major": 1,
+        "minor": 0,
+        "patch": 0
+      },
+      "title": "Apply fitted transform",
+      "backend": "portable",
+      "device": "host",
+      "inputs": [
+        {
+          "id": "table",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": 1
+        },
+        {
+          "id": "state",
+          "kind": "state",
+          "stateKind": "fittedTransform",
+          "required": true,
+          "maximumConnections": 1
+        }
+      ],
+      "outputs": [
+        {
+          "id": "table",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": null
+        }
+      ],
+      "configSchema": {
+        "type": "object",
+        "properties": {},
+        "required": [],
+        "additionalProperties": false
+      },
+      "defaultConfig": {},
+      "fitBoundary": "notApplicable"
+    },
+    {
+      "id": "kwip.data.imputerFit",
+      "version": {
+        "major": 1,
+        "minor": 0,
+        "patch": 0
+      },
+      "title": "Fit statistical imputer",
+      "backend": "portable",
+      "device": "host",
+      "inputs": [
+        {
+          "id": "training",
+          "kind": "dataset",
+          "partition": "training",
+          "required": true,
+          "maximumConnections": 1
+        }
+      ],
+      "outputs": [
+        {
+          "id": "state",
+          "kind": "state",
+          "stateKind": "fittedTransform",
+          "required": true,
+          "maximumConnections": null
+        }
+      ],
+      "configSchema": {
+        "type": "object",
+        "properties": {
+          "columns": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200
+            },
+            "minItems": 1,
+            "maxItems": 128,
+            "uniqueItems": true
+          },
+          "strategy": {
+            "type": "string",
+            "enum": [
+              "mean",
+              "median",
+              "mostFrequent"
+            ]
+          },
+          "emptyPolicy": {
+            "type": "string",
+            "enum": [
+              "error",
+              "constant"
+            ]
+          },
+          "emptyValue": {
+            "type": [
+              "string",
+              "number",
+              "boolean"
+            ]
+          },
+          "tiePolicy": {
+            "type": "string",
+            "enum": [
+              "smallest",
+              "error"
+            ]
+          }
+        },
+        "required": [
+          "columns",
+          "strategy",
+          "emptyPolicy"
+        ],
+        "additionalProperties": false,
+        "oneOf": [
+          {
+            "properties": {
+              "strategy": {
+                "const": "mostFrequent"
+              }
+            },
+            "required": [
+              "tiePolicy"
+            ],
+            "oneOf": [
+              {
+                "properties": {
+                  "emptyPolicy": {
+                    "const": "constant"
+                  }
+                },
+                "required": [
+                  "emptyValue"
+                ]
+              },
+              {
+                "properties": {
+                  "emptyPolicy": {
+                    "const": "error"
+                  }
+                },
+                "not": {
+                  "required": [
+                    "emptyValue"
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "properties": {
+              "strategy": {
+                "enum": [
+                  "mean",
+                  "median"
+                ]
+              }
+            },
+            "not": {
+              "required": [
+                "tiePolicy"
+              ]
+            },
+            "oneOf": [
+              {
+                "properties": {
+                  "emptyPolicy": {
+                    "const": "constant"
+                  }
+                },
+                "required": [
+                  "emptyValue"
+                ]
+              },
+              {
+                "properties": {
+                  "emptyPolicy": {
+                    "const": "error"
+                  }
+                },
+                "not": {
+                  "required": [
+                    "emptyValue"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "defaultConfig": {
+        "columns": [
+          "feature"
+        ],
+        "strategy": "mean",
+        "emptyPolicy": "error"
+      },
+      "fitBoundary": "trainingPartitionOnly"
+    },
+    {
+      "id": "kwip.data.oneHotEncoderFit",
+      "version": {
+        "major": 1,
+        "minor": 0,
+        "patch": 0
+      },
+      "title": "Fit categorical encoder",
+      "backend": "portable",
+      "device": "host",
+      "inputs": [
+        {
+          "id": "training",
+          "kind": "dataset",
+          "partition": "training",
+          "required": true,
+          "maximumConnections": 1
+        }
+      ],
+      "outputs": [
+        {
+          "id": "state",
+          "kind": "state",
+          "stateKind": "fittedTransform",
+          "required": true,
+          "maximumConnections": null
+        }
+      ],
+      "configSchema": {
+        "type": "object",
+        "properties": {
+          "columns": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200
+            },
+            "minItems": 1,
+            "maxItems": 128,
+            "uniqueItems": true
+          },
+          "vocabularyOrder": {
+            "type": "string",
+            "enum": [
+              "lexicographic",
+              "firstSeen"
+            ]
+          },
+          "unknownPolicy": {
+            "type": "string",
+            "enum": [
+              "error",
+              "ignore"
+            ]
+          },
+          "maxCategories": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 128
+          }
+        },
+        "required": [
+          "columns",
+          "vocabularyOrder",
+          "unknownPolicy",
+          "maxCategories"
+        ],
+        "additionalProperties": false
+      },
+      "defaultConfig": {
+        "columns": [
+          "category"
+        ],
+        "vocabularyOrder": "lexicographic",
+        "unknownPolicy": "error",
+        "maxCategories": 32
+      },
+      "fitBoundary": "trainingPartitionOnly"
+    },
+    {
+      "id": "kwip.data.groupSplit",
+      "version": {
+        "major": 1,
+        "minor": 0,
+        "patch": 0
+      },
+      "title": "Split by entity",
+      "backend": "portable",
+      "device": "host",
+      "inputs": [
+        {
+          "id": "table",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": 1
+        }
+      ],
+      "outputs": [
+        {
+          "id": "training",
+          "kind": "dataset",
+          "required": true,
+          "maximumConnections": null
+        },
+        {
+          "id": "validation",
+          "kind": "dataset",
+          "required": true,
+          "maximumConnections": null
+        },
+        {
+          "id": "test",
+          "kind": "dataset",
+          "required": true,
+          "maximumConnections": null
+        }
+      ],
+      "configSchema": {
+        "type": "object",
+        "properties": {
+          "groupBy": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200
+            },
+            "minItems": 1,
+            "maxItems": 128,
+            "uniqueItems": true
+          },
+          "nullKeys": {
+            "const": "error",
+            "type": "string"
+          },
+          "seed": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 4294967295
+          },
+          "allocationUnit": {
+            "const": "groups",
+            "type": "string"
+          },
+          "validationPercent": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 98
+          },
+          "testPercent": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 98
+          }
+        },
+        "required": [
+          "groupBy",
+          "nullKeys",
+          "seed",
+          "allocationUnit",
+          "validationPercent",
+          "testPercent"
+        ],
+        "additionalProperties": false
+      },
+      "defaultConfig": {
+        "groupBy": [],
+        "nullKeys": "error",
+        "seed": 42,
+        "allocationUnit": "groups",
+        "validationPercent": 20,
+        "testPercent": 20
+      },
+      "fitBoundary": "notApplicable"
+    },
+    {
+      "id": "kwip.data.temporalSplit",
+      "version": {
+        "major": 1,
+        "minor": 0,
+        "patch": 0
+      },
+      "title": "Split by time",
+      "backend": "portable",
+      "device": "host",
+      "inputs": [
+        {
+          "id": "table",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": 1
+        }
+      ],
+      "outputs": [
+        {
+          "id": "training",
+          "kind": "dataset",
+          "required": true,
+          "maximumConnections": null
+        },
+        {
+          "id": "validation",
+          "kind": "dataset",
+          "required": true,
+          "maximumConnections": null
+        },
+        {
+          "id": "test",
+          "kind": "dataset",
+          "required": true,
+          "maximumConnections": null
+        }
+      ],
+      "configSchema": {
+        "type": "object",
+        "properties": {
+          "timeColumn": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "timeEncoding": {
+            "type": "string",
+            "enum": [
+              "iso8601Offset",
+              "epochMilliseconds"
+            ]
+          },
+          "trainingEnd": {
+            "type": [
+              "string",
+              "integer"
+            ]
+          },
+          "validationEnd": {
+            "type": [
+              "string",
+              "integer"
+            ]
+          },
+          "embargoMilliseconds": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 86400000000
+          },
+          "entityColumns": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200
+            },
+            "minItems": 0,
+            "maxItems": 128,
+            "uniqueItems": true
+          },
+          "entityPolicy": {
+            "type": "string",
+            "enum": [
+              "allowAcrossTime",
+              "requireDisjoint"
+            ]
+          }
+        },
+        "required": [
+          "timeColumn",
+          "timeEncoding",
+          "trainingEnd",
+          "validationEnd",
+          "embargoMilliseconds",
+          "entityColumns",
+          "entityPolicy"
+        ],
+        "additionalProperties": false,
+        "oneOf": [
+          {
+            "properties": {
+              "timeEncoding": {
+                "const": "iso8601Offset"
+              },
+              "trainingEnd": {
+                "type": "string"
+              },
+              "validationEnd": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "timeEncoding",
+              "trainingEnd",
+              "validationEnd"
+            ]
+          },
+          {
+            "properties": {
+              "timeEncoding": {
+                "const": "epochMilliseconds"
+              },
+              "trainingEnd": {
+                "type": "integer"
+              },
+              "validationEnd": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "timeEncoding",
+              "trainingEnd",
+              "validationEnd"
+            ]
+          }
+        ]
+      },
+      "defaultConfig": {
+        "timeColumn": "",
+        "timeEncoding": "iso8601Offset",
+        "trainingEnd": "",
+        "validationEnd": "",
+        "embargoMilliseconds": 0,
+        "entityColumns": [],
+        "entityPolicy": "allowAcrossTime"
+      },
+      "fitBoundary": "notApplicable"
+    },
+    {
+      "id": "kwip.data.filterExpression",
+      "version": {
+        "major": 1,
+        "minor": 0,
+        "patch": 0
+      },
+      "title": "Expression filter",
+      "backend": "portable",
+      "device": "host",
+      "inputs": [
+        {
+          "id": "table",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": 1
+        }
+      ],
+      "outputs": [
+        {
+          "id": "matching",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": null
+        },
+        {
+          "id": "nonmatching",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": null
+        }
+      ],
+      "configSchema": {
+        "type": "object",
+        "properties": {
+          "expression": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "nullPolicy": {
+            "type": "string",
+            "enum": [
+              "error",
+              "nonmatching"
+            ]
+          }
+        },
+        "required": [
+          "expression",
+          "nullPolicy"
+        ],
+        "additionalProperties": false
+      },
+      "defaultConfig": {
+        "expression": "[feature] > 0",
+        "nullPolicy": "error"
+      },
+      "fitBoundary": "notApplicable"
+    },
+    {
+      "id": "kwip.data.calculate",
+      "version": {
+        "major": 1,
+        "minor": 0,
+        "patch": 0
+      },
+      "title": "Calculated column",
+      "backend": "portable",
+      "device": "host",
+      "inputs": [
+        {
+          "id": "table",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": 1
+        }
+      ],
+      "outputs": [
+        {
+          "id": "table",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": null
+        }
+      ],
+      "configSchema": {
+        "type": "object",
+        "properties": {
+          "expression": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "outputColumn": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "dtype": {
+            "type": "string",
+            "enum": [
+              "float64",
+              "int64",
+              "string",
+              "bool"
+            ]
+          },
+          "replaceExisting": {
+            "type": "boolean"
+          },
+          "nullPolicy": {
+            "type": "string",
+            "enum": [
+              "error",
+              "preserve"
+            ]
+          }
+        },
+        "required": [
+          "expression",
+          "outputColumn",
+          "dtype",
+          "replaceExisting",
+          "nullPolicy"
+        ],
+        "additionalProperties": false
+      },
+      "defaultConfig": {
+        "expression": "[feature] * 2",
+        "outputColumn": "derived",
+        "dtype": "float64",
+        "replaceExisting": false,
+        "nullPolicy": "error"
+      },
+      "fitBoundary": "notApplicable"
+    },
+    {
+      "id": "kwip.data.regexMatch",
+      "version": {
+        "major": 1,
+        "minor": 0,
+        "patch": 0
+      },
+      "title": "Regex match",
+      "backend": "portable",
+      "device": "host",
+      "inputs": [
+        {
+          "id": "table",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": 1
+        }
+      ],
+      "outputs": [
+        {
+          "id": "matching",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": null
+        },
+        {
+          "id": "nonmatching",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": null
+        }
+      ],
+      "configSchema": {
+        "type": "object",
+        "properties": {
+          "column": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "pattern": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 512
+          },
+          "flags": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "ignoreCase",
+                "multiline",
+                "dotAll"
+              ]
+            },
+            "maxItems": 3,
+            "uniqueItems": true
+          },
+          "nullPolicy": {
+            "type": "string",
+            "enum": [
+              "error",
+              "nonmatching"
+            ]
+          },
+          "matchMode": {
+            "type": "string",
+            "enum": [
+              "search",
+              "full"
+            ]
+          }
+        },
+        "required": [
+          "column",
+          "pattern",
+          "flags",
+          "nullPolicy",
+          "matchMode"
+        ],
+        "additionalProperties": false
+      },
+      "defaultConfig": {
+        "column": "text",
+        "pattern": "[A-Za-z]+",
+        "flags": [],
+        "nullPolicy": "error",
+        "matchMode": "search"
+      },
+      "fitBoundary": "notApplicable"
+    },
+    {
+      "id": "kwip.data.regexExtract",
+      "version": {
+        "major": 1,
+        "minor": 0,
+        "patch": 0
+      },
+      "title": "Regex extract",
+      "backend": "portable",
+      "device": "host",
+      "inputs": [
+        {
+          "id": "table",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": 1
+        }
+      ],
+      "outputs": [
+        {
+          "id": "table",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": null
+        }
+      ],
+      "configSchema": {
+        "type": "object",
+        "properties": {
+          "column": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "pattern": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 512
+          },
+          "flags": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "ignoreCase",
+                "multiline",
+                "dotAll"
+              ]
+            },
+            "maxItems": 3,
+            "uniqueItems": true
+          },
+          "nullPolicy": {
+            "type": "string",
+            "enum": [
+              "error",
+              "preserve"
+            ]
+          },
+          "groups": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 32,
+            "items": {
+              "type": "object",
+              "properties": {
+                "group": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 200
+                },
+                "output": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 200
+                }
+              },
+              "required": [
+                "group",
+                "output"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "noMatchPolicy": {
+            "type": "string",
+            "enum": [
+              "null",
+              "error"
+            ]
+          },
+          "replaceExisting": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "column",
+          "pattern",
+          "flags",
+          "nullPolicy",
+          "groups",
+          "noMatchPolicy",
+          "replaceExisting"
+        ],
+        "additionalProperties": false
+      },
+      "defaultConfig": {
+        "column": "text",
+        "pattern": "([A-Za-z]+)",
+        "flags": [],
+        "nullPolicy": "preserve",
+        "groups": [
+          {
+            "group": "1",
+            "output": "extracted"
+          }
+        ],
+        "noMatchPolicy": "null",
+        "replaceExisting": false
+      },
+      "fitBoundary": "notApplicable"
+    },
+    {
+      "id": "kwip.data.regexReplace",
+      "version": {
+        "major": 1,
+        "minor": 0,
+        "patch": 0
+      },
+      "title": "Regex replace",
+      "backend": "portable",
+      "device": "host",
+      "inputs": [
+        {
+          "id": "table",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": 1
+        }
+      ],
+      "outputs": [
+        {
+          "id": "table",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": null
+        }
+      ],
+      "configSchema": {
+        "type": "object",
+        "properties": {
+          "column": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "pattern": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 512
+          },
+          "flags": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "ignoreCase",
+                "multiline",
+                "dotAll"
+              ]
+            },
+            "maxItems": 3,
+            "uniqueItems": true
+          },
+          "nullPolicy": {
+            "type": "string",
+            "enum": [
+              "error",
+              "preserve"
+            ]
+          },
+          "replacement": {
+            "type": "string",
+            "maxLength": 4096
+          },
+          "replaceMode": {
+            "type": "string",
+            "enum": [
+              "first",
+              "all"
+            ]
+          },
+          "outputColumn": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "replaceExisting": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "column",
+          "pattern",
+          "flags",
+          "nullPolicy",
+          "replacement",
+          "replaceMode",
+          "outputColumn",
+          "replaceExisting"
+        ],
+        "additionalProperties": false
+      },
+      "defaultConfig": {
+        "column": "text",
+        "pattern": " +",
+        "flags": [],
+        "nullPolicy": "preserve",
+        "replacement": " ",
+        "replaceMode": "all",
+        "outputColumn": "cleaned",
+        "replaceExisting": false
+      },
+      "fitBoundary": "notApplicable"
+    }
+  ]
+}

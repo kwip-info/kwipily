@@ -1,0 +1,122 @@
+{
+  "entryID": "affine-backward",
+  "title": "Build the backward map",
+  "taskTitle": "Backpropagate through an affine chain",
+  "chapter": "Foundations",
+  "type": "Construction",
+  "assessmentID": "assessment.affine-backward-chain",
+  "scopeLabel": "Assessment · backward sensitivity",
+  "baselineHash": "223d89116dadd828dd12c0e66fed3a17a471c4d657310b382f05adfa47c3d231",
+  "summary": "Trace sensitivity backward through two known maps, keeping the forward values and backward calculation distinct.",
+  "scope": "Third Affine assessment only. Three rail and six task/reference sections; presentation only.",
+  "reviewNote": "Original public forward coefficients remain visible. This proposal defines sensitivity before notation and does not calculate completed backward weights or expose independent checker fixtures. Recovery and earlier approved copy are already applied; native chapter checks remain deferred.",
+  "sourceChecks": [
+    "The library lists Build the backward map after Recover an affine map; its stable identity is assessment.affine-backward-chain.",
+    "The supplied canvas starts with unconnected Upstream gradient and Input gradient blocks, each representing two features.",
+    "The source defines the task as an input-gradient transformation for a fixed two-map forward chain, not inverse reconstruction or a training update.",
+    "Original First map and Second map values come directly from the shared public reference. The viewer never calls the reference solver or generates private assessment fixtures.",
+    "The allowed components are Input, Linear, Add, Concatenate and Output. Existing task identities, versions, allowed sets, tolerances, resource budgets and saved receipts are unchanged.",
+    "Only proposed wording is prepared for this assessment. App rebuilding and native assessment checks wait until Foundations wording review is finished."
+  ],
+  "publicMaps": [
+    {
+      "name": "First map",
+      "weight": [
+        [
+          2,
+          -1
+        ],
+        [
+          0.5,
+          3
+        ]
+      ],
+      "bias": [
+        1,
+        -2
+      ]
+    },
+    {
+      "name": "Second map",
+      "weight": [
+        [
+          1,
+          2
+        ],
+        [
+          -2,
+          1
+        ]
+      ],
+      "bias": [
+        0.25,
+        1
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "id": "goal",
+      "title": "Meet the backward-map assessment",
+      "text": "A model passes values forward through its layers. During learning, it also needs to know how changes in earlier values would affect a later result. A gradient describes that sensitivity: how much a result changes for a small change in a particular value.\n\nHere, the original forward calculation has two affine maps: First map, then Second map. Each combines two input numbers using fixed weights and adds two offsets. Their original tables are supplied for reference.\n\nYour canvas represents the backward calculation instead:\n- Upstream gradient supplies two sensitivity values at the end of the original forward chain. The checker supplies these values.\n- Input gradient must receive two sensitivity values at the start of that chain.\n\nBoth blocks begin unconnected. Build the transformation between them and enter its fixed parameters. You are not recovering the original input values or training the model. You are carrying sensitivity backward through the two known maps.",
+      "kind": "explanation",
+      "group": "Assessment rail · 3 sections"
+    },
+    {
+      "id": "try.0",
+      "title": "Build the backward calculation",
+      "text": "1. Open Task, supplied values & hints and read the original First map and Second map tables. These describe the forward calculation; copying that forward chain onto this canvas would answer a different question.\n2. Trace the sensitivity through Second map first, then First map. Decide how each forward weight contributes when tracing in the opposite direction. A transpose exchanges a matrix's rows and columns; it does not reverse the order of values in a row.\n3. Drag allowed components onto the canvas. Connect Upstream gradient through your calculation to Input gradient. Keep two input features and two final output features. You can use one equivalent Linear layer or an equivalent arrangement of allowed affine components.\n4. Select each Linear layer and use Parameters to set its feature widths, Weight matrix and Bias. The editor numbers rows and columns from 0. Each row produces an output feature; each column receives an input feature. Initialize explicit values if needed, then enter your intended weights.\n5. Check the offsets. A fixed forward bias shifts a forward value but does not change its sensitivity to an input. Do not carry those forward offsets into this backward result. Finish pending numeric edits before submitting.\n\nThe checker evaluates the fixed calculation you entered. It does not train those weights or automatically construct the backward graph for you.",
+      "kind": "canvasAction",
+      "group": "Assessment rail · 3 sections"
+    },
+    {
+      "id": "inspect",
+      "title": "Submit and check sensitivity",
+      "text": "Choose Submit assessment in Check your construction. The checker provides different upstream-gradient rows and compares the input-gradient values produced by your construction. Each row is an independent sensitivity case.\n\nRead Assessment feedback when the check finishes:\n- If values do not match, check that you traced Second map before First map, used the intended weight orientation and did not add a forward offset.\n- Keep the two features in their original order. Returning the right numbers in swapped positions is a different result.\n- If checking cannot start or is cancelled, resolve that condition before treating it as evidence about the mathematics.\n\nCompletion requires a passing assessment with its receipt saved. After editing, submit again: an earlier result describes the earlier construction. Save keeps your attempt; it does not itself demonstrate correctness.",
+      "kind": "observation",
+      "group": "Assessment rail · 3 sections"
+    },
+    {
+      "id": "reference.goal",
+      "title": "The required behavior",
+      "text": "Transform sensitivity at the end of the supplied two-map chain into sensitivity at its input. Preserve two features per row and their order.\n\nThe supplied forward maps are fixed. Build an equivalent backward calculation from their weights, without adding their forward biases. Different valid arrangements of the allowed affine components can pass.",
+      "kind": "explanation",
+      "group": "Task reference · 6 sections"
+    },
+    {
+      "id": "reference.workflow",
+      "title": "Work with the parameter tables",
+      "text": "Connect the ports from Upstream gradient to Input gradient through your construction. Select each block to edit its Parameters.\n\nFor Linear, set the feature widths before entering explicit values. A weight-table row produces one output feature; a column receives one input feature. Row 0 and column 0 are the first output and input features.\n\nWhen tracing a forward layer backward, distinguish that mathematical transformation from the numbers Linear expects in its stored weight table. Linear applies the transpose of its stored weights to row-based inputs. Optional · connect the notation explains this convention.\n\nFinish numeric edits, then choose Submit assessment in the rail.",
+      "kind": "canvasAction",
+      "group": "Task reference · 6 sections"
+    },
+    {
+      "id": "reference.maps",
+      "title": "Read the original forward maps",
+      "text": "These tables describe the original forward path: First map followed by Second map. They are reference values, not completed backward-layer parameters.\n\n**First map**\n- Weight row 0: [2, -1]\n- Weight row 1: [0.5, 3]\n- Offsets: [1, -2]\n\n**Second map**\n- Weight row 0: [1, 2]\n- Weight row 1: [-2, 1]\n- Offsets: [0.25, 1]\n\nFor each forward map, rows identify output features and columns identify input features. Follow each weight's contribution in the opposite direction when building the backward map. The supplied offsets help define the forward calculation; they are not shifts to add to an input gradient.",
+      "kind": "visual",
+      "group": "Task reference · 6 sections"
+    },
+    {
+      "id": "reference.meaning",
+      "title": "Understand what the two values mean",
+      "text": "An upstream gradient says how sensitive a later scalar result is to each of the two forward output features. A scalar is one number, such as a loss. The checker supplies the sensitivity values directly; you do not need to build that loss here.\n\nYour output says how sensitive that same result is to each original input feature. A positive value means increasing that input would increase the result locally; a negative value means it would decrease it. Magnitude describes how strongly a small change matters.\n\nThis is an input-gradient calculation. It does not recover the original observations, update weights or report gradients for the model's parameters. Shape [4, 2], for example, would mean four independent cases with two sensitivity values each.",
+      "kind": "explanation",
+      "group": "Task reference · 6 sections"
+    },
+    {
+      "id": "reference.criteria",
+      "title": "What completion means",
+      "text": "The assessment compares your output with the required input gradients on independent upstream-gradient cases. Preserve the number of rows, the two-feature output width and feature order. A valid equivalent calculation can pass without matching a particular layout or number of blocks.\n\nCompletion requires a passing Submit assessment result with its receipt saved. Reading the reference tables or saving an unfinished attempt is not completion. Existing checker criteria and resource limits remain available in Optional · exact checks and limits.",
+      "kind": "observation",
+      "group": "Task reference · 6 sections"
+    },
+    {
+      "id": "reference.notation",
+      "title": "Optional · connect the notation",
+      "text": "The original forward calculation is:\n\ny = W₂(W₁x + b₁) + b₂\n\nx contains the original input features; y contains the final output features. W₁ and W₂ are the supplied weight tables. b₁ and b₂ are their fixed offsets.\n\ng is the upstream gradient arriving at y. With observations stored as rows, the backward calculation is:\n\ninput gradient = g W₂ W₁\n\nRead it from left to right: trace sensitivity through Second map, then First map. This is the chain rule. It combines the sensitivity of each step.\n\nA Linear layer uses row inputs multiplied by the transpose of its stored weight table, plus bias. A transpose, written T, swaps rows and columns. Account for that storage convention when entering each backward layer's parameters. The forward offsets contribute no input-gradient shift.\n\nYou may see this called a vector–Jacobian product. It combines supplied output sensitivities with the forward calculation's derivatives. It is not a matrix inverse, and it is not a parameter update.",
+      "kind": "detail",
+      "group": "Task reference · 6 sections"
+    }
+  ]
+}

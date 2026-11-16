@@ -1,0 +1,249 @@
+{
+  "definitions": [],
+  "drafts": [],
+  "edges": [
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "forecast"
+        },
+        "port": "table"
+      },
+      "id": "09169E6E-E638-43A0-8FE8-8B129AFAD89A",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "first48"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "first48"
+        },
+        "port": "matching"
+      },
+      "id": "E4B03048-C2A8-43F9-98B9-D1D94E17AE6C",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "review"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "first48"
+        },
+        "port": "matching"
+      },
+      "id": "D3605B7D-F0CC-4D64-BC8D-9B308058F226",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "export"
+        },
+        "port": "table"
+      }
+    }
+  ],
+  "kind": "workflowProject",
+  "name": "Build an hourly weather briefing",
+  "nodes": [
+    {
+      "address": {
+        "domain": "data",
+        "localID": "forecast"
+      },
+      "name": "Hourly forecast source",
+      "payload": {
+        "config": {
+          "format": "api",
+          "options": {
+            "allowLoopback": false,
+            "arrayPath": "",
+            "auth": "none",
+            "batchRows": 100,
+            "constants": [],
+            "credentialHeader": "X-API-Key",
+            "cursorParameter": "cursor",
+            "cursorPath": "/next_cursor",
+            "delivery": "row",
+            "direction": "input",
+            "headers": {
+              "User-Agent": "KWIP-showcase (https://kwip.info)"
+            },
+            "idempotencyHeader": "",
+            "kind": "api",
+            "mapping": [
+              {
+                "source": "/number",
+                "target": "period",
+                "type": "int64"
+              },
+              {
+                "source": "/startTime",
+                "target": "start",
+                "type": "string"
+              },
+              {
+                "source": "/endTime",
+                "target": "end",
+                "type": "string"
+              },
+              {
+                "source": "/temperature",
+                "target": "temperature",
+                "type": "float64"
+              },
+              {
+                "source": "/temperatureUnit",
+                "target": "temperature_unit",
+                "type": "string"
+              },
+              {
+                "source": "/probabilityOfPrecipitation/value",
+                "target": "precipitation_probability",
+                "type": "float64"
+              },
+              {
+                "source": "/probabilityOfPrecipitation/unitCode",
+                "target": "probability_unit",
+                "type": "string"
+              },
+              {
+                "source": "/windSpeed",
+                "target": "wind_speed",
+                "type": "string"
+              },
+              {
+                "source": "/windDirection",
+                "target": "wind_direction",
+                "type": "string"
+              },
+              {
+                "source": "/shortForecast",
+                "target": "forecast",
+                "type": "string"
+              }
+            ],
+            "maximumBytes": 500000,
+            "maximumPages": 1,
+            "maximumRequests": 1,
+            "maximumRows": 200,
+            "method": "GET",
+            "missing": "error",
+            "nextPath": "/next",
+            "pageParameter": "page",
+            "pageSize": 100,
+            "pageStart": 1,
+            "pagination": "none",
+            "query": {},
+            "recordsPath": "/properties/periods",
+            "requestTimeout": 30,
+            "requestsPerSecond": 1,
+            "responsePath": "",
+            "retries": 0,
+            "schemaVersion": 1,
+            "timeoutSeconds": 40,
+            "url": "https://api.weather.gov/gridpoints/LWX/97,71/forecast/hourly"
+          }
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.sourceCSV"
+      },
+      "x": 0,
+      "y": 200
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "first48"
+      },
+      "name": "First 48 source periods · retain offsets and units",
+      "payload": {
+        "config": {
+          "column": "period",
+          "conditions": [
+            {
+              "caseSensitive": true,
+              "column": "period",
+              "comparison": "le",
+              "value": 48
+            }
+          ],
+          "expression": "[period] <= 48",
+          "flags": [],
+          "match": "all",
+          "matchMode": "search",
+          "mode": "simple",
+          "nullPolicy": "error",
+          "pattern": ".+"
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.filterRows"
+      },
+      "x": 300,
+      "y": 200
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "review"
+      },
+      "name": "Review original forecast details",
+      "payload": {
+        "config": {},
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.view"
+      },
+      "x": 600,
+      "y": 200
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "export"
+      },
+      "name": "Weather briefing report",
+      "payload": {
+        "config": {
+          "columns": [
+            "period",
+            "start",
+            "end",
+            "temperature",
+            "temperature_unit",
+            "precipitation_probability",
+            "probability_unit",
+            "wind_speed",
+            "wind_direction",
+            "forecast"
+          ],
+          "destination": "file",
+          "filename": "weather-briefing-export.csv",
+          "format": "csv",
+          "overwrite": false,
+          "separator": ","
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.outputDelimited"
+      },
+      "x": 900,
+      "y": 200
+    }
+  ],
+  "projectID": "00000000-0000-0000-0000-000000000000",
+  "revision": 0,
+  "schemaVersion": 1
+}

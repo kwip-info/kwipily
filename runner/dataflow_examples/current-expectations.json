@@ -1,0 +1,265 @@
+{
+  "schemaVersion": 1,
+  "description": "Explicit current three-population examples; not migration-equivalence expectations. Observation indices are zero-based source row positions.",
+  "examples": {
+    "preparation": {
+      "graph": "runner/dataflow_examples/preparation.json",
+      "source": "runner/dataflow_examples/observations.csv",
+      "nodeCount": 7,
+      "partitions": {
+        "training": {
+          "count": 24,
+          "sourceRowIndices": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            10,
+            16,
+            18,
+            19,
+            22,
+            23,
+            25,
+            26,
+            29,
+            32,
+            33,
+            35,
+            36,
+            37,
+            38,
+            39
+          ]
+        },
+        "validation": {
+          "count": 8,
+          "sourceRowIndices": [
+            9,
+            14,
+            17,
+            21,
+            28,
+            30,
+            31,
+            34
+          ]
+        },
+        "test": {
+          "count": 8,
+          "sourceRowIndices": [
+            0,
+            11,
+            12,
+            13,
+            15,
+            20,
+            24,
+            27
+          ]
+        }
+      },
+      "outputColumns": [
+        "amount",
+        "other",
+        "onehot:[\"category\",\"blue\"]",
+        "onehot:[\"category\",\"new-heldout\"]",
+        "onehot:[\"category\",\"red\"]",
+        "group"
+      ],
+      "rules": [
+        {
+          "column": "amount",
+          "fill": 55.7,
+          "vocabulary": [],
+          "mean": 55.7,
+          "scale": 52.5598230590629
+        },
+        {
+          "column": "other",
+          "fill": 59.75,
+          "vocabulary": [],
+          "mean": 59.75,
+          "scale": 38.761288678267654
+        },
+        {
+          "column": "category",
+          "fill": "blue",
+          "vocabulary": [
+            "blue",
+            "new-heldout",
+            "red"
+          ],
+          "mean": 0.0,
+          "scale": 1.0
+        }
+      ]
+    },
+    "sensor": {
+      "graph": "runner/dataflow_examples/sensor-preparation.json",
+      "source": "runner/dataflow_examples/sensor-readings.csv",
+      "nodeCount": 10,
+      "partitions": {
+        "training": {
+          "count": 22,
+          "sourceRowIndices": [
+            13,
+            14,
+            15,
+            17,
+            18,
+            21,
+            22,
+            23,
+            25,
+            26,
+            29,
+            30,
+            32,
+            33,
+            34,
+            35,
+            36,
+            38,
+            40,
+            42,
+            45,
+            47
+          ]
+        },
+        "validation": {
+          "count": 8,
+          "sourceRowIndices": [
+            12,
+            19,
+            20,
+            24,
+            27,
+            31,
+            39,
+            46
+          ]
+        },
+        "test": {
+          "count": 6,
+          "sourceRowIndices": [
+            16,
+            28,
+            37,
+            41,
+            43,
+            44
+          ]
+        }
+      },
+      "outputColumns": [
+        "amount",
+        "temperature",
+        "label"
+      ],
+      "rules": [
+        {
+          "column": "amount",
+          "fill": null,
+          "vocabulary": [],
+          "mean": 29.363636363636367,
+          "scale": 10.005886697091931
+        },
+        {
+          "column": "temperature",
+          "fill": null,
+          "vocabulary": [],
+          "mean": 25.772727272727273,
+          "scale": 2.0011773394183847
+        }
+      ]
+    },
+    "scaler": {
+      "graph": "examples/dataflow/scaler.json",
+      "source": "examples/dataflow/observations.csv",
+      "nodeCount": 8,
+      "partitions": {
+        "training": {
+          "count": 24,
+          "sourceRowIndices": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            14,
+            15,
+            16,
+            17,
+            19,
+            21,
+            22,
+            24,
+            25,
+            26,
+            27,
+            28,
+            30,
+            35,
+            37,
+            38
+          ]
+        },
+        "validation": {
+          "count": 8,
+          "sourceRowIndices": [
+            11,
+            12,
+            13,
+            32,
+            33,
+            34,
+            36,
+            39
+          ]
+        },
+        "test": {
+          "count": 8,
+          "sourceRowIndices": [
+            0,
+            1,
+            2,
+            18,
+            20,
+            23,
+            29,
+            31
+          ]
+        }
+      },
+      "outputColumns": [
+        "feature",
+        "second",
+        "group"
+      ],
+      "rules": [
+        {
+          "column": "feature",
+          "fill": null,
+          "vocabulary": [],
+          "mean": 45.666666666666664,
+          "scale": 42.87968309377091
+        },
+        {
+          "column": "second",
+          "fill": null,
+          "vocabulary": [],
+          "mean": 16.416666666666668,
+          "scale": 8.746030845792596
+        }
+      ]
+    }
+  }
+}

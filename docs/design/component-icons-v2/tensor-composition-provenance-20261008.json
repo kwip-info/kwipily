@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-08",
+  "tool": "built-in image_gen",
+  "modifications": "Original generated PNG bytes copied unchanged; no pixel edits. Prior approved concat/add assets retained.",
+  "assets": [
+    {
+      "id": "stack",
+      "path": "Sources/KwipMLApp/Resources/ComponentIcons/stack-v2.png",
+      "source": "exec-ef814e81-2ea8-4360-bd1a-23180d862103.png",
+      "prompt": "Use case: logo-brand. Asset type: KwipML macOS component icon, original raster artwork with genuinely transparent background. Flat, crisp, restrained technical icon, sharp angular frame and solid geometric symbol. Entire frame and symbol fit centered with equal 10 percent clear margins. No text, no labels, no shadow, no glow, no gradients, no black or white background, no colored artifacts outside the deliberate shapes. Designed to remain distinct at 24 and 32 pixels. Blue Merge family palette: muted steel blue #79A1BF outer diamond outline, darker slate blue #496F8D symbol. Primary symbol inside diamond: two identical small rectangular tables positioned as separate offset layers, one slightly above and behind the other, each with a simple two-by-two cell grid. A short clear downward placement arrow at their side communicates grouping two equal arrays along a new direction. Balanced sparse geometry, only two blue colors, clean transparent cutout.",
+      "sha256": "6387561c2162c4437d24be11b709b9cecb5e542f7d2383d5491eb1063aa4395c"
+    },
+    {
+      "id": "permute",
+      "path": "Sources/KwipMLApp/Resources/ComponentIcons/permute-v2.png",
+      "source": "exec-bcda65ed-98c6-446d-ac4a-4332d6a34313.png",
+      "prompt": "Use case: logo-brand. Create a NEW transparent PNG KwipML Permute component icon. Reference image is style only: match its sharp rectangular outline, ample transparent space, restrained purple family palette. Inside the frame show three crisp parallel rows connected by three solid angular crossing arrows to indicate reordering three array directions. Solid flat colors #AD99C9 and #79628F only. Simple broad clean shapes legible at 32 pixels. Completely transparent background including inside the frame. No filled panel, black backdrop, texture, shadows, highlights, blur, glow, gradients, lettering or numbers. Square output, centered artwork with 10 percent transparent margins. This is a flat technical app icon, not illuminated artwork.",
+      "sha256": "06e07bf36bf3d195915e7046b0dc0fc103c2a725b53d3664ca5dfe21fde7def9"
+    }
+  ],
+  "rejected": "exec-bb78f14a-c765-45b2-b11a-e0529929d340.png: soft glow/filled panel; not shipped"
+}

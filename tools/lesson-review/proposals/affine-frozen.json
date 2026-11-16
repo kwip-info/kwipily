@@ -1,0 +1,96 @@
+{
+  "entryID": "affine-frozen",
+  "title": "Carry fitted statistics into inference",
+  "taskTitle": "Carry fitted statistics into inference",
+  "chapter": "Foundations",
+  "type": "Construction",
+  "assessmentID": "assessment.frozen-standardization",
+  "scopeLabel": "Assessment · fixed numeric preparation",
+  "baselineHash": "961c287b2945cfedfc6dff5847df9cf3ff47b50f58572de9c8c996d5da163c0c",
+  "summary": "Reuse training averages and scales so new observations reach the model in the same numerical form.",
+  "scope": "Fourth Affine assessment only. Three rail sections and six task/reference sections; presentation changes only.",
+  "reviewNote": "Saved averages and scales come directly from the public reference. The proposal introduces inference, fixed preparation and batch independence without generating a completed parameter table or private assessment fixtures. App rebuilding remains deferred until Foundations is finished.",
+  "sourceChecks": [
+    "The library lists this assessment after Build the backward map. Its stable identity is assessment.frozen-standardization.",
+    "The supplied assessment canvas begins with unconnected Input and Result blocks and two features per observation.",
+    "The public source saves means [2,12] and scales [2,4]. Each output subtracts its matching saved mean and divides by its saved scale.",
+    "The assessment uses independent inputs, including the same observation with different batch companions. It checks fixed preparation rather than fitting new statistics.",
+    "The allowed components remain Input, Linear, Add, Concatenate and Output. No state-artifact loading, missing-value inference, training update or export capability is added.",
+    "Task/content/assessment identities, saved projects, checker tolerances, budgets, hidden fixtures and historical receipts are unchanged. Only this proposed presentation awaits approval."
+  ],
+  "publicStatistics": {
+    "means": [
+      2.0,
+      12.0
+    ],
+    "scales": [
+      2.0,
+      4.0
+    ]
+  },
+  "steps": [
+    {
+      "id": "goal",
+      "title": "Meet the saved-preparation assessment",
+      "text": "Models often learn from prepared numbers rather than raw measurements. One common preparation subtracts a feature's training average, then divides by a saved scale. This puts values into the numerical form the model learned to use.\n\nInference means using an already-trained model on new observations. Those new observations must receive the same preparation. Recalculating averages or scales from a new batch can change the meaning of a value before it reaches the model.\n\nThis assessment supplies two saved training averages and two saved scales, one pair per feature. Your canvas starts with two unconnected blocks:\n- Input receives raw observations with two numeric features. The checker supplies the actual values.\n- Result must receive the two prepared features in their original order.\n\nBuild the fixed calculation between them and enter its parameters. You will reproduce the saved preparation numerically; this exercise does not train a model, fit new statistics or load a preprocessing file.",
+      "kind": "explanation",
+      "group": "Assessment rail · 3 sections"
+    },
+    {
+      "id": "try.0",
+      "title": "Build the fixed preparation",
+      "text": "1. Open Task, supplied values & hints and read the saved average and scale for each feature. Keep feature 1 paired with its own statistics and feature 2 with its own.\n2. For each new value, subtract that feature's saved average, then divide by its saved scale. Work out how to represent that fixed multiply-and-add calculation with the allowed components.\n3. Drag components onto the canvas and connect Input through your calculation to Result. Keep two raw input features and two prepared output features. A Linear layer can express this transform; equivalent arrangements of allowed affine components are accepted.\n4. Select each Linear layer and use Parameters to set its feature widths, Weight matrix and Bias. Each weight-table row produces an output; each column receives an input. Row and column indices start at 0. Initialize explicit values if needed, then enter the intended weights and offsets.\n5. Check that each feature is prepared independently. Do not accidentally mix feature 2 into feature 1, swap their order or omit the subtraction. Finish pending numeric edits before submitting.\n\nUse the supplied statistics throughout. The checker evaluates your entered calculation; it does not fit the preparation for you.",
+      "kind": "canvasAction",
+      "group": "Assessment rail · 3 sections"
+    },
+    {
+      "id": "inspect",
+      "title": "Submit and check consistency",
+      "text": "Choose Submit assessment in Check your construction. The checker supplies new raw observations and compares your prepared values with the required fixed transformation.\n\nRead Assessment feedback when checking finishes:\n- If values do not match, check which average and scale belong to each feature, the subtraction, the division and the parameter-table orientation.\n- The same raw observation must produce the same prepared values when other rows in its batch change. A batch is a group of observations; its companions must not redefine this fixed preparation.\n- If checking cannot start or is cancelled, resolve that condition before treating it as evidence about your calculation.\n\nCompletion requires a passing assessment with its receipt saved. After edits, submit again to check the new construction. Saving preserves your attempt; it does not itself demonstrate that the transformation is correct.",
+      "kind": "observation",
+      "group": "Assessment rail · 3 sections"
+    },
+    {
+      "id": "reference.goal",
+      "title": "The required behavior",
+      "text": "Prepare every new two-feature observation with the averages and scales saved from training. Subtract the matching saved average, then divide by the matching saved scale. Preserve the order of the two features.\n\nThe transform stays fixed across observations and batches. Equivalent arrangements of the allowed affine components can pass, provided they return the same prepared values.",
+      "kind": "explanation",
+      "group": "Task reference · 6 sections"
+    },
+    {
+      "id": "reference.workflow",
+      "title": "Work with the parameter tables",
+      "text": "Connect Input through your preparation to Result. Select each component to edit its Parameters.\n\nFor Linear, set feature widths before entering explicit values. Each Weight matrix row produces one output feature; each column receives one input feature. Bias supplies a fixed offset for each output.\n\nUse row 0 for the first prepared feature and row 1 for the second. Consider which input each output depends on and which cross-feature weights should contribute nothing. Derive the offset together with the scale: subtracting before division affects both parts of the calculation.\n\nFinish numeric edits, then choose Submit assessment in the rail.",
+      "kind": "canvasAction",
+      "group": "Task reference · 6 sections"
+    },
+    {
+      "id": "reference.statistics",
+      "title": "Read the saved training statistics",
+      "text": "These values were already obtained from training data and are fixed for this task:\n\n**Feature 1**\n- Saved average: 2.\n- Saved scale: 2.\n\n**Feature 2**\n- Saved average: 12.\n- Saved scale: 4.\n\nFor each feature, subtract its saved average and divide by its saved scale. Do not exchange the statistics between features or calculate new ones from the incoming rows.\n\nThe task supplies these numbers directly. You do not need to open a dataset, run fitting or import a saved state file to complete this assessment.",
+      "kind": "visual",
+      "group": "Task reference · 6 sections"
+    },
+    {
+      "id": "reference.scope",
+      "title": "What this exercise carries forward",
+      "text": "This construction represents the numerical preparation that a trained model may depend on. A model expecting already-prepared features needs that same transformation applied to its new raw inputs.\n\nThis assessment does not load a fitted dataflow artifact, attach preprocessing state to an exported model package or fill missing values. It demonstrates the fixed calculation using the supplied finite numeric inputs. Keep that distinction when applying the idea to a real workflow.",
+      "kind": "callout",
+      "group": "Task reference · 6 sections"
+    },
+    {
+      "id": "reference.criteria",
+      "title": "What completion means",
+      "text": "The assessment checks prepared values on independent observations, preserving feature order and two output features per row. It also checks that changing other observations in a batch does not change the preparation of an unchanged observation.\n\nCompletion requires a passing Submit assessment result with its receipt saved. Reading the statistics or saving an unfinished construction does not establish completion. Existing checker criteria and resource limits remain available in Optional · exact checks and limits.",
+      "kind": "observation",
+      "group": "Task reference · 6 sections"
+    },
+    {
+      "id": "reference.notation",
+      "title": "Optional · connect the formula",
+      "text": "For one feature, the saved preparation is:\n\nz = (x − μ) / s\n\nx is its new raw value, μ is its saved training average, s is its saved scale, and z is its prepared value. Each feature uses its own μ and s.\n\nExpanding the expression gives a multiplication and a fixed offset:\n\nz = x × (1 / s) − μ / s\n\nA Linear layer can express this calculation. A diagonal weight table means each output uses only its corresponding input: the cross-feature entries are zero. Derive its weights and offsets from the saved statistics, keeping the feature order.\n\nFor observations stored as rows, the same idea is:\n\nZ = (X − 1μᵀ) diag(1/s)\n\nX contains the raw rows and Z the prepared rows. The transpose symbol T changes the average vector's orientation; 1 repeats those averages across rows. diag places the reciprocal scales on a diagonal. Shape [4, 2] means four observations with two features each. No part of this formula refits the statistics from those four observations.",
+      "kind": "detail",
+      "group": "Task reference · 6 sections"
+    }
+  ]
+}

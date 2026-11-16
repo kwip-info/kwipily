@@ -1,0 +1,931 @@
+{
+  "schemaVersion": 1,
+  "scope": "current shipped model/data/training/evaluation/block catalog; no proposed capabilities",
+  "components": [
+    {
+      "id": "input",
+      "title": "Model input",
+      "category": "Boundaries",
+      "asset": "model-input-v3.png"
+    },
+    {
+      "id": "linear",
+      "title": "Linear",
+      "category": "Layers",
+      "asset": "linear-v2.png"
+    },
+    {
+      "id": "lazy_linear",
+      "title": "Lazy Linear",
+      "category": "Layers",
+      "asset": "linear-v2.png"
+    },
+    {
+      "id": "bilinear",
+      "title": "Bilinear",
+      "category": "Layers",
+      "asset": "bilinear-v3.png"
+    },
+    {
+      "id": "relu",
+      "title": "ReLU",
+      "category": "Activations",
+      "asset": "relu-v2.png"
+    },
+    {
+      "id": "tanh",
+      "title": "Tanh",
+      "category": "Activations",
+      "asset": "tanh-v2.png"
+    },
+    {
+      "id": "gelu",
+      "title": "GELU",
+      "category": "Activations",
+      "asset": "gelu-v2.png"
+    },
+    {
+      "id": "concat",
+      "title": "Concatenate",
+      "category": "Merge",
+      "asset": "concat-v2.png"
+    },
+    {
+      "id": "add",
+      "title": "Add",
+      "category": "Merge",
+      "asset": "add-v2.png"
+    },
+    {
+      "id": "reshape",
+      "title": "Reshape",
+      "category": "Tensor layout",
+      "asset": "reshape-v2.png"
+    },
+    {
+      "id": "transpose",
+      "title": "Transpose",
+      "category": "Tensor layout",
+      "asset": "transpose-v2.png"
+    },
+    {
+      "id": "flatten",
+      "title": "Flatten",
+      "category": "Tensor layout",
+      "asset": "flatten-v2.png"
+    },
+    {
+      "id": "softmax",
+      "title": "Softmax",
+      "category": "Activations",
+      "asset": "softmax-v2.png"
+    },
+    {
+      "id": "output",
+      "title": "Model Output",
+      "category": "Boundaries",
+      "asset": "model-boundary-v3.png"
+    },
+    {
+      "id": "layer_norm",
+      "title": "Layer normalization",
+      "category": "Normalization",
+      "asset": "normalization-v3.png"
+    },
+    {
+      "id": "index_input",
+      "title": "Model input",
+      "category": "Boundaries",
+      "asset": "model-input-v3.png"
+    },
+    {
+      "id": "embedding",
+      "title": "Embedding",
+      "category": "Embeddings",
+      "asset": "embedding-v2.png"
+    },
+    {
+      "id": "matmul",
+      "title": "Matrix multiply",
+      "category": "Tensor math",
+      "asset": "matmul-v2.png"
+    },
+    {
+      "id": "conv1d",
+      "title": "Conv1d",
+      "category": "Layers",
+      "asset": "conv2d-v3.png"
+    },
+    {
+      "id": "conv2d",
+      "title": "Conv2d",
+      "category": "Layers",
+      "asset": "conv2d-v3.png"
+    },
+    {
+      "id": "conv3d",
+      "title": "Conv3d",
+      "category": "Layers",
+      "asset": "conv2d-v3.png"
+    },
+    {
+      "id": "conv_transpose1d",
+      "title": "ConvTranspose1d",
+      "category": "Layers",
+      "asset": "conv2d-v3.png"
+    },
+    {
+      "id": "conv_transpose2d",
+      "title": "ConvTranspose2d",
+      "category": "Layers",
+      "asset": "conv2d-v3.png"
+    },
+    {
+      "id": "conv_transpose3d",
+      "title": "ConvTranspose3d",
+      "category": "Layers",
+      "asset": "conv2d-v3.png"
+    },
+    {
+      "id": "depthwise_conv2d",
+      "title": "Depthwise Conv2d",
+      "category": "Layers",
+      "asset": "conv2d-v3.png"
+    },
+    {
+      "id": "max_pool1d",
+      "title": "MaxPool1d",
+      "category": "Pooling",
+      "asset": "max_pool1d-v2.png"
+    },
+    {
+      "id": "max_pool2d",
+      "title": "MaxPool2d",
+      "category": "Pooling",
+      "asset": "max_pool2d-v2.png"
+    },
+    {
+      "id": "max_pool3d",
+      "title": "MaxPool3d",
+      "category": "Pooling",
+      "asset": "max_pool3d-v2.png"
+    },
+    {
+      "id": "avg_pool1d",
+      "title": "AvgPool1d",
+      "category": "Pooling",
+      "asset": "avg_pool1d-v2.png"
+    },
+    {
+      "id": "kwip.data.sourceCSV",
+      "title": "Table Input",
+      "category": "Data",
+      "asset": "table-input-v1.png"
+    },
+    {
+      "id": "kwip.data.sourceFiles",
+      "title": "File Input",
+      "category": "Data",
+      "asset": "file-input-v1.png"
+    },
+    {
+      "id": "kwip.data.selectRename",
+      "title": "Select and rename",
+      "category": "Data",
+      "asset": "data-selectRename-v2.png"
+    },
+    {
+      "id": "kwip.data.cast",
+      "title": "Cast columns",
+      "category": "Data",
+      "asset": "data-cast-v2.png"
+    },
+    {
+      "id": "kwip.data.filter",
+      "title": "Filter rows",
+      "category": "Data",
+      "asset": "data-filter-v2.png"
+    },
+    {
+      "id": "kwip.data.missing",
+      "title": "Missing values",
+      "category": "Data",
+      "asset": "data-missing-v2.png"
+    },
+    {
+      "id": "kwip.data.split",
+      "title": "Partition data",
+      "category": "Data",
+      "asset": "data-split-v2.png"
+    },
+    {
+      "id": "kwip.data.standardScalerFit",
+      "title": "Fit standard scaler",
+      "category": "Data",
+      "asset": "data-standardScalerFit-v2.png"
+    },
+    {
+      "id": "kwip.data.transform",
+      "title": "Apply fitted transform",
+      "category": "Data",
+      "asset": "data-transform-v2.png"
+    },
+    {
+      "id": "kwip.data.imputerFit",
+      "title": "Fit statistical imputer",
+      "category": "Data",
+      "asset": "data-imputerFit-v2.png"
+    },
+    {
+      "id": "kwip.data.oneHotEncoderFit",
+      "title": "Fit categorical encoder",
+      "category": "Data",
+      "asset": "data-oneHotEncoderFit-v2.png"
+    },
+    {
+      "id": "kwip.data.sampleRows",
+      "title": "Sample rows",
+      "category": "Data",
+      "asset": "data-sampleRows-v2.png"
+    },
+    {
+      "id": "kwip.data.join",
+      "title": "Join tables",
+      "category": "Data",
+      "asset": "data-join-v2.png"
+    },
+    {
+      "id": "kwip.data.aggregate",
+      "title": "Aggregate rows",
+      "category": "Data",
+      "asset": "data-aggregate-v2.png"
+    },
+    {
+      "id": "kwip.data.groupSplit",
+      "title": "Split by entity",
+      "category": "Data",
+      "asset": "data-groupSplit-v2.png"
+    },
+    {
+      "id": "kwip.data.temporalSplit",
+      "title": "Split by time",
+      "category": "Data",
+      "asset": "data-temporalSplit-v2.png"
+    },
+    {
+      "id": "workflow.modelDefinition",
+      "title": "Model definition",
+      "category": "Training",
+      "asset": "model-boundary-v3.png"
+    },
+    {
+      "id": "workflow.trainingData",
+      "title": "Training data mapping",
+      "category": "Training",
+      "asset": "training-data-v2.png"
+    },
+    {
+      "id": "workflow.runSetup",
+      "title": "Run setup",
+      "category": "Training",
+      "asset": "run-setup-v2.png"
+    },
+    {
+      "id": "workflow.train",
+      "title": "Train",
+      "category": "Training",
+      "asset": "train-v2.png"
+    },
+    {
+      "id": "workflow.logisticRegression",
+      "title": "Logistic regression",
+      "category": "Training",
+      "asset": "prebuilt-models-v1.png"
+    },
+    {
+      "id": "workflow.kerasClassifier",
+      "title": "Keras classifier",
+      "category": "Training",
+      "asset": "prebuilt-models-v1.png"
+    },
+    {
+      "id": "workflow.frozenModel",
+      "title": "Load model",
+      "category": "Boundaries",
+      "asset": "frozen-model-v2.png",
+      "rendering": "native"
+    },
+    {
+      "id": "workflow.evaluateTest",
+      "title": "Evaluate test",
+      "category": "Evaluation",
+      "asset": "evaluate-test-v2.png"
+    },
+    {
+      "id": "kwip.block",
+      "title": "Nested block",
+      "category": "Architecture",
+      "asset": "block-v2.png"
+    },
+    {
+      "id": "separable_conv2d",
+      "title": "Separable convolution",
+      "category": "Layers",
+      "asset": "separable-conv2d-v3.png"
+    },
+    {
+      "id": "avg_pool2d",
+      "title": "AvgPool2d",
+      "category": "Pooling",
+      "asset": "avg_pool2d-v2.png"
+    },
+    {
+      "id": "adaptive_avg_pool1d",
+      "title": "AdaptiveAvgPool1d",
+      "category": "Pooling",
+      "asset": "adaptive_avg_pool1d-v2.png"
+    },
+    {
+      "id": "adaptive_avg_pool2d",
+      "title": "AdaptiveAvgPool2d",
+      "category": "Pooling",
+      "asset": "adaptive_avg_pool2d-v2.png"
+    },
+    {
+      "id": "adaptive_max_pool2d",
+      "title": "AdaptiveMaxPool2d",
+      "category": "Pooling",
+      "asset": "adaptive_max_pool2d-v2.png"
+    },
+    {
+      "id": "sigmoid",
+      "title": "Sigmoid",
+      "category": "Activations",
+      "asset": "sigmoid-v2.png"
+    },
+    {
+      "id": "silu",
+      "title": "SiLU",
+      "category": "Activations",
+      "asset": "silu-v2.png"
+    },
+    {
+      "id": "leaky_relu",
+      "title": "LeakyReLU",
+      "category": "Activations",
+      "asset": "leaky_relu-v2.png"
+    },
+    {
+      "id": "elu",
+      "title": "ELU",
+      "category": "Activations",
+      "asset": "elu-v2.png"
+    },
+    {
+      "id": "stack",
+      "title": "Stack",
+      "category": "Merge",
+      "asset": "stack-v2.png"
+    },
+    {
+      "id": "permute",
+      "title": "Permute",
+      "category": "Tensor layout",
+      "asset": "permute-v2.png"
+    },
+    {
+      "id": "prelu",
+      "title": "PReLU",
+      "category": "Activations",
+      "asset": "prelu-v2.png"
+    },
+    {
+      "id": "log_softmax",
+      "title": "LogSoftmax",
+      "category": "Activations",
+      "asset": "log_softmax-v2.png"
+    },
+    {
+      "id": "dropout",
+      "title": "Dropout",
+      "category": "Conditioning",
+      "asset": "dropout-v3.png"
+    },
+    {
+      "id": "split",
+      "title": "Split",
+      "category": "Tensor layout",
+      "asset": "split-v2.png"
+    },
+    {
+      "id": "chunk",
+      "title": "Chunk",
+      "category": "Tensor layout",
+      "asset": "chunk-v2.png"
+    },
+    {
+      "id": "gather",
+      "title": "Gather",
+      "category": "Tensor layout",
+      "asset": "gather-v2.png"
+    },
+    {
+      "id": "einsum",
+      "title": "Einsum",
+      "category": "Tensor layout",
+      "asset": "einsum-v2.png"
+    },
+    {
+      "id": "unfold",
+      "title": "Unfold",
+      "category": "Tensor layout",
+      "asset": "unfold-v2.png"
+    },
+    {
+      "id": "fold",
+      "title": "Fold",
+      "category": "Tensor layout",
+      "asset": "fold-v2.png"
+    },
+    {
+      "id": "batch_norm1d",
+      "title": "BatchNorm1d",
+      "category": "Normalization",
+      "asset": "normalization-v3.png"
+    },
+    {
+      "id": "batch_norm2d",
+      "title": "BatchNorm2d",
+      "category": "Normalization",
+      "asset": "normalization-v3.png"
+    },
+    {
+      "id": "instance_norm1d",
+      "title": "InstanceNorm1d",
+      "category": "Normalization",
+      "asset": "normalization-v3.png"
+    },
+    {
+      "id": "instance_norm2d",
+      "title": "InstanceNorm2d",
+      "category": "Normalization",
+      "asset": "normalization-v3.png"
+    },
+    {
+      "id": "group_norm",
+      "title": "GroupNorm",
+      "category": "Normalization",
+      "asset": "normalization-v3.png"
+    },
+    {
+      "id": "optimizer_sgd",
+      "title": "SGD",
+      "category": "Training",
+      "asset": "optimizer_sgd-v2.png"
+    },
+    {
+      "id": "optimizer_adam",
+      "title": "Adam",
+      "category": "Training",
+      "asset": "optimizer_adam-v2.png"
+    },
+    {
+      "id": "optimizer_adamw",
+      "title": "AdamW",
+      "category": "Training",
+      "asset": "optimizer_adamw-v2.png"
+    },
+    {
+      "id": "optimizer_rmsprop",
+      "title": "RMSprop",
+      "category": "Training",
+      "asset": "optimizer_rmsprop-v2.png"
+    },
+    {
+      "id": "optimizer_adagrad",
+      "title": "Adagrad",
+      "category": "Training",
+      "asset": "optimizer_adagrad-v2.png"
+    },
+    {
+      "id": "scheduler_step_lr",
+      "title": "StepLR",
+      "category": "Training",
+      "asset": "scheduler_step_lr-v2.png"
+    },
+    {
+      "id": "scheduler_cosine_annealing_lr",
+      "title": "CosineAnnealingLR",
+      "category": "Training",
+      "asset": "scheduler_cosine_annealing_lr-v2.png"
+    },
+    {
+      "id": "scheduler_reduce_on_plateau",
+      "title": "ReduceLROnPlateau",
+      "category": "Training",
+      "asset": "scheduler_reduce_on_plateau-v2.png"
+    },
+    {
+      "id": "scheduler_one_cycle_lr",
+      "title": "OneCycleLR",
+      "category": "Training",
+      "asset": "scheduler_one_cycle_lr-v2.png"
+    },
+    {
+      "id": "scheduler_linear_lr",
+      "title": "LinearLR",
+      "category": "Training",
+      "asset": "scheduler_linear_lr-v2.png"
+    },
+    {
+      "id": "rnn",
+      "title": "RNN",
+      "category": "Layers",
+      "asset": "rnn-v2.png"
+    },
+    {
+      "id": "lstm",
+      "title": "LSTM",
+      "category": "Layers",
+      "asset": "rnn-v2.png"
+    },
+    {
+      "id": "gru",
+      "title": "GRU",
+      "category": "Layers",
+      "asset": "rnn-v2.png"
+    },
+    {
+      "id": "rnn_cell",
+      "title": "RNNCell",
+      "category": "Layers",
+      "asset": "rnn_cell-v2.png"
+    },
+    {
+      "id": "lstm_cell",
+      "title": "LSTMCell",
+      "category": "Layers",
+      "asset": "rnn_cell-v2.png"
+    },
+    {
+      "id": "gru_cell",
+      "title": "GRUCell",
+      "category": "Layers",
+      "asset": "rnn_cell-v2.png"
+    },
+    {
+      "id": "multihead_attention",
+      "title": "Multihead attention",
+      "category": "Attention",
+      "asset": "multihead_attention-v2.png"
+    },
+    {
+      "id": "transformer",
+      "title": "Transformer",
+      "category": "Attention",
+      "asset": "transformer-v2.png"
+    },
+    {
+      "id": "transformer_encoder",
+      "title": "Transformer encoder",
+      "category": "Attention",
+      "asset": "transformer_encoder-v2.png"
+    },
+    {
+      "id": "transformer_decoder",
+      "title": "Transformer decoder",
+      "category": "Attention",
+      "asset": "transformer_decoder-v2.png"
+    },
+    {
+      "id": "scaled_dot_product_attention",
+      "title": "Scaled dot-product attention",
+      "category": "Attention",
+      "asset": "scaled_dot_product_attention-v2.png"
+    },
+    {
+      "id": "attention_mask",
+      "title": "Attention mask",
+      "category": "Attention",
+      "asset": "attention_mask-v2.png"
+    },
+    {
+      "id": "loss_cross_entropy",
+      "title": "CrossEntropyLoss",
+      "category": "Training",
+      "asset": "loss_cross_entropy-v2.png"
+    },
+    {
+      "id": "loss_bce_with_logits",
+      "title": "BCEWithLogitsLoss",
+      "category": "Training",
+      "asset": "loss_bce_with_logits-v2.png"
+    },
+    {
+      "id": "loss_mse",
+      "title": "MSELoss",
+      "category": "Training",
+      "asset": "loss_mse-v2.png"
+    },
+    {
+      "id": "loss_l1",
+      "title": "L1Loss",
+      "category": "Training",
+      "asset": "loss_l1-v2.png"
+    },
+    {
+      "id": "loss_nll",
+      "title": "NLLLoss",
+      "category": "Training",
+      "asset": "loss_nll-v2.png"
+    },
+    {
+      "id": "loss_kl_div",
+      "title": "KLDivLoss",
+      "category": "Training",
+      "asset": "loss_kl_div-v2.png"
+    },
+    {
+      "id": "loss_ctc",
+      "title": "CTCLoss",
+      "category": "Training",
+      "asset": "loss_ctc-v2.png"
+    },
+    {
+      "id": "loss_triplet_margin",
+      "title": "TripletMarginLoss",
+      "category": "Training",
+      "asset": "loss_triplet_margin-v2.png"
+    },
+    {
+      "id": "initialization",
+      "title": "Starting settings",
+      "category": "Training",
+      "asset": "initialization-v1.png"
+    },
+    {
+      "id": "gradient_policy",
+      "title": "Gradient policy",
+      "category": "Training",
+      "asset": "gradient-policy-v1.png"
+    },
+    {
+      "id": "trainability",
+      "title": "Trainability",
+      "category": "Training",
+      "asset": "trainability-v1.png"
+    },
+    {
+      "id": "kwip.composition.sequential",
+      "title": "Sequence",
+      "category": "Boundaries",
+      "asset": "composition-sequence-v1.png"
+    },
+    {
+      "id": "kwip.composition.orderedList",
+      "title": "Ordered collection",
+      "category": "Boundaries",
+      "asset": "composition-ordered-v1.png"
+    },
+    {
+      "id": "kwip.composition.namedMap",
+      "title": "Named collection",
+      "category": "Boundaries",
+      "asset": "composition-named-v1.png"
+    },
+    {
+      "id": "bag_input",
+      "title": "Bag input",
+      "category": "Boundaries",
+      "asset": "bag-input-v1.png"
+    },
+    {
+      "id": "embedding_bag",
+      "title": "Embedding bag",
+      "category": "Embeddings",
+      "asset": "embedding-bag-v1.png"
+    },
+    {
+      "id": "dataset_source",
+      "title": "Dataset",
+      "category": "Training",
+      "asset": "dataset-v1.png"
+    },
+    {
+      "id": "data_loader",
+      "title": "DataLoader",
+      "category": "Training",
+      "asset": "data-loader-v1.png"
+    },
+    {
+      "id": "program_export",
+      "title": "Inference program",
+      "category": "Export",
+      "asset": "program-export-v1.png"
+    },
+    {
+      "id": "kwip.data.filterExpression",
+      "title": "Expression filter",
+      "category": "Data",
+      "asset": "data-filterExpression-v1.png"
+    },
+    {
+      "id": "kwip.data.calculate",
+      "title": "Calculated column",
+      "category": "Data",
+      "asset": "data-calculate-v1.png"
+    },
+    {
+      "id": "kwip.data.regexMatch",
+      "title": "Regex match",
+      "category": "Data",
+      "asset": "data-regexMatch-v1.png"
+    },
+    {
+      "id": "kwip.data.regexExtract",
+      "title": "Regex extract",
+      "category": "Data",
+      "asset": "data-regexExtract-v1.png"
+    },
+    {
+      "id": "kwip.data.regexReplace",
+      "title": "Regex replace",
+      "category": "Data",
+      "asset": "data-regexReplace-v1.png"
+    },
+    {
+      "id": "kwip.data.outputDelimited",
+      "title": "Table Output",
+      "category": "Data",
+      "asset": "data-outputDelimited-v1.png"
+    },
+    {
+      "id": "kwip.data.view",
+      "title": "View",
+      "category": "Data",
+      "asset": "data-view-v1.png"
+    },
+    {
+      "id": "kwip.data.columns",
+      "title": "Columns",
+      "category": "Data",
+      "asset": "data-columns-v1.png"
+    },
+    {
+      "id": "kwip.data.union",
+      "title": "Union",
+      "category": "Data",
+      "asset": "data-union-v1.png"
+    },
+    {
+      "id": "kwip.data.filterRows",
+      "title": "Filter",
+      "category": "Data",
+      "asset": "data-filter-rows-v1.png"
+    },
+    {
+      "id": "kwip.data.partition",
+      "title": "Partition",
+      "category": "Data",
+      "asset": "data-split-v2.png"
+    },
+    {
+      "id": "kwip.data.formula",
+      "title": "Formula",
+      "category": "Data",
+      "asset": "data-formula-v1.png"
+    },
+    {
+      "id": "kwip.data.preprocess",
+      "title": "Preprocess",
+      "category": "Data",
+      "asset": "data-preprocess-v1.png"
+    },
+    {
+      "id": "kwip.data.sort",
+      "title": "Sort",
+      "category": "Data",
+      "asset": "data-sort-v1.png"
+    },
+    {
+      "id": "kwip.data.unique",
+      "title": "Unique",
+      "category": "Data",
+      "asset": "data-unique-v1.png"
+    },
+    {
+      "id": "kwip.data.reshapeTable",
+      "title": "Reshape Table",
+      "category": "Data",
+      "asset": "data-reshapeTable-v1.png"
+    },
+    {
+      "id": "kwip.data.splitText",
+      "title": "Split Text",
+      "category": "Data",
+      "asset": "data-splitText-v1.png"
+    },
+    {
+      "id": "kwip.normalization",
+      "title": "Normalization",
+      "category": "Conditioning",
+      "asset": "normalization-v3.png"
+    },
+    {
+      "id": "kwip.linear",
+      "title": "Linear",
+      "category": "Layers",
+      "asset": "linear-v2.png"
+    },
+    {
+      "id": "kwip.recurrent",
+      "title": "Recurrent",
+      "category": "Layers",
+      "asset": "rnn-v2.png"
+    },
+    {
+      "id": "kwip.recurrentCell",
+      "title": "Recurrent Cell",
+      "category": "Layers",
+      "asset": "rnn_cell-v2.png"
+    },
+    {
+      "id": "parallel_features",
+      "title": "Parallel features",
+      "category": "Merge",
+      "asset": "parallel-features-v1.png"
+    },
+    {
+      "id": "workflow.saveModel",
+      "title": "Save model",
+      "category": "Training",
+      "asset": "save-model-v1.png"
+    },
+    {
+      "id": "kwip.data.textEncode",
+      "title": "Text encoding",
+      "category": "Data",
+      "asset": "data-text-encoding-v1.png"
+    },
+    {
+      "id": "kwip.data.sequenceWindows",
+      "title": "Sequence windows",
+      "category": "Data",
+      "asset": "data-sequence-windows-v1.png"
+    },
+    {
+      "id": "rotary_position",
+      "asset": "rotary_position-v2.png",
+      "title": "Rotary position",
+      "category": "Layers"
+    },
+    {
+      "id": "rms_norm",
+      "title": "RMS normalization",
+      "category": "Conditioning",
+      "asset": "normalization-v3.png"
+    },
+    {
+      "id": "kwip.data.gameRules",
+      "title": "Game definition",
+      "category": "Data",
+      "asset": "data-game-rules-v1.png"
+    },
+    {
+      "id": "kwip.data.transcribeAudio",
+      "title": "Transcribe audio",
+      "category": "Data",
+      "asset": "data-transcribe-audio-v1.png"
+    },
+    {
+      "id": "kwip.data.classifyAudio",
+      "title": "Classify audio",
+      "category": "Data",
+      "asset": "data-classify-audio-v1.png"
+    },
+    {
+      "id": "mixture_experts",
+      "title": "Mixture of experts",
+      "category": "Layers",
+      "asset": "mixture-experts-v1.png"
+    },
+    {
+      "id": "kwip.data.prepareMedia",
+      "title": "Prepare media",
+      "category": "Data",
+      "asset": "data-prepare-media-v1.png"
+    },
+    {
+      "id": "kwip.data.extractText",
+      "title": "Extract text",
+      "category": "Data",
+      "asset": "data-extract-text-v1.png"
+    },
+    {
+      "id": "kwip.data.decide",
+      "title": "Decide",
+      "category": "Data",
+      "asset": "data-decide-v1.png"
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "generatedOn": "2026-10-09",
+  "assets": [
+    {
+      "componentID": "kwip.data.filterExpression",
+      "asset": "data-filterExpression-v1.png",
+      "sha256": "29d8a85fd67f39f4990775fac905befc4f1fd6f4f2a9fdf66ad39a93addfaf92",
+      "generator": "built-in image_gen",
+      "styleReference": "data-filter-v2.png",
+      "palette": [
+        "#79B8B0",
+        "#387D77"
+      ],
+      "sourceGeneratedFilename": "exec-3b58108a-0dd1-43fa-b7e6-49b6dc8b20f7.png"
+    },
+    {
+      "componentID": "kwip.data.calculate",
+      "asset": "data-calculate-v1.png",
+      "sha256": "64d21920789da9faad14b06f1378c6f9250c468d34cfde2727d68a603911d6ba",
+      "generator": "built-in image_gen",
+      "styleReference": "data-filter-v2.png",
+      "palette": [
+        "#79B8B0",
+        "#387D77"
+      ],
+      "sourceGeneratedFilename": "exec-b1dca52d-c2a5-4ca7-a9fe-d9fc525eb224.png"
+    },
+    {
+      "componentID": "kwip.data.regexMatch",
+      "asset": "data-regexMatch-v1.png",
+      "sha256": "f20f24bd57fc7eeb624c9498109db8030393388afb435cc4e146fb27863abfe1",
+      "generator": "built-in image_gen",
+      "styleReference": "data-filter-v2.png",
+      "palette": [
+        "#79B8B0",
+        "#387D77"
+      ],
+      "sourceGeneratedFilename": "exec-dc3435fd-a655-4d3f-951e-0f57103d3803.png"
+    },
+    {
+      "componentID": "kwip.data.regexExtract",
+      "asset": "data-regexExtract-v1.png",
+      "sha256": "7cbdbdc8dca99363cb45360b79239d6fdc38db933716fb038e882229ade342dc",
+      "generator": "built-in image_gen",
+      "styleReference": "data-filter-v2.png",
+      "palette": [
+        "#79B8B0",
+        "#387D77"
+      ],
+      "sourceGeneratedFilename": "exec-182e373a-31b2-4503-9e28-399326da1fdb.png"
+    },
+    {
+      "componentID": "kwip.data.regexReplace",
+      "asset": "data-regexReplace-v1.png",
+      "sha256": "75d9d2d951d25124deaba34c1902a3189dbe8b7b1b12b59afbe0029acb999a41",
+      "generator": "built-in image_gen",
+      "styleReference": "data-filter-v2.png",
+      "palette": [
+        "#79B8B0",
+        "#387D77"
+      ],
+      "sourceGeneratedFilename": "exec-5aad6588-e633-4084-a4a1-af78bf8a5720.png"
+    },
+    {
+      "componentID": "kwip.data.outputDelimited",
+      "asset": "data-outputDelimited-v1.png",
+      "sha256": "cb2e1e55d7af8ad43d6c26607031192c54dfa36f3f6d020cb952038d7eaf1565",
+      "generator": "built-in image_gen",
+      "styleReference": "data-filter-v2.png",
+      "palette": [
+        "#79B8B0",
+        "#387D77"
+      ],
+      "sourceGeneratedFilename": "exec-d6a5ac0e-0b8d-4473-b4f0-4bf530847c05.png"
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "backendID": "tensorflow",
+  "graph": {
+    "schemaVersion": 2,
+    "name": "TensorFlow dense classifier",
+    "nodes": [
+      {
+        "id": "source",
+        "type": "input",
+        "config": {
+          "features": 2
+        },
+        "name": "Source",
+        "x": 0,
+        "y": 100
+      },
+      {
+        "id": "hidden",
+        "type": "linear",
+        "config": {
+          "in_features": 2,
+          "out_features": 8,
+          "bias": true
+        },
+        "name": "Hidden",
+        "x": 160,
+        "y": 100
+      },
+      {
+        "id": "activation",
+        "type": "relu",
+        "config": {},
+        "name": "Activation",
+        "x": 320,
+        "y": 100
+      },
+      {
+        "id": "logits",
+        "type": "linear",
+        "config": {
+          "in_features": 8,
+          "out_features": 2,
+          "bias": true
+        },
+        "name": "Logits",
+        "x": 480,
+        "y": 100
+      },
+      {
+        "id": "result",
+        "type": "output",
+        "config": {},
+        "name": "Result",
+        "x": 640,
+        "y": 100
+      }
+    ],
+    "edges": [
+      {
+        "id": "edge0",
+        "source": "source",
+        "sourcePort": "out",
+        "target": "hidden",
+        "targetPort": "in"
+      },
+      {
+        "id": "edge1",
+        "source": "hidden",
+        "sourcePort": "out",
+        "target": "activation",
+        "targetPort": "in"
+      },
+      {
+        "id": "edge2",
+        "source": "activation",
+        "sourcePort": "out",
+        "target": "logits",
+        "targetPort": "in"
+      },
+      {
+        "id": "edge3",
+        "source": "logits",
+        "sourcePort": "out",
+        "target": "result",
+        "targetPort": "in"
+      }
+    ]
+  },
+  "settings": {
+    "seed": 42,
+    "epochs": 30,
+    "batchSize": 16,
+    "learningRate": 0.03,
+    "device": "cpu"
+  }
+}

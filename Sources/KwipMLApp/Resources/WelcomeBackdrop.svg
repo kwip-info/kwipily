@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <radialGradient id="rose"><stop stop-color="#C98C9E" stop-opacity=".15"/><stop offset="1" stop-color="#C98C9E" stop-opacity="0"/></radialGradient>
+    <linearGradient id="trace" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#C98C9E" stop-opacity=".32"/><stop offset="1" stop-color="#8896A6" stop-opacity=".06"/></linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#AAB0BA" stop-opacity=".08"/><stop offset="1" stop-color="#C98C9E" stop-opacity=".015"/></linearGradient>
+  </defs>
+  <ellipse cx="1080" cy="640" rx="380" ry="380" fill="url(#rose)"/>
+  <ellipse cx="60" cy="80" rx="290" ry="260" fill="url(#rose)" opacity=".55"/>
+  <g fill="none" stroke="url(#trace)" stroke-width="1.2">
+    <path d="M-60 205H105Q125 205 125 185V100Q125 80 145 80H275Q295 80 295 60V-30"/>
+    <path d="M-40 230H155Q175 230 175 210V150Q175 130 195 130H350Q370 130 370 110V-25" opacity=".5"/>
+    <path d="M890 800V660Q890 640 910 640H1030Q1050 640 1050 620V505Q1050 485 1070 485H1240"/>
+    <path d="M950 800V710Q950 690 970 690H1100Q1120 690 1120 670V585Q1120 565 1140 565H1250" opacity=".6"/>
+    <path d="M760 820V735Q760 715 780 715H845Q865 715 865 695V675" opacity=".45"/>
+  </g>
+  <g fill="url(#glass)" stroke="#C98C9E" stroke-opacity=".18" stroke-width="1">
+    <rect x="98" y="178" width="54" height="54" rx="11"/>
+    <rect x="267" y="52" width="56" height="56" rx="12"/>
+    <rect x="1021" y="456" width="58" height="58" rx="12"/>
+    <rect x="862" y="612" width="56" height="56" rx="12"/>
+    <rect x="1093" y="662" width="54" height="54" rx="11"/>
+    <rect x="843" y="651" width="44" height="44" rx="9" opacity=".6"/>
+  </g>
+</svg>

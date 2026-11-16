@@ -1,0 +1,3252 @@
+{
+  "schema_version": 1,
+  "catalog_version": "0.1.0",
+  "framework": "tensorflow",
+  "framework_version": "2.16.1",
+  "documentation_version": "2.16.1",
+  "snapshot_date": "2026-10-05",
+  "runtime_status": "Not installed or implemented in KwipML",
+  "version_alignment": "Official page labels TensorFlow2.16.1; snapshot content hash pins this capture; runtime unverified.",
+  "denominator_status": "proposed",
+  "approval": null,
+  "thresholds": {
+    "minimum_percent": 90,
+    "target_percent": 95
+  },
+  "required_families": [
+    "composition",
+    "linear",
+    "convolution",
+    "pooling",
+    "normalization",
+    "activation",
+    "embedding",
+    "attention",
+    "recurrent",
+    "merge",
+    "tensor_ops",
+    "loss",
+    "optimizer",
+    "scheduler",
+    "metrics",
+    "data",
+    "serialization",
+    "autodiff"
+  ],
+  "inventory": {
+    "path": "capabilities/inventories/v1/tensorflow.json",
+    "sha256": "10c6cd781f617cf6309da937f8d3a4d96a30644a168e36442b32a249d839e5f3",
+    "scope": "All unique tf API page links in the captured official navigation; class members and runtime exports may be absent.",
+    "framework_completeness": "not_established",
+    "canonicalization_status": "Exact documentation-target aliases resolved; other aliases require review.",
+    "source": {
+      "framework": "tensorflow",
+      "source_url": "https://www.tensorflow.org/api_docs/python/tf/keras/layers",
+      "captured_on": "2026-10-05",
+      "declared_documentation_version": "2.16.1",
+      "raw_snapshot": "capabilities/snapshots/tensorflow-layers.html",
+      "raw_sha256": "fa57f60f3453cd572c46aa1791937075684d2b57b2c8e1efd33bd63a86aa9b7a",
+      "inventory_file": "capabilities/inventories/v1/tensorflow.json",
+      "symbol_count": 4823,
+      "parser": "capabilities/capture_inventory.py",
+      "notes": "Captured documentation surface, not a claim of complete runtime API enumeration or implementation."
+    }
+  },
+  "scope_decision": {
+    "status": "review-needed",
+    "reason": "Broad API inventory exceeds proposed user-operation subset. No framework-wide90% claim; mode boundaries, exclusions and patch alignment must be reviewed before freeze."
+  },
+  "capabilities": [
+    {
+      "id": "tensorflow.tf.keras.Model",
+      "family": "composition",
+      "canonical_symbol": "tf.keras.Model",
+      "mode_scope": [
+        "inference",
+        "training"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.Model",
+      "example_id": "example.tensorflow.tf.keras.Model",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.Sequential",
+      "family": "composition",
+      "canonical_symbol": "tf.keras.Sequential",
+      "mode_scope": [
+        "inference",
+        "training"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.Sequential",
+      "example_id": "example.tensorflow.tf.keras.Sequential",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.Input",
+      "family": "composition",
+      "canonical_symbol": "tf.keras.Input",
+      "mode_scope": [
+        "inference",
+        "training"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.Input",
+      "example_id": "example.tensorflow.tf.keras.Input",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.layers.Dense",
+      "family": "linear",
+      "canonical_symbol": "tf.keras.layers.Dense",
+      "mode_scope": [
+        "inference",
+        "training"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.layers.Dense",
+      "example_id": "example.tensorflow.tf.keras.layers.Dense",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.layers.EinsumDense",
+      "family": "linear",
+      "canonical_symbol": "tf.keras.layers.EinsumDense",
+      "mode_scope": [
+        "inference",
+        "training"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.layers.EinsumDense",
+      "example_id": "example.tensorflow.tf.keras.layers.EinsumDense",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.layers.Conv1D",
+      "family": "convolution",
+      "canonical_symbol": "tf.keras.layers.Conv1D",
+      "mode_scope": [
+        "inference",
+        "training"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.layers.Conv1D",
+      "example_id": "example.tensorflow.tf.keras.layers.Conv1D",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.layers.Conv2D",
+      "family": "convolution",
+      "canonical_symbol": "tf.keras.layers.Conv2D",
+      "mode_scope": [
+        "inference",
+        "training"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.layers.Conv2D",
+      "example_id": "example.tensorflow.tf.keras.layers.Conv2D",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.layers.Conv3D",
+      "family": "convolution",
+      "canonical_symbol": "tf.keras.layers.Conv3D",
+      "mode_scope": [
+        "inference",
+        "training"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.layers.Conv3D",
+      "example_id": "example.tensorflow.tf.keras.layers.Conv3D",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.layers.Conv1DTranspose",
+      "family": "convolution",
+      "canonical_symbol": "tf.keras.layers.Conv1DTranspose",
+      "mode_scope": [
+        "inference",
+        "training"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.layers.Conv1DTranspose",
+      "example_id": "example.tensorflow.tf.keras.layers.Conv1DTranspose",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.layers.Conv2DTranspose",
+      "family": "convolution",
+      "canonical_symbol": "tf.keras.layers.Conv2DTranspose",
+      "mode_scope": [
+        "inference",
+        "training"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.layers.Conv2DTranspose",
+      "example_id": "example.tensorflow.tf.keras.layers.Conv2DTranspose",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.layers.Conv3DTranspose",
+      "family": "convolution",
+      "canonical_symbol": "tf.keras.layers.Conv3DTranspose",
+      "mode_scope": [
+        "inference",
+        "training"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.layers.Conv3DTranspose",
+      "example_id": "example.tensorflow.tf.keras.layers.Conv3DTranspose",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.layers.SeparableConv1D",
+      "family": "convolution",
+      "canonical_symbol": "tf.keras.layers.SeparableConv1D",
+      "mode_scope": [
+        "inference",
+        "training"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.layers.SeparableConv1D",
+      "example_id": "example.tensorflow.tf.keras.layers.SeparableConv1D",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.layers.SeparableConv2D",
+      "family": "convolution",
+      "canonical_symbol": "tf.keras.layers.SeparableConv2D",
+      "mode_scope": [
+        "inference",
+        "training"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.layers.SeparableConv2D",
+      "example_id": "example.tensorflow.tf.keras.layers.SeparableConv2D",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.layers.DepthwiseConv2D",
+      "family": "convolution",
+      "canonical_symbol": "tf.keras.layers.DepthwiseConv2D",
+      "mode_scope": [
+        "inference",
+        "training"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.layers.DepthwiseConv2D",
+      "example_id": "example.tensorflow.tf.keras.layers.DepthwiseConv2D",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.layers.MaxPool1D",
+      "family": "pooling",
+      "canonical_symbol": "tf.keras.layers.MaxPool1D",
+      "mode_scope": [
+        "inference",
+        "training"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.layers.MaxPool1D",
+      "example_id": "example.tensorflow.tf.keras.layers.MaxPool1D",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.layers.MaxPool2D",
+      "family": "pooling",
+      "canonical_symbol": "tf.keras.layers.MaxPool2D",
+      "mode_scope": [
+        "inference",
+        "training"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.layers.MaxPool2D",
+      "example_id": "example.tensorflow.tf.keras.layers.MaxPool2D",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.layers.MaxPool3D",
+      "family": "pooling",
+      "canonical_symbol": "tf.keras.layers.MaxPool3D",
+      "mode_scope": [
+        "inference",
+        "training"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.layers.MaxPool3D",
+      "example_id": "example.tensorflow.tf.keras.layers.MaxPool3D",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.layers.AveragePooling1D",
+      "family": "pooling",
+      "canonical_symbol": "tf.keras.layers.AveragePooling1D",
+      "mode_scope": [
+        "inference",
+        "training"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.layers.AveragePooling1D",
+      "example_id": "example.tensorflow.tf.keras.layers.AveragePooling1D",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.layers.AveragePooling2D",
+      "family": "pooling",
+      "canonical_symbol": "tf.keras.layers.AveragePooling2D",
+      "mode_scope": [
+        "inference",
+        "training"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.layers.AveragePooling2D",
+      "example_id": "example.tensorflow.tf.keras.layers.AveragePooling2D",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.layers.GlobalAveragePooling1D",
+      "family": "pooling",
+      "canonical_symbol": "tf.keras.layers.GlobalAveragePooling1D",
+      "mode_scope": [
+        "inference",
+        "training"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.layers.GlobalAveragePooling1D",
+      "example_id": "example.tensorflow.tf.keras.layers.GlobalAveragePooling1D",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.layers.GlobalAveragePooling2D",
+      "family": "pooling",
+      "canonical_symbol": "tf.keras.layers.GlobalAveragePooling2D",
+      "mode_scope": [
+        "inference",
+        "training"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.layers.GlobalAveragePooling2D",
+      "example_id": "example.tensorflow.tf.keras.layers.GlobalAveragePooling2D",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.layers.GlobalMaxPool2D",
+      "family": "pooling",
+      "canonical_symbol": "tf.keras.layers.GlobalMaxPool2D",
+      "mode_scope": [
+        "inference",
+        "training"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.layers.GlobalMaxPool2D",
+      "example_id": "example.tensorflow.tf.keras.layers.GlobalMaxPool2D",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.layers.BatchNormalization",
+      "family": "normalization",
+      "canonical_symbol": "tf.keras.layers.BatchNormalization",
+      "mode_scope": [
+        "inference",
+        "training"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.layers.BatchNormalization",
+      "example_id": "example.tensorflow.tf.keras.layers.BatchNormalization",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.layers.LayerNormalization",
+      "family": "normalization",
+      "canonical_symbol": "tf.keras.layers.LayerNormalization",
+      "mode_scope": [
+        "inference",
+        "training"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.layers.LayerNormalization",
+      "example_id": "example.tensorflow.tf.keras.layers.LayerNormalization",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.layers.GroupNormalization",
+      "family": "normalization",
+      "canonical_symbol": "tf.keras.layers.GroupNormalization",
+      "mode_scope": [
+        "inference",
+        "training"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.layers.GroupNormalization",
+      "example_id": "example.tensorflow.tf.keras.layers.GroupNormalization",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.layers.UnitNormalization",
+      "family": "normalization",
+      "canonical_symbol": "tf.keras.layers.UnitNormalization",
+      "mode_scope": [
+        "inference",
+        "training"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.layers.UnitNormalization",
+      "example_id": "example.tensorflow.tf.keras.layers.UnitNormalization",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.layers.ReLU",
+      "family": "activation",
+      "canonical_symbol": "tf.keras.layers.ReLU",
+      "mode_scope": [
+        "inference",
+        "training"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.layers.ReLU",
+      "example_id": "example.tensorflow.tf.keras.layers.ReLU",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.layers.LeakyReLU",
+      "family": "activation",
+      "canonical_symbol": "tf.keras.layers.LeakyReLU",
+      "mode_scope": [
+        "inference",
+        "training"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.layers.LeakyReLU",
+      "example_id": "example.tensorflow.tf.keras.layers.LeakyReLU",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.layers.PReLU",
+      "family": "activation",
+      "canonical_symbol": "tf.keras.layers.PReLU",
+      "mode_scope": [
+        "inference",
+        "training"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.layers.PReLU",
+      "example_id": "example.tensorflow.tf.keras.layers.PReLU",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.layers.ELU",
+      "family": "activation",
+      "canonical_symbol": "tf.keras.layers.ELU",
+      "mode_scope": [
+        "inference",
+        "training"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.layers.ELU",
+      "example_id": "example.tensorflow.tf.keras.layers.ELU",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.layers.Activation",
+      "family": "activation",
+      "canonical_symbol": "tf.keras.layers.Activation",
+      "mode_scope": [
+        "inference",
+        "training"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.layers.Activation",
+      "example_id": "example.tensorflow.tf.keras.layers.Activation",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.layers.Softmax",
+      "family": "activation",
+      "canonical_symbol": "tf.keras.layers.Softmax",
+      "mode_scope": [
+        "inference",
+        "training"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.layers.Softmax",
+      "example_id": "example.tensorflow.tf.keras.layers.Softmax",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.layers.Dropout",
+      "family": "activation",
+      "canonical_symbol": "tf.keras.layers.Dropout",
+      "mode_scope": [
+        "inference",
+        "training"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.layers.Dropout",
+      "example_id": "example.tensorflow.tf.keras.layers.Dropout",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.layers.Embedding",
+      "family": "embedding",
+      "canonical_symbol": "tf.keras.layers.Embedding",
+      "mode_scope": [
+        "inference",
+        "training"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.layers.Embedding",
+      "example_id": "example.tensorflow.tf.keras.layers.Embedding",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.layers.Attention",
+      "family": "attention",
+      "canonical_symbol": "tf.keras.layers.Attention",
+      "mode_scope": [
+        "inference",
+        "training"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.layers.Attention",
+      "example_id": "example.tensorflow.tf.keras.layers.Attention",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.layers.AdditiveAttention",
+      "family": "attention",
+      "canonical_symbol": "tf.keras.layers.AdditiveAttention",
+      "mode_scope": [
+        "inference",
+        "training"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.layers.AdditiveAttention",
+      "example_id": "example.tensorflow.tf.keras.layers.AdditiveAttention",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.layers.MultiHeadAttention",
+      "family": "attention",
+      "canonical_symbol": "tf.keras.layers.MultiHeadAttention",
+      "mode_scope": [
+        "inference",
+        "training"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.layers.MultiHeadAttention",
+      "example_id": "example.tensorflow.tf.keras.layers.MultiHeadAttention",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.layers.SimpleRNN",
+      "family": "recurrent",
+      "canonical_symbol": "tf.keras.layers.SimpleRNN",
+      "mode_scope": [
+        "inference",
+        "training"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.layers.SimpleRNN",
+      "example_id": "example.tensorflow.tf.keras.layers.SimpleRNN",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.layers.LSTM",
+      "family": "recurrent",
+      "canonical_symbol": "tf.keras.layers.LSTM",
+      "mode_scope": [
+        "inference",
+        "training"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.layers.LSTM",
+      "example_id": "example.tensorflow.tf.keras.layers.LSTM",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.layers.GRU",
+      "family": "recurrent",
+      "canonical_symbol": "tf.keras.layers.GRU",
+      "mode_scope": [
+        "inference",
+        "training"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.layers.GRU",
+      "example_id": "example.tensorflow.tf.keras.layers.GRU",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.layers.SimpleRNNCell",
+      "family": "recurrent",
+      "canonical_symbol": "tf.keras.layers.SimpleRNNCell",
+      "mode_scope": [
+        "inference",
+        "training"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.layers.SimpleRNNCell",
+      "example_id": "example.tensorflow.tf.keras.layers.SimpleRNNCell",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.layers.LSTMCell",
+      "family": "recurrent",
+      "canonical_symbol": "tf.keras.layers.LSTMCell",
+      "mode_scope": [
+        "inference",
+        "training"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.layers.LSTMCell",
+      "example_id": "example.tensorflow.tf.keras.layers.LSTMCell",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.layers.GRUCell",
+      "family": "recurrent",
+      "canonical_symbol": "tf.keras.layers.GRUCell",
+      "mode_scope": [
+        "inference",
+        "training"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.layers.GRUCell",
+      "example_id": "example.tensorflow.tf.keras.layers.GRUCell",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.layers.Bidirectional",
+      "family": "recurrent",
+      "canonical_symbol": "tf.keras.layers.Bidirectional",
+      "mode_scope": [
+        "inference",
+        "training"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.layers.Bidirectional",
+      "example_id": "example.tensorflow.tf.keras.layers.Bidirectional",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.layers.TimeDistributed",
+      "family": "recurrent",
+      "canonical_symbol": "tf.keras.layers.TimeDistributed",
+      "mode_scope": [
+        "inference",
+        "training"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.layers.TimeDistributed",
+      "example_id": "example.tensorflow.tf.keras.layers.TimeDistributed",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.layers.Concatenate",
+      "family": "merge",
+      "canonical_symbol": "tf.keras.layers.Concatenate",
+      "mode_scope": [
+        "inference",
+        "training"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.layers.Concatenate",
+      "example_id": "example.tensorflow.tf.keras.layers.Concatenate",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.layers.Add",
+      "family": "merge",
+      "canonical_symbol": "tf.keras.layers.Add",
+      "mode_scope": [
+        "inference",
+        "training"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.layers.Add",
+      "example_id": "example.tensorflow.tf.keras.layers.Add",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.layers.Subtract",
+      "family": "merge",
+      "canonical_symbol": "tf.keras.layers.Subtract",
+      "mode_scope": [
+        "inference",
+        "training"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.layers.Subtract",
+      "example_id": "example.tensorflow.tf.keras.layers.Subtract",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.layers.Multiply",
+      "family": "merge",
+      "canonical_symbol": "tf.keras.layers.Multiply",
+      "mode_scope": [
+        "inference",
+        "training"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.layers.Multiply",
+      "example_id": "example.tensorflow.tf.keras.layers.Multiply",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.layers.Average",
+      "family": "merge",
+      "canonical_symbol": "tf.keras.layers.Average",
+      "mode_scope": [
+        "inference",
+        "training"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.layers.Average",
+      "example_id": "example.tensorflow.tf.keras.layers.Average",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.layers.Maximum",
+      "family": "merge",
+      "canonical_symbol": "tf.keras.layers.Maximum",
+      "mode_scope": [
+        "inference",
+        "training"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.layers.Maximum",
+      "example_id": "example.tensorflow.tf.keras.layers.Maximum",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.layers.Dot",
+      "family": "merge",
+      "canonical_symbol": "tf.keras.layers.Dot",
+      "mode_scope": [
+        "inference",
+        "training"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.layers.Dot",
+      "example_id": "example.tensorflow.tf.keras.layers.Dot",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.reshape",
+      "family": "tensor_ops",
+      "canonical_symbol": "tf.reshape",
+      "mode_scope": [
+        "forward",
+        "shape-contract",
+        "gradient-where-supported"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.reshape",
+      "example_id": "example.tensorflow.tf.reshape",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.concat",
+      "family": "tensor_ops",
+      "canonical_symbol": "tf.concat",
+      "mode_scope": [
+        "forward",
+        "shape-contract",
+        "gradient-where-supported"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.concat",
+      "example_id": "example.tensorflow.tf.concat",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.math.add",
+      "family": "tensor_ops",
+      "canonical_symbol": "tf.math.add",
+      "mode_scope": [
+        "forward",
+        "shape-contract",
+        "gradient-where-supported"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.math.add",
+      "example_id": "example.tensorflow.tf.math.add",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.linalg.matmul",
+      "family": "tensor_ops",
+      "canonical_symbol": "tf.linalg.matmul",
+      "mode_scope": [
+        "forward",
+        "shape-contract",
+        "gradient-where-supported"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.linalg.matmul",
+      "example_id": "example.tensorflow.tf.linalg.matmul",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.transpose",
+      "family": "tensor_ops",
+      "canonical_symbol": "tf.transpose",
+      "mode_scope": [
+        "forward",
+        "shape-contract",
+        "gradient-where-supported"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.transpose",
+      "example_id": "example.tensorflow.tf.transpose",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.stack",
+      "family": "tensor_ops",
+      "canonical_symbol": "tf.stack",
+      "mode_scope": [
+        "forward",
+        "shape-contract",
+        "gradient-where-supported"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.stack",
+      "example_id": "example.tensorflow.tf.stack",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.unstack",
+      "family": "tensor_ops",
+      "canonical_symbol": "tf.unstack",
+      "mode_scope": [
+        "forward",
+        "shape-contract",
+        "gradient-where-supported"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.unstack",
+      "example_id": "example.tensorflow.tf.unstack",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.split",
+      "family": "tensor_ops",
+      "canonical_symbol": "tf.split",
+      "mode_scope": [
+        "forward",
+        "shape-contract",
+        "gradient-where-supported"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.split",
+      "example_id": "example.tensorflow.tf.split",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.gather",
+      "family": "tensor_ops",
+      "canonical_symbol": "tf.gather",
+      "mode_scope": [
+        "forward",
+        "shape-contract",
+        "gradient-where-supported"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.gather",
+      "example_id": "example.tensorflow.tf.gather",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.einsum",
+      "family": "tensor_ops",
+      "canonical_symbol": "tf.einsum",
+      "mode_scope": [
+        "forward",
+        "shape-contract",
+        "gradient-where-supported"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.einsum",
+      "example_id": "example.tensorflow.tf.einsum",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.losses.BinaryCrossentropy",
+      "family": "loss",
+      "canonical_symbol": "tf.keras.losses.BinaryCrossentropy",
+      "mode_scope": [
+        "forward",
+        "backward",
+        "reduction"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.losses.BinaryCrossentropy",
+      "example_id": "example.tensorflow.tf.keras.losses.BinaryCrossentropy",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.losses.CategoricalCrossentropy",
+      "family": "loss",
+      "canonical_symbol": "tf.keras.losses.CategoricalCrossentropy",
+      "mode_scope": [
+        "forward",
+        "backward",
+        "reduction"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.losses.CategoricalCrossentropy",
+      "example_id": "example.tensorflow.tf.keras.losses.CategoricalCrossentropy",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.losses.SparseCategoricalCrossentropy",
+      "family": "loss",
+      "canonical_symbol": "tf.keras.losses.SparseCategoricalCrossentropy",
+      "mode_scope": [
+        "forward",
+        "backward",
+        "reduction"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.losses.SparseCategoricalCrossentropy",
+      "example_id": "example.tensorflow.tf.keras.losses.SparseCategoricalCrossentropy",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.losses.MeanSquaredError",
+      "family": "loss",
+      "canonical_symbol": "tf.keras.losses.MeanSquaredError",
+      "mode_scope": [
+        "forward",
+        "backward",
+        "reduction"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.losses.MeanSquaredError",
+      "example_id": "example.tensorflow.tf.keras.losses.MeanSquaredError",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.losses.MeanAbsoluteError",
+      "family": "loss",
+      "canonical_symbol": "tf.keras.losses.MeanAbsoluteError",
+      "mode_scope": [
+        "forward",
+        "backward",
+        "reduction"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.losses.MeanAbsoluteError",
+      "example_id": "example.tensorflow.tf.keras.losses.MeanAbsoluteError",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.losses.Huber",
+      "family": "loss",
+      "canonical_symbol": "tf.keras.losses.Huber",
+      "mode_scope": [
+        "forward",
+        "backward",
+        "reduction"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.losses.Huber",
+      "example_id": "example.tensorflow.tf.keras.losses.Huber",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.losses.KLDivergence",
+      "family": "loss",
+      "canonical_symbol": "tf.keras.losses.KLDivergence",
+      "mode_scope": [
+        "forward",
+        "backward",
+        "reduction"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.losses.KLDivergence",
+      "example_id": "example.tensorflow.tf.keras.losses.KLDivergence",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.optimizers.SGD",
+      "family": "optimizer",
+      "canonical_symbol": "tf.keras.optimizers.SGD",
+      "mode_scope": [
+        "step",
+        "state-roundtrip",
+        "resume"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.optimizers.SGD",
+      "example_id": "example.tensorflow.tf.keras.optimizers.SGD",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.optimizers.Adam",
+      "family": "optimizer",
+      "canonical_symbol": "tf.keras.optimizers.Adam",
+      "mode_scope": [
+        "step",
+        "state-roundtrip",
+        "resume"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.optimizers.Adam",
+      "example_id": "example.tensorflow.tf.keras.optimizers.Adam",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.optimizers.AdamW",
+      "family": "optimizer",
+      "canonical_symbol": "tf.keras.optimizers.AdamW",
+      "mode_scope": [
+        "step",
+        "state-roundtrip",
+        "resume"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.optimizers.AdamW",
+      "example_id": "example.tensorflow.tf.keras.optimizers.AdamW",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.optimizers.RMSprop",
+      "family": "optimizer",
+      "canonical_symbol": "tf.keras.optimizers.RMSprop",
+      "mode_scope": [
+        "step",
+        "state-roundtrip",
+        "resume"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.optimizers.RMSprop",
+      "example_id": "example.tensorflow.tf.keras.optimizers.RMSprop",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.optimizers.Adagrad",
+      "family": "optimizer",
+      "canonical_symbol": "tf.keras.optimizers.Adagrad",
+      "mode_scope": [
+        "step",
+        "state-roundtrip",
+        "resume"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.optimizers.Adagrad",
+      "example_id": "example.tensorflow.tf.keras.optimizers.Adagrad",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.optimizers.schedules.ExponentialDecay",
+      "family": "scheduler",
+      "canonical_symbol": "tf.keras.optimizers.schedules.ExponentialDecay",
+      "mode_scope": [
+        "step",
+        "state-roundtrip"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.optimizers.schedules.ExponentialDecay",
+      "example_id": "example.tensorflow.tf.keras.optimizers.schedules.ExponentialDecay",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.optimizers.schedules.CosineDecay",
+      "family": "scheduler",
+      "canonical_symbol": "tf.keras.optimizers.schedules.CosineDecay",
+      "mode_scope": [
+        "step",
+        "state-roundtrip"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.optimizers.schedules.CosineDecay",
+      "example_id": "example.tensorflow.tf.keras.optimizers.schedules.CosineDecay",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.optimizers.schedules.PiecewiseConstantDecay",
+      "family": "scheduler",
+      "canonical_symbol": "tf.keras.optimizers.schedules.PiecewiseConstantDecay",
+      "mode_scope": [
+        "step",
+        "state-roundtrip"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.optimizers.schedules.PiecewiseConstantDecay",
+      "example_id": "example.tensorflow.tf.keras.optimizers.schedules.PiecewiseConstantDecay",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.optimizers.schedules.PolynomialDecay",
+      "family": "scheduler",
+      "canonical_symbol": "tf.keras.optimizers.schedules.PolynomialDecay",
+      "mode_scope": [
+        "step",
+        "state-roundtrip"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.optimizers.schedules.PolynomialDecay",
+      "example_id": "example.tensorflow.tf.keras.optimizers.schedules.PolynomialDecay",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.metrics.Accuracy",
+      "family": "metrics",
+      "canonical_symbol": "tf.keras.metrics.Accuracy",
+      "mode_scope": [
+        "evaluate",
+        "edge-cases"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.metrics.Accuracy",
+      "example_id": "example.tensorflow.tf.keras.metrics.Accuracy",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.metrics.BinaryAccuracy",
+      "family": "metrics",
+      "canonical_symbol": "tf.keras.metrics.BinaryAccuracy",
+      "mode_scope": [
+        "evaluate",
+        "edge-cases"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.metrics.BinaryAccuracy",
+      "example_id": "example.tensorflow.tf.keras.metrics.BinaryAccuracy",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.metrics.Precision",
+      "family": "metrics",
+      "canonical_symbol": "tf.keras.metrics.Precision",
+      "mode_scope": [
+        "evaluate",
+        "edge-cases"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.metrics.Precision",
+      "example_id": "example.tensorflow.tf.keras.metrics.Precision",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.metrics.Recall",
+      "family": "metrics",
+      "canonical_symbol": "tf.keras.metrics.Recall",
+      "mode_scope": [
+        "evaluate",
+        "edge-cases"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.metrics.Recall",
+      "example_id": "example.tensorflow.tf.keras.metrics.Recall",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.metrics.AUC",
+      "family": "metrics",
+      "canonical_symbol": "tf.keras.metrics.AUC",
+      "mode_scope": [
+        "evaluate",
+        "edge-cases"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.metrics.AUC",
+      "example_id": "example.tensorflow.tf.keras.metrics.AUC",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.metrics.MeanSquaredError",
+      "family": "metrics",
+      "canonical_symbol": "tf.keras.metrics.MeanSquaredError",
+      "mode_scope": [
+        "evaluate",
+        "edge-cases"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.metrics.MeanSquaredError",
+      "example_id": "example.tensorflow.tf.keras.metrics.MeanSquaredError",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.data.Dataset",
+      "family": "data",
+      "canonical_symbol": "tf.data.Dataset",
+      "mode_scope": [
+        "construct",
+        "iterate"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.data.Dataset",
+      "example_id": "example.tensorflow.tf.data.Dataset",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.layers.Normalization",
+      "family": "data",
+      "canonical_symbol": "tf.keras.layers.Normalization",
+      "mode_scope": [
+        "construct",
+        "iterate"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.layers.Normalization",
+      "example_id": "example.tensorflow.tf.keras.layers.Normalization",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.layers.Rescaling",
+      "family": "data",
+      "canonical_symbol": "tf.keras.layers.Rescaling",
+      "mode_scope": [
+        "construct",
+        "iterate"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.layers.Rescaling",
+      "example_id": "example.tensorflow.tf.keras.layers.Rescaling",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.layers.TextVectorization",
+      "family": "data",
+      "canonical_symbol": "tf.keras.layers.TextVectorization",
+      "mode_scope": [
+        "construct",
+        "iterate"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.layers.TextVectorization",
+      "example_id": "example.tensorflow.tf.keras.layers.TextVectorization",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.layers.StringLookup",
+      "family": "data",
+      "canonical_symbol": "tf.keras.layers.StringLookup",
+      "mode_scope": [
+        "construct",
+        "iterate"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.layers.StringLookup",
+      "example_id": "example.tensorflow.tf.keras.layers.StringLookup",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.keras.layers.IntegerLookup",
+      "family": "data",
+      "canonical_symbol": "tf.keras.layers.IntegerLookup",
+      "mode_scope": [
+        "construct",
+        "iterate"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.keras.layers.IntegerLookup",
+      "example_id": "example.tensorflow.tf.keras.layers.IntegerLookup",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.saved_model.save",
+      "family": "serialization",
+      "canonical_symbol": "tf.saved_model.save",
+      "mode_scope": [
+        "roundtrip",
+        "incompatible-artifact"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.saved_model.save",
+      "example_id": "example.tensorflow.tf.saved_model.save",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.saved_model.load",
+      "family": "serialization",
+      "canonical_symbol": "tf.saved_model.load",
+      "mode_scope": [
+        "roundtrip",
+        "incompatible-artifact"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.saved_model.load",
+      "example_id": "example.tensorflow.tf.saved_model.load",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.train.Checkpoint",
+      "family": "serialization",
+      "canonical_symbol": "tf.train.Checkpoint",
+      "mode_scope": [
+        "roundtrip",
+        "incompatible-artifact"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.train.Checkpoint",
+      "example_id": "example.tensorflow.tf.train.Checkpoint",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.GradientTape",
+      "family": "autodiff",
+      "canonical_symbol": "tf.GradientTape",
+      "mode_scope": [
+        "differentiate",
+        "gradient-control"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.GradientTape",
+      "example_id": "example.tensorflow.tf.GradientTape",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.stop_gradient",
+      "family": "autodiff",
+      "canonical_symbol": "tf.stop_gradient",
+      "mode_scope": [
+        "differentiate",
+        "gradient-control"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.stop_gradient",
+      "example_id": "example.tensorflow.tf.stop_gradient",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "tensorflow.tf.custom_gradient",
+      "family": "autodiff",
+      "canonical_symbol": "tf.custom_gradient",
+      "mode_scope": [
+        "differentiate",
+        "gradient-control"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.tensorflow.tf.custom_gradient",
+      "example_id": "example.tensorflow.tf.custom_gradient",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    }
+  ],
+  "poc_components": []
+}

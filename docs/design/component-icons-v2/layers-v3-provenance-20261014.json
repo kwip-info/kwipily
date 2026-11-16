@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-14",
+  "generator": "built-in image_gen",
+  "reference": "linear-v2.png",
+  "operation": "Style-match original Convolution, Bilinear and Separable icon meanings to Linear: flat-top thick light-rose hexagon, dark rose interior, light symbol, transparent exterior. No source/icon removal.",
+  "assets": {
+    "conv2d-v3.png": {
+      "original": "exec-89636e88-5ffe-4c87-8bb6-8aded6130ab8.png",
+      "sha256": "9273dc492fcb039e8141703ad46b8beef591c9a3398b5c509278432b84fa7c44"
+    },
+    "bilinear-v3.png": {
+      "original": "exec-a771e0a4-e3ca-4a5e-b9e6-8eca801df3ef.png",
+      "sha256": "a664932bb47b57af460ffeb02135f1298a4341b796ce20b476d253f8670eb34c"
+    },
+    "separable-conv2d-v3.png": {
+      "original": "exec-8ec51502-31f2-4c4f-b037-256e19f2e1cd.png",
+      "sha256": "30cf50d48aa442d8736b7233c9e5e92d8e30e810d206602f3adde60431c9e9c4"
+    }
+  }
+}

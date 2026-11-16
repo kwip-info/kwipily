@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "nodes": [
+    {
+      "id": "source",
+      "operator": "kwip.data.sourceCSV",
+      "config": {
+        "separator": ","
+      }
+    },
+    {
+      "id": "cast",
+      "operator": "kwip.data.columns",
+      "config": {
+        "rows": [
+          {
+            "source": "order_id",
+            "included": true,
+            "outputName": "order_id",
+            "targetType": "keep"
+          },
+          {
+            "source": "customer",
+            "included": true,
+            "outputName": "customer",
+            "targetType": "keep"
+          },
+          {
+            "source": "email",
+            "included": true,
+            "outputName": "email",
+            "targetType": "keep"
+          },
+          {
+            "source": "quantity",
+            "included": true,
+            "outputName": "quantity",
+            "targetType": "int64"
+          },
+          {
+            "source": "unit_price",
+            "included": true,
+            "outputName": "unit_price",
+            "targetType": "float64"
+          },
+          {
+            "source": "note",
+            "included": true,
+            "outputName": "note",
+            "targetType": "keep"
+          }
+        ],
+        "castFailure": "error",
+        "trimText": false,
+        "newColumns": "keep",
+        "missingPolicy": "preserve"
+      }
+    },
+    {
+      "id": "tool",
+      "operator": "kwip.data.formula",
+      "config": {
+        "operations": [
+          {
+            "id": "practice-formula",
+            "expression": "regex_extract([email], \"@(?P<domain>[A-Za-z0-9.-]+\\\\.[A-Za-z]{2,})\", \"search\", \"null\", \"\", \"domain\")",
+            "outputs": [
+              {
+                "name": "email_domain",
+                "dtype": "string",
+                "write": "new"
+              }
+            ],
+            "nullPolicy": "preserve"
+          }
+        ]
+      }
+    }
+  ],
+  "edges": [
+    {
+      "from": {
+        "node": "source",
+        "port": "table"
+      },
+      "to": {
+        "node": "cast",
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "node": "cast",
+        "port": "table"
+      },
+      "to": {
+        "node": "tool",
+        "port": "table"
+      }
+    }
+  ]
+}

@@ -1,0 +1,590 @@
+{
+  "definitions": [],
+  "drafts": [],
+  "edges": [
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "source"
+        },
+        "port": "table"
+      },
+      "id": "A82CA1A3-6C40-42B4-BCCB-920808E14012",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "columns"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "columns"
+        },
+        "port": "table"
+      },
+      "id": "494DC102-336C-459D-9C40-B4070F5644EF",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "filter"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "filter"
+        },
+        "port": "matching"
+      },
+      "id": "AD567BB0-F9BB-47ED-933C-D124EF834260",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "line_amount"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "line_amount"
+        },
+        "port": "table"
+      },
+      "id": "DEB4E6CF-BD9F-42EB-B6C1-B72DA827EE8A",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "invoices"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "invoices"
+        },
+        "port": "table"
+      },
+      "id": "610993E9-4682-49E8-B25B-9C20392E64D9",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "customers"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "customers"
+        },
+        "port": "table"
+      },
+      "id": "4E023104-4724-4148-976D-6BB14C3353D3",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "units"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "units"
+        },
+        "port": "table"
+      },
+      "id": "7565CCDF-3519-4ADC-8E7B-956B4EE55329",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "control",
+          "localID": "segments"
+        },
+        "port": "training"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "control",
+          "localID": "segments"
+        },
+        "port": "predictions"
+      },
+      "id": "A012BC11-9B70-400D-AEF7-198839DF9DC4",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "assignments"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "control",
+          "localID": "segments"
+        },
+        "port": "model"
+      },
+      "id": "6040518B-EE03-4F38-A29D-C0D96735DD5F",
+      "kind": "frozenModel",
+      "to": {
+        "address": {
+          "domain": "control",
+          "localID": "save"
+        },
+        "port": "model"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "control",
+          "localID": "segments"
+        },
+        "port": "predictions"
+      },
+      "id": "DA26D511-FF38-4D4E-A1B8-4E7518B6AC4C",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "output"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "control",
+          "localID": "segments"
+        },
+        "port": "profiles"
+      },
+      "id": "0C3B1281-D185-40AA-A4FC-33C0A6DFE62D",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "profiles"
+        },
+        "port": "table"
+      }
+    }
+  ],
+  "kind": "workflowProject",
+  "modelSourceVersions": {},
+  "name": "Explore customer purchase groups",
+  "nodes": [
+    {
+      "address": {
+        "domain": "data",
+        "localID": "source"
+      },
+      "name": "Purchase records",
+      "payload": {
+        "config": {
+          "commentPrefix": "",
+          "emptyField": "text",
+          "encoding": "utf-8-sig",
+          "format": "csv",
+          "headerMode": "firstRecord",
+          "ignoreErrors": false,
+          "inferSchema": false,
+          "nullMarkers": [],
+          "parserProfile": "polars",
+          "quoteChar": "\"",
+          "separator": ",",
+          "skipLines": 0,
+          "skipRecords": 0,
+          "skipRowsAfterHeader": 0
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.sourceCSV"
+      },
+      "x": 0,
+      "y": 0
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "columns"
+      },
+      "name": "Declare types · retain audit fields",
+      "payload": {
+        "config": {
+          "castFailure": "error",
+          "missingPolicy": "error",
+          "newColumns": "keep",
+          "rows": [
+            {
+              "included": true,
+              "outputName": "InvoiceNo",
+              "source": "InvoiceNo",
+              "targetType": "string"
+            },
+            {
+              "included": true,
+              "outputName": "StockCode",
+              "source": "StockCode",
+              "targetType": "string"
+            },
+            {
+              "included": true,
+              "outputName": "Description",
+              "source": "Description",
+              "targetType": "string"
+            },
+            {
+              "included": true,
+              "outputName": "Quantity",
+              "source": "Quantity",
+              "targetType": "int64"
+            },
+            {
+              "included": true,
+              "outputName": "InvoiceDate",
+              "source": "InvoiceDate",
+              "targetType": "string"
+            },
+            {
+              "included": true,
+              "outputName": "UnitPrice",
+              "source": "UnitPrice",
+              "targetType": "float64"
+            },
+            {
+              "included": true,
+              "outputName": "CustomerID",
+              "source": "CustomerID",
+              "targetType": "string"
+            },
+            {
+              "included": true,
+              "outputName": "Country",
+              "source": "Country",
+              "targetType": "string"
+            }
+          ],
+          "trimText": true
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.columns"
+      },
+      "x": 250,
+      "y": 0
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "filter"
+      },
+      "name": "Positive purchases · exclude C invoices",
+      "payload": {
+        "config": {
+          "column": "feature",
+          "conditions": [
+            {
+              "caseSensitive": true,
+              "column": "CustomerID",
+              "comparison": "isNotMissing",
+              "value": null
+            },
+            {
+              "caseSensitive": true,
+              "column": "CustomerID",
+              "comparison": "ne",
+              "value": ""
+            },
+            {
+              "caseSensitive": true,
+              "column": "Quantity",
+              "comparison": "gt",
+              "value": 0
+            },
+            {
+              "caseSensitive": true,
+              "column": "UnitPrice",
+              "comparison": "gt",
+              "value": 0
+            },
+            {
+              "caseSensitive": false,
+              "column": "InvoiceNo",
+              "comparison": "notContains",
+              "value": "C"
+            }
+          ],
+          "expression": "[feature] > 0",
+          "flags": [],
+          "match": "all",
+          "matchMode": "search",
+          "mode": "simple",
+          "nullPolicy": "nonmatching",
+          "pattern": ".+"
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.filterRows"
+      },
+      "x": 500,
+      "y": 0
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "line_amount"
+      },
+      "name": "Calculate line amount",
+      "payload": {
+        "config": {
+          "operations": [
+            {
+              "expression": "[Quantity] * [UnitPrice]",
+              "id": "line-amount",
+              "nullPolicy": "error",
+              "outputs": [
+                {
+                  "dtype": "float64",
+                  "name": "LineAmount",
+                  "write": "new"
+                }
+              ]
+            }
+          ]
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.formula"
+      },
+      "x": 750,
+      "y": 0
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "invoices"
+      },
+      "name": "Sum each customer invoice",
+      "payload": {
+        "config": {
+          "aggregations": [
+            {
+              "column": "LineAmount",
+              "nullPolicy": "error",
+              "op": "sum",
+              "output": "InvoiceAmount"
+            }
+          ],
+          "groupBy": [
+            "CustomerID",
+            "InvoiceNo"
+          ],
+          "maxRows": 100000,
+          "nullKeys": "error"
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.aggregate"
+      },
+      "x": 1000,
+      "y": 0
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "customers"
+      },
+      "name": "Count purchases and sum GBP",
+      "payload": {
+        "config": {
+          "aggregations": [
+            {
+              "op": "countRows",
+              "output": "PurchaseCount"
+            },
+            {
+              "column": "InvoiceAmount",
+              "nullPolicy": "error",
+              "op": "sum",
+              "output": "PurchaseAmount"
+            }
+          ],
+          "groupBy": [
+            "CustomerID"
+          ],
+          "maxRows": 100000,
+          "nullKeys": "error"
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.aggregate"
+      },
+      "x": 1250,
+      "y": 0
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "units"
+      },
+      "name": "Fixed units · 10 purchases and 100 GBP",
+      "payload": {
+        "config": {
+          "operations": [
+            {
+              "expression": "[PurchaseCount] / 10",
+              "id": "frequency-units",
+              "nullPolicy": "error",
+              "outputs": [
+                {
+                  "dtype": "float64",
+                  "name": "FrequencyPer10Purchases",
+                  "write": "new"
+                }
+              ]
+            },
+            {
+              "expression": "[PurchaseAmount] / 100",
+              "id": "amount-units",
+              "nullPolicy": "error",
+              "outputs": [
+                {
+                  "dtype": "float64",
+                  "name": "AmountPer100GBP",
+                  "write": "new"
+                }
+              ]
+            }
+          ]
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.formula"
+      },
+      "x": 1500,
+      "y": 0
+    },
+    {
+      "address": {
+        "domain": "control",
+        "localID": "segments"
+      },
+      "name": "Exploratory K-means · k4 seed42",
+      "payload": {
+        "config": {
+          "algorithm": "kmeans",
+          "backendID": "sklearn",
+          "featureColumns": [
+            "FrequencyPer10Purchases",
+            "AmountPer100GBP"
+          ],
+          "operation": "fit",
+          "settings": {
+            "clusters": 4,
+            "initializations": 10,
+            "maxIterations": 200,
+            "seed": 42,
+            "tolerance": 0.0001
+          },
+          "targetColumn": "",
+          "task": "prebuilt"
+        },
+        "kind": "estimator"
+      },
+      "x": 1750,
+      "y": 0
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "assignments"
+      },
+      "name": "Customer assignments",
+      "payload": {
+        "config": {},
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.view"
+      },
+      "x": 2000,
+      "y": 0
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "profiles"
+      },
+      "name": "Segment profiles",
+      "payload": {
+        "config": {},
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.view"
+      },
+      "x": 2000,
+      "y": 200
+    },
+    {
+      "address": {
+        "domain": "control",
+        "localID": "save"
+      },
+      "name": "Customer-group model",
+      "payload": {
+        "config": {
+          "format": "package"
+        },
+        "kind": "saveModel"
+      },
+      "x": 2000,
+      "y": 400
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "output"
+      },
+      "name": "Customer assignments",
+      "payload": {
+        "config": {
+          "columns": [],
+          "destination": "file",
+          "filename": "customer-segmentation-output.csv",
+          "format": "csv",
+          "overwrite": false,
+          "separator": ","
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.outputDelimited"
+      },
+      "x": 2250,
+      "y": 0
+    }
+  ],
+  "projectID": "00000000-0000-0000-0000-000000000000",
+  "revision": 0,
+  "schemaVersion": 17
+}

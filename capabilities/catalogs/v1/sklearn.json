@@ -1,0 +1,3349 @@
+{
+  "schema_version": 1,
+  "catalog_version": "0.1.0",
+  "framework": "sklearn",
+  "framework_version": "1.9.1",
+  "documentation_version": "1.9",
+  "snapshot_date": "2026-10-05",
+  "runtime_status": "Not installed or implemented in KwipML",
+  "version_alignment": "Sphinx docs expose major/minor; exact patch/API alignment still requires review.",
+  "denominator_status": "proposed",
+  "approval": null,
+  "thresholds": {
+    "minimum_percent": 90,
+    "target_percent": 95
+  },
+  "required_families": [
+    "preprocessing",
+    "imputation",
+    "composition",
+    "linear_models",
+    "svm",
+    "neighbors",
+    "trees",
+    "ensemble",
+    "naive_bayes",
+    "clustering",
+    "decomposition",
+    "feature_selection",
+    "model_selection",
+    "metrics",
+    "calibration",
+    "inspection",
+    "feature_extraction"
+  ],
+  "inventory": {
+    "path": "capabilities/inventories/v1/sklearn.json",
+    "sha256": "f9848176e98b4427eb5d0002814a92e98ce382b9bef141fe7c7c9b3b914cd463",
+    "scope": "All captured Sphinx Python objects under the framework prefix.",
+    "framework_completeness": "not_established",
+    "canonicalization_status": "Exact documentation-target aliases resolved; other aliases require review.",
+    "source": {
+      "framework": "sklearn",
+      "source_url": "https://scikit-learn.org/1.9/objects.inv",
+      "captured_on": "2026-10-05",
+      "declared_documentation_version": "1.9",
+      "raw_snapshot": "capabilities/snapshots/sklearn.inv",
+      "raw_sha256": "dc83a914bda5d7c2b600d8fe93880ac2159e2721d6824c7e0d2a731752e60ef3",
+      "inventory_file": "capabilities/inventories/v1/sklearn.json",
+      "symbol_count": 3254,
+      "parser": "capabilities/capture_inventory.py",
+      "notes": "Captured documentation surface, not a claim of complete runtime API enumeration or implementation."
+    }
+  },
+  "scope_decision": {
+    "status": "review-needed",
+    "reason": "Broad API inventory exceeds proposed user-operation subset. No framework-wide90% claim; mode boundaries, exclusions and patch alignment must be reviewed before freeze."
+  },
+  "capabilities": [
+    {
+      "id": "sklearn.sklearn.preprocessing.StandardScaler",
+      "family": "preprocessing",
+      "canonical_symbol": "sklearn.preprocessing.StandardScaler",
+      "mode_scope": [
+        "fit",
+        "transform",
+        "fit-transform"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.preprocessing.StandardScaler",
+      "example_id": "example.sklearn.sklearn.preprocessing.StandardScaler",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.preprocessing.MinMaxScaler",
+      "family": "preprocessing",
+      "canonical_symbol": "sklearn.preprocessing.MinMaxScaler",
+      "mode_scope": [
+        "fit",
+        "transform",
+        "fit-transform"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.preprocessing.MinMaxScaler",
+      "example_id": "example.sklearn.sklearn.preprocessing.MinMaxScaler",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.preprocessing.RobustScaler",
+      "family": "preprocessing",
+      "canonical_symbol": "sklearn.preprocessing.RobustScaler",
+      "mode_scope": [
+        "fit",
+        "transform",
+        "fit-transform"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.preprocessing.RobustScaler",
+      "example_id": "example.sklearn.sklearn.preprocessing.RobustScaler",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.preprocessing.MaxAbsScaler",
+      "family": "preprocessing",
+      "canonical_symbol": "sklearn.preprocessing.MaxAbsScaler",
+      "mode_scope": [
+        "fit",
+        "transform",
+        "fit-transform"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.preprocessing.MaxAbsScaler",
+      "example_id": "example.sklearn.sklearn.preprocessing.MaxAbsScaler",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.preprocessing.Normalizer",
+      "family": "preprocessing",
+      "canonical_symbol": "sklearn.preprocessing.Normalizer",
+      "mode_scope": [
+        "fit",
+        "transform",
+        "fit-transform"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.preprocessing.Normalizer",
+      "example_id": "example.sklearn.sklearn.preprocessing.Normalizer",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.preprocessing.OneHotEncoder",
+      "family": "preprocessing",
+      "canonical_symbol": "sklearn.preprocessing.OneHotEncoder",
+      "mode_scope": [
+        "fit",
+        "transform",
+        "fit-transform"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.preprocessing.OneHotEncoder",
+      "example_id": "example.sklearn.sklearn.preprocessing.OneHotEncoder",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.preprocessing.OrdinalEncoder",
+      "family": "preprocessing",
+      "canonical_symbol": "sklearn.preprocessing.OrdinalEncoder",
+      "mode_scope": [
+        "fit",
+        "transform",
+        "fit-transform"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.preprocessing.OrdinalEncoder",
+      "example_id": "example.sklearn.sklearn.preprocessing.OrdinalEncoder",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.preprocessing.LabelEncoder",
+      "family": "preprocessing",
+      "canonical_symbol": "sklearn.preprocessing.LabelEncoder",
+      "mode_scope": [
+        "fit",
+        "transform",
+        "fit-transform"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.preprocessing.LabelEncoder",
+      "example_id": "example.sklearn.sklearn.preprocessing.LabelEncoder",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.preprocessing.PolynomialFeatures",
+      "family": "preprocessing",
+      "canonical_symbol": "sklearn.preprocessing.PolynomialFeatures",
+      "mode_scope": [
+        "fit",
+        "transform",
+        "fit-transform"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.preprocessing.PolynomialFeatures",
+      "example_id": "example.sklearn.sklearn.preprocessing.PolynomialFeatures",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.preprocessing.PowerTransformer",
+      "family": "preprocessing",
+      "canonical_symbol": "sklearn.preprocessing.PowerTransformer",
+      "mode_scope": [
+        "fit",
+        "transform",
+        "fit-transform"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.preprocessing.PowerTransformer",
+      "example_id": "example.sklearn.sklearn.preprocessing.PowerTransformer",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.preprocessing.QuantileTransformer",
+      "family": "preprocessing",
+      "canonical_symbol": "sklearn.preprocessing.QuantileTransformer",
+      "mode_scope": [
+        "fit",
+        "transform",
+        "fit-transform"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.preprocessing.QuantileTransformer",
+      "example_id": "example.sklearn.sklearn.preprocessing.QuantileTransformer",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.preprocessing.KBinsDiscretizer",
+      "family": "preprocessing",
+      "canonical_symbol": "sklearn.preprocessing.KBinsDiscretizer",
+      "mode_scope": [
+        "fit",
+        "transform",
+        "fit-transform"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.preprocessing.KBinsDiscretizer",
+      "example_id": "example.sklearn.sklearn.preprocessing.KBinsDiscretizer",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.impute.SimpleImputer",
+      "family": "imputation",
+      "canonical_symbol": "sklearn.impute.SimpleImputer",
+      "mode_scope": [
+        "fit",
+        "transform"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.impute.SimpleImputer",
+      "example_id": "example.sklearn.sklearn.impute.SimpleImputer",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.impute.KNNImputer",
+      "family": "imputation",
+      "canonical_symbol": "sklearn.impute.KNNImputer",
+      "mode_scope": [
+        "fit",
+        "transform"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.impute.KNNImputer",
+      "example_id": "example.sklearn.sklearn.impute.KNNImputer",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.impute.MissingIndicator",
+      "family": "imputation",
+      "canonical_symbol": "sklearn.impute.MissingIndicator",
+      "mode_scope": [
+        "fit",
+        "transform"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.impute.MissingIndicator",
+      "example_id": "example.sklearn.sklearn.impute.MissingIndicator",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.pipeline.Pipeline",
+      "family": "composition",
+      "canonical_symbol": "sklearn.pipeline.Pipeline",
+      "mode_scope": [
+        "fit",
+        "predict"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.pipeline.Pipeline",
+      "example_id": "example.sklearn.sklearn.pipeline.Pipeline",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.pipeline.FeatureUnion",
+      "family": "composition",
+      "canonical_symbol": "sklearn.pipeline.FeatureUnion",
+      "mode_scope": [
+        "fit",
+        "predict"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.pipeline.FeatureUnion",
+      "example_id": "example.sklearn.sklearn.pipeline.FeatureUnion",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.compose.ColumnTransformer",
+      "family": "composition",
+      "canonical_symbol": "sklearn.compose.ColumnTransformer",
+      "mode_scope": [
+        "fit",
+        "predict"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.compose.ColumnTransformer",
+      "example_id": "example.sklearn.sklearn.compose.ColumnTransformer",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.compose.TransformedTargetRegressor",
+      "family": "composition",
+      "canonical_symbol": "sklearn.compose.TransformedTargetRegressor",
+      "mode_scope": [
+        "fit",
+        "predict"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.compose.TransformedTargetRegressor",
+      "example_id": "example.sklearn.sklearn.compose.TransformedTargetRegressor",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.linear_model.LinearRegression",
+      "family": "linear_models",
+      "canonical_symbol": "sklearn.linear_model.LinearRegression",
+      "mode_scope": [
+        "fit",
+        "predict"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.linear_model.LinearRegression",
+      "example_id": "example.sklearn.sklearn.linear_model.LinearRegression",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.linear_model.Ridge",
+      "family": "linear_models",
+      "canonical_symbol": "sklearn.linear_model.Ridge",
+      "mode_scope": [
+        "fit",
+        "predict"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.linear_model.Ridge",
+      "example_id": "example.sklearn.sklearn.linear_model.Ridge",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.linear_model.Lasso",
+      "family": "linear_models",
+      "canonical_symbol": "sklearn.linear_model.Lasso",
+      "mode_scope": [
+        "fit",
+        "predict"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.linear_model.Lasso",
+      "example_id": "example.sklearn.sklearn.linear_model.Lasso",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.linear_model.ElasticNet",
+      "family": "linear_models",
+      "canonical_symbol": "sklearn.linear_model.ElasticNet",
+      "mode_scope": [
+        "fit",
+        "predict"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.linear_model.ElasticNet",
+      "example_id": "example.sklearn.sklearn.linear_model.ElasticNet",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.linear_model.LogisticRegression",
+      "family": "linear_models",
+      "canonical_symbol": "sklearn.linear_model.LogisticRegression",
+      "mode_scope": [
+        "fit",
+        "predict"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.linear_model.LogisticRegression",
+      "example_id": "example.sklearn.sklearn.linear_model.LogisticRegression",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.linear_model.SGDClassifier",
+      "family": "linear_models",
+      "canonical_symbol": "sklearn.linear_model.SGDClassifier",
+      "mode_scope": [
+        "fit",
+        "predict"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.linear_model.SGDClassifier",
+      "example_id": "example.sklearn.sklearn.linear_model.SGDClassifier",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.linear_model.SGDRegressor",
+      "family": "linear_models",
+      "canonical_symbol": "sklearn.linear_model.SGDRegressor",
+      "mode_scope": [
+        "fit",
+        "predict"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.linear_model.SGDRegressor",
+      "example_id": "example.sklearn.sklearn.linear_model.SGDRegressor",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.linear_model.PoissonRegressor",
+      "family": "linear_models",
+      "canonical_symbol": "sklearn.linear_model.PoissonRegressor",
+      "mode_scope": [
+        "fit",
+        "predict"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.linear_model.PoissonRegressor",
+      "example_id": "example.sklearn.sklearn.linear_model.PoissonRegressor",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.svm.SVC",
+      "family": "svm",
+      "canonical_symbol": "sklearn.svm.SVC",
+      "mode_scope": [
+        "fit",
+        "predict"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.svm.SVC",
+      "example_id": "example.sklearn.sklearn.svm.SVC",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.svm.SVR",
+      "family": "svm",
+      "canonical_symbol": "sklearn.svm.SVR",
+      "mode_scope": [
+        "fit",
+        "predict"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.svm.SVR",
+      "example_id": "example.sklearn.sklearn.svm.SVR",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.svm.LinearSVC",
+      "family": "svm",
+      "canonical_symbol": "sklearn.svm.LinearSVC",
+      "mode_scope": [
+        "fit",
+        "predict"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.svm.LinearSVC",
+      "example_id": "example.sklearn.sklearn.svm.LinearSVC",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.svm.OneClassSVM",
+      "family": "svm",
+      "canonical_symbol": "sklearn.svm.OneClassSVM",
+      "mode_scope": [
+        "fit",
+        "predict"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.svm.OneClassSVM",
+      "example_id": "example.sklearn.sklearn.svm.OneClassSVM",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.neighbors.KNeighborsClassifier",
+      "family": "neighbors",
+      "canonical_symbol": "sklearn.neighbors.KNeighborsClassifier",
+      "mode_scope": [
+        "fit",
+        "predict"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.neighbors.KNeighborsClassifier",
+      "example_id": "example.sklearn.sklearn.neighbors.KNeighborsClassifier",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.neighbors.KNeighborsRegressor",
+      "family": "neighbors",
+      "canonical_symbol": "sklearn.neighbors.KNeighborsRegressor",
+      "mode_scope": [
+        "fit",
+        "predict"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.neighbors.KNeighborsRegressor",
+      "example_id": "example.sklearn.sklearn.neighbors.KNeighborsRegressor",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.neighbors.NearestNeighbors",
+      "family": "neighbors",
+      "canonical_symbol": "sklearn.neighbors.NearestNeighbors",
+      "mode_scope": [
+        "fit",
+        "predict"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.neighbors.NearestNeighbors",
+      "example_id": "example.sklearn.sklearn.neighbors.NearestNeighbors",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.neighbors.LocalOutlierFactor",
+      "family": "neighbors",
+      "canonical_symbol": "sklearn.neighbors.LocalOutlierFactor",
+      "mode_scope": [
+        "fit",
+        "predict"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.neighbors.LocalOutlierFactor",
+      "example_id": "example.sklearn.sklearn.neighbors.LocalOutlierFactor",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.tree.DecisionTreeClassifier",
+      "family": "trees",
+      "canonical_symbol": "sklearn.tree.DecisionTreeClassifier",
+      "mode_scope": [
+        "fit",
+        "predict"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.tree.DecisionTreeClassifier",
+      "example_id": "example.sklearn.sklearn.tree.DecisionTreeClassifier",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.tree.DecisionTreeRegressor",
+      "family": "trees",
+      "canonical_symbol": "sklearn.tree.DecisionTreeRegressor",
+      "mode_scope": [
+        "fit",
+        "predict"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.tree.DecisionTreeRegressor",
+      "example_id": "example.sklearn.sklearn.tree.DecisionTreeRegressor",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.tree.ExtraTreeClassifier",
+      "family": "trees",
+      "canonical_symbol": "sklearn.tree.ExtraTreeClassifier",
+      "mode_scope": [
+        "fit",
+        "predict"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.tree.ExtraTreeClassifier",
+      "example_id": "example.sklearn.sklearn.tree.ExtraTreeClassifier",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.tree.ExtraTreeRegressor",
+      "family": "trees",
+      "canonical_symbol": "sklearn.tree.ExtraTreeRegressor",
+      "mode_scope": [
+        "fit",
+        "predict"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.tree.ExtraTreeRegressor",
+      "example_id": "example.sklearn.sklearn.tree.ExtraTreeRegressor",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.ensemble.RandomForestClassifier",
+      "family": "ensemble",
+      "canonical_symbol": "sklearn.ensemble.RandomForestClassifier",
+      "mode_scope": [
+        "fit",
+        "predict"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.ensemble.RandomForestClassifier",
+      "example_id": "example.sklearn.sklearn.ensemble.RandomForestClassifier",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.ensemble.RandomForestRegressor",
+      "family": "ensemble",
+      "canonical_symbol": "sklearn.ensemble.RandomForestRegressor",
+      "mode_scope": [
+        "fit",
+        "predict"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.ensemble.RandomForestRegressor",
+      "example_id": "example.sklearn.sklearn.ensemble.RandomForestRegressor",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.ensemble.ExtraTreesClassifier",
+      "family": "ensemble",
+      "canonical_symbol": "sklearn.ensemble.ExtraTreesClassifier",
+      "mode_scope": [
+        "fit",
+        "predict"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.ensemble.ExtraTreesClassifier",
+      "example_id": "example.sklearn.sklearn.ensemble.ExtraTreesClassifier",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.ensemble.GradientBoostingClassifier",
+      "family": "ensemble",
+      "canonical_symbol": "sklearn.ensemble.GradientBoostingClassifier",
+      "mode_scope": [
+        "fit",
+        "predict"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.ensemble.GradientBoostingClassifier",
+      "example_id": "example.sklearn.sklearn.ensemble.GradientBoostingClassifier",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.ensemble.HistGradientBoostingClassifier",
+      "family": "ensemble",
+      "canonical_symbol": "sklearn.ensemble.HistGradientBoostingClassifier",
+      "mode_scope": [
+        "fit",
+        "predict"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.ensemble.HistGradientBoostingClassifier",
+      "example_id": "example.sklearn.sklearn.ensemble.HistGradientBoostingClassifier",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.ensemble.AdaBoostClassifier",
+      "family": "ensemble",
+      "canonical_symbol": "sklearn.ensemble.AdaBoostClassifier",
+      "mode_scope": [
+        "fit",
+        "predict"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.ensemble.AdaBoostClassifier",
+      "example_id": "example.sklearn.sklearn.ensemble.AdaBoostClassifier",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.ensemble.IsolationForest",
+      "family": "ensemble",
+      "canonical_symbol": "sklearn.ensemble.IsolationForest",
+      "mode_scope": [
+        "fit",
+        "predict"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.ensemble.IsolationForest",
+      "example_id": "example.sklearn.sklearn.ensemble.IsolationForest",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.ensemble.StackingClassifier",
+      "family": "ensemble",
+      "canonical_symbol": "sklearn.ensemble.StackingClassifier",
+      "mode_scope": [
+        "fit",
+        "predict"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.ensemble.StackingClassifier",
+      "example_id": "example.sklearn.sklearn.ensemble.StackingClassifier",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.ensemble.VotingClassifier",
+      "family": "ensemble",
+      "canonical_symbol": "sklearn.ensemble.VotingClassifier",
+      "mode_scope": [
+        "fit",
+        "predict"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.ensemble.VotingClassifier",
+      "example_id": "example.sklearn.sklearn.ensemble.VotingClassifier",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.naive_bayes.GaussianNB",
+      "family": "naive_bayes",
+      "canonical_symbol": "sklearn.naive_bayes.GaussianNB",
+      "mode_scope": [
+        "fit",
+        "predict"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.naive_bayes.GaussianNB",
+      "example_id": "example.sklearn.sklearn.naive_bayes.GaussianNB",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.naive_bayes.MultinomialNB",
+      "family": "naive_bayes",
+      "canonical_symbol": "sklearn.naive_bayes.MultinomialNB",
+      "mode_scope": [
+        "fit",
+        "predict"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.naive_bayes.MultinomialNB",
+      "example_id": "example.sklearn.sklearn.naive_bayes.MultinomialNB",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.naive_bayes.BernoulliNB",
+      "family": "naive_bayes",
+      "canonical_symbol": "sklearn.naive_bayes.BernoulliNB",
+      "mode_scope": [
+        "fit",
+        "predict"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.naive_bayes.BernoulliNB",
+      "example_id": "example.sklearn.sklearn.naive_bayes.BernoulliNB",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.cluster.KMeans",
+      "family": "clustering",
+      "canonical_symbol": "sklearn.cluster.KMeans",
+      "mode_scope": [
+        "fit",
+        "assign-or-transform"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.cluster.KMeans",
+      "example_id": "example.sklearn.sklearn.cluster.KMeans",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.cluster.MiniBatchKMeans",
+      "family": "clustering",
+      "canonical_symbol": "sklearn.cluster.MiniBatchKMeans",
+      "mode_scope": [
+        "fit",
+        "assign-or-transform"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.cluster.MiniBatchKMeans",
+      "example_id": "example.sklearn.sklearn.cluster.MiniBatchKMeans",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.cluster.DBSCAN",
+      "family": "clustering",
+      "canonical_symbol": "sklearn.cluster.DBSCAN",
+      "mode_scope": [
+        "fit",
+        "assign-or-transform"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.cluster.DBSCAN",
+      "example_id": "example.sklearn.sklearn.cluster.DBSCAN",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.cluster.HDBSCAN",
+      "family": "clustering",
+      "canonical_symbol": "sklearn.cluster.HDBSCAN",
+      "mode_scope": [
+        "fit",
+        "assign-or-transform"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.cluster.HDBSCAN",
+      "example_id": "example.sklearn.sklearn.cluster.HDBSCAN",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.cluster.AgglomerativeClustering",
+      "family": "clustering",
+      "canonical_symbol": "sklearn.cluster.AgglomerativeClustering",
+      "mode_scope": [
+        "fit",
+        "assign-or-transform"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.cluster.AgglomerativeClustering",
+      "example_id": "example.sklearn.sklearn.cluster.AgglomerativeClustering",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.cluster.SpectralClustering",
+      "family": "clustering",
+      "canonical_symbol": "sklearn.cluster.SpectralClustering",
+      "mode_scope": [
+        "fit",
+        "assign-or-transform"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.cluster.SpectralClustering",
+      "example_id": "example.sklearn.sklearn.cluster.SpectralClustering",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.cluster.MeanShift",
+      "family": "clustering",
+      "canonical_symbol": "sklearn.cluster.MeanShift",
+      "mode_scope": [
+        "fit",
+        "assign-or-transform"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.cluster.MeanShift",
+      "example_id": "example.sklearn.sklearn.cluster.MeanShift",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.cluster.Birch",
+      "family": "clustering",
+      "canonical_symbol": "sklearn.cluster.Birch",
+      "mode_scope": [
+        "fit",
+        "assign-or-transform"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.cluster.Birch",
+      "example_id": "example.sklearn.sklearn.cluster.Birch",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.decomposition.PCA",
+      "family": "decomposition",
+      "canonical_symbol": "sklearn.decomposition.PCA",
+      "mode_scope": [
+        "fit",
+        "transform"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.decomposition.PCA",
+      "example_id": "example.sklearn.sklearn.decomposition.PCA",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.decomposition.IncrementalPCA",
+      "family": "decomposition",
+      "canonical_symbol": "sklearn.decomposition.IncrementalPCA",
+      "mode_scope": [
+        "fit",
+        "transform"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.decomposition.IncrementalPCA",
+      "example_id": "example.sklearn.sklearn.decomposition.IncrementalPCA",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.decomposition.KernelPCA",
+      "family": "decomposition",
+      "canonical_symbol": "sklearn.decomposition.KernelPCA",
+      "mode_scope": [
+        "fit",
+        "transform"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.decomposition.KernelPCA",
+      "example_id": "example.sklearn.sklearn.decomposition.KernelPCA",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.decomposition.TruncatedSVD",
+      "family": "decomposition",
+      "canonical_symbol": "sklearn.decomposition.TruncatedSVD",
+      "mode_scope": [
+        "fit",
+        "transform"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.decomposition.TruncatedSVD",
+      "example_id": "example.sklearn.sklearn.decomposition.TruncatedSVD",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.decomposition.NMF",
+      "family": "decomposition",
+      "canonical_symbol": "sklearn.decomposition.NMF",
+      "mode_scope": [
+        "fit",
+        "transform"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.decomposition.NMF",
+      "example_id": "example.sklearn.sklearn.decomposition.NMF",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.decomposition.FastICA",
+      "family": "decomposition",
+      "canonical_symbol": "sklearn.decomposition.FastICA",
+      "mode_scope": [
+        "fit",
+        "transform"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.decomposition.FastICA",
+      "example_id": "example.sklearn.sklearn.decomposition.FastICA",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.decomposition.LatentDirichletAllocation",
+      "family": "decomposition",
+      "canonical_symbol": "sklearn.decomposition.LatentDirichletAllocation",
+      "mode_scope": [
+        "fit",
+        "transform"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.decomposition.LatentDirichletAllocation",
+      "example_id": "example.sklearn.sklearn.decomposition.LatentDirichletAllocation",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.feature_selection.VarianceThreshold",
+      "family": "feature_selection",
+      "canonical_symbol": "sklearn.feature_selection.VarianceThreshold",
+      "mode_scope": [
+        "fit",
+        "transform"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.feature_selection.VarianceThreshold",
+      "example_id": "example.sklearn.sklearn.feature_selection.VarianceThreshold",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.feature_selection.SelectKBest",
+      "family": "feature_selection",
+      "canonical_symbol": "sklearn.feature_selection.SelectKBest",
+      "mode_scope": [
+        "fit",
+        "transform"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.feature_selection.SelectKBest",
+      "example_id": "example.sklearn.sklearn.feature_selection.SelectKBest",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.feature_selection.SelectPercentile",
+      "family": "feature_selection",
+      "canonical_symbol": "sklearn.feature_selection.SelectPercentile",
+      "mode_scope": [
+        "fit",
+        "transform"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.feature_selection.SelectPercentile",
+      "example_id": "example.sklearn.sklearn.feature_selection.SelectPercentile",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.feature_selection.RFE",
+      "family": "feature_selection",
+      "canonical_symbol": "sklearn.feature_selection.RFE",
+      "mode_scope": [
+        "fit",
+        "transform"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.feature_selection.RFE",
+      "example_id": "example.sklearn.sklearn.feature_selection.RFE",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.feature_selection.SelectFromModel",
+      "family": "feature_selection",
+      "canonical_symbol": "sklearn.feature_selection.SelectFromModel",
+      "mode_scope": [
+        "fit",
+        "transform"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.feature_selection.SelectFromModel",
+      "example_id": "example.sklearn.sklearn.feature_selection.SelectFromModel",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.feature_selection.SequentialFeatureSelector",
+      "family": "feature_selection",
+      "canonical_symbol": "sklearn.feature_selection.SequentialFeatureSelector",
+      "mode_scope": [
+        "fit",
+        "transform"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.feature_selection.SequentialFeatureSelector",
+      "example_id": "example.sklearn.sklearn.feature_selection.SequentialFeatureSelector",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.model_selection.train_test_split",
+      "family": "model_selection",
+      "canonical_symbol": "sklearn.model_selection.train_test_split",
+      "mode_scope": [
+        "partition",
+        "fit-selection",
+        "reproducibility"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.model_selection.train_test_split",
+      "example_id": "example.sklearn.sklearn.model_selection.train_test_split",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.model_selection.KFold",
+      "family": "model_selection",
+      "canonical_symbol": "sklearn.model_selection.KFold",
+      "mode_scope": [
+        "partition",
+        "fit-selection",
+        "reproducibility"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.model_selection.KFold",
+      "example_id": "example.sklearn.sklearn.model_selection.KFold",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.model_selection.StratifiedKFold",
+      "family": "model_selection",
+      "canonical_symbol": "sklearn.model_selection.StratifiedKFold",
+      "mode_scope": [
+        "partition",
+        "fit-selection",
+        "reproducibility"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.model_selection.StratifiedKFold",
+      "example_id": "example.sklearn.sklearn.model_selection.StratifiedKFold",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.model_selection.GroupKFold",
+      "family": "model_selection",
+      "canonical_symbol": "sklearn.model_selection.GroupKFold",
+      "mode_scope": [
+        "partition",
+        "fit-selection",
+        "reproducibility"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.model_selection.GroupKFold",
+      "example_id": "example.sklearn.sklearn.model_selection.GroupKFold",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.model_selection.TimeSeriesSplit",
+      "family": "model_selection",
+      "canonical_symbol": "sklearn.model_selection.TimeSeriesSplit",
+      "mode_scope": [
+        "partition",
+        "fit-selection",
+        "reproducibility"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.model_selection.TimeSeriesSplit",
+      "example_id": "example.sklearn.sklearn.model_selection.TimeSeriesSplit",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.model_selection.GridSearchCV",
+      "family": "model_selection",
+      "canonical_symbol": "sklearn.model_selection.GridSearchCV",
+      "mode_scope": [
+        "partition",
+        "fit-selection",
+        "reproducibility"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.model_selection.GridSearchCV",
+      "example_id": "example.sklearn.sklearn.model_selection.GridSearchCV",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.model_selection.RandomizedSearchCV",
+      "family": "model_selection",
+      "canonical_symbol": "sklearn.model_selection.RandomizedSearchCV",
+      "mode_scope": [
+        "partition",
+        "fit-selection",
+        "reproducibility"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.model_selection.RandomizedSearchCV",
+      "example_id": "example.sklearn.sklearn.model_selection.RandomizedSearchCV",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.model_selection.cross_validate",
+      "family": "model_selection",
+      "canonical_symbol": "sklearn.model_selection.cross_validate",
+      "mode_scope": [
+        "partition",
+        "fit-selection",
+        "reproducibility"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.model_selection.cross_validate",
+      "example_id": "example.sklearn.sklearn.model_selection.cross_validate",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.model_selection.learning_curve",
+      "family": "model_selection",
+      "canonical_symbol": "sklearn.model_selection.learning_curve",
+      "mode_scope": [
+        "partition",
+        "fit-selection",
+        "reproducibility"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.model_selection.learning_curve",
+      "example_id": "example.sklearn.sklearn.model_selection.learning_curve",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.metrics.accuracy_score",
+      "family": "metrics",
+      "canonical_symbol": "sklearn.metrics.accuracy_score",
+      "mode_scope": [
+        "evaluate",
+        "edge-cases"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.metrics.accuracy_score",
+      "example_id": "example.sklearn.sklearn.metrics.accuracy_score",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.metrics.precision_score",
+      "family": "metrics",
+      "canonical_symbol": "sklearn.metrics.precision_score",
+      "mode_scope": [
+        "evaluate",
+        "edge-cases"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.metrics.precision_score",
+      "example_id": "example.sklearn.sklearn.metrics.precision_score",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.metrics.recall_score",
+      "family": "metrics",
+      "canonical_symbol": "sklearn.metrics.recall_score",
+      "mode_scope": [
+        "evaluate",
+        "edge-cases"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.metrics.recall_score",
+      "example_id": "example.sklearn.sklearn.metrics.recall_score",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.metrics.f1_score",
+      "family": "metrics",
+      "canonical_symbol": "sklearn.metrics.f1_score",
+      "mode_scope": [
+        "evaluate",
+        "edge-cases"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.metrics.f1_score",
+      "example_id": "example.sklearn.sklearn.metrics.f1_score",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.metrics.roc_auc_score",
+      "family": "metrics",
+      "canonical_symbol": "sklearn.metrics.roc_auc_score",
+      "mode_scope": [
+        "evaluate",
+        "edge-cases"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.metrics.roc_auc_score",
+      "example_id": "example.sklearn.sklearn.metrics.roc_auc_score",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.metrics.confusion_matrix",
+      "family": "metrics",
+      "canonical_symbol": "sklearn.metrics.confusion_matrix",
+      "mode_scope": [
+        "evaluate",
+        "edge-cases"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.metrics.confusion_matrix",
+      "example_id": "example.sklearn.sklearn.metrics.confusion_matrix",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.metrics.mean_squared_error",
+      "family": "metrics",
+      "canonical_symbol": "sklearn.metrics.mean_squared_error",
+      "mode_scope": [
+        "evaluate",
+        "edge-cases"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.metrics.mean_squared_error",
+      "example_id": "example.sklearn.sklearn.metrics.mean_squared_error",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.metrics.mean_absolute_error",
+      "family": "metrics",
+      "canonical_symbol": "sklearn.metrics.mean_absolute_error",
+      "mode_scope": [
+        "evaluate",
+        "edge-cases"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.metrics.mean_absolute_error",
+      "example_id": "example.sklearn.sklearn.metrics.mean_absolute_error",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.metrics.r2_score",
+      "family": "metrics",
+      "canonical_symbol": "sklearn.metrics.r2_score",
+      "mode_scope": [
+        "evaluate",
+        "edge-cases"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.metrics.r2_score",
+      "example_id": "example.sklearn.sklearn.metrics.r2_score",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.metrics.silhouette_score",
+      "family": "metrics",
+      "canonical_symbol": "sklearn.metrics.silhouette_score",
+      "mode_scope": [
+        "evaluate",
+        "edge-cases"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.metrics.silhouette_score",
+      "example_id": "example.sklearn.sklearn.metrics.silhouette_score",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.calibration.CalibratedClassifierCV",
+      "family": "calibration",
+      "canonical_symbol": "sklearn.calibration.CalibratedClassifierCV",
+      "mode_scope": [
+        "fit",
+        "evaluate"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.calibration.CalibratedClassifierCV",
+      "example_id": "example.sklearn.sklearn.calibration.CalibratedClassifierCV",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.calibration.calibration_curve",
+      "family": "calibration",
+      "canonical_symbol": "sklearn.calibration.calibration_curve",
+      "mode_scope": [
+        "fit",
+        "evaluate"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.calibration.calibration_curve",
+      "example_id": "example.sklearn.sklearn.calibration.calibration_curve",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.inspection.permutation_importance",
+      "family": "inspection",
+      "canonical_symbol": "sklearn.inspection.permutation_importance",
+      "mode_scope": [
+        "evaluate",
+        "provenance"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.inspection.permutation_importance",
+      "example_id": "example.sklearn.sklearn.inspection.permutation_importance",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.inspection.partial_dependence",
+      "family": "inspection",
+      "canonical_symbol": "sklearn.inspection.partial_dependence",
+      "mode_scope": [
+        "evaluate",
+        "provenance"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.inspection.partial_dependence",
+      "example_id": "example.sklearn.sklearn.inspection.partial_dependence",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.feature_extraction.text.CountVectorizer",
+      "family": "feature_extraction",
+      "canonical_symbol": "sklearn.feature_extraction.text.CountVectorizer",
+      "mode_scope": [
+        "fit",
+        "transform"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.feature_extraction.text.CountVectorizer",
+      "example_id": "example.sklearn.sklearn.feature_extraction.text.CountVectorizer",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.feature_extraction.text.TfidfVectorizer",
+      "family": "feature_extraction",
+      "canonical_symbol": "sklearn.feature_extraction.text.TfidfVectorizer",
+      "mode_scope": [
+        "fit",
+        "transform"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.feature_extraction.text.TfidfVectorizer",
+      "example_id": "example.sklearn.sklearn.feature_extraction.text.TfidfVectorizer",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.feature_extraction.text.HashingVectorizer",
+      "family": "feature_extraction",
+      "canonical_symbol": "sklearn.feature_extraction.text.HashingVectorizer",
+      "mode_scope": [
+        "fit",
+        "transform"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.feature_extraction.text.HashingVectorizer",
+      "example_id": "example.sklearn.sklearn.feature_extraction.text.HashingVectorizer",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    },
+    {
+      "id": "sklearn.sklearn.feature_extraction.DictVectorizer",
+      "family": "feature_extraction",
+      "canonical_symbol": "sklearn.feature_extraction.DictVectorizer",
+      "mode_scope": [
+        "fit",
+        "transform"
+      ],
+      "mode_scope_status": "proposed; refine operation-specific modes before denominator freeze",
+      "configuration_contract": "pending",
+      "configuration_plan": {
+        "parameters": "Enumerate documented parameters and interactions; no default-only coverage credit.",
+        "required_cases": [
+          "defaults",
+          "non-default settings",
+          "valid boundaries",
+          "invalid types/shapes",
+          "state lifecycle where applicable"
+        ],
+        "limits": "Framework/operator-specific dtype, sparse/ragged, axis/layout, rank and device limits must be explicit."
+      },
+      "backend_matrix": {
+        "status": "pending",
+        "cases": [
+          "cpu-float32"
+        ]
+      },
+      "evidence": {},
+      "implementation_status": "planned",
+      "lesson_id": "lesson.sklearn.sklearn.feature_extraction.DictVectorizer",
+      "example_id": "example.sklearn.sklearn.feature_extraction.DictVectorizer",
+      "notes": "Lesson/example IDs reserve required deliverables; they do not identify shipped content. This unit is incomplete."
+    }
+  ],
+  "poc_components": []
+}

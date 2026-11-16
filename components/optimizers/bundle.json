@@ -1,0 +1,744 @@
+{
+  "schemaVersion": 1,
+  "id": "kwip.optimizers",
+  "version": 1,
+  "backend": "pytorch",
+  "components": [
+    {
+      "definition": {
+        "id": "optimizer_sgd",
+        "title": "SGD",
+        "category": "Training",
+        "inputs": [],
+        "outputs": [
+          "out"
+        ],
+        "fields": [
+          {
+            "key": "lr",
+            "title": "Learning rate",
+            "kind": "number",
+            "defaultValue": 0.001,
+            "min": 0,
+            "max": 3.4028234663852886e+38
+          },
+          {
+            "key": "momentum",
+            "title": "Momentum",
+            "kind": "number",
+            "defaultValue": 0.0,
+            "min": 0,
+            "max": 1.0
+          },
+          {
+            "key": "dampening",
+            "title": "Momentum dampening",
+            "kind": "number",
+            "defaultValue": 0.0,
+            "min": 0,
+            "max": 1.0
+          },
+          {
+            "key": "weight_decay",
+            "title": "Weight decay",
+            "kind": "number",
+            "defaultValue": 0.0,
+            "min": 0,
+            "max": 3.4028234663852886e+38
+          },
+          {
+            "key": "nesterov",
+            "title": "Look ahead",
+            "kind": "boolean",
+            "defaultValue": false
+          },
+          {
+            "key": "maximize",
+            "title": "Maximize objective",
+            "kind": "boolean",
+            "defaultValue": false
+          }
+        ]
+      },
+      "published": true,
+      "configurationVersion": 1,
+      "adapterID": "kwip.runner.optimizer.optimizer_sgd",
+      "shapeRuleID": "kwip.recipe.optimizer_sgd.v1",
+      "presentation": {
+        "theme": "green",
+        "icon": "optimizer_sgd-v2",
+        "shortTitle": "SGD",
+        "purpose": "Adjust learned settings with optional remembered movement."
+      },
+      "outputConditions": {},
+      "sources": {
+        "native": "Sources/KwipMLCore/OptimizerConfiguration.swift",
+        "worker": "runner/optimizer_configuration.py",
+        "tests": "runner/tests/test_optimizer_runtime.py",
+        "evidence": "docs/production/TORCH_STANDARD_OPTIMIZERS_CLOSURE.md"
+      },
+      "runtimeContract": {
+        "version": {
+          "major": 1,
+          "minor": 0,
+          "patch": 0
+        },
+        "adapterID": "kwip.runner.optimizer.optimizer_sgd",
+        "recipeSchemaVersions": [
+          1
+        ],
+        "configurationVersions": [
+          1
+        ],
+        "graphDTypes": [
+          "float32"
+        ],
+        "devices": [
+          "cpu",
+          "mps"
+        ],
+        "oneParameterGroup": true,
+        "orderedTrainableParameters": true,
+        "excludesBuffers": true,
+        "foreach": false,
+        "differentiable": false,
+        "cpuResume": "epochBoundaryExactCPU",
+        "mpsResume": "weightsOnly",
+        "numericMaximum": 3.4028234663852886e+38,
+        "epsilonMinimum": 1.1754943508222875e-38,
+        "epsilonMaximum": 3.4028234663852886e+38,
+        "defaults": {
+          "lr": 0.001,
+          "momentum": 0.0,
+          "dampening": 0.0,
+          "weight_decay": 0.0,
+          "nesterov": false,
+          "maximize": false
+        },
+        "fractionMaximum": 1.0,
+        "statePolicy": "momentumOnlyNoCounter",
+        "counterDType": "float32",
+        "counterDevice": "cpu",
+        "counterMaximum": 1000000000
+      },
+      "learning": {
+        "contentVersion": 1,
+        "updatedAt": "2026-10-08",
+        "exampleID": "prepared-sgd-classifier",
+        "sourceResource": "workflow-observations",
+        "title": "Explore SGD in a classifier",
+        "subtitle": "Adjust learned settings with optional remembered movement.",
+        "disclosureTitle": "How training adjustments and memory work",
+        "formula": "Adjust learned settings with optional remembered movement.",
+        "paragraphs": [
+          "A learned setting is a number the model adjusts during training. A gradient measures which direction a small setting change moves the objective. The optimizer uses those measured changes to decide the next settings. Connect this recipe to Train’s optimizer input; it does not change the model’s forward connections.",
+          "Learning rate scales each adjustment. A rate of zero is a useful comparison but other enabled settings, such as remembered changes, still have their declared state behavior. The connected recipe owns its learning rate; Run setup’s rate applies only when Train has no optimizer recipe.",
+          "Momentum remembers earlier movement. Momentum dampening reduces how much a new change enters that memory after its first update. Look ahead combines positive momentum with zero dampening.",
+          "Weight decay controls shrinkage of learned settings. Stability amount, where available, provides a small cushion when dividing by remembered change sizes. Maximize objective reverses the desired direction; ordinary error reduction leaves it off.",
+          "Each run creates fresh optimizer memory unless an exact CPU checkpoint resumes it. Fine-tuning reuses model settings and buffers but starts fresh optimizer memory. Private lessons measure actual update results and remembered quantities; they do not accept a correct-looking name alone."
+        ],
+        "buttonTitle": "Open SGD example",
+        "exampleSource": "Sources/KwipMLCore/OptimizerWorkflowExample.swift",
+        "lessonIDs": [
+          "assessment.sgd-momentum-steps"
+        ]
+      }
+    },
+    {
+      "definition": {
+        "id": "optimizer_adam",
+        "title": "Adam",
+        "category": "Training",
+        "inputs": [],
+        "outputs": [
+          "out"
+        ],
+        "fields": [
+          {
+            "key": "lr",
+            "title": "Learning rate",
+            "kind": "number",
+            "defaultValue": 0.001,
+            "min": 0,
+            "max": 3.4028234663852886e+38
+          },
+          {
+            "key": "beta1",
+            "title": "First running average",
+            "kind": "number",
+            "defaultValue": 0.9,
+            "min": 0,
+            "max": 0.9999999403953552
+          },
+          {
+            "key": "beta2",
+            "title": "Second running average",
+            "kind": "number",
+            "defaultValue": 0.999,
+            "min": 0,
+            "max": 0.9999999403953552
+          },
+          {
+            "key": "eps",
+            "title": "Stability amount",
+            "kind": "number",
+            "defaultValue": 1e-08,
+            "min": 1.1754943508222875e-38,
+            "max": 3.4028234663852886e+38
+          },
+          {
+            "key": "weight_decay",
+            "title": "Weight decay",
+            "kind": "number",
+            "defaultValue": 0.0,
+            "min": 0,
+            "max": 3.4028234663852886e+38
+          },
+          {
+            "key": "amsgrad",
+            "title": "Keep largest squared average",
+            "kind": "boolean",
+            "defaultValue": false
+          },
+          {
+            "key": "decoupled_weight_decay",
+            "title": "Separate weight decay",
+            "kind": "boolean",
+            "defaultValue": false
+          },
+          {
+            "key": "maximize",
+            "title": "Maximize objective",
+            "kind": "boolean",
+            "defaultValue": false
+          }
+        ]
+      },
+      "published": true,
+      "configurationVersion": 1,
+      "adapterID": "kwip.runner.optimizer.optimizer_adam",
+      "shapeRuleID": "kwip.recipe.optimizer_adam.v1",
+      "presentation": {
+        "theme": "green",
+        "icon": "optimizer_adam-v2",
+        "shortTitle": "Adam",
+        "purpose": "Adjust learned settings using remembered change and squared change."
+      },
+      "outputConditions": {},
+      "sources": {
+        "native": "Sources/KwipMLCore/OptimizerConfiguration.swift",
+        "worker": "runner/optimizer_configuration.py",
+        "tests": "runner/tests/test_optimizer_runtime.py",
+        "evidence": "docs/production/TORCH_STANDARD_OPTIMIZERS_CLOSURE.md"
+      },
+      "runtimeContract": {
+        "version": {
+          "major": 1,
+          "minor": 0,
+          "patch": 0
+        },
+        "adapterID": "kwip.runner.optimizer.optimizer_adam",
+        "recipeSchemaVersions": [
+          1
+        ],
+        "configurationVersions": [
+          1
+        ],
+        "graphDTypes": [
+          "float32"
+        ],
+        "devices": [
+          "cpu",
+          "mps"
+        ],
+        "oneParameterGroup": true,
+        "orderedTrainableParameters": true,
+        "excludesBuffers": true,
+        "foreach": false,
+        "differentiable": false,
+        "cpuResume": "epochBoundaryExactCPU",
+        "mpsResume": "weightsOnly",
+        "numericMaximum": 3.4028234663852886e+38,
+        "epsilonMinimum": 1.1754943508222875e-38,
+        "epsilonMaximum": 3.4028234663852886e+38,
+        "defaults": {
+          "lr": 0.001,
+          "beta1": 0.9,
+          "beta2": 0.999,
+          "eps": 1e-08,
+          "weight_decay": 0.0,
+          "amsgrad": false,
+          "decoupled_weight_decay": false,
+          "maximize": false
+        },
+        "fractionMaximum": 0.9999999403953552,
+        "statePolicy": "adamMomentsOptionalMaximum",
+        "counterDType": "float32",
+        "counterDevice": "cpu",
+        "counterMaximum": 1000000000
+      },
+      "learning": {
+        "contentVersion": 1,
+        "updatedAt": "2026-10-08",
+        "exampleID": "prepared-adam-classifier",
+        "sourceResource": "workflow-observations",
+        "title": "Explore Adam in a classifier",
+        "subtitle": "Adjust learned settings using remembered change and squared change.",
+        "disclosureTitle": "How training adjustments and memory work",
+        "formula": "Adjust learned settings using remembered change and squared change.",
+        "paragraphs": [
+          "A learned setting is a number the model adjusts during training. A gradient measures which direction a small setting change moves the objective. The optimizer uses those measured changes to decide the next settings. Connect this recipe to Train’s optimizer input; it does not change the model’s forward connections.",
+          "Learning rate scales each adjustment. A rate of zero is a useful comparison but other enabled settings, such as remembered changes, still have their declared state behavior. The connected recipe owns its learning rate; Run setup’s rate applies only when Train has no optimizer recipe.",
+          "The first running average remembers the direction of change; the second remembers squared changes to compare their size. Keep largest squared average retains the largest remembered squared change. Separate weight decay shrinks a setting independently from those averages.",
+          "Weight decay controls shrinkage of learned settings. Stability amount, where available, provides a small cushion when dividing by remembered change sizes. Maximize objective reverses the desired direction; ordinary error reduction leaves it off.",
+          "Each run creates fresh optimizer memory unless an exact CPU checkpoint resumes it. Fine-tuning reuses model settings and buffers but starts fresh optimizer memory. Private lessons measure actual update results and remembered quantities; they do not accept a correct-looking name alone."
+        ],
+        "buttonTitle": "Open Adam example",
+        "exampleSource": "Sources/KwipMLCore/OptimizerWorkflowExample.swift",
+        "lessonIDs": [
+          "assessment.adam-running-averages"
+        ]
+      }
+    },
+    {
+      "definition": {
+        "id": "optimizer_adamw",
+        "title": "AdamW",
+        "category": "Training",
+        "inputs": [],
+        "outputs": [
+          "out"
+        ],
+        "fields": [
+          {
+            "key": "lr",
+            "title": "Learning rate",
+            "kind": "number",
+            "defaultValue": 0.001,
+            "min": 0,
+            "max": 3.4028234663852886e+38
+          },
+          {
+            "key": "beta1",
+            "title": "First running average",
+            "kind": "number",
+            "defaultValue": 0.9,
+            "min": 0,
+            "max": 0.9999999403953552
+          },
+          {
+            "key": "beta2",
+            "title": "Second running average",
+            "kind": "number",
+            "defaultValue": 0.999,
+            "min": 0,
+            "max": 0.9999999403953552
+          },
+          {
+            "key": "eps",
+            "title": "Stability amount",
+            "kind": "number",
+            "defaultValue": 1e-08,
+            "min": 1.1754943508222875e-38,
+            "max": 3.4028234663852886e+38
+          },
+          {
+            "key": "weight_decay",
+            "title": "Weight decay",
+            "kind": "number",
+            "defaultValue": 0.01,
+            "min": 0,
+            "max": 3.4028234663852886e+38
+          },
+          {
+            "key": "amsgrad",
+            "title": "Keep largest squared average",
+            "kind": "boolean",
+            "defaultValue": false
+          },
+          {
+            "key": "maximize",
+            "title": "Maximize objective",
+            "kind": "boolean",
+            "defaultValue": false
+          }
+        ]
+      },
+      "published": true,
+      "configurationVersion": 1,
+      "adapterID": "kwip.runner.optimizer.optimizer_adamw",
+      "shapeRuleID": "kwip.recipe.optimizer_adamw.v1",
+      "presentation": {
+        "theme": "green",
+        "icon": "optimizer_adamw-v2",
+        "shortTitle": "AdamW",
+        "purpose": "Adjust learned settings while shrinking them separately."
+      },
+      "outputConditions": {},
+      "sources": {
+        "native": "Sources/KwipMLCore/OptimizerConfiguration.swift",
+        "worker": "runner/optimizer_configuration.py",
+        "tests": "runner/tests/test_optimizer_runtime.py",
+        "evidence": "docs/production/TORCH_STANDARD_OPTIMIZERS_CLOSURE.md"
+      },
+      "runtimeContract": {
+        "version": {
+          "major": 1,
+          "minor": 0,
+          "patch": 0
+        },
+        "adapterID": "kwip.runner.optimizer.optimizer_adamw",
+        "recipeSchemaVersions": [
+          1
+        ],
+        "configurationVersions": [
+          1
+        ],
+        "graphDTypes": [
+          "float32"
+        ],
+        "devices": [
+          "cpu",
+          "mps"
+        ],
+        "oneParameterGroup": true,
+        "orderedTrainableParameters": true,
+        "excludesBuffers": true,
+        "foreach": false,
+        "differentiable": false,
+        "cpuResume": "epochBoundaryExactCPU",
+        "mpsResume": "weightsOnly",
+        "numericMaximum": 3.4028234663852886e+38,
+        "epsilonMinimum": 1.1754943508222875e-38,
+        "epsilonMaximum": 3.4028234663852886e+38,
+        "defaults": {
+          "lr": 0.001,
+          "beta1": 0.9,
+          "beta2": 0.999,
+          "eps": 1e-08,
+          "weight_decay": 0.01,
+          "amsgrad": false,
+          "maximize": false
+        },
+        "fractionMaximum": 0.9999999403953552,
+        "statePolicy": "adamMomentsOptionalMaximum",
+        "counterDType": "float32",
+        "counterDevice": "cpu",
+        "counterMaximum": 1000000000
+      },
+      "learning": {
+        "contentVersion": 1,
+        "updatedAt": "2026-10-08",
+        "exampleID": "prepared-adamw-classifier",
+        "sourceResource": "workflow-observations",
+        "title": "Explore AdamW in a classifier",
+        "subtitle": "Adjust learned settings while shrinking them separately.",
+        "disclosureTitle": "How training adjustments and memory work",
+        "formula": "Adjust learned settings while shrinking them separately.",
+        "paragraphs": [
+          "A learned setting is a number the model adjusts during training. A gradient measures which direction a small setting change moves the objective. The optimizer uses those measured changes to decide the next settings. Connect this recipe to Train’s optimizer input; it does not change the model’s forward connections.",
+          "Learning rate scales each adjustment. A rate of zero is a useful comparison but other enabled settings, such as remembered changes, still have their declared state behavior. The connected recipe owns its learning rate; Run setup’s rate applies only when Train has no optimizer recipe.",
+          "Weight decay shrinks a learned setting separately from its running change averages. This distinction changes the result even when another optimizer has the same learning rate and decay amount.",
+          "Weight decay controls shrinkage of learned settings. Stability amount, where available, provides a small cushion when dividing by remembered change sizes. Maximize objective reverses the desired direction; ordinary error reduction leaves it off.",
+          "Each run creates fresh optimizer memory unless an exact CPU checkpoint resumes it. Fine-tuning reuses model settings and buffers but starts fresh optimizer memory. Private lessons measure actual update results and remembered quantities; they do not accept a correct-looking name alone."
+        ],
+        "buttonTitle": "Open AdamW example",
+        "exampleSource": "Sources/KwipMLCore/OptimizerWorkflowExample.swift",
+        "lessonIDs": [
+          "assessment.adamw-separate-decay"
+        ]
+      }
+    },
+    {
+      "definition": {
+        "id": "optimizer_rmsprop",
+        "title": "RMSprop",
+        "category": "Training",
+        "inputs": [],
+        "outputs": [
+          "out"
+        ],
+        "fields": [
+          {
+            "key": "lr",
+            "title": "Learning rate",
+            "kind": "number",
+            "defaultValue": 0.01,
+            "min": 0,
+            "max": 3.4028234663852886e+38
+          },
+          {
+            "key": "alpha",
+            "title": "Squared-average memory",
+            "kind": "number",
+            "defaultValue": 0.99,
+            "min": 0,
+            "max": 1.0
+          },
+          {
+            "key": "eps",
+            "title": "Stability amount",
+            "kind": "number",
+            "defaultValue": 1e-08,
+            "min": 1.1754943508222875e-38,
+            "max": 3.4028234663852886e+38
+          },
+          {
+            "key": "weight_decay",
+            "title": "Weight decay",
+            "kind": "number",
+            "defaultValue": 0.0,
+            "min": 0,
+            "max": 3.4028234663852886e+38
+          },
+          {
+            "key": "momentum",
+            "title": "Momentum",
+            "kind": "number",
+            "defaultValue": 0.0,
+            "min": 0,
+            "max": 1.0
+          },
+          {
+            "key": "centered",
+            "title": "Center the squared average",
+            "kind": "boolean",
+            "defaultValue": false
+          },
+          {
+            "key": "maximize",
+            "title": "Maximize objective",
+            "kind": "boolean",
+            "defaultValue": false
+          }
+        ]
+      },
+      "published": true,
+      "configurationVersion": 1,
+      "adapterID": "kwip.runner.optimizer.optimizer_rmsprop",
+      "shapeRuleID": "kwip.recipe.optimizer_rmsprop.v1",
+      "presentation": {
+        "theme": "green",
+        "icon": "optimizer_rmsprop-v2",
+        "shortTitle": "RMSprop",
+        "purpose": "Scale adjustments using remembered squared changes."
+      },
+      "outputConditions": {},
+      "sources": {
+        "native": "Sources/KwipMLCore/OptimizerConfiguration.swift",
+        "worker": "runner/optimizer_configuration.py",
+        "tests": "runner/tests/test_optimizer_runtime.py",
+        "evidence": "docs/production/TORCH_STANDARD_OPTIMIZERS_CLOSURE.md"
+      },
+      "runtimeContract": {
+        "version": {
+          "major": 1,
+          "minor": 0,
+          "patch": 0
+        },
+        "adapterID": "kwip.runner.optimizer.optimizer_rmsprop",
+        "recipeSchemaVersions": [
+          1
+        ],
+        "configurationVersions": [
+          1
+        ],
+        "graphDTypes": [
+          "float32"
+        ],
+        "devices": [
+          "cpu",
+          "mps"
+        ],
+        "oneParameterGroup": true,
+        "orderedTrainableParameters": true,
+        "excludesBuffers": true,
+        "foreach": false,
+        "differentiable": false,
+        "cpuResume": "epochBoundaryExactCPU",
+        "mpsResume": "weightsOnly",
+        "numericMaximum": 3.4028234663852886e+38,
+        "epsilonMinimum": 1.1754943508222875e-38,
+        "epsilonMaximum": 3.4028234663852886e+38,
+        "defaults": {
+          "lr": 0.01,
+          "alpha": 0.99,
+          "eps": 1e-08,
+          "weight_decay": 0.0,
+          "momentum": 0.0,
+          "centered": false,
+          "maximize": false
+        },
+        "fractionMaximum": 1.0,
+        "statePolicy": "squaredOptionalMomentumAndCentered",
+        "counterDType": "float32",
+        "counterDevice": "cpu",
+        "counterMaximum": 1000000000
+      },
+      "learning": {
+        "contentVersion": 1,
+        "updatedAt": "2026-10-08",
+        "exampleID": "prepared-rmsprop-classifier",
+        "sourceResource": "workflow-observations",
+        "title": "Explore RMSprop in a classifier",
+        "subtitle": "Scale adjustments using remembered squared changes.",
+        "disclosureTitle": "How training adjustments and memory work",
+        "formula": "Scale adjustments using remembered squared changes.",
+        "paragraphs": [
+          "A learned setting is a number the model adjusts during training. A gradient measures which direction a small setting change moves the objective. The optimizer uses those measured changes to decide the next settings. Connect this recipe to Train’s optimizer input; it does not change the model’s forward connections.",
+          "Learning rate scales each adjustment. A rate of zero is a useful comparison but other enabled settings, such as remembered changes, still have their declared state behavior. The connected recipe owns its learning rate; Run setup’s rate applies only when Train has no optimizer recipe.",
+          "Squared-average memory chooses how much earlier squared change is retained. Center the squared average also remembers average change; optional momentum remembers the resulting movement.",
+          "Weight decay controls shrinkage of learned settings. Stability amount, where available, provides a small cushion when dividing by remembered change sizes. Maximize objective reverses the desired direction; ordinary error reduction leaves it off.",
+          "Each run creates fresh optimizer memory unless an exact CPU checkpoint resumes it. Fine-tuning reuses model settings and buffers but starts fresh optimizer memory. Private lessons measure actual update results and remembered quantities; they do not accept a correct-looking name alone."
+        ],
+        "buttonTitle": "Open RMSprop example",
+        "exampleSource": "Sources/KwipMLCore/OptimizerWorkflowExample.swift",
+        "lessonIDs": [
+          "assessment.rmsprop-squared-memory"
+        ]
+      }
+    },
+    {
+      "definition": {
+        "id": "optimizer_adagrad",
+        "title": "Adagrad",
+        "category": "Training",
+        "inputs": [],
+        "outputs": [
+          "out"
+        ],
+        "fields": [
+          {
+            "key": "lr",
+            "title": "Learning rate",
+            "kind": "number",
+            "defaultValue": 0.01,
+            "min": 0,
+            "max": 3.4028234663852886e+38
+          },
+          {
+            "key": "lr_decay",
+            "title": "Learning-rate decay",
+            "kind": "number",
+            "defaultValue": 0.0,
+            "min": 0,
+            "max": 3.4028234663852886e+38
+          },
+          {
+            "key": "weight_decay",
+            "title": "Weight decay",
+            "kind": "number",
+            "defaultValue": 0.0,
+            "min": 0,
+            "max": 3.4028234663852886e+38
+          },
+          {
+            "key": "initial_accumulator_value",
+            "title": "Starting accumulated squares",
+            "kind": "number",
+            "defaultValue": 0.0,
+            "min": 0,
+            "max": 3.4028234663852886e+38
+          },
+          {
+            "key": "eps",
+            "title": "Stability amount",
+            "kind": "number",
+            "defaultValue": 1e-10,
+            "min": 1.1754943508222875e-38,
+            "max": 3.4028234663852886e+38
+          },
+          {
+            "key": "maximize",
+            "title": "Maximize objective",
+            "kind": "boolean",
+            "defaultValue": false
+          }
+        ]
+      },
+      "published": true,
+      "configurationVersion": 1,
+      "adapterID": "kwip.runner.optimizer.optimizer_adagrad",
+      "shapeRuleID": "kwip.recipe.optimizer_adagrad.v1",
+      "presentation": {
+        "theme": "green",
+        "icon": "optimizer_adagrad-v2",
+        "shortTitle": "Adagrad",
+        "purpose": "Scale adjustments using all accumulated squared changes."
+      },
+      "outputConditions": {},
+      "sources": {
+        "native": "Sources/KwipMLCore/OptimizerConfiguration.swift",
+        "worker": "runner/optimizer_configuration.py",
+        "tests": "runner/tests/test_optimizer_runtime.py",
+        "evidence": "docs/production/TORCH_STANDARD_OPTIMIZERS_CLOSURE.md"
+      },
+      "runtimeContract": {
+        "version": {
+          "major": 1,
+          "minor": 0,
+          "patch": 0
+        },
+        "adapterID": "kwip.runner.optimizer.optimizer_adagrad",
+        "recipeSchemaVersions": [
+          1
+        ],
+        "configurationVersions": [
+          1
+        ],
+        "graphDTypes": [
+          "float32"
+        ],
+        "devices": [
+          "cpu",
+          "mps"
+        ],
+        "oneParameterGroup": true,
+        "orderedTrainableParameters": true,
+        "excludesBuffers": true,
+        "foreach": false,
+        "differentiable": false,
+        "cpuResume": "epochBoundaryExactCPU",
+        "mpsResume": "weightsOnly",
+        "numericMaximum": 3.4028234663852886e+38,
+        "epsilonMinimum": 1.1754943508222875e-38,
+        "epsilonMaximum": 3.4028234663852886e+38,
+        "defaults": {
+          "lr": 0.01,
+          "lr_decay": 0.0,
+          "weight_decay": 0.0,
+          "initial_accumulator_value": 0.0,
+          "eps": 1e-10,
+          "maximize": false
+        },
+        "fractionMaximum": 1.0,
+        "statePolicy": "initializedAccumulator",
+        "counterDType": "float32",
+        "counterDevice": "cpu",
+        "counterMaximum": 1000000000
+      },
+      "learning": {
+        "contentVersion": 1,
+        "updatedAt": "2026-10-08",
+        "exampleID": "prepared-adagrad-classifier",
+        "sourceResource": "workflow-observations",
+        "title": "Explore Adagrad in a classifier",
+        "subtitle": "Scale adjustments using all accumulated squared changes.",
+        "disclosureTitle": "How training adjustments and memory work",
+        "formula": "Scale adjustments using all accumulated squared changes.",
+        "paragraphs": [
+          "A learned setting is a number the model adjusts during training. A gradient measures which direction a small setting change moves the objective. The optimizer uses those measured changes to decide the next settings. Connect this recipe to Train’s optimizer input; it does not change the model’s forward connections.",
+          "Learning rate scales each adjustment. A rate of zero is a useful comparison but other enabled settings, such as remembered changes, still have their declared state behavior. The connected recipe owns its learning rate; Run setup’s rate applies only when Train has no optimizer recipe.",
+          "Each learned setting keeps its own accumulated squared changes. Starting accumulated squares gives that memory a head start; Learning-rate decay reduces the rate as its update count grows.",
+          "Weight decay controls shrinkage of learned settings. Stability amount, where available, provides a small cushion when dividing by remembered change sizes. Maximize objective reverses the desired direction; ordinary error reduction leaves it off.",
+          "Each run creates fresh optimizer memory unless an exact CPU checkpoint resumes it. Fine-tuning reuses model settings and buffers but starts fresh optimizer memory. Private lessons measure actual update results and remembered quantities; they do not accept a correct-looking name alone."
+        ],
+        "buttonTitle": "Open Adagrad example",
+        "exampleSource": "Sources/KwipMLCore/OptimizerWorkflowExample.swift",
+        "lessonIDs": [
+          "assessment.adagrad-accumulated-steps"
+        ]
+      }
+    }
+  ]
+}

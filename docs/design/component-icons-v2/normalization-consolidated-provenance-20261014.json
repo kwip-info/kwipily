@@ -1,0 +1,10 @@
+{
+  "created": "2026-10-14",
+  "tool": "built-in image_gen",
+  "scope": "One original transparent Conditioning-olive Normalization icon; original primitive artwork retained on disk",
+  "original": "/Users/developer/.codex/generated_images/01a12669-15e3-7932-9dd1-bb1b8a95f263/exec-ef63f1ea-6707-4fb8-a31f-8bd8b5fe249d.png",
+  "asset": "Sources/KwipMLApp/Resources/ComponentIcons/normalization-v3.png",
+  "sha256": "5433ff221e56f9dca2715e950bfe4fdf1d00294737e377bee05d1a8bd4469b24",
+  "unchanged_copy": true,
+  "prompt_intent": "Standard octagon frame olive B8BB8E, equalizing bars and arrow glyph olive757945; transparent open interior/exterior; no text, badge, background or postprocessing. Prompt colors are targets, not exact raster quantization claims."
+}

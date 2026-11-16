@@ -1,0 +1,417 @@
+{
+  "definitions": [],
+  "drafts": [],
+  "edges": [
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "source"
+        },
+        "port": "table"
+      },
+      "id": "D2E929C6-06D4-4EBB-BA9D-6C18CA084DCE",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "columns"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "columns"
+        },
+        "port": "table"
+      },
+      "id": "EF4B3ECE-F84E-473B-9334-6F94A7DF4D77",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "key"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "key"
+        },
+        "port": "table"
+      },
+      "id": "C9575DD2-D965-4A4B-990A-0E28A3F39BEE",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "split"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "split"
+        },
+        "port": "training"
+      },
+      "id": "153BD4EE-7DDA-46A7-8657-384BA5AE0B70",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "control",
+          "localID": "fit"
+        },
+        "port": "training"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "split"
+        },
+        "port": "validation"
+      },
+      "id": "B96138FE-3005-4B47-B092-1D2F257DCF17",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "control",
+          "localID": "fit"
+        },
+        "port": "validation"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "control",
+          "localID": "fit"
+        },
+        "port": "predictions"
+      },
+      "id": "557E6CA2-6550-4804-9095-DD82A8643494",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "output"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "control",
+          "localID": "fit"
+        },
+        "port": "model"
+      },
+      "id": "F421F9FD-C8AB-4C5F-9BC8-A347F057BC95",
+      "kind": "frozenModel",
+      "to": {
+        "address": {
+          "domain": "control",
+          "localID": "save"
+        },
+        "port": "model"
+      }
+    }
+  ],
+  "kind": "workflowProject",
+  "modelSourceVersions": {},
+  "name": "Explore rental-demand estimation",
+  "nodes": [
+    {
+      "address": {
+        "domain": "data",
+        "localID": "source"
+      },
+      "name": "Hourly rental records",
+      "payload": {
+        "config": {
+          "commentPrefix": "",
+          "emptyField": "text",
+          "encoding": "utf-8-sig",
+          "format": "csv",
+          "headerMode": "firstRecord",
+          "ignoreErrors": false,
+          "inferSchema": false,
+          "nullMarkers": [],
+          "parserProfile": "polars",
+          "quoteChar": "\"",
+          "separator": ",",
+          "skipLines": 0,
+          "skipRecords": 0,
+          "skipRowsAfterHeader": 0,
+          "tryParseDates": false
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.sourceCSV"
+      },
+      "x": 0,
+      "y": 100
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "columns"
+      },
+      "name": "Explicit types · instant identity only",
+      "payload": {
+        "config": {
+          "castFailure": "error",
+          "missingPolicy": "error",
+          "newColumns": "error",
+          "rows": [
+            {
+              "included": true,
+              "outputName": "instant",
+              "source": "instant",
+              "targetType": "int64"
+            },
+            {
+              "included": true,
+              "outputName": "dteday",
+              "source": "dteday",
+              "targetType": "string"
+            },
+            {
+              "included": false,
+              "outputName": "season",
+              "source": "season",
+              "targetType": "float64"
+            },
+            {
+              "included": false,
+              "outputName": "yr",
+              "source": "yr",
+              "targetType": "float64"
+            },
+            {
+              "included": false,
+              "outputName": "mnth",
+              "source": "mnth",
+              "targetType": "float64"
+            },
+            {
+              "included": true,
+              "outputName": "hr",
+              "source": "hr",
+              "targetType": "float64"
+            },
+            {
+              "included": true,
+              "outputName": "holiday",
+              "source": "holiday",
+              "targetType": "float64"
+            },
+            {
+              "included": true,
+              "outputName": "weekday",
+              "source": "weekday",
+              "targetType": "float64"
+            },
+            {
+              "included": true,
+              "outputName": "workingday",
+              "source": "workingday",
+              "targetType": "float64"
+            },
+            {
+              "included": true,
+              "outputName": "weathersit",
+              "source": "weathersit",
+              "targetType": "float64"
+            },
+            {
+              "included": true,
+              "outputName": "temp",
+              "source": "temp",
+              "targetType": "float64"
+            },
+            {
+              "included": true,
+              "outputName": "atemp",
+              "source": "atemp",
+              "targetType": "float64"
+            },
+            {
+              "included": true,
+              "outputName": "hum",
+              "source": "hum",
+              "targetType": "float64"
+            },
+            {
+              "included": true,
+              "outputName": "windspeed",
+              "source": "windspeed",
+              "targetType": "float64"
+            },
+            {
+              "included": false,
+              "outputName": "casual",
+              "source": "casual",
+              "targetType": "float64"
+            },
+            {
+              "included": false,
+              "outputName": "registered",
+              "source": "registered",
+              "targetType": "float64"
+            },
+            {
+              "included": true,
+              "outputName": "cnt",
+              "source": "cnt",
+              "targetType": "float64"
+            }
+          ],
+          "trimText": false
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.columns"
+      },
+      "x": 260,
+      "y": 100
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "key"
+      },
+      "name": "Calendar ordering only · fixed UTC midnight representation · NOT event time",
+      "payload": {
+        "config": {
+          "operations": [
+            {
+              "expression": "regex_replace([dteday], \"\\\\Z\", \"T00:00:00Z\", \"first\", \"\")",
+              "id": "calendar-order",
+              "nullPolicy": "error",
+              "outputs": [
+                {
+                  "dtype": "string",
+                  "name": "calendar_order_fixed_utc_not_event_time",
+                  "write": "new"
+                }
+              ]
+            }
+          ]
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.formula"
+      },
+      "x": 520,
+      "y": 100
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "split"
+      },
+      "name": "Chronological Training, Validation and protected Test",
+      "payload": {
+        "config": {
+          "embargoMilliseconds": 0,
+          "entityColumns": [],
+          "entityPolicy": "allowAcrossTime",
+          "strategy": "time",
+          "timeColumn": "calendar_order_fixed_utc_not_event_time",
+          "timeEncoding": "iso8601Offset",
+          "trainingEnd": "2011-01-31T23:59:59.999Z",
+          "validationEnd": "2011-02-28T23:59:59.999Z"
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.partition"
+      },
+      "x": 780,
+      "y": 100
+    },
+    {
+      "address": {
+        "domain": "control",
+        "localID": "fit"
+      },
+      "name": "Observed-conditions rental estimation · fixed RF",
+      "payload": {
+        "config": {
+          "algorithm": "randomForestRegressor",
+          "backendID": "sklearn",
+          "featureColumns": [
+            "hr",
+            "weekday",
+            "holiday",
+            "workingday",
+            "weathersit",
+            "temp",
+            "atemp",
+            "hum",
+            "windspeed"
+          ],
+          "operation": "fit",
+          "settings": {
+            "maxDepth": 8,
+            "minSamplesLeaf": 1,
+            "seed": 42,
+            "trees": 100
+          },
+          "targetColumn": "cnt",
+          "task": "prebuilt"
+        },
+        "kind": "estimator"
+      },
+      "x": 1040,
+      "y": 100
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "output"
+      },
+      "name": "Validation predictions",
+      "payload": {
+        "config": {
+          "columns": [],
+          "destination": "file",
+          "filename": "rental-demand-output.csv",
+          "format": "csv",
+          "overwrite": false,
+          "separator": ","
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.outputDelimited"
+      },
+      "x": 1300,
+      "y": 100
+    },
+    {
+      "address": {
+        "domain": "control",
+        "localID": "save"
+      },
+      "name": "Rental-demand model",
+      "payload": {
+        "config": {
+          "format": "package"
+        },
+        "kind": "saveModel"
+      },
+      "x": 1560,
+      "y": 100
+    }
+  ],
+  "projectID": "00000000-0000-0000-0000-000000000000",
+  "revision": 0,
+  "schemaVersion": 17
+}

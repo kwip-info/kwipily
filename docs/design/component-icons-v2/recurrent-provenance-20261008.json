@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "generator": "image_gen",
+  "reference": "Sources/KwipMLApp/Resources/ComponentIcons/linear-v2.png",
+  "icons": [
+    {
+      "id": "rnn",
+      "sourcePath": "/Users/developer/.codex/generated_images/01a10a07-829a-7e73-a566-105746b4f45f/exec-251512a8-d1f6-4177-8780-7e47f94442b9.png",
+      "prompt": "Use case: precise-object-edit. Asset type: production KwipML component icon. Input image is approved Layers family icon; preserve exactly its centered flat point-left/right hexagonal frame, rose pink thick border, charcoal-maroon interior, transparent outside, padding and scale. Replace only the center glyph with: Three small circular stations joined along a left-to-right path; one clear curved return arrow above the middle station suggests remembered state. Use same solid rose pink as current glyph. Extremely clean bold geometric icon, readable at 32 pixels. No text, letters, numbers, extra badges, shadows, gloss, 3D or background rectangle. Genuine transparent alpha outside hexagon. One icon only.",
+      "destinationPath": "Sources/KwipMLApp/Resources/ComponentIcons/rnn-v2.png",
+      "sha256": "9d2d8aceee9080e8b933bec8e8ab417c4dc515fe6076eec9b2d10af618ee2fc4",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "alphaRange": [
+        0,
+        255
+      ]
+    },
+    {
+      "id": "lstm",
+      "sourcePath": "/Users/developer/.codex/generated_images/01a10a07-829a-7e73-a566-105746b4f45f/exec-94fbff97-7a27-48b0-9b5b-573b8a3f3320.png",
+      "prompt": "Use case: precise-object-edit. Asset type: production KwipML component icon. Input image is approved Layers family icon; preserve exactly its centered flat point-left/right hexagonal frame, rose pink thick border, charcoal-maroon interior, transparent outside, padding and scale. Replace only the center glyph with: Two parallel horizontal memory paths connected through two bold small gate bars; a few simple dots, unmistakably separate long memory and current state. Use same solid rose pink as current glyph. Extremely clean bold geometric icon, readable at 32 pixels. No text, letters, numbers, extra badges, shadows, gloss, 3D or background rectangle. Genuine transparent alpha outside hexagon. One icon only.",
+      "destinationPath": "Sources/KwipMLApp/Resources/ComponentIcons/lstm-v2.png",
+      "sha256": "908702f5451a74742117e7fd0255f23a3bf17435043f33666bd7686ec4db5bdd",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "alphaRange": [
+        0,
+        255
+      ]
+    },
+    {
+      "id": "gru",
+      "sourcePath": "/Users/developer/.codex/generated_images/01a10a07-829a-7e73-a566-105746b4f45f/exec-7f146d63-6b7a-47ab-b23f-2cd6d52652cf.png",
+      "prompt": "Use case: precise-object-edit. Asset type: production KwipML component icon. Input image is approved Layers family icon; preserve exactly its centered flat point-left/right hexagonal frame, rose pink thick border, charcoal-maroon interior, transparent outside, padding and scale. Replace only the center glyph with: A short path joining three small round stations, with a forked curved returning path and one bold gate bar near center; compact merged memory. Use same solid rose pink as current glyph. Extremely clean bold geometric icon, readable at 32 pixels. No text, letters, numbers, extra badges, shadows, gloss, 3D or background rectangle. Genuine transparent alpha outside hexagon. One icon only.",
+      "destinationPath": "Sources/KwipMLApp/Resources/ComponentIcons/gru-v2.png",
+      "sha256": "e004b82830d6fcc34c4cb1165397fc550f5d590ea08009cb82a39785ecc44859",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "alphaRange": [
+        0,
+        255
+      ]
+    },
+    {
+      "id": "rnn_cell",
+      "sourcePath": "/Users/developer/.codex/generated_images/01a10a07-829a-7e73-a566-105746b4f45f/exec-8a144de4-80c9-42c0-b488-d0e0a5cbf63f.png",
+      "prompt": "Use case: precise-object-edit. Asset type: production KwipML component icon. Input image is approved Layers family icon; preserve exactly its centered flat point-left/right hexagonal frame, rose pink thick border, charcoal-maroon interior, transparent outside, padding and scale. Replace only the center glyph with: One central large circle with a small incoming arrow from left and a clean returning loop over its top; one single step of remembered state. Use same solid rose pink as current glyph. Extremely clean bold geometric icon, readable at 32 pixels. No text, letters, numbers, extra badges, shadows, gloss, 3D or background rectangle. Genuine transparent alpha outside hexagon. One icon only.",
+      "destinationPath": "Sources/KwipMLApp/Resources/ComponentIcons/rnn_cell-v2.png",
+      "sha256": "92e16f6a4e46d131a7c071ed968f17dc937c1503e9ff29d36c38103bbb7261aa",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "alphaRange": [
+        0,
+        255
+      ]
+    },
+    {
+      "id": "lstm_cell",
+      "sourcePath": "/Users/developer/.codex/generated_images/01a10a07-829a-7e73-a566-105746b4f45f/exec-b2d559e3-1922-4c81-b12c-7a4c6e1c6129.png",
+      "prompt": "Use case: precise-object-edit. Asset type: production KwipML component icon. Input image is approved Layers family icon; preserve exactly its centered flat point-left/right hexagonal frame, rose pink thick border, charcoal-maroon interior, transparent outside, padding and scale. Replace only the center glyph with: One central rectangular memory gate between two parallel short memory paths, each with one circle; a single-step separate-memory cell. Use same solid rose pink as current glyph. Extremely clean bold geometric icon, readable at 32 pixels. No text, letters, numbers, extra badges, shadows, gloss, 3D or background rectangle. Genuine transparent alpha outside hexagon. One icon only.",
+      "destinationPath": "Sources/KwipMLApp/Resources/ComponentIcons/lstm_cell-v2.png",
+      "sha256": "92c4d9208393bcc36a2b1db47c5082aa6ee582bf17d8b0aaffcdb9b82334bb7e",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "alphaRange": [
+        0,
+        255
+      ]
+    },
+    {
+      "id": "gru_cell",
+      "sourcePath": "/Users/developer/.codex/generated_images/01a10a07-829a-7e73-a566-105746b4f45f/exec-8692e7ff-9d80-4405-91fa-b8b6b089dbbe.png",
+      "prompt": "Use case: precise-object-edit. Asset type: production KwipML component icon. Input image is approved Layers family icon; preserve exactly its centered flat point-left/right hexagonal frame, rose pink thick border, charcoal-maroon interior, transparent outside, padding and scale. Replace only the center glyph with: One central circular gate with two inward curved branches merging into one rightward arrow; a single-step compact gated memory. Use same solid rose pink as current glyph. Extremely clean bold geometric icon, readable at 32 pixels. No text, letters, numbers, extra badges, shadows, gloss, 3D or background rectangle. Genuine transparent alpha outside hexagon. One icon only.",
+      "destinationPath": "Sources/KwipMLApp/Resources/ComponentIcons/gru_cell-v2.png",
+      "sha256": "a89778d8e768838a5075310f260caa962b845ec7ff803fd985ed7a3a66d8d464",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "alphaRange": [
+        0,
+        255
+      ]
+    }
+  ]
+}

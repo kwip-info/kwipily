@@ -1,0 +1,405 @@
+{
+  "definitions": [],
+  "drafts": [],
+  "edges": [
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "csv"
+        },
+        "port": "table"
+      },
+      "id": "F0FAAA5B-6C95-4DA2-95BA-129C0203D37F",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "columns"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "columns"
+        },
+        "port": "table"
+      },
+      "id": "79E5A376-1611-4D0D-BFED-688551199820",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "split"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "split"
+        },
+        "port": "training"
+      },
+      "id": "D604D96D-66AD-4D25-BC79-A425F116353F",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "features"
+        },
+        "port": "training"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "split"
+        },
+        "port": "validation"
+      },
+      "id": "F89F691D-7D29-42AF-B19A-F86927132B89",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "features"
+        },
+        "port": "validation"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "features"
+        },
+        "port": "training"
+      },
+      "id": "F2975FE8-EADF-4F50-9023-EE52E745F5B8",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "control",
+          "localID": "classifier"
+        },
+        "port": "training"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "data",
+          "localID": "features"
+        },
+        "port": "validation"
+      },
+      "id": "BECD6A66-9AE5-4B2F-A5AB-238DA9220035",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "control",
+          "localID": "classifier"
+        },
+        "port": "validation"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "control",
+          "localID": "classifier"
+        },
+        "port": "predictions"
+      },
+      "id": "B0384515-6DA5-4180-8A66-FC9967EAB954",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "predictions"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "control",
+          "localID": "classifier"
+        },
+        "port": "predictions"
+      },
+      "id": "9258EEA8-4B25-4008-952F-42499CB0976A",
+      "kind": "table",
+      "to": {
+        "address": {
+          "domain": "data",
+          "localID": "validation_csv"
+        },
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "address": {
+          "domain": "control",
+          "localID": "classifier"
+        },
+        "port": "model"
+      },
+      "id": "750221C1-90A0-4B3F-A804-8678FDECE565",
+      "kind": "frozenModel",
+      "to": {
+        "address": {
+          "domain": "control",
+          "localID": "save"
+        },
+        "port": "model"
+      }
+    }
+  ],
+  "kind": "workflowProject",
+  "modelSourceVersions": {},
+  "name": "Train a document-routing model",
+  "nodes": [
+    {
+      "address": {
+        "domain": "data",
+        "localID": "csv"
+      },
+      "name": "Labeled complaint examples",
+      "payload": {
+        "config": {
+          "allowQuotedNewlines": true,
+          "commentPrefix": "",
+          "emptyField": "text",
+          "encoding": "utf-8-sig",
+          "format": "csv",
+          "headerMode": "firstRecord",
+          "ignoreErrors": false,
+          "inferSchema": false,
+          "nullMarkers": [],
+          "parserProfile": "polars",
+          "quoteChar": "\"",
+          "schemaOverrides": {
+            "ComplaintID": "String",
+            "Narrative": "String",
+            "Product": "String",
+            "ReceivedDate": "String"
+          },
+          "separator": ",",
+          "skipLines": 0,
+          "skipRecords": 0,
+          "skipRowsAfterHeader": 0,
+          "tryParseDates": false
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.sourceCSV"
+      },
+      "x": 0,
+      "y": 100
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "columns"
+      },
+      "name": "Retain ID, date, narrative and label",
+      "payload": {
+        "config": {
+          "castFailure": "error",
+          "missingPolicy": "error",
+          "newColumns": "drop",
+          "rows": [
+            {
+              "included": true,
+              "outputName": "ComplaintID",
+              "source": "ComplaintID",
+              "targetType": "string"
+            },
+            {
+              "included": true,
+              "outputName": "ReceivedDate",
+              "source": "ReceivedDate",
+              "targetType": "string"
+            },
+            {
+              "included": true,
+              "outputName": "Narrative",
+              "source": "Narrative",
+              "targetType": "string"
+            },
+            {
+              "included": true,
+              "outputName": "Product",
+              "source": "Product",
+              "targetType": "string"
+            }
+          ],
+          "trimText": false
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.columns"
+      },
+      "x": 260,
+      "y": 100
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "split"
+      },
+      "name": "Product-stratified · seed 42 · 79/20/1",
+      "payload": {
+        "config": {
+          "seed": 42,
+          "strategy": "random",
+          "stratifyColumn": "Product",
+          "testPercent": 1,
+          "validationPercent": 20
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.partition"
+      },
+      "x": 520,
+      "y": 100
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "features"
+      },
+      "name": "Training-only TF-IDF · Narrative",
+      "payload": {
+        "config": {
+          "bos": false,
+          "eos": false,
+          "featureSettings": {
+            "analyzer": "word",
+            "binary": false,
+            "lowercase": true,
+            "maximumDF": 1,
+            "minimumDF": 1,
+            "ngramMax": 2,
+            "ngramMin": 1,
+            "normalization": "l2",
+            "smoothIDF": true,
+            "stripAccents": "none",
+            "sublinearTF": false,
+            "useIDF": true,
+            "vocabularyLimit": 10000
+          },
+          "idOrder": "frequency",
+          "keepSourceText": true,
+          "letterCase": "preserve",
+          "minimumFrequency": 1,
+          "missingText": "error",
+          "mode": "documentFeatures",
+          "outputColumn": "documentFeatures",
+          "pad": false,
+          "textColumn": "Narrative",
+          "tokenizer": "word",
+          "unicodeNormalization": "none",
+          "unknownPolicy": "unk",
+          "vocabulary": [],
+          "vocabularyLimit": 10000,
+          "vocabularySource": "training",
+          "whitespace": "preserve"
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.textEncode"
+      },
+      "x": 780,
+      "y": 100
+    },
+    {
+      "address": {
+        "domain": "control",
+        "localID": "classifier"
+      },
+      "name": "Suggest product queue · human review",
+      "payload": {
+        "config": {
+          "backendID": "sklearn",
+          "featureColumns": [
+            "Narrative"
+          ],
+          "operation": "fit",
+          "settings": {
+            "C": 1,
+            "classWeight": "none",
+            "fitIntercept": true,
+            "maxIterations": 500,
+            "solver": "lbfgs",
+            "tolerance": 0.0001
+          },
+          "targetColumn": "Product",
+          "task": "documentClassification"
+        },
+        "kind": "estimator"
+      },
+      "x": 1070,
+      "y": 100
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "predictions"
+      },
+      "name": "Validation predictions · retain complaint IDs",
+      "payload": {
+        "config": {},
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.view"
+      },
+      "x": 1370,
+      "y": 0
+    },
+    {
+      "address": {
+        "domain": "data",
+        "localID": "validation_csv"
+      },
+      "name": "Validation predictions",
+      "payload": {
+        "config": {
+          "columns": [],
+          "destination": "file",
+          "filename": "complaint-routing-validation_csv.csv",
+          "format": "csv",
+          "overwrite": false,
+          "separator": ","
+        },
+        "kind": "dataOperator",
+        "operatorID": "kwip.data.outputDelimited"
+      },
+      "x": 1370,
+      "y": 180
+    },
+    {
+      "address": {
+        "domain": "control",
+        "localID": "save"
+      },
+      "name": "Document-routing model",
+      "payload": {
+        "config": {
+          "format": "package"
+        },
+        "kind": "saveModel"
+      },
+      "x": 1370,
+      "y": 360
+    }
+  ],
+  "projectID": "00000000-0000-0000-0000-000000000000",
+  "revision": 0,
+  "schemaVersion": 17
+}

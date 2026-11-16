@@ -1,0 +1,1 @@
+<root xmlns:t="urn:synthetic:table"><t:record id="r1"><t:label>café</t:label><t:value>7</t:value><t:detail><t:leaf>inner</t:leaf></t:detail></t:record><t:record id="r2"><t:label>B</t:label><t:value>8</t:value><t:detail><t:leaf>other</t:leaf></t:detail></t:record></root>

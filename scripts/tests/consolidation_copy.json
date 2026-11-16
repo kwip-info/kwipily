@@ -1,0 +1,336 @@
+{
+  "multihead_attention": {
+    "category": [
+      "Attention",
+      "Layers"
+    ],
+    "fields": {
+      "embed_dim": [
+        "Model value count",
+        "Model width"
+      ],
+      "num_heads": [
+        "Comparison groups",
+        "Heads"
+      ],
+      "kdim": [
+        "Key value count",
+        "Key width"
+      ],
+      "vdim": [
+        "Value value count",
+        "Value width"
+      ],
+      "bias": [
+        "Learned offsets",
+        "Use bias"
+      ],
+      "add_bias_kv": [
+        "Add learned source position",
+        "Add learned key/value position"
+      ],
+      "add_zero_attn": [
+        "Add empty source position",
+        "Add zero position"
+      ],
+      "return_weights": [
+        "Show connection weights",
+        "Output attention weights"
+      ],
+      "average_weights": [
+        "Combine group weights",
+        "Average across heads"
+      ],
+      "attention_mask_mode": [
+        "Blocked connections",
+        "Attention mask"
+      ],
+      "padding_mask_mode": [
+        "Blocked source positions",
+        "Padding mask"
+      ]
+    },
+    "choices": {}
+  },
+  "transformer": {
+    "category": [
+      "Attention",
+      "Layers"
+    ],
+    "fields": {
+      "d_model": [
+        "Model value count",
+        "Model width"
+      ],
+      "nhead": [
+        "Comparison groups",
+        "Heads"
+      ],
+      "dim_feedforward": [
+        "Inner value count",
+        "Feedforward width"
+      ],
+      "bias": [
+        "Learned offsets",
+        "Use bias"
+      ],
+      "activation": [
+        "Inner behavior",
+        "Activation"
+      ],
+      "layer_norm_eps": [
+        "Normalization safety",
+        "Layer norm epsilon"
+      ],
+      "norm_first": [
+        "Normalize before comparisons",
+        "Normalize before attention"
+      ],
+      "num_encoder_layers": [
+        "Source layers",
+        "Encoder layers"
+      ],
+      "num_decoder_layers": [
+        "Requested sequence layers",
+        "Decoder layers"
+      ],
+      "source_mask_mode": [
+        "Source blocked connections",
+        "Source attention"
+      ],
+      "target_mask_mode": [
+        "Requested blocked connections",
+        "Target attention"
+      ],
+      "memory_mask_mode": [
+        "Memory blocked connections",
+        "Memory attention"
+      ],
+      "source_padding_mode": [
+        "Blocked source positions",
+        "Source padding"
+      ],
+      "target_padding_mode": [
+        "Blocked requested positions",
+        "Target padding"
+      ],
+      "memory_padding_mode": [
+        "Blocked memory positions",
+        "Memory padding"
+      ]
+    },
+    "choices": {
+      "activation": {
+        "relu": [
+          "Keep positive values",
+          "ReLU"
+        ],
+        "gelu": [
+          "Smooth positive preference",
+          "GELU"
+        ]
+      }
+    }
+  },
+  "transformer_encoder": {
+    "category": [
+      "Attention",
+      "Layers"
+    ],
+    "fields": {
+      "d_model": [
+        "Model value count",
+        "Model width"
+      ],
+      "nhead": [
+        "Comparison groups",
+        "Heads"
+      ],
+      "dim_feedforward": [
+        "Inner value count",
+        "Feedforward width"
+      ],
+      "bias": [
+        "Learned offsets",
+        "Use bias"
+      ],
+      "activation": [
+        "Inner behavior",
+        "Activation"
+      ],
+      "layer_norm_eps": [
+        "Normalization safety",
+        "Layer norm epsilon"
+      ],
+      "norm_first": [
+        "Normalize before comparisons",
+        "Normalize before attention"
+      ],
+      "num_layers": [
+        "Sequence layers",
+        "Layers"
+      ],
+      "final_norm": [
+        "Normalize final result",
+        "Final normalization"
+      ],
+      "mask_mode": [
+        "Blocked connections",
+        "Attention mask"
+      ],
+      "padding_mask_mode": [
+        "Blocked source positions",
+        "Padding mask"
+      ]
+    },
+    "choices": {
+      "activation": {
+        "relu": [
+          "Keep positive values",
+          "ReLU"
+        ],
+        "gelu": [
+          "Smooth positive preference",
+          "GELU"
+        ]
+      }
+    }
+  },
+  "transformer_decoder": {
+    "category": [
+      "Attention",
+      "Layers"
+    ],
+    "fields": {
+      "d_model": [
+        "Model value count",
+        "Model width"
+      ],
+      "nhead": [
+        "Comparison groups",
+        "Heads"
+      ],
+      "dim_feedforward": [
+        "Inner value count",
+        "Feedforward width"
+      ],
+      "bias": [
+        "Learned offsets",
+        "Use bias"
+      ],
+      "activation": [
+        "Inner behavior",
+        "Activation"
+      ],
+      "layer_norm_eps": [
+        "Normalization safety",
+        "Layer norm epsilon"
+      ],
+      "norm_first": [
+        "Normalize before comparisons",
+        "Normalize before attention"
+      ],
+      "num_layers": [
+        "Sequence layers",
+        "Layers"
+      ],
+      "final_norm": [
+        "Normalize final result",
+        "Final normalization"
+      ],
+      "target_mask_mode": [
+        "Requested blocked connections",
+        "Target attention"
+      ],
+      "memory_mask_mode": [
+        "Memory blocked connections",
+        "Memory attention"
+      ],
+      "target_padding_mode": [
+        "Blocked requested positions",
+        "Target padding"
+      ],
+      "memory_padding_mode": [
+        "Blocked memory positions",
+        "Memory padding"
+      ]
+    },
+    "choices": {
+      "activation": {
+        "relu": [
+          "Keep positive values",
+          "ReLU"
+        ],
+        "gelu": [
+          "Smooth positive preference",
+          "GELU"
+        ]
+      }
+    }
+  },
+  "scaled_dot_product_attention": {
+    "category": [
+      "Attention",
+      "Layers"
+    ],
+    "fields": {
+      "scale": [
+        "Similarity scale",
+        "Custom scale"
+      ],
+      "mask_mode": [
+        "Blocked connections",
+        "Attention mask"
+      ]
+    },
+    "choices": {}
+  },
+  "attention_mask": {
+    "category": [
+      "Attention",
+      "Layers"
+    ],
+    "fields": {
+      "mode": [
+        "Blocked connection mode",
+        "Mask"
+      ],
+      "padding_keys": [
+        "Blocked source positions",
+        "Padding positions"
+      ]
+    },
+    "choices": {
+      "mode": {
+        "blocked": [
+          "Choose blocked connections",
+          "Blocked pairs"
+        ]
+      }
+    }
+  },
+  "add": {
+    "category": null,
+    "fields": {
+      "alpha": [
+        "Second source multiplier",
+        "B multiplier"
+      ],
+      "sample_broadcast": [
+        "Reuse sample directions of size 1",
+        "Broadcast sample dimensions"
+      ]
+    },
+    "choices": {}
+  },
+  "stack": {
+    "category": null,
+    "fields": {
+      "dim": [
+        "New direction",
+        "New axis position"
+      ]
+    },
+    "choices": {}
+  }
+}

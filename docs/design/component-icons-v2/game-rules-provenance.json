@@ -1,0 +1,8 @@
+{
+  "date": "2026-10-21",
+  "tool": "built-in image_gen",
+  "prompt": "game-rules-prompt.txt",
+  "asset": "Sources/KwipMLApp/Resources/ComponentIcons/data-game-rules-v1.png",
+  "sha256": "fc27e3eb442b091f6c31e1c60621de2c436d6120a9ef555d1489aa79a82f020e",
+  "review": "Visually inspected: transparent teal family icon with rule rows and branched state-transition glyph; no game board or success badge."
+}

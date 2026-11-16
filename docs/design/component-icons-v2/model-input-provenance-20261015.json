@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-15",
+  "asset": "model-input-v3.png",
+  "components": [
+    "input",
+    "index_input"
+  ],
+  "family": "Boundaries",
+  "references": [
+    "model-boundary-v3.png",
+    "input-v2.png"
+  ],
+  "method": "Built-in image generation edit: original entry glyph with current square frame and warm neutral family palette; transparency preserved.",
+  "sha256": "073ca8b5361243ea0d968df9500e495629682ceabc68cc8b1bf307aee1bc99fe"
+}

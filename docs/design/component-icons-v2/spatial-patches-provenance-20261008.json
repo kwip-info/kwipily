@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-08",
+  "tool": "built-in image_gen",
+  "reference": "Sources/KwipMLApp/Resources/ComponentIcons/permute-v2.png",
+  "alphaPreserved": true,
+  "postGenerationImageEditing": false,
+  "assets": [
+    {
+      "id": "unfold",
+      "prompt": "Generate one production icon for KwipML's tensor-layout component family. Reference image is style reference only; preserve the same muted lavender and deep plum two-color palette, centered thin sharp-corner horizontal rectangular outline, subtle glassy flat fills, clear chunky geometry readable at24px, transparent exterior AND transparent frame interior. No text, labels, letters, digits, background, drop shadow, gradients outside glyph or tiny ornamental detail. Output square PNG with frame occupying roughly82%width and58%height, generous transparent margins. Create a NEW distinct glyph. Semantic glyph: a compact square array on the left, with a2by2 patch visibly highlighted in plum; a simple rightward arrow leads to three tall narrow columns on the right, representing extracted overlapping patches arranged as columns. Simplified large silhouettes.",
+      "source": "/Users/developer/.codex/generated_images/01a10a07-829a-7e73-a566-105746b4f45f/exec-3a02ae31-e54a-44cf-8664-b95e6bafd41a.png",
+      "destination": "Sources/KwipMLApp/Resources/ComponentIcons/unfold-v2.png",
+      "sha256": "120bff9d3ae4e8eea7922779b2971f68d53c74097f9034feb3a54cb7b3213b9d"
+    },
+    {
+      "id": "fold",
+      "prompt": "Generate one production icon for KwipML's tensor-layout component family. Reference image is style reference only; preserve the same muted lavender and deep plum two-color palette, centered thin sharp-corner horizontal rectangular outline, subtle glassy flat fills, clear chunky geometry readable at24px, transparent exterior AND transparent frame interior. No text, labels, letters, digits, background, drop shadow, gradients outside glyph or tiny ornamental detail. Output square PNG with frame occupying roughly82%width and58%height, generous transparent margins. Create a NEW distinct glyph. Semantic glyph: three tall narrow patch columns on the left, a simple rightward arrow leads to one compact square array on the right with a darker plum center region representing overlapping patches added together. Simplified large silhouettes.",
+      "source": "/Users/developer/.codex/generated_images/01a10a07-829a-7e73-a566-105746b4f45f/exec-65d29d05-a787-4bc7-ba6f-41af09a7b9be.png",
+      "destination": "Sources/KwipMLApp/Resources/ComponentIcons/fold-v2.png",
+      "sha256": "249f9a708396388ad6a5e1ce19cd34b507cf152d1134df2ab50e13c229c67b3e"
+    }
+  ]
+}

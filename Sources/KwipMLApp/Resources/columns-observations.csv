@@ -1,0 +1,7 @@
+person_id,score_text,active_text,notes
+001,12.5,true,first observation
+002,7.25,false,second observation
+003,18,true,third observation
+004,0,false,fourth observation
+005,9.5,true,fifth observation
+006,21.75,false,sixth observation

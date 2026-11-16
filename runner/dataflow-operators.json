@@ -1,0 +1,5015 @@
+{
+  "schemaVersion": 1,
+  "packageID": "kwip.data.builtin",
+  "operators": [
+    {
+      "id": "kwip.data.sourceCSV",
+      "version": {
+        "major": 1,
+        "minor": 4,
+        "patch": 0
+      },
+      "title": "Table Input",
+      "backend": "portable",
+      "device": "host",
+      "inputs": [],
+      "outputs": [
+        {
+          "id": "table",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": null
+        }
+      ],
+      "configSchema": {
+        "type": "object",
+        "properties": {
+          "separator": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1
+          },
+          "quoteChar": {
+            "type": "string",
+            "maxLength": 1
+          },
+          "escapeMode": {
+            "type": "string",
+            "enum": [
+              "double",
+              "backslash",
+              "none",
+              "custom"
+            ]
+          },
+          "encoding": {
+            "type": "string",
+            "enum": [
+              "utf-8-sig",
+              "utf-8",
+              "utf-16",
+              "cp1252",
+              "utf8-lossy"
+            ]
+          },
+          "recordEndings": {
+            "type": "string",
+            "enum": [
+              "auto",
+              "lf",
+              "crlf",
+              "cr"
+            ]
+          },
+          "allowQuotedNewlines": {
+            "type": "boolean"
+          },
+          "headerMode": {
+            "type": "string",
+            "enum": [
+              "firstRecord",
+              "generated"
+            ]
+          },
+          "skipRecords": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100000
+          },
+          "skipBlankRecords": {
+            "type": "boolean"
+          },
+          "skipInitialSpace": {
+            "type": "boolean"
+          },
+          "emptyField": {
+            "type": "string",
+            "enum": [
+              "text",
+              "null"
+            ]
+          },
+          "nullMarkers": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200
+            },
+            "maxItems": 32,
+            "uniqueItems": true
+          },
+          "escapeChar": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1
+          },
+          "parserProfile": {
+            "type": "string",
+            "enum": [
+              "polars"
+            ]
+          },
+          "commentPrefix": {
+            "type": "string",
+            "maxLength": 200
+          },
+          "skipLines": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100000
+          },
+          "skipRowsAfterHeader": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100000
+          },
+          "format": {
+            "type": "string",
+            "enum": [
+              "csv",
+              "parquet",
+              "json",
+              "jsonl",
+              "excel",
+              "markdown",
+              "xml",
+              "html",
+              "database",
+              "api"
+            ]
+          },
+          "options": {
+            "type": "object"
+          },
+          "inferSchema": {
+            "type": "boolean"
+          },
+          "lowMemory": {
+            "type": "boolean"
+          },
+          "tryParseDates": {
+            "type": "boolean"
+          },
+          "ignoreErrors": {
+            "type": "boolean"
+          },
+          "decimalComma": {
+            "type": "boolean"
+          },
+          "raiseIfEmpty": {
+            "type": "boolean"
+          },
+          "usePyarrow": {
+            "type": "boolean"
+          },
+          "inferSchemaLength": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0,
+            "maximum": 5000000
+          },
+          "nRows": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0,
+            "maximum": 5000000
+          },
+          "rowIndexOffset": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 4294967295
+          },
+          "columns": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "maxItems": 128,
+            "items": {
+              "type": [
+                "string",
+                "integer"
+              ],
+              "maxLength": 200,
+              "minimum": 0,
+              "maximum": 127
+            }
+          },
+          "newColumns": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "maxItems": 128,
+            "items": {
+              "type": "string",
+              "maxLength": 200
+            }
+          },
+          "schema": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "maxProperties": 128,
+            "additionalProperties": {
+              "type": "string",
+              "enum": [
+                "String",
+                "Boolean",
+                "Int8",
+                "Int16",
+                "Int32",
+                "Int64",
+                "UInt8",
+                "UInt16",
+                "UInt32",
+                "UInt64",
+                "Float32",
+                "Float64"
+              ]
+            }
+          },
+          "schemaOverrides": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "maxProperties": 128,
+            "additionalProperties": {
+              "type": "string",
+              "enum": [
+                "String",
+                "Boolean",
+                "Int8",
+                "Int16",
+                "Int32",
+                "Int64",
+                "UInt8",
+                "UInt16",
+                "UInt32",
+                "UInt64",
+                "Float32",
+                "Float64"
+              ]
+            }
+          },
+          "rowIndexName": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 200
+          },
+          "eolChar": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1
+          },
+          "extraColumns": {
+            "type": "string",
+            "enum": [
+              "raise",
+              "ignore"
+            ]
+          },
+          "missingColumns": {
+            "type": "string",
+            "enum": [
+              "raise",
+              "insert"
+            ]
+          },
+          "columnNullValues": {
+            "type": "object",
+            "maxProperties": 128,
+            "additionalProperties": {
+              "type": "string",
+              "maxLength": 200
+            }
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "defaultConfig": {
+        "parserProfile": "polars",
+        "separator": ",",
+        "quoteChar": "\"",
+        "encoding": "utf-8-sig",
+        "headerMode": "firstRecord",
+        "skipRecords": 0,
+        "skipLines": 0,
+        "skipRowsAfterHeader": 0,
+        "commentPrefix": "",
+        "emptyField": "text",
+        "nullMarkers": []
+      },
+      "fitBoundary": "notApplicable"
+    },
+    {
+      "id": "kwip.data.sourceFiles",
+      "version": {
+        "major": 1,
+        "minor": 0,
+        "patch": 0
+      },
+      "title": "File Input",
+      "backend": "portable",
+      "device": "host",
+      "inputs": [],
+      "outputs": [
+        {
+          "id": "table",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": null
+        }
+      ],
+      "configSchema": {
+        "type": "object",
+        "properties": {
+          "sourceMode": {
+            "type": "string"
+          },
+          "extensions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "includeSubfolders": {
+            "type": "boolean"
+          },
+          "includeHidden": {
+            "type": "boolean"
+          },
+          "includePatterns": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "excludePatterns": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "symlinks": {
+            "type": "string"
+          },
+          "readMode": {
+            "type": "string"
+          },
+          "errorPolicy": {
+            "type": "string"
+          },
+          "unknownFiles": {
+            "type": "string",
+            "enum": [
+              "metadata",
+              "error",
+              "skip"
+            ]
+          },
+          "maxFiles": {
+            "type": "integer"
+          },
+          "maxDepth": {
+            "type": "integer"
+          },
+          "maxFileBytes": {
+            "type": "integer"
+          },
+          "maxTotalBytes": {
+            "type": "integer"
+          },
+          "metadataFields": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "readers": {
+            "type": "object",
+            "properties": {
+              "text": {
+                "type": "object",
+                "properties": {
+                  "encoding": {
+                    "type": "string",
+                    "enum": [
+                      "auto",
+                      "utf-8",
+                      "utf-8-sig",
+                      "utf-16",
+                      "utf-16-le",
+                      "utf-16-be",
+                      "utf-32",
+                      "ascii",
+                      "cp1252",
+                      "latin-1"
+                    ]
+                  },
+                  "errors": {
+                    "type": "string",
+                    "enum": [
+                      "strict",
+                      "replace",
+                      "ignore"
+                    ]
+                  },
+                  "newline": {
+                    "type": "string",
+                    "enum": [
+                      "preserve",
+                      "lf",
+                      "crlf"
+                    ]
+                  },
+                  "units": {
+                    "type": "string",
+                    "enum": [
+                      "file",
+                      "line"
+                    ]
+                  },
+                  "keep_empty_lines": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              "pdf": {
+                "type": "object",
+                "properties": {
+                  "units": {
+                    "type": "string",
+                    "enum": [
+                      "file",
+                      "page"
+                    ]
+                  },
+                  "pages": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    }
+                  },
+                  "extraction_mode": {
+                    "type": "string",
+                    "enum": [
+                      "plain",
+                      "layout"
+                    ]
+                  },
+                  "separator": {
+                    "type": "string"
+                  },
+                  "strict": {
+                    "type": "boolean"
+                  },
+                  "orientations": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    }
+                  },
+                  "space_width": {
+                    "type": "integer",
+                    "minimum": 0.01,
+                    "maximum": 10000
+                  },
+                  "layout_space_vertically": {
+                    "type": "boolean"
+                  },
+                  "layout_scale_weight": {
+                    "type": "number",
+                    "minimum": 0.01,
+                    "maximum": 100
+                  },
+                  "layout_strip_rotated": {
+                    "type": "boolean"
+                  },
+                  "layout_font_height_weight": {
+                    "type": "integer",
+                    "minimum": 0.01,
+                    "maximum": 100
+                  },
+                  "renderMode": {
+                    "type": "string",
+                    "enum": [
+                      "text",
+                      "pageImages"
+                    ]
+                  },
+                  "renderDPI": {
+                    "type": "integer",
+                    "minimum": 36,
+                    "maximum": 300
+                  },
+                  "maximumRenderPages": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 100
+                  }
+                },
+                "additionalProperties": false
+              },
+              "docx": {
+                "type": "object",
+                "properties": {
+                  "units": {
+                    "type": "string",
+                    "enum": [
+                      "file",
+                      "paragraph"
+                    ]
+                  },
+                  "include_tables": {
+                    "type": "boolean"
+                  },
+                  "include_nested_tables": {
+                    "type": "boolean"
+                  },
+                  "include_headers": {
+                    "type": "boolean"
+                  },
+                  "include_footers": {
+                    "type": "boolean"
+                  },
+                  "separator": {
+                    "type": "string"
+                  }
+                },
+                "additionalProperties": false
+              },
+              "rtf": {
+                "type": "object",
+                "properties": {
+                  "encoding": {
+                    "type": "string",
+                    "enum": [
+                      "utf-8",
+                      "utf-8-sig",
+                      "utf-16",
+                      "utf-16-le",
+                      "utf-16-be",
+                      "utf-32",
+                      "ascii",
+                      "cp1252",
+                      "latin-1"
+                    ]
+                  },
+                  "errors": {
+                    "type": "string",
+                    "enum": [
+                      "strict",
+                      "replace",
+                      "ignore"
+                    ]
+                  },
+                  "units": {
+                    "type": "string",
+                    "enum": [
+                      "file",
+                      "paragraph"
+                    ]
+                  },
+                  "separator": {
+                    "type": "string"
+                  }
+                },
+                "additionalProperties": false
+              },
+              "odt": {
+                "type": "object",
+                "properties": {
+                  "units": {
+                    "type": "string",
+                    "enum": [
+                      "file",
+                      "paragraph"
+                    ]
+                  },
+                  "include_tables": {
+                    "type": "boolean"
+                  },
+                  "separator": {
+                    "type": "string"
+                  }
+                },
+                "additionalProperties": false
+              },
+              "image": {
+                "type": "object",
+                "properties": {
+                  "frames": {
+                    "type": "string",
+                    "enum": [
+                      "first",
+                      "all",
+                      "range"
+                    ]
+                  },
+                  "frameStart": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 999
+                  },
+                  "frameEnd": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 999
+                  },
+                  "orientation": {
+                    "type": "string",
+                    "enum": [
+                      "stored",
+                      "applyEXIF"
+                    ]
+                  },
+                  "colorMode": {
+                    "type": "string",
+                    "enum": [
+                      "preserve",
+                      "RGB",
+                      "RGBA",
+                      "L"
+                    ]
+                  },
+                  "palette": {
+                    "type": "string",
+                    "enum": [
+                      "expandRGBA",
+                      "reject"
+                    ]
+                  },
+                  "layout": {
+                    "type": "string",
+                    "enum": [
+                      "HWC",
+                      "CHW"
+                    ]
+                  }
+                },
+                "additionalProperties": false
+              },
+              "audio": {
+                "type": "object",
+                "properties": {
+                  "format": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false,
+        "required": []
+      },
+      "defaultConfig": {
+        "sourceMode": "file",
+        "extensions": [
+          "txt",
+          "md",
+          "log",
+          "csv",
+          "tsv",
+          "json",
+          "jsonl",
+          "xml",
+          "html",
+          "htm",
+          "yaml",
+          "yml",
+          "ini",
+          "cfg",
+          "pdf",
+          "docx",
+          "rtf",
+          "odt",
+          "png",
+          "jpg",
+          "jpeg",
+          "tif",
+          "tiff",
+          "bmp",
+          "gif",
+          "webp"
+        ],
+        "includeSubfolders": false,
+        "includeHidden": false,
+        "includePatterns": [
+          "**/*"
+        ],
+        "excludePatterns": [],
+        "symlinks": "skip",
+        "readMode": "content",
+        "errorPolicy": "fail",
+        "unknownFiles": "metadata",
+        "maxFiles": 1000,
+        "maxDepth": 32,
+        "maxFileBytes": 67108864,
+        "maxTotalBytes": 268435456,
+        "metadataFields": [
+          "file_id",
+          "name",
+          "relative_path",
+          "extension",
+          "detected_type",
+          "byte_size"
+        ],
+        "readers": {
+          "text": {
+            "encoding": "auto",
+            "errors": "strict",
+            "newline": "preserve",
+            "units": "file",
+            "keep_empty_lines": true
+          },
+          "pdf": {
+            "units": "file",
+            "pages": [],
+            "extraction_mode": "plain",
+            "separator": "\n\n",
+            "strict": false,
+            "orientations": [
+              0,
+              90,
+              180,
+              270
+            ],
+            "space_width": 200,
+            "layout_space_vertically": true,
+            "layout_scale_weight": 1.25,
+            "layout_strip_rotated": true,
+            "layout_font_height_weight": 1,
+            "renderMode": "text",
+            "renderDPI": 144,
+            "maximumRenderPages": 20
+          },
+          "docx": {
+            "units": "file",
+            "include_tables": true,
+            "include_nested_tables": true,
+            "include_headers": false,
+            "include_footers": false,
+            "separator": "\n\n"
+          },
+          "rtf": {
+            "encoding": "cp1252",
+            "errors": "strict",
+            "units": "file",
+            "separator": "\n\n"
+          },
+          "odt": {
+            "units": "file",
+            "include_tables": true,
+            "separator": "\n\n"
+          },
+          "image": {
+            "frames": "first",
+            "frameStart": 0,
+            "frameEnd": 0,
+            "orientation": "stored",
+            "colorMode": "preserve",
+            "palette": "expandRGBA",
+            "layout": "HWC"
+          }
+        }
+      },
+      "fitBoundary": "notApplicable"
+    },
+    {
+      "id": "kwip.data.columns",
+      "version": {
+        "major": 1,
+        "minor": 0,
+        "patch": 0
+      },
+      "title": "Columns",
+      "backend": "portable",
+      "device": "host",
+      "inputs": [
+        {
+          "id": "table",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": 1
+        }
+      ],
+      "outputs": [
+        {
+          "id": "table",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": null
+        }
+      ],
+      "configSchema": {
+        "type": "object",
+        "properties": {
+          "rows": {
+            "type": "array",
+            "maxItems": 128,
+            "items": {
+              "type": "object",
+              "properties": {
+                "source": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 200
+                },
+                "included": {
+                  "type": "boolean"
+                },
+                "outputName": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 200
+                },
+                "targetType": {
+                  "type": "string",
+                  "enum": [
+                    "keep",
+                    "float64",
+                    "int64",
+                    "string",
+                    "bool",
+                    "image"
+                  ]
+                }
+              },
+              "required": [
+                "source",
+                "included",
+                "outputName",
+                "targetType"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "castFailure": {
+            "type": "string",
+            "enum": [
+              "error",
+              "null"
+            ]
+          },
+          "trimText": {
+            "type": "boolean"
+          },
+          "newColumns": {
+            "type": "string",
+            "enum": [
+              "keep",
+              "drop",
+              "error"
+            ]
+          },
+          "missingPolicy": {
+            "type": "string",
+            "enum": [
+              "error",
+              "preserve"
+            ]
+          }
+        },
+        "required": [
+          "rows",
+          "castFailure",
+          "trimText",
+          "newColumns",
+          "missingPolicy"
+        ],
+        "additionalProperties": false
+      },
+      "defaultConfig": {
+        "rows": [],
+        "castFailure": "error",
+        "trimText": false,
+        "newColumns": "keep",
+        "missingPolicy": "preserve"
+      },
+      "fitBoundary": "notApplicable"
+    },
+    {
+      "id": "kwip.data.sampleRows",
+      "version": {
+        "major": 1,
+        "minor": 0,
+        "patch": 0
+      },
+      "title": "Sample rows",
+      "backend": "portable",
+      "device": "host",
+      "inputs": [
+        {
+          "id": "table",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": 1
+        }
+      ],
+      "outputs": [
+        {
+          "id": "table",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": null
+        }
+      ],
+      "configSchema": {
+        "type": "object",
+        "properties": {
+          "count": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100000
+          },
+          "seed": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 4294967295
+          }
+        },
+        "required": [
+          "count",
+          "seed"
+        ],
+        "additionalProperties": false
+      },
+      "defaultConfig": {
+        "count": 20,
+        "seed": 42
+      },
+      "fitBoundary": "notApplicable"
+    },
+    {
+      "id": "kwip.data.join",
+      "version": {
+        "major": 1,
+        "minor": 1,
+        "patch": 0
+      },
+      "title": "Join tables",
+      "backend": "portable",
+      "device": "host",
+      "inputs": [
+        {
+          "id": "left",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": 1
+        },
+        {
+          "id": "right",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": 1
+        }
+      ],
+      "outputs": [
+        {
+          "id": "table",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": null
+        }
+      ],
+      "configSchema": {
+        "type": "object",
+        "properties": {
+          "leftKeys": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200
+            },
+            "minItems": 1,
+            "maxItems": 128,
+            "uniqueItems": true
+          },
+          "rightKeys": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200
+            },
+            "minItems": 1,
+            "maxItems": 128,
+            "uniqueItems": true
+          },
+          "mode": {
+            "type": "string",
+            "enum": [
+              "inner",
+              "left",
+              "right",
+              "full"
+            ]
+          },
+          "nullPolicy": {
+            "type": "string",
+            "enum": [
+              "neverMatch",
+              "match",
+              "error"
+            ]
+          },
+          "cardinality": {
+            "type": "string",
+            "enum": [
+              "oneToOne",
+              "oneToMany",
+              "manyToOne",
+              "manyToMany"
+            ]
+          },
+          "leftPrefix": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "rightPrefix": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "maxRows": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100000
+          },
+          "outputColumns": {
+            "type": "array",
+            "maxItems": 256,
+            "items": {
+              "type": "object",
+              "properties": {
+                "side": {
+                  "type": "string",
+                  "enum": [
+                    "left",
+                    "right"
+                  ]
+                },
+                "source": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 200
+                },
+                "name": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 200
+                },
+                "included": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "side",
+                "source",
+                "name",
+                "included"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "newColumns": {
+            "type": "string",
+            "enum": [
+              "keep",
+              "drop",
+              "error"
+            ]
+          }
+        },
+        "required": [
+          "leftKeys",
+          "rightKeys",
+          "mode",
+          "nullPolicy",
+          "cardinality",
+          "leftPrefix",
+          "rightPrefix",
+          "maxRows"
+        ],
+        "additionalProperties": false
+      },
+      "defaultConfig": {
+        "leftKeys": [],
+        "rightKeys": [],
+        "mode": "inner",
+        "nullPolicy": "neverMatch",
+        "cardinality": "manyToOne",
+        "leftPrefix": "left_",
+        "rightPrefix": "right_",
+        "maxRows": 100000
+      },
+      "fitBoundary": "notApplicable"
+    },
+    {
+      "id": "kwip.data.union",
+      "version": {
+        "major": 1,
+        "minor": 0,
+        "patch": 0
+      },
+      "title": "Union",
+      "backend": "portable",
+      "device": "host",
+      "inputs": [
+        {
+          "id": "table1",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": 1
+        },
+        {
+          "id": "table2",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": 1
+        }
+      ],
+      "outputs": [
+        {
+          "id": "table",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": null
+        }
+      ],
+      "defaultConfig": {
+        "inputs": [
+          "table1",
+          "table2"
+        ],
+        "match": "name",
+        "coverage": "all",
+        "typePolicy": "strict",
+        "sourceColumn": ""
+      },
+      "fitBoundary": "notApplicable",
+      "configSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "inputs",
+          "match",
+          "coverage",
+          "typePolicy",
+          "sourceColumn"
+        ],
+        "properties": {
+          "inputs": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 32,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 6,
+              "maxLength": 11
+            }
+          },
+          "match": {
+            "type": "string",
+            "enum": [
+              "name",
+              "position"
+            ]
+          },
+          "coverage": {
+            "type": "string",
+            "enum": [
+              "all",
+              "shared",
+              "exact"
+            ]
+          },
+          "typePolicy": {
+            "type": "string",
+            "enum": [
+              "strict",
+              "losslessNumeric"
+            ]
+          },
+          "sourceColumn": {
+            "type": "string",
+            "maxLength": 200
+          }
+        }
+      }
+    },
+    {
+      "id": "kwip.data.aggregate",
+      "version": {
+        "major": 1,
+        "minor": 1,
+        "patch": 0
+      },
+      "title": "Summarize",
+      "backend": "portable",
+      "device": "host",
+      "inputs": [
+        {
+          "id": "table",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": 1
+        }
+      ],
+      "outputs": [
+        {
+          "id": "table",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": null
+        }
+      ],
+      "configSchema": {
+        "type": "object",
+        "properties": {
+          "groupBy": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200
+            },
+            "minItems": 0,
+            "maxItems": 128,
+            "uniqueItems": true
+          },
+          "nullKeys": {
+            "type": "string",
+            "enum": [
+              "group",
+              "drop",
+              "error"
+            ]
+          },
+          "aggregations": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 128,
+            "items": {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "op": {
+                      "type": "string",
+                      "enum": [
+                        "countRows"
+                      ]
+                    },
+                    "output": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 200
+                    }
+                  },
+                  "required": [
+                    "op",
+                    "output"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "op": {
+                      "type": "string",
+                      "enum": [
+                        "countNonNull"
+                      ]
+                    },
+                    "output": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 200
+                    },
+                    "column": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 200
+                    }
+                  },
+                  "required": [
+                    "op",
+                    "output",
+                    "column"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "op": {
+                      "type": "string",
+                      "enum": [
+                        "sum",
+                        "mean",
+                        "min",
+                        "max",
+                        "sumDecimal"
+                      ]
+                    },
+                    "output": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 200
+                    },
+                    "column": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 200
+                    },
+                    "nullPolicy": {
+                      "type": "string",
+                      "enum": [
+                        "skip",
+                        "propagate",
+                        "error"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "op",
+                    "output",
+                    "column",
+                    "nullPolicy"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "op": {
+                      "type": "string",
+                      "enum": [
+                        "joinText"
+                      ]
+                    },
+                    "output": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 200
+                    },
+                    "column": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 200
+                    },
+                    "nullPolicy": {
+                      "type": "string",
+                      "enum": [
+                        "skip",
+                        "propagate",
+                        "error"
+                      ]
+                    },
+                    "separator": {
+                      "type": "string",
+                      "maxLength": 1024
+                    },
+                    "distinct": {
+                      "type": "boolean"
+                    },
+                    "skipEmpty": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "op",
+                    "output",
+                    "column",
+                    "nullPolicy",
+                    "separator",
+                    "distinct",
+                    "skipEmpty"
+                  ],
+                  "additionalProperties": false
+                }
+              ]
+            }
+          },
+          "maxRows": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100000
+          }
+        },
+        "required": [
+          "groupBy",
+          "nullKeys",
+          "aggregations",
+          "maxRows"
+        ],
+        "additionalProperties": false
+      },
+      "defaultConfig": {
+        "groupBy": [],
+        "nullKeys": "error",
+        "aggregations": [],
+        "maxRows": 100000
+      },
+      "fitBoundary": "notApplicable"
+    },
+    {
+      "id": "kwip.data.filterRows",
+      "version": {
+        "major": 1,
+        "minor": 0,
+        "patch": 0
+      },
+      "title": "Filter",
+      "backend": "portable",
+      "device": "host",
+      "inputs": [
+        {
+          "id": "table",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": 1
+        }
+      ],
+      "outputs": [
+        {
+          "id": "matching",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": null
+        },
+        {
+          "id": "nonmatching",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": null
+        }
+      ],
+      "configSchema": {
+        "type": "object",
+        "properties": {
+          "mode": {
+            "type": "string",
+            "enum": [
+              "simple",
+              "expression",
+              "pattern"
+            ]
+          },
+          "conditions": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "column": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 200
+                },
+                "comparison": {
+                  "type": "string",
+                  "enum": [
+                    "eq",
+                    "ne",
+                    "lt",
+                    "le",
+                    "gt",
+                    "ge",
+                    "contains",
+                    "notContains",
+                    "startsWith",
+                    "endsWith",
+                    "in",
+                    "notIn",
+                    "isMissing",
+                    "isNotMissing"
+                  ]
+                },
+                "value": {
+                  "oneOf": [
+                    {
+                      "type": [
+                        "string",
+                        "integer",
+                        "number",
+                        "boolean",
+                        "null"
+                      ],
+                      "maxLength": 4096
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "type": [
+                          "string",
+                          "integer",
+                          "number",
+                          "boolean"
+                        ],
+                        "maxLength": 4096
+                      },
+                      "minItems": 1,
+                      "maxItems": 256
+                    }
+                  ]
+                },
+                "caseSensitive": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "column",
+                "comparison",
+                "value",
+                "caseSensitive"
+              ],
+              "additionalProperties": false
+            },
+            "maxItems": 32
+          },
+          "match": {
+            "type": "string",
+            "enum": [
+              "all",
+              "any"
+            ]
+          },
+          "expression": {
+            "type": "string",
+            "maxLength": 4096
+          },
+          "column": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "pattern": {
+            "type": "string",
+            "maxLength": 512
+          },
+          "matchMode": {
+            "type": "string",
+            "enum": [
+              "search",
+              "full"
+            ]
+          },
+          "flags": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "ignoreCase",
+                "multiline",
+                "dotAll"
+              ]
+            },
+            "maxItems": 3,
+            "uniqueItems": true
+          },
+          "nullPolicy": {
+            "type": "string",
+            "enum": [
+              "error",
+              "nonmatching"
+            ]
+          }
+        },
+        "required": [
+          "mode",
+          "conditions",
+          "match",
+          "expression",
+          "column",
+          "pattern",
+          "matchMode",
+          "flags",
+          "nullPolicy"
+        ],
+        "additionalProperties": false
+      },
+      "defaultConfig": {
+        "mode": "simple",
+        "conditions": [
+          {
+            "column": "feature",
+            "comparison": "gt",
+            "value": 0,
+            "caseSensitive": true
+          }
+        ],
+        "match": "all",
+        "expression": "[feature] > 0",
+        "column": "feature",
+        "pattern": ".+",
+        "matchMode": "search",
+        "flags": [],
+        "nullPolicy": "error"
+      },
+      "fitBoundary": "notApplicable"
+    },
+    {
+      "id": "kwip.data.outputDelimited",
+      "version": {
+        "major": 1,
+        "minor": 2,
+        "patch": 0
+      },
+      "title": "Table Output",
+      "backend": "portable",
+      "device": "host",
+      "inputs": [
+        {
+          "id": "table",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": 1
+        }
+      ],
+      "outputs": [
+        {
+          "id": "table",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": null
+        }
+      ],
+      "configSchema": {
+        "type": "object",
+        "properties": {
+          "filename": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "separator": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1
+          },
+          "columns": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200
+            },
+            "maxItems": 128,
+            "uniqueItems": true
+          },
+          "overwrite": {
+            "type": "boolean"
+          },
+          "format": {
+            "type": "string",
+            "enum": [
+              "csv",
+              "tsv",
+              "json",
+              "ndjson",
+              "parquet",
+              "xlsx"
+            ]
+          },
+          "imagePolicy": {
+            "type": "string",
+            "enum": [
+              "stop",
+              "copyAssets"
+            ]
+          },
+          "options": {
+            "type": "object"
+          },
+          "destination": {
+            "type": "string",
+            "enum": [
+              "file",
+              "database",
+              "api"
+            ]
+          },
+          "database": {
+            "type": "object",
+            "properties": {
+              "schemaVersion": {
+                "type": "integer",
+                "enum": [
+                  1
+                ]
+              },
+              "backend": {
+                "type": "string",
+                "enum": [
+                  "sqlite",
+                  "postgresql",
+                  "mysql"
+                ]
+              },
+              "host": {
+                "type": "string",
+                "maxLength": 253
+              },
+              "port": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 65535
+              },
+              "database": {
+                "type": "string",
+                "maxLength": 200
+              },
+              "schema": {
+                "type": "string",
+                "maxLength": 200
+              },
+              "table": {
+                "type": "string",
+                "maxLength": 200
+              },
+              "tlsMode": {
+                "type": "string",
+                "enum": [
+                  "verifyFull",
+                  "disabledLoopback"
+                ]
+              },
+              "mode": {
+                "type": "string",
+                "enum": [
+                  "create",
+                  "append",
+                  "upsert"
+                ]
+              },
+              "batchRows": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 8192
+              },
+              "timeoutSeconds": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 300
+              },
+              "keys": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 200
+                },
+                "maxItems": 128,
+                "uniqueItems": true
+              },
+              "mapping": {
+                "type": "array",
+                "maxItems": 128,
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "source": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 200
+                    },
+                    "target": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 200
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "INTEGER",
+                        "REAL",
+                        "TEXT",
+                        "BIGINT",
+                        "DOUBLE PRECISION",
+                        "BOOLEAN",
+                        "DATE",
+                        "TIMESTAMPTZ",
+                        "TIME",
+                        "DOUBLE",
+                        "DATETIME(6)",
+                        "TIME(6)",
+                        "VARCHAR(255)"
+                      ]
+                    },
+                    "nullable": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "source",
+                    "target",
+                    "type",
+                    "nullable"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            },
+            "additionalProperties": false
+          },
+          "databaseFilename": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "api": {
+            "type": "object"
+          }
+        },
+        "required": [
+          "filename",
+          "separator",
+          "columns",
+          "overwrite"
+        ],
+        "additionalProperties": false
+      },
+      "defaultConfig": {
+        "filename": "output.csv",
+        "separator": ",",
+        "columns": [],
+        "overwrite": false
+      },
+      "fitBoundary": "notApplicable"
+    },
+    {
+      "id": "kwip.data.view",
+      "canvasRole": "sink",
+      "version": {
+        "major": 1,
+        "minor": 0,
+        "patch": 0
+      },
+      "title": "View",
+      "backend": "portable",
+      "device": "host",
+      "inputs": [
+        {
+          "id": "table",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": 1
+        }
+      ],
+      "outputs": [
+        {
+          "id": "table",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": null
+        }
+      ],
+      "configSchema": {
+        "type": "object",
+        "properties": {},
+        "required": [],
+        "additionalProperties": false
+      },
+      "defaultConfig": {},
+      "fitBoundary": "notApplicable"
+    },
+    {
+      "id": "kwip.data.partition",
+      "version": {
+        "major": 1,
+        "minor": 0,
+        "patch": 0
+      },
+      "title": "Partition",
+      "backend": "portable",
+      "device": "host",
+      "inputs": [
+        {
+          "id": "table",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": 1
+        }
+      ],
+      "outputs": [
+        {
+          "id": "training",
+          "kind": "table",
+          "partition": "training",
+          "required": true,
+          "maximumConnections": null
+        },
+        {
+          "id": "validation",
+          "kind": "table",
+          "partition": "validation",
+          "required": true,
+          "maximumConnections": null
+        },
+        {
+          "id": "test",
+          "kind": "table",
+          "partition": "test",
+          "required": true,
+          "maximumConnections": null
+        },
+        {
+          "id": "exclusions",
+          "kind": "table",
+          "required": false,
+          "maximumConnections": null,
+          "inspectionOnly": true
+        }
+      ],
+      "configSchema": {
+        "type": "object",
+        "properties": {
+          "strategy": {
+            "type": "string",
+            "enum": [
+              "random",
+              "entity",
+              "time"
+            ],
+            "default": "random"
+          },
+          "seed": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 4294967295
+          },
+          "validationPercent": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 98
+          },
+          "testPercent": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 98
+          },
+          "stratifyColumn": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "groupBy": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200
+            },
+            "minItems": 1,
+            "maxItems": 128,
+            "uniqueItems": true
+          },
+          "timeColumn": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "timeEncoding": {
+            "type": "string",
+            "enum": [
+              "iso8601Offset",
+              "epochMilliseconds"
+            ]
+          },
+          "trainingEnd": {
+            "type": [
+              "string",
+              "integer"
+            ]
+          },
+          "validationEnd": {
+            "type": [
+              "string",
+              "integer"
+            ]
+          },
+          "embargoMilliseconds": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 86400000000
+          },
+          "entityColumns": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200
+            },
+            "minItems": 0,
+            "maxItems": 128,
+            "uniqueItems": true
+          },
+          "entityPolicy": {
+            "type": "string",
+            "enum": [
+              "allowAcrossTime",
+              "requireDisjoint"
+            ]
+          }
+        },
+        "required": [
+          "strategy"
+        ],
+        "additionalProperties": false,
+        "oneOf": [
+          {
+            "type": "object",
+            "properties": {
+              "strategy": {
+                "const": "random"
+              },
+              "seed": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 4294967295
+              },
+              "validationPercent": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 98
+              },
+              "testPercent": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 98
+              },
+              "stratifyColumn": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200
+              }
+            },
+            "required": [
+              "strategy",
+              "seed",
+              "validationPercent",
+              "testPercent"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "strategy": {
+                "const": "entity"
+              },
+              "seed": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 4294967295
+              },
+              "validationPercent": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 98
+              },
+              "testPercent": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 98
+              },
+              "groupBy": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 200
+                },
+                "minItems": 1,
+                "maxItems": 128,
+                "uniqueItems": true
+              }
+            },
+            "required": [
+              "strategy",
+              "seed",
+              "validationPercent",
+              "testPercent",
+              "groupBy"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "strategy": {
+                "const": "time"
+              },
+              "timeColumn": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200
+              },
+              "timeEncoding": {
+                "type": "string",
+                "enum": [
+                  "iso8601Offset",
+                  "epochMilliseconds"
+                ]
+              },
+              "trainingEnd": {
+                "type": [
+                  "string",
+                  "integer"
+                ]
+              },
+              "validationEnd": {
+                "type": [
+                  "string",
+                  "integer"
+                ]
+              },
+              "embargoMilliseconds": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 86400000000
+              },
+              "entityColumns": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 200
+                },
+                "minItems": 0,
+                "maxItems": 128,
+                "uniqueItems": true
+              },
+              "entityPolicy": {
+                "type": "string",
+                "enum": [
+                  "allowAcrossTime",
+                  "requireDisjoint"
+                ]
+              }
+            },
+            "required": [
+              "strategy",
+              "timeColumn",
+              "timeEncoding",
+              "trainingEnd",
+              "validationEnd",
+              "embargoMilliseconds",
+              "entityColumns",
+              "entityPolicy"
+            ],
+            "additionalProperties": false
+          }
+        ]
+      },
+      "defaultConfig": {
+        "strategy": "random",
+        "seed": 42,
+        "validationPercent": 20,
+        "testPercent": 20
+      },
+      "fitBoundary": "notApplicable"
+    },
+    {
+      "id": "kwip.data.formula",
+      "version": {
+        "major": 1,
+        "minor": 0,
+        "patch": 0
+      },
+      "title": "Formula",
+      "backend": "portable",
+      "device": "host",
+      "inputs": [
+        {
+          "id": "table",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": 1
+        }
+      ],
+      "outputs": [
+        {
+          "id": "table",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": null
+        }
+      ],
+      "configSchema": {
+        "type": "object",
+        "properties": {
+          "operations": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 64,
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 200
+                },
+                "expression": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 4096,
+                  "description": "Use [column] references, JSON double-quoted strings, numeric/boolean/null literals and only the listed functions. Arithmetic including + is numeric-only, never text concatenation. There is no concat function or general column-to-column text concatenation. To add a constant text suffix/prefix, use regex_replace with a literal replacement and an anchored pattern. Regex options must be explicit string literals; replacement supports Python-style capture references, not expressions or column interpolation. Use temporal_format for typed temporal values first, or temporal_parse explicitly to create a temporal value from text. Missing inputs follow nullPolicy; coalesce can supply a compatible fallback. Numeric predicates inspect the already represented int64/float64 value, not an original decimal string. float64 parsing can round decimal fractions and large integers; these predicates cannot recover lost source precision. is_finite does not suppress errors in argument expressions. Columns float64 conversion rejects invalid/nonfinite/overflow text; castFailure null converts those failures to null, while castFailure error stops. Retain original text explicitly before conversion. Typed table values are normally already finite; null after parsing is not a finite value. This is not arbitrary-precision decimal or financial arithmetic.",
+                  "x-functionSignatures": {
+                    "lower": "lower(text) -> string",
+                    "upper": "upper(text) -> string",
+                    "trim": "trim(text) -> string",
+                    "length": "length(text) -> int64",
+                    "abs": "abs(number) -> same numeric type",
+                    "round": "round(number) -> int64",
+                    "is_finite": "is_finite(number) -> bool; one int64/float64 argument; null stays null; strings/bools refused; no implicit parsing",
+                    "is_integer": "is_integer(number) -> bool; finite represented value has no fractional part; no int64 conversion/range restriction; null stays null; strings/bools refused",
+                    "require": "require(condition, value) -> original scalar type; only Boolean true passes, false or null stops execution; both arguments are evaluated; use a preceding Filter for unsafe arithmetic",
+                    "coalesce": "coalesce(value, fallback, ...) -> compatible scalar type; 2–16 arguments",
+                    "regex_replace": "regex_replace(text, pattern, replacement, occurrence, flags) -> string; occurrence: first|all",
+                    "regex_match": "regex_match(text, pattern, matchMode, flags) -> bool; matchMode: search|full",
+                    "regex_extract": "regex_extract(text, pattern, matchMode, noMatch, flags, group, ...) -> ordered string outputs; matchMode: search|full; noMatch: null|error; group: quoted group number or name",
+                    "temporal_parse": "temporal_parse(text, dtype, pattern, sourceTimezone, resultTimezone, invalid, ambiguous, nonexistent, version) -> dtype; version: v1; dtype: date|datetime|time; invalid: stop|missing; ambiguous: stop|earliest|latest|missing; nonexistent: stop|missing",
+                    "temporal_format": "temporal_format(temporal, pattern, timezone) -> string",
+                    "temporal_timezone": "temporal_timezone(datetime, timezone) -> datetime",
+                    "temporal_part": "temporal_part(temporal, part, timezone) -> int64; part must be supported for the input temporal type",
+                    "temporal_difference": "temporal_difference(leftTemporal, rightTemporal, unit, representation) -> int64|float64; matching temporal types; representation: integer|decimal",
+                    "decimal_parse": "decimal_parse(decimal text) -> canonical decimal text; exact original text, no binary float conversion; null propagates; malformed/nonfinite parse becomes missing and predicates false; invalid arithmetic or processing allowance fails explicitly",
+                    "decimal_is_finite": "decimal_is_finite(decimal text) -> bool; exact original text, no binary float conversion; null propagates; malformed/nonfinite parse becomes missing and predicates false; invalid arithmetic or processing allowance fails explicitly",
+                    "decimal_is_integer": "decimal_is_integer(decimal text) -> bool; exact original text, no binary float conversion; null propagates; malformed/nonfinite parse becomes missing and predicates false; invalid arithmetic or processing allowance fails explicitly",
+                    "decimal_abs": "decimal_abs(decimal text) -> canonical decimal text; exact original text, no binary float conversion; null propagates; malformed/nonfinite parse becomes missing and predicates false; invalid arithmetic or processing allowance fails explicitly",
+                    "decimal_add": "decimal_add(decimal text, decimal text) -> canonical decimal text; exact original text, no binary float conversion; null propagates; malformed/nonfinite parse becomes missing and predicates false; invalid arithmetic or processing allowance fails explicitly",
+                    "decimal_subtract": "decimal_subtract(decimal text, decimal text) -> canonical decimal text; exact original text, no binary float conversion; null propagates; malformed/nonfinite parse becomes missing and predicates false; invalid arithmetic or processing allowance fails explicitly",
+                    "decimal_multiply": "decimal_multiply(decimal text, decimal text) -> canonical decimal text; exact original text, no binary float conversion; null propagates; malformed/nonfinite parse becomes missing and predicates false; invalid arithmetic or processing allowance fails explicitly",
+                    "decimal_compare": "decimal_compare(decimal text, decimal text) -> int64 (-1/0/1); exact original text, no binary float conversion; null propagates; malformed/nonfinite parse becomes missing and predicates false; invalid arithmetic or processing allowance fails explicitly"
+                  },
+                  "x-regexOptions": {
+                    "flags": "Empty string or pipe-separated unique ignoreCase|multiline|dotAll",
+                    "patternCharactersMaximum": 512,
+                    "replacementCharactersMaximum": 4096,
+                    "textResultCharactersMaximum": 16384
+                  }
+                },
+                "outputs": {
+                  "type": "array",
+                  "minItems": 1,
+                  "maxItems": 32,
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 200
+                      },
+                      "dtype": {
+                        "type": "string",
+                        "enum": [
+                          "string",
+                          "int64",
+                          "float64",
+                          "bool",
+                          "date",
+                          "datetime",
+                          "time"
+                        ]
+                      },
+                      "write": {
+                        "type": "string",
+                        "enum": [
+                          "new",
+                          "replace"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "dtype",
+                      "write"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "nullPolicy": {
+                  "type": "string",
+                  "enum": [
+                    "preserve",
+                    "error"
+                  ]
+                }
+              },
+              "required": [
+                "id",
+                "expression",
+                "outputs",
+                "nullPolicy"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "operations"
+        ],
+        "additionalProperties": false,
+        "description": "Ordered typed column formulas. Structural workflow validation does not evaluate expressions against actual upstream column types; run-time preparation validates types before publishing output. Operations may reference preceding outputs. Output dtype must match the expression; it does not cast a value. Temporal output support does not establish downstream Partition or model mapping support.",
+        "examples": [
+          {
+            "operations": [
+              {
+                "id": "append-constant-suffix",
+                "expression": "regex_replace([date_text], \"\\\\Z\", \"T00:00:00Z\", \"first\", \"\")",
+                "outputs": [
+                  {
+                    "name": "timestamp_text",
+                    "dtype": "string",
+                    "write": "new"
+                  }
+                ],
+                "nullPolicy": "preserve"
+              }
+            ]
+          }
+        ]
+      },
+      "defaultConfig": {
+        "operations": [
+          {
+            "id": "formula-1",
+            "expression": "0",
+            "outputs": [
+              {
+                "name": "calculated",
+                "dtype": "int64",
+                "write": "new"
+              }
+            ],
+            "nullPolicy": "preserve"
+          }
+        ]
+      },
+      "fitBoundary": "notApplicable"
+    },
+    {
+      "id": "kwip.data.preprocess",
+      "version": {
+        "major": 1,
+        "minor": 0,
+        "patch": 0
+      },
+      "title": "Preprocess",
+      "backend": "portable",
+      "device": "host",
+      "inputs": [
+        {
+          "id": "table",
+          "kind": "table",
+          "required": false,
+          "maximumConnections": 1
+        },
+        {
+          "id": "training",
+          "kind": "table",
+          "required": false,
+          "maximumConnections": 1,
+          "partition": "training"
+        },
+        {
+          "id": "validation",
+          "kind": "table",
+          "required": false,
+          "maximumConnections": 1,
+          "partition": "validation"
+        },
+        {
+          "id": "test",
+          "kind": "table",
+          "required": false,
+          "maximumConnections": 1,
+          "partition": "test"
+        },
+        {
+          "id": "model",
+          "kind": "model",
+          "required": false,
+          "maximumConnections": 1
+        }
+      ],
+      "outputs": [
+        {
+          "id": "table",
+          "kind": "table",
+          "required": false,
+          "maximumConnections": null
+        },
+        {
+          "id": "training",
+          "kind": "table",
+          "required": false,
+          "maximumConnections": null,
+          "partition": "training"
+        },
+        {
+          "id": "validation",
+          "kind": "table",
+          "required": false,
+          "maximumConnections": null,
+          "partition": "validation"
+        },
+        {
+          "id": "test",
+          "kind": "table",
+          "required": false,
+          "maximumConnections": null,
+          "partition": "test"
+        },
+        {
+          "id": "state",
+          "kind": "state",
+          "required": false,
+          "maximumConnections": null,
+          "stateKind": "fittedTransform",
+          "inspectionOnly": true
+        }
+      ],
+      "configSchema": {
+        "type": "object",
+        "properties": {
+          "mode": {
+            "type": "string",
+            "enum": [
+              "table",
+              "partitions",
+              "frozen"
+            ]
+          },
+          "columns": {
+            "type": "array",
+            "maxItems": 128,
+            "items": {
+              "type": "object",
+              "properties": {
+                "column": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 200
+                },
+                "missing": {
+                  "type": "string",
+                  "enum": [
+                    "keep",
+                    "error",
+                    "drop",
+                    "constant",
+                    "mean",
+                    "median",
+                    "mostFrequent"
+                  ]
+                },
+                "value": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean"
+                  ]
+                },
+                "emptyPolicy": {
+                  "type": "string",
+                  "enum": [
+                    "error",
+                    "constant"
+                  ]
+                },
+                "emptyValue": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean"
+                  ]
+                },
+                "tiePolicy": {
+                  "type": "string",
+                  "enum": [
+                    "smallest",
+                    "error"
+                  ]
+                },
+                "encoding": {
+                  "type": "string",
+                  "enum": [
+                    "none",
+                    "oneHot"
+                  ]
+                },
+                "vocabularyOrder": {
+                  "type": "string",
+                  "enum": [
+                    "lexicographic",
+                    "firstSeen"
+                  ]
+                },
+                "unknownPolicy": {
+                  "type": "string",
+                  "enum": [
+                    "error",
+                    "ignore"
+                  ]
+                },
+                "maxCategories": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 128
+                },
+                "scaling": {
+                  "type": "string",
+                  "enum": [
+                    "none",
+                    "standard"
+                  ]
+                },
+                "center": {
+                  "type": "boolean"
+                },
+                "unitVariance": {
+                  "type": "boolean"
+                },
+                "unicodeNormalization": {
+                  "type": "string",
+                  "enum": [
+                    "none",
+                    "NFC",
+                    "NFKC"
+                  ]
+                },
+                "whitespace": {
+                  "type": "string",
+                  "enum": [
+                    "none",
+                    "trim",
+                    "collapse"
+                  ]
+                },
+                "case": {
+                  "type": "string",
+                  "enum": [
+                    "preserve",
+                    "lower",
+                    "upper"
+                  ]
+                },
+                "emptyAfterCleanup": {
+                  "type": "string",
+                  "enum": [
+                    "keep",
+                    "missing"
+                  ]
+                },
+                "removeControls": {
+                  "type": "boolean"
+                },
+                "removePunctuation": {
+                  "type": "boolean"
+                },
+                "removeDigits": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "column",
+                "missing",
+                "value",
+                "emptyPolicy",
+                "emptyValue",
+                "tiePolicy",
+                "encoding",
+                "vocabularyOrder",
+                "unknownPolicy",
+                "maxCategories",
+                "scaling",
+                "center",
+                "unitVariance"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "mode",
+          "columns"
+        ],
+        "additionalProperties": false
+      },
+      "defaultConfig": {
+        "mode": "partitions",
+        "columns": []
+      },
+      "fitBoundary": "trainingPartitionOnly"
+    },
+    {
+      "id": "kwip.data.sort",
+      "version": {
+        "major": 1,
+        "minor": 0,
+        "patch": 0
+      },
+      "title": "Sort",
+      "backend": "portable",
+      "device": "host",
+      "inputs": [
+        {
+          "id": "table",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": 1
+        }
+      ],
+      "outputs": [
+        {
+          "id": "table",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": null
+        }
+      ],
+      "configSchema": {
+        "type": "object",
+        "required": [
+          "keys"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "keys": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 128,
+            "items": {
+              "type": "object",
+              "required": [
+                "column",
+                "direction",
+                "missing",
+                "comparison"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "column": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 200
+                },
+                "direction": {
+                  "type": "string",
+                  "enum": [
+                    "ascending",
+                    "descending"
+                  ]
+                },
+                "missing": {
+                  "type": "string",
+                  "enum": [
+                    "first",
+                    "last"
+                  ]
+                },
+                "comparison": {
+                  "type": "string",
+                  "enum": [
+                    "exact",
+                    "casefold"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "defaultConfig": {
+        "keys": []
+      },
+      "fitBoundary": "notApplicable"
+    },
+    {
+      "id": "kwip.data.unique",
+      "version": {
+        "major": 1,
+        "minor": 0,
+        "patch": 0
+      },
+      "title": "Unique",
+      "backend": "portable",
+      "device": "host",
+      "inputs": [
+        {
+          "id": "table",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": 1
+        }
+      ],
+      "outputs": [
+        {
+          "id": "unique",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": null
+        },
+        {
+          "id": "duplicates",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": null
+        }
+      ],
+      "configSchema": {
+        "type": "object",
+        "required": [
+          "keys",
+          "keep",
+          "missing",
+          "comparison"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "keys": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 128,
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200
+            }
+          },
+          "keep": {
+            "type": "string",
+            "enum": [
+              "first",
+              "last"
+            ]
+          },
+          "missing": {
+            "type": "string",
+            "enum": [
+              "equal",
+              "distinct",
+              "stop"
+            ]
+          },
+          "comparison": {
+            "type": "string",
+            "enum": [
+              "exact",
+              "casefold"
+            ]
+          }
+        }
+      },
+      "defaultConfig": {
+        "keys": [],
+        "keep": "first",
+        "missing": "equal",
+        "comparison": "exact"
+      },
+      "fitBoundary": "notApplicable"
+    },
+    {
+      "id": "kwip.data.reshapeTable",
+      "version": {
+        "major": 1,
+        "minor": 0,
+        "patch": 0
+      },
+      "title": "Reshape Table",
+      "backend": "portable",
+      "device": "host",
+      "inputs": [
+        {
+          "id": "table",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": 1
+        }
+      ],
+      "outputs": [
+        {
+          "id": "table",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": null
+        }
+      ],
+      "configSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "mode",
+          "idColumns",
+          "valueColumns",
+          "fieldName",
+          "valueName",
+          "typePolicy",
+          "missingValues",
+          "rowKeys",
+          "columnKey",
+          "values",
+          "duplicates",
+          "nullColumnNames",
+          "nullLabel",
+          "missingCombinations",
+          "fillValue",
+          "columnOrder",
+          "maxColumns"
+        ],
+        "properties": {
+          "mode": {
+            "type": "string",
+            "enum": [
+              "long",
+              "wide"
+            ]
+          },
+          "idColumns": {
+            "type": "array",
+            "maxItems": 128,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200
+            }
+          },
+          "valueColumns": {
+            "type": "array",
+            "maxItems": 128,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200
+            }
+          },
+          "fieldName": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "valueName": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "typePolicy": {
+            "type": "string",
+            "enum": [
+              "strict",
+              "losslessNumeric"
+            ]
+          },
+          "missingValues": {
+            "type": "string",
+            "enum": [
+              "keep",
+              "drop"
+            ]
+          },
+          "rowKeys": {
+            "type": "array",
+            "maxItems": 128,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200
+            }
+          },
+          "columnKey": {
+            "type": "string",
+            "maxLength": 200
+          },
+          "values": {
+            "type": "array",
+            "maxItems": 128,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "column",
+                "aggregation",
+                "prefix",
+                "nullPolicy"
+              ],
+              "properties": {
+                "column": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 200
+                },
+                "aggregation": {
+                  "type": "string",
+                  "enum": [
+                    "countNonNull",
+                    "countRows",
+                    "first",
+                    "last",
+                    "max",
+                    "mean",
+                    "min",
+                    "sum"
+                  ]
+                },
+                "prefix": {
+                  "type": "string",
+                  "maxLength": 200
+                },
+                "nullPolicy": {
+                  "type": "string",
+                  "enum": [
+                    "skip",
+                    "propagate",
+                    "error"
+                  ]
+                }
+              }
+            }
+          },
+          "duplicates": {
+            "type": "string",
+            "enum": [
+              "stop",
+              "aggregate"
+            ]
+          },
+          "nullColumnNames": {
+            "type": "string",
+            "enum": [
+              "stop",
+              "drop",
+              "label"
+            ]
+          },
+          "nullLabel": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "missingCombinations": {
+            "type": "string",
+            "enum": [
+              "missing",
+              "fill"
+            ]
+          },
+          "fillValue": {
+            "type": [
+              "null",
+              "string",
+              "integer",
+              "number",
+              "boolean"
+            ]
+          },
+          "columnOrder": {
+            "type": "string",
+            "enum": [
+              "firstSeen",
+              "sorted"
+            ]
+          },
+          "maxColumns": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 128
+          }
+        }
+      },
+      "defaultConfig": {
+        "mode": "long",
+        "idColumns": [],
+        "valueColumns": [],
+        "fieldName": "field",
+        "valueName": "value",
+        "typePolicy": "strict",
+        "missingValues": "keep",
+        "rowKeys": [],
+        "columnKey": "",
+        "values": [],
+        "duplicates": "stop",
+        "nullColumnNames": "stop",
+        "nullLabel": "missing",
+        "missingCombinations": "missing",
+        "fillValue": null,
+        "columnOrder": "firstSeen",
+        "maxColumns": 128
+      },
+      "fitBoundary": "notApplicable"
+    },
+    {
+      "id": "kwip.data.splitText",
+      "version": {
+        "major": 1,
+        "minor": 0,
+        "patch": 0
+      },
+      "title": "Split Text",
+      "backend": "portable",
+      "device": "host",
+      "inputs": [
+        {
+          "id": "table",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": 1
+        }
+      ],
+      "outputs": [
+        {
+          "id": "table",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": null
+        }
+      ],
+      "configSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "mode",
+          "source",
+          "missingSource",
+          "retainSource",
+          "delimiter",
+          "quoted",
+          "quote",
+          "escaping",
+          "escape",
+          "outputMode",
+          "fields",
+          "extraFields",
+          "shortFields",
+          "emptyTokens",
+          "ordinal",
+          "ordinalName",
+          "measurement",
+          "shortRecord",
+          "trim",
+          "conversionFailure"
+        ],
+        "properties": {
+          "mode": {
+            "type": "string",
+            "enum": [
+              "delimited",
+              "fixedWidth"
+            ]
+          },
+          "source": {
+            "type": "string",
+            "maxLength": 200,
+            "minLength": 0
+          },
+          "missingSource": {
+            "type": "string",
+            "enum": [
+              "preserve",
+              "error"
+            ]
+          },
+          "retainSource": {
+            "type": "boolean"
+          },
+          "delimiter": {
+            "type": "string",
+            "maxLength": 128,
+            "minLength": 1
+          },
+          "quoted": {
+            "type": "boolean"
+          },
+          "quote": {
+            "type": "string",
+            "maxLength": 1,
+            "minLength": 1
+          },
+          "escaping": {
+            "type": "string",
+            "enum": [
+              "double",
+              "escape",
+              "none"
+            ]
+          },
+          "escape": {
+            "type": "string",
+            "maxLength": 1,
+            "minLength": 1
+          },
+          "outputMode": {
+            "type": "string",
+            "enum": [
+              "columns",
+              "rows"
+            ]
+          },
+          "extraFields": {
+            "type": "string",
+            "enum": [
+              "error",
+              "drop",
+              "remainder"
+            ]
+          },
+          "shortFields": {
+            "type": "string",
+            "enum": [
+              "missing",
+              "empty",
+              "error"
+            ]
+          },
+          "emptyTokens": {
+            "type": "string",
+            "enum": [
+              "keep",
+              "drop"
+            ]
+          },
+          "ordinal": {
+            "type": "boolean"
+          },
+          "ordinalName": {
+            "type": "string",
+            "maxLength": 200,
+            "minLength": 1
+          },
+          "measurement": {
+            "type": "string",
+            "enum": [
+              "codepoints",
+              "utf8"
+            ]
+          },
+          "shortRecord": {
+            "type": "string",
+            "enum": [
+              "missing",
+              "error"
+            ]
+          },
+          "trim": {
+            "type": "boolean"
+          },
+          "conversionFailure": {
+            "type": "string",
+            "enum": [
+              "error",
+              "missing"
+            ]
+          },
+          "fields": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 128,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "name",
+                "type",
+                "start",
+                "width"
+              ],
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 200
+                },
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "string",
+                    "int64",
+                    "float64",
+                    "bool"
+                  ]
+                },
+                "start": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 10000000
+                },
+                "width": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 10000000
+                }
+              }
+            }
+          }
+        }
+      },
+      "defaultConfig": {
+        "mode": "delimited",
+        "source": "",
+        "missingSource": "preserve",
+        "retainSource": false,
+        "delimiter": ",",
+        "quoted": true,
+        "quote": "\"",
+        "escaping": "double",
+        "escape": "\\",
+        "outputMode": "columns",
+        "fields": [
+          {
+            "name": "part",
+            "type": "string",
+            "start": 1,
+            "width": 1
+          }
+        ],
+        "extraFields": "error",
+        "shortFields": "missing",
+        "emptyTokens": "keep",
+        "ordinal": false,
+        "ordinalName": "token_ordinal",
+        "measurement": "codepoints",
+        "shortRecord": "missing",
+        "trim": false,
+        "conversionFailure": "error"
+      },
+      "fitBoundary": "notApplicable"
+    },
+    {
+      "id": "kwip.data.capturedTable",
+      "version": {
+        "major": 1,
+        "minor": 0,
+        "patch": 0
+      },
+      "title": "Captured prediction table",
+      "backend": "portable",
+      "device": "host",
+      "inputs": [],
+      "outputs": [
+        {
+          "id": "table",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": null
+        }
+      ],
+      "configSchema": {
+        "type": "object",
+        "properties": {
+          "sha256": {
+            "type": "string",
+            "minLength": 64,
+            "maxLength": 64
+          }
+        },
+        "required": [
+          "sha256"
+        ],
+        "additionalProperties": false
+      },
+      "defaultConfig": {
+        "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      "fitBoundary": "notApplicable"
+    },
+    {
+      "id": "kwip.data.textEncode",
+      "version": {
+        "major": 1,
+        "minor": 1,
+        "patch": 0
+      },
+      "title": "Text encoding",
+      "backend": "portable",
+      "device": "host",
+      "inputs": [
+        {
+          "id": "table",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": 1
+        },
+        {
+          "id": "training",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": 1,
+          "partition": "training"
+        },
+        {
+          "id": "validation",
+          "kind": "table",
+          "required": false,
+          "maximumConnections": 1,
+          "partition": "validation"
+        },
+        {
+          "id": "test",
+          "kind": "table",
+          "required": false,
+          "maximumConnections": 1,
+          "partition": "test"
+        }
+      ],
+      "outputs": [
+        {
+          "id": "table",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": null
+        },
+        {
+          "id": "training",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": null,
+          "partition": "training"
+        },
+        {
+          "id": "validation",
+          "kind": "table",
+          "required": false,
+          "maximumConnections": null,
+          "partition": "validation"
+        },
+        {
+          "id": "test",
+          "kind": "table",
+          "required": false,
+          "maximumConnections": null,
+          "partition": "test"
+        },
+        {
+          "id": "state",
+          "kind": "state",
+          "stateKind": "fittedTransform",
+          "required": false,
+          "maximumConnections": null,
+          "inspectionOnly": true
+        },
+        {
+          "id": "vocabulary",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": null
+        }
+      ],
+      "configSchema": {
+        "type": "object",
+        "properties": {
+          "tokenizer": {
+            "type": "string",
+            "enum": [
+              "character",
+              "word"
+            ]
+          },
+          "unicodeNormalization": {
+            "type": "string",
+            "enum": [
+              "none",
+              "NFC",
+              "NFKC"
+            ]
+          },
+          "letterCase": {
+            "type": "string",
+            "enum": [
+              "preserve",
+              "lower",
+              "casefold"
+            ]
+          },
+          "whitespace": {
+            "type": "string",
+            "enum": [
+              "preserve",
+              "trim",
+              "collapse"
+            ]
+          },
+          "missingText": {
+            "type": "string",
+            "enum": [
+              "error",
+              "empty"
+            ]
+          },
+          "vocabularySource": {
+            "type": "string",
+            "enum": [
+              "training",
+              "supplied"
+            ]
+          },
+          "idOrder": {
+            "type": "string",
+            "enum": [
+              "frequency",
+              "lexicographic"
+            ]
+          },
+          "unknownPolicy": {
+            "type": "string",
+            "enum": [
+              "unk",
+              "error"
+            ]
+          },
+          "textColumn": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "outputColumn": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "keepSourceText": {
+            "type": "boolean"
+          },
+          "pad": {
+            "type": "boolean"
+          },
+          "bos": {
+            "type": "boolean"
+          },
+          "eos": {
+            "type": "boolean"
+          },
+          "vocabulary": {
+            "type": "array",
+            "maxItems": 65536,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 65536
+            }
+          },
+          "minimumFrequency": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 1000000
+          },
+          "vocabularyLimit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 65536
+          },
+          "mode": {
+            "type": "string",
+            "enum": [
+              "tokens",
+              "documentFeatures"
+            ]
+          },
+          "featureSettings": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "analyzer",
+              "ngramMin",
+              "ngramMax",
+              "lowercase",
+              "stripAccents",
+              "minimumDF",
+              "maximumDF",
+              "vocabularyLimit",
+              "binary",
+              "sublinearTF",
+              "useIDF",
+              "smoothIDF",
+              "normalization"
+            ],
+            "properties": {
+              "analyzer": {
+                "type": "string",
+                "enum": [
+                  "word",
+                  "char"
+                ]
+              },
+              "ngramMin": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 5
+              },
+              "ngramMax": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 5
+              },
+              "lowercase": {
+                "type": "boolean"
+              },
+              "stripAccents": {
+                "type": "string",
+                "enum": [
+                  "none",
+                  "ascii",
+                  "unicode"
+                ]
+              },
+              "minimumDF": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 1000000
+              },
+              "maximumDF": {
+                "type": "number",
+                "minimum": 1e-06,
+                "maximum": 1
+              },
+              "vocabularyLimit": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 65536
+              },
+              "binary": {
+                "type": "boolean"
+              },
+              "sublinearTF": {
+                "type": "boolean"
+              },
+              "useIDF": {
+                "type": "boolean"
+              },
+              "smoothIDF": {
+                "type": "boolean"
+              },
+              "normalization": {
+                "type": "string",
+                "enum": [
+                  "none",
+                  "l1",
+                  "l2"
+                ]
+              }
+            }
+          }
+        },
+        "required": [
+          "tokenizer",
+          "unicodeNormalization",
+          "letterCase",
+          "whitespace",
+          "missingText",
+          "vocabularySource",
+          "idOrder",
+          "unknownPolicy",
+          "textColumn",
+          "outputColumn",
+          "keepSourceText",
+          "pad",
+          "bos",
+          "eos",
+          "vocabulary",
+          "minimumFrequency",
+          "vocabularyLimit"
+        ],
+        "additionalProperties": false
+      },
+      "defaultConfig": {
+        "textColumn": "text",
+        "tokenizer": "character",
+        "unicodeNormalization": "none",
+        "letterCase": "preserve",
+        "whitespace": "preserve",
+        "missingText": "error",
+        "outputColumn": "tokens",
+        "keepSourceText": true,
+        "vocabularySource": "training",
+        "vocabulary": [],
+        "minimumFrequency": 1,
+        "vocabularyLimit": 256,
+        "idOrder": "frequency",
+        "unknownPolicy": "unk",
+        "pad": true,
+        "bos": false,
+        "eos": false
+      },
+      "fitBoundary": "trainingPartitionOnly",
+      "description": "Encode text into token IDs or fit Training-only TF-IDF preparation for sparse document classification. Preserve document identities and frozen vocabulary for held-out data."
+    },
+    {
+      "id": "kwip.data.sequenceWindows",
+      "version": {
+        "major": 1,
+        "minor": 0,
+        "patch": 0
+      },
+      "title": "Sequence windows",
+      "backend": "portable",
+      "device": "host",
+      "inputs": [
+        {
+          "id": "table",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": 1
+        },
+        {
+          "id": "training",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": 1,
+          "partition": "training"
+        },
+        {
+          "id": "validation",
+          "kind": "table",
+          "required": false,
+          "maximumConnections": 1,
+          "partition": "validation"
+        },
+        {
+          "id": "test",
+          "kind": "table",
+          "required": false,
+          "maximumConnections": 1,
+          "partition": "test"
+        }
+      ],
+      "outputs": [
+        {
+          "id": "table",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": null
+        },
+        {
+          "id": "training",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": null,
+          "partition": "training"
+        },
+        {
+          "id": "validation",
+          "kind": "table",
+          "required": false,
+          "maximumConnections": null,
+          "partition": "validation"
+        },
+        {
+          "id": "test",
+          "kind": "table",
+          "required": false,
+          "maximumConnections": null,
+          "partition": "test"
+        }
+      ],
+      "configSchema": {
+        "type": "object",
+        "properties": {
+          "mode": {
+            "type": "string",
+            "enum": [
+              "table",
+              "partitions"
+            ]
+          },
+          "tokenColumn": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "scope": {
+            "type": "string",
+            "enum": [
+              "row",
+              "document"
+            ]
+          },
+          "documentColumn": {
+            "type": "string",
+            "minLength": 0,
+            "maxLength": 200
+          },
+          "orderColumn": {
+            "type": "string",
+            "minLength": 0,
+            "maxLength": 200
+          },
+          "direction": {
+            "type": "string",
+            "enum": [
+              "ascending",
+              "descending"
+            ]
+          },
+          "contextLength": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 4096
+          },
+          "stride": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 65536
+          },
+          "incomplete": {
+            "type": "string",
+            "enum": [
+              "drop",
+              "pad"
+            ]
+          },
+          "paddingID": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 65535
+          },
+          "inputColumn": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "targetColumn": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "maskColumn": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "lengthColumn": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          }
+        },
+        "required": [
+          "mode",
+          "tokenColumn",
+          "scope",
+          "documentColumn",
+          "orderColumn",
+          "direction",
+          "contextLength",
+          "stride",
+          "incomplete",
+          "paddingID",
+          "inputColumn",
+          "targetColumn",
+          "maskColumn",
+          "lengthColumn"
+        ],
+        "additionalProperties": false
+      },
+      "defaultConfig": {
+        "mode": "table",
+        "tokenColumn": "tokens",
+        "scope": "row",
+        "documentColumn": "",
+        "orderColumn": "",
+        "direction": "ascending",
+        "contextLength": 128,
+        "stride": 128,
+        "incomplete": "drop",
+        "paddingID": 1,
+        "inputColumn": "input_ids",
+        "targetColumn": "target_ids",
+        "maskColumn": "loss_mask",
+        "lengthColumn": "valid_length"
+      },
+      "fitBoundary": "preservesPartition"
+    },
+    {
+      "id": "kwip.data.prepareMedia",
+      "version": {
+        "major": 1,
+        "minor": 0,
+        "patch": 0
+      },
+      "title": "Prepare media",
+      "backend": "portable",
+      "device": "host",
+      "inputs": [
+        {
+          "id": "table",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": 1
+        }
+      ],
+      "outputs": [
+        {
+          "id": "table",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": null
+        }
+      ],
+      "configSchema": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string",
+            "enum": [
+              "image",
+              "audio"
+            ]
+          },
+          "inputColumn": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "outputColumn": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "sampleFormat": {
+            "type": "string",
+            "enum": [
+              "preserve",
+              "float32"
+            ]
+          },
+          "layout": {
+            "type": "string",
+            "enum": [
+              "HWC",
+              "CHW"
+            ]
+          },
+          "color": {
+            "type": "string",
+            "enum": [
+              "preserve",
+              "RGB",
+              "L"
+            ]
+          },
+          "alpha": {
+            "type": "string",
+            "enum": [
+              "preserve",
+              "drop",
+              "composite"
+            ]
+          },
+          "matte": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "minItems": 3,
+            "maxItems": 3
+          },
+          "sizeMode": {
+            "type": "string",
+            "enum": [
+              "preserve",
+              "resize",
+              "fitPad",
+              "crop"
+            ]
+          },
+          "width": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 16384
+          },
+          "height": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 16384
+          },
+          "interpolation": {
+            "type": "string",
+            "enum": [
+              "nearest",
+              "bilinear",
+              "bicubic"
+            ]
+          },
+          "scaling": {
+            "type": "string",
+            "enum": [
+              "none",
+              "unit"
+            ]
+          },
+          "channels": {
+            "type": "string",
+            "enum": [
+              "preserve",
+              "select",
+              "mono"
+            ]
+          },
+          "channelIndex": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 65535
+          },
+          "targetRate": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 768000
+          },
+          "windowSamples": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 6000000
+          },
+          "hopSamples": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 6000000
+          },
+          "tail": {
+            "type": "string",
+            "enum": [
+              "drop",
+              "pad"
+            ]
+          },
+          "filterRadius": {
+            "type": "integer",
+            "minimum": 8,
+            "maximum": 64
+          },
+          "maskConvention": {
+            "type": "string",
+            "enum": [
+              "valid",
+              "blocked"
+            ]
+          },
+          "outputMode": {
+            "type": "string",
+            "enum": [
+              "tensor",
+              "image"
+            ]
+          },
+          "cropEnabled": {
+            "type": "boolean"
+          },
+          "cropX": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 16384
+          },
+          "cropY": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 16384
+          },
+          "cropWidth": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 16384
+          },
+          "cropHeight": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 16384
+          },
+          "rotation": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 270,
+            "enum": [
+              0,
+              90,
+              180,
+              270
+            ]
+          },
+          "representation": {
+            "type": "string",
+            "enum": [
+              "samples",
+              "magnitude",
+              "power",
+              "logMel"
+            ]
+          },
+          "fftSize": {
+            "type": "integer",
+            "minimum": 16,
+            "maximum": 4096
+          },
+          "spectralHop": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 4096
+          },
+          "window": {
+            "type": "string",
+            "enum": [
+              "hann",
+              "hamming",
+              "rectangular"
+            ]
+          },
+          "center": {
+            "type": "boolean"
+          },
+          "melBands": {
+            "type": "integer",
+            "minimum": 8,
+            "maximum": 256
+          },
+          "minimumHz": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 384000
+          },
+          "maximumHz": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 384000
+          },
+          "logFloorDB": {
+            "type": "integer",
+            "minimum": -120,
+            "maximum": -1
+          }
+        },
+        "required": [
+          "kind",
+          "inputColumn",
+          "outputColumn",
+          "sampleFormat",
+          "layout",
+          "color",
+          "alpha",
+          "matte",
+          "sizeMode",
+          "width",
+          "height",
+          "interpolation",
+          "scaling",
+          "channels",
+          "channelIndex",
+          "targetRate",
+          "windowSamples",
+          "hopSamples",
+          "tail",
+          "filterRadius",
+          "maskConvention"
+        ],
+        "additionalProperties": false
+      },
+      "defaultConfig": {
+        "kind": "image",
+        "inputColumn": "image_content",
+        "outputColumn": "prepared",
+        "sampleFormat": "preserve",
+        "layout": "HWC",
+        "color": "preserve",
+        "alpha": "preserve",
+        "matte": [
+          0,
+          0,
+          0
+        ],
+        "sizeMode": "preserve",
+        "width": 224,
+        "height": 224,
+        "interpolation": "bilinear",
+        "scaling": "none",
+        "channels": "preserve",
+        "channelIndex": 0,
+        "targetRate": 0,
+        "windowSamples": 0,
+        "hopSamples": 0,
+        "tail": "drop",
+        "filterRadius": 16,
+        "maskConvention": "valid",
+        "outputMode": "tensor",
+        "cropEnabled": false,
+        "cropX": 0,
+        "cropY": 0,
+        "cropWidth": 224,
+        "cropHeight": 224,
+        "rotation": 0,
+        "representation": "samples",
+        "fftSize": 400,
+        "spectralHop": 160,
+        "window": "hann",
+        "center": true,
+        "melBands": 80,
+        "minimumHz": 0,
+        "maximumHz": 0,
+        "logFloorDB": -80
+      },
+      "fitBoundary": "notApplicable"
+    },
+    {
+      "id": "kwip.data.extractText",
+      "version": {
+        "major": 1,
+        "minor": 0,
+        "patch": 0
+      },
+      "title": "Extract text",
+      "backend": "portable",
+      "device": "host",
+      "inputs": [
+        {
+          "id": "table",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": 1
+        }
+      ],
+      "outputs": [
+        {
+          "id": "documents",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": null
+        },
+        {
+          "id": "regions",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": null
+        }
+      ],
+      "configSchema": {
+        "type": "object",
+        "properties": {
+          "inputColumn": {
+            "type": "string",
+            "maxLength": 200
+          },
+          "outputColumn": {
+            "type": "string",
+            "maxLength": 200
+          },
+          "pack": {
+            "type": "string",
+            "maxLength": 200,
+            "enum": [
+              "english-printed-v1"
+            ]
+          },
+          "device": {
+            "type": "string",
+            "maxLength": 200,
+            "enum": [
+              "cpu"
+            ]
+          },
+          "decoder": {
+            "type": "string",
+            "maxLength": 200,
+            "enum": [
+              "greedy",
+              "beamsearch"
+            ]
+          },
+          "beamWidth": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 20
+          },
+          "rotationCandidates": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "enum": [
+                90,
+                180,
+                270
+              ]
+            },
+            "uniqueItems": true,
+            "maxItems": 3
+          },
+          "reviewThreshold": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "textThreshold": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "lowText": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "linkThreshold": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "minimumSize": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 1000
+          },
+          "canvasSize": {
+            "type": "integer",
+            "minimum": 64,
+            "maximum": 2560
+          },
+          "magnification": {
+            "type": "number",
+            "minimum": 0.1,
+            "maximum": 2
+          },
+          "widthThreshold": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 3
+          },
+          "slopeThreshold": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "ycenterThreshold": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 3
+          },
+          "heightThreshold": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 3
+          },
+          "margin": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 0.5
+          },
+          "allowlist": {
+            "type": "string",
+            "maxLength": 1000
+          },
+          "blocklist": {
+            "type": "string",
+            "maxLength": 1000
+          },
+          "maximumRegions": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 1000
+          },
+          "maximumCharacters": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 1000000
+          },
+          "groupBy": {
+            "type": "string",
+            "maxLength": 200
+          },
+          "pageColumn": {
+            "type": "string",
+            "maxLength": 200
+          },
+          "separator": {
+            "type": "string",
+            "maxLength": 200
+          }
+        },
+        "required": [
+          "inputColumn",
+          "outputColumn",
+          "pack",
+          "device",
+          "decoder",
+          "beamWidth",
+          "rotationCandidates",
+          "reviewThreshold",
+          "textThreshold",
+          "lowText",
+          "linkThreshold",
+          "minimumSize",
+          "canvasSize",
+          "magnification",
+          "widthThreshold",
+          "slopeThreshold",
+          "ycenterThreshold",
+          "heightThreshold",
+          "margin",
+          "allowlist",
+          "blocklist",
+          "maximumRegions",
+          "maximumCharacters",
+          "groupBy",
+          "pageColumn",
+          "separator"
+        ],
+        "additionalProperties": false
+      },
+      "defaultConfig": {
+        "inputColumn": "image_content",
+        "outputColumn": "document_text",
+        "pack": "english-printed-v1",
+        "device": "cpu",
+        "decoder": "greedy",
+        "beamWidth": 5,
+        "rotationCandidates": [],
+        "reviewThreshold": 0.6,
+        "textThreshold": 0.7,
+        "lowText": 0.4,
+        "linkThreshold": 0.4,
+        "minimumSize": 10,
+        "canvasSize": 1600,
+        "magnification": 1.0,
+        "widthThreshold": 0.5,
+        "slopeThreshold": 0.1,
+        "ycenterThreshold": 0.5,
+        "heightThreshold": 0.5,
+        "margin": 0.1,
+        "allowlist": "",
+        "blocklist": "",
+        "maximumRegions": 1000,
+        "maximumCharacters": 100000,
+        "groupBy": "file_id",
+        "pageColumn": "frame_index",
+        "separator": "\n\n"
+      },
+      "fitBoundary": "preservesPartition"
+    },
+    {
+      "id": "kwip.data.transcribeAudio",
+      "version": {
+        "major": 1,
+        "minor": 0,
+        "patch": 0
+      },
+      "title": "Transcribe audio",
+      "backend": "portable",
+      "device": "host",
+      "inputs": [
+        {
+          "id": "table",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": 1
+        },
+        {
+          "id": "model",
+          "kind": "model",
+          "required": true,
+          "maximumConnections": 1
+        }
+      ],
+      "outputs": [
+        {
+          "id": "transcripts",
+          "kind": "table",
+          "required": false
+        },
+        {
+          "id": "segments",
+          "kind": "table",
+          "required": false
+        }
+      ],
+      "configSchema": {
+        "type": "object",
+        "properties": {
+          "inputColumn": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "outputColumn": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "language": {
+            "type": "string",
+            "enum": [
+              "auto",
+              "en",
+              "es",
+              "fr",
+              "de",
+              "it",
+              "pt",
+              "ja",
+              "ko",
+              "zh"
+            ]
+          },
+          "chunkSeconds": {
+            "type": "integer",
+            "minimum": 5,
+            "maximum": 30
+          },
+          "maximumTokens": {
+            "type": "integer",
+            "minimum": 16,
+            "maximum": 440
+          },
+          "beamWidth": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 5
+          },
+          "maximumCharacters": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 1000000
+          },
+          "maximumSegments": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 10000
+          }
+        },
+        "required": [
+          "inputColumn",
+          "outputColumn",
+          "language",
+          "chunkSeconds",
+          "maximumTokens",
+          "beamWidth",
+          "maximumCharacters",
+          "maximumSegments"
+        ],
+        "additionalProperties": false
+      },
+      "defaultConfig": {
+        "inputColumn": "prepared",
+        "outputColumn": "transcript",
+        "language": "auto",
+        "chunkSeconds": 30,
+        "maximumTokens": 256,
+        "beamWidth": 1,
+        "maximumCharacters": 1000000,
+        "maximumSegments": 10000
+      },
+      "fitBoundary": "preservesPartition"
+    },
+    {
+      "id": "kwip.data.gameRules",
+      "version": {
+        "major": 1,
+        "minor": 0,
+        "patch": 0
+      },
+      "title": "Game definition",
+      "backend": "portable",
+      "device": "host",
+      "inputs": [],
+      "outputs": [
+        {
+          "id": "definition",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": null
+        },
+        {
+          "id": "summary",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": null
+        },
+        {
+          "id": "tests",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": null
+        },
+        {
+          "id": "trace",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": null
+        }
+      ],
+      "configSchema": {
+        "type": "object",
+        "properties": {
+          "definition": {
+            "type": "object"
+          }
+        },
+        "required": [
+          "definition"
+        ],
+        "additionalProperties": false
+      },
+      "defaultConfig": {
+        "definition": {
+          "version": 1,
+          "name": "Take-away",
+          "parameters": {},
+          "state": {
+            "remaining": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 21,
+              "initial": 21
+            },
+            "to_move": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 1,
+              "initial": 0
+            }
+          },
+          "actions": {
+            "take": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 3
+            }
+          },
+          "currentPlayer": "state.to_move",
+          "legal": "action.take <= state.remaining",
+          "transitions": [
+            {
+              "name": "Take objects",
+              "when": "True",
+              "updates": {
+                "remaining": "state.remaining - action.take",
+                "to_move": "1 - state.to_move"
+              }
+            }
+          ],
+          "terminal": [
+            {
+              "name": "Last object",
+              "when": "state.remaining == 0",
+              "winner": "1 - state.to_move"
+            }
+          ],
+          "observations": [
+            "state.remaining / 21"
+          ],
+          "reward": "0 if not outcome.terminal or outcome.winner == None else (1 if outcome.winner == player else -1)",
+          "invariants": [],
+          "tests": [
+            {
+              "name": "Take 3 from 5",
+              "state": {
+                "remaining": 5,
+                "to_move": 0
+              },
+              "actions": [
+                {
+                  "take": 3
+                }
+              ],
+              "expect": {
+                "state": {
+                  "remaining": 2,
+                  "to_move": 1
+                },
+                "terminal": false
+              }
+            },
+            {
+              "name": "Too many objects",
+              "state": {
+                "remaining": 2,
+                "to_move": 0
+              },
+              "actions": [
+                {
+                  "take": 3
+                }
+              ],
+              "expectError": "illegal",
+              "expect": {
+                "state": {
+                  "remaining": 2,
+                  "to_move": 0
+                }
+              }
+            },
+            {
+              "name": "Last object wins",
+              "state": {
+                "remaining": 1,
+                "to_move": 1
+              },
+              "actions": [
+                {
+                  "take": 1
+                }
+              ],
+              "expect": {
+                "terminal": true,
+                "winner": 1,
+                "rewards": [
+                  -1,
+                  1
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "fitBoundary": "none"
+    },
+    {
+      "id": "kwip.data.classifyAudio",
+      "version": {
+        "major": 1,
+        "minor": 0,
+        "patch": 0
+      },
+      "title": "Classify audio",
+      "backend": "portable",
+      "device": "host",
+      "inputs": [
+        {
+          "id": "table",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": 1
+        },
+        {
+          "id": "model",
+          "kind": "model",
+          "required": true,
+          "maximumConnections": 1
+        }
+      ],
+      "outputs": [
+        {
+          "id": "predictions",
+          "kind": "table",
+          "required": false
+        },
+        {
+          "id": "scores",
+          "kind": "table",
+          "required": false
+        }
+      ],
+      "configSchema": {
+        "type": "object",
+        "properties": {
+          "inputColumn": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160
+          },
+          "outputPrefix": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160
+          },
+          "windowSeconds": {
+            "type": "number",
+            "minimum": 0.025,
+            "maximum": 10
+          },
+          "hopSeconds": {
+            "type": "number",
+            "minimum": 0.025,
+            "maximum": 10
+          },
+          "finalWindow": {
+            "type": "string",
+            "enum": [
+              "pad",
+              "refuse"
+            ]
+          },
+          "minimumScore": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "reportedLabels": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 1024
+          },
+          "batchWindows": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 8
+          },
+          "maximumWindows": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 4096
+          },
+          "maximumScoreRows": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 150000
+          }
+        },
+        "required": [
+          "inputColumn",
+          "outputPrefix",
+          "windowSeconds",
+          "hopSeconds",
+          "finalWindow",
+          "minimumScore",
+          "reportedLabels",
+          "batchWindows",
+          "maximumWindows",
+          "maximumScoreRows"
+        ],
+        "additionalProperties": false
+      },
+      "defaultConfig": {
+        "inputColumn": "prepared",
+        "outputPrefix": "audio_classification",
+        "windowSeconds": 10,
+        "hopSeconds": 8,
+        "finalWindow": "pad",
+        "minimumScore": 0.5,
+        "reportedLabels": 5,
+        "batchWindows": 1,
+        "maximumWindows": 256,
+        "maximumScoreRows": 150000
+      },
+      "fitBoundary": "preservesPartition"
+    },
+    {
+      "id": "kwip.data.decide",
+      "version": {
+        "major": 1,
+        "minor": 0,
+        "patch": 0
+      },
+      "title": "Decide",
+      "backend": "portable",
+      "device": "host",
+      "inputs": [
+        {
+          "id": "table",
+          "kind": "table",
+          "required": true,
+          "maximumConnections": 1
+        },
+        {
+          "id": "model",
+          "kind": "model",
+          "required": true,
+          "maximumConnections": 1
+        }
+      ],
+      "outputs": [
+        {
+          "id": "decisions",
+          "kind": "table",
+          "required": false,
+          "maximumConnections": null
+        },
+        {
+          "id": "scores",
+          "kind": "table",
+          "required": false,
+          "maximumConnections": null
+        }
+      ],
+      "configSchema": {
+        "type": "object",
+        "properties": {
+          "stateColumns": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 16,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 160
+            },
+            "default": [
+              "text"
+            ]
+          },
+          "identityColumn": {
+            "type": "string",
+            "maxLength": 160,
+            "default": ""
+          },
+          "questionSet": {
+            "type": "object",
+            "maxProperties": 5,
+            "default": {
+              "schemaVersion": 1,
+              "id": "ticket-triage",
+              "revision": 1,
+              "name": "Ticket triage",
+              "questions": [
+                {
+                  "id": "category",
+                  "type": "choice",
+                  "instructions": "Which team should handle this ticket?",
+                  "options": [
+                    {
+                      "id": "billing",
+                      "label": "Billing and payments"
+                    },
+                    {
+                      "id": "technical",
+                      "label": "Technical problems"
+                    },
+                    {
+                      "id": "account",
+                      "label": "Account access"
+                    }
+                  ]
+                }
+              ]
+            },
+            "additionalProperties": false,
+            "required": [
+              "schemaVersion",
+              "id",
+              "revision",
+              "name",
+              "questions"
+            ],
+            "properties": {
+              "schemaVersion": {
+                "const": 1
+              },
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$"
+              },
+              "revision": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 1000000
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 160
+              },
+              "questions": {
+                "type": "array",
+                "minItems": 1,
+                "maxItems": 16,
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "id",
+                    "type",
+                    "instructions",
+                    "options"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$"
+                    },
+                    "type": {
+                      "enum": [
+                        "choice",
+                        "score",
+                        "noul"
+                      ]
+                    },
+                    "instructions": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 2000
+                    },
+                    "options": {
+                      "type": "array",
+                      "minItems": 2,
+                      "maxItems": 32,
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "id",
+                          "label"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$"
+                          },
+                          "label": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 240
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "questionsFromModel": {
+            "type": "boolean",
+            "default": false
+          },
+          "batchRows": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 8,
+            "default": 1
+          },
+          "maximumRows": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 10000,
+            "default": 1000
+          },
+          "maximumScoreRows": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 200000,
+            "default": 100000
+          }
+        },
+        "required": [
+          "stateColumns",
+          "identityColumn",
+          "questionSet",
+          "questionsFromModel",
+          "batchRows",
+          "maximumRows",
+          "maximumScoreRows"
+        ],
+        "additionalProperties": false
+      },
+      "fitBoundary": "none",
+      "defaultConfig": {
+        "stateColumns": [
+          "text"
+        ],
+        "identityColumn": "",
+        "questionSet": {
+          "schemaVersion": 1,
+          "id": "ticket-triage",
+          "revision": 1,
+          "name": "Ticket triage",
+          "questions": [
+            {
+              "id": "category",
+              "type": "choice",
+              "instructions": "Which team should handle this ticket?",
+              "options": [
+                {
+                  "id": "billing",
+                  "label": "Billing and payments"
+                },
+                {
+                  "id": "technical",
+                  "label": "Technical problems"
+                },
+                {
+                  "id": "account",
+                  "label": "Account access"
+                }
+              ]
+            }
+          ]
+        },
+        "questionsFromModel": false,
+        "batchRows": 1,
+        "maximumRows": 1000,
+        "maximumScoreRows": 100000
+      }
+    }
+  ]
+}

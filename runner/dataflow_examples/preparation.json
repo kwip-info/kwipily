@@ -1,0 +1,231 @@
+{
+  "schemaVersion": 1,
+  "nodes": [
+    {
+      "id": "source",
+      "operator": "kwip.data.sourceCSV",
+      "config": {
+        "separator": ","
+      }
+    },
+    {
+      "id": "columns",
+      "operator": "kwip.data.columns",
+      "config": {
+        "rows": [
+          {
+            "source": "amount",
+            "included": true,
+            "outputName": "amount",
+            "targetType": "float64"
+          },
+          {
+            "source": "other",
+            "included": true,
+            "outputName": "other",
+            "targetType": "float64"
+          },
+          {
+            "source": "category",
+            "included": true,
+            "outputName": "category",
+            "targetType": "string"
+          },
+          {
+            "source": "group",
+            "included": true,
+            "outputName": "group",
+            "targetType": "int64"
+          }
+        ],
+        "castFailure": "error",
+        "trimText": false,
+        "newColumns": "drop",
+        "missingPolicy": "preserve"
+      }
+    },
+    {
+      "id": "partition",
+      "operator": "kwip.data.partition",
+      "config": {
+        "strategy": "random",
+        "seed": 42,
+        "validationPercent": 20,
+        "testPercent": 20,
+        "stratifyColumn": "group"
+      }
+    },
+    {
+      "id": "prepare",
+      "operator": "kwip.data.preprocess",
+      "config": {
+        "mode": "partitions",
+        "columns": [
+          {
+            "column": "amount",
+            "missing": "mean",
+            "value": 0,
+            "emptyPolicy": "error",
+            "emptyValue": 0,
+            "tiePolicy": "error",
+            "encoding": "none",
+            "vocabularyOrder": "lexicographic",
+            "unknownPolicy": "error",
+            "maxCategories": 32,
+            "scaling": "standard",
+            "center": true,
+            "unitVariance": true,
+            "unicodeNormalization": "none",
+            "removeControls": false,
+            "removePunctuation": false,
+            "removeDigits": false,
+            "whitespace": "none",
+            "case": "preserve",
+            "emptyAfterCleanup": "keep"
+          },
+          {
+            "column": "other",
+            "missing": "mean",
+            "value": 0,
+            "emptyPolicy": "error",
+            "emptyValue": 0,
+            "tiePolicy": "error",
+            "encoding": "none",
+            "vocabularyOrder": "lexicographic",
+            "unknownPolicy": "error",
+            "maxCategories": 32,
+            "scaling": "standard",
+            "center": true,
+            "unitVariance": true,
+            "unicodeNormalization": "none",
+            "removeControls": false,
+            "removePunctuation": false,
+            "removeDigits": false,
+            "whitespace": "none",
+            "case": "preserve",
+            "emptyAfterCleanup": "keep"
+          },
+          {
+            "column": "category",
+            "missing": "mostFrequent",
+            "value": 0,
+            "emptyPolicy": "error",
+            "emptyValue": 0,
+            "tiePolicy": "smallest",
+            "encoding": "oneHot",
+            "vocabularyOrder": "lexicographic",
+            "unknownPolicy": "ignore",
+            "maxCategories": 8,
+            "scaling": "none",
+            "center": true,
+            "unitVariance": true,
+            "unicodeNormalization": "none",
+            "removeControls": false,
+            "removePunctuation": false,
+            "removeDigits": false,
+            "whitespace": "none",
+            "case": "preserve",
+            "emptyAfterCleanup": "keep"
+          }
+        ]
+      }
+    },
+    {
+      "id": "training",
+      "operator": "kwip.data.view",
+      "config": {}
+    },
+    {
+      "id": "validation",
+      "operator": "kwip.data.view",
+      "config": {}
+    },
+    {
+      "id": "test",
+      "operator": "kwip.data.view",
+      "config": {}
+    }
+  ],
+  "edges": [
+    {
+      "from": {
+        "node": "source",
+        "port": "table"
+      },
+      "to": {
+        "node": "columns",
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "node": "columns",
+        "port": "table"
+      },
+      "to": {
+        "node": "partition",
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "node": "partition",
+        "port": "training"
+      },
+      "to": {
+        "node": "prepare",
+        "port": "training"
+      }
+    },
+    {
+      "from": {
+        "node": "prepare",
+        "port": "training"
+      },
+      "to": {
+        "node": "training",
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "node": "partition",
+        "port": "validation"
+      },
+      "to": {
+        "node": "prepare",
+        "port": "validation"
+      }
+    },
+    {
+      "from": {
+        "node": "prepare",
+        "port": "validation"
+      },
+      "to": {
+        "node": "validation",
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "node": "partition",
+        "port": "test"
+      },
+      "to": {
+        "node": "prepare",
+        "port": "test"
+      }
+    },
+    {
+      "from": {
+        "node": "prepare",
+        "port": "test"
+      },
+      "to": {
+        "node": "test",
+        "port": "table"
+      }
+    }
+  ]
+}

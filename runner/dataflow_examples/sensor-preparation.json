@@ -1,0 +1,319 @@
+{
+  "schemaVersion": 1,
+  "nodes": [
+    {
+      "id": "source",
+      "operator": "kwip.data.sourceCSV",
+      "config": {
+        "separator": ","
+      }
+    },
+    {
+      "id": "columns",
+      "operator": "kwip.data.columns",
+      "config": {
+        "rows": [
+          {
+            "source": "reading_raw",
+            "included": true,
+            "outputName": "amount",
+            "targetType": "float64"
+          },
+          {
+            "source": "temperature",
+            "included": true,
+            "outputName": "temperature",
+            "targetType": "float64"
+          },
+          {
+            "source": "quality",
+            "included": true,
+            "outputName": "quality",
+            "targetType": "string"
+          },
+          {
+            "source": "label",
+            "included": true,
+            "outputName": "label",
+            "targetType": "int64"
+          },
+          {
+            "source": "sample_id",
+            "included": true,
+            "outputName": "sample_id",
+            "targetType": "keep"
+          }
+        ],
+        "castFailure": "error",
+        "trimText": false,
+        "newColumns": "drop",
+        "missingPolicy": "error"
+      }
+    },
+    {
+      "id": "quality-filter",
+      "operator": "kwip.data.filterRows",
+      "config": {
+        "mode": "simple",
+        "conditions": [
+          {
+            "column": "quality",
+            "comparison": "eq",
+            "value": "accepted",
+            "caseSensitive": true
+          }
+        ],
+        "match": "all",
+        "expression": "",
+        "column": "quality",
+        "pattern": ".+",
+        "matchMode": "search",
+        "flags": [],
+        "nullPolicy": "error"
+      }
+    },
+    {
+      "id": "range-filter",
+      "operator": "kwip.data.filterRows",
+      "config": {
+        "mode": "simple",
+        "conditions": [
+          {
+            "column": "amount",
+            "comparison": "ge",
+            "value": 0,
+            "caseSensitive": true
+          }
+        ],
+        "match": "all",
+        "expression": "",
+        "column": "amount",
+        "pattern": ".+",
+        "matchMode": "search",
+        "flags": [],
+        "nullPolicy": "error"
+      }
+    },
+    {
+      "id": "model-columns",
+      "operator": "kwip.data.columns",
+      "config": {
+        "rows": [
+          {
+            "source": "amount",
+            "included": true,
+            "outputName": "amount",
+            "targetType": "keep"
+          },
+          {
+            "source": "temperature",
+            "included": true,
+            "outputName": "temperature",
+            "targetType": "keep"
+          },
+          {
+            "source": "label",
+            "included": true,
+            "outputName": "label",
+            "targetType": "keep"
+          }
+        ],
+        "castFailure": "error",
+        "trimText": false,
+        "newColumns": "drop",
+        "missingPolicy": "error"
+      }
+    },
+    {
+      "id": "partition",
+      "operator": "kwip.data.partition",
+      "config": {
+        "strategy": "random",
+        "seed": 42,
+        "validationPercent": 20,
+        "testPercent": 20,
+        "stratifyColumn": "label"
+      }
+    },
+    {
+      "id": "prepare",
+      "operator": "kwip.data.preprocess",
+      "config": {
+        "mode": "partitions",
+        "columns": [
+          {
+            "column": "amount",
+            "missing": "error",
+            "value": 0,
+            "emptyPolicy": "error",
+            "emptyValue": 0,
+            "tiePolicy": "error",
+            "encoding": "none",
+            "vocabularyOrder": "lexicographic",
+            "unknownPolicy": "error",
+            "maxCategories": 32,
+            "scaling": "standard",
+            "center": true,
+            "unitVariance": true,
+            "unicodeNormalization": "none",
+            "removeControls": false,
+            "removePunctuation": false,
+            "removeDigits": false,
+            "whitespace": "none",
+            "case": "preserve",
+            "emptyAfterCleanup": "keep"
+          },
+          {
+            "column": "temperature",
+            "missing": "error",
+            "value": 0,
+            "emptyPolicy": "error",
+            "emptyValue": 0,
+            "tiePolicy": "error",
+            "encoding": "none",
+            "vocabularyOrder": "lexicographic",
+            "unknownPolicy": "error",
+            "maxCategories": 32,
+            "scaling": "standard",
+            "center": true,
+            "unitVariance": true,
+            "unicodeNormalization": "none",
+            "removeControls": false,
+            "removePunctuation": false,
+            "removeDigits": false,
+            "whitespace": "none",
+            "case": "preserve",
+            "emptyAfterCleanup": "keep"
+          }
+        ]
+      }
+    },
+    {
+      "id": "training",
+      "operator": "kwip.data.view",
+      "config": {}
+    },
+    {
+      "id": "validation",
+      "operator": "kwip.data.view",
+      "config": {}
+    },
+    {
+      "id": "test",
+      "operator": "kwip.data.view",
+      "config": {}
+    }
+  ],
+  "edges": [
+    {
+      "from": {
+        "node": "source",
+        "port": "table"
+      },
+      "to": {
+        "node": "columns",
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "node": "columns",
+        "port": "table"
+      },
+      "to": {
+        "node": "quality-filter",
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "node": "quality-filter",
+        "port": "matching"
+      },
+      "to": {
+        "node": "range-filter",
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "node": "range-filter",
+        "port": "matching"
+      },
+      "to": {
+        "node": "model-columns",
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "node": "model-columns",
+        "port": "table"
+      },
+      "to": {
+        "node": "partition",
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "node": "partition",
+        "port": "training"
+      },
+      "to": {
+        "node": "prepare",
+        "port": "training"
+      }
+    },
+    {
+      "from": {
+        "node": "prepare",
+        "port": "training"
+      },
+      "to": {
+        "node": "training",
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "node": "partition",
+        "port": "validation"
+      },
+      "to": {
+        "node": "prepare",
+        "port": "validation"
+      }
+    },
+    {
+      "from": {
+        "node": "prepare",
+        "port": "validation"
+      },
+      "to": {
+        "node": "validation",
+        "port": "table"
+      }
+    },
+    {
+      "from": {
+        "node": "partition",
+        "port": "test"
+      },
+      "to": {
+        "node": "prepare",
+        "port": "test"
+      }
+    },
+    {
+      "from": {
+        "node": "prepare",
+        "port": "test"
+      },
+      "to": {
+        "node": "test",
+        "port": "table"
+      }
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "tool": "imagegen",
+  "date": "2026-10-15",
+  "scope": "Owner-authorized family consistency pass",
+  "assets": [
+    {
+      "asset": "Sources/KwipMLApp/Resources/ComponentIcons/model-boundary-v3.png",
+      "sha256": "02d7de617bc080cf5de3a9e617a642deac5130c8fec40a43abb5d94b482fee50",
+      "imagegenOriginal": "exec-2d397626-06bc-4774-a131-78af40b1841a.png",
+      "family": "Boundaries",
+      "treatment": "Original generated PNG, copied without raster editing"
+    },
+    {
+      "asset": "Sources/KwipMLApp/Resources/ComponentIcons/parallel-features-v1.png",
+      "sha256": "362e3b02503d996e1b30d4b9b143ba328bc61893105d19e11c7b43e5f34aeebb",
+      "imagegenOriginal": "exec-79083ca9-b118-420f-9cc4-0db82c0cf6f0.png",
+      "family": "Merge",
+      "treatment": "Original generated PNG, copied without raster editing"
+    },
+    {
+      "asset": "Sources/KwipMLApp/Resources/ComponentIcons/save-model-v1.png",
+      "sha256": "a8dbc66f535d76a0213670a9dbfd40b2ff9e090ca52d5dd39eb554b67270ec10",
+      "imagegenOriginal": "exec-1f1e8aaf-1304-40da-886a-8ba13bd805e5.png",
+      "family": "Training",
+      "treatment": "Original generated PNG, copied without raster editing"
+    }
+  ]
+}

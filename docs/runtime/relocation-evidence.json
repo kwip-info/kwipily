@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "relocatedRuntime": "<external temporary directory>/Relocated KwipML.app/Contents/Resources/KwipMLRuntime",
+  "workingDirectory": "<external temporary directory>",
+  "checkoutAccessDenied": true,
+  "networkPolicy": "deny network*",
+  "hostPythonEnvironmentIgnored": true,
+  "capabilities": {
+    "event": "capabilities",
+    "devices": [
+      "cpu",
+      "mps"
+    ],
+    "defaultDevice": "mps"
+  },
+  "runs": [
+    {
+      "device": "cpu",
+      "epochs": 30,
+      "accuracy": 0.9166666865348816,
+      "validationLoss": 0.1130007803440094,
+      "exportParity": true,
+      "checkpointPreview": true
+    },
+    {
+      "device": "mps",
+      "epochs": 30,
+      "accuracy": 0.9166666865348816,
+      "validationLoss": 0.11300078779459,
+      "exportParity": true,
+      "checkpointPreview": true
+    }
+  ],
+  "cancellation": {
+    "returnCode": 130,
+    "completedEvent": false,
+    "manifestPresent": false
+  },
+  "limitations": [
+    "Seatbelt command profile is not App Sandbox entitlement validation.",
+    "Same account and same machine; clean-account installation not tested.",
+    "Runtime payload was relocated inside app resource layout; native UI lifecycle is a separate test."
+  ]
+}

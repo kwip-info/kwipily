@@ -1,0 +1,152 @@
+import XCTest
+import KwipMLCore
+@testable import KwipMLApp
+
+@MainActor final class LayerNormWorkflowAdmissionTests: XCTestCase {
+    private final class Recorder: @unchecked Sendable {
+        private let lock = NSLock()
+        private var captures = 0
+        private var launches = 0
+        func capture() { lock.lock(); captures += 1; lock.unlock() }
+        func launch() { lock.lock(); launches += 1; lock.unlock() }
+        var counts: (Int, Int) { lock.lock(); defer { lock.unlock() }; return (captures, launches) }
+    }
+    private struct Fixture {
+        let root: URL
+        let workspace: WorkspaceStore
+        let host: WorkflowWorkspaceSession
+        let recorder: Recorder
+    }
+    private func fixture(layer_normModel: Bool, axis: Int, verified: Bool, controlledCancellation: Bool = true) throws -> Fixture {
+        let repo = URL(fileURLWithPath: #filePath).deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent()
+        let root = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+        try FileManager.default.createDirectory(at: root, withIntermediateDirectories: true)
+        addTeardownBlock { try? FileManager.default.removeItem(at: root) }
+        let workspace = WorkspaceStore(rootOverride: repo, storageOverride: root, detectCapabilities: false)
+        _ = try XCTUnwrap(workspace.runtime, workspace.runtimeError ?? "Fixture runtime unavailable")
+        var document = try WorkflowCodec.migrateToVersion4(layer_normModel ? WorkflowExamples.preparedLayerNormClassifier(device: "cpu", normalizeWholeSample: axis == 1) : WorkflowExamples.preparedParallelClassifier(device: "cpu"))
+        for index in document.nodes.indices {
+            if case .modelPrimitive(let type, let version, _) = document.nodes[index].payload, type == "layer_norm" {
+                document.nodes[index].payload = .modelPrimitive(type: type, configurationVersion: version, config: ["normalized_shape": .array(axis == 1 ? [2,3] : [3]), "eps": .number(1e-5), "elementwise_affine": true, "bias": true])
+            }
+        }
+        for index in document.nodes.indices {
+            if case .modelPrimitive(let type, let version, _) = document.nodes[index].payload, type == "gelu" {
+                document.nodes[index].payload = .modelPrimitive(type: "relu", configurationVersion: version, config: [:])
+            }
+        }
+        if !layer_normModel {
+            document.nodes.append(.init(address: .init(domain: .model, localID: "disconnected-layer_norm"), name: "Unused layer_norm", x: 0, y: 0, payload: .modelPrimitive(type: "layer_norm", configurationVersion: 1, config: ["normalized_shape": .array(axis == 1 ? [2,3] : [3]), "eps": .number(1e-5), "elementwise_affine": true, "bias": true])))
+        }
+        let setup = try XCTUnwrap(document.nodes.firstIndex { if case .runSetup = $0.payload { return true }; return false })
+        guard case .runSetup(var settings) = document.nodes[setup].payload else { throw WorkflowArchiveError("Missing setup") }
+        settings["experiment"] = .object(["schemaVersion": 1, "axes": .array([.object(["field": .string("seed"), "values": .array([7, 8])])]), "budget": .object(["maximumRuns": 2, "maximumTotalEpochs": 6])])
+        document.nodes[setup].payload = .runSetup(config: settings)
+        _ = try workspace.projectLibrary.saveSource(.workflow(document), id: document.projectID)
+        XCTAssertTrue(workspace.beginWorkflowProject(id: document.projectID), workspace.statusMessage)
+        let host = try XCTUnwrap(workspace.workflowSession)
+        let csv = root.appendingPathComponent("observations.csv")
+        try FileManager.default.copyItem(at: repo.appendingPathComponent("Sources/KwipMLApp/Resources/workflow-observations.csv"), to: csv)
+        try workspace.sourceAccess.remember(csv)
+        XCTAssertTrue(host.bindings.setPath(csv.path, for: WorkflowExamples.sourceAddress, lease: host.owner.lease(), expectedRevision: host.bindings.revision))
+        let contract = try BuiltInCapabilityBridge.executionContract(registry: workspace.registry, runtimeVersion: "2.14.1", availableDevices: [.cpu])
+        let descriptor: [String: Any] = ["version": ["major": 1, "minor": 0, "patch": 0], "adapterID": "kwip.runner.graph-v2.layer_norm", "graphSchemaVersions": [2], "maximumRank": 8, "preservesBatch": true, "epsilonMinimum": LayerNormConfiguration.epsilonRange.lowerBound, "epsilonMaximum": LayerNormConfiguration.epsilonRange.upperBound, "elementwiseAffineModes": [false,true], "biasModes": [false,true], "varianceCorrection": 0, "usesCurrentInputStatistics": true]
+        let layout: [String: Any] = ["version": ["major": 1, "minor": 0, "patch": 0], "adapterID": "kwip.runner.graph-v2.tensor-layout", "graphSchemaVersions": [2], "operations": ["reshape", "transpose", "flatten"], "maximumRank": 8, "preservesBatch": true]
+        try fixtureInstallDiscoveredRuntimeContract(workspace,version: "2.14.1", expectedVersion: nil, devices: ["cpu"], descriptor: JSONEncoder().encode(contract), tensorLayoutDescriptor: JSONSerialization.data(withJSONObject: layout), layerNormDescriptor: verified ? JSONSerialization.data(withJSONObject: descriptor) : nil, tensorCompositionDescriptors: fixtureReviewedCompositionDescriptors(), moduleCompositionDescriptor: fixtureReviewedModuleCompositionDescriptor())
+        let recorder = Recorder()
+        if controlledCancellation {
+            host.captureRunSources = { _, _, _, _ in recorder.capture(); throw CancellationError() }
+            host.captureExperimentInputs = { _, _ in recorder.capture(); throw CancellationError() }
+        }
+        host.executionLaunch = { _, _, _, _, _ in recorder.launch(); throw WorkflowArchiveError("No worker should launch in admission tests") }
+        return .init(root: root, workspace: workspace, host: host, recorder: recorder)
+    }
+    private func waitForCaptureToFinish(_ fixture: Fixture) async throws {
+        let deadline = Date().addingTimeInterval(5)
+        while (fixture.recorder.counts.0 == 0 || fixture.workspace.isBusy), Date() < deadline {
+            try await Task.sleep(for: .milliseconds(10))
+        }
+        XCTAssertEqual(fixture.recorder.counts.0, 1)
+        XCTAssertEqual(fixture.recorder.counts.1, 0)
+        XCTAssertFalse(fixture.workspace.isBusy)
+    }
+    func testMissingDescriptorRefusesTrainAndExperimentsBeforeCaptureOrReservation() throws {
+        for (experiments, axis) in [(false, -1), (false, 1), (true, -1), (true, 1)] {
+            let f = try fixture(layer_normModel: true, axis: axis, verified: false)
+            defer { f.host.cancel(); f.workspace.retireWorkflowSession() }
+            XCTAssertFalse(experiments ? f.host.runExperiments() : f.host.run(), f.host.statusMessage)
+            XCTAssertTrue(f.host.statusMessage.contains("Layer normalization"), f.host.statusMessage)
+            XCTAssertEqual(f.recorder.counts.0, 0); XCTAssertEqual(f.recorder.counts.1, 0)
+            XCTAssertFalse(f.workspace.isBusy); XCTAssertFalse(f.host.isStagingExperiment)
+            XCTAssertNil(f.host.queuedRequestID)
+            XCTAssertFalse(FileManager.default.fileExists(atPath: f.workspace.workspaceDirectory.appendingPathComponent("workflow-source-staging").path))
+        }
+    }
+    func testVerifiedDescriptorAllowsTrainAndExperimentCaptureWithControlledCancellation() async throws {
+        for (experiments, axis) in [(false, -1), (false, 1), (true, -1), (true, 1)] {
+            let f = try fixture(layer_normModel: true, axis: axis, verified: true)
+            defer { f.host.cancel(); f.workspace.retireWorkflowSession() }
+            XCTAssertTrue(experiments ? f.host.runExperiments() : f.host.run(), f.host.statusMessage)
+            try await waitForCaptureToFinish(f)
+        }
+    }
+    func testQueuedTrainAndExperimentsRecheckLostSupportBeforeDispatchAndReleaseCapture() async throws {
+        func wait(_ condition: () -> Bool) async throws {
+            let deadline = Date().addingTimeInterval(10)
+            while !condition(), Date() < deadline { try await Task.sleep(for: .milliseconds(10)) }
+            XCTAssertTrue(condition(), "Timed out at queued admission boundary")
+        }
+        for (experiments, axis) in [(false, -1), (false, 1), (true, -1), (true, 1)] {
+            let f = try fixture(layer_normModel: true, axis: axis, verified: true, controlledCancellation: false)
+            defer { f.host.cancel(); f.workspace.retireWorkflowSession() }
+            let queue = f.host.executionQueue
+            let capture = try WorkflowQueueCapture(projectID: f.host.owner.projectID, title: "Admission test gate", kind: .training,
+                requestIdentities: [String(repeating: "a", count: 64)], document: f.host.owner.document, sourceHashes: [])
+            let gate = try queue.enqueue(capture: capture, start: {}, cancel: {})
+            defer { queue.finish(gate, state: .completed, message: "Test cleanup") }
+            try await wait { queue.entries.first(where: { $0.id == gate })?.state == .running }
+            let accounting = try WorkflowStorageAdmission(workspace: f.workspace.workspaceDirectory, accountingRoot: f.workspace.applicationDirectory)
+            let before = try accounting.snapshot().reservedGrowthBytes
+            XCTAssertTrue(experiments ? f.host.runExperiments() : f.host.run(), f.host.statusMessage)
+            try await wait { f.host.queuedRequestID != nil }
+            let queuedID = try XCTUnwrap(f.host.queuedRequestID)
+            let entry = try XCTUnwrap(queue.entries.first { $0.id == queuedID })
+            XCTAssertEqual(entry.state, .queued)
+            XCTAssertFalse(entry.capture.sourceHashes.isEmpty, "Real source bytes must have been captured before queue admission")
+            XCTAssertTrue(f.workspace.isBusy)
+            XCTAssertEqual(f.recorder.counts.1, 0)
+            f.workspace.layerNormRuntimeCapability = nil
+            queue.finish(gate, state: .completed, message: "Release after optional support was revoked")
+            try await wait { queue.entries.first(where: { $0.id == queuedID })?.state == .failed && !f.workspace.isBusy }
+            let failed = try XCTUnwrap(queue.entries.first { $0.id == queuedID })
+            XCTAssertTrue(failed.message.contains("Layer normalization"), failed.message)
+            XCTAssertTrue(failed.message.contains("Refresh"), failed.message)
+            XCTAssertEqual(f.recorder.counts.1, 0)
+            XCTAssertNil(f.host.queuedRequestID)
+            XCTAssertNil(f.workspace.cancelDataPreparation)
+            XCTAssertEqual(try accounting.snapshot().reservedGrowthBytes, before)
+            let stage = f.workspace.workspaceDirectory.appendingPathComponent("workflow-source-staging")
+            if FileManager.default.fileExists(atPath: stage.path) {
+                XCTAssertTrue(try FileManager.default.contentsOfDirectory(atPath: stage.path).isEmpty,
+                              "Temporary captured run sources must be released")
+            }
+            if experiments {
+                let runner = try XCTUnwrap(f.host.experimentRunner)
+                XCTAssertTrue(runner.group.record.variants.allSatisfy { $0.status == .cancelled })
+                XCTAssertFalse(runner.isRunning)
+                // Immutable experiment inputs remain with the cancelled group as
+                // historical evidence; they are not a leaked temporary run stage.
+            }
+        }
+    }
+    func testDisconnectedLayerNormDoesNotBlockTheSelectedTrainGraph() async throws {
+        for (experiments, axis) in [(false, -1), (false, 1), (true, -1), (true, 1)] {
+            let f = try fixture(layer_normModel: false, axis: axis, verified: false)
+            defer { f.host.cancel(); f.workspace.retireWorkflowSession() }
+            let compiled = try WorkflowCompiler.compile(f.host.owner.document, train: WorkflowExamples.trainAddress, modelRegistry: f.host.owner.modelRegistry, dataRegistry: f.host.owner.dataRegistry, contractVersion: max(2, WorkflowArchiveCodec.trainingCompilerContractVersion(forWorkflowSchema: f.host.owner.document.schemaVersion)))
+            XCTAssertFalse(compiled.model.graph.nodes.contains { $0.type == "layer_norm" })
+            XCTAssertTrue(experiments ? f.host.runExperiments() : f.host.run(), f.host.statusMessage)
+            try await waitForCaptureToFinish(f)
+        }
+    }
+}

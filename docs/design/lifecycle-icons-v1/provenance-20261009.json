@@ -1,0 +1,14 @@
+{
+  "status": "generated-and-visually-reviewed; registered resource; native review pending",
+  "date": "2026-10-09",
+  "tool": "built-in image_gen",
+  "assetID": "checkpoint-save-restore-v1",
+  "source": "/Users/developer/.codex/generated_images/01a10a07-829a-7e73-a566-105746b4f45f/exec-ebb0336d-efbd-41d9-889f-49ef5ef7d450.png",
+  "destination": "docs/design/lifecycle-icons-v1/checkpoint-save-restore-v1.png",
+  "sha256": "6fe639fbcae65fcd07ecec152855f731644725d281b93f1a01205abfeb2fbcc4",
+  "reference": "Sources/KwipMLApp/Resources/ComponentIcons/frozen-model-v2.png",
+  "prompt": "Edit this KwipML component icon to create a new sibling CHECKPOINT SAVE / RESTORE component asset. Preserve the exact flat clipped-corner octagonal outer frame, same optical footprint, chunky broad geometry, consistent stroke weight, teal two-tone material and truly transparent background of the reference. Replace ONLY the interior lock/network symbol with a large simple stack of three saved-state trays and two opposed short arrows: one downward arrow into the trays and one upward return arrow beside them. Both arrows should be very legible at 24 pixels, no thin details. The semantic idea is save a model\u2019s learned settings and restore them later. Flat front-on icon, no perspective, no extra background, no text, no labels, no watermark, no shadows or decorative glow. Keep ample negative space separating interior glyph from the outer border. Original production-quality raster artwork in the same approved icon family.",
+  "review": "Three state trays and two opposed save/restore arrows; strong central silhouette and existing clipped frame. Native24/32/48pt and theme checks remain integration work. Existing assets unchanged.",
+  "registeredResource": "Sources/KwipMLApp/Resources/ComponentIcons/checkpoint-save-restore-v1.png",
+  "resourceSHA256": "6fe639fbcae65fcd07ecec152855f731644725d281b93f1a01205abfeb2fbcc4"
+}

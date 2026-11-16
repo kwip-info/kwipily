@@ -1,0 +1,9 @@
+# Native bag workflow mapping · 2026-10-09
+
+Scope: strict schema1 BagInputMapping; workflow12/compiler11; explicit migration retaining project/revision/drafts; typed input guidance; conservative all-consumer prepared admission; experiment compilation. Mapping identity includes ordered item, weight and packed-length column bindings, with all source/target roles disjoint. Source geometry derives from actual graph configuration. Compatible fan-out retains each native consumer and prepares against the minimum vocabulary and maximum result width; no consumer is chosen as the model-wide configuration.
+
+Actual TDD: `.local/bag-workflow-mapping-red.log` first failed test compilation on JSONValue literals, corrected without production behavior. `.local/bag-workflow-mapping-semantic-red.log` then ran7 methods with6 expected implementation failures. Added retained-draft and experiment checks. Subsequent actual repair replays exposed missing cache/training schema12 allowlists and existing unknown-future version assertions. Fixture numeric2.0 versus decodedinteger2 was corrected to wire-canonical2, retaining full document equality. All failure logs remain local.
+
+Final root receipt: `.local/bag-core-mapping-composition-green-2.log`, **63 tests, zero failures**,1.426 seconds. Includes9 new mapping methods plus adjacent workflow/compiler/objective/initialization/experiment/source/composition tests. Covers both layouts/weight modes, binary and explicit objectives, strict field/role gates, multi-consumer min/max admission, legacy plans/migration and preserved pending drafts. New unknown future boundaries remain schema13/compiler12; workflow11/compiler10 semantics remain unchanged.
+
+This is native Core acceptance, not native application run acceptance. Workflow capture7, managed launch authority, packet predictions/History, generated art registration and lessons remain separately tracked. Accepted coverage remains83/88.

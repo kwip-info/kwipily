@@ -1,0 +1,617 @@
+{
+  "schemaVersion": 1,
+  "extensions": {
+    "text": [
+      "txt",
+      "md",
+      "log",
+      "csv",
+      "tsv",
+      "json",
+      "jsonl",
+      "xml",
+      "html",
+      "htm",
+      "yaml",
+      "yml",
+      "ini",
+      "cfg"
+    ],
+    "pdf": [
+      "pdf"
+    ],
+    "docx": [
+      "docx"
+    ],
+    "rtf": [
+      "rtf"
+    ],
+    "odt": [
+      "odt"
+    ],
+    "image": [
+      "png",
+      "jpg",
+      "jpeg",
+      "tif",
+      "tiff",
+      "bmp",
+      "gif",
+      "webp"
+    ],
+    "audio": [
+      "wav"
+    ]
+  },
+  "metadataFields": [
+    "file_id",
+    "name",
+    "relative_path",
+    "extension",
+    "detected_type",
+    "byte_size",
+    "modified_at",
+    "created_at",
+    "content_sha256"
+  ],
+  "readers": {
+    "text": {
+      "title": "Text files",
+      "fields": [
+        {
+          "key": "encoding",
+          "title": "Encoding",
+          "kind": "choice",
+          "defaultValue": "auto",
+          "choices": [
+            {
+              "value": "auto",
+              "title": "auto"
+            },
+            {
+              "value": "utf-8",
+              "title": "utf-8"
+            },
+            {
+              "value": "utf-8-sig",
+              "title": "utf-8-sig"
+            },
+            {
+              "value": "utf-16",
+              "title": "utf-16"
+            },
+            {
+              "value": "utf-16-le",
+              "title": "utf-16-le"
+            },
+            {
+              "value": "utf-16-be",
+              "title": "utf-16-be"
+            },
+            {
+              "value": "utf-32",
+              "title": "utf-32"
+            },
+            {
+              "value": "ascii",
+              "title": "ascii"
+            },
+            {
+              "value": "cp1252",
+              "title": "cp1252"
+            },
+            {
+              "value": "latin-1",
+              "title": "latin-1"
+            }
+          ]
+        },
+        {
+          "key": "errors",
+          "title": "Decoding errors",
+          "kind": "choice",
+          "defaultValue": "strict",
+          "choices": [
+            {
+              "value": "strict",
+              "title": "Report error"
+            },
+            {
+              "value": "replace",
+              "title": "Replace invalid characters"
+            },
+            {
+              "value": "ignore",
+              "title": "Skip invalid characters"
+            }
+          ]
+        },
+        {
+          "key": "newline",
+          "title": "Newlines",
+          "kind": "choice",
+          "defaultValue": "preserve",
+          "choices": [
+            {
+              "value": "preserve",
+              "title": "Preserve"
+            },
+            {
+              "value": "lf",
+              "title": "LF"
+            },
+            {
+              "value": "crlf",
+              "title": "CRLF"
+            }
+          ]
+        },
+        {
+          "key": "units",
+          "title": "Rows",
+          "kind": "choice",
+          "defaultValue": "file",
+          "choices": [
+            {
+              "value": "file",
+              "title": "One row per file"
+            },
+            {
+              "value": "line",
+              "title": "One row per line"
+            }
+          ]
+        },
+        {
+          "key": "keep_empty_lines",
+          "title": "Keep empty lines",
+          "kind": "boolean",
+          "defaultValue": true
+        }
+      ]
+    },
+    "pdf": {
+      "title": "PDF documents",
+      "fields": [
+        {
+          "key": "renderMode",
+          "title": "PDF content",
+          "kind": "choice",
+          "defaultValue": "text",
+          "choices": [
+            {
+              "value": "text",
+              "title": "Embedded text"
+            },
+            {
+              "value": "pageImages",
+              "title": "Page images for OCR"
+            }
+          ]
+        },
+        {
+          "key": "renderDPI",
+          "title": "Page image DPI",
+          "kind": "integer",
+          "defaultValue": 144,
+          "min": 36,
+          "max": 300
+        },
+        {
+          "key": "maximumRenderPages",
+          "title": "Maximum rendered pages",
+          "kind": "integer",
+          "defaultValue": 20,
+          "min": 1,
+          "max": 100
+        },
+        {
+          "key": "units",
+          "title": "Rows",
+          "kind": "choice",
+          "defaultValue": "file",
+          "choices": [
+            {
+              "value": "file",
+              "title": "One row per file"
+            },
+            {
+              "value": "page",
+              "title": "One row per page"
+            }
+          ]
+        },
+        {
+          "key": "pages",
+          "title": "Pages \u00b7 empty selects all",
+          "kind": "integerList",
+          "defaultValue": []
+        },
+        {
+          "key": "extraction_mode",
+          "title": "Text mode",
+          "kind": "choice",
+          "defaultValue": "plain",
+          "choices": [
+            {
+              "value": "plain",
+              "title": "Plain text"
+            },
+            {
+              "value": "layout",
+              "title": "Preserve layout"
+            }
+          ]
+        },
+        {
+          "key": "separator",
+          "title": "Page separator",
+          "kind": "string",
+          "defaultValue": "\n\n"
+        },
+        {
+          "key": "strict",
+          "title": "Strict PDF validation",
+          "kind": "boolean",
+          "defaultValue": false
+        },
+        {
+          "key": "orientations",
+          "title": "Text orientations",
+          "kind": "integerList",
+          "defaultValue": [
+            0,
+            90,
+            180,
+            270
+          ]
+        },
+        {
+          "key": "space_width",
+          "title": "Fallback space width",
+          "kind": "number",
+          "defaultValue": 200,
+          "min": 0.01,
+          "max": 10000
+        },
+        {
+          "key": "layout_space_vertically",
+          "title": "Preserve vertical space",
+          "kind": "boolean",
+          "defaultValue": true
+        },
+        {
+          "key": "layout_scale_weight",
+          "title": "Layout scale weight",
+          "kind": "number",
+          "defaultValue": 1.25,
+          "min": 0.01,
+          "max": 100
+        },
+        {
+          "key": "layout_strip_rotated",
+          "title": "Exclude rotated layout text",
+          "kind": "boolean",
+          "defaultValue": true
+        },
+        {
+          "key": "layout_font_height_weight",
+          "title": "Layout font height weight",
+          "kind": "number",
+          "defaultValue": 1,
+          "min": 0.01,
+          "max": 100
+        }
+      ]
+    },
+    "docx": {
+      "title": "Word documents",
+      "fields": [
+        {
+          "key": "units",
+          "title": "Rows",
+          "kind": "choice",
+          "defaultValue": "file",
+          "choices": [
+            {
+              "value": "file",
+              "title": "One row per file"
+            },
+            {
+              "value": "paragraph",
+              "title": "One row per paragraph"
+            }
+          ]
+        },
+        {
+          "key": "include_tables",
+          "title": "Include table text",
+          "kind": "boolean",
+          "defaultValue": true
+        },
+        {
+          "key": "include_nested_tables",
+          "title": "Include nested table text",
+          "kind": "boolean",
+          "defaultValue": true
+        },
+        {
+          "key": "include_headers",
+          "title": "Include headers",
+          "kind": "boolean",
+          "defaultValue": false
+        },
+        {
+          "key": "include_footers",
+          "title": "Include footers",
+          "kind": "boolean",
+          "defaultValue": false
+        },
+        {
+          "key": "separator",
+          "title": "Block separator",
+          "kind": "string",
+          "defaultValue": "\n\n"
+        }
+      ]
+    },
+    "rtf": {
+      "title": "Rich Text documents",
+      "fields": [
+        {
+          "key": "encoding",
+          "title": "Fallback encoding",
+          "kind": "choice",
+          "defaultValue": "cp1252",
+          "choices": [
+            {
+              "value": "utf-8",
+              "title": "utf-8"
+            },
+            {
+              "value": "utf-8-sig",
+              "title": "utf-8-sig"
+            },
+            {
+              "value": "utf-16",
+              "title": "utf-16"
+            },
+            {
+              "value": "utf-16-le",
+              "title": "utf-16-le"
+            },
+            {
+              "value": "utf-16-be",
+              "title": "utf-16-be"
+            },
+            {
+              "value": "utf-32",
+              "title": "utf-32"
+            },
+            {
+              "value": "ascii",
+              "title": "ascii"
+            },
+            {
+              "value": "cp1252",
+              "title": "cp1252"
+            },
+            {
+              "value": "latin-1",
+              "title": "latin-1"
+            }
+          ]
+        },
+        {
+          "key": "errors",
+          "title": "Decoding errors",
+          "kind": "choice",
+          "defaultValue": "strict",
+          "choices": [
+            {
+              "value": "strict",
+              "title": "Report error"
+            },
+            {
+              "value": "replace",
+              "title": "Replace invalid characters"
+            },
+            {
+              "value": "ignore",
+              "title": "Skip invalid characters"
+            }
+          ]
+        },
+        {
+          "key": "units",
+          "title": "Rows",
+          "kind": "choice",
+          "defaultValue": "file",
+          "choices": [
+            {
+              "value": "file",
+              "title": "One row per file"
+            },
+            {
+              "value": "paragraph",
+              "title": "One row per paragraph"
+            }
+          ]
+        },
+        {
+          "key": "separator",
+          "title": "Paragraph separator",
+          "kind": "string",
+          "defaultValue": "\n\n"
+        }
+      ]
+    },
+    "odt": {
+      "title": "OpenDocument text",
+      "fields": [
+        {
+          "key": "units",
+          "title": "Rows",
+          "kind": "choice",
+          "defaultValue": "file",
+          "choices": [
+            {
+              "value": "file",
+              "title": "One row per file"
+            },
+            {
+              "value": "paragraph",
+              "title": "One row per paragraph"
+            }
+          ]
+        },
+        {
+          "key": "include_tables",
+          "title": "Include table text",
+          "kind": "boolean",
+          "defaultValue": true
+        },
+        {
+          "key": "separator",
+          "title": "Block separator",
+          "kind": "string",
+          "defaultValue": "\n\n"
+        }
+      ]
+    },
+    "image": {
+      "title": "Images",
+      "fields": [
+        {
+          "key": "frames",
+          "title": "Frames",
+          "kind": "choice",
+          "defaultValue": "first",
+          "choices": [
+            {
+              "value": "first",
+              "title": "First frame"
+            },
+            {
+              "value": "all",
+              "title": "All frames"
+            },
+            {
+              "value": "range",
+              "title": "Frame range"
+            }
+          ]
+        },
+        {
+          "key": "frameStart",
+          "title": "First frame \u00b7 zero-based",
+          "kind": "integer",
+          "defaultValue": 0,
+          "min": 0,
+          "max": 999
+        },
+        {
+          "key": "frameEnd",
+          "title": "Last frame \u00b7 inclusive",
+          "kind": "integer",
+          "defaultValue": 0,
+          "min": 0,
+          "max": 999
+        },
+        {
+          "key": "orientation",
+          "title": "Orientation",
+          "kind": "choice",
+          "defaultValue": "stored",
+          "choices": [
+            {
+              "value": "stored",
+              "title": "As stored"
+            },
+            {
+              "value": "applyEXIF",
+              "title": "Apply EXIF orientation"
+            }
+          ]
+        },
+        {
+          "key": "colorMode",
+          "title": "Color",
+          "kind": "choice",
+          "defaultValue": "preserve",
+          "choices": [
+            {
+              "value": "preserve",
+              "title": "Preserve native channels and depth"
+            },
+            {
+              "value": "RGB",
+              "title": "RGB"
+            },
+            {
+              "value": "RGBA",
+              "title": "RGBA"
+            },
+            {
+              "value": "L",
+              "title": "Grayscale"
+            }
+          ]
+        },
+        {
+          "key": "palette",
+          "title": "Indexed colors",
+          "kind": "choice",
+          "defaultValue": "expandRGBA",
+          "choices": [
+            {
+              "value": "expandRGBA",
+              "title": "Expand palette to RGBA"
+            },
+            {
+              "value": "reject",
+              "title": "Report error"
+            }
+          ]
+        },
+        {
+          "key": "layout",
+          "title": "Pixel layout",
+          "kind": "choice",
+          "defaultValue": "HWC",
+          "choices": [
+            {
+              "value": "HWC",
+              "title": "Height \u00d7 width \u00d7 channels"
+            },
+            {
+              "value": "CHW",
+              "title": "Channels \u00d7 height \u00d7 width"
+            }
+          ]
+        }
+      ]
+    },
+    "audio": {
+      "title": "PCM WAV audio",
+      "fields": [
+        {
+          "key": "format",
+          "title": "Audio reading",
+          "kind": "choice",
+          "defaultValue": "disabled",
+          "choices": [
+            {
+              "value": "disabled",
+              "title": "Use unrecognized-file policy"
+            },
+            {
+              "value": "pcmWav",
+              "title": "Decode integer PCM WAV"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

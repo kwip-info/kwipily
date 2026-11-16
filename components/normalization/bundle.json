@@ -1,0 +1,975 @@
+{
+  "schemaVersion": 1,
+  "id": "kwip.normalization",
+  "version": 2,
+  "backend": "pytorch",
+  "components": [
+    {
+      "definition": {
+        "id": "layer_norm",
+        "title": "Layer normalization",
+        "category": "Normalization",
+        "inputs": [
+          "in"
+        ],
+        "outputs": [
+          "out"
+        ],
+        "fields": [
+          {
+            "key": "normalized_shape",
+            "title": "Trailing sample dimensions",
+            "kind": "integerList",
+            "defaultValue": [
+              2
+            ],
+            "min": 1,
+            "max": 100000000,
+            "minItems": 1,
+            "maxItems": 7
+          },
+          {
+            "key": "eps",
+            "title": "Epsilon",
+            "kind": "number",
+            "defaultValue": 1e-05,
+            "min": 1.1754943508222875e-38,
+            "max": 3.4028234663852886e+38
+          },
+          {
+            "key": "elementwise_affine",
+            "title": "Learn elementwise scale",
+            "kind": "boolean",
+            "defaultValue": true
+          },
+          {
+            "key": "bias",
+            "title": "Learn elementwise bias",
+            "kind": "boolean",
+            "defaultValue": true
+          }
+        ]
+      },
+      "published": true,
+      "configurationVersion": 2,
+      "adapterID": "kwip.runner.graph-v2.layer_norm",
+      "shapeRuleID": "kwip.shape.layer_norm.v1",
+      "presentation": {
+        "theme": "mauve",
+        "icon": "layer_norm-v2",
+        "shortTitle": "LayerNorm",
+        "purpose": "Center and scale chosen trailing dimensions within each observation. Optionally learn scale and shift for each position."
+      },
+      "outputConditions": {},
+      "sources": {
+        "native": "Sources/KwipMLCore/LayerNormComponent.swift",
+        "worker": "runner/graph_semantics.py",
+        "tests": "runner/tests/test_layer_norm_execution.py",
+        "evidence": "docs/production/TORCH_LAYER_NORM.md"
+      },
+      "runtimeContract": {
+        "version": {
+          "major": 1,
+          "minor": 0,
+          "patch": 0
+        },
+        "adapterID": "kwip.runner.graph-v2.layer_norm",
+        "graphSchemaVersions": [
+          2
+        ],
+        "maximumRank": 8,
+        "preservesBatch": true,
+        "epsilonMinimum": 1.1754943508222875e-38,
+        "epsilonMaximum": 3.4028234663852886e+38,
+        "elementwiseAffineModes": [
+          false,
+          true
+        ],
+        "biasModes": [
+          false,
+          true
+        ],
+        "varianceCorrection": 0,
+        "usesCurrentInputStatistics": true
+      },
+      "learning": {
+        "contentVersion": 1,
+        "updatedAt": "2026-10-08",
+        "exampleID": "prepared-layer-norm-classifier",
+        "sourceResource": "workflow-observations",
+        "title": "Explore LayerNorm in a classifier",
+        "subtitle": "Compare normalization within feature groups and across a whole observation.",
+        "disclosureTitle": "How LayerNorm compares values",
+        "formula": "Center each chosen group around zero, then scale its spread. Learned scale and shift are optional.",
+        "paragraphs": [
+          "Trailing sample dimensions choose which values share a mean and spread. A mean is the average; spread measures how far values sit from it. Separate observations never share these statistics.",
+          "Epsilon is a small positive safety value that keeps constant groups usable. Scale and bias are learned adjustments for each position; bias has no effect when learning scale is disabled.",
+          "Compare the grouped and whole-sample examples. They preserve array shape but compare different groups of values. This uses current inputs, rather than fitting statistics from a dataset.",
+          "With CPU float32 numbers, values clustered near a large common offset can lose precision in learning sensitivities. Use a training-fitted centering or scaling step before the model, then apply the same fitted transform to held-out data. This is a numerical limit of the pinned backend, not a reason to mix observations."
+        ],
+        "buttonTitle": "Open editable grouped LayerNorm flow",
+        "exampleSource": "Sources/KwipMLCore/LayerNormExample.swift"
+      }
+    },
+    {
+      "definition": {
+        "id": "batch_norm1d",
+        "title": "BatchNorm1d",
+        "category": "Normalization",
+        "inputs": [
+          "in"
+        ],
+        "outputs": [
+          "out"
+        ],
+        "fields": [
+          {
+            "key": "num_features",
+            "title": "Channels",
+            "kind": "integer",
+            "defaultValue": 2,
+            "min": 1,
+            "max": 512
+          },
+          {
+            "key": "eps",
+            "title": "Safety value",
+            "kind": "number",
+            "defaultValue": 1e-05,
+            "min": 1.1754943508222875e-38,
+            "max": 3.4028234663852886e+38
+          },
+          {
+            "key": "averaging",
+            "title": "Averaging method",
+            "kind": "choice",
+            "defaultValue": "moving",
+            "choices": [
+              {
+                "value": "moving",
+                "title": "Moving summary"
+              },
+              {
+                "value": "cumulative",
+                "title": "Cumulative summary"
+              }
+            ]
+          },
+          {
+            "key": "momentum",
+            "title": "Running-stat update weight",
+            "kind": "number",
+            "defaultValue": 0.1,
+            "min": 0,
+            "max": 1
+          },
+          {
+            "key": "affine",
+            "title": "Learn scale and shift",
+            "kind": "boolean",
+            "defaultValue": true
+          },
+          {
+            "key": "bias",
+            "title": "Learn shift",
+            "kind": "boolean",
+            "defaultValue": true
+          },
+          {
+            "key": "track_running_stats",
+            "title": "Track running statistics",
+            "kind": "boolean",
+            "defaultValue": true
+          }
+        ]
+      },
+      "published": true,
+      "configurationVersion": 2,
+      "adapterID": "kwip.runner.graph-v2.batch_norm1d",
+      "shapeRuleID": "kwip.shape.batch_norm1d.v1",
+      "presentation": {
+        "theme": "mauve",
+        "icon": "batch_norm1d-v2",
+        "shortTitle": "BatchNorm1d",
+        "purpose": "Center and scale values across observations and spatial positions for each channel."
+      },
+      "outputConditions": {},
+      "sources": {
+        "native": "Sources/KwipMLCore/StatefulNormalizationConfiguration.swift",
+        "worker": "runner/stateful_normalization_configuration.py",
+        "tests": "runner/tests/test_stateful_normalization_runtime.py",
+        "evidence": "docs/production/TORCH_STATEFUL_NORMALIZATION_CLOSURE.md"
+      },
+      "runtimeContract": {
+        "version": {
+          "major": 1,
+          "minor": 0,
+          "patch": 0
+        },
+        "adapterID": "kwip.runner.graph-v2.batch_norm1d",
+        "graphSchemaVersions": [
+          2
+        ],
+        "inputSampleRanks": [
+          1,
+          2
+        ],
+        "channelAxis": 1,
+        "channelMinimum": 1,
+        "channelMaximum": 512,
+        "spatialMinimum": 1,
+        "spatialMaximum": 4096,
+        "preservesBatch": true,
+        "graphDTypes": [
+          "float32"
+        ],
+        "epsilonMinimum": 1.1754943508222875e-38,
+        "epsilonMaximum": 3.4028234663852886e+38,
+        "affineModes": [
+          false,
+          true
+        ],
+        "biasModes": [
+          false,
+          true
+        ],
+        "forwardVarianceCorrection": 0,
+        "maximumTensorElements": 100000000,
+        "momentumMinimum": 0.0,
+        "momentumMaximum": 1.0,
+        "trackingModes": [
+          false,
+          true
+        ],
+        "runningVarianceCorrection": 1,
+        "runningMeanDType": "float32",
+        "runningVarianceDType": "float32",
+        "counterDType": "int64",
+        "counterMaximum": 1000000000,
+        "statisticsScope": "batchSpatial",
+        "evaluationUsesRunningStatisticsWhenTracked": true,
+        "averagingModes": [
+          "moving",
+          "cumulative"
+        ],
+        "counterBehavior": "trainingCalls",
+        "minimumCurrentStatisticsMembers": 2
+      },
+      "learning": {
+        "contentVersion": 1,
+        "updatedAt": "2026-10-08",
+        "exampleID": "prepared-batch-norm1d-classifier",
+        "sourceResource": "workflow-observations",
+        "title": "Explore BatchNorm1d in a classifier",
+        "subtitle": "Center and scale values across observations and spatial positions for each channel.",
+        "disclosureTitle": "Current groups and remembered summaries",
+        "formula": "Center and scale values across observations and spatial positions for each channel.",
+        "paragraphs": [
+          "An observation is one independent example. A channel is a parallel measurement or grid. Normalization centers a chosen group around its average and adjusts its spread. This block compares values across observations and spatial positions for each channel.",
+          "Channels declares the architecture\u2019s channel count; it must match the connected array. Safety value is a small positive cushion used when dividing by spread. Learned scale multiplies each channel; optional learned shift adds an adjustment. The array shape stays the same.",
+          "Track running statistics stores a remembered mean and spread during training. Evaluation uses those saved summaries without changing them. When tracking is disabled, evaluation uses current input groups too. Running-stat update weight chooses how much the latest summary replaces the remembered one; it is not optimizer momentum.",
+          "Moving summary uses the configured update weight. Cumulative summary gives each training call equal weight and keeps a batches-seen counter. Changing the batch can change current BatchNorm results because observations share statistics."
+        ],
+        "buttonTitle": "Open BatchNorm1d example",
+        "exampleSource": "Sources/KwipMLCore/StatefulNormalizationWorkflowExample.swift",
+        "lessonIDs": [
+          "assessment.batch-norm1d-current-group",
+          "assessment.batch-norm1d-remembered-summary"
+        ]
+      }
+    },
+    {
+      "definition": {
+        "id": "batch_norm2d",
+        "title": "BatchNorm2d",
+        "category": "Normalization",
+        "inputs": [
+          "in"
+        ],
+        "outputs": [
+          "out"
+        ],
+        "fields": [
+          {
+            "key": "num_features",
+            "title": "Channels",
+            "kind": "integer",
+            "defaultValue": 2,
+            "min": 1,
+            "max": 512
+          },
+          {
+            "key": "eps",
+            "title": "Safety value",
+            "kind": "number",
+            "defaultValue": 1e-05,
+            "min": 1.1754943508222875e-38,
+            "max": 3.4028234663852886e+38
+          },
+          {
+            "key": "averaging",
+            "title": "Averaging method",
+            "kind": "choice",
+            "defaultValue": "moving",
+            "choices": [
+              {
+                "value": "moving",
+                "title": "Moving summary"
+              },
+              {
+                "value": "cumulative",
+                "title": "Cumulative summary"
+              }
+            ]
+          },
+          {
+            "key": "momentum",
+            "title": "Running-stat update weight",
+            "kind": "number",
+            "defaultValue": 0.1,
+            "min": 0,
+            "max": 1
+          },
+          {
+            "key": "affine",
+            "title": "Learn scale and shift",
+            "kind": "boolean",
+            "defaultValue": true
+          },
+          {
+            "key": "bias",
+            "title": "Learn shift",
+            "kind": "boolean",
+            "defaultValue": true
+          },
+          {
+            "key": "track_running_stats",
+            "title": "Track running statistics",
+            "kind": "boolean",
+            "defaultValue": true
+          }
+        ]
+      },
+      "published": true,
+      "configurationVersion": 2,
+      "adapterID": "kwip.runner.graph-v2.batch_norm2d",
+      "shapeRuleID": "kwip.shape.batch_norm2d.v1",
+      "presentation": {
+        "theme": "mauve",
+        "icon": "batch_norm2d-v2",
+        "shortTitle": "BatchNorm2d",
+        "purpose": "Center and scale values across observations and spatial positions for each channel."
+      },
+      "outputConditions": {},
+      "sources": {
+        "native": "Sources/KwipMLCore/StatefulNormalizationConfiguration.swift",
+        "worker": "runner/stateful_normalization_configuration.py",
+        "tests": "runner/tests/test_stateful_normalization_runtime.py",
+        "evidence": "docs/production/TORCH_STATEFUL_NORMALIZATION_CLOSURE.md"
+      },
+      "runtimeContract": {
+        "version": {
+          "major": 1,
+          "minor": 0,
+          "patch": 0
+        },
+        "adapterID": "kwip.runner.graph-v2.batch_norm2d",
+        "graphSchemaVersions": [
+          2
+        ],
+        "inputSampleRanks": [
+          3
+        ],
+        "channelAxis": 1,
+        "channelMinimum": 1,
+        "channelMaximum": 512,
+        "spatialMinimum": 1,
+        "spatialMaximum": 4096,
+        "preservesBatch": true,
+        "graphDTypes": [
+          "float32"
+        ],
+        "epsilonMinimum": 1.1754943508222875e-38,
+        "epsilonMaximum": 3.4028234663852886e+38,
+        "affineModes": [
+          false,
+          true
+        ],
+        "biasModes": [
+          false,
+          true
+        ],
+        "forwardVarianceCorrection": 0,
+        "maximumTensorElements": 100000000,
+        "momentumMinimum": 0.0,
+        "momentumMaximum": 1.0,
+        "trackingModes": [
+          false,
+          true
+        ],
+        "runningVarianceCorrection": 1,
+        "runningMeanDType": "float32",
+        "runningVarianceDType": "float32",
+        "counterDType": "int64",
+        "counterMaximum": 1000000000,
+        "statisticsScope": "batchSpatial",
+        "evaluationUsesRunningStatisticsWhenTracked": true,
+        "averagingModes": [
+          "moving",
+          "cumulative"
+        ],
+        "counterBehavior": "trainingCalls",
+        "minimumCurrentStatisticsMembers": 2
+      },
+      "learning": {
+        "contentVersion": 1,
+        "updatedAt": "2026-10-08",
+        "exampleID": "prepared-batch-norm2d-classifier",
+        "sourceResource": "workflow-observations",
+        "title": "Explore BatchNorm2d in a classifier",
+        "subtitle": "Center and scale values across observations and spatial positions for each channel.",
+        "disclosureTitle": "Current groups and remembered summaries",
+        "formula": "Center and scale values across observations and spatial positions for each channel.",
+        "paragraphs": [
+          "An observation is one independent example. A channel is a parallel measurement or grid. Normalization centers a chosen group around its average and adjusts its spread. This block compares values across observations and spatial positions for each channel.",
+          "Channels declares the architecture\u2019s channel count; it must match the connected array. Safety value is a small positive cushion used when dividing by spread. Learned scale multiplies each channel; optional learned shift adds an adjustment. The array shape stays the same.",
+          "Track running statistics stores a remembered mean and spread during training. Evaluation uses those saved summaries without changing them. When tracking is disabled, evaluation uses current input groups too. Running-stat update weight chooses how much the latest summary replaces the remembered one; it is not optimizer momentum.",
+          "Moving summary uses the configured update weight. Cumulative summary gives each training call equal weight and keeps a batches-seen counter. Changing the batch can change current BatchNorm results because observations share statistics."
+        ],
+        "buttonTitle": "Open BatchNorm2d example",
+        "exampleSource": "Sources/KwipMLCore/StatefulNormalizationWorkflowExample.swift",
+        "lessonIDs": [
+          "assessment.batch-norm2d-current-group",
+          "assessment.batch-norm2d-remembered-summary"
+        ]
+      }
+    },
+    {
+      "definition": {
+        "id": "instance_norm1d",
+        "title": "InstanceNorm1d",
+        "category": "Normalization",
+        "inputs": [
+          "in"
+        ],
+        "outputs": [
+          "out"
+        ],
+        "fields": [
+          {
+            "key": "num_features",
+            "title": "Channels",
+            "kind": "integer",
+            "defaultValue": 2,
+            "min": 1,
+            "max": 512
+          },
+          {
+            "key": "eps",
+            "title": "Safety value",
+            "kind": "number",
+            "defaultValue": 1e-05,
+            "min": 1.1754943508222875e-38,
+            "max": 3.4028234663852886e+38
+          },
+          {
+            "key": "momentum",
+            "title": "Running-stat update weight",
+            "kind": "number",
+            "defaultValue": 0.1,
+            "min": 0,
+            "max": 1
+          },
+          {
+            "key": "affine",
+            "title": "Learn scale and shift",
+            "kind": "boolean",
+            "defaultValue": false
+          },
+          {
+            "key": "bias",
+            "title": "Learn shift",
+            "kind": "boolean",
+            "defaultValue": true
+          },
+          {
+            "key": "track_running_stats",
+            "title": "Track running statistics",
+            "kind": "boolean",
+            "defaultValue": false
+          }
+        ]
+      },
+      "published": true,
+      "configurationVersion": 2,
+      "adapterID": "kwip.runner.graph-v2.instance_norm1d",
+      "shapeRuleID": "kwip.shape.instance_norm1d.v1",
+      "presentation": {
+        "theme": "mauve",
+        "icon": "instance_norm1d-v2",
+        "shortTitle": "InstanceNorm1d",
+        "purpose": "Center and scale positions within each observation and channel."
+      },
+      "outputConditions": {},
+      "sources": {
+        "native": "Sources/KwipMLCore/StatefulNormalizationConfiguration.swift",
+        "worker": "runner/stateful_normalization_configuration.py",
+        "tests": "runner/tests/test_stateful_normalization_runtime.py",
+        "evidence": "docs/production/TORCH_STATEFUL_NORMALIZATION_CLOSURE.md"
+      },
+      "runtimeContract": {
+        "version": {
+          "major": 1,
+          "minor": 0,
+          "patch": 0
+        },
+        "adapterID": "kwip.runner.graph-v2.instance_norm1d",
+        "graphSchemaVersions": [
+          2
+        ],
+        "inputSampleRanks": [
+          2
+        ],
+        "channelAxis": 1,
+        "channelMinimum": 1,
+        "channelMaximum": 512,
+        "spatialMinimum": 1,
+        "spatialMaximum": 4096,
+        "preservesBatch": true,
+        "graphDTypes": [
+          "float32"
+        ],
+        "epsilonMinimum": 1.1754943508222875e-38,
+        "epsilonMaximum": 3.4028234663852886e+38,
+        "affineModes": [
+          false,
+          true
+        ],
+        "biasModes": [
+          false,
+          true
+        ],
+        "forwardVarianceCorrection": 0,
+        "maximumTensorElements": 100000000,
+        "momentumMinimum": 0.0,
+        "momentumMaximum": 1.0,
+        "trackingModes": [
+          false,
+          true
+        ],
+        "runningVarianceCorrection": 1,
+        "runningMeanDType": "float32",
+        "runningVarianceDType": "float32",
+        "counterDType": "int64",
+        "counterMaximum": 1000000000,
+        "statisticsScope": "observationChannelSpatial",
+        "evaluationUsesRunningStatisticsWhenTracked": true,
+        "counterBehavior": "constantZero",
+        "minimumCurrentStatisticsSpatialElements": 2
+      },
+      "learning": {
+        "contentVersion": 1,
+        "updatedAt": "2026-10-08",
+        "exampleID": "prepared-instance-norm1d-classifier",
+        "sourceResource": "workflow-observations",
+        "title": "Explore InstanceNorm1d in a classifier",
+        "subtitle": "Center and scale positions within each observation and channel.",
+        "disclosureTitle": "Current groups and remembered summaries",
+        "formula": "Center and scale positions within each observation and channel.",
+        "paragraphs": [
+          "An observation is one independent example. A channel is a parallel measurement or grid. Normalization centers a chosen group around its average and adjusts its spread. This block compares positions within each observation and channel.",
+          "Channels declares the architecture\u2019s channel count; it must match the connected array. Safety value is a small positive cushion used when dividing by spread. Learned scale multiplies each channel; optional learned shift adds an adjustment. The array shape stays the same.",
+          "Track running statistics stores a remembered mean and spread during training. Evaluation uses those saved summaries without changing them. When tracking is disabled, evaluation uses current input groups too. Running-stat update weight chooses how much the latest summary replaces the remembered one; it is not optimizer momentum.",
+          "Individual-pattern normalization compares spatial measurements within each observation and channel. Remembered summaries change evaluation behavior when explicitly enabled; its counter does not count training calls."
+        ],
+        "buttonTitle": "Open InstanceNorm1d example",
+        "exampleSource": "Sources/KwipMLCore/StatefulNormalizationWorkflowExample.swift",
+        "lessonIDs": [
+          "assessment.instance-norm1d-individual-patterns",
+          "assessment.instance-norm1d-remembered-summary"
+        ]
+      }
+    },
+    {
+      "definition": {
+        "id": "instance_norm2d",
+        "title": "InstanceNorm2d",
+        "category": "Normalization",
+        "inputs": [
+          "in"
+        ],
+        "outputs": [
+          "out"
+        ],
+        "fields": [
+          {
+            "key": "num_features",
+            "title": "Channels",
+            "kind": "integer",
+            "defaultValue": 2,
+            "min": 1,
+            "max": 512
+          },
+          {
+            "key": "eps",
+            "title": "Safety value",
+            "kind": "number",
+            "defaultValue": 1e-05,
+            "min": 1.1754943508222875e-38,
+            "max": 3.4028234663852886e+38
+          },
+          {
+            "key": "momentum",
+            "title": "Running-stat update weight",
+            "kind": "number",
+            "defaultValue": 0.1,
+            "min": 0,
+            "max": 1
+          },
+          {
+            "key": "affine",
+            "title": "Learn scale and shift",
+            "kind": "boolean",
+            "defaultValue": false
+          },
+          {
+            "key": "bias",
+            "title": "Learn shift",
+            "kind": "boolean",
+            "defaultValue": true
+          },
+          {
+            "key": "track_running_stats",
+            "title": "Track running statistics",
+            "kind": "boolean",
+            "defaultValue": false
+          }
+        ]
+      },
+      "published": true,
+      "configurationVersion": 2,
+      "adapterID": "kwip.runner.graph-v2.instance_norm2d",
+      "shapeRuleID": "kwip.shape.instance_norm2d.v1",
+      "presentation": {
+        "theme": "mauve",
+        "icon": "instance_norm2d-v2",
+        "shortTitle": "InstanceNorm2d",
+        "purpose": "Center and scale positions within each observation and channel."
+      },
+      "outputConditions": {},
+      "sources": {
+        "native": "Sources/KwipMLCore/StatefulNormalizationConfiguration.swift",
+        "worker": "runner/stateful_normalization_configuration.py",
+        "tests": "runner/tests/test_stateful_normalization_runtime.py",
+        "evidence": "docs/production/TORCH_STATEFUL_NORMALIZATION_CLOSURE.md"
+      },
+      "runtimeContract": {
+        "version": {
+          "major": 1,
+          "minor": 0,
+          "patch": 0
+        },
+        "adapterID": "kwip.runner.graph-v2.instance_norm2d",
+        "graphSchemaVersions": [
+          2
+        ],
+        "inputSampleRanks": [
+          3
+        ],
+        "channelAxis": 1,
+        "channelMinimum": 1,
+        "channelMaximum": 512,
+        "spatialMinimum": 1,
+        "spatialMaximum": 4096,
+        "preservesBatch": true,
+        "graphDTypes": [
+          "float32"
+        ],
+        "epsilonMinimum": 1.1754943508222875e-38,
+        "epsilonMaximum": 3.4028234663852886e+38,
+        "affineModes": [
+          false,
+          true
+        ],
+        "biasModes": [
+          false,
+          true
+        ],
+        "forwardVarianceCorrection": 0,
+        "maximumTensorElements": 100000000,
+        "momentumMinimum": 0.0,
+        "momentumMaximum": 1.0,
+        "trackingModes": [
+          false,
+          true
+        ],
+        "runningVarianceCorrection": 1,
+        "runningMeanDType": "float32",
+        "runningVarianceDType": "float32",
+        "counterDType": "int64",
+        "counterMaximum": 1000000000,
+        "statisticsScope": "observationChannelSpatial",
+        "evaluationUsesRunningStatisticsWhenTracked": true,
+        "counterBehavior": "constantZero",
+        "minimumCurrentStatisticsSpatialElements": 2
+      },
+      "learning": {
+        "contentVersion": 1,
+        "updatedAt": "2026-10-08",
+        "exampleID": "prepared-instance-norm2d-classifier",
+        "sourceResource": "workflow-observations",
+        "title": "Explore InstanceNorm2d in a classifier",
+        "subtitle": "Center and scale positions within each observation and channel.",
+        "disclosureTitle": "Current groups and remembered summaries",
+        "formula": "Center and scale positions within each observation and channel.",
+        "paragraphs": [
+          "An observation is one independent example. A channel is a parallel measurement or grid. Normalization centers a chosen group around its average and adjusts its spread. This block compares positions within each observation and channel.",
+          "Channels declares the architecture\u2019s channel count; it must match the connected array. Safety value is a small positive cushion used when dividing by spread. Learned scale multiplies each channel; optional learned shift adds an adjustment. The array shape stays the same.",
+          "Track running statistics stores a remembered mean and spread during training. Evaluation uses those saved summaries without changing them. When tracking is disabled, evaluation uses current input groups too. Running-stat update weight chooses how much the latest summary replaces the remembered one; it is not optimizer momentum.",
+          "Individual-pattern normalization compares spatial measurements within each observation and channel. Remembered summaries change evaluation behavior when explicitly enabled; its counter does not count training calls."
+        ],
+        "buttonTitle": "Open InstanceNorm2d example",
+        "exampleSource": "Sources/KwipMLCore/StatefulNormalizationWorkflowExample.swift",
+        "lessonIDs": [
+          "assessment.instance-norm2d-individual-grids",
+          "assessment.instance-norm2d-remembered-summary"
+        ]
+      }
+    },
+    {
+      "definition": {
+        "id": "group_norm",
+        "title": "GroupNorm",
+        "category": "Normalization",
+        "inputs": [
+          "in"
+        ],
+        "outputs": [
+          "out"
+        ],
+        "fields": [
+          {
+            "key": "num_channels",
+            "title": "Channels",
+            "kind": "integer",
+            "defaultValue": 2,
+            "min": 1,
+            "max": 512
+          },
+          {
+            "key": "num_groups",
+            "title": "Channel groups",
+            "kind": "integer",
+            "defaultValue": 1,
+            "min": 1,
+            "max": 512
+          },
+          {
+            "key": "eps",
+            "title": "Safety value",
+            "kind": "number",
+            "defaultValue": 1e-05,
+            "min": 1.1754943508222875e-38,
+            "max": 3.4028234663852886e+38
+          },
+          {
+            "key": "affine",
+            "title": "Learn scale and shift",
+            "kind": "boolean",
+            "defaultValue": true
+          },
+          {
+            "key": "bias",
+            "title": "Learn shift",
+            "kind": "boolean",
+            "defaultValue": true
+          }
+        ]
+      },
+      "published": true,
+      "configurationVersion": 2,
+      "adapterID": "kwip.runner.graph-v2.group_norm",
+      "shapeRuleID": "kwip.shape.group_norm.v1",
+      "presentation": {
+        "theme": "mauve",
+        "icon": "group_norm-v2",
+        "shortTitle": "GroupNorm",
+        "purpose": "Center and scale channels and positions within each observation\u2019s chosen channel groups."
+      },
+      "outputConditions": {},
+      "sources": {
+        "native": "Sources/KwipMLCore/StatefulNormalizationConfiguration.swift",
+        "worker": "runner/stateful_normalization_configuration.py",
+        "tests": "runner/tests/test_stateful_normalization_runtime.py",
+        "evidence": "docs/production/TORCH_STATEFUL_NORMALIZATION_CLOSURE.md"
+      },
+      "runtimeContract": {
+        "version": {
+          "major": 1,
+          "minor": 0,
+          "patch": 0
+        },
+        "adapterID": "kwip.runner.graph-v2.group_norm",
+        "graphSchemaVersions": [
+          2
+        ],
+        "inputSampleRanks": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "channelAxis": 1,
+        "channelMinimum": 1,
+        "channelMaximum": 512,
+        "spatialMinimum": 1,
+        "spatialMaximum": 4096,
+        "preservesBatch": true,
+        "graphDTypes": [
+          "float32"
+        ],
+        "epsilonMinimum": 1.1754943508222875e-38,
+        "epsilonMaximum": 3.4028234663852886e+38,
+        "affineModes": [
+          false,
+          true
+        ],
+        "biasModes": [
+          false,
+          true
+        ],
+        "forwardVarianceCorrection": 0,
+        "maximumTensorElements": 100000000,
+        "groupMinimum": 1,
+        "groupMaximum": 512,
+        "requiresChannelDivisibility": true,
+        "minimumGroupMembers": 2,
+        "statisticsScope": "observationGroupSpatial",
+        "usesCurrentStatistics": true
+      },
+      "learning": {
+        "contentVersion": 1,
+        "updatedAt": "2026-10-08",
+        "exampleID": "prepared-group-norm-classifier",
+        "sourceResource": "workflow-observations",
+        "title": "Explore GroupNorm in a classifier",
+        "subtitle": "Center and scale channels and positions within each observation\u2019s chosen channel groups.",
+        "disclosureTitle": "Current groups and remembered summaries",
+        "formula": "Center and scale channels and positions within each observation\u2019s chosen channel groups.",
+        "paragraphs": [
+          "An observation is one independent example. A channel is a parallel measurement or grid. Normalization centers a chosen group around its average and adjusts its spread. This block compares channels and positions within each observation\u2019s chosen channel groups.",
+          "Channels declares the architecture\u2019s channel count; it must match the connected array. Safety value is a small positive cushion used when dividing by spread. Learned scale multiplies each channel; optional learned shift adds an adjustment. The array shape stays the same.",
+          "Channel groups chooses equally sized channel teams within one observation. Groups must divide channels exactly, and each team needs more than one measurement. This block uses current groups during training and evaluation, with no remembered summaries.",
+          "Channel adjustments are shared within each channel, while each observation\u2019s group summary is separate. Input influence means how a small measurement change affects a result; the checker measures it automatically."
+        ],
+        "buttonTitle": "Open GroupNorm example",
+        "exampleSource": "Sources/KwipMLCore/StatefulNormalizationWorkflowExample.swift",
+        "lessonIDs": [
+          "assessment.group-norm-channel-teams",
+          "assessment.group-norm-channel-adjustments"
+        ]
+      }
+    },
+    {
+      "definition": {
+        "id": "rms_norm",
+        "title": "RMS normalization",
+        "category": "Normalization",
+        "inputs": [
+          "in"
+        ],
+        "outputs": [
+          "out"
+        ],
+        "fields": [
+          {
+            "key": "normalized_shape",
+            "title": "Trailing sample dimensions",
+            "kind": "integerList",
+            "defaultValue": [
+              2
+            ],
+            "min": 1,
+            "max": 100000000,
+            "minItems": 1,
+            "maxItems": 7
+          },
+          {
+            "key": "eps",
+            "title": "Epsilon",
+            "kind": "number",
+            "defaultValue": 1e-05,
+            "min": 1.1754943508222875e-38,
+            "max": 3.4028234663852886e+38
+          },
+          {
+            "key": "elementwise_affine",
+            "title": "Learn elementwise scale",
+            "kind": "boolean",
+            "defaultValue": true
+          }
+        ]
+      },
+      "published": true,
+      "configurationVersion": 2,
+      "adapterID": "kwip.runner.graph-v2.rms_norm",
+      "shapeRuleID": "kwip.shape.rms_norm.v1",
+      "presentation": {
+        "theme": "mauve",
+        "icon": "normalization-v3",
+        "shortTitle": "RMSNorm",
+        "purpose": "Scale trailing sample dimensions by their root mean square, without subtracting the mean. Optionally learn an elementwise scale."
+      },
+      "outputConditions": {},
+      "sources": {
+        "native": "Sources/KwipMLCore/RMSNormComponent.swift",
+        "worker": "runner/graph_semantics.py",
+        "tests": "runner/tests/test_rms_norm_execution.py",
+        "evidence": "docs/production/TORCH_RMS_NORM_20261015.md"
+      },
+      "runtimeContract": {
+        "version": {
+          "major": 1,
+          "minor": 0,
+          "patch": 0
+        },
+        "adapterID": "kwip.runner.graph-v2.rms_norm",
+        "graphSchemaVersions": [
+          2
+        ],
+        "maximumRank": 8,
+        "preservesBatch": true,
+        "epsilonMinimum": 1.1754943508222875e-38,
+        "epsilonMaximum": 3.4028234663852886e+38,
+        "elementwiseAffineModes": [
+          false,
+          true
+        ],
+        "usesCurrentInputStatistics": true,
+        "subtractsMean": false,
+        "hasBias": false
+      },
+      "learning": {
+        "contentVersion": 1,
+        "updatedAt": "2026-10-15",
+        "exampleID": "prepared-rms-norm-classifier",
+        "sourceResource": "workflow-observations",
+        "title": "RMS normalization",
+        "subtitle": "Scale by magnitude without centering",
+        "disclosureTitle": "What changes and what stays",
+        "formula": "y = x / sqrt(mean(x\u00b2) + \u03b5) \u00d7 scale",
+        "paragraphs": [
+          "Choose the trailing sample dimensions that share a root-mean-square summary. Each observation stays separate; a [sequence, width] tensor with normalized shape [width] is normalized independently at each position.",
+          "Unlike Layer normalization, RMS normalization never subtracts the mean. Constant positive inputs remain positive. For [3, 4] with scale disabled and small epsilon, the result is approximately [0.8485, 1.1314], not [-1, 1].",
+          "Epsilon is explicit and positive. Learn scale creates one weight per normalized position, initially one. There is no learned bias or running mean/variance; training and evaluation use the same formula.",
+          "Open the practice, train, inspect captured tensors, then compare RMS and Layer with scale disabled. Verify that observations remain separate and RMS does not force a zero mean. This practice is unscored; it does not award a LayerNorm assessment."
+        ],
+        "buttonTitle": "Open RMS normalization practice",
+        "exampleSource": "Sources/KwipMLCore/RMSNormComponent.swift"
+      }
+    }
+  ]
+}

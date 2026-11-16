@@ -1,0 +1,156 @@
+[
+  {
+    "id": "sales-exceptions",
+    "version": 1,
+    "title": "Review sales exceptions",
+    "category": "Sales operations",
+    "summary": "Separate cancellations, missing customers and invalid values while retaining original records.",
+    "setup": [
+      "Choose a retail CSV with InvoiceNo, CustomerID, Quantity, UnitPrice, StockCode, Description, InvoiceDate, Country and SourceRowID.",
+      "Choose a destination folder for the three review queues."
+    ],
+    "limitations": "Queues overlap. A review flag is not a verified error or fraud finding.",
+    "attribution": "UCI Online Retail \u00b7 CC BY 4.0",
+    "sourceURL": "https://archive.ics.uci.edu/dataset/352/online+retail",
+    "resource": "Template-sales-exceptions.json",
+    "proofCase": "04"
+  },
+  {
+    "id": "rental-planning",
+    "version": 1,
+    "title": "Compare rental activity",
+    "category": "Operations",
+    "summary": "Join hourly activity with a daily calendar and export summary, Long and Wide reports.",
+    "setup": [
+      "Choose hourly CSV: dteday, hr, casual, registered, cnt and weekday.",
+      "Choose daily CSV: dteday and weekday.",
+      "Choose output folders; inspect date coverage before running."
+    ],
+    "limitations": "Missing hours stay missing. Reports are descriptive, not optimized staffing.",
+    "attribution": "UCI Bike Sharing \u00b7 CC BY 4.0",
+    "sourceURL": "https://archive.ics.uci.edu/dataset/275/bike+sharing+dataset",
+    "resource": "Template-rental-planning.json",
+    "proofCase": "05"
+  },
+  {
+    "id": "weather-briefing",
+    "version": 1,
+    "title": "Build an hourly weather briefing",
+    "category": "Connected data",
+    "summary": "Read an hourly NWS forecast and export the first 48 source periods.",
+    "setup": [
+      "Review the public NWS hourly endpoint and location in Table Input.",
+      "Authorize network access and choose an output folder."
+    ],
+    "limitations": "Requires Internet access. Forecast snapshots change; missing probabilities stay missing.",
+    "attribution": "US National Weather Service",
+    "sourceURL": "https://www.weather.gov/documentation/services-web-api",
+    "resource": "Template-weather-briefing.json",
+    "proofCase": "08"
+  },
+  {
+    "id": "customer-segmentation",
+    "version": 1,
+    "title": "Explore customer purchase groups",
+    "category": "Machine learning",
+    "summary": "Aggregate recorded purchases, fit four clusters and inspect their profiles.",
+    "setup": [
+      "Choose compatible retail CSV with customer, invoice, quantity and price fields.",
+      "Review the Columns and feature definitions for your data.",
+      "Choose assignments and model-export destinations."
+    ],
+    "limitations": "Exploratory clusters can be dominated by outliers. These are not churn probabilities or validated business segments.",
+    "attribution": "UCI Online Retail \u00b7 CC BY 4.0",
+    "sourceURL": "https://archive.ics.uci.edu/dataset/352/online+retail",
+    "resource": "Template-customer-segmentation.json",
+    "proofCase": "01"
+  },
+  {
+    "id": "complaint-routing",
+    "version": 1,
+    "title": "Train a document-routing model",
+    "category": "Documents",
+    "summary": "Build text features from labeled examples and inspect held-out routing predictions.",
+    "setup": [
+      "Choose labeled complaint CSV matching the displayed input columns.",
+      "Review the text/label mapping and partition before training.",
+      "Choose validation-table and model-export destinations."
+    ],
+    "limitations": "Historical balanced samples and near-duplicate text affect evaluation. Review every label and avoid sending sensitive text to an AI client.",
+    "attribution": "US CFPB public complaint data",
+    "sourceURL": "https://www.consumerfinance.gov/data-research/consumer-complaints/",
+    "resource": "Template-complaint-routing.json",
+    "proofCase": "02"
+  },
+  {
+    "id": "document-ocr",
+    "version": 1,
+    "title": "Read printed documents",
+    "category": "Documents",
+    "summary": "Prepare images, extract text and keep document and region tables for review.",
+    "setup": [
+      "Choose a folder of supported document images.",
+      "Select or download the compatible English OCR model pack in the app.",
+      "Choose document and region CSV output folders."
+    ],
+    "limitations": "Resolution and aspect ratio matter. Review recognized text; this is not verified financial extraction.",
+    "attribution": "Proof source: IBM DocLayNet \u00b7 CDLA-Permissive 1.0",
+    "sourceURL": "https://github.com/DS4SD/DocLayNet",
+    "resource": "Template-document-ocr.json",
+    "proofCase": "03"
+  },
+  {
+    "id": "holiday-calendar",
+    "version": 1,
+    "title": "Join regional holidays to planning dates",
+    "category": "Operations",
+    "summary": "Combine official regional holiday feeds with a planning-date table.",
+    "setup": [
+      "Choose the planning CSV and review its date/region column mappings.",
+      "Review the three GOV.UK API sources and authorize network access.",
+      "Choose a report output folder."
+    ],
+    "limitations": "Recorded matching was incomplete. Review unmatched dates; no complete holiday-coverage guarantee.",
+    "attribution": "GOV.UK Bank Holidays \u00b7 Open Government Licence",
+    "sourceURL": "https://www.gov.uk/bank-holidays.json",
+    "resource": "Template-holiday-calendar.json",
+    "proofCase": "06"
+  },
+  {
+    "id": "rental-demand",
+    "version": 1,
+    "title": "Explore rental-demand estimation",
+    "category": "Machine learning",
+    "summary": "Fit a regression model and compare held-out demand predictions.",
+    "setup": [
+      "Choose the hourly rental CSV matching the displayed feature and count columns.",
+      "Review training/validation date boundaries and leakage-sensitive weather inputs.",
+      "Choose predictions and model-export destinations."
+    ],
+    "limitations": "The recorded model underpredicted later demand. Observed weather is not a future forecast; practical forecast utility is unproven.",
+    "attribution": "UCI Bike Sharing \u00b7 CC BY 4.0",
+    "sourceURL": "https://archive.ics.uci.edu/dataset/275/bike+sharing+dataset",
+    "resource": "Template-rental-demand.json",
+    "proofCase": "07"
+  },
+  {
+    "id": "item-sales-reconciliation",
+    "version": 1,
+    "title": "Reconcile two months of item sales",
+    "category": "Business operations",
+    "summary": "Keep every source row, reconcile purchases and cancellations, and compare monthly item-code totals.",
+    "setup": [
+      "Choose a CSV with exactly two calendar-month values and unique SourceRowID identifiers.",
+      "Match InvoiceNo, StockCode, Description, Quantity, InvoiceDate, UnitPrice, CustomerID and Country; InvoiceDate uses YYYY-MM-DD HH:MM:SS and UnitPrice is GBP.",
+      "Choose one fresh folder for the row-disposition, monthly-total and item-comparison reports.",
+      "Apply the suggested Balanced working space for this larger workflow. Compact History avoids optional intermediate copies while keeping run summaries, live previews and your exported reports."
+    ],
+    "limitations": "Recorded activity is not recognized revenue, profit or a matched-return ledger. The workflow derives earlier/later months; source completeness and currency remain your responsibility. Missing customers and zero prices are flagged; invalid numeric or sign-conflict rows stay in the disposition report.",
+    "attribution": "UCI Online Retail \u00b7 CC BY 4.0",
+    "sourceURL": "https://archive.ics.uci.edu/dataset/352/online+retail",
+    "resource": "Template-item-sales-reconciliation.json",
+    "proofCase": "09",
+    "suggestedWorkload": "balanced",
+    "suggestCompactHistory": true
+  }
+]

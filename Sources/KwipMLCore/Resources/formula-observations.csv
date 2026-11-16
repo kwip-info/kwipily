@@ -1,0 +1,9 @@
+order_id,price,quantity,name,product_label
+A01,12.5,2,Ada   Lovelace,ABC-104
+A02,8,3,Grace Hopper,XYZ-207
+A03,4,5,Alan  Turing,LMN-003
+A04,10,1,,bad
+A05,2.5,4,Katherine   Johnson,ABC-008
+A06,3,6,  Dorothy Vaughan  ,XYZ-009
+A07,7.5,2,Annie Easley,ABC-010
+A08,6,3,Mary Jackson,invalid

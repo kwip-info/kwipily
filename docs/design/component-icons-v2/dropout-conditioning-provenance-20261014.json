@@ -1,0 +1,9 @@
+{
+  "created": "2026-10-14",
+  "tool": "built-in image_gen",
+  "scope": "Dropout Conditioning octagon; original dropout-v2 retained",
+  "original": "/Users/developer/.codex/generated_images/01a12669-15e3-7932-9dd1-bb1b8a95f263/exec-ed099b6e-68ad-4293-8ec1-a4fc68463a3f.png",
+  "asset": "Sources/KwipMLApp/Resources/ComponentIcons/dropout-v3.png",
+  "sha256": "7892cef71383034b4cd8785040b34d0b0d09f2f9c4514068c1af4861807bafa6",
+  "unchanged_copy": true
+}

@@ -1,0 +1,1289 @@
+{
+  "schemaVersion": 1,
+  "id": "kwip.attention",
+  "version": 1,
+  "backend": "pytorch",
+  "components": [
+    {
+      "definition": {
+        "id": "multihead_attention",
+        "title": "Multihead attention",
+        "category": "Attention",
+        "inputs": [
+          "query",
+          "key",
+          "value",
+          "attn_mask",
+          "key_padding_mask"
+        ],
+        "outputs": [
+          "out",
+          "weights"
+        ],
+        "fields": [
+          {
+            "key": "embed_dim",
+            "title": "Model value count",
+            "kind": "integer",
+            "defaultValue": 4,
+            "min": 1,
+            "max": 512
+          },
+          {
+            "key": "num_heads",
+            "title": "Comparison groups",
+            "kind": "integer",
+            "defaultValue": 2,
+            "min": 1,
+            "max": 32
+          },
+          {
+            "key": "kdim",
+            "title": "Key value count",
+            "kind": "integer",
+            "defaultValue": null,
+            "min": 1,
+            "max": 4096,
+            "allowsNull": true,
+            "enabledValue": 4
+          },
+          {
+            "key": "vdim",
+            "title": "Value value count",
+            "kind": "integer",
+            "defaultValue": null,
+            "min": 1,
+            "max": 4096,
+            "allowsNull": true,
+            "enabledValue": 4
+          },
+          {
+            "key": "dropout",
+            "title": "Drop probability",
+            "kind": "number",
+            "defaultValue": 0,
+            "min": 0,
+            "max": 1
+          },
+          {
+            "key": "bias",
+            "title": "Learned offsets",
+            "kind": "boolean",
+            "defaultValue": true
+          },
+          {
+            "key": "add_bias_kv",
+            "title": "Add learned source position",
+            "kind": "boolean",
+            "defaultValue": false
+          },
+          {
+            "key": "add_zero_attn",
+            "title": "Add empty source position",
+            "kind": "boolean",
+            "defaultValue": false
+          },
+          {
+            "key": "return_weights",
+            "title": "Show connection weights",
+            "kind": "boolean",
+            "defaultValue": true
+          },
+          {
+            "key": "average_weights",
+            "title": "Combine group weights",
+            "kind": "boolean",
+            "defaultValue": true
+          },
+          {
+            "key": "attention_mask_mode",
+            "title": "Blocked connections",
+            "kind": "choice",
+            "defaultValue": "none",
+            "choices": [
+              {
+                "value": "none",
+                "title": "Allow all"
+              },
+              {
+                "value": "causal",
+                "title": "Earlier positions only"
+              },
+              {
+                "value": "supplied",
+                "title": "Use mask connection"
+              }
+            ]
+          },
+          {
+            "key": "padding_mask_mode",
+            "title": "Blocked source positions",
+            "kind": "choice",
+            "defaultValue": "none",
+            "choices": [
+              {
+                "value": "none",
+                "title": "Allow all"
+              },
+              {
+                "value": "supplied",
+                "title": "Use mask connection"
+              }
+            ]
+          }
+        ]
+      },
+      "published": true,
+      "configurationVersion": 1,
+      "adapterID": "kwip.runner.graph-v2.multihead_attention",
+      "shapeRuleID": "kwip.shape.multihead_attention.v1",
+      "presentation": {
+        "theme": "rose",
+        "icon": "multihead_attention-v2",
+        "shortTitle": "Multihead",
+        "purpose": "Choose which source values matter at each requested position."
+      },
+      "inputConditions": {
+        "attn_mask": "attention_mask_mode=supplied",
+        "key_padding_mask": "padding_mask_mode=supplied"
+      },
+      "outputConditions": {
+        "weights": "return_weights=true"
+      },
+      "sources": {
+        "native": "Sources/KwipMLCore/AttentionConfiguration.swift",
+        "worker": "runner/attention_configuration.py",
+        "tests": "runner/tests/test_attention_runtime.py",
+        "evidence": "docs/production/TORCH_ATTENTION_CLOSURE.md"
+      },
+      "runtimeContract": {
+        "version": {
+          "major": 1,
+          "minor": 0,
+          "patch": 0
+        },
+        "adapterID": "kwip.runner.graph-v2.multihead_attention",
+        "graphSchemaVersions": [
+          2
+        ],
+        "preservesBatch": true,
+        "graphDTypes": [
+          "float32"
+        ],
+        "floatInputSampleRanks": [
+          2
+        ],
+        "maximumParameters": 2000000,
+        "maximumTensorElements": 100000000,
+        "maximumScoreElements": 100000000,
+        "maximumMaskElements": 100000000,
+        "maximumWorkElements": 100000000,
+        "sequenceMinimum": 1,
+        "sequenceMaximum": 4096,
+        "modelWidthMaximum": 512,
+        "inputWidthMaximum": 4096,
+        "headMaximum": 32,
+        "layerMaximum": 8,
+        "maskDType": "int64",
+        "maskConvention": "oneBlockedZeroAllowed",
+        "maskBroadcast": "perObservationAcrossHeadsOnly",
+        "statePersistence": "none",
+        "parameterOrder": "nativeModuleOrder",
+        "dropoutPolicy": "trainingOnly",
+        "utilityMaximumItems": 4096,
+        "utilityCoordinateMaximum": 4095,
+        "multiheadWeights": "nativeOptional",
+        "sdpaGroupedQuery": false,
+        "sdpaMPSDropoutExecution": "notApplicable"
+      },
+      "learning": {
+        "contentVersion": 1,
+        "updatedAt": "2026-10-08",
+        "exampleID": "prepared-multihead-attention-classifier",
+        "sourceResource": "workflow-observations",
+        "title": "Explore Multihead attention in a classifier",
+        "subtitle": "Choose which source values matter at each requested position.",
+        "disclosureTitle": "How sequence comparisons and blocked connections work",
+        "formula": "Choose which source values matter at each requested position.",
+        "paragraphs": [
+          "A sequence is an ordered list of positions, such as readings over time. Each position contains several values. A batch is a group of independent observations; this block keeps observations first.",
+          "A query describes what a requested position is looking for. A key describes a source position so it can be compared with the query. A value is the source information mixed into the result. A head, called a comparison group here, makes one separate set of comparisons.",
+          "Model value count sets the query and result width. It must divide evenly between Comparison groups. Key value count and Value value count can use that same width or an explicit different width. Learned offsets are small learned additions. Added learned or empty source positions extend the source used for mixing.",
+          "Show connection weights exposes the actual share assigned to each source position. Combine group weights averages those shares across groups; turning it off keeps a separate table for every group. Connection weights are results to inspect, not another bank of learned settings.",
+          "A mask is a table of blocked connections. One means blocked and zero means allowed throughout this canvas. Use mask connection enables the matching input. Earlier positions only is a square causal arrangement: each position can use itself and earlier positions. Every query must retain an eligible original source after combined connection and position masks.",
+          "No context is secretly stored between calls, and there is no automatic key/value cache. Floating inputs and outputs use dense float32 on CPU or MPS; supplied masks use exact int64 binary arrays. Sequence and observation counts, named outputs and allocation budgets are checked.",
+          "Drop probability temporarily hides comparison weights during training and is zero during evaluation. CPU supports exact checkpoint continuation; MPS supports explicit weights-only restarting. Input influence means how a small source change affects the result. Guided, practice and private checks use changed examples to measure this understanding."
+        ],
+        "buttonTitle": "Open Multihead attention example",
+        "exampleSource": "Sources/KwipMLCore/AttentionWorkflowExample.swift",
+        "lessonIDs": [
+          "assessment.multihead-attention-connections"
+        ]
+      }
+    },
+    {
+      "definition": {
+        "id": "transformer",
+        "title": "Transformer",
+        "category": "Attention",
+        "inputs": [
+          "source",
+          "target",
+          "src_mask",
+          "tgt_mask",
+          "memory_mask",
+          "src_key_padding_mask",
+          "tgt_key_padding_mask",
+          "memory_key_padding_mask"
+        ],
+        "outputs": [
+          "out"
+        ],
+        "fields": [
+          {
+            "key": "d_model",
+            "title": "Model value count",
+            "kind": "integer",
+            "defaultValue": 4,
+            "min": 1,
+            "max": 512
+          },
+          {
+            "key": "nhead",
+            "title": "Comparison groups",
+            "kind": "integer",
+            "defaultValue": 2,
+            "min": 1,
+            "max": 32
+          },
+          {
+            "key": "dim_feedforward",
+            "title": "Inner value count",
+            "kind": "integer",
+            "defaultValue": 8,
+            "min": 1,
+            "max": 4096
+          },
+          {
+            "key": "dropout",
+            "title": "Drop probability",
+            "kind": "number",
+            "defaultValue": 0,
+            "min": 0,
+            "max": 1
+          },
+          {
+            "key": "bias",
+            "title": "Learned offsets",
+            "kind": "boolean",
+            "defaultValue": true
+          },
+          {
+            "key": "activation",
+            "title": "Inner behavior",
+            "kind": "choice",
+            "defaultValue": "relu",
+            "choices": [
+              {
+                "value": "relu",
+                "title": "Keep positive values"
+              },
+              {
+                "value": "gelu",
+                "title": "Smooth positive preference"
+              }
+            ]
+          },
+          {
+            "key": "layer_norm_eps",
+            "title": "Normalization safety",
+            "kind": "number",
+            "defaultValue": 1e-05,
+            "min": 1.401298464324817e-45,
+            "max": 3.4028234663852886e+38
+          },
+          {
+            "key": "norm_first",
+            "title": "Normalize before comparisons",
+            "kind": "boolean",
+            "defaultValue": false
+          },
+          {
+            "key": "num_encoder_layers",
+            "title": "Source layers",
+            "kind": "integer",
+            "defaultValue": 1,
+            "min": 1,
+            "max": 8
+          },
+          {
+            "key": "num_decoder_layers",
+            "title": "Requested sequence layers",
+            "kind": "integer",
+            "defaultValue": 1,
+            "min": 1,
+            "max": 8
+          },
+          {
+            "key": "source_mask_mode",
+            "title": "Source blocked connections",
+            "kind": "choice",
+            "defaultValue": "none",
+            "choices": [
+              {
+                "value": "none",
+                "title": "Allow all"
+              },
+              {
+                "value": "causal",
+                "title": "Earlier positions only"
+              },
+              {
+                "value": "supplied",
+                "title": "Use mask connection"
+              }
+            ]
+          },
+          {
+            "key": "target_mask_mode",
+            "title": "Requested blocked connections",
+            "kind": "choice",
+            "defaultValue": "none",
+            "choices": [
+              {
+                "value": "none",
+                "title": "Allow all"
+              },
+              {
+                "value": "causal",
+                "title": "Earlier positions only"
+              },
+              {
+                "value": "supplied",
+                "title": "Use mask connection"
+              }
+            ]
+          },
+          {
+            "key": "memory_mask_mode",
+            "title": "Memory blocked connections",
+            "kind": "choice",
+            "defaultValue": "none",
+            "choices": [
+              {
+                "value": "none",
+                "title": "Allow all"
+              },
+              {
+                "value": "supplied",
+                "title": "Use mask connection"
+              }
+            ]
+          },
+          {
+            "key": "source_padding_mode",
+            "title": "Blocked source positions",
+            "kind": "choice",
+            "defaultValue": "none",
+            "choices": [
+              {
+                "value": "none",
+                "title": "Allow all"
+              },
+              {
+                "value": "supplied",
+                "title": "Use mask connection"
+              }
+            ]
+          },
+          {
+            "key": "target_padding_mode",
+            "title": "Blocked requested positions",
+            "kind": "choice",
+            "defaultValue": "none",
+            "choices": [
+              {
+                "value": "none",
+                "title": "Allow all"
+              },
+              {
+                "value": "supplied",
+                "title": "Use mask connection"
+              }
+            ]
+          },
+          {
+            "key": "memory_padding_mode",
+            "title": "Blocked memory positions",
+            "kind": "choice",
+            "defaultValue": "none",
+            "choices": [
+              {
+                "value": "none",
+                "title": "Allow all"
+              },
+              {
+                "value": "supplied",
+                "title": "Use mask connection"
+              }
+            ]
+          }
+        ]
+      },
+      "published": true,
+      "configurationVersion": 1,
+      "adapterID": "kwip.runner.graph-v2.transformer",
+      "shapeRuleID": "kwip.shape.transformer.v1",
+      "presentation": {
+        "theme": "rose",
+        "icon": "transformer-v2",
+        "shortTitle": "Transformer",
+        "purpose": "Combine a source sequence with a requested sequence."
+      },
+      "inputConditions": {
+        "src_mask": "source_mask_mode=supplied",
+        "tgt_mask": "target_mask_mode=supplied",
+        "memory_mask": "memory_mask_mode=supplied",
+        "src_key_padding_mask": "source_padding_mode=supplied",
+        "tgt_key_padding_mask": "target_padding_mode=supplied",
+        "memory_key_padding_mask": "memory_padding_mode=supplied"
+      },
+      "outputConditions": {},
+      "sources": {
+        "native": "Sources/KwipMLCore/AttentionConfiguration.swift",
+        "worker": "runner/attention_configuration.py",
+        "tests": "runner/tests/test_attention_runtime.py",
+        "evidence": "docs/production/TORCH_ATTENTION_CLOSURE.md"
+      },
+      "runtimeContract": {
+        "version": {
+          "major": 1,
+          "minor": 0,
+          "patch": 0
+        },
+        "adapterID": "kwip.runner.graph-v2.transformer",
+        "graphSchemaVersions": [
+          2
+        ],
+        "preservesBatch": true,
+        "graphDTypes": [
+          "float32"
+        ],
+        "floatInputSampleRanks": [
+          2
+        ],
+        "maximumParameters": 2000000,
+        "maximumTensorElements": 100000000,
+        "maximumScoreElements": 100000000,
+        "maximumMaskElements": 100000000,
+        "maximumWorkElements": 100000000,
+        "sequenceMinimum": 1,
+        "sequenceMaximum": 4096,
+        "modelWidthMaximum": 512,
+        "inputWidthMaximum": 4096,
+        "headMaximum": 32,
+        "layerMaximum": 8,
+        "maskDType": "int64",
+        "maskConvention": "oneBlockedZeroAllowed",
+        "maskBroadcast": "perObservationAcrossHeadsOnly",
+        "statePersistence": "none",
+        "parameterOrder": "nativeModuleOrder",
+        "dropoutPolicy": "trainingOnly",
+        "utilityMaximumItems": 4096,
+        "utilityCoordinateMaximum": 4095,
+        "multiheadWeights": "notApplicable",
+        "sdpaGroupedQuery": false,
+        "sdpaMPSDropoutExecution": "notApplicable"
+      },
+      "learning": {
+        "contentVersion": 1,
+        "updatedAt": "2026-10-08",
+        "exampleID": "prepared-transformer-classifier",
+        "sourceResource": "workflow-observations",
+        "title": "Explore Transformer in a classifier",
+        "subtitle": "Combine a source sequence with a requested sequence.",
+        "disclosureTitle": "How sequence comparisons and blocked connections work",
+        "formula": "Combine a source sequence with a requested sequence.",
+        "paragraphs": [
+          "A sequence is an ordered list of positions, such as readings over time. Each position contains several values. A batch is a group of independent observations; this block keeps observations first.",
+          "A query describes what a requested position is looking for. A key describes a source position so it can be compared with the query. A value is the source information mixed into the result. A head, called a comparison group here, makes one separate set of comparisons.",
+          "The encoder compares positions in the source sequence. The decoder compares requested positions and then uses that source summary. Source layers and Requested sequence layers repeat these two jobs. Each layer mixes comparisons with a learned inner transformation and adds the earlier values back into the result.",
+          "Inner value count sets the width of the small learned transformation after comparisons. Inner behavior selects a positive-value response. Normalization rescales the values at each position so their scale is easier to work with; Normalization safety prevents division by zero. Normalize before comparisons changes where that rescaling occurs. Repeated standalone layers begin with matching values but own separate learned settings; the full Transformer uses its native initialization.",
+          "A mask is a table of blocked connections. One means blocked and zero means allowed throughout this canvas. Use mask connection enables the matching input. Earlier positions only is a square causal arrangement: each position can use itself and earlier positions. Every query must retain an eligible original source after combined connection and position masks.",
+          "No context is secretly stored between calls, and there is no automatic key/value cache. Floating inputs and outputs use dense float32 on CPU or MPS; supplied masks use exact int64 binary arrays. Sequence and observation counts, named outputs and allocation budgets are checked.",
+          "Drop probability temporarily hides comparison weights during training and is zero during evaluation. CPU supports exact checkpoint continuation; MPS supports explicit weights-only restarting. Input influence means how a small source change affects the result. Guided, practice and private checks use changed examples to measure this understanding."
+        ],
+        "buttonTitle": "Open Transformer example",
+        "exampleSource": "Sources/KwipMLCore/AttentionWorkflowExample.swift",
+        "lessonIDs": [
+          "assessment.transformer-source-target"
+        ]
+      }
+    },
+    {
+      "definition": {
+        "id": "transformer_encoder",
+        "title": "Transformer encoder",
+        "category": "Attention",
+        "inputs": [
+          "in",
+          "mask",
+          "src_key_padding_mask"
+        ],
+        "outputs": [
+          "out"
+        ],
+        "fields": [
+          {
+            "key": "d_model",
+            "title": "Model value count",
+            "kind": "integer",
+            "defaultValue": 4,
+            "min": 1,
+            "max": 512
+          },
+          {
+            "key": "nhead",
+            "title": "Comparison groups",
+            "kind": "integer",
+            "defaultValue": 2,
+            "min": 1,
+            "max": 32
+          },
+          {
+            "key": "dim_feedforward",
+            "title": "Inner value count",
+            "kind": "integer",
+            "defaultValue": 8,
+            "min": 1,
+            "max": 4096
+          },
+          {
+            "key": "dropout",
+            "title": "Drop probability",
+            "kind": "number",
+            "defaultValue": 0,
+            "min": 0,
+            "max": 1
+          },
+          {
+            "key": "bias",
+            "title": "Learned offsets",
+            "kind": "boolean",
+            "defaultValue": true
+          },
+          {
+            "key": "activation",
+            "title": "Inner behavior",
+            "kind": "choice",
+            "defaultValue": "relu",
+            "choices": [
+              {
+                "value": "relu",
+                "title": "Keep positive values"
+              },
+              {
+                "value": "gelu",
+                "title": "Smooth positive preference"
+              }
+            ]
+          },
+          {
+            "key": "layer_norm_eps",
+            "title": "Normalization safety",
+            "kind": "number",
+            "defaultValue": 1e-05,
+            "min": 1.401298464324817e-45,
+            "max": 3.4028234663852886e+38
+          },
+          {
+            "key": "norm_first",
+            "title": "Normalize before comparisons",
+            "kind": "boolean",
+            "defaultValue": false
+          },
+          {
+            "key": "num_layers",
+            "title": "Sequence layers",
+            "kind": "integer",
+            "defaultValue": 1,
+            "min": 1,
+            "max": 8
+          },
+          {
+            "key": "final_norm",
+            "title": "Normalize final result",
+            "kind": "boolean",
+            "defaultValue": false
+          },
+          {
+            "key": "mask_mode",
+            "title": "Blocked connections",
+            "kind": "choice",
+            "defaultValue": "none",
+            "choices": [
+              {
+                "value": "none",
+                "title": "Allow all"
+              },
+              {
+                "value": "causal",
+                "title": "Earlier positions only"
+              },
+              {
+                "value": "supplied",
+                "title": "Use mask connection"
+              }
+            ]
+          },
+          {
+            "key": "padding_mask_mode",
+            "title": "Blocked source positions",
+            "kind": "choice",
+            "defaultValue": "none",
+            "choices": [
+              {
+                "value": "none",
+                "title": "Allow all"
+              },
+              {
+                "value": "supplied",
+                "title": "Use mask connection"
+              }
+            ]
+          }
+        ]
+      },
+      "published": true,
+      "configurationVersion": 1,
+      "adapterID": "kwip.runner.graph-v2.transformer_encoder",
+      "shapeRuleID": "kwip.shape.transformer_encoder.v1",
+      "presentation": {
+        "theme": "rose",
+        "icon": "transformer_encoder-v2",
+        "shortTitle": "Encoder",
+        "purpose": "Compare positions within one sequence."
+      },
+      "inputConditions": {
+        "mask": "mask_mode=supplied",
+        "src_key_padding_mask": "padding_mask_mode=supplied"
+      },
+      "outputConditions": {},
+      "sources": {
+        "native": "Sources/KwipMLCore/AttentionConfiguration.swift",
+        "worker": "runner/attention_configuration.py",
+        "tests": "runner/tests/test_attention_runtime.py",
+        "evidence": "docs/production/TORCH_ATTENTION_CLOSURE.md"
+      },
+      "runtimeContract": {
+        "version": {
+          "major": 1,
+          "minor": 0,
+          "patch": 0
+        },
+        "adapterID": "kwip.runner.graph-v2.transformer_encoder",
+        "graphSchemaVersions": [
+          2
+        ],
+        "preservesBatch": true,
+        "graphDTypes": [
+          "float32"
+        ],
+        "floatInputSampleRanks": [
+          2
+        ],
+        "maximumParameters": 2000000,
+        "maximumTensorElements": 100000000,
+        "maximumScoreElements": 100000000,
+        "maximumMaskElements": 100000000,
+        "maximumWorkElements": 100000000,
+        "sequenceMinimum": 1,
+        "sequenceMaximum": 4096,
+        "modelWidthMaximum": 512,
+        "inputWidthMaximum": 4096,
+        "headMaximum": 32,
+        "layerMaximum": 8,
+        "maskDType": "int64",
+        "maskConvention": "oneBlockedZeroAllowed",
+        "maskBroadcast": "perObservationAcrossHeadsOnly",
+        "statePersistence": "none",
+        "parameterOrder": "nativeModuleOrder",
+        "dropoutPolicy": "trainingOnly",
+        "utilityMaximumItems": 4096,
+        "utilityCoordinateMaximum": 4095,
+        "multiheadWeights": "notApplicable",
+        "sdpaGroupedQuery": false,
+        "sdpaMPSDropoutExecution": "notApplicable"
+      },
+      "learning": {
+        "contentVersion": 1,
+        "updatedAt": "2026-10-08",
+        "exampleID": "prepared-transformer-encoder-classifier",
+        "sourceResource": "workflow-observations",
+        "title": "Explore Transformer encoder in a classifier",
+        "subtitle": "Compare positions within one sequence.",
+        "disclosureTitle": "How sequence comparisons and blocked connections work",
+        "formula": "Compare positions within one sequence.",
+        "paragraphs": [
+          "A sequence is an ordered list of positions, such as readings over time. Each position contains several values. A batch is a group of independent observations; this block keeps observations first.",
+          "A query describes what a requested position is looking for. A key describes a source position so it can be compared with the query. A value is the source information mixed into the result. A head, called a comparison group here, makes one separate set of comparisons.",
+          "This encoder compares positions within the connected sequence. Each layer mixes comparison results with a learned inner transformation, then adds the earlier values back. Sequence layers repeats that process. Normalize final result optionally adds one final rescaling step.",
+          "Inner value count sets the width of the small learned transformation after comparisons. Inner behavior selects a positive-value response. Normalization rescales the values at each position so their scale is easier to work with; Normalization safety prevents division by zero. Normalize before comparisons changes where that rescaling occurs. Repeated standalone layers begin with matching values but own separate learned settings; the full Transformer uses its native initialization.",
+          "A mask is a table of blocked connections. One means blocked and zero means allowed throughout this canvas. Use mask connection enables the matching input. Earlier positions only is a square causal arrangement: each position can use itself and earlier positions. Every query must retain an eligible original source after combined connection and position masks.",
+          "No context is secretly stored between calls, and there is no automatic key/value cache. Floating inputs and outputs use dense float32 on CPU or MPS; supplied masks use exact int64 binary arrays. Sequence and observation counts, named outputs and allocation budgets are checked.",
+          "Drop probability temporarily hides comparison weights during training and is zero during evaluation. CPU supports exact checkpoint continuation; MPS supports explicit weights-only restarting. Input influence means how a small source change affects the result. Guided, practice and private checks use changed examples to measure this understanding."
+        ],
+        "buttonTitle": "Open Transformer encoder example",
+        "exampleSource": "Sources/KwipMLCore/AttentionWorkflowExample.swift",
+        "lessonIDs": [
+          "assessment.transformer-encoder-context"
+        ]
+      }
+    },
+    {
+      "definition": {
+        "id": "transformer_decoder",
+        "title": "Transformer decoder",
+        "category": "Attention",
+        "inputs": [
+          "target",
+          "memory",
+          "tgt_mask",
+          "memory_mask",
+          "tgt_key_padding_mask",
+          "memory_key_padding_mask"
+        ],
+        "outputs": [
+          "out"
+        ],
+        "fields": [
+          {
+            "key": "d_model",
+            "title": "Model value count",
+            "kind": "integer",
+            "defaultValue": 4,
+            "min": 1,
+            "max": 512
+          },
+          {
+            "key": "nhead",
+            "title": "Comparison groups",
+            "kind": "integer",
+            "defaultValue": 2,
+            "min": 1,
+            "max": 32
+          },
+          {
+            "key": "dim_feedforward",
+            "title": "Inner value count",
+            "kind": "integer",
+            "defaultValue": 8,
+            "min": 1,
+            "max": 4096
+          },
+          {
+            "key": "dropout",
+            "title": "Drop probability",
+            "kind": "number",
+            "defaultValue": 0,
+            "min": 0,
+            "max": 1
+          },
+          {
+            "key": "bias",
+            "title": "Learned offsets",
+            "kind": "boolean",
+            "defaultValue": true
+          },
+          {
+            "key": "activation",
+            "title": "Inner behavior",
+            "kind": "choice",
+            "defaultValue": "relu",
+            "choices": [
+              {
+                "value": "relu",
+                "title": "Keep positive values"
+              },
+              {
+                "value": "gelu",
+                "title": "Smooth positive preference"
+              }
+            ]
+          },
+          {
+            "key": "layer_norm_eps",
+            "title": "Normalization safety",
+            "kind": "number",
+            "defaultValue": 1e-05,
+            "min": 1.401298464324817e-45,
+            "max": 3.4028234663852886e+38
+          },
+          {
+            "key": "norm_first",
+            "title": "Normalize before comparisons",
+            "kind": "boolean",
+            "defaultValue": false
+          },
+          {
+            "key": "num_layers",
+            "title": "Sequence layers",
+            "kind": "integer",
+            "defaultValue": 1,
+            "min": 1,
+            "max": 8
+          },
+          {
+            "key": "final_norm",
+            "title": "Normalize final result",
+            "kind": "boolean",
+            "defaultValue": false
+          },
+          {
+            "key": "target_mask_mode",
+            "title": "Requested blocked connections",
+            "kind": "choice",
+            "defaultValue": "none",
+            "choices": [
+              {
+                "value": "none",
+                "title": "Allow all"
+              },
+              {
+                "value": "causal",
+                "title": "Earlier positions only"
+              },
+              {
+                "value": "supplied",
+                "title": "Use mask connection"
+              }
+            ]
+          },
+          {
+            "key": "memory_mask_mode",
+            "title": "Memory blocked connections",
+            "kind": "choice",
+            "defaultValue": "none",
+            "choices": [
+              {
+                "value": "none",
+                "title": "Allow all"
+              },
+              {
+                "value": "supplied",
+                "title": "Use mask connection"
+              }
+            ]
+          },
+          {
+            "key": "target_padding_mode",
+            "title": "Blocked requested positions",
+            "kind": "choice",
+            "defaultValue": "none",
+            "choices": [
+              {
+                "value": "none",
+                "title": "Allow all"
+              },
+              {
+                "value": "supplied",
+                "title": "Use mask connection"
+              }
+            ]
+          },
+          {
+            "key": "memory_padding_mode",
+            "title": "Blocked memory positions",
+            "kind": "choice",
+            "defaultValue": "none",
+            "choices": [
+              {
+                "value": "none",
+                "title": "Allow all"
+              },
+              {
+                "value": "supplied",
+                "title": "Use mask connection"
+              }
+            ]
+          }
+        ]
+      },
+      "published": true,
+      "configurationVersion": 1,
+      "adapterID": "kwip.runner.graph-v2.transformer_decoder",
+      "shapeRuleID": "kwip.shape.transformer_decoder.v1",
+      "presentation": {
+        "theme": "rose",
+        "icon": "transformer_decoder-v2",
+        "shortTitle": "Decoder",
+        "purpose": "Use a source while building a requested sequence."
+      },
+      "inputConditions": {
+        "tgt_mask": "target_mask_mode=supplied",
+        "memory_mask": "memory_mask_mode=supplied",
+        "tgt_key_padding_mask": "target_padding_mode=supplied",
+        "memory_key_padding_mask": "memory_padding_mode=supplied"
+      },
+      "outputConditions": {},
+      "sources": {
+        "native": "Sources/KwipMLCore/AttentionConfiguration.swift",
+        "worker": "runner/attention_configuration.py",
+        "tests": "runner/tests/test_attention_runtime.py",
+        "evidence": "docs/production/TORCH_ATTENTION_CLOSURE.md"
+      },
+      "runtimeContract": {
+        "version": {
+          "major": 1,
+          "minor": 0,
+          "patch": 0
+        },
+        "adapterID": "kwip.runner.graph-v2.transformer_decoder",
+        "graphSchemaVersions": [
+          2
+        ],
+        "preservesBatch": true,
+        "graphDTypes": [
+          "float32"
+        ],
+        "floatInputSampleRanks": [
+          2
+        ],
+        "maximumParameters": 2000000,
+        "maximumTensorElements": 100000000,
+        "maximumScoreElements": 100000000,
+        "maximumMaskElements": 100000000,
+        "maximumWorkElements": 100000000,
+        "sequenceMinimum": 1,
+        "sequenceMaximum": 4096,
+        "modelWidthMaximum": 512,
+        "inputWidthMaximum": 4096,
+        "headMaximum": 32,
+        "layerMaximum": 8,
+        "maskDType": "int64",
+        "maskConvention": "oneBlockedZeroAllowed",
+        "maskBroadcast": "perObservationAcrossHeadsOnly",
+        "statePersistence": "none",
+        "parameterOrder": "nativeModuleOrder",
+        "dropoutPolicy": "trainingOnly",
+        "utilityMaximumItems": 4096,
+        "utilityCoordinateMaximum": 4095,
+        "multiheadWeights": "notApplicable",
+        "sdpaGroupedQuery": false,
+        "sdpaMPSDropoutExecution": "notApplicable"
+      },
+      "learning": {
+        "contentVersion": 1,
+        "updatedAt": "2026-10-08",
+        "exampleID": "prepared-transformer-decoder-classifier",
+        "sourceResource": "workflow-observations",
+        "title": "Explore Transformer decoder in a classifier",
+        "subtitle": "Use a source while building a requested sequence.",
+        "disclosureTitle": "How sequence comparisons and blocked connections work",
+        "formula": "Use a source while building a requested sequence.",
+        "paragraphs": [
+          "A sequence is an ordered list of positions, such as readings over time. Each position contains several values. A batch is a group of independent observations; this block keeps observations first.",
+          "A query describes what a requested position is looking for. A key describes a source position so it can be compared with the query. A value is the source information mixed into the result. A head, called a comparison group here, makes one separate set of comparisons.",
+          "The target connection holds the requested sequence. The memory connection holds the source sequence to use. Each layer compares requested positions, uses source memory, then applies a learned inner transformation. Sequence layers repeats those jobs. Normalize final result optionally adds one final rescaling step.",
+          "Inner value count sets the width of the small learned transformation after comparisons. Inner behavior selects a positive-value response. Normalization rescales the values at each position so their scale is easier to work with; Normalization safety prevents division by zero. Normalize before comparisons changes where that rescaling occurs. Repeated standalone layers begin with matching values but own separate learned settings; the full Transformer uses its native initialization.",
+          "A mask is a table of blocked connections. One means blocked and zero means allowed throughout this canvas. Use mask connection enables the matching input. Earlier positions only is a square causal arrangement: each position can use itself and earlier positions. Every query must retain an eligible original source after combined connection and position masks.",
+          "No context is secretly stored between calls, and there is no automatic key/value cache. Floating inputs and outputs use dense float32 on CPU or MPS; supplied masks use exact int64 binary arrays. Sequence and observation counts, named outputs and allocation budgets are checked.",
+          "Drop probability temporarily hides comparison weights during training and is zero during evaluation. CPU supports exact checkpoint continuation; MPS supports explicit weights-only restarting. Input influence means how a small source change affects the result. Guided, practice and private checks use changed examples to measure this understanding."
+        ],
+        "buttonTitle": "Open Transformer decoder example",
+        "exampleSource": "Sources/KwipMLCore/AttentionWorkflowExample.swift",
+        "lessonIDs": [
+          "assessment.transformer-decoder-memory"
+        ]
+      }
+    },
+    {
+      "definition": {
+        "id": "scaled_dot_product_attention",
+        "title": "Scaled dot-product attention",
+        "category": "Attention",
+        "inputs": [
+          "query",
+          "key",
+          "value",
+          "mask"
+        ],
+        "outputs": [
+          "out"
+        ],
+        "fields": [
+          {
+            "key": "dropout",
+            "title": "Drop probability",
+            "kind": "number",
+            "defaultValue": 0,
+            "min": 0,
+            "max": 1
+          },
+          {
+            "key": "scale",
+            "title": "Similarity scale",
+            "kind": "number",
+            "defaultValue": null,
+            "min": 1.401298464324817e-45,
+            "max": 3.4028234663852886e+38,
+            "allowsNull": true,
+            "enabledValue": 1
+          },
+          {
+            "key": "mask_mode",
+            "title": "Blocked connections",
+            "kind": "choice",
+            "defaultValue": "none",
+            "choices": [
+              {
+                "value": "none",
+                "title": "Allow all"
+              },
+              {
+                "value": "causal",
+                "title": "Earlier positions only"
+              },
+              {
+                "value": "supplied",
+                "title": "Use mask connection"
+              }
+            ]
+          }
+        ]
+      },
+      "published": true,
+      "configurationVersion": 1,
+      "adapterID": "kwip.runner.graph-v2.scaled_dot_product_attention",
+      "shapeRuleID": "kwip.shape.scaled_dot_product_attention.v1",
+      "presentation": {
+        "theme": "rose",
+        "icon": "scaled_dot_product_attention-v2",
+        "shortTitle": "Scaled attention",
+        "purpose": "Mix source values using similarity between positions."
+      },
+      "inputConditions": {
+        "mask": "mask_mode=supplied"
+      },
+      "outputConditions": {},
+      "sources": {
+        "native": "Sources/KwipMLCore/AttentionConfiguration.swift",
+        "worker": "runner/attention_configuration.py",
+        "tests": "runner/tests/test_attention_runtime.py",
+        "evidence": "docs/production/TORCH_ATTENTION_CLOSURE.md"
+      },
+      "runtimeContract": {
+        "version": {
+          "major": 1,
+          "minor": 0,
+          "patch": 0
+        },
+        "adapterID": "kwip.runner.graph-v2.scaled_dot_product_attention",
+        "graphSchemaVersions": [
+          2
+        ],
+        "preservesBatch": true,
+        "graphDTypes": [
+          "float32"
+        ],
+        "floatInputSampleRanks": [
+          3
+        ],
+        "maximumParameters": 2000000,
+        "maximumTensorElements": 100000000,
+        "maximumScoreElements": 100000000,
+        "maximumMaskElements": 100000000,
+        "maximumWorkElements": 100000000,
+        "sequenceMinimum": 1,
+        "sequenceMaximum": 4096,
+        "modelWidthMaximum": 512,
+        "inputWidthMaximum": 4096,
+        "headMaximum": 32,
+        "layerMaximum": 8,
+        "maskDType": "int64",
+        "maskConvention": "oneBlockedZeroAllowed",
+        "maskBroadcast": "perObservationAcrossHeadsOnly",
+        "statePersistence": "none",
+        "parameterOrder": "nativeModuleOrder",
+        "dropoutPolicy": "trainingOnly",
+        "utilityMaximumItems": 4096,
+        "utilityCoordinateMaximum": 4095,
+        "multiheadWeights": "notApplicable",
+        "sdpaGroupedQuery": false,
+        "sdpaMPSDropoutExecution": "deviceLocalPublicOps"
+      },
+      "learning": {
+        "contentVersion": 1,
+        "updatedAt": "2026-10-08",
+        "exampleID": "prepared-scaled-dot-product-attention-classifier",
+        "sourceResource": "workflow-observations",
+        "title": "Explore Scaled dot-product attention in a classifier",
+        "subtitle": "Mix source values using similarity between positions.",
+        "disclosureTitle": "How sequence comparisons and blocked connections work",
+        "formula": "Mix source values using similarity between positions.",
+        "paragraphs": [
+          "A sequence is an ordered list of positions, such as readings over time. Each position contains several values. A batch is a group of independent observations; this block keeps observations first.",
+          "A query describes what a requested position is looking for. A key describes a source position so it can be compared with the query. A value is the source information mixed into the result. A head, called a comparison group here, makes one separate set of comparisons.",
+          "This block compares already-shaped query and key arrays, then mixes the value array. It owns no learned settings. Similarity scale can use the automatic adjustment for group width or a positive custom number. All three connections must have the same group count; value width may differ from query and key width.",
+          "A mask is a table of blocked connections. One means blocked and zero means allowed throughout this canvas. Use mask connection enables the matching input. Earlier positions only is a square causal arrangement: each position can use itself and earlier positions. Every query must retain an eligible original source after combined connection and position masks.",
+          "No context is secretly stored between calls, and there is no automatic key/value cache. Floating inputs and outputs use dense float32 on CPU or MPS; supplied masks use exact int64 binary arrays. Sequence and observation counts, named outputs and allocation budgets are checked.",
+          "Drop probability temporarily hides comparison weights during training and is zero during evaluation. CPU supports exact checkpoint continuation; MPS supports explicit weights-only restarting. Input influence means how a small source change affects the result. Guided, practice and private checks use changed examples to measure this understanding."
+        ],
+        "buttonTitle": "Open Scaled dot-product attention example",
+        "exampleSource": "Sources/KwipMLCore/AttentionWorkflowExample.swift",
+        "lessonIDs": [
+          "assessment.scaled-attention-similarity"
+        ]
+      }
+    },
+    {
+      "definition": {
+        "id": "attention_mask",
+        "title": "Attention mask",
+        "category": "Attention",
+        "inputs": [
+          "query",
+          "key"
+        ],
+        "outputs": [
+          "mask",
+          "padding"
+        ],
+        "fields": [
+          {
+            "key": "mode",
+            "title": "Blocked connection mode",
+            "kind": "choice",
+            "defaultValue": "none",
+            "choices": [
+              {
+                "value": "none",
+                "title": "Allow all"
+              },
+              {
+                "value": "causal",
+                "title": "Earlier positions only"
+              },
+              {
+                "value": "blocked",
+                "title": "Choose blocked connections"
+              }
+            ]
+          },
+          {
+            "key": "blocked_queries",
+            "title": "Blocked query positions",
+            "kind": "integerList",
+            "defaultValue": [],
+            "min": 0,
+            "max": 4095,
+            "minItems": 0,
+            "maxItems": 4096
+          },
+          {
+            "key": "blocked_keys",
+            "title": "Blocked key positions",
+            "kind": "integerList",
+            "defaultValue": [],
+            "min": 0,
+            "max": 4095,
+            "minItems": 0,
+            "maxItems": 4096
+          },
+          {
+            "key": "padding_keys",
+            "title": "Blocked source positions",
+            "kind": "integerList",
+            "defaultValue": [],
+            "min": 0,
+            "max": 4095,
+            "minItems": 0,
+            "maxItems": 4096
+          }
+        ]
+      },
+      "published": true,
+      "configurationVersion": 1,
+      "adapterID": "kwip.runner.graph-v2.attention_mask",
+      "shapeRuleID": "kwip.shape.attention_mask.v1",
+      "presentation": {
+        "theme": "rose",
+        "icon": "attention_mask-v2",
+        "shortTitle": "Mask",
+        "purpose": "Create explicit blocked connections and source positions from sequence references."
+      },
+      "inputConditions": {},
+      "outputConditions": {},
+      "sources": {
+        "native": "Sources/KwipMLCore/AttentionConfiguration.swift",
+        "worker": "runner/attention_configuration.py",
+        "tests": "runner/tests/test_attention_runtime.py",
+        "evidence": "docs/production/TORCH_ATTENTION_CLOSURE.md"
+      },
+      "runtimeContract": {
+        "version": {
+          "major": 1,
+          "minor": 0,
+          "patch": 0
+        },
+        "adapterID": "kwip.runner.graph-v2.attention_mask",
+        "graphSchemaVersions": [
+          2
+        ],
+        "preservesBatch": true,
+        "graphDTypes": [
+          "float32"
+        ],
+        "floatInputSampleRanks": [
+          2,
+          3
+        ],
+        "maximumParameters": 2000000,
+        "maximumTensorElements": 100000000,
+        "maximumScoreElements": 100000000,
+        "maximumMaskElements": 100000000,
+        "maximumWorkElements": 100000000,
+        "sequenceMinimum": 1,
+        "sequenceMaximum": 4096,
+        "modelWidthMaximum": 512,
+        "inputWidthMaximum": 4096,
+        "headMaximum": 32,
+        "layerMaximum": 8,
+        "maskDType": "int64",
+        "maskConvention": "oneBlockedZeroAllowed",
+        "maskBroadcast": "perObservationAcrossHeadsOnly",
+        "statePersistence": "none",
+        "parameterOrder": "nativeModuleOrder",
+        "dropoutPolicy": "notApplicable",
+        "utilityMaximumItems": 4096,
+        "utilityCoordinateMaximum": 4095,
+        "multiheadWeights": "notApplicable",
+        "sdpaGroupedQuery": false,
+        "sdpaMPSDropoutExecution": "notApplicable"
+      },
+      "learning": {
+        "contentVersion": 1,
+        "updatedAt": "2026-10-08",
+        "exampleID": "prepared-attention-mask-classifier",
+        "sourceResource": "workflow-observations",
+        "title": "Explore Attention mask in a classifier",
+        "subtitle": "Create explicit blocked connections and source positions from sequence references.",
+        "disclosureTitle": "How sequence comparisons and blocked connections work",
+        "formula": "Create explicit blocked connections and source positions from sequence references.",
+        "paragraphs": [
+          "A sequence is an ordered list of positions, such as readings over time. Each position contains several values. A batch is a group of independent observations; this block keeps observations first.",
+          "A query describes what a requested position is looking for. A key describes a source position so it can be compared with the query. A value is the source information mixed into the result. A head, called a comparison group here, makes one separate set of comparisons.",
+          "Connect floating query and key references so the block can derive position counts and observation count. It creates mask and padding outputs using whole-number binary values: one blocks a connection or source position, zero allows it. No floating values are reinterpreted as mask coordinates.",
+          "In Choose blocked connections mode, corresponding entries in Blocked query positions and Blocked key positions describe one blocked pair. Positions start at zero; pairs must be unique and both lists must have equal length. Blocked source positions blocks those columns in the mask output and also creates the padding output. This makes the same source blocks usable by attention that has only one mask connection. These same configured choices apply to every observation; arbitrary per-observation mask data is outside this utility.",
+          "Earlier positions only requires equal query and source lengths. Nonempty paired lists require Choose blocked connections mode. The downstream attention block refuses a fully blocked combined row rather than producing an unusable result.",
+          "This utility owns no learned settings or gradients. It creates bounded int64 masks on the references' device. It is taught inside the attention lessons and earns no extra framework coverage."
+        ],
+        "buttonTitle": "Open Attention mask example",
+        "exampleSource": "Sources/KwipMLCore/AttentionWorkflowExample.swift",
+        "lessonIDs": [
+          "assessment.multihead-attention-connections"
+        ]
+      }
+    }
+  ]
+}

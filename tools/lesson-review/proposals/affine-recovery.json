@@ -1,0 +1,106 @@
+{
+  "entryID": "affine-recovery",
+  "title": "Recover an affine map",
+  "taskTitle": "Recover an affine map from its behavior",
+  "chapter": "Foundations",
+  "type": "Construction",
+  "assessmentID": "assessment.affine-from-probes",
+  "scopeLabel": "Assessment · project-specific observations",
+  "baselineHash": "e26f84f19378e24ce694500382ceb4493bcc77a165ce8276a74b4b4f4cc14efe",
+  "summary": "Infer a fixed calculation from three public observations, then check that it works on additional inputs.",
+  "scope": "Second Affine assessment only. Three rail sections and five task/reference sections. Presentation changes only; saved task seed, public observations, grading, allowed tools and receipts remain unchanged.",
+  "reviewNote": "Observed output numbers belong to each saved assessment project. This viewer shows the real public input layout and current/proposed directions, without inventing output values or computing a recovered answer. Those output tables remain in the app. Other Affine assessments and dynamic checker outcomes remain unchanged.",
+  "sourceChecks": [
+    "The recovery task identity is assessment.affine-from-probes with a saved taskSeed. Reopening the same saved assessment reconstructs its same public observations.",
+    "The supplied canvas starts with two-feature Input and Result blocks. The learner builds the connecting calculation and enters explicit Linear parameters.",
+    "The public probe inputs are [0,0], [1,0] and [0,1], read directly from the task definition. Output values are project-specific and are not generated or imported into this viewer.",
+    "The task permits Input, Linear, Add, Concatenate and Output; nonlinear activation components are excluded by its existing allowed set.",
+    "Assessment mode exposes the public observations and uses Submit assessment for independent checks. The wording will not add Guided-mode reveal controls or ordinary Run Flow.",
+    "This proposal leaves the task/content/assessment identity, generator, fixtures, tolerances, resource budget, saved project seed and historical receipts intact. Native checks wait for the finished Foundations chapter."
+  ],
+  "publicObservations": [
+    {
+      "id": "zero",
+      "title": "Zero input",
+      "input": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "basis-0",
+      "title": "Only feature 1 switched on",
+      "input": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "basis-1",
+      "title": "Only feature 2 switched on",
+      "input": [
+        0.0,
+        1.0
+      ]
+    }
+  ],
+  "projectSpecificValues": true,
+  "steps": [
+    {
+      "id": "goal",
+      "title": "Meet the recovery assessment",
+      "text": "Sometimes you can observe what a calculation does without seeing its weights. Recovering an affine map means working out a fixed multiply-and-add calculation from those input/output observations. This can help you understand a model's behavior and check an equivalent implementation.\n\nHere, each observation has two input numbers and produces two output numbers. The app supplies three public examples for the same unknown affine map:\n- [0, 0]: both input features are zero.\n- [1, 0]: only the first input feature is switched on.\n- [0, 1]: only the second input feature is switched on.\n\nRead the observed outputs for your saved project in Task, supplied values & hints. They remain tied to that assessment project; another project may have different values.\n\nThe canvas starts with unconnected Input and Result blocks. Add a construction and enter weights and biases that reproduce the supplied behavior. Your calculation must also work on additional inputs, not just repeat the three displayed answers.",
+      "kind": "explanation",
+      "group": "Assessment rail · 3 sections"
+    },
+    {
+      "id": "try.0",
+      "title": "Build a map from the observations",
+      "text": "1. Open Task, supplied values & hints and read all three public input/output examples. Keep the two output features in the order shown.\n2. Compare the all-zero input with the two single-feature inputs. Ask what can remain when both inputs are zero, then what changes when only one input becomes 1. Use those observations to work out your weights and offsets.\n3. Drag allowed components onto the canvas and connect Input through your calculation to Result. A Linear layer can represent an affine map. Keep the input and final output at two features each; different equivalent affine arrangements are accepted.\n4. Select each Linear layer and use Parameters to set its sizes, Weight matrix and Bias. Each weight-table row produces one output; each column receives one input. The editor starts its row and column indices at 0. Initialize explicit values if needed, then replace the zeros with your intended numbers.\n5. Finish any pending numeric edits before submitting. Use only this assessment's allowed components; nonlinear activations are outside this task.\n\nThe checker evaluates your entered calculation. It does not train the weights toward the answer.",
+      "kind": "canvasAction",
+      "group": "Assessment rail · 3 sections"
+    },
+    {
+      "id": "inspect",
+      "title": "Submit and interpret the result",
+      "text": "Choose Submit assessment in Check your construction. The checker tests additional inputs for the same unknown map. A construction that only memorizes the displayed examples will not reliably describe that map.\n\nRead Assessment feedback when the check finishes:\n- If outputs do not match, compare the zero-input offsets, feature order and weight-table rows and columns. Check the connections and the numbers you entered.\n- If checking cannot start or is cancelled, resolve that condition before treating it as evidence about the calculation.\n- Completion requires a passing assessment with its receipt saved. A result shown after later edits belongs to the previous construction; submit again to check your changes.\n\nSaving keeps your attempt and task association. Reopen that saved assessment to continue with its same public observations.",
+      "kind": "observation",
+      "group": "Assessment rail · 3 sections"
+    },
+    {
+      "id": "reference.goal",
+      "title": "The required behavior",
+      "text": "Construct an affine calculation that matches your project's public zero-input and single-feature observations, and also works on additional inputs from the same map.\n\nKeep two input features and two output features in their original order. Equivalent arrangements of the allowed affine components are accepted. Nonlinear activations are outside this exercise.",
+      "kind": "explanation",
+      "group": "Task reference · 5 sections"
+    },
+    {
+      "id": "reference.workflow",
+      "title": "Work with the parameter tables",
+      "text": "Drag components from the assessment's allowed toolbar and connect their ports from Input to Result. Select a block to edit it in Parameters.\n\nFor Linear, set the feature widths before entering explicit values. Each Weight matrix row produces one output feature; each column receives one input feature. Bias adds one fixed offset to each output.\n\nThe first feature is column 0 in the editor, and the second is column 1. Likewise, row 0 produces the first output and row 1 the second. Check that you have not swapped an input column with an output row. Finish numeric edits before choosing Submit assessment in the rail.",
+      "kind": "canvasAction",
+      "group": "Task reference · 5 sections"
+    },
+    {
+      "id": "reference.probes",
+      "title": "Read your three public observations",
+      "text": "Read the Input values and Observed values together for each case:\n- Zero input is [0, 0]. Its two observed outputs show what the map returns without any input contribution.\n- Only feature 1 switched on is [1, 0]. Compare its observed outputs with the zero-input case.\n- Only feature 2 switched on is [0, 1]. Make the same comparison while keeping the output order unchanged.\n\nThe observed output numbers are specific to your saved project and appear in the app's public-example tables. This wording review does not substitute example answers for them.\n\nThese are observations of one fixed map. The assessment checks additional inputs for that same map, so your construction needs to describe the calculation rather than return a fixed displayed output.",
+      "kind": "visual",
+      "group": "Task reference · 5 sections"
+    },
+    {
+      "id": "reference.criteria",
+      "title": "What completion means",
+      "text": "The assessment compares your affine construction with the same map on independent inputs. Match the values, preserve the order of features and return the requested two-feature output for every observation. Different valid block arrangements can pass.\n\nCompletion requires a passing Submit assessment result and a saved receipt. Reading the public observations or saving an unfinished construction does not establish completion. Exact checker criteria and resource limits remain available in Optional · exact checks and limits.",
+      "kind": "observation",
+      "group": "Task reference · 5 sections"
+    },
+    {
+      "id": "reference.notation",
+      "title": "Optional · understand the terms",
+      "text": "A weight controls how much one input contributes to one output. Bias is a fixed offset added to an output. An affine map uses those fixed weights and offsets for every observation.\n\ny = Wx + b\n\nx contains one observation's two input values, W is the weight table, b contains the two offsets, and y contains the two output values. There are four weights in a 2 × 2 table and one offset per output. Each output combines both inputs using its own row of weights.\n\nThe single-feature inputs [1, 0] and [0, 1] are also called basis vectors. They let you examine the contribution of one input direction at a time. A batch groups observations: shape [4, 2] means four observations with two features each, not four weights. Each observation must be handled by the same fixed calculation.",
+      "kind": "detail",
+      "group": "Task reference · 5 sections"
+    }
+  ]
+}
