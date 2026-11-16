@@ -8,7 +8,7 @@ Free to use, with no KWIP account, activation or license key.
 
 The source is available now. The signed free Mac download is still undergoing
 release validation; this repository does not announce a completed binary release.
-See https://kwipily.kwip.info/ once the release site is live.
+The verified download link will be added here when the release is ready.
 
 ## Build on macOS
 
@@ -49,8 +49,9 @@ and notices. The license does not grant use of KWIP trademarks beyond its terms.
 
 ## Support
 
-See https://kwipily.kwip.info/support/ or email contact@kwip.info. Support is
-provided as time permits. Never include credentials or private datasets in issues.
+Email contact@kwip.info. Support is provided as time permits. Never include
+credentials or private datasets in issues. The standalone product site will
+launch alongside the signed free Mac release.
 
 This is a source snapshot with fresh Git history. Private release receipts and
 upstream website captures are excluded. Some publisher verification scripts refer
