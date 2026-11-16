@@ -4,11 +4,13 @@ A native macOS visual workflow and machine-learning app, formerly Kwip ML.
 Build data workflows, train supported models, inspect results and keep projects locally.
 Free to use, with no KWIP account, activation or license key.
 
+[Website](https://kwipily.kwip.info/) · [Releases](https://github.com/kwip-info/kwipily/releases) · [Support](https://kwipily.kwip.info/support/) · [Privacy](https://kwipily.kwip.info/privacy/)
+
 ## Release status
 
 The source is available now. The signed free Mac download is still undergoing
 release validation; this repository does not announce a completed binary release.
-The verified download link will be added here when the release is ready.
+The signed installer will be published on [GitHub Releases](https://github.com/kwip-info/kwipily/releases) when validation is complete.
 
 ## Build on macOS
 
@@ -49,9 +51,11 @@ and notices. The license does not grant use of KWIP trademarks beyond its terms.
 
 ## Support
 
-Email contact@kwip.info. Support is provided as time permits. Never include
-credentials or private datasets in issues. The standalone product site will
-launch alongside the signed free Mac release.
+Read the [support and installation guide](https://kwipily.kwip.info/support/)
+or email [contact@kwip.info](mailto:contact@kwip.info). Support is provided as
+time permits. Never include credentials or private datasets in issues. See the
+[privacy policy](https://kwipily.kwip.info/privacy/) for local storage, optional
+connections and information used to deliver the app.
 
 This is a source snapshot with fresh Git history. Private release receipts and
 upstream website captures are excluded. Some publisher verification scripts refer
