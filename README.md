@@ -6,11 +6,23 @@ Free to use, with no KWIP account, activation or license key.
 
 [Website](https://kwipily.kwip.info/) · [Releases](https://github.com/kwip-info/kwipily/releases) · [Support](https://kwipily.kwip.info/support/) · [Privacy](https://kwipily.kwip.info/privacy/)
 
-## Release status
+## Download for Mac
 
-The source is available now. The signed free Mac download is still undergoing
-release validation; this repository does not announce a completed binary release.
-The signed installer will be published on [GitHub Releases](https://github.com/kwip-info/kwipily/releases) when validation is complete.
+[Download Kwipily 1.3.5](https://github.com/kwip-info/kwipily/releases/download/v1.3.5/KwipML.dmg)
+for Apple Silicon and macOS 14 or later. The official app is signed and notarized.
+Open the DMG and drag the app to Applications. Its compatible payload filename remains `Kwip ML.app`.
+No account, activation or license key is required.
+
+With the GitHub CLI, download the installer using:
+
+```sh
+gh release download v1.3.5 --repo kwip-info/kwipily --pattern KwipML.dmg
+open KwipML.dmg
+```
+
+See the [release notes and checksums](https://github.com/kwip-info/kwipily/releases/tag/v1.3.5).
+Automatic updates are unavailable while the legacy update service is offline;
+download future versions from GitHub Releases. Existing projects and History are preserved.
 
 ## Build on macOS
 
